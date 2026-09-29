@@ -1,0 +1,26 @@
+{
+  "schema": "desmentindo.corpus_manifest.candidate.v3",
+  "version": 4,
+  "build_id": "CORPUS_UI_V2_20260929T120500Z",
+  "parent_candidate_build_id": "ACERVOS_CANDIDATE_20260929T000000Z",
+  "baseline_production_build_id": "MS1_20260929T002918Z",
+  "baseline_production_commit": "564f7e4bea40e682e30986694ab0d55d01bac4e3",
+  "source_full_links_version": "DESMENTINDO_FULL_CORPUS_LINKS_v1",
+  "source_baseline_version": "CANONICAL_PRODUCT_BASELINE_v1",
+  "public_eligibility_policy": "ELIGIBLE_ONLY",
+  "link_count": 1986,
+  "person_count": 29,
+  "case_count": 13,
+  "generated_at": "2026-09-29T15:09:56Z",
+  "index": {
+    "url": "data/corpus/index.2a493d96097d.json",
+    "bytes": 62922,
+    "sha256": "2a493d96097daef391cb000a50a4d1819ff7a287da8434e944dc001810eb3b0d"
+  },
+  "dataset": {
+    "url": "data/corpus/links.1ee90c969ce0.json",
+    "bytes": 1118898,
+    "sha256": "1ee90c969ce0586ef77ed63e5e7dba951f59125b7d49433b1b8f274d576d8bee"
+  },
+  "ui_enabled": true
+}

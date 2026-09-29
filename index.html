@@ -6,7 +6,9 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <style>:root{color-scheme:light}html,body{margin:0;padding:0}body{font:14px Archivo,system-ui,sans-serif;background:#f3f2f2}img{max-width:100%}[hidden]{display:none!important}</style>
 <meta name="ms-manifest" content="data/manifest.0977832fa154.json">
-<script src="js/multisource.0812f0ca1be1.js"></script>
+<script src="js/multisource.abbf1bf01d73.js"></script>
+<script src="js/acervos.candidate.js"></script>
+<meta name="acervos-manifest" content="data/corpus/manifest.json">
 </head>
 <body>
 <title>Desmentindo</title>
@@ -742,6 +744,20 @@ a.pn-hr:hover .pn-hv i{outline:2px solid var(--accent);outline-offset:1px}
 .agseg-t{color:var(--accent-ink);font-weight:700;text-decoration:none;font-size:13px}
 .agseg-t:hover{text-decoration:underline}
 .agseg-b{font-size:13.5px;line-height:1.4}
+/* ===== Nos acervos (Corpus UI Implementation Candidate v1) — extends .agseg, not a new visual system ===== */
+.acseg{display:grid;grid-template-columns:56px 1fr;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+.acseg-t{color:var(--accent-ink);font-weight:700;text-decoration:none;font-size:13px}
+.acseg-t:hover{text-decoration:underline}
+.acseg-b{font-size:13.5px;line-height:1.4}
+.acq{margin:4px 0;padding:0 0 0 10px;border-left:2px solid var(--line);font-style:italic;color:var(--text)}
+.acvg{padding:4px 0}
+.acvg-more{border-bottom:1px solid var(--line);padding:6px 0}
+.acvg-more>summary{cursor:pointer;font-size:13px;color:var(--text);padding:4px 0;list-style:none}
+.acvg-more>summary::-webkit-details-marker{display:none}
+.acvg-more>summary:before{content:'▸ ';color:var(--accent)}
+.acvg-more[open]>summary:before{content:'▾ '}
+.acervos-panel{margin-top:10px}
+
 
 /* ===== Início: portal ===== */
 .pt{display:flex;flex-direction:column}
@@ -1659,7 +1675,13 @@ function vPessoa(){
   const nota=`<div class="note8" style="margin-top:22px"><b>Por que não há nota nem ranking de “favorecimento” ou de “fazer parte do sistema”.</b> Uma nota assim exigiria inferir intenção e ligar contato, decisão, doação ou parentesco a benefício, o que as regras do projeto proíbem e as fontes não sustentam. Este perfil mostra o que está documentado, o que é atribuído a quem, o que a pessoa respondeu e o que falta confirmar. Quem quiser comparar efeitos processuais pode usar a aba <a href="#/trilhas">Onde os casos param</a>, que descreve o efeito de cada ato sem atribuir motivo.</div>`;
   if(S.ptn!==n){S.ptn=n;S.pt='geral'}
   const ng=gmOf(n).length,nc=(agMatchIndex().byName[n]||[]).length,nog=(OPBP[n]||[]).filter(z=>z.x.o==='g').length,noo=(OPBP[n]||[]).filter(z=>z.x.o==='o').length,nresp=evs.filter(e=>e.resp).length;
-  const TABS=[['geral','Resumo',1],['fatos','Documentos ('+fatos.length+')',fatos.length],['alegs','Alegações ('+alegs.length+')',alegs.length],['resp','Respostas'+(aud?' ('+resp.length+')':' ('+nresp+')'),aud||nresp],['abertos','Em aberto ('+abertos.length+')',abertos.length],['garcia','Garcia ('+ng+')',1],['corpus','Corpus bruto ('+nc+')',1],['gazeta','Gazeta ('+nog+')',1],['oeste','Oeste ('+noo+')',1]].filter(t=>t[2]);
+  // Round G fix (empty-state / tab-list clarity): these four legacy tabs used a
+  // hardcoded "1" as their visibility flag instead of their own real count (every
+  // other tab here already uses its own .length/count) — so "Garcia (0)" and
+  // "Corpus bruto (0)" (a raw internal-sounding label) sat permanently in the tab
+  // bar next to the new, real "Nos acervos" tab even when empty, for every person
+  // with nothing in either. Now hidden when 0, same rule as the rest of the row.
+  const TABS=[['geral','Resumo',1],['fatos','Documentos ('+fatos.length+')',fatos.length],['alegs','Alegações ('+alegs.length+')',alegs.length],['resp','Respostas'+(aud?' ('+resp.length+')':' ('+nresp+')'),aud||nresp],['abertos','Em aberto ('+abertos.length+')',abertos.length],['garcia','Garcia ('+ng+')',ng],['corpus','Corpus bruto ('+nc+')',nc],['gazeta','Gazeta ('+nog+')',nog],['oeste','Oeste ('+noo+')',noo]].filter(t=>t[2]);
   if(!TABS.some(t=>t[0]===S.pt))S.pt='geral';
   const tnav=`<div class="tnav ptabs" role="group" aria-label="Seções da ficha">${TABS.map(t=>`<button data-pt="${t[0]}" aria-pressed="${S.pt===t[0]}">${esc(t[1])}</button>`).join('')}</div>`;
   const more=(tab,tot,k)=>tot>k?`<button class="btn ghost" data-pt="${tab}" style="margin-top:6px">Ver todos os ${tot} →</button>`:'';
@@ -1800,6 +1822,16 @@ function vContagens(){
 /* ---------- comparativo com o arquivo Alexandre Garcia ---------- */
 const EMBED=true;
 const GM=D.gm||{},GV=D.gv||{},GN=D.gn||[],GMETA=D.gmeta||{};
+// Round G fix (empty states must never read "undefined"): this candidate's
+// D.gmeta is empty (same underlying gap as the "0 vídeos" Comparativo Garcia
+// card on Home — a separate, pre-existing widget this round doesn't touch the
+// data of). The three copy blocks below interpolated GMETA.ini/fim/de/ate
+// directly, so with no GMETA they rendered literally as "#undefined a
+// #undefined, de a ." on real pages (e.g. any audited person with no Garcia
+// hits, such as Paulo Gonet). Fixed at the copy layer only: when the range
+// isn't known, say so plainly instead of fabricating or leaking "undefined".
+const gmRangeTxt=()=>(GMETA.ini!=null&&GMETA.fim!=null)?('os vídeos #'+GMETA.ini+' a #'+GMETA.fim+(GMETA.de?', de '+fmtD(GMETA.de)+' a '+fmtD(GMETA.ate):'')):'uma faixa ainda não informada nesta rodada';
+const gmRangeShort=()=>(GMETA.ini!=null&&GMETA.fim!=null)?('#'+GMETA.ini+' a #'+GMETA.fim):'faixa não informada nesta rodada';
 const ytl=(id,t)=>'https://www.youtube.com/watch?v='+id+(t>0?'&t='+t+'s':'');
 const clock=t=>{const h=Math.floor(t/3600),m=Math.floor(t%3600/60),sc=t%60;return (h?h+':'+String(m).padStart(2,'0'):m)+':'+String(sc).padStart(2,'0')};
 const GT={data:'Data',personalidade:'Personalidade',memoria:'Memória','memória':'Memória',fato:'Fato',lugar:'Lugar',tema:'Tema'};
@@ -1835,7 +1867,7 @@ function garciaUnifiedRecent(n){
 }
 function garciaBlock(n,evs,part){
   const gs=gmOf(n);
-  const aviso=`Opinião e comentário atribuídos ao autor do canal @AlexandreGarciaOficial. O inventário guarda tema e minuto, não a fala. A pessoa aparece por nome no título ou no assunto; isso não indica o que ele pensa sobre ela nem se o que diz é correto. A transcrição é automática (nomes podem estar errados) e o arquivo cobre só os vídeos #${GMETA.ini} a #${GMETA.fim}, de ${fmtD(GMETA.de)} a ${fmtD(GMETA.ate)}.`;
+  const aviso=`Opinião e comentário atribuídos ao autor do canal @AlexandreGarciaOficial. O inventário guarda tema e minuto, não a fala. A pessoa aparece por nome no título ou no assunto; isso não indica o que ele pensa sobre ela nem se o que diz é correto. A transcrição é automática (nomes podem estar errados) e o arquivo cobre só ${gmRangeTxt()}.`;
   if(!gs.length)return part==='tab'?'':opBlock('g','Alexandre Garcia: trechos que citam a pessoa',esc(aviso),`<div class="empty" style="text-align:left">Nenhum vídeo do arquivo cita esta pessoa por nome. Isso não significa que ele não falou dela: o arquivo cobre só um período e o inventário não é exaustivo.${evs.some(e=>e.d>'2021-11-01')?' Boa parte dos eventos do dossiê é posterior a 01/11/2021, fora do arquivo.':''}</div>`);
   const meses={};gs.forEach(x=>{const m=x.v[0].slice(0,7);(meses[m]=meses[m]||{g:[],e:[]}).g.push(x)});
   evs.filter(e=>e.d&&e.d.length>=7&&e.d>=GMETA.de.slice(0,7)&&e.d<='2021-11-31').forEach(e=>{const m=e.d.slice(0,7);(meses[m]=meses[m]||{g:[],e:[]}).e.push(e)});
@@ -1869,7 +1901,7 @@ function vGarcia(){
     return `<tr class="tgr"><td colspan="7">${esc(tn)}</td></tr>`+all.map(x=>{const gs=gmOf(x.n),na=gs.reduce((k,g)=>k+g.a.length,0),ew=x.evs.filter(win).length,curLatest=gs[gs.length-1].v[0];
       return `<tr><td><button class="pname" data-pes="${esc(x.n)}">${esc(x.n)}</button>${x.aud?' <span class="pill k">auditada</span>':''}</td>${cell(gs.length)}${cell(na)}<td>${esc(fmtD(gs[0].v[0]))} a ${esc(fmtD(curLatest))}</td>${cxCell(x.n,curLatest)}${cell(ew)}${cell(x.evs.length-ew)}</tr>`}).join('')}).join('');
   const sem=[...D.pes.filter(p=>!GM[p])];
-  return `<h1>Comparativo com Alexandre Garcia</h1><p class="lead" style="font-size:15px">Cruza as pessoas do dossiê com o arquivo de vídeos do canal @AlexandreGarciaOficial (${GMETA.n} vídeos, #${GMETA.ini} a #${GMETA.fim}, de ${fmtD(GMETA.de)} a ${fmtD(GMETA.ate)}). Cada linha conta em quantos vídeos a pessoa aparece por nome e abre a ficha, onde os vídeos ficam ao lado dos eventos do dossiê, mês a mês, com link no minuto. A coluna "Acervo bruto" mostra, na própria linha, o vídeo mais recente do acervo maior e sem curadoria (2.601 vídeos) que cita o mesmo nome — sem precisar abrir outra aba.</p>
+  return `<h1>Comparativo com Alexandre Garcia</h1><p class="lead" style="font-size:15px">Cruza as pessoas do dossiê com o arquivo de vídeos do canal @AlexandreGarciaOficial (${GMETA.n!=null?GMETA.n+' vídeos, ':''}${gmRangeShort()}). Cada linha conta em quantos vídeos a pessoa aparece por nome e abre a ficha, onde os vídeos ficam ao lado dos eventos do dossiê, mês a mês, com link no minuto. A coluna "Acervo bruto" mostra, na própria linha, o vídeo mais recente do acervo maior e sem curadoria (2.601 vídeos) que cita o mesmo nome — sem precisar abrir outra aba.</p>
   <div class="defs"><div><b>O que é</b>Comentário atribuído a um comentarista, tratado como opinião dele. Não é fato, prova nem decisão. O dossiê não avalia se ele tem razão e não conclui nada a partir da coincidência.</div><div><b>Como a pessoa é achada</b>Pelo nome no título ou no assunto inventariado. Sobrenomes ambíguos (como Bolsonaro) só entram com nome completo ou cargo, então a contagem pode ficar abaixo do real. Não vira posição a favor ou contra.</div><div><b>Limites do arquivo</b>Transcrição automática, sem conferência de áudio, inventário não exaustivo. Fora dele: vídeos #1 a #200 e a partir do #1001 — mas boa parte disso é coberta pelo acervo bruto, na coluna ao lado. O caso Master (2025 a 2026) fica quase todo fora do comparativo curado, mas não do acervo bruto.</div></div>
   <div class="ctw"><table class="ct"><thead><tr><th>Pessoa</th><th>Vídeos que citam</th><th>Assuntos com minuto</th><th class="tx">Período dos vídeos (comparativo curado)</th><th class="tx">Acervo bruto (mesmo nome)</th><th>Eventos do dossiê na janela do arquivo</th><th>Eventos do dossiê fora da janela</th></tr></thead><tbody>${rows}</tbody></table></div>
   <p class="mute" style="font-size:13px">Ordem fixa por tipo, sem soma e sem índice. Um número maior mostra que a pessoa foi mais citada no arquivo, não que foi mais criticada ou elogiada. Auditadas sem vídeo no arquivo: ${sem.length?sem.map(esc).join(', '):'nenhuma'}.</p>`}
@@ -1945,7 +1977,7 @@ function gEv(e){if(GEM[e.id])return GEM[e.id];
   }));
   return GEM[e.id]=Object.values(by).sort((a,b)=>b.v[0].localeCompare(a.v[0])||b.s-a.s)}
 function garciaEv(e){const r=gEv(e);
-  const nota=`Opinião e comentário atribuídos ao autor do canal @AlexandreGarciaOficial, tratados como opinião dele. Aparece aqui quando o vídeo cita uma pessoa deste evento e (a) publicou até 15 dias antes ou depois da data do evento, ou (b) cita também o caso. Não indica que o vídeo trate deste evento, nem o que ele pensa, nem se está correto. Transcrição automática; arquivo #${GMETA.ini} a #${GMETA.fim}.`;
+  const nota=`Opinião e comentário atribuídos ao autor do canal @AlexandreGarciaOficial, tratados como opinião dele. Aparece aqui quando o vídeo cita uma pessoa deste evento e (a) publicou até 15 dias antes ou depois da data do evento, ou (b) cita também o caso. Não indica que o vídeo trate deste evento, nem o que ele pensa, nem se está correto. Transcrição automática; arquivo ${gmRangeShort()}.`;
   if(!r.length)return `<h4>Alexandre Garcia</h4><p class="mute" style="font-size:13.5px">Nenhum trecho do arquivo cita uma pessoa deste evento na mesma janela de datas ou junto do caso. ${(e.de||e.dp||'9')>'2021-11-01'?'O evento é posterior a 01/11/2021, fora do arquivo.':'Isso não significa que ele não tenha falado do assunto.'}</p>`;
   const why=x=>[x.caso?`cita também o caso (${esc(D.caso_lbl[x.caso]||x.caso)})`:'',x.near?`publicado ${x.dt===0?'no dia do evento':Math.abs(x.dt)+' dia(s) '+(x.dt<0?'antes':'depois')+' do evento'}`:''].filter(Boolean).join(' · ')+' · pessoa(s): '+[...x.ps].map(esc).join(', ');
   const top=r.slice(0,5).map(x=>gvCard(x,why(x))).join(''),rest=r.slice(5);
@@ -2032,7 +2064,13 @@ function corpusPessoaBlock(n,part){
 function corpusCasoBlock(c){
   const hits=(agMatchIndex().byCase[c]||[]).slice().sort((a,b)=>b.u.localeCompare(a.u));
   const aviso=`Vídeos do acervo bruto (Corpus Alexandre Garcia) cujo título ou trechos catalogados citam palavras-chave deste caso. Não indica o que o autor pensa do caso nem é checagem: é busca de texto por palavra-chave, a mesma usada no cruzamento por evento já existente na ficha de pessoa.`;
-  if(!hits.length)return opBlock('cx','Corpus Alexandre Garcia (acervo bruto): vídeos sobre este caso',esc(aviso),`<div class="empty" style="text-align:left">Nenhum vídeo do acervo bruto usa as palavras-chave deste caso no título ou nos trechos catalogados.</div>`);
+  // Round G fix (layer clarity / empty states): this legacy, uncurated keyword
+  // search sits right above the new "Nos acervos" section and shares much of its
+  // vocabulary ("acervo", "Corpus Alexandre Garcia"); showing its own permanent
+  // "nenhum vídeo encontrado" box right before a case that DOES have real Nos
+  // Acervos results read as a contradiction. Omit silently when empty, same rule
+  // already used for the equivalent block on the person page.
+  if(!hits.length)return '';
   const top=hits.slice(0,8).map(cxCard).join(''),rest=hits.slice(8);
   return opBlock('cx','Corpus Alexandre Garcia (acervo bruto): vídeos sobre este caso',esc(aviso),`<p class="mute" style="font-size:13px;margin:0 0 6px">${hits.length} vídeo(s) encontrados.</p>${top}${rest.length?`<details class="more"><summary>Mostrar mais ${rest.length}</summary>${rest.map(cxCard).join('')}</details>`:''}`);
 }
@@ -2630,7 +2668,15 @@ let agTm;document.addEventListener('input',ev=>{const t=ev.target;if(S.view!=='c
 document.addEventListener('change',ev=>{const t=ev.target;if(t&&t.id==='nwFile'){NW.file=t.files&&t.files[0]||null;NW.fileName=NW.file?NW.file.name:'';nwRenderBox()}});
 const VIEWFN={home:vHome,noticias:vHub,narrativas:vNarr,regime:vRegime,sit:vSit,opiniao:vOpiniao,mensagens:vMsgs,rede:vRede,gazeta:()=>vVeic('g'),oeste:()=>vVeic('o'),cobertura:vCobertura,caso:vCaso,garcia:vGarcia,corpus:vCorpus,video:vAgVideo,contagens:vContagens,pessoa:vPessoa,trilhas:vTrilhas,cerebro:vCerebro,mecanismos:vMec,inicio:vInicio,matriz:vMatriz,mapa:vMapa,eventos:vEventos,fichas:vFichas,glossario:vGloss};
 function renderMain(){
-  const showBar=S.view!=='glossario'&&S.view!=='cerebro'&&S.view!=='pessoa'&&S.view!=='caso'&&S.view!=='contagens'&&S.view!=='garcia'&&S.view!=='corpus'&&S.view!=='video'&&S.view!=='home'&&S.view!=='noticias'&&!OPVIEW.includes(S.view);$('.shell').classList.toggle('wide',S.view==='cerebro');$('.shell').classList.toggle('solo',S.view==='pessoa'||S.view==='caso'||S.view==='contagens'||S.view==='garcia'||S.view==='corpus'||S.view==='video'||S.view==='home'||S.view==='noticias'||OPVIEW.includes(S.view));$('.shell').classList.toggle('solow',S.view==='contagens'||S.view==='garcia'||S.view==='pessoa'||S.view==='corpus'||S.view==='video'||OPVIEW.includes(S.view));
+  // Round G fix: 'acervos' (the Nos Acervos hub) was left out of these three
+  // lists when the view was added — it inherited the generic events/pares
+  // filter bar ("Filtros", "N de N eventos · N de N pares") even though that
+  // bar filters EV/PR (the audited-events layer) and has zero effect on the
+  // hub's own person/case corpus lists below it. Every other equally
+  // self-contained, non-filterable view (pessoa, caso, contagens, garcia,
+  // corpus, video) is already excluded the same way; the hub was the one
+  // inconsistent case, showing a filter affordance that silently did nothing.
+  const showBar=S.view!=='glossario'&&S.view!=='cerebro'&&S.view!=='pessoa'&&S.view!=='caso'&&S.view!=='contagens'&&S.view!=='garcia'&&S.view!=='corpus'&&S.view!=='video'&&S.view!=='home'&&S.view!=='noticias'&&S.view!=='acervos'&&!OPVIEW.includes(S.view);$('.shell').classList.toggle('wide',S.view==='cerebro');$('.shell').classList.toggle('solo',S.view==='pessoa'||S.view==='caso'||S.view==='contagens'||S.view==='garcia'||S.view==='corpus'||S.view==='video'||S.view==='home'||S.view==='noticias'||S.view==='acervos'||OPVIEW.includes(S.view));$('.shell').classList.toggle('solow',S.view==='contagens'||S.view==='garcia'||S.view==='pessoa'||S.view==='corpus'||S.view==='video'||S.view==='acervos'||OPVIEW.includes(S.view));
   $('#main').innerHTML=(showBar?barHtml():'')+VIEWFN[S.view]()+`<div class="foot">Desmentindo · auditoria de narrativas baseada em evidências · rodada de ${fmtD(D.meta.atualizado)}. Vínculo documentado ≠ culpa · Alegação ≠ fato · Rejeição, nulidade ou suspensão ≠ absolvição. Fontes e níveis de evidência na ficha de cada evento. Conteúdo sujeito a correção; confira sempre a fonte primária.</div>`;
   if(S.view!=='home'&&S.view!=='noticias'){const M=$('#main'),mv=[];for(const el of M.children){if(el.matches('h2,.foot,.ab-sobre,section,details'))break;if(el.matches('p.lead,.note8'))mv.push(el)}if(mv.length){let sb=M.querySelector(':scope > .ab-sobre');if(!sb){sb=document.createElement('section');sb.className='ab-sobre';sb.innerHTML='<h2>Sobre esta aba</h2>';M.insertBefore(sb,M.querySelector(':scope > .foot'))}const h2=sb.querySelector('h2');let ref=h2.nextSibling;mv.forEach(e=>sb.insertBefore(e,ref))}}
   if(S.view!=='corpus')veicTag($('#main'));
@@ -3156,6 +3202,298 @@ const hh=()=>document.documentElement.style.setProperty('--hh',$('.top').offsetH
 
   VIEWS.push(['busca', 'Busca multi-fonte']);
   VIEWFN.busca = vBusca;
+})();
+
+/* ===== ACERVOS UI BOOTSTRAP (Product Evolution v2 — search + discovery + corpus navigation) =====
+   Same technique as the MULTISOURCE HYDRATION BOOTSTRAP just above: textually
+   appended inside the same top-level IIFE as the rest of the app, so S, D, EV,
+   norm, esc, dateOf, headline, hashFor, VIEWFN, VIEWS, renderMain are the SAME
+   bindings already declared above. Wraps VIEWFN.pessoa, VIEWFN.caso, VIEWFN.busca
+   and VIEWFN.home; adds one new view (#/acervos). Every other view function is
+   byte-for-byte untouched. Feature-flagged; every wrap fails closed on error (the
+   page underneath is never altered or broken by this block). CANDIDATE ONLY.
+
+   v2 evolves v1: fixes the case-page lookup (S.cs directly, not D.caso_lbl[S.cs] —
+   see the note on injectCasePanel in acervos.candidate.js); prefetches the compact
+   search index (never the full occurrence dataset) so #/busca and #/acervos can
+   render instantly; layers "Resultados do Desmentindo" (structured: Pessoas/Casos/
+   Eventos from the real dossiê data D/EV) above "Nos acervos" (curated corpus
+   occurrences) above the pre-existing raw multi-fonte results — three separate,
+   clearly labeled layers, never one merged ranking, never a public score. */
+(function () {
+  var CORPUS_UI_ENABLED = true; // flip to false to fully disable the Acervos UI (panels, search layers, hub) without removing code
+  if (!CORPUS_UI_ENABLED || !window.DesmentindoAcervos) return;
+  var AC = window.DesmentindoAcervos;
+
+  var _acervosState = { loaded: false, loading: null, error: null, links: null, manifest: null, index: null, indexLoading: null, indexError: null };
+
+  function refreshIfRelevant(views) {
+    if (views.indexOf(S.view) !== -1) renderMain();
+  }
+
+  // Heavy per-entity occurrence dataset — only fetched once a person/case panel is actually opened (unchanged from v1).
+  function ensureAcervos() {
+    if (_acervosState.loaded) return Promise.resolve();
+    if (_acervosState.loading) return _acervosState.loading;
+    _acervosState.loading = AC.getManifest().then(function (m) {
+      _acervosState.manifest = m;
+      return AC.ensureLinks();
+    }).then(function (links) {
+      _acervosState.links = links;
+      _acervosState.loaded = true;
+      _acervosState.loading = null;
+    }).catch(function (err) {
+      _acervosState.error = err;
+      _acervosState.loading = null;
+      throw err;
+    });
+    return _acervosState.loading;
+  }
+
+  // Compact index (counts + years + video cross-reference map, no occurrence text)
+  // — small enough to prefetch eagerly; powers search-as-you-type and the hub
+  // without ever triggering the heavy dataset fetch above.
+  function ensureAcervosIndex() {
+    if (_acervosState.index) return Promise.resolve(_acervosState.index);
+    if (_acervosState.indexLoading) return _acervosState.indexLoading;
+    _acervosState.indexLoading = AC.ensureIndex().then(function (idx) {
+      _acervosState.index = idx;
+      window.__acervosHubIndex = idx;
+      _acervosState.indexLoading = null;
+      return idx;
+    }).catch(function (err) {
+      _acervosState.indexError = err;
+      _acervosState.indexLoading = null;
+      throw err;
+    });
+    return _acervosState.indexLoading;
+  }
+  ensureAcervosIndex().then(function () { refreshIfRelevant(['busca', 'acervos', 'pessoa', 'caso']); }).catch(function () { refreshIfRelevant(['busca', 'acervos', 'pessoa', 'caso']); });
+
+  /* ---------- Pessoa / Caso panels (v1 mechanism, evolved) ---------- */
+
+  var _acOrigPessoa = VIEWFN.pessoa;
+  VIEWFN.pessoa = function () {
+    // Shareable state (§43): #/pessoa?n=X&pt=acervos opens straight on the "Nos
+    // acervos" tab — read here since parseHash() itself doesn't know about `pt`
+    // (no router rewrite). Only takes effect for links we generate ourselves.
+    try {
+      var hq = new URLSearchParams((location.hash.split('?')[1] || ''));
+      if (hq.get('pt') === 'acervos' && S.n) { S.ptn = S.n; S.pt = 'acervos'; }
+    } catch (e) { /* deep-link tab pre-select is a nicety, never fatal */ }
+
+    var clickedAcervos = (S.pt === 'acervos') && (S.ptn === S.n);
+    var html;
+    try {
+      html = _acOrigPessoa();
+      if (clickedAcervos) S.pt = 'acervos'; // the original TABS array doesn't know "acervos", so it resets S.pt to 'geral' internally — restore it
+      if (!_acervosState.loaded && !_acervosState.loading && !_acervosState.error) {
+        ensureAcervos().then(function () { refreshIfRelevant(['pessoa']); }).catch(function () { refreshIfRelevant(['pessoa']); });
+      }
+      if (!_acervosState.index && !_acervosState.indexLoading && !_acervosState.indexError) {
+        ensureAcervosIndex().then(function () { refreshIfRelevant(['pessoa']); }).catch(function () { refreshIfRelevant(['pessoa']); });
+      }
+      html = AC.injectPersonPanel(html, S.n, _acervosState, clickedAcervos);
+    } catch (e) {
+      return html || _acOrigPessoa();
+    }
+    return html;
+  };
+
+  var _acOrigCaso = VIEWFN.caso;
+  VIEWFN.caso = function () {
+    var html;
+    try {
+      html = _acOrigCaso();
+      if (!_acervosState.loaded && !_acervosState.loading && !_acervosState.error) {
+        ensureAcervos().then(function () { refreshIfRelevant(['caso']); }).catch(function () { refreshIfRelevant(['caso']); });
+      }
+      if (!_acervosState.index && !_acervosState.indexLoading && !_acervosState.indexError) {
+        ensureAcervosIndex().then(function () { refreshIfRelevant(['caso']); }).catch(function () { refreshIfRelevant(['caso']); });
+      }
+      // v2 fix: S.cs is already the canonical case KEY the dataset is keyed by —
+      // v1 wrongly looked this up via D.caso_lbl[S.cs] (the DISPLAY label), which
+      // only coincidentally matched for every case eligible at the time.
+      html = AC.injectCasePanel(html, S.cs, _acervosState);
+    } catch (e) {
+      return html || _acOrigCaso();
+    }
+    return html;
+  };
+
+  // Shareable state, symmetric with the read side above (§43): clicking the
+  // "Nos acervos" tab by hand (not via a deep link) now also lands in the URL,
+  // so copying the address bar or reloading keeps the tab open — and clicking
+  // any OTHER tab away from it cleans the param back up. Own listener, own
+  // namespace; does not touch the app's own [data-pt] delegated handler.
+  document.addEventListener('click', function (ev) {
+    var x = ev.target.closest('[data-pt]');
+    if (!x || S.view !== 'pessoa') return;
+    try {
+      var base = location.hash.split('?')[0];
+      var q = new URLSearchParams((location.hash.split('?')[1] || ''));
+      if (x.getAttribute('data-pt') === 'acervos') q.set('pt', 'acervos'); else q.delete('pt');
+      var qs = q.toString();
+      history.replaceState(null, '', base + (qs ? '?' + qs : ''));
+    } catch (e) { /* shareable-state sync is a nicety, never fatal */ }
+  });
+
+  /* ---------- "Resultados do Desmentindo" — structured search layer (§6-9) ----------
+     Evolves the REAL existing #/busca (added by the multisource bootstrap just
+     above), never a parallel search mechanism. Reads the same D/EV the rest of
+     the dossiê already renders from — no new data, no scores, no ranking beyond
+     "name/case/event text contains the query". */
+
+  var _personNamesCache = null;
+  function allPersonNames() {
+    if (!_personNamesCache) {
+      var seen = {}, out = [];
+      D.pes.forEach(function (n) { if (!seen[n]) { seen[n] = 1; out.push(n); } });
+      D.cit.forEach(function (c) { if (!seen[c.n]) { seen[c.n] = 1; out.push(c.n); } });
+      _personNamesCache = out;
+    }
+    return _personNamesCache;
+  }
+
+  function dsRow(label, sub, href, evId) {
+    if (evId) {
+      return '<button class="agrow" data-ev="' + esc(evId) + '" style="width:100%;text-align:left;border:0;background:transparent;font:inherit;cursor:pointer">' +
+        '<div class="agrow-t">' + esc(label) + '</div><div class="agrow-m mute">' + sub + '</div></button>';
+    }
+    return '<a class="agrow" href="' + esc(href) + '"><div class="agrow-t">' + esc(label) + '</div><div class="agrow-m mute">' + sub + '</div></a>';
+  }
+
+  function dsSearchHtml(query) {
+    var q = norm(query);
+    if (!q) return '';
+    var pHits = allPersonNames().filter(function (n) { return norm(n).indexOf(q) !== -1; }).slice(0, 6);
+    var cHits = D.casos.filter(function (c) { return norm(D.caso_lbl[c] || c).indexOf(q) !== -1; }).slice(0, 6);
+    var eHits = EV.filter(function (e) { return e.hay && e.hay.indexOf(q) !== -1; })
+      .slice().sort(function (a, b) { return String(b.d || '').localeCompare(String(a.d || '')); }).slice(0, 6);
+    if (!pHits.length && !cHits.length && !eHits.length) {
+      return '<div class="card" style="margin-bottom:10px"><h3 style="margin-top:0">Resultados do Desmentindo</h3>' +
+        '<p class="mute" style="font-size:13px">Nenhum resultado no dossiê para esta busca.</p></div>';
+    }
+    var pRows = pHits.map(function (n) { return dsRow(n, D.aud[n] ? 'Pessoa auditada' : 'Pessoa citada em eventos do dossiê', '#/pessoa?n=' + encodeURIComponent(n)); }).join('');
+    var cRows = cHits.map(function (c) { return dsRow(D.caso_lbl[c] || c, 'Caso', '#/caso?c=' + encodeURIComponent(c)); }).join('');
+    var eRows = eHits.map(function (e) {
+      var sub = esc(dateOf(e)) + (e.c && e.c.length ? ' · ' + esc(D.caso_lbl[e.c[0]] || e.c[0]) : '');
+      return dsRow(headline(e), sub, null, e.id);
+    }).join('');
+    return '<div class="card" style="margin-bottom:10px"><h3 style="margin-top:0">Resultados do Desmentindo</h3>' +
+      (pHits.length ? '<p class="mute" style="font-size:12px;margin:6px 0 2px">Pessoas</p><div class="aglist">' + pRows + '</div>' : '') +
+      (cHits.length ? '<p class="mute" style="font-size:12px;margin:8px 0 2px">Casos</p><div class="aglist">' + cRows + '</div>' : '') +
+      (eHits.length ? '<p class="mute" style="font-size:12px;margin:8px 0 2px">Eventos</p><div class="aglist">' + eRows + '</div>' : '') +
+      '</div>';
+  }
+
+  // Own namespace (#ds-results / #ac-results), own listener on the SAME #msq
+  // input the pre-existing multisource search already uses — coexists with its
+  // listener (both simply fire on the same 'input' event); never a parallel
+  // input, never a heavy fetch on keystroke (only the compact index, already
+  // prefetched above).
+  var _acQ = '';
+  var _acSearchTm = null;
+  document.addEventListener('input', function (ev) {
+    var t = ev.target;
+    if (!t || t.id !== 'msq') return;
+    _acQ = t.value;
+    clearTimeout(_acSearchTm);
+    _acSearchTm = setTimeout(function () {
+      var dsEl = document.getElementById('ds-results');
+      var acEl = document.getElementById('ac-results');
+      if (!_acQ.trim()) {
+        if (dsEl) dsEl.innerHTML = '';
+        if (acEl) acEl.innerHTML = '';
+        return;
+      }
+      if (dsEl) dsEl.innerHTML = dsSearchHtml(_acQ);
+      if (acEl) acEl.innerHTML = _acervosState.index
+        ? AC.corpusSearchHtml(_acQ, _acervosState.index)
+        : '<p class="mute" style="font-size:12px">Carregando índice do acervo…</p>';
+      var msHeadEl = document.getElementById('ms-heading');
+      if (msHeadEl) msHeadEl.innerHTML = _msHeadingHtml();
+    }, 200);
+  });
+  // Shared by the initial VIEWFN.busca() render and the live keystroke updater
+  // above, so the heading survives #msresults's own innerHTML replacement on
+  // every keystroke (that replacement only touches #msresults itself).
+  function _msHeadingHtml() {
+    if (!_acQ.trim()) return '';
+    return '<h3 style="margin:22px 0 2px">Busca literal nos vídeos monitorados</h3>' +
+      '<p class="mute" style="font-size:12px;margin:0 0 8px">Procura o texto exato dito nos vídeos já processados (hoje: Alexandre Garcia) — cobertura parcial, camada separada da busca acima, nunca somada a ela.</p>';
+  }
+
+  var _acOrigBusca = VIEWFN.busca;
+  VIEWFN.busca = function () {
+    var html;
+    try {
+      html = _acOrigBusca();
+      var anchor = '<div id="msresults">';
+      var idx = html.indexOf(anchor);
+      if (idx !== -1) {
+        var dsHtml = _acQ.trim() ? dsSearchHtml(_acQ) : '';
+        var acHtml = _acQ.trim()
+          ? (_acervosState.index ? AC.corpusSearchHtml(_acQ, _acervosState.index) : '<p class="mute" style="font-size:12px">Carregando índice do acervo…</p>')
+          : '';
+        // Round G fix (SEARCH_LAYER_CLARITY): the raw multi-fonte block (#msresults,
+        // pre-existing) had no heading of its own — it sat directly under "Nos acervos"
+        // and, on zero hits, printed near-identical wording ("Nenhuma ocorrência
+        // localizada nos acervos pesquisáveis."), reading as a contradiction of the
+        // "Nos acervos" card just above it rather than a third, separate, narrower
+        // search (literal transcript text, Alexandre Garcia only for now). A heading
+        // — shown only while there is an active query, matching ds/ac — makes the
+        // three layers visually and textually distinct, never merged or scored
+        // together. The zero-hit label text itself is adjusted separately in
+        // multisource.abbf1bf01d73.js (labelForResults) for the same reason.
+        // Wrapped in its own persistent #ms-heading container (see _msHeadingHtml
+        // above) because the live keystroke updater patches ds-results/ac-results
+        // directly without re-running this whole VIEWFN — a plain conditional
+        // string here would only ever appear on the very first render.
+        html = html.slice(0, idx) + '<div id="ds-results">' + dsHtml + '</div><div id="ac-results">' + acHtml + '</div><div id="ms-heading">' + _msHeadingHtml() + '</div>' + html.slice(idx);
+      }
+    } catch (e) {
+      return html || _acOrigBusca();
+    }
+    return html;
+  };
+
+  /* ---------- "Nos acervos" hub (§15-18): explore by person/case + simple year timeline ---------- */
+
+  VIEWS.push(['acervos', 'Nos acervos']);
+  VIEWFN.acervos = function () {
+    var idx = _acervosState.index;
+    if (!idx && !_acervosState.indexLoading && !_acervosState.indexError) {
+      ensureAcervosIndex().then(function () { refreshIfRelevant(['acervos']); }).catch(function () { refreshIfRelevant(['acervos']); });
+    }
+    if (!idx && _acervosState.indexError) {
+      return '<h1>Nos acervos</h1><p class="mute">Não foi possível carregar o índice do acervo agora. As demais páginas do Desmentindo continuam funcionando normalmente — tente novamente mais tarde.</p>';
+    }
+    window.__acervosHubIndex = idx;
+    return AC.hubHtml(idx);
+  };
+
+  /* ---------- Home entry point (§33): one prominent line, no dashboard, no promise of automatic truth ---------- */
+
+  var _acOrigHome = VIEWFN.home;
+  VIEWFN.home = function () {
+    var html;
+    try {
+      html = _acOrigHome();
+      var anchor = '<p class="pt-slogan">Veja o que a evidência realmente permite afirmar.</p>';
+      var idx = html.indexOf(anchor);
+      if (idx !== -1) {
+        var ins = idx + anchor.length;
+        var prompt = '<div class="card" style="margin:12px 0;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">' +
+          '<span style="font-size:14px">Pesquise pessoas, casos e ocorrências nos acervos.</span>' +
+          '<a class="btn" href="#/busca">Pesquisar →</a></div>';
+        html = html.slice(0, ins) + prompt + html.slice(ins);
+      }
+    } catch (e) {
+      return html || _acOrigHome();
+    }
+    return html;
+  };
 })();
 
 buildSide();sideEvents();syncSide();

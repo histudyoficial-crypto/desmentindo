@@ -126,7 +126,11 @@
   }
 
   function labelForResults(nSourcesHit) {
-    if (nSourcesHit === 0) return 'Nenhuma ocorrência localizada nos acervos pesquisáveis.';
+    // Round G copy fix: this label sits directly under the (differently-worded)
+    // "Nos acervos" block on #/busca; the old zero-hit copy ("Nenhuma ocorrência
+    // localizada nos acervos pesquisáveis.") echoed that block's own wording and
+    // read as a contradiction rather than a separate, narrower, literal-text search.
+    if (nSourcesHit === 0) return 'Nenhuma menção literal a este termo nos vídeos pesquisáveis.';
     if (nSourcesHit === 1) return 'localizamos ocorrências em 1 acervo';
     return 'localizamos ocorrências em ' + nSourcesHit + ' acervos';
   }
