@@ -1,0 +1,8 @@
+{
+  "purpose": "Autonomous Publishing Bridge -- production verification fixture",
+  "description": "Synthetic, non-political, technical-only marker. Verifies the Vault -> GitHub Publisher pipeline end to end. Not real editorial content, not referenced by any page or script, safe to ignore or delete.",
+  "candidate_id": "PROD-VERIFY-001",
+  "created_by": "cowork-session:0d815668-3561-590a-a465-a0a79df33cfd",
+  "created_at": "2026-09-29T23:30:00Z",
+  "pipeline": "DESMENTINDO_PUBLISHING_BRIDGE_FINAL_PRODUCTION_GATE"
+}
