@@ -98,11 +98,21 @@ def dropbox_access_token():
     req = urllib.request.Request(
         "https://api.dropbox.com/oauth2/token", data=data, method="POST"
     )
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        payload = json.loads(resp.read().decode())
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            payload = json.loads(resp.read().decode())
+    except urllib.error.HTTPError as e:
+        # Dropbox's error body is a small JSON object like
+        # {"error": "invalid_grant", "error_description": "..."} -- it never
+        # echoes back the secret values, so this is safe to log/report.
+        body = e.read().decode(errors="replace")[:500]
+        raise Aborted(f"Dropbox token refresh HTTP {e.code}: {body}")
+    except Exception as e:
+        raise Aborted(f"Dropbox token refresh request failed: {type(e).__name__}: {e}")
     token = payload.get("access_token")
     if not token:
-        raise Aborted("Dropbox token refresh returned no access_token.")
+        raise Aborted(f"Dropbox token refresh returned no access_token. "
+                       f"Response keys: {list(payload.keys())}")
     return token
 
 
@@ -634,4 +644,13 @@ def _best_effort_write_ledger(token, ledger):
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        # Last-resort catch-all: fail closed with a clean, readable message
+        # instead of a raw traceback. No branch/PR/main write happens after
+        # this point since we're already unwinding out of main().
+        import traceback
+        fail_closed(f"UNHANDLED_EXCEPTION: {type(e).__name__}: {e}")
+        traceback.print_exc()
+        sys.exit(1)
