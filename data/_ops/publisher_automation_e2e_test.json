@@ -1,0 +1,6 @@
+{
+  "test": "desmentindo_publisher_automation_e2e",
+  "candidate_id": "AUTOMATION-E2E-TEST-001",
+  "purpose": "Non-political synthetic end-to-end automation test",
+  "expected_behavior": "branch_and_pr_only_no_auto_merge"
+}
