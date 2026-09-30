@@ -89,6 +89,11 @@ def dropbox_access_token():
             "DROPBOX_APP_SECRET, DROPBOX_REFRESH_TOKEN. No Dropbox call "
             "attempted."
         )
+    # Non-sensitive diagnostic: log only the length of the refresh token as
+    # received by this process, to detect truncation/corruption introduced
+    # between GitHub Secrets and this runtime without ever logging the
+    # value itself.
+    log(f"DROPBOX_REFRESH_TOKEN length as received: {len(DROPBOX_REFRESH_TOKEN)}")
     data = urllib.parse.urlencode({
         "grant_type": "refresh_token",
         "refresh_token": DROPBOX_REFRESH_TOKEN,
@@ -96,7 +101,8 @@ def dropbox_access_token():
         "client_secret": DROPBOX_APP_SECRET,
     }).encode()
     req = urllib.request.Request(
-        "https://api.dropbox.com/oauth2/token", data=data, method="POST"
+        "https://api.dropbox.com/oauth2/token", data=data, method="POST",
+        headers={"Content-Type": "application/x-www-form-urlencoded"},
     )
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
