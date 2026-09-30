@@ -647,7 +647,10 @@ def cmd_hcv(args):
 def _m(metric):
     if metric is None:
         return "UNKNOWN"
-    return str(metric["value"]) if metric.get("state") == "MEASURED" else metric.get("state", "UNKNOWN")
+    if metric.get("state") == "MEASURED":
+        v = metric["value"]
+        return int(v) if isinstance(v, float) and v.is_integer() else v
+    return metric.get("state", "UNKNOWN")
 
 
 def _front(d):
