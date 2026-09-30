@@ -1,9 +1,0 @@
-{
-  "$id": "engineering.schema.json",
-  "type": "object",
-  "required": ["schema", "updated_at", "workflows", "backlog"],
-  "properties": {
-    "schema": {"const": "desmentindo.control.engineering.v1"},
-    "backlog": {"type": "array", "items": {"type": "object", "required": ["id", "priority", "title", "status"], "properties": {"priority": {"enum": ["P0", "P1", "P2", "P3"]}, "status": {"enum": ["OPEN", "IN_PROGRESS", "DONE", "WONT_DO"]}}}}
-  }
-}

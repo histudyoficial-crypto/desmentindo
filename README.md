@@ -13,12 +13,6 @@ atualizando automaticamente https://desmentindo.com.br/
 
 Mirror estatico (GitHub Pages): https://histudyoficial-crypto.github.io/desmentindo/
 
-## Operação (Control Plane + Command Center)
+## Operação
 
-- `CLAUDE.md` — invariantes operacionais (PUBLISH=OFF, Human Gate, QUERY_UNAVAILABLE ≠ NO_MATCH…).
-- `control/` — estado operacional (source of truth). Alterar só via `python3 operations/tools/ctl.py`.
-- `operations/` — runbooks MORNING/AFTERNOON/EVENING, prompts, config, `ctl.py`.
-- `reports/` — relatórios para Cowork (contrato em `reports/README.md`).
-- `command-center/` — dashboard interno: `python3 -m http.server 8000` → http://localhost:8000/command-center/ (ou abrir o `index.html` direto, modo snapshot).
-
-Nenhuma dessas pastas vai para o FTP da Locaweb.
+O Control Plane, o Command Center, o Human Review e os relatórios internos vivem no repositório privado `histudyoficial-crypto/desmentindo-ops`. Este repositório só recebe artefatos aprovados (PR do Publisher). Regras em `CLAUDE.md`; a CI `public-boundary.yml` impede que material interno entre aqui.
