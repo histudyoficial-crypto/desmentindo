@@ -1,0 +1,19 @@
+{
+  "schema": "desmentindo.control.business.v1",
+  "updated_at": "2026-09-30T18:05:00Z",
+  "updated_by": "claude-code",
+  "line": "DESMENTINDO DATA / B2B",
+  "state": "NOT_CONFIGURED",
+  "note": "Nenhum dado de negócio no repositório: sem CRM, sem clientes, sem receita registrada. Nada é inferido.",
+  "metrics": [
+    {"metric": "B2B_LEADS", "label": "Leads B2B", "value": null, "state": "NOT_CONFIGURED", "source": null},
+    {"metric": "B2B_ACTIVE_CLIENTS", "label": "Clientes ativos", "value": null, "state": "NOT_CONFIGURED", "source": null},
+    {"metric": "MRR", "label": "Receita recorrente", "value": null, "state": "NOT_CONFIGURED", "source": null},
+    {"metric": "DATA_REQUESTS", "label": "Pedidos de dados", "value": null, "state": "NOT_CONFIGURED", "source": null}
+  ],
+  "data_assets": [
+    {"asset": "Corpus Alexandre Garcia (transcrições indexadas)", "size": "3701 vídeos / 35161 itens", "state": "SEARCHABLE", "source": "data/manifest.0977832fa154.json"},
+    {"asset": "Acervos (links documentais elegíveis)", "size": "1986 links / 13 casos", "state": "PUBLISHED", "source": "data/corpus/manifest.json"}
+  ],
+  "guardrail": "Produtos de dados nunca podem vender perfil, ranking ou watchlist de pessoa. Unidade = EVENT / STORY / CLAIM / DOCUMENT / SOURCE."
+}

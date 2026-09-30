@@ -1,0 +1,26 @@
+{
+  "$id": "decision_queue.schema.json",
+  "type": "object",
+  "required": ["schema", "updated_at", "items"],
+  "properties": {
+    "schema": {"const": "desmentindo.control.decision_queue.v1"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp_required"},
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["item_id", "kind", "priority", "title", "what", "why_decision", "impact", "evidence", "possible_actions", "action_url", "status", "created_at"],
+        "properties": {
+          "item_id": {"type": "string", "pattern": "^DQ-\\d{4}$"},
+          "kind": {"enum": ["PR_APPROVAL", "PRODUCT_DECISION", "IMAGE_RIGHTS", "CRITICAL_INCIDENT", "CREDENTIAL", "OTHER"]},
+          "priority": {"enum": ["P0", "P1", "P2", "P3"]},
+          "evidence": {"type": "array", "items": {"type": "string"}},
+          "possible_actions": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "action_url": {"type": "string", "pattern": "^https://github\\.com/"},
+          "status": {"enum": ["OPEN", "RESOLVED", "DEFERRED"]},
+          "created_at": {"$ref": "common.schema.json#/$defs/timestamp_required"}
+        }
+      }
+    }
+  }
+}

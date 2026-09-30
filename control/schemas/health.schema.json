@@ -1,0 +1,28 @@
+{
+  "$id": "health.schema.json",
+  "type": "object",
+  "required": ["schema", "updated_at", "components"],
+  "properties": {
+    "schema": {"const": "desmentindo.control.health.v1"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp_required"},
+    "components": {
+      "type": "object",
+      "required": ["NEWS_HUB", "DAILY_ENGINE", "RHR", "CORPUS", "AUDIT_INDEX", "DAY_STORIES", "HUMAN_REVIEW", "PUBLISHER", "SITE", "VIDEO_ENGINE", "ANALYTICS"],
+      "additionalProperties": {
+        "type": "object",
+        "required": ["status", "summary", "location", "last_success", "last_failure", "duration_seconds", "next_run", "last_result", "error_summary"],
+        "properties": {
+          "status": {"$ref": "common.schema.json#/$defs/health_state"},
+          "summary": {"type": "string", "minLength": 1},
+          "location": {"enum": ["GITHUB", "EXTERNAL", "VAULT"]},
+          "last_success": {"$ref": "common.schema.json#/$defs/timestamp"},
+          "last_failure": {"$ref": "common.schema.json#/$defs/timestamp"},
+          "duration_seconds": {"type": ["number", "null"]},
+          "next_run": {"$ref": "common.schema.json#/$defs/timestamp"},
+          "last_result": {"type": ["string", "null"]},
+          "error_summary": {"type": ["string", "null"]}
+        }
+      }
+    }
+  }
+}

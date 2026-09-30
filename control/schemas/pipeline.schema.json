@@ -1,0 +1,24 @@
+{
+  "$id": "pipeline.schema.json",
+  "type": "object",
+  "required": ["schema", "operational_date", "updated_at", "stages"],
+  "properties": {
+    "schema": {"const": "desmentindo.control.pipeline.v1"},
+    "operational_date": {"$ref": "common.schema.json#/$defs/date"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp_required"},
+    "stages": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "required": ["stage", "label", "value", "state", "source"],
+        "properties": {
+          "stage": {"enum": ["NEWS_HUB", "EVENTS", "RELEVANCE", "CLAIMS", "RHR", "EVIDENCE", "DAY_STORY", "EDITORIAL_CANDIDATE", "HUMAN_REVIEW", "PUBLISH"]},
+          "value": {"type": ["number", "null"]},
+          "state": {"$ref": "common.schema.json#/$defs/metric_state"}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "desmentindo.control.results.v1",
+  "updated_at": "2026-09-30T18:05:00Z",
+  "updated_by": "claude-code",
+  "rule": "Nunca fabricar dados. Sem fonte de analytics, state=NOT_CONFIGURED e value=null.",
+  "analytics_provider": null,
+  "site": [
+    {"metric": "STORY_COMPLETION", "label": "Histórias lidas até o fim", "value": null, "state": "NOT_CONFIGURED", "period": null, "source": null},
+    {"metric": "SOURCE_CLICK", "label": "Cliques em fontes", "value": null, "state": "NOT_CONFIGURED", "period": null, "source": null},
+    {"metric": "ARCHIVE_SEARCH", "label": "Buscas no acervo", "value": null, "state": "NOT_CONFIGURED", "period": null, "source": null},
+    {"metric": "SHARE", "label": "Compartilhamentos", "value": null, "state": "NOT_CONFIGURED", "period": null, "source": null},
+    {"metric": "SUBSCRIPTION", "label": "Assinaturas", "value": null, "state": "NOT_CONFIGURED", "period": null, "source": null},
+    {"metric": "SUBMISSION", "label": "Envios de leitores", "value": null, "state": "NOT_CONFIGURED", "period": null, "source": null}
+  ],
+  "video": [
+    {"metric": "3_SECOND_RETENTION", "label": "Retenção 3s", "value": null, "state": "NOT_CONFIGURED", "period": null, "source": null},
+    {"metric": "VIDEO_COMPLETION", "label": "Vídeo concluído", "value": null, "state": "NOT_CONFIGURED", "period": null, "source": null},
+    {"metric": "SHARES", "label": "Compartilhamentos", "value": null, "state": "NOT_CONFIGURED", "period": null, "source": null},
+    {"metric": "SITE_CLICKS", "label": "Cliques para o site", "value": null, "state": "NOT_CONFIGURED", "period": null, "source": null},
+    {"metric": "ARCHIVE_SEARCH_AFTER_VIDEO", "label": "Busca no acervo após vídeo", "value": null, "state": "NOT_CONFIGURED", "period": null, "source": null}
+  ],
+  "historical_context_value": {
+    "metric": "HISTORICAL_CONTEXT_VALUE",
+    "definition": "Proporção de histórias avaliadas em que Corpus/RHR acrescentou contexto histórico editorialmente útil.",
+    "method": "DOCUMENTED_HUMAN_EVALUATION",
+    "automatic_scoring": false,
+    "formula": "count(verdict=USEFUL) / count(verdict in [USEFUL, NOT_USEFUL]); NOT_APPLICABLE fica fora do denominador.",
+    "verdicts": ["USEFUL", "NOT_USEFUL", "NOT_APPLICABLE"],
+    "evaluations": [],
+    "value": null,
+    "state": "NOT_EXECUTED",
+    "evaluated_count": 0
+  }
+}

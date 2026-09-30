@@ -1,0 +1,33 @@
+{
+  "$id": "results.schema.json",
+  "type": "object",
+  "required": ["schema", "updated_at", "site", "video", "historical_context_value"],
+  "properties": {
+    "schema": {"const": "desmentindo.control.results.v1"},
+    "site": {"type": "array", "items": {"type": "object", "required": ["metric", "label", "value", "state"], "properties": {"value": {"type": ["number", "null"]}, "state": {"$ref": "common.schema.json#/$defs/metric_state"}}}},
+    "video": {"type": "array", "items": {"type": "object", "required": ["metric", "label", "value", "state"], "properties": {"value": {"type": ["number", "null"]}, "state": {"$ref": "common.schema.json#/$defs/metric_state"}}}},
+    "historical_context_value": {
+      "type": "object",
+      "required": ["metric", "method", "automatic_scoring", "evaluations", "value", "state"],
+      "properties": {
+        "automatic_scoring": {"const": false},
+        "method": {"const": "DOCUMENTED_HUMAN_EVALUATION"},
+        "value": {"type": ["number", "null"]},
+        "state": {"$ref": "common.schema.json#/$defs/metric_state"},
+        "evaluations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["story_id", "evaluated_by", "evaluated_at", "rhr_executed", "verdict", "justification"],
+            "properties": {
+              "evaluated_at": {"$ref": "common.schema.json#/$defs/timestamp_required"},
+              "rhr_executed": {"type": "boolean"},
+              "verdict": {"enum": ["USEFUL", "NOT_USEFUL", "NOT_APPLICABLE"]},
+              "justification": {"type": "string", "minLength": 10}
+            }
+          }
+        }
+      }
+    }
+  }
+}

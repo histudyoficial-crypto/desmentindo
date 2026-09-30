@@ -1,0 +1,24 @@
+{
+  "schema": "desmentindo.control.incidents.v1",
+  "updated_at": "2026-09-30T18:05:00Z",
+  "updated_by": "claude-code",
+  "types": ["CONCURRENCY_COLLISION", "CAPACITY_DEGRADATION", "SOURCE_UNAVAILABLE", "FUTURE_TIMESTAMP_ANOMALY", "RHR_UNAVAILABLE", "PUBLISHER_FAILURE", "SCHEMA_FAILURE", "DEPLOY_FAILURE", "OTHER"],
+  "severities": ["SEV1", "SEV2", "SEV3", "SEV4"],
+  "statuses": ["OPEN", "MITIGATED", "RESOLVED"],
+  "items": [
+    {
+      "incident_id": "INC-20260930-001",
+      "timestamp": "2026-09-29T23:57:09Z",
+      "component": "PUBLISHER",
+      "type": "PUBLISHER_FAILURE",
+      "severity": "SEV3",
+      "description": "Publisher runs #1 a #10 falharam na autenticação Dropbox (refresh token OAuth) logo após a instalação do workflow.",
+      "impact": "Nenhum candidato processado entre 2026-09-29T23:56Z e 2026-09-30T01:36Z. Outbox não tinha candidatos reais; sem perda de dados, nada publicado indevidamente (fail-closed).",
+      "status": "RESOLVED",
+      "resolution": "Commits d803bfa (tratamento de erro OAuth) e a49ea9c (Content-Type form-urlencoded no refresh). Run #11 (2026-09-30T01:47Z) e seguintes com sucesso.",
+      "resolved_at": "2026-09-30T01:47:15Z",
+      "detected_by": "claude-code (histórico GitHub Actions)",
+      "evidence_url": "https://github.com/histudyoficial-crypto/desmentindo/actions/runs/36655935074"
+    }
+  ]
+}

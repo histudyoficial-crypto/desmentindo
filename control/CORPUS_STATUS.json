@@ -1,0 +1,71 @@
+{
+  "schema": "desmentindo.control.corpus_status.v1",
+  "updated_at": "2026-09-30T18:05:00Z",
+  "updated_by": "claude-code",
+  "principle": "CORPUS_MEMBERSHIP (decisão editorial: a fonte faz parte do corpus) é separado de TECHNICAL_SEARCHABILITY (existe adaptador + dataset consultável). Fonte membro não pesquisável gera QUERY_UNAVAILABLE, nunca NO_MATCH.",
+  "unit_of_analysis": "SOURCE. Nenhuma métrica por pessoa. Proibido: person_score, political_score, suspicion_score, wrongdoing_score, controversy_score, person_ranking, person_watchlist.",
+  "manifests": {
+    "multisource": {"path": "data/manifest.0977832fa154.json", "build_id": "MS1_20260929T002918Z", "generated_at": "2026-09-29T00:29:18Z"},
+    "acervos": {"path": "data/corpus/manifest.json", "build_id": "CORPUS_UI_V2_20260929T120500Z", "generated_at": "2026-09-29T15:09:56Z", "link_count": 1986, "case_count": 13}
+  },
+  "sources": [
+    {
+      "source_id": "youtube:alexandre_garcia",
+      "display_name": "Alexandre Garcia",
+      "source_type": "youtube_channel",
+      "corpus_membership": "MEMBER",
+      "technical_searchability": "SEARCHABLE",
+      "adapter_health": "HEALTHY",
+      "coverage": {"indexed": 3701, "total": 3701, "unit": "videos", "pct": 100.0, "status": "COMPLETE"},
+      "freshness": {"latest_source_content": "2026-09-24", "latest_index": "2026-09-29", "state": "MEASURED"},
+      "rhr": {"rhr_warranted": {"value": null, "state": "NOT_EXECUTED"}, "rhr_executed": {"value": null, "state": "NOT_EXECUTED"}, "occurrences_found": {"value": null, "state": "NOT_EXECUTED"}, "no_match": {"value": null, "state": "NOT_EXECUTED"}, "query_unavailable": {"value": null, "state": "NOT_EXECUTED"}}
+    },
+    {
+      "source_id": "youtube:caio_coppolla",
+      "display_name": "Caio Coppolla",
+      "source_type": "youtube_channel",
+      "corpus_membership": "MEMBER",
+      "technical_searchability": "NOT_SEARCHABLE",
+      "adapter_health": "NOT_CONFIGURED",
+      "coverage": {"indexed": 8, "total": 553, "unit": "videos", "pct": 1.4, "status": "PARTIAL"},
+      "freshness": {"latest_source_content": null, "latest_index": null, "state": "NOT_AVAILABLE"},
+      "rhr": {"rhr_warranted": {"value": null, "state": "NOT_EXECUTED"}, "rhr_executed": {"value": null, "state": "NOT_EXECUTED"}, "occurrences_found": {"value": null, "state": "QUERY_UNAVAILABLE"}, "no_match": {"value": null, "state": "QUERY_UNAVAILABLE"}, "query_unavailable": {"value": null, "state": "NOT_EXECUTED"}}
+    },
+    {
+      "source_id": "youtube:te_atualizei",
+      "display_name": "Te Atualizei",
+      "source_type": "youtube_channel",
+      "corpus_membership": "MEMBER",
+      "technical_searchability": "NOT_SEARCHABLE",
+      "adapter_health": "NOT_CONFIGURED",
+      "coverage": {"indexed": 93, "total": 581, "unit": "videos", "pct": 16.0, "status": "PARTIAL"},
+      "freshness": {"latest_source_content": null, "latest_index": null, "state": "NOT_AVAILABLE"},
+      "rhr": {"rhr_warranted": {"value": null, "state": "NOT_EXECUTED"}, "rhr_executed": {"value": null, "state": "NOT_EXECUTED"}, "occurrences_found": {"value": null, "state": "QUERY_UNAVAILABLE"}, "no_match": {"value": null, "state": "QUERY_UNAVAILABLE"}, "query_unavailable": {"value": null, "state": "NOT_EXECUTED"}},
+      "notes": "TA E2 não foi reiniciado nesta implementação."
+    },
+    {
+      "source_id": "publication:revista_oeste",
+      "display_name": "Revista Oeste",
+      "source_type": "publication",
+      "corpus_membership": "MEMBER",
+      "technical_searchability": "NOT_CONFIGURED",
+      "adapter_health": "NOT_CONFIGURED",
+      "coverage": {"indexed": null, "total": null, "unit": "articles", "pct": null, "status": "NOT_AVAILABLE"},
+      "freshness": {"latest_source_content": null, "latest_index": null, "state": "NOT_AVAILABLE"},
+      "rhr": {"rhr_warranted": {"value": null, "state": "NOT_EXECUTED"}, "rhr_executed": {"value": null, "state": "NOT_EXECUTED"}, "occurrences_found": {"value": null, "state": "QUERY_UNAVAILABLE"}, "no_match": {"value": null, "state": "QUERY_UNAVAILABLE"}, "query_unavailable": {"value": null, "state": "NOT_EXECUTED"}},
+      "notes": "Aparece como fonte citada no app (index.html), mas não tem entrada no manifest multisource."
+    },
+    {
+      "source_id": "publication:gazeta_do_povo",
+      "display_name": "Gazeta do Povo",
+      "source_type": "publication",
+      "corpus_membership": "MEMBER",
+      "technical_searchability": "NOT_CONFIGURED",
+      "adapter_health": "NOT_CONFIGURED",
+      "coverage": {"indexed": null, "total": null, "unit": "articles", "pct": null, "status": "NOT_AVAILABLE"},
+      "freshness": {"latest_source_content": null, "latest_index": null, "state": "NOT_AVAILABLE"},
+      "rhr": {"rhr_warranted": {"value": null, "state": "NOT_EXECUTED"}, "rhr_executed": {"value": null, "state": "NOT_EXECUTED"}, "occurrences_found": {"value": null, "state": "QUERY_UNAVAILABLE"}, "no_match": {"value": null, "state": "QUERY_UNAVAILABLE"}, "query_unavailable": {"value": null, "state": "NOT_EXECUTED"}},
+      "notes": "Aparece como fonte citada no app (index.html), mas não tem entrada no manifest multisource."
+    }
+  ]
+}
