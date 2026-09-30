@@ -10,6 +10,7 @@ on:
       - 'reports/**'
       - 'command-center/**'
       - 'CLAUDE.md'
+      - 'public-ui/**'
   workflow_dispatch: {}
 
 jobs:
@@ -39,3 +40,4 @@ jobs:
             reports/**
             command-center/**
             CLAUDE.md
+            public-ui/**
