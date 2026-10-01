@@ -248,7 +248,7 @@
   }
 
   function newsletter() {
-    return '<div class="newsletter"><div class="k">DESMENTINDO O DIA</div><h3>Todo fim de tarde, o que realmente importou no dia.</h3>' +
+    return '<div class="newsletter"><div class="k">DESMENTINDO | FECHAMENTO</div><h3>Todo fim de tarde, o que realmente importou no dia.</h3>' +
       '<form data-newsletter novalidate><label class="sr" for="nl-e">Seu e-mail</label><input id="nl-e" type="email" name="email" placeholder="seu@email.com" autocomplete="email"><button class="btn" type="submit">Quero receber O Dia</button></form>' +
       '<p class="status-msg" role="status" aria-live="polite"></p></div>';
   }
