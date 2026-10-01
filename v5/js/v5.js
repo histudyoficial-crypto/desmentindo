@@ -219,15 +219,19 @@
         R[1].forEach(function (ev) { (M.events[ev] || []).forEach(function (k) { stories[k] = stories[k] || { k: k, n: 0 }; stories[k].n++; }); });
         order = Object.keys(stories).map(function (k) { return stories[k]; }).filter(function (x) { return M.stories[x.k]; })
           .sort(function (a, b) { return (b.title ? 1 : 0) - (a.title ? 1 : 0) || b.n - a.n || (M.stories[b.k][2] || "").localeCompare(M.stories[a.k][2] || ""); });
+        var storyRow = function (x) {
+          var s = M.stories[x.k];
+          return '<li><a href="#/historia/' + e(s[0]) + '"><span><span class="rt">' + e(s[1]) + "</span>" + (x.n ? '<br><span class="meta">' + plural(x.n, "registro menciona", "registros mencionam") + "</span>" : "") + '</span><span class="rd">' + tdate(s[2]) + "</span></a></li>";
+        };
         var ag = R[0], persons = R[4].map(function (k) { return M.persons[k]; }), docs = R[3].map(function (k) { return M.docs[k]; });
         var any = order.length || ag.length || persons.length || docs.length;
         h += '<p class="meta" style="margin:14px 0 0">Resultados para “' + e(q) + "”</p>";
         if (order.length) {
           h += '<section class="group"><div class="group-h"><h2 class="h2">Agora</h2><span class="meta">' + plural(order.length, "história", "histórias") + '</span></div><ul class="rows" style="margin:0">' +
-            order.slice(0, 6).map(function (x) {
-              var s = M.stories[x.k];
-              return '<li><a href="#/historia/' + e(s[0]) + '"><span><span class="rt">' + e(s[1]) + "</span>" + (x.n ? '<br><span class="meta">' + plural(x.n, "registro menciona", "registros mencionam") + "</span>" : "") + '</span><span class="rd">' + tdate(s[2]) + "</span></a></li>";
-            }).join("") + "</ul></section>";
+            order.slice(0, 3).map(storyRow).join("") + "</ul>" +
+            (order.length > 3 ? '<details><summary>Ver mais ' + plural(order.length - 3, "história", "histórias") + '</summary><ul class="rows" style="margin:0">' +
+              order.slice(3, 10).map(storyRow).join("") + "</ul></details>" : "") +
+            '<p class="meta" style="margin:10px 0 0"><a class="link" href="#nos-arquivos" data-jump="nos-arquivos">O que já foi dito sobre isso ↓</a></p></section>';
         }
         h += '<section class="group" id="nos-arquivos"><div class="group-h"><h2 class="h2">Nos arquivos</h2></div>';
         persons.forEach(function (p) { h += '<p style="margin:0 0 10px"><a class="link" href="#/arquivo/' + e(p[1]) + '">' + e(p[0]) + ": " + plural(p[2], "trecho de vídeo reunido", "trechos de vídeo reunidos") + "</a></p>"; });
@@ -349,7 +353,7 @@
     var a = ev.target.closest("a[data-jump]");
     if (!a) return;
     ev.preventDefault();
-    var t = document.getElementById("ja-falaram");
+    var t = document.getElementById(a.getAttribute("data-jump") || "ja-falaram");
     if (t) t.scrollIntoView({ behavior: "smooth" });
   });
   window.addEventListener("hashchange", route);

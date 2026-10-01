@@ -1073,17 +1073,22 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 10685
+    "bytes": 10710
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 26383
+    "bytes": 26846
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
     "status": 200,
     "bytes": 90104
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 304,
+    "bytes": null
    },
    {
     "url": "/v5/",
@@ -1103,12 +1108,7 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 10685
-   },
-   {
-    "url": "/v5/js/v5.js",
-    "status": 200,
-    "bytes": 26383
+    "bytes": 10710
    },
    {
     "url": "/v5/data/home.json",
@@ -1140,6 +1140,11 @@
     "bytes": 21995
    },
    {
+    "url": "/v5/data/busca/s/4.json",
+    "status": 200,
+    "bytes": 77446
+   },
+   {
     "url": "/v5/data/busca/s/0.json",
     "status": 200,
     "bytes": 68305
@@ -1148,11 +1153,6 @@
     "url": "/v5/data/busca/s/3.json",
     "status": 200,
     "bytes": 64291
-   },
-   {
-    "url": "/v5/data/busca/s/4.json",
-    "status": 200,
-    "bytes": 77446
    }
   ],
   "desktop:search-inss": [
@@ -1197,12 +1197,12 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 10685
+    "bytes": 10710
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 26383
+    "bytes": 26846
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
@@ -1227,12 +1227,12 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 10685
+    "bytes": 10710
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 26383
+    "bytes": 26846
    },
    {
     "url": "/v5/data/home.json",
@@ -1254,14 +1254,14 @@
     "bytes": 19491
    },
    {
-    "url": "/v5/data/busca/t/al.json",
-    "status": 200,
-    "bytes": 18713
-   },
-   {
     "url": "/v5/data/busca/t/mo.json",
     "status": 200,
     "bytes": 21995
+   },
+   {
+    "url": "/v5/data/busca/t/al.json",
+    "status": 200,
+    "bytes": 18713
    },
    {
     "url": "/v5/data/busca/s/0.json",
@@ -1269,14 +1269,14 @@
     "bytes": 68305
    },
    {
-    "url": "/v5/data/busca/s/3.json",
-    "status": 200,
-    "bytes": 64291
-   },
-   {
     "url": "/v5/data/busca/s/4.json",
     "status": 200,
     "bytes": 77446
+   },
+   {
+    "url": "/v5/data/busca/s/3.json",
+    "status": 200,
+    "bytes": 64291
    }
   ],
   "mobile:search-inss": [
@@ -1325,7 +1325,7 @@
     "Nos arquivos"
    ],
    "ag_count": 371,
-   "agora": "AGORA\n10 histórias\nCompliance Zero / Master\n27 registros mencionam\n27 set 2026\nDark Horse\n3 registros mencionam\n13 set 2026\nSem Desconto / INSS\n2 registros mencionam\n21 set 2026\nFarra dos Guardanapos\n"
+   "agora": "AGORA\n10 histórias\nCompliance Zero / Master\n27 registros mencionam\n27 set 2026\nDark Horse\n3 registros mencionam\n13 set 2026\nSem Desconto / INSS\n2 registros mencionam\n21 set 2026\nVer mais 7 histórias\n\n"
   },
   "search_moraes_recount_from_archive": 371,
   "desktop:search_inss_data_bytes": 135423,
@@ -1336,7 +1336,7 @@
     "Documentos"
    ],
    "ag_count": 170,
-   "agora": "AGORA\n3 histórias\nSem Desconto / INSS\n15 registros mencionam\n21 set 2026\nCPMI do INSS\n8 registros mencionam\n28 mar 2026\nDeath Care / cemitérios\n1 registro menciona\n17 set 2026"
+   "agora": "AGORA\n3 histórias\nSem Desconto / INSS\n15 registros mencionam\n21 set 2026\nCPMI do INSS\n8 registros mencionam\n28 mar 2026\nDeath Care / cemitérios\n1 registro menciona\n17 set 2026\n\nO que já foi dito sobre"
   },
   "search_inss_recount_from_archive": 170,
   "mobile:home_data_bytes": 2225,
@@ -1371,7 +1371,7 @@
     "Nos arquivos"
    ],
    "ag_count": 371,
-   "agora": "AGORA\n10 histórias\nCompliance Zero / Master\n27 registros mencionam\n27 set 2026\nDark Horse\n3 registros mencionam\n13 set 2026\nSem Desconto / INSS\n2 registros mencionam\n21 set 2026\nFarra dos Guardanapos\n"
+   "agora": "AGORA\n10 histórias\nCompliance Zero / Master\n27 registros mencionam\n27 set 2026\nDark Horse\n3 registros mencionam\n13 set 2026\nSem Desconto / INSS\n2 registros mencionam\n21 set 2026\nVer mais 7 histórias\n\n"
   },
   "mobile:search_inss_data_bytes": 135423,
   "mobile:search_inss": {
@@ -1381,7 +1381,7 @@
     "Documentos"
    ],
    "ag_count": 170,
-   "agora": "AGORA\n3 histórias\nSem Desconto / INSS\n15 registros mencionam\n21 set 2026\nCPMI do INSS\n8 registros mencionam\n28 mar 2026\nDeath Care / cemitérios\n1 registro menciona\n17 set 2026"
+   "agora": "AGORA\n3 histórias\nSem Desconto / INSS\n15 registros mencionam\n21 set 2026\nCPMI do INSS\n8 registros mencionam\n28 mar 2026\nDeath Care / cemitérios\n1 registro menciona\n17 set 2026\n\nO que já foi dito sobre"
   },
   "v5_data": {
    "files": 680,

@@ -29,8 +29,15 @@ jobs:
           exit $bad
       - name: Campos internos e scores de pessoa não podem aparecer nos arquivos públicos novos
         run: |
-          if [ -d v4 ] && grep -R -n -I -E '"(review_reason|decision_ref|human_review|HUMAN_REVIEW_QUEUE|incident_id|person_score|political_score|suspicion_score|wrongdoing_score|controversy_score|person_ranking|person_watchlist)"' v4/; then
-            echo 'Campo interno/proibido encontrado em v4/.'; exit 1
+          for d in v4 v5; do
+            if [ -d "$d" ] && grep -R -n -I -E '"(review_reason|decision_ref|human_review|HUMAN_REVIEW_QUEUE|incident_id|person_score|political_score|suspicion_score|wrongdoing_score|controversy_score|person_ranking|person_watchlist)"' "$d/"; then
+              echo "Campo interno/proibido encontrado em $d/."; exit 1
+            fi
+          done
+      - name: Marcadores privados/de teste não podem aparecer na v5
+        run: |
+          if [ -d v5 ] && grep -R -n -I -E 'AUTONOMOUS_TEST_RUN|RV-20[0-9]{6}-[0-9]{3}|DS-20[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{3}|EVC-20[0-9]{6}-[0-9]{3}|WAITING_REVIEW|desmentindo-ops|MORNING_OPEN|LEGACY_PROJECT_MORNING|ANTHROPIC_API_KEY' v5/; then
+            echo 'Marcador privado encontrado em v5/.'; exit 1
           fi
       - name: Nenhum segredo em texto
         run: |
@@ -44,4 +51,9 @@ jobs:
         run: |
           if [ -f public-ui/build-public-data.mjs ]; then
             node public-ui/build-public-data.mjs --check
+          fi
+      - name: Dados da v5 em sincronia com os dados públicos
+        run: |
+          if [ -f public-ui/build-v5-data.mjs ]; then
+            node public-ui/build-v5-data.mjs --check
           fi
