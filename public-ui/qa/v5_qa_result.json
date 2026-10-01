@@ -1063,7 +1063,7 @@
    {
     "url": "/v5/",
     "status": 200,
-    "bytes": 1727
+    "bytes": 1729
    },
    {
     "url": "/v5/css/fonts.css",
@@ -1074,11 +1074,6 @@
     "url": "/v5/css/v5.css",
     "status": 200,
     "bytes": 10710
-   },
-   {
-    "url": "/v5/js/v5.js",
-    "status": 200,
-    "bytes": 26846
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
@@ -1087,13 +1082,13 @@
    },
    {
     "url": "/v5/js/v5.js",
-    "status": 304,
-    "bytes": null
+    "status": 200,
+    "bytes": 27034
    },
    {
     "url": "/v5/",
     "status": 200,
-    "bytes": 1727
+    "bytes": 1729
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
@@ -1109,6 +1104,11 @@
     "url": "/v5/css/v5.css",
     "status": 200,
     "bytes": 10710
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 27034
    },
    {
     "url": "/v5/data/home.json",
@@ -1140,11 +1140,6 @@
     "bytes": 21995
    },
    {
-    "url": "/v5/data/busca/s/4.json",
-    "status": 200,
-    "bytes": 77446
-   },
-   {
     "url": "/v5/data/busca/s/0.json",
     "status": 200,
     "bytes": 68305
@@ -1153,6 +1148,11 @@
     "url": "/v5/data/busca/s/3.json",
     "status": 200,
     "bytes": 64291
+   },
+   {
+    "url": "/v5/data/busca/s/4.json",
+    "status": 200,
+    "bytes": 77446
    }
   ],
   "desktop:search-inss": [
@@ -1187,12 +1187,17 @@
    {
     "url": "/v5/",
     "status": 200,
-    "bytes": 1727
+    "bytes": 1729
    },
    {
     "url": "/v5/css/fonts.css",
     "status": 200,
     "bytes": 893
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": 90104
    },
    {
     "url": "/v5/css/v5.css",
@@ -1202,17 +1207,12 @@
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 26846
+    "bytes": 27034
    },
    {
-    "url": "/v5/fonts/archivo-latin.woff2",
+    "url": "/v5/data/home.json",
     "status": 200,
-    "bytes": 90104
-   },
-   {
-    "url": "/v5/",
-    "status": 200,
-    "bytes": 1727
+    "bytes": null
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
@@ -1232,7 +1232,12 @@
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 26846
+    "bytes": 27034
+   },
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 1729
    },
    {
     "url": "/v5/data/home.json",
@@ -1254,14 +1259,19 @@
     "bytes": 19491
    },
    {
+    "url": "/v5/data/busca/t/al.json",
+    "status": 200,
+    "bytes": 18713
+   },
+   {
     "url": "/v5/data/busca/t/mo.json",
     "status": 200,
     "bytes": 21995
    },
    {
-    "url": "/v5/data/busca/t/al.json",
+    "url": "/v5/data/busca/s/3.json",
     "status": 200,
-    "bytes": 18713
+    "bytes": 64291
    },
    {
     "url": "/v5/data/busca/s/0.json",
@@ -1272,11 +1282,6 @@
     "url": "/v5/data/busca/s/4.json",
     "status": 200,
     "bytes": 77446
-   },
-   {
-    "url": "/v5/data/busca/s/3.json",
-    "status": 200,
-    "bytes": 64291
    }
   ],
   "mobile:search-inss": [

@@ -31,6 +31,12 @@ jobs:
           node public-ui/build-public-data.mjs
           node public-ui/build-v5-data.mjs
 
+      # Raiz do site: v5 (ROOT_VERSION=v5) ou app legado (ROOT_VERSION=legacy = rollback em 1 commit).
+      # O index.html do repositório (legado, alimentado pelo Publisher) só é substituído no workspace do deploy,
+      # DEPOIS dos builds que leem os dados dele.
+      - name: Gerar a página da raiz
+        run: node public-ui/build-root.mjs
+
       - name: Deploy via FTP para /public_html
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
