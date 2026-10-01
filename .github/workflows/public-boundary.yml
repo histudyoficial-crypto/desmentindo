@@ -37,11 +37,11 @@ jobs:
           if git ls-files -z | xargs -0 grep -I -n -E 'ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|sk-ant-[A-Za-z0-9_-]{10,}|AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----' ; then
             echo 'Possível segredo versionado.'; exit 1
           fi
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-node@v4
         with:
-          python-version: '3.11'
+          node-version: '20'
       - name: Dados da v4 em sincronia com o app legado
         run: |
-          if [ -f public-ui/build_public_data.py ]; then
-            python3 public-ui/build_public_data.py --check
+          if [ -f public-ui/build-public-data.mjs ]; then
+            node public-ui/build-public-data.mjs --check
           fi
