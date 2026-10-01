@@ -3,6 +3,13 @@ name: Deploy para Locaweb (desmentindo.com.br)
 on:
   push:
     branches: [main]
+    # Commits operacionais (Control Plane / relatórios) não disparam deploy.
+    paths-ignore:
+      - 'control/**'
+      - 'operations/**'
+      - 'reports/**'
+      - 'command-center/**'
+      - 'CLAUDE.md'
   workflow_dispatch: {}
 
 jobs:
@@ -27,3 +34,8 @@ jobs:
             **/.git*/**
             **/.github/**
             **/README.md
+            control/**
+            operations/**
+            reports/**
+            command-center/**
+            CLAUDE.md
