@@ -58,3 +58,8 @@ jobs:
             command-center/**
             CLAUDE.md
             public-ui/**
+
+      # Verificação PÓS-DEPLOY: a produção serve exatamente o que este commit gera (UI v5, assets, dados, edição,
+      # política de cache). Divergência = workflow vermelho (P0 visível), nunca "200 OK" silencioso.
+      - name: Verificar produção (raiz == v5 deste commit; dados e cache)
+        run: node public-ui/verify-production.mjs --retries 4

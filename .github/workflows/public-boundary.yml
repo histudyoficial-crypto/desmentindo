@@ -54,7 +54,7 @@ jobs:
           fi
       - name: Página da raiz gerada (v5) sem noindex e sem marcador privado
         run: |
-          node public-ui/build-root.mjs --out /tmp/root.html
+          node public-ui/build-root.mjs --out /tmp/root.html --no-build-info
           if [ "$(tr -d '[:space:]' < public-ui/ROOT_VERSION)" = "v5" ]; then
             grep -q 'name="desmentindo-root" content="v5"' /tmp/root.html
             if grep -q noindex /tmp/root.html; then echo 'raiz com noindex'; exit 1; fi
@@ -65,3 +65,19 @@ jobs:
           if [ -f public-ui/build-v5-data.mjs ]; then
             node public-ui/build-v5-data.mjs --check
           fi
+
+  # Diagnóstico somente leitura do que a produção serve (cabeçalhos de cache e tipo da raiz). Não altera nada.
+  production-headers:
+    if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cabeçalhos servidos por desmentindo.com.br
+        run: |
+          for u in https://desmentindo.com.br/ "https://desmentindo.com.br/?cb=$RANDOM" https://www.desmentindo.com.br/ http://desmentindo.com.br/ \
+                   https://desmentindo.com.br/index.html https://desmentindo.com.br/v5/ https://desmentindo.com.br/v5/js/v5.js \
+                   https://desmentindo.com.br/v5/css/v5.css https://desmentindo.com.br/v5/data/home.json https://desmentindo.com.br/v4/; do
+            echo "=== $u"
+            curl -sS -o /tmp/b -D - -H 'Cache-Control: no-cache' "$u" | grep -i -E '^(HTTP|cache-control|expires|last-modified|etag|age|server|via|x-|vary|content-type|location)' || true
+            printf 'sha256=%s bytes=%s root_v5=%s legacy_app=%s\n' "$(sha256sum /tmp/b | cut -c1-16)" "$(wc -c < /tmp/b)" \
+              "$(grep -c 'name="desmentindo-root" content="v5"' /tmp/b)" "$(grep -c 'const D *=' /tmp/b)"
+          done

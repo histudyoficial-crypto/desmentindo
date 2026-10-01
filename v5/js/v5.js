@@ -6,8 +6,9 @@
   var cache = {};
   // Na raiz do site (index.html gerado por public-ui/build-root.mjs) os dados ficam em v5/data/.
   var BASE = (document.querySelector('meta[name="v5-base"]') || {}).content || "";
+  var DV = (document.querySelector('meta[name="desmentindo-data-version"]') || {}).content || "";
   function load(p) {
-    if (!cache[p]) cache[p] = fetch(BASE + "data/" + p).then(function (r) { if (!r.ok) throw new Error(p); return r.json(); });
+    if (!cache[p]) cache[p] = fetch(BASE + "data/" + p + (DV ? (p.indexOf("?") < 0 ? "?v=" : "&v=") + DV : "")).then(function (r) { if (!r.ok) throw new Error(p); return r.json(); });
     return cache[p];
   }
   function e(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
