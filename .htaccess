@@ -1,0 +1,12 @@
+# Desmentindo — política de cache (P0 01/10/2026).
+# Sem Cache-Control o navegador reutilizava a Home antiga por heurística (Last-Modified antigo).
+# HTML e dados: sempre revalidar (ETag → 304 barato). CSS/JS/fontes: cache curto; na raiz já vêm versionados (?v=).
+# Só mod_headers, dentro de IfModule: sem rewrite, sem mudança de rotas.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html?|json)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(css|js|woff2?|png|jpe?g|svg|webp|ico)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+</IfModule>
