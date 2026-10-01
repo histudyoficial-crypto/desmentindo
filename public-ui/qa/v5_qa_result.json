@@ -1,0 +1,1408 @@
+{
+ "viewports": {},
+ "checks": {
+  "BOUNDARY": [
+   {
+    "check": "desktop:home: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:home: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home: noindex",
+    "ok": true,
+    "info": "noindex, nofollow"
+   },
+   {
+    "check": "desktop:story: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:story: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:story: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:story: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-moraes: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-moraes: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-moraes: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-moraes: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-inss: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-inss: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-inss: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-inss: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:arquivos: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:arquivos: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:arquivos: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:arquivos: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:arquivos: Te Atualizei marcado como indisponível",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:arquivos: Caio Coppolla marcado como indisponível",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:arquivo-pessoa: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:arquivo-pessoa: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:arquivo-pessoa: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:arquivo-pessoa: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:profissionais: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:profissionais: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:profissionais: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:profissionais: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:profissionais: Te Atualizei marcado como indisponível",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:profissionais: Caio Coppolla marcado como indisponível",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-vazio: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-vazio: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-vazio: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-vazio: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:home: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home: noindex",
+    "ok": true,
+    "info": "noindex, nofollow"
+   },
+   {
+    "check": "mobile:story: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:story: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:story: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:story: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-moraes: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-moraes: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-moraes: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-moraes: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-inss: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-inss: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-inss: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-inss: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:arquivos: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:arquivos: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:arquivos: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:arquivos: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:arquivos: Te Atualizei marcado como indisponível",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:arquivos: Caio Coppolla marcado como indisponível",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:arquivo-pessoa: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:arquivo-pessoa: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:arquivo-pessoa: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:arquivo-pessoa: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:profissionais: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:profissionais: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:profissionais: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:profissionais: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:profissionais: Te Atualizei marcado como indisponível",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:profissionais: Caio Coppolla marcado como indisponível",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-vazio: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-vazio: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-vazio: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-vazio: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "arquivos da v5 sem marcadores internos nem jargão",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "sem campos de nota/ranking de pessoa",
+    "ok": true,
+    "info": []
+   }
+  ],
+  "PERFORMANCE": [
+   {
+    "check": "desktop:home: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:home: dados iniciais < 100 KB",
+    "ok": true,
+    "info": 2225
+   },
+   {
+    "check": "desktop:story: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-moraes: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-moraes: todo arquivo < 400 KB (após trechos)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-inss: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-inss: todo arquivo < 400 KB (após trechos)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:arquivos: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:arquivo-pessoa: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:profissionais: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-vazio: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:home: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:home: dados iniciais < 100 KB",
+    "ok": true,
+    "info": 2225
+   },
+   {
+    "check": "mobile:story: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-moraes: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-moraes: todo arquivo < 400 KB (após trechos)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-inss: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-inss: todo arquivo < 400 KB (após trechos)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:arquivos: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:arquivo-pessoa: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:profissionais: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-vazio: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "maior arquivo de v5/data < 400 KB",
+    "ok": true,
+    "info": [
+     "v5/data/busca/s/14.json",
+     173136
+    ]
+   }
+  ],
+  "V5_HOME_QA": [
+   {
+    "check": "desktop:home: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:home: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:home: marca DESMENTINDO na primeira dobra",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home: mensagem na primeira dobra",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home: busca na primeira dobra",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home: placeholder da busca",
+    "ok": true,
+    "info": "Pesquise uma pessoa, assunto ou acontecimento"
+   },
+   {
+    "check": "desktop:home: teste dos 5 segundos (marca + explicação + busca + pista de 'o que já foi dito com fonte verificável' na 1ª dobra)",
+    "ok": true,
+    "info": "Veja o que já foi dito sobre uma notícia, com a data, o minuto do vídeo e a fonte original."
+   },
+   {
+    "check": "desktop:home: seção Já falaram sobre isso com Alexandre Garcia, Caio Coppolla e Te Atualizei",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home: Agora enxuto (1 principal + até 3)",
+    "ok": true,
+    "info": 4
+   },
+   {
+    "check": "desktop:arquivos: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:arquivos: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:arquivo-pessoa: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:arquivo-pessoa: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:profissionais: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:profissionais: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:home: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:home: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:home: marca DESMENTINDO na primeira dobra",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home: mensagem na primeira dobra",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home: busca na primeira dobra",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home: placeholder da busca",
+    "ok": true,
+    "info": "Pesquise uma pessoa, assunto ou acontecimento"
+   },
+   {
+    "check": "mobile:home: teste dos 5 segundos (marca + explicação + busca + pista de 'o que já foi dito com fonte verificável' na 1ª dobra)",
+    "ok": true,
+    "info": "Veja o que já foi dito sobre uma notícia, com a data, o minuto do vídeo e a fonte original."
+   },
+   {
+    "check": "mobile:home: seção Já falaram sobre isso com Alexandre Garcia, Caio Coppolla e Te Atualizei",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home: Agora enxuto (1 principal + até 3)",
+    "ok": true,
+    "info": 4
+   },
+   {
+    "check": "mobile:arquivos: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:arquivos: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:arquivo-pessoa: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:arquivo-pessoa: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:profissionais: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:profissionais: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   }
+  ],
+  "V5_STORY_QA": [
+   {
+    "check": "desktop:story: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:story: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:story: seção 'Já falaram sobre isso' existe",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:story: 'Já falaram' começa até 1,5 tela (1200px)",
+    "ok": true,
+    "info": 894.125
+   },
+   {
+    "check": "desktop:story: atalho para 'Já falaram' visível na primeira dobra",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:story: sem bloco vazio",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:story: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:story: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:story: seção 'Já falaram sobre isso' existe",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:story: 'Já falaram' começa até 1,5 tela (1266px)",
+    "ok": true,
+    "info": 1168.8125
+   },
+   {
+    "check": "mobile:story: atalho para 'Já falaram' visível na primeira dobra",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:story: sem bloco vazio",
+    "ok": true,
+    "info": null
+   }
+  ],
+  "V5_AG_TIMESTAMP_E2E": [
+   {
+    "check": "desktop:story: link aponta para segmento real (vídeo + segundo)",
+    "ok": true,
+    "info": {
+     "href": "https://www.youtube.com/watch?v=GZ8jWAg9pAA&t=302s",
+     "video_id": "GZ8jWAg9pAA",
+     "t": 302
+    }
+   },
+   {
+    "check": "desktop:story: data exibida = data de publicação do vídeo",
+    "ok": true,
+    "info": {
+     "shown": "2026-09-14",
+     "video_u": "2026-09-14T09:51:08-07:00"
+    }
+   },
+   {
+    "check": "desktop:story: fonte = Alexandre Garcia",
+    "ok": true,
+    "info": "ALEXANDRE GARCIA"
+   },
+   {
+    "check": "desktop:story: data exibida por extenso confere",
+    "ok": true,
+    "info": "14 set 2026"
+   },
+   {
+    "check": "desktop:story: minuto exibido = t do segmento",
+    "ok": true,
+    "info": {
+     "shown": "14 set 2026 · 5:02",
+     "expected": "5:02"
+    }
+   },
+   {
+    "check": "desktop:story: texto exibido = texto do segmento",
+    "ok": true,
+    "info": {
+     "shown": "Dino procura ligacao de Mario Frias com crime organizado no caso Dark Horse; manchete antes da prova",
+     "segment": "Dino procura ligacao de Mario Frias com crime organizado no caso Dark Horse; manchete antes da prova"
+    }
+   },
+   {
+    "check": "desktop:story: trecho é ELEGÍVEL no caso 'Dark Horse' (data/corpus/links)",
+    "ok": true,
+    "info": "Dark Horse"
+   },
+   {
+    "check": "mobile:story: link aponta para segmento real (vídeo + segundo)",
+    "ok": true,
+    "info": {
+     "href": "https://www.youtube.com/watch?v=GZ8jWAg9pAA&t=302s",
+     "video_id": "GZ8jWAg9pAA",
+     "t": 302
+    }
+   },
+   {
+    "check": "mobile:story: data exibida = data de publicação do vídeo",
+    "ok": true,
+    "info": {
+     "shown": "2026-09-14",
+     "video_u": "2026-09-14T09:51:08-07:00"
+    }
+   },
+   {
+    "check": "mobile:story: fonte = Alexandre Garcia",
+    "ok": true,
+    "info": "ALEXANDRE GARCIA"
+   },
+   {
+    "check": "mobile:story: data exibida por extenso confere",
+    "ok": true,
+    "info": "14 set 2026"
+   },
+   {
+    "check": "mobile:story: minuto exibido = t do segmento",
+    "ok": true,
+    "info": {
+     "shown": "14 set 2026 · 5:02",
+     "expected": "5:02"
+    }
+   },
+   {
+    "check": "mobile:story: texto exibido = texto do segmento",
+    "ok": true,
+    "info": {
+     "shown": "Dino procura ligacao de Mario Frias com crime organizado no caso Dark Horse; manchete antes da prova",
+     "segment": "Dino procura ligacao de Mario Frias com crime organizado no caso Dark Horse; manchete antes da prova"
+    }
+   },
+   {
+    "check": "mobile:story: trecho é ELEGÍVEL no caso 'Dark Horse' (data/corpus/links)",
+    "ok": true,
+    "info": "Dark Horse"
+   }
+  ],
+  "V5_SEARCH_QA": [
+   {
+    "check": "desktop:search-moraes: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-moraes: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:search 'Alexandre de Moraes': grupo AGORA e/ou NOS ARQUIVOS",
+    "ok": true,
+    "info": [
+     "Agora",
+     "Nos arquivos"
+    ]
+   },
+   {
+    "check": "desktop:search 'Alexandre de Moraes': contagem real > 0 no arquivo Alexandre Garcia",
+    "ok": true,
+    "info": 371
+   },
+   {
+    "check": "search 'Alexandre de Moraes': contagem exibida = recontagem no arquivo AG",
+    "ok": true,
+    "info": {
+     "shown": 371,
+     "recount": 371
+    }
+   },
+   {
+    "check": "desktop:search 'Alexandre de Moraes': link aponta para segmento real (vídeo + segundo)",
+    "ok": true,
+    "info": {
+     "href": "https://www.youtube.com/watch?v=R9odnQZu6b0&t=13s",
+     "video_id": "R9odnQZu6b0",
+     "t": 13
+    }
+   },
+   {
+    "check": "desktop:search 'Alexandre de Moraes': data exibida = data de publicação do vídeo",
+    "ok": true,
+    "info": {
+     "shown": "2026-09-23",
+     "video_u": "2026-09-23T15:37:46-07:00"
+    }
+   },
+   {
+    "check": "desktop:search 'Alexandre de Moraes': Caio Coppolla e Te Atualizei como indisponíveis",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-inss: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-inss: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:search 'INSS': grupo AGORA e/ou NOS ARQUIVOS",
+    "ok": true,
+    "info": [
+     "Agora",
+     "Nos arquivos",
+     "Documentos"
+    ]
+   },
+   {
+    "check": "desktop:search 'INSS': contagem real > 0 no arquivo Alexandre Garcia",
+    "ok": true,
+    "info": 170
+   },
+   {
+    "check": "search 'INSS': contagem exibida = recontagem no arquivo AG",
+    "ok": true,
+    "info": {
+     "shown": 170,
+     "recount": 170
+    }
+   },
+   {
+    "check": "desktop:search 'INSS': link aponta para segmento real (vídeo + segundo)",
+    "ok": true,
+    "info": {
+     "href": "https://www.youtube.com/watch?v=xRlNHcOODaA&t=225s",
+     "video_id": "xRlNHcOODaA",
+     "t": 225
+    }
+   },
+   {
+    "check": "desktop:search 'INSS': data exibida = data de publicação do vídeo",
+    "ok": true,
+    "info": {
+     "shown": "2026-09-22",
+     "video_u": "2026-09-22T09:40:49-07:00"
+    }
+   },
+   {
+    "check": "desktop:search 'INSS': Caio Coppolla e Te Atualizei como indisponíveis",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-vazio: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-vazio: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop: busca sem resultado diz que não quer dizer que nunca foi dito",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-moraes: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-moraes: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:search 'Alexandre de Moraes': grupo AGORA e/ou NOS ARQUIVOS",
+    "ok": true,
+    "info": [
+     "Agora",
+     "Nos arquivos"
+    ]
+   },
+   {
+    "check": "mobile:search 'Alexandre de Moraes': contagem real > 0 no arquivo Alexandre Garcia",
+    "ok": true,
+    "info": 371
+   },
+   {
+    "check": "mobile:search 'Alexandre de Moraes': link aponta para segmento real (vídeo + segundo)",
+    "ok": true,
+    "info": {
+     "href": "https://www.youtube.com/watch?v=R9odnQZu6b0&t=13s",
+     "video_id": "R9odnQZu6b0",
+     "t": 13
+    }
+   },
+   {
+    "check": "mobile:search 'Alexandre de Moraes': data exibida = data de publicação do vídeo",
+    "ok": true,
+    "info": {
+     "shown": "2026-09-23",
+     "video_u": "2026-09-23T15:37:46-07:00"
+    }
+   },
+   {
+    "check": "mobile:search 'Alexandre de Moraes': Caio Coppolla e Te Atualizei como indisponíveis",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-inss: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-inss: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:search 'INSS': grupo AGORA e/ou NOS ARQUIVOS",
+    "ok": true,
+    "info": [
+     "Agora",
+     "Nos arquivos",
+     "Documentos"
+    ]
+   },
+   {
+    "check": "mobile:search 'INSS': contagem real > 0 no arquivo Alexandre Garcia",
+    "ok": true,
+    "info": 170
+   },
+   {
+    "check": "mobile:search 'INSS': link aponta para segmento real (vídeo + segundo)",
+    "ok": true,
+    "info": {
+     "href": "https://www.youtube.com/watch?v=xRlNHcOODaA&t=225s",
+     "video_id": "xRlNHcOODaA",
+     "t": 225
+    }
+   },
+   {
+    "check": "mobile:search 'INSS': data exibida = data de publicação do vídeo",
+    "ok": true,
+    "info": {
+     "shown": "2026-09-22",
+     "video_u": "2026-09-22T09:40:49-07:00"
+    }
+   },
+   {
+    "check": "mobile:search 'INSS': Caio Coppolla e Te Atualizei como indisponíveis",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-vazio: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-vazio: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile: busca sem resultado diz que não quer dizer que nunca foi dito",
+    "ok": true,
+    "info": null
+   }
+  ],
+  "BUILD": [
+   {
+    "check": "node public-ui/build-public-data.mjs --check",
+    "ok": true,
+    "info": "v4/data em sincronia (38 arquivos)"
+   },
+   {
+    "check": "node public-ui/build-v5-data.mjs --check",
+    "ok": true,
+    "info": "v5/data em sincronia (680 arquivos)"
+   }
+  ]
+ },
+ "requests": {
+  "desktop:home": [
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 1727
+   },
+   {
+    "url": "/v5/css/fonts.css",
+    "status": 200,
+    "bytes": 893
+   },
+   {
+    "url": "/v5/css/v5.css",
+    "status": 200,
+    "bytes": 10685
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 26383
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": 90104
+   },
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 1727
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": null
+   },
+   {
+    "url": "/v5/css/fonts.css",
+    "status": 200,
+    "bytes": 893
+   },
+   {
+    "url": "/v5/css/v5.css",
+    "status": 200,
+    "bytes": 10685
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 26383
+   },
+   {
+    "url": "/v5/data/home.json",
+    "status": 200,
+    "bytes": 2225
+   }
+  ],
+  "desktop:story": [
+   {
+    "url": "/v5/data/historia/dark-horse.json",
+    "status": 200,
+    "bytes": 12716
+   }
+  ],
+  "desktop:search-moraes": [
+   {
+    "url": "/v5/data/busca/meta.json",
+    "status": 200,
+    "bytes": 19491
+   },
+   {
+    "url": "/v5/data/busca/t/al.json",
+    "status": 200,
+    "bytes": 18713
+   },
+   {
+    "url": "/v5/data/busca/t/mo.json",
+    "status": 200,
+    "bytes": 21995
+   },
+   {
+    "url": "/v5/data/busca/s/0.json",
+    "status": 200,
+    "bytes": 68305
+   },
+   {
+    "url": "/v5/data/busca/s/3.json",
+    "status": 200,
+    "bytes": 64291
+   },
+   {
+    "url": "/v5/data/busca/s/4.json",
+    "status": 200,
+    "bytes": 77446
+   }
+  ],
+  "desktop:search-inss": [
+   {
+    "url": "/v5/data/busca/t/in.json",
+    "status": 200,
+    "bytes": 54410
+   },
+   {
+    "url": "/v5/data/busca/s/1.json",
+    "status": 200,
+    "bytes": 81013
+   }
+  ],
+  "desktop:arquivos": [
+   {
+    "url": "/v5/data/arquivos.json",
+    "status": 200,
+    "bytes": 2850
+   }
+  ],
+  "desktop:arquivo-pessoa": [
+   {
+    "url": "/v5/data/arquivo/alexandre-de-moraes.json",
+    "status": 200,
+    "bytes": 124921
+   }
+  ],
+  "desktop:profissionais": [],
+  "desktop:search-vazio": [],
+  "mobile:home": [
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 1727
+   },
+   {
+    "url": "/v5/css/fonts.css",
+    "status": 200,
+    "bytes": 893
+   },
+   {
+    "url": "/v5/css/v5.css",
+    "status": 200,
+    "bytes": 10685
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 26383
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": 90104
+   },
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 1727
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": null
+   },
+   {
+    "url": "/v5/css/fonts.css",
+    "status": 200,
+    "bytes": 893
+   },
+   {
+    "url": "/v5/css/v5.css",
+    "status": 200,
+    "bytes": 10685
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 26383
+   },
+   {
+    "url": "/v5/data/home.json",
+    "status": 200,
+    "bytes": 2225
+   }
+  ],
+  "mobile:story": [
+   {
+    "url": "/v5/data/historia/dark-horse.json",
+    "status": 200,
+    "bytes": 12716
+   }
+  ],
+  "mobile:search-moraes": [
+   {
+    "url": "/v5/data/busca/meta.json",
+    "status": 200,
+    "bytes": 19491
+   },
+   {
+    "url": "/v5/data/busca/t/al.json",
+    "status": 200,
+    "bytes": 18713
+   },
+   {
+    "url": "/v5/data/busca/t/mo.json",
+    "status": 200,
+    "bytes": 21995
+   },
+   {
+    "url": "/v5/data/busca/s/0.json",
+    "status": 200,
+    "bytes": 68305
+   },
+   {
+    "url": "/v5/data/busca/s/3.json",
+    "status": 200,
+    "bytes": 64291
+   },
+   {
+    "url": "/v5/data/busca/s/4.json",
+    "status": 200,
+    "bytes": 77446
+   }
+  ],
+  "mobile:search-inss": [
+   {
+    "url": "/v5/data/busca/t/in.json",
+    "status": 200,
+    "bytes": 54410
+   },
+   {
+    "url": "/v5/data/busca/s/1.json",
+    "status": 200,
+    "bytes": 81013
+   }
+  ],
+  "mobile:arquivos": [
+   {
+    "url": "/v5/data/arquivos.json",
+    "status": 200,
+    "bytes": 2850
+   }
+  ],
+  "mobile:arquivo-pessoa": [
+   {
+    "url": "/v5/data/arquivo/alexandre-de-moraes.json",
+    "status": 200,
+    "bytes": 124921
+   }
+  ],
+  "mobile:profissionais": [],
+  "mobile:search-vazio": []
+ },
+ "evidence": {
+  "desktop:home_data_bytes": 2225,
+  "desktop:story_data_bytes": 12716,
+  "desktop:story_ja_falaram_top_px": 894.125,
+  "desktop:story_sections": [
+   "O que sabemos",
+   "Já falaram sobre isso",
+   "Cronologia",
+   "Fontes"
+  ],
+  "desktop:search_moraes_data_bytes": 270241,
+  "desktop:search_moraes": {
+   "groups": [
+    "Agora",
+    "Nos arquivos"
+   ],
+   "ag_count": 371,
+   "agora": "AGORA\n10 histórias\nCompliance Zero / Master\n27 registros mencionam\n27 set 2026\nDark Horse\n3 registros mencionam\n13 set 2026\nSem Desconto / INSS\n2 registros mencionam\n21 set 2026\nFarra dos Guardanapos\n"
+  },
+  "search_moraes_recount_from_archive": 371,
+  "desktop:search_inss_data_bytes": 135423,
+  "desktop:search_inss": {
+   "groups": [
+    "Agora",
+    "Nos arquivos",
+    "Documentos"
+   ],
+   "ag_count": 170,
+   "agora": "AGORA\n3 histórias\nSem Desconto / INSS\n15 registros mencionam\n21 set 2026\nCPMI do INSS\n8 registros mencionam\n28 mar 2026\nDeath Care / cemitérios\n1 registro menciona\n17 set 2026"
+  },
+  "search_inss_recount_from_archive": 170,
+  "mobile:home_data_bytes": 2225,
+  "mobile:story_data_bytes": 12716,
+  "mobile:story_ja_falaram_top_px": 1168.8125,
+  "mobile:story_sections": [
+   "O que sabemos",
+   "Já falaram sobre isso",
+   "Cronologia",
+   "Fontes"
+  ],
+  "e2e": {
+   "story": "dark-horse",
+   "case_key": "Dark Horse",
+   "deep_link": "https://www.youtube.com/watch?v=GZ8jWAg9pAA&t=302s",
+   "shown_date": "14 set 2026",
+   "shown_t": "14 set 2026 · 5:02",
+   "excerpt": "Dino procura ligacao de Mario Frias com crime organizado no caso Dark Horse; manchete antes da prova",
+   "corpus_segment": {
+    "video_id": "GZ8jWAg9pAA",
+    "published": "2026-09-14T09:51:08-07:00",
+    "s": 302,
+    "y": "P",
+    "c": "M",
+    "x": "Dino procura ligacao de Mario Frias com crime organizado no caso Dark Horse; manchete antes da prova"
+   }
+  },
+  "mobile:search_moraes_data_bytes": 270241,
+  "mobile:search_moraes": {
+   "groups": [
+    "Agora",
+    "Nos arquivos"
+   ],
+   "ag_count": 371,
+   "agora": "AGORA\n10 histórias\nCompliance Zero / Master\n27 registros mencionam\n27 set 2026\nDark Horse\n3 registros mencionam\n13 set 2026\nSem Desconto / INSS\n2 registros mencionam\n21 set 2026\nFarra dos Guardanapos\n"
+  },
+  "mobile:search_inss_data_bytes": 135423,
+  "mobile:search_inss": {
+   "groups": [
+    "Agora",
+    "Nos arquivos",
+    "Documentos"
+   ],
+   "ag_count": 170,
+   "agora": "AGORA\n3 histórias\nSem Desconto / INSS\n15 registros mencionam\n21 set 2026\nCPMI do INSS\n8 registros mencionam\n28 mar 2026\nDeath Care / cemitérios\n1 registro menciona\n17 set 2026"
+  },
+  "v5_data": {
+   "files": 680,
+   "total_bytes": 7405682,
+   "home_json_bytes": 2225,
+   "largest": {
+    "file": "v5/data/busca/s/14.json",
+    "bytes": 173136
+   },
+   "search_meta_bytes": 19491
+  }
+ },
+ "gates": {
+  "V5_HOME_QA": "PASS",
+  "V5_STORY_QA": "PASS",
+  "V5_SEARCH_QA": "PASS",
+  "V5_AG_TIMESTAMP_E2E": "PASS",
+  "BOUNDARY": "PASS",
+  "PERFORMANCE": "PASS",
+  "BUILD": "PASS"
+ },
+ "failures": {},
+ "note_5s": "Teste dos 5 segundos é heurístico: confere se a primeira dobra tem marca, frase de explicação, busca e a pista explícita de 'o que já foi dito, com data, minuto do vídeo e fonte'. Não substitui teste com pessoas."
+}

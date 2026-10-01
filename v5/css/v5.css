@@ -1,0 +1,152 @@
+/* DESMENTINDO v5 — menos caixa, mais hierarquia. Tipografia, espaço e datas. */
+:root {
+  --ink: #1D1B1A; --ink-2: #4A4644; --muted: #6E6965; --rule: #E2DED9; --paper: #F7F6F3; --white: #FFFFFF;
+  --yellow: #FFDF00; --green: #009C3B; --blue: #2E5AAC; --link: #1F3F8A;
+  --font: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --gutter: 20px; --maxw: 760px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.55; overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+a { color: inherit; }
+button, input { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.skip { position: absolute; left: -999px; top: 6px; background: var(--yellow); padding: 10px 14px; font-weight: 800; z-index: 50; }
+.skip:focus { left: 12px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+time, .num { font-variant-numeric: tabular-nums; }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
+.loading { color: var(--muted); padding: 40px 0; }
+
+/* ---------------------------------------------------------------- topo */
+.top { background: var(--paper); border-bottom: 1px solid var(--rule); position: sticky; top: 0; z-index: 20; }
+.top-in { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 52px; max-width: 1080px; }
+.brand { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.mark { display: inline-flex; gap: 2px; background: var(--ink); padding: 5px; height: 24px; }
+.mark i { width: 4px; display: block; }
+.mark i:nth-child(1) { background: var(--green); } .mark i:nth-child(2) { background: var(--yellow); } .mark i:nth-child(3) { background: #4A6FB5; }
+.brand-word { font-stretch: 72%; font-weight: 900; font-size: 19px; letter-spacing: .02em; }
+.is-home .brand-word { display: none; }
+.doors { display: flex; gap: 4px; }
+.doors a { text-decoration: none; font-weight: 700; font-size: 14px; padding: 6px 8px; color: var(--ink-2); border-bottom: 2px solid transparent; white-space: nowrap; }
+.doors a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); }
+.doors .short { display: none; }
+@media (max-width: 640px) { .doors .long { display: none; } .doors .short { display: inline; } .doors a { padding: 6px 6px; font-size: 13.5px; } }
+
+/* ---------------------------------------------------------------- tipografia */
+.kicker { font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 10px; color: var(--ink-2); }
+h1, h2, h3 { margin: 0; }
+.h1 { font-stretch: 75%; font-weight: 900; font-size: clamp(34px, 7vw, 56px); line-height: .98; letter-spacing: -.005em; }
+.h2 { font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 18px; }
+.lead { font-size: 19px; line-height: 1.5; margin: 14px 0 0; }
+.meta { font-size: 14px; color: var(--muted); }
+.quiet { font-size: 14px; color: var(--muted); margin: 14px 0 0; }
+.sec { padding: 40px 0 0; }
+.sec + .sec { border-top: 0; }
+.link { color: var(--link); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.more-btn { background: none; border: 0; padding: 8px 0; color: var(--link); font-weight: 700; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------------------------------------------------------------- home: primeira dobra */
+.hero { padding: 13vh 0 40px; }
+@media (max-width: 640px) { .hero { padding: 56px 0 32px; } }
+.hero .name { font-stretch: 62%; font-weight: 900; font-size: clamp(56px, 15vw, 128px); line-height: .82; letter-spacing: -.01em; margin: 0; }
+.hero .motto { font-size: clamp(21px, 3.4vw, 28px); line-height: 1.25; font-weight: 500; margin: 18px 0 28px; }
+.qform { display: flex; background: var(--white); box-shadow: 0 0 0 2px var(--ink); }
+.qform input { flex: 1; min-width: 0; border: 0; padding: 16px 16px; font-size: 18px; background: transparent; }
+.qform input::placeholder { color: #8B8682; }
+.qform input:focus { outline: none; }
+.qform:focus-within { box-shadow: 0 0 0 3px var(--ink); }
+.qform button { border: 0; background: var(--ink); color: var(--white); font-weight: 800; padding: 0 20px; cursor: pointer; }
+.cue { margin: 14px 0 0; font-size: 15px; color: var(--ink-2); }
+.tries { margin: 10px 0 0; font-size: 14px; color: var(--muted); }
+.tries a { color: var(--ink-2); }
+
+/* ---------------------------------------------------------------- agora */
+.story-main a { text-decoration: none; }
+.story-main .t { font-stretch: 78%; font-weight: 900; font-size: clamp(30px, 5.5vw, 42px); line-height: 1.02; display: block; }
+.story-main a:hover .t { text-decoration: underline; text-decoration-thickness: 2px; }
+.story-main p { margin: 10px 0 0; color: var(--ink-2); }
+.rows { list-style: none; margin: 26px 0 0; padding: 0; }
+.rows li { border-top: 1px solid var(--rule); }
+.rows a { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 14px 0; text-decoration: none; }
+.rows a:hover .rt { text-decoration: underline; }
+.rt { font-weight: 700; font-size: 18px; line-height: 1.3; }
+.rd { font-size: 14px; color: var(--muted); white-space: nowrap; }
+.said-cue { display: inline-block; margin-top: 8px; font-size: 14px; font-weight: 700; color: var(--ink); }
+.said-cue::before { content: "▶ "; font-size: 11px; }
+
+/* ---------------------------------------------------------------- JÁ FALARAM SOBRE ISSO */
+.said-list { list-style: none; margin: 0; padding: 0; }
+.said { padding: 18px 0 20px; border-top: 1px solid var(--rule); }
+.said:first-child { border-top: 0; padding-top: 4px; }
+.said-who { font-size: 12.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin: 0; }
+.said-x { font-size: 19px; line-height: 1.4; margin: 6px 0 8px; }
+.said-foot { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.said-when { font-size: 14px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.go { display: inline-flex; align-items: center; gap: 7px; background: var(--ink); color: var(--white); text-decoration: none; font-weight: 800; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; padding: 9px 13px; }
+.go::before { content: ""; border-left: 8px solid currentColor; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+.go:hover { background: #000; }
+.said-story { font-size: 14px; color: var(--muted); margin: 0 0 4px; }
+.said-story a { color: var(--ink-2); font-weight: 700; }
+.arch { list-style: none; margin: 18px 0 0; padding: 0; }
+.arch li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid var(--rule); font-size: 15px; }
+.arch .an { font-weight: 700; }
+.arch .as { color: var(--muted); text-align: right; }
+.arch .as.ok { color: var(--ink-2); }
+.people { margin: 16px 0 0; font-size: 15px; color: var(--ink-2); line-height: 1.9; }
+.people a { color: var(--ink); font-weight: 700; margin-right: 12px; white-space: nowrap; }
+.people .c { color: var(--muted); font-weight: 400; }
+.jump { display: inline-flex; align-items: center; gap: 8px; margin: 18px 0 0; font-weight: 800; font-size: 15px; text-decoration: none; border-bottom: 2px solid var(--yellow); padding-bottom: 2px; }
+.jump::before { content: "↓"; }
+
+/* ---------------------------------------------------------------- história */
+.page-head { padding: 34px 0 0; }
+.summary { font-size: 19px; line-height: 1.5; margin: 16px 0 0; }
+.src { font-size: 14px; color: var(--muted); margin: 6px 0 0; }
+.src a { color: var(--ink-2); }
+.items { list-style: none; margin: 0; padding: 0; }
+.items li { padding: 12px 0; border-top: 1px solid var(--rule); }
+.items li:first-child { border-top: 0; padding-top: 0; }
+.items time { display: block; font-size: 13px; font-weight: 700; color: var(--ink-2); letter-spacing: .02em; }
+.items p { margin: 3px 0 0; }
+.doc { border-left: 3px solid var(--ink); padding: 2px 0 2px 16px; }
+.doc .dt { font-weight: 700; }
+.doc q { display: block; margin: 8px 0 0; font-style: italic; color: var(--ink-2); quotes: "“" "”"; }
+.chrono { list-style: none; margin: 0; padding: 0 0 0 18px; border-left: 2px solid var(--rule); }
+.chrono li { position: relative; padding: 0 0 16px; }
+.chrono li::before { content: ""; position: absolute; left: -24px; top: 7px; width: 10px; height: 10px; background: var(--paper); border: 2px solid var(--ink); border-radius: 50%; }
+.chrono time { font-weight: 800; font-size: 14px; }
+.chrono p { margin: 2px 0 0; font-size: 16px; color: var(--ink-2); }
+.srcs { list-style: none; margin: 0; padding: 0; }
+.srcs li { padding: 8px 0; border-top: 1px solid var(--rule); font-size: 15px; }
+.srcs li:first-child { border-top: 0; }
+.srcs .k { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-right: 6px; }
+details summary { cursor: pointer; color: var(--link); font-weight: 700; padding: 10px 0; }
+
+/* ---------------------------------------------------------------- busca */
+.group { padding: 34px 0 0; }
+.group-h { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 0 0 12px; }
+.group-h .h2 { margin: 0; }
+.src-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 18px 0 6px; }
+.src-h strong { font-size: 16px; }
+.src-h .n { font-size: 14px; color: var(--ink-2); }
+.na { font-size: 15px; color: var(--muted); margin: 4px 0 0; }
+.year { font-stretch: 70%; font-weight: 900; font-size: 34px; line-height: 1; margin: 26px 0 8px; font-variant-numeric: tabular-nums; }
+.empty { color: var(--ink-2); font-size: 17px; }
+
+/* ---------------------------------------------------------------- rodapé */
+.foot { margin-top: 72px; border-top: 1px solid var(--rule); }
+.foot-in { display: flex; flex-wrap: wrap; gap: 8px 22px; padding: 22px var(--gutter) 40px; font-size: 14px; color: var(--muted); max-width: 1080px; }
+.foot a { color: var(--ink-2); }
+
+@media (max-width: 480px) {
+  .qform { flex-direction: column; box-shadow: none; background: none; gap: 8px; }
+  .qform input { background: var(--white); box-shadow: 0 0 0 2px var(--ink); font-size: 17px; padding: 15px 14px; }
+  .qform input:focus { box-shadow: 0 0 0 3px var(--ink); }
+  .qform:focus-within { box-shadow: none; }
+  .qform button { padding: 14px 20px; }
+  .arch li { flex-direction: column; gap: 2px; }
+  .arch .as { text-align: left; }
+}
+@media (max-width: 400px) { .brand-word { display: none; } }
