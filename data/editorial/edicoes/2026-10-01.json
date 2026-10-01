@@ -1,0 +1,446 @@
+{
+ "schema": "desmentindo.public.editorial_edition.v1",
+ "edition": "2026-10-01",
+ "label": "AGORA",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova; fonte primária indicada quando obtida.",
+ "items": [
+  {
+   "id": "2026-10-01-tse-mantem-remocao-dos-posts-falsos-sobre-nossa-senhora-e-libera-o",
+   "date": "2026-10-01",
+   "label": "AGORA",
+   "title": "TSE mantém remoção dos posts falsos sobre Nossa Senhora e libera o post de Antonio Tabet",
+   "text": "No julgamento de 30/09, o TSE manteve a remoção dos posts com a notícia falsa de que Flávio Bolsonaro retiraria o título de padroeira de Nossa Senhora Aparecida. O relator, André Mendonça, ajustou o voto e o post do humorista Antonio Tabet foi liberado.",
+   "sources": [
+    {
+     "name": "g1",
+     "title": "Após Mendonça mudar voto, TSE decide liberar post de humorista sobre Nossa Senhora Aparecida",
+     "url": "https://g1.globo.com/politica/noticia/2026/09/30/apos-mendonca-mudar-voto-tse-decide-liberar-post-de-humorista-sobre-nossa-senhora-aparecida.ghtml"
+    },
+    {
+     "name": "g1",
+     "title": "Nossa Senhora: Mendonça mudou de voto após conversas com Nunes Marques e ministros do TSE",
+     "url": "https://g1.globo.com/politica/blog/camila-bomfim/post/2026/10/01/nossa-senhora-mendonca-mudou-de-voto-apos-conversas-com-nunes-marques-e-ministros-do-tse.ghtml"
+    },
+    {
+     "name": "Folha de S.Paulo",
+     "title": "Mendonça cita resolução editada por Moraes em voto sobre Nossa Senhora",
+     "url": "https://www1.folha.uol.com.br/colunas/painel/2026/09/mendonca-cita-resolucao-editada-por-moraes-em-voto-sobre-nossa-senhora.shtml"
+    },
+    {
+     "name": "Folha de S.Paulo",
+     "title": "TSE decide derrubar notícias falsas sobre Nossa Senhora e Flávio Bolsonaro",
+     "url": "https://www1.folha.uol.com.br/poder/2026/09/mendonca-nega-censura-e-vota-para-manter-derrubada-de-noticia-falsa-sobre-flavio-e-nossa-senhora.shtml"
+    },
+    {
+     "name": "Veja",
+     "title": "TSE decide derrubar posts com notícia falsa sobre Flávio e Nossa Senhora",
+     "url": "https://veja.abril.com.br/politica/tse-tem-maioria-para-derrubar-posts-com-noticia-falsa-sobre-flavio-e-nossa-senhora"
+    },
+    {
+     "name": "CNN Brasil",
+     "title": "Entenda o que o TSE decidiu sobre a fake news de Nossa Senhora Aparecida",
+     "url": "https://cnnbrasil.com.br/politica/entenda-o-que-o-tse-decidiu-sobre-a-fake-news-de-nossa-senhora-aparecida"
+    }
+   ],
+   "evidence": {
+    "primary_source_obtained": false,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-01-tse-manda-nikolas-ferreira-apagar-post-sobre-fala-de-lula",
+   "date": "2026-10-01",
+   "label": "AGORA",
+   "title": "TSE manda Nikolas Ferreira apagar post sobre fala de Lula",
+   "text": "A ministra Estela Aranha (TSE) mandou Nikolas Ferreira remover em 24 horas um post que associa uma fala de Lula a conteúdo sexual envolvendo menores. É uma decisão liminar e vai ao plenário.",
+   "sources": [
+    {
+     "name": "g1",
+     "title": "TSE manda Nikolas Ferreira apagar publicação que associa fala de Lula a conteúdo sexual envolvendo crianças",
+     "url": "https://g1.globo.com/politica/noticia/2026/09/30/tse-manda-nikolas-ferreira-apagar-publicacao-que-associa-fala-de-lula-a-conteudo-sexual-envolvendo-criancas.ghtml"
+    },
+    {
+     "name": "Gazeta do Povo",
+     "title": "TSE dá 24 horas para Nikolas apagar post contra fala de Lula sobre “toque” em mulheres",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/tse-da-24-horas-para-nikolas-apagar-post-sobre-fala-de-lula-sobre-toque-em-mulheres"
+    }
+   ],
+   "evidence": {
+    "primary_source_obtained": false,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-01-nunes-marques-nega-participacao-de-renan-santos-no-debate-da-globo",
+   "date": "2026-10-01",
+   "label": "AGORA",
+   "title": "Nunes Marques nega participação de Renan Santos no debate da Globo",
+   "text": "O ministro Nunes Marques negou o pedido do partido Missão para que Renan Santos participasse do debate da Globo; o partido não tem o mínimo de 5 parlamentares exigido.",
+   "sources": [
+    {
+     "name": "Poder360",
+     "title": "Nunes Marques nega pedido para Renan participar de debate da “Globo”",
+     "url": "https://poder360.com.br/poder-eleicoes-2026/nunes-marques-nega-pedido-para-renan-participar-de-debate-da-globo"
+    },
+    {
+     "name": "Veja",
+     "title": "Renan Santos pede a Nunes Marques para ir a debate na Globo",
+     "url": "https://veja.abril.com.br/politica/renan-santos-pede-a-nunes-marques-para-ir-a-debate-na-globo"
+    }
+   ],
+   "evidence": {
+    "primary_source_obtained": false,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-01-justica-proibe-servidor-da-secom-de-postar-sobre-a-eleicao",
+   "date": "2026-10-01",
+   "label": "AGORA",
+   "title": "Justiça proíbe servidor da Secom de postar sobre a eleição",
+   "text": "A pedido da campanha de Flávio Bolsonaro, a 1ª Zona Eleitoral do DF proibiu um servidor da Secom (Planalto) de publicar conteúdo político-eleitoral até o fim do 1º turno, depois de posts sobre a notícia falsa de Nossa Senhora. O pedido de prisão preventiva foi negado.",
+   "sources": [
+    {
+     "name": "Folha de S.Paulo",
+     "title": "Justiça proíbe funcionário do Planalto de postar sobre eleições a pedido de Flávio após caso Nossa Senhora",
+     "url": "https://www1.folha.uol.com.br/poder/2026/09/justica-proibe-funcionario-do-planalto-de-postar-sobre-eleicoes-a-pedido-de-flavio-apos-caso-nossa-senhora.shtml"
+    },
+    {
+     "name": "Gazeta do Povo",
+     "title": "Justiça restringe redes sociais de servidor da Secom após posts sobre Flávio e Padroeira",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/justica-restringe-redes-sociais-de-servidor-da-secom-apos-posts-sobre-flavio-e-padroeira"
+    }
+   ],
+   "evidence": {
+    "primary_source_obtained": false,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-01-dino-manda-a-pf-investigar-ataques-a-imagens-religiosas",
+   "date": "2026-10-01",
+   "label": "AGORA",
+   "title": "Dino manda a PF investigar ataques a imagens religiosas",
+   "text": "Depois do caso Nossa Senhora, Flávio Dino determinou que a Polícia Federal abrisse inquérito sobre uma “onda de ataques” a imagens religiosas; a PF instaurou o inquérito.",
+   "sources": [
+    {
+     "name": "Folha de S.Paulo",
+     "title": "Dino determina inquérito sobre 'ataques a imagens religiosas' após Nossa Senhora virar pauta eleitoral",
+     "url": "https://www1.folha.uol.com.br/poder/2026/09/dino-pede-inquerito-sobre-ataques-a-imagens-religiosas-apos-nossa-senhora-virar-pauta-eleitoral.shtml"
+    },
+    {
+     "name": "g1",
+     "title": "Flávio Dino manda Polícia Federal investigar onda de ataques a imagens religiosas no país",
+     "url": "https://g1.globo.com/politica/noticia/2026/09/30/dino-manda-policia-federal-apurar-onda-de-ataques-a-imagens-religiosas.ghtml"
+    },
+    {
+     "name": "Gazeta do Povo",
+     "title": "Dino manda PF investigar onda de ataques religiosos em meio ao caso Aparecida",
+     "url": "https://gazetadopovo.com.br/republica/dino-manda-pf-investigar-onda-ataques-religiosos-caso-aparecida"
+    }
+   ],
+   "evidence": {
+    "primary_source_obtained": false,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-01-dark-horse-pf-fara-nova-pericia-por-ordem-de-dino",
+   "date": "2026-10-01",
+   "label": "AGORA",
+   "title": "“Dark Horse”: PF fará nova perícia por ordem de Dino",
+   "text": "Flávio Dino determinou que a PF periciasse todo o material apreendido na Operação Wi-Fi, da Polícia Civil de São Paulo.",
+   "sources": [
+    {
+     "name": "g1",
+     "title": "'Dark Horse': PF faz nova perícia em material apreendido pela Polícia Civil de SP por ordem de Flávio Dino",
+     "url": "https://g1.globo.com/sp/sao-paulo/noticia/2026/09/30/dark-horse-pf-faz-nova-pericia-em-material-apreendido-pela-policia-civil-de-sp-por-ordem-de-flavio-dino.ghtml"
+    },
+    {
+     "name": "Gazeta do Povo",
+     "title": "PF faz nova perícia em material do “Dark Horse” por ordem de Flávio Dino",
+     "url": "https://gazetadopovo.com.br/republica/pf-nova-pericia-material-dark-horse-por-ordem-de-flavio-dino"
+    }
+   ],
+   "evidence": {
+    "primary_source_obtained": false,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-09-30-reportagens-sobre-mensagens-do-celular-de-vorcaro-citando-autoridades",
+   "date": "2026-09-30",
+   "label": "AGORA",
+   "title": "Reportagens sobre mensagens do celular de Vorcaro citando autoridades (Moraes, Padilha, Motta) e Luciano Huck",
+   "text": "Reportagens sobre mensagens do celular de Vorcaro citando autoridades (Moraes, Padilha, Motta) e Luciano Huck",
+   "sources": [
+    {
+     "name": "Metrópoles",
+     "title": "\"Evita falar nome, até o meu\", alertou Vorcaro a chef de almoço para Moraes",
+     "url": "https://metropoles.com/brasil/evita-falar-nome-ate-o-meu-alertou-vorcaro-a-chef-de-almoco-para-moraes"
+    },
+    {
+     "name": "Folha de S.Paulo",
+     "title": "Vorcaro teve jantar com Padilha em 2024, indicam mensagens - Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/09/vorcaro-teve-jantar-restrito-com-padilha-antes-de-encontro-com-lula-em-2024-indicam-mensagens.shtml"
+    },
+    {
+     "name": "Poder360",
+     "title": "Motta conversou com Vorcaro sobre “sociedade” e PL sobre carbono",
+     "url": "https://poder360.com.br/poder-congresso/motta-conversou-com-vorcaro-sobre-sociedade-e-pl-sobre-carbono"
+    },
+    {
+     "name": "Veja",
+     "title": "Mensagens da PF revelam que Luciano Huck foi amigo e conselheiro de Daniel Vorcaro",
+     "url": "https://veja.abril.com.br/brasil/mensagens-da-pf-revelam-que-luciano-huck-foi-amigo-e-conselheiro-de-daniel-vorcaro"
+    },
+    {
+     "name": "Estadão",
+     "title": "Caso Master: O adversário em comum que aproximou Daniel Vorcaro a Alexandre de Moraes; leia bastidor",
+     "url": "https://estadao.com.br/economia/caso-master-o-adversario-em-comum-que-aproximou-daniel-vorcaro-a-alexandre-de-moraes-leia-bastidor"
+    },
+    {
+     "name": "Poder360",
+     "title": "STF aceitou Vaza Jato, mas rejeita chats de Vorcaro contra Moraes",
+     "url": "https://poder360.com.br/poder-justica/stf-aceitou-vaza-jato-mas-rejeita-chats-de-vorcaro-contra-moraes"
+    }
+   ],
+   "evidence": {
+    "primary_source_obtained": false,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-09-30-depoimento-de-daniel-e-henrique-vorcaro-a-pf-inquerito-a-turma",
+   "date": "2026-09-30",
+   "label": "AGORA",
+   "title": "Depoimento de Daniel e Henrique Vorcaro à PF (inquérito 'A Turma')",
+   "text": "Daniel Vorcaro e Henrique Vorcaro prestam depoimento à PF em 30/09 (inquérito sobre o grupo 'A Turma')",
+   "sources": [
+    {
+     "name": "Agência Brasil",
+     "title": "Daniel Vorcaro e pai vão prestar depoimento à Polícia Federal",
+     "url": "https://agenciabrasil.ebc.com.br/radioagencia-nacional/geral/audio/2026-09/daniel-vorcaro-e-pai-vao-prestar-depoimento-policia-federal"
+    },
+    {
+     "name": "CNN Brasil",
+     "title": "À PF, Vorcaro alegará “meros desabafos” e ausência de vítimas da Turma",
+     "url": "https://cnnbrasil.com.br/blogs/debora-bergamasco/politica/a-pf-vorcaro-alegara-meros-desabafos-e-ausencia-de-vitimas-da-turma"
+    }
+   ],
+   "evidence": {
+    "primary_source_obtained": false,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-09-30-cgu-93-do-consignado-do-banco-master-teve-inicio-antes-da-assinatura",
+   "date": "2026-09-30",
+   "label": "AGORA",
+   "title": "CGU: 93% do consignado do Banco Master teve início antes da assinatura dos aposentados (auditoria)",
+   "text": "CGU: 93% do crédito consignado do Banco Master começou a valer antes da assinatura dos aposentados do INSS",
+   "sources": [
+    {
+     "name": "c-level.folha.uol.com.br",
+     "title": "CGU: 93% do consignado do Master teve assinatura posterior",
+     "url": "https://c-level.folha.uol.com.br/financas/2026/09/93-do-credito-consignado-do-master-foi-efetivado-com-assinaturas-posteriores-aos-contratos-diz-cgu.shtml"
+    },
+    {
+     "name": "bmcnews.com.br",
+     "title": "CGU: 93,3% dos consignados no Banco Master começaram antes da assinatura",
+     "url": "https://bmcnews.com.br/caso-master/cgu-93-3-dos-consignados-no-banco-master-comecaram-antes-da-assinatura"
+    },
+    {
+     "name": "radio93fm.com.br",
+     "title": "CGU expõe: 93% dos consignados do Banco Master iniciaram antes da assinatura dos beneficiários",
+     "url": "https://radio93fm.com.br/cgu-expoe-93-dos-consignados-do-banco-master-iniciaram-antes-da-assinatura-dos-beneficiarios"
+    },
+    {
+     "name": "Valor",
+     "title": "Mais de 90% do crédito consignado do Master foi efetivado antes da assinatura dos beneficiários, diz CGU",
+     "url": "https://valor.globo.com/financas/noticia/2026/09/30/mais-de-90percent-do-credito-consignado-do-master-foi-efetivado-antes-da-assinatura-dos-beneficiarios-diz-cgu.ghtml"
+    },
+    {
+     "name": "Revista Oeste",
+     "title": "CGU: 93% do consignado do Master foi efetivado antes da assinatura dos beneficiários",
+     "url": "https://revistaoeste.com/economia/cgu-93-do-consignado-do-master-foi-efetivado-antes-da-assinatura-dos-beneficiarios"
+    }
+   ],
+   "evidence": {
+    "primary_source_obtained": false,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-09-30-caso-nossa-senhora-aparecida-voto-de-mendonca-no-tse-e-tramite-tse",
+   "date": "2026-09-30",
+   "label": "AGORA",
+   "title": "Caso Nossa Senhora Aparecida: voto de Mendonça no TSE e trâmite TSE/STF (30/09)",
+   "text": "Caso das publicações sobre Nossa Senhora Aparecida no TSE/STF: julgamento no TSE em 30/09 e adiamento no STF",
+   "sources": [
+    {
+     "name": "g1",
+     "title": "Mendonça confirma em voto decisão que tirou do ar posts sobre Nossa Senhora Aparecida - G1",
+     "url": "https://g1.globo.com/politica/noticia/2026/09/30/mendonca-vota-para-confirmar-decisao-que-tirou-do-ar-posts-sobre-nossa-senhora-aparecida.ghtml"
+    },
+    {
+     "name": "CNN Brasil",
+     "title": "Mendonça vota para manter proibidos posts sobre fake news de Nossa Senhora",
+     "url": "https://cnnbrasil.com.br/politica/mendonca-vota-para-manter-proibicao-de-posts-sobre-nossa-senhora"
+    },
+    {
+     "name": "CNN Brasil",
+     "title": "Fachin adia debate no plenário do STF sobre fake news de Nossa ...",
+     "url": "https://cnnbrasil.com.br/politica/fachin-adia-debate-no-stf-sobre-fake-news-de-nossa-senhora-aparecida"
+    },
+    {
+     "name": "Agência Brasil",
+     "title": "Fachin adia discussão sobre postagens de Nossa Senhora no STF",
+     "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/fachin-adia-discussao-sobre-postagens-de-nossa-senhora-no-stf"
+    },
+    {
+     "name": "Agência Brasil",
+     "title": "Mendonça libera postagem de Erika Hilton sobre Nossa Senhora Aparecida",
+     "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/mendonca-libera-postagem-de-erika-hilton-sobre-nossa-senhora-aparecida"
+    },
+    {
+     "name": "Estadão",
+     "title": "Ministros do STF aconselham Fachin a evitar julgamento sobre fake ...",
+     "url": "https://estadao.com.br/politica/ministros-do-stf-aconselham-fachin-a-evitar-julgamento-sobre-nossa-senhora-antes-das-eleicoes"
+    },
+    {
+     "name": "CNN Brasil",
+     "title": "Nossa Senhora: Nunes Marques marcou sessão no TSE após ...",
+     "url": "https://cnnbrasil.com.br/blogs/teo-cury/politica/nossa-senhora-nunes-marques-marcou-sessao-no-tse-apos-conversa-com-fachin"
+    },
+    {
+     "name": "Agência Brasil",
+     "title": "TSE irá julgar decisão que barrou postagens sobre Nossa Senhora",
+     "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/tse-ira-julgar-decisao-que-barrou-postagens-sobre-nossa-senhora"
+    },
+    {
+     "name": "Veja",
+     "title": "A decisão de Nunes Marques sobre julgamento do TSE de posts sobre Nossa Senhora Aparecida",
+     "url": "https://veja.abril.com.br/politica/a-decisao-de-nunes-marques-sobre-julgamento-do-tse-envolvendo-posts-sobe-nossa-senhora-aparecida"
+    },
+    {
+     "name": "g1",
+     "title": "Flávio Dino manda Polícia Federal investigar onda de ataques a imagens religiosas no país",
+     "url": "https://g1.globo.com/politica/noticia/2026/09/30/dino-manda-policia-federal-apurar-onda-de-ataques-a-imagens-religiosas.ghtml"
+    },
+    {
+     "name": "CNN Brasil",
+     "title": "Dino manda PF abrir investigação sobre ataques a imagens religiosas",
+     "url": "https://cnnbrasil.com.br/politica/dino-manda-pf-abrir-investigacao-sobre-ataques-a-imagens-religiosas"
+    },
+    {
+     "name": "Folha de S.Paulo",
+     "title": "Dino pede inquérito sobre 'ataques a imagens religiosas' após Nossa Senhora virar pauta eleitoral",
+     "url": "https://www1.folha.uol.com.br/poder/2026/09/dino-pede-inquerito-sobre-ataques-a-imagens-religiosas-apos-nossa-senhora-virar-pauta-eleitoral.shtml"
+    },
+    {
+     "name": "Poder360",
+     "title": "Saiba quais casos levaram Dino a pedir apuração sobre imagens religiosas",
+     "url": "https://poder360.com.br/poder-justica/saiba-quais-casos-levaram-dino-a-pedir-apuracao-sobre-imagens-religiosas"
+    },
+    {
+     "name": "CNN Brasil",
+     "title": "PF vê elementos e decide abrir inquérito sobre ataques a imagens religiosas",
+     "url": "https://cnnbrasil.com.br/blogs/elijonasmaia/politica/pf-ve-elementos-e-decide-abrir-inquerito-sobre-ataques-a-imagens-religiosas"
+    },
+    {
+     "name": "Folha de S.Paulo",
+     "title": "Flávio e Michelle se aproximaram de bispo que defendeu retirar título de padroeira de Nossa Senhora",
+     "url": "https://www1.folha.uol.com.br/poder/2026/09/flavio-e-michelle-se-aproximaram-de-bispo-que-defendeu-retirar-titulo-de-padroeira-de-aparecida.shtml"
+    },
+    {
+     "name": "Estado de Minas",
+     "title": "A ligação de Flávio Bolsonaro com o bispo que pediu o fim de N.S. Aparecida como padroeira do Brasil",
+     "url": "https://em.com.br/politica/2026/09/7511461-a-ligacao-de-flavio-bolsonaro-com-o-bispo-que-pediu-o-fim-de-n-s-aparecida-como-padroeira-do-brasil.html"
+    },
+    {
+     "name": "brasilnocentro.com.br",
+     "title": "Flávio e Michelle têm ligação com bispo que defendeu retirar título de Aparecida",
+     "url": "https://brasilnocentro.com.br/flavio-e-michelle-tem-ligacao-com-bispo-que-defendeu-retirar-titulo-de-aparecida"
+    },
+    {
+     "name": "CNN Brasil",
+     "title": "TSE tem 3 a 0 para proibir posts sobre fake news de Nossa Senhora",
+     "url": "https://cnnbrasil.com.br/politica/julgamento-tse-fake-news-nossa-senhora-aparecida"
+    },
+    {
+     "name": "ncnews.com.br",
+     "title": "TSE tem 3 votos para manter remoção de posts que associam Flávio Bolsonaro a Nossa Senhora",
+     "url": "https://ncnews.com.br/2026/09/30/tse-tem-3-votos-para-manter-remocao-de-posts-que-associam-flavio-bolsonaro-a-nossa-senhora"
+    },
+    {
+     "name": "SBT News",
+     "title": "TSE tem 3 a 1 para apagar posts sobre Nossa Senhora",
+     "url": "https://sbtnews.sbt.com.br/noticia/politica/tse-julgamento-posts-flavio-nossa-senhora"
+    },
+    {
+     "name": "98fmnatal.com.br",
+     "title": "TSE tem placar de 3x1 para manter retirada de posts sobre Nossa Senhora Aparecida",
+     "url": "https://98fmnatal.com.br/politica/tse-tem-placar-de-3x1-para-manter-retirada-de-posts-sobre-nossa-senhora-aparecida/396122"
+    },
+    {
+     "name": "TSE (consulta processual)",
+     "title": "[fonte primária] PS-TSE-20260925-RP0602260",
+     "url": "https://consultaunificadapje.tse.jus.br/consulta-publica-unificada/documento?extensaoArquivo=text/html&path=tse/2026/9/25/17/40/42/486501e7dfaaa7c983f330dfb881c68272f53950a66a9b24411c718de44257d1"
+    },
+    {
+     "name": "TSE (consulta processual)",
+     "title": "[fonte primária] PS-TSE-20260929-RP0602260",
+     "url": "https://consultaunificadapje.tse.jus.br/consulta-publica-unificada/documento?extensaoArquivo=text/html&path=tse/2026/9/29/16/59/28/e4caa46311ef65c15ca0e1888a33aae2da8d91a5bbe8ece6048da21a59e4e5ff"
+    },
+    {
+     "name": "g1",
+     "title": "TSE vai limitar decisão de André Mendonça ao que é de fato fake news contra Flávio Bolsonaro",
+     "url": "https://g1.globo.com/politica/blog/valdo-cruz/post/2026/09/30/tse-vai-limitar-decisao-de-andre-mendonca-ao-que-e-de-fato-fake-news-contra-flavio-bolsonaro.ghtml"
+    },
+    {
+     "name": "STF (notícias)",
+     "title": "[fonte primária] PS-STF-20260930-DINO",
+     "url": "https://noticias.stf.jus.br/postsnoticias/stf-manda-investigar-ataques-contra-simbolos-religiosos/"
+    }
+   ],
+   "evidence": {
+    "primary_source_obtained": false,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-09-30-abin-teria-alertado-franca-e-alemanha-sobre-suposta-interferencia-dos",
+   "date": "2026-09-30",
+   "label": "AGORA",
+   "title": "Abin teria alertado França e Alemanha sobre suposta interferência dos EUA e da Rússia nas eleições (Reuters/Folha)",
+   "text": "Abin teria alertado França e Alemanha sobre suposta interferência dos EUA e da Rússia nas eleições (Reuters/Folha)",
+   "sources": [
+    {
+     "name": "Folha de S.Paulo",
+     "title": "Abin alertou França sobre ação dos EUA nas eleições 2026 - Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/09/abin-alertou-franca-e-alemanha-sobre-suposta-interferencia-dos-eua-e-da-russia-nas-eleicoes.shtml"
+    },
+    {
+     "name": "tvsimbrasil.com.br",
+     "title": "Abin confirma interferência dos EUA e da Rússia nas eleições",
+     "url": "https://tvsimbrasil.com.br/brasil/politica/noticia/2026/09/30/abin-confirma-interferencia-eua-russia-eleicoes"
+    },
+    {
+     "name": "R7",
+     "title": "Brasil avisa França e Alemanha sobre suposta interferência de EUA e Rússia nas eleições",
+     "url": "https://noticias.r7.com/eleicoes/2026/brasil-avisa-franca-e-alemanha-sobre-suposta-interferencia-de-eua-e-russia-nas-eleicoes-30092026"
+    },
+    {
+     "name": "portaltela.com",
+     "title": "Brasil alerta europeus sobre suposta interferência eleitoral de EUA e Rússia",
+     "url": "https://portaltela.com/politica/2026/09/30/brasil-alerta-europeus-sobre-suposta-interferencia-eleitoral-de-eua-e-russia"
+    }
+   ],
+   "evidence": {
+    "primary_source_obtained": false,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  }
+ ]
+}
