@@ -20,6 +20,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Dados das interfaces públicas (v4 e v5) gerados a partir do que está no ar,
+      # para não ficarem velhos quando o Publisher atualiza index.html/data.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Gerar dados públicos da v4 e da v5
+        run: |
+          node public-ui/build-public-data.mjs
+          node public-ui/build-v5-data.mjs
+
       - name: Deploy via FTP para /public_html
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
