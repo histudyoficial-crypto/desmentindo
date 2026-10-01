@@ -52,6 +52,14 @@ jobs:
           if [ -f public-ui/build-public-data.mjs ]; then
             node public-ui/build-public-data.mjs --check
           fi
+      - name: Página da raiz gerada (v5) sem noindex e sem marcador privado
+        run: |
+          node public-ui/build-root.mjs --out /tmp/root.html
+          if [ "$(tr -d '[:space:]' < public-ui/ROOT_VERSION)" = "v5" ]; then
+            grep -q 'name="desmentindo-root" content="v5"' /tmp/root.html
+            if grep -q noindex /tmp/root.html; then echo 'raiz com noindex'; exit 1; fi
+          fi
+          if grep -n -E 'AUTONOMOUS_TEST_RUN|RV-20[0-9]{6}-[0-9]{3}|WAITING_REVIEW|desmentindo-ops|MORNING_OPEN|ANTHROPIC_API_KEY' /tmp/root.html; then exit 1; fi
       - name: Dados da v5 em sincronia com os dados públicos
         run: |
           if [ -f public-ui/build-v5-data.mjs ]; then
