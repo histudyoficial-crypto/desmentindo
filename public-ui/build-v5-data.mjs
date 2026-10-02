@@ -138,10 +138,32 @@ const personBySlug = Object.fromEntries(PERSONS.map(p => [p.slug, p]));
 const personByName = Object.fromEntries(PERSONS.map(p => [p.name, p]));
 
 // ---------------------------------------------------------------- histórias
+// Auditoria das alegações exibidas (public-ui/attribution_audit.json, camada de apresentação; não altera o dado).
+// Vale só se o texto do registro não mudou (hash); senão, volta ao rótulo do dado (ALEGAÇÃO ATRIBUÍDA).
+const AUDIT = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "attribution_audit.json"), "utf8")).items.map(x => [x.event, x]));
+const evHash = t => crypto.createHash("sha256").update(String(t || "").normalize("NFC").replace(/\s+/g, " ").trim()).digest("hex").slice(0, 16);
+const cleanAttr = t => (t && t !== "None" ? String(t).replace(/,?\s*segundo (o )?resumo( de busca)?;?/gi, "").replace(/\(\s*,\s*/g, "(").replace(/\s+\)/g, ")").trim() : null);
+const ATTR_LOG = [];
+function attribution(x) {
+  if (!x.allegation) return undefined;
+  const a = AUDIT[x.e.id], ok = a && a.text_sha256 === evHash(x.e.desc);
+  // Revisão humana individual (Command Center): enquanto não decidida, rótulo neutro. CONFIRMED → proposta;
+  // KEPT_PREVIOUS → classificação do dado (alegação). Nunca aprovação em lote.
+  const hr = ok && a.human_review ? a.human_review.status : null;
+  const cls = !ok ? "ALLEGATION" : hr === "CONFIRMED" ? a.proposed : hr === "KEPT_PREVIOUS" ? "ALLEGATION" : hr ? "HUMAN_REVIEW" : a.proposed;
+  const kind = cls === "ATTRIBUTED_STATEMENT" ? "declaracao" : cls === "HUMAN_REVIEW" ? "atribuido" : "alegacao";
+  const src = x.sources[0];
+  ATTR_LOG.push({ ev: x.e.id, kind, hr });
+  return { kind, by: (ok && a.by) || cleanAttr(x.e.alde) || (src ? src.outlet : null), resp: x.e.resp ? cut(cleanAttr(x.e.resp), 170) : null,
+           src: src ? { outlet: src.outlet, url: src.url } : null };
+}
+// Correção de link de fonte auditada (ex.: URL que cai em 404 no dado legado → URL canônico verificado). Só vale se o
+// texto do registro não mudou (hash); o rótulo e a classificação não mudam.
+const fixUrl = (e, u) => { const a = AUDIT[e.id]; return a && a.source_url_fix && a.text_sha256 === evHash(e.desc) && a.source_url_fix[u] || u; };
 const EVENTS = D.ev.map((e, i) => ({
   i, e, date: validDate(e.d) ? e.d : null, published: validDate(e.dp) ? e.dp : null,
   allegation: e.nat === "alegacao_atribuida", text: pub(e.desc),
-  sources: (() => { const seen = new Set(); return (e.fontes || []).filter(f => f.url && !seen.has(f.url) && seen.add(f.url)).map(f => ({ title: pub(f.t), outlet: host(f.url), url: f.url, kind: srcKind(f.tp), tp: f.tp, loc: f.loc })); })(),
+  sources: (() => { const seen = new Set(); return (e.fontes || []).filter(f => f.url && !seen.has(f.url) && seen.add(f.url)).map(f => { const url = fixUrl(e, f.url); return { title: pub(f.t), outlet: host(url), url, kind: srcKind(f.tp), tp: f.tp, loc: f.loc }; }); })(),
 }));
 const byCase = {};
 for (const x of EVENTS) for (const c of x.e.c) (byCase[c] = byCase[c] || []).push(x);
@@ -187,22 +209,40 @@ function buildStory(caso) {
   }
   const shownIds = new Set([summaryEv, ...facts.filter(x => x !== summaryEv).slice(0, 3)].filter(Boolean).map(x => x.i));
   // Cronologia só quando ajuda: registros em anos diferentes; sem repetir o que já está acima.
-  const rest = dated.filter(x => !shownIds.has(x.i));
+  // Mesmo registro duplicado no dado (mesma data, mesmo começo de texto) aparece uma vez só.
+  const recKey = x => x.date + "|" + String(x.text).slice(0, 80);
+  const seenChrono = new Set();
+  const rest = dated.filter(x => !shownIds.has(x.i)).filter(x => { const k = recKey(x); if (seenChrono.has(k)) return false; seenChrono.add(k); return true; });
   const chronoSrc = firstY !== lastY && rest.length >= 3 ? pickSpread(rest.slice().reverse(), 6) : [];
-  const chrono = chronoSrc.map(x => ({ date: x.date, text: cut(x.text, 150) }));
+  const chrono = chronoSrc.map(x => ({ date: x.date, allegation: x.allegation || undefined, attr: attribution(x), text: cut(x.text, 150) }));
   for (const x of chronoSrc) shownIds.add(x.i);
-  const updates = all.filter(x => x.published && !shownIds.has(x.i)).sort((a, b) => cmp(b.published, a.published) || b.i - a.i).slice(0, 3)
-    .map(x => ({ published: x.published, text: cut(x.text, 150) }));
+  const seenUpd = new Set([...chronoSrc, ...dated.filter(x => shownIds.has(x.i))].map(recKey));
+  const updates = all.filter(x => x.published && !shownIds.has(x.i)).filter(x => { const k = recKey(x); if (seenUpd.has(k)) return false; seenUpd.add(k); return true; }).sort((a, b) => cmp(b.published, a.published) || b.i - a.i).slice(0, 3)
+    .map(x => ({ published: x.published, allegation: x.allegation || undefined, attr: attribution(x), text: cut(x.text, 150) }));
 
   return {
     slug: slugify(caso), key: caso, title: label(caso),
     span: firstY ? (firstY === lastY ? String(firstY) : firstY + "–" + lastY) : null,
     lastD: dated[0] ? dated[0].date : null, lastPublished, records: all.length, n_sources: sources.length,
-    summary: summaryEv ? { date: summaryEv.date, text: cut(summaryEv.text, 260), source: summaryEv.sources[0] ? { title: summaryEv.sources[0].title, outlet: summaryEv.sources[0].outlet, url: summaryEv.sources[0].url } : null } : null,
+    summary: summaryEv ? { date: summaryEv.date, allegation: summaryEv.allegation || undefined, attr: attribution(summaryEv), text: cut(summaryEv.text, 260), source: summaryEv.sources[0] ? { title: summaryEv.sources[0].title, outlet: summaryEv.sources[0].outlet, url: summaryEv.sources[0].url } : null } : null,
     known, said, people, found, chrono, sources: sources.slice(0, 40), sources_total: sources.length, updates,
   };
 }
 const STORIES = D.casos.filter(c => (byCase[c] || []).length).map(buildStory);
+// ALLEGATION_RENDERED_AS_FACT (fail closed): nenhum item de alegação sai sem atribuição.
+{
+  const shown = STORIES.filter(s => s.key !== EXCLUDE_CASE).flatMap(s => [s.summary, ...s.chrono, ...s.updates].filter(Boolean));
+  const bad = shown.filter(x => x.allegation && !(x.attr && x.attr.kind && x.attr.by));
+  if (bad.length) throw new Error("ALLEGATION_RENDERED_AS_FACT: " + bad.length + " item(ns) sem atribuição");
+  // ATTRIBUTED_STATEMENT ≠ ATTRIBUTED_ALLEGATION ≠ FATO: declaração só com confirmação humana; revisão pendente = neutro;
+  // alegação nunca entra em "O que sabemos" (só fato com fonte).
+  const semBad = ATTR_LOG.filter(l => (l.kind === "declaracao" && l.hr && l.hr !== "CONFIRMED") || (l.hr && !["CONFIRMED", "KEPT_PREVIOUS"].includes(l.hr) && l.kind !== "atribuido"));
+  if (semBad.length) throw new Error("ATTRIBUTION_SEMANTICS: " + JSON.stringify(semBad.slice(0, 3)));
+  const knownAlleg = STORIES.flatMap(s => s.known).filter(k => EVENTS.some(x => x.allegation && x.date === k.date && cut(x.text, 220) === k.text));
+  if (knownAlleg.length) throw new Error("ALLEGATION_IN_WHAT_WE_KNOW: " + knownAlleg.length);
+  const al = shown.filter(x => x.allegation);
+  console.log(`alegações exibidas: ${al.length} (alegação ${al.filter(x => x.attr.kind === "alegacao").length} · declaração ${al.filter(x => x.attr.kind === "declaracao").length} · atribuído neutro ${al.filter(x => x.attr.kind === "atribuido").length})`);
+}
 const RANKED = STORIES.filter(s => s.key !== EXCLUDE_CASE).sort((a, b) => cmp(b.lastPublished, a.lastPublished) || b.records - a.records);
 const storyIdx = Object.fromEntries(STORIES.map((s, i) => [s.key, i]));
 
@@ -345,6 +385,20 @@ function personPage(p) {
   };
 }
 
+// ---------------------------------------------------------------- Checar (exemplo público)
+// null = nenhum exemplo público (padrão). Para liberar, Johnny escolhe uma peça JÁ publicada e checada
+// (ex.: "N001" de v4/data/afirmacoes.json) — decisão humana, nunca automática.
+const CHECAR_PUBLIC_EXAMPLE = null;
+function checarPublic() {
+  if (!CHECAR_PUBLIC_EXAMPLE) return { example: null };
+  const A = JSON.parse(fs.readFileSync(path.join(ROOT, "v4", "data", "afirmacoes.json"), "utf8"));
+  const circ = A.circulating.find(c => c.id === CHECAR_PUBLIC_EXAMPLE);
+  if (!circ) throw new Error("CHECAR_PUBLIC_EXAMPLE não encontrado: " + CHECAR_PUBLIC_EXAMPLE);
+  const ids = new Set(circ.blocks.flatMap(b => b.claims));
+  const claims = A.claims.filter(c => ids.has(c.id) || (c.origin && c.origin.title === circ.text));
+  return { example: null, circulating: circ, claims };
+}
+
 // ---------------------------------------------------------------- write / check
 const files = {
   "home.json": HOME,
@@ -352,6 +406,16 @@ const files = {
     stories: STORIES.filter(s => s.key !== EXCLUDE_CASE).map(s => ({ slug: s.slug, title: s.title, said: s.said.length })).filter(s => s.said) ,
     stats: { stories: RANKED.length, records: D.ev.length, segments: SEG.length } },
   "busca/meta.json": SEARCH_META,
+  // Links do app anterior (#/caso?c=…, #/pessoa?n=…) → história/consulta equivalente. Só o que existe na v5.
+  "rotas.json": {
+    casos: Object.fromEntries(STORIES.filter(s => s.key !== EXCLUDE_CASE).map(s => [s.key, s.slug])),
+    pessoas: Object.fromEntries(PERSONS.map(p => [p.name, p.slug])),
+    // #/…?ev=<registro> do app anterior → a história pública que contém o registro
+    eventos: Object.fromEntries(D.ev.map(e => [e.id, (e.c || []).filter(c => c !== EXCLUDE_CASE && storyIdx[c] !== undefined).map(c => STORIES[storyIdx[c]].slug)[0]]).filter(x => x[1])),
+  },
+  // Checar: exemplo público "original × checado" só com checagem já publicada E liberada por Johnny
+  // (CHECAR_PUBLIC_EXAMPLE). Padrão = nenhum (fail closed): a página explica o método e não mostra exemplo.
+  "checar.json": checarPublic(),
 };
 for (const s of STORIES) if (s.key !== EXCLUDE_CASE) { const { key, ...rest } = s; files["historia/" + s.slug + ".json"] = rest; }
 for (const p of PERSONS) files["arquivo/" + p.slug + ".json"] = personPage(p);

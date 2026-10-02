@@ -5,7 +5,11 @@
    {
     "check": "desktop:home: nenhum download do arquivo completo (data/ag, data/corpus)",
     "ok": true,
-    "info": []
+    "info": [
+     "/data/editorial/index.json",
+     "/data/editorial/index.json",
+     "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc"
+    ]
    },
    {
     "check": "desktop:home: sem '0 resultados'",
@@ -21,6 +25,11 @@
     "check": "desktop:home: sem jargão interno no texto",
     "ok": true,
     "info": null
+   },
+   {
+    "check": "desktop:home: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
    },
    {
     "check": "desktop:home: noindex",
@@ -48,6 +57,11 @@
     "info": null
    },
    {
+    "check": "desktop:story: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
     "check": "desktop:search-moraes: nenhum download do arquivo completo (data/ag, data/corpus)",
     "ok": true,
     "info": []
@@ -66,6 +80,11 @@
     "check": "desktop:search-moraes: sem jargão interno no texto",
     "ok": true,
     "info": null
+   },
+   {
+    "check": "desktop:search-moraes: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
    },
    {
     "check": "desktop:search-inss: nenhum download do arquivo completo (data/ag, data/corpus)",
@@ -88,6 +107,11 @@
     "info": null
    },
    {
+    "check": "desktop:search-inss: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
     "check": "desktop:arquivos: nenhum download do arquivo completo (data/ag, data/corpus)",
     "ok": true,
     "info": []
@@ -106,6 +130,11 @@
     "check": "desktop:arquivos: sem jargão interno no texto",
     "ok": true,
     "info": null
+   },
+   {
+    "check": "desktop:arquivos: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
    },
    {
     "check": "desktop:arquivos: Te Atualizei marcado como indisponível",
@@ -138,6 +167,11 @@
     "info": null
    },
    {
+    "check": "desktop:arquivo-pessoa: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
     "check": "desktop:profissionais: nenhum download do arquivo completo (data/ag, data/corpus)",
     "ok": true,
     "info": []
@@ -156,6 +190,11 @@
     "check": "desktop:profissionais: sem jargão interno no texto",
     "ok": true,
     "info": null
+   },
+   {
+    "check": "desktop:profissionais: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
    },
    {
     "check": "desktop:profissionais: Te Atualizei marcado como indisponível",
@@ -188,9 +227,170 @@
     "info": null
    },
    {
-    "check": "mobile:home: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "check": "desktop:search-vazio: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
     "ok": true,
     "info": []
+   },
+   {
+    "check": "desktop:epist-atibaia: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:epist-atibaia: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:epist-atibaia: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:epist-atibaia: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:epist-atibaia: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:checar: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:checar: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:checar: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:checar: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:checar: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:agora-item: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:agora-item: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:agora-item: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:agora-item: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:agora-item: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:home-agora: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": [
+     "/data/editorial/index.json",
+     "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc"
+    ]
+   },
+   {
+    "check": "desktop:home-agora: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home-agora: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home-agora: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home-agora: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:legacy-matriz: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:legacy-matriz: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-matriz: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-matriz: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-matriz: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:legacy-eventos: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:legacy-eventos: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-eventos: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-eventos: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-eventos: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:home: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": [
+     "/data/editorial/index.json",
+     "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc"
+    ]
    },
    {
     "check": "mobile:home: sem '0 resultados'",
@@ -206,6 +406,11 @@
     "check": "mobile:home: sem jargão interno no texto",
     "ok": true,
     "info": null
+   },
+   {
+    "check": "mobile:home: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
    },
    {
     "check": "mobile:home: noindex",
@@ -233,6 +438,11 @@
     "info": null
    },
    {
+    "check": "mobile:story: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
     "check": "mobile:search-moraes: nenhum download do arquivo completo (data/ag, data/corpus)",
     "ok": true,
     "info": []
@@ -251,6 +461,11 @@
     "check": "mobile:search-moraes: sem jargão interno no texto",
     "ok": true,
     "info": null
+   },
+   {
+    "check": "mobile:search-moraes: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
    },
    {
     "check": "mobile:search-inss: nenhum download do arquivo completo (data/ag, data/corpus)",
@@ -273,6 +488,11 @@
     "info": null
    },
    {
+    "check": "mobile:search-inss: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
     "check": "mobile:arquivos: nenhum download do arquivo completo (data/ag, data/corpus)",
     "ok": true,
     "info": []
@@ -291,6 +511,11 @@
     "check": "mobile:arquivos: sem jargão interno no texto",
     "ok": true,
     "info": null
+   },
+   {
+    "check": "mobile:arquivos: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
    },
    {
     "check": "mobile:arquivos: Te Atualizei marcado como indisponível",
@@ -323,6 +548,11 @@
     "info": null
    },
    {
+    "check": "mobile:arquivo-pessoa: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
     "check": "mobile:profissionais: nenhum download do arquivo completo (data/ag, data/corpus)",
     "ok": true,
     "info": []
@@ -341,6 +571,11 @@
     "check": "mobile:profissionais: sem jargão interno no texto",
     "ok": true,
     "info": null
+   },
+   {
+    "check": "mobile:profissionais: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
    },
    {
     "check": "mobile:profissionais: Te Atualizei marcado como indisponível",
@@ -371,6 +606,164 @@
     "check": "mobile:search-vazio: sem jargão interno no texto",
     "ok": true,
     "info": null
+   },
+   {
+    "check": "mobile:search-vazio: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:epist-atibaia: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:epist-atibaia: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:epist-atibaia: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:epist-atibaia: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:epist-atibaia: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:checar: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:checar: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:checar: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:checar: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:checar: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:agora-item: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:agora-item: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:agora-item: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:agora-item: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:agora-item: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:home-agora: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": [
+     "/data/editorial/index.json",
+     "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc"
+    ]
+   },
+   {
+    "check": "mobile:home-agora: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home-agora: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home-agora: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home-agora: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:legacy-matriz: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:legacy-matriz: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-matriz: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-matriz: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-matriz: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:legacy-eventos: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:legacy-eventos: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-eventos: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-eventos: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-eventos: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
    },
    {
     "check": "arquivos da v5 sem marcadores internos nem jargão",
@@ -440,6 +833,36 @@
     "info": []
    },
    {
+    "check": "desktop:epist-atibaia: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:checar: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:agora-item: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:home-agora: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:legacy-matriz: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:legacy-eventos: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
     "check": "mobile:home: todo arquivo de dados < 400 KB",
     "ok": true,
     "info": []
@@ -491,6 +914,36 @@
    },
    {
     "check": "mobile:search-vazio: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:epist-atibaia: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:checar: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:agora-item: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:home-agora: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:legacy-matriz: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:legacy-eventos: todo arquivo de dados < 400 KB",
     "ok": true,
     "info": []
    },
@@ -547,7 +1000,7 @@
    {
     "check": "desktop:home: Agora enxuto (1 principal + até 3)",
     "ok": true,
-    "info": 4
+    "info": 1
    },
    {
     "check": "desktop:arquivos: sem erro de JS",
@@ -578,6 +1031,26 @@
     "check": "desktop:profissionais: sem rolagem horizontal",
     "ok": true,
     "info": 0
+   },
+   {
+    "check": "desktop:home-agora: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:home-agora: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:home: AGORA enxuto (3 com texto, resto em linhas) e todos os itens com link próprio",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home: fontes sem tooltip (title) como única informação",
+    "ok": true,
+    "info": null
    },
    {
     "check": "mobile:home: sem erro de JS",
@@ -622,7 +1095,7 @@
    {
     "check": "mobile:home: Agora enxuto (1 principal + até 3)",
     "ok": true,
-    "info": 4
+    "info": 1
    },
    {
     "check": "mobile:arquivos: sem erro de JS",
@@ -653,6 +1126,26 @@
     "check": "mobile:profissionais: sem rolagem horizontal",
     "ok": true,
     "info": 0
+   },
+   {
+    "check": "mobile:home-agora: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:home-agora: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:home: AGORA enxuto (3 com texto, resto em linhas) e todos os itens com link próprio",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home: fontes sem tooltip (title) como única informação",
+    "ok": true,
+    "info": null
    }
   ],
   "V5_STORY_QA": [
@@ -674,7 +1167,7 @@
    {
     "check": "desktop:story: 'Já falaram' começa até 1,5 tela (1200px)",
     "ok": true,
-    "info": 894.125
+    "info": 1147.9375
    },
    {
     "check": "desktop:story: atalho para 'Já falaram' visível na primeira dobra",
@@ -704,7 +1197,7 @@
    {
     "check": "mobile:story: 'Já falaram' começa até 1,5 tela (1266px)",
     "ok": true,
-    "info": 1168.8125
+    "info": 1241.84375
    },
    {
     "check": "mobile:story: atalho para 'Já falaram' visível na primeira dobra",
@@ -1045,6 +1538,801 @@
     "info": null
    }
   ],
+  "V5_EPISTEMIC_QA": [
+   {
+    "check": "desktop:epist-atibaia: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:epist-atibaia: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop: cronologia de 'atibaia' rotula e atribui toda alegação (e só ela)",
+    "ok": true,
+    "info": {
+     "want": [
+      false,
+      true,
+      false,
+      false,
+      false,
+      false
+     ],
+     "got": [
+      false,
+      true,
+      false,
+      false,
+      false,
+      false
+     ]
+    }
+   },
+   {
+    "check": "desktop: atualizações rotulam e atribuem alegação",
+    "ok": true,
+    "info": {
+     "want": [
+      false,
+      false,
+      false
+     ],
+     "got": [
+      false,
+      false,
+      false
+     ]
+    }
+   },
+   {
+    "check": "ATTRIBUTED_STATEMENT ≠ ATTRIBUTED_ALLEGATION ≠ FATO: nenhum item com dois rótulos",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "declaração atribuída só com confirmação humana individual (0 pendentes ficam neutros)",
+    "ok": true,
+    "info": {
+     "declaracao": 9,
+     "confirmadas": 9
+    }
+   },
+   {
+    "check": "ALLEGATION_RENDERED_AS_FACT = 0 em todas as histórias (55 itens de alegação conferidos)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop: 'O que sabemos' só com fato com fonte, rotulado",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: documento localizado com a regra 'ainda precisamos verificar'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:epist-atibaia: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:epist-atibaia: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile: cronologia de 'atibaia' rotula e atribui toda alegação (e só ela)",
+    "ok": true,
+    "info": {
+     "want": [
+      false,
+      true,
+      false,
+      false,
+      false,
+      false
+     ],
+     "got": [
+      false,
+      true,
+      false,
+      false,
+      false,
+      false
+     ]
+    }
+   },
+   {
+    "check": "mobile: atualizações rotulam e atribuem alegação",
+    "ok": true,
+    "info": {
+     "want": [
+      false,
+      false,
+      false
+     ],
+     "got": [
+      false,
+      false,
+      false
+     ]
+    }
+   },
+   {
+    "check": "mobile: 'O que sabemos' só com fato com fonte, rotulado",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: documento localizado com a regra 'ainda precisamos verificar'",
+    "ok": true,
+    "info": null
+   }
+  ],
+  "V5_CHECAR_QA": [
+   {
+    "check": "desktop:checar: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:checar: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:checar: diz que o envio ainda não está aberto (nada é recebido nem guardado)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:checar: CHECAR_SUBMISSIONS = CLOSED (sem campo de envio, sem CTA de envio, fora da navegação principal)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:checar: 7 passos (entrada → decomposição → checagem → encontramos → contexto → conclusão → saída)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:checar: paridade de formato (6 pares)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:checar: legenda com os 5 selos + 'checamos se foi dito/aconteceu'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:checar: exemplo público só se liberado (checar.json)",
+    "ok": true,
+    "info": false
+   },
+   {
+    "check": "desktop:ovc: todas as afirmações da peça real aparecem checadas (saída não empobrece a entrada)",
+    "ok": true,
+    "info": {
+     "n": 27,
+     "total": 27,
+     "selos": 27
+    }
+   },
+   {
+    "check": "desktop:ovc: ORIGINAL sem selo (o que entrou) × CHECADO com selo (o que sobrou)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:ovc: ligação não confirmada é pontilhada; nenhuma aparece como documentada",
+    "ok": true,
+    "info": {
+     "weak": 5,
+     "dotted": 5,
+     "solid_unconfirmed": 0
+    }
+   },
+   {
+    "check": "desktop:ovc: paridade de formato (mapa de relações, tabela, linha do tempo)",
+    "ok": true,
+    "info": [
+     "relations",
+     "table",
+     "timeline"
+    ]
+   },
+   {
+    "check": "desktop:ovc: valor desconhecido → EM CHECAGEM; 'não encontramos' com a frase obrigatória",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:ovc: peça checada com marca, data e endereço (base para derivação)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:ovc: sem ID interno na saída",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:ovc: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:checar: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:checar: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:checar: diz que o envio ainda não está aberto (nada é recebido nem guardado)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:checar: CHECAR_SUBMISSIONS = CLOSED (sem campo de envio, sem CTA de envio, fora da navegação principal)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:checar: 7 passos (entrada → decomposição → checagem → encontramos → contexto → conclusão → saída)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:checar: paridade de formato (6 pares)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:checar: legenda com os 5 selos + 'checamos se foi dito/aconteceu'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:checar: exemplo público só se liberado (checar.json)",
+    "ok": true,
+    "info": false
+   },
+   {
+    "check": "mobile:ovc: todas as afirmações da peça real aparecem checadas (saída não empobrece a entrada)",
+    "ok": true,
+    "info": {
+     "n": 27,
+     "total": 27,
+     "selos": 27
+    }
+   },
+   {
+    "check": "mobile:ovc: ORIGINAL sem selo (o que entrou) × CHECADO com selo (o que sobrou)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:ovc: ligação não confirmada é pontilhada; nenhuma aparece como documentada",
+    "ok": true,
+    "info": {
+     "weak": 5,
+     "dotted": 5,
+     "solid_unconfirmed": 0
+    }
+   },
+   {
+    "check": "mobile:ovc: paridade de formato (mapa de relações, tabela, linha do tempo)",
+    "ok": true,
+    "info": [
+     "relations",
+     "table",
+     "timeline"
+    ]
+   },
+   {
+    "check": "mobile:ovc: valor desconhecido → EM CHECAGEM; 'não encontramos' com a frase obrigatória",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:ovc: peça checada com marca, data e endereço (base para derivação)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:ovc: sem ID interno na saída",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:ovc: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   }
+  ],
+  "V5_ROUTES_QA": [
+   {
+    "check": "desktop:agora-item: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:agora-item: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:agora-item: título e texto aprovados, sem alteração",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:agora-item: título de cada fonte visível (não depende de hover)",
+    "ok": true,
+    "info": [
+     "Após Mendonça mudar voto, TSE decide liberar post de humorista sobre Nossa Senhora Aparecida",
+     "Nossa Senhora: Mendonça mudou de voto após conversas com Nunes Marques e ministros do TSE",
+     "Mendonça cita resolução editada por Moraes em voto sobre Nossa Senhora",
+     "TSE decide derrubar notícias falsas sobre Nossa Senhora e Flávio Bolsonaro",
+     "TSE decide derrubar posts com notícia falsa sobre Flávio e Nossa Senhora",
+     "Entenda o que o TSE decidiu sobre a fake news de Nossa Senhora Aparecida"
+    ]
+   },
+   {
+    "check": "desktop: /desmentindo_local.html aposentado (redireciona para a raiz com a mesma rota; sem o app anterior)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: LEGACY_V4_PUBLIC_PREVIEW_RETIRED (/v4/ redireciona para a raiz com a mesma rota)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:v4-circulando: #/circulando → #/checar",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:v4-caso: #/caso/lava-jato → #/historia/lava-jato",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:v4-data: #/data → #/profissionais",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-caso: #/caso?c=Lava%20Jato → #/historia/lava-jato",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-pessoa: #/pessoa?n=Dias%20Toffoli → #/arquivo/dias-toffoli",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-corpus: #/corpus → #/arquivos",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-narrativas: #/narrativas → #/checar",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-matriz: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:legacy-matriz: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop: rota retirada (matriz) explica e não aponta para o módulo bloqueado",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-eventos: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:legacy-eventos: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop: rota encerrada (eventos) explica e não aponta para o site anterior",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: link antigo de registro (?ev=) → história que o contém",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:agora-item: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:agora-item: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:agora-item: título e texto aprovados, sem alteração",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:agora-item: título de cada fonte visível (não depende de hover)",
+    "ok": true,
+    "info": [
+     "Após Mendonça mudar voto, TSE decide liberar post de humorista sobre Nossa Senhora Aparecida",
+     "Nossa Senhora: Mendonça mudou de voto após conversas com Nunes Marques e ministros do TSE",
+     "Mendonça cita resolução editada por Moraes em voto sobre Nossa Senhora",
+     "TSE decide derrubar notícias falsas sobre Nossa Senhora e Flávio Bolsonaro",
+     "TSE decide derrubar posts com notícia falsa sobre Flávio e Nossa Senhora",
+     "Entenda o que o TSE decidiu sobre a fake news de Nossa Senhora Aparecida"
+    ]
+   },
+   {
+    "check": "mobile: /desmentindo_local.html aposentado (redireciona para a raiz com a mesma rota; sem o app anterior)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: LEGACY_V4_PUBLIC_PREVIEW_RETIRED (/v4/ redireciona para a raiz com a mesma rota)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:v4-circulando: #/circulando → #/checar",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:v4-caso: #/caso/lava-jato → #/historia/lava-jato",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:v4-data: #/data → #/profissionais",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-caso: #/caso?c=Lava%20Jato → #/historia/lava-jato",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-pessoa: #/pessoa?n=Dias%20Toffoli → #/arquivo/dias-toffoli",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-corpus: #/corpus → #/arquivos",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-narrativas: #/narrativas → #/checar",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-matriz: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:legacy-matriz: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile: rota retirada (matriz) explica e não aponta para o módulo bloqueado",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-eventos: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:legacy-eventos: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile: rota encerrada (eventos) explica e não aponta para o site anterior",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: link antigo de registro (?ev=) → história que o contém",
+    "ok": true,
+    "info": null
+   }
+  ],
+  "ACCESSIBILITY": [
+   {
+    "check": "desktop:a11y-home: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+    "ok": true,
+    "info": {
+     "h1": 1,
+     "unlabeled": 0,
+     "emptyLinks": 0,
+     "imgsNoAlt": 0,
+     "skip": true,
+     "lang": "pt-BR"
+    }
+   },
+   {
+    "check": "desktop:a11y-story: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+    "ok": true,
+    "info": {
+     "h1": 1,
+     "unlabeled": 0,
+     "emptyLinks": 0,
+     "imgsNoAlt": 0,
+     "skip": true,
+     "lang": "pt-BR"
+    }
+   },
+   {
+    "check": "desktop:a11y-checar: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+    "ok": true,
+    "info": {
+     "h1": 1,
+     "unlabeled": 0,
+     "emptyLinks": 0,
+     "imgsNoAlt": 0,
+     "skip": true,
+     "lang": "pt-BR"
+    }
+   },
+   {
+    "check": "desktop:a11y-busca: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+    "ok": true,
+    "info": {
+     "h1": 1,
+     "unlabeled": 0,
+     "emptyLinks": 0,
+     "imgsNoAlt": 0,
+     "skip": true,
+     "lang": "pt-BR"
+    }
+   },
+   {
+    "check": "desktop: foco visível ao navegar por teclado",
+    "ok": true,
+    "info": {
+     "tag": "A",
+     "outline": "solid",
+     "w": "2px"
+    }
+   },
+   {
+    "check": "mobile:a11y-home: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+    "ok": true,
+    "info": {
+     "h1": 1,
+     "unlabeled": 0,
+     "emptyLinks": 0,
+     "imgsNoAlt": 0,
+     "skip": true,
+     "lang": "pt-BR"
+    }
+   },
+   {
+    "check": "mobile:a11y-story: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+    "ok": true,
+    "info": {
+     "h1": 1,
+     "unlabeled": 0,
+     "emptyLinks": 0,
+     "imgsNoAlt": 0,
+     "skip": true,
+     "lang": "pt-BR"
+    }
+   },
+   {
+    "check": "mobile:a11y-checar: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+    "ok": true,
+    "info": {
+     "h1": 1,
+     "unlabeled": 0,
+     "emptyLinks": 0,
+     "imgsNoAlt": 0,
+     "skip": true,
+     "lang": "pt-BR"
+    }
+   },
+   {
+    "check": "mobile:a11y-busca: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+    "ok": true,
+    "info": {
+     "h1": 1,
+     "unlabeled": 0,
+     "emptyLinks": 0,
+     "imgsNoAlt": 0,
+     "skip": true,
+     "lang": "pt-BR"
+    }
+   },
+   {
+    "check": "mobile: foco visível ao navegar por teclado",
+    "ok": true,
+    "info": {
+     "tag": "A",
+     "outline": "solid",
+     "w": "2px"
+    }
+   }
+  ],
+  "VISUAL_IDENTITY": [
+   {
+    "check": "desktop: História abre com o hero tipográfico do v4 (fundo --ink, título branco, data amarela)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: paleta canônica (papel #F3F2F2, texto #201E1D, sem vermelho do Modernist base)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: marca DESMENTINDO visível no cabeçalho das páginas internas",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: cantos retos (raio 0) em cartões e botões",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "item ativo da navegação com borda inferior amarela de 4px (DM Cabecalho)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: cor de origem nos trechos (Alexandre Garcia #6B3FA0)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: faixa-assinatura escura de largura total, sem rolagem horizontal",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: Desmentindo Data com identidade própria (selo DATA azul) e 'O que não fazemos'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: História abre com o hero tipográfico do v4 (fundo --ink, título branco, data amarela)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: paleta canônica (papel #F3F2F2, texto #201E1D, sem vermelho do Modernist base)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: marca DESMENTINDO visível no cabeçalho das páginas internas",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: cantos retos (raio 0) em cartões e botões",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: cor de origem nos trechos (Alexandre Garcia #6B3FA0)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: faixa-assinatura escura de largura total, sem rolagem horizontal",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: Desmentindo Data com identidade própria (selo DATA azul) e 'O que não fazemos'",
+    "ok": true,
+    "info": null
+   }
+  ],
+  "MOBILE": [
+   {
+    "check": "barra inferior: 4 itens com texto e toque ≥ 44px (Checar fora até o envio abrir)",
+    "ok": true,
+    "info": [
+     [
+      "●Agora",
+      54
+     ],
+     [
+      "▶Já falaram",
+      54
+     ],
+     [
+      "⌕Pesquisar",
+      54
+     ],
+     [
+      "≡Mais",
+      54
+     ]
+    ]
+   },
+   {
+    "check": "375px #/: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "375px #/historia/dark-horse: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "375px #/busca?q=INSS: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "375px #/arquivo/alexandre-de-moraes: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "375px #/arquivos: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "375px #/profissionais: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "375px #/checar: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "375px #/matriz: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   }
+  ],
   "BUILD": [
    {
     "check": "node public-ui/build-public-data.mjs --check",
@@ -1054,16 +2342,16 @@
    {
     "check": "node public-ui/build-v5-data.mjs --check",
     "ok": true,
-    "info": "v5/data em sincronia (680 arquivos)"
+    "info": "alegações exibidas: 55 (alegação 43 · declaração 9 · atribuído neutro 3)\ndata/editorial: edição 2026-10-01 válida (11 itens)\nv5/data em sincronia (682 arquivos)"
    }
   ]
  },
  "requests": {
   "desktop:home": [
    {
-    "url": "/v5/",
+    "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 1729
+    "bytes": 32379
    },
    {
     "url": "/v5/css/fonts.css",
@@ -1071,9 +2359,14 @@
     "bytes": 893
    },
    {
-    "url": "/v5/css/v5.css",
+    "url": "/v5/",
     "status": 200,
-    "bytes": 10710
+    "bytes": 2777
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 58324
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
@@ -1081,14 +2374,19 @@
     "bytes": 90104
    },
    {
-    "url": "/v5/js/v5.js",
+    "url": "/data/editorial/index.json",
     "status": 200,
-    "bytes": 27034
+    "bytes": null
+   },
+   {
+    "url": "/v5/data/home.json",
+    "status": 200,
+    "bytes": null
    },
    {
     "url": "/v5/",
     "status": 200,
-    "bytes": 1729
+    "bytes": 2777
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
@@ -1103,24 +2401,34 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 10710
+    "bytes": 32379
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 27034
+    "bytes": 58324
+   },
+   {
+    "url": "/data/editorial/index.json",
+    "status": 200,
+    "bytes": 317
    },
    {
     "url": "/v5/data/home.json",
     "status": 200,
     "bytes": 2225
+   },
+   {
+    "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
+    "status": 200,
+    "bytes": 24110
    }
   ],
   "desktop:story": [
    {
     "url": "/v5/data/historia/dark-horse.json",
     "status": 200,
-    "bytes": 12716
+    "bytes": 13181
    }
   ],
   "desktop:search-moraes": [
@@ -1145,14 +2453,14 @@
     "bytes": 68305
    },
    {
-    "url": "/v5/data/busca/s/3.json",
-    "status": 200,
-    "bytes": 64291
-   },
-   {
     "url": "/v5/data/busca/s/4.json",
     "status": 200,
     "bytes": 77446
+   },
+   {
+    "url": "/v5/data/busca/s/3.json",
+    "status": 200,
+    "bytes": 64291
    }
   ],
   "desktop:search-inss": [
@@ -1183,16 +2491,85 @@
   ],
   "desktop:profissionais": [],
   "desktop:search-vazio": [],
-  "mobile:home": [
+  "desktop:epist-atibaia": [
+   {
+    "url": "/v5/data/historia/atibaia.json",
+    "status": 200,
+    "bytes": 30663
+   }
+  ],
+  "desktop:checar": [
+   {
+    "url": "/v5/data/checar.json",
+    "status": 200,
+    "bytes": 17
+   }
+  ],
+  "desktop:agora-item": [],
+  "desktop:home-agora": [
+   {
+    "url": "/v5/js/v5.js",
+    "status": 304,
+    "bytes": null
+   },
    {
     "url": "/v5/",
     "status": 200,
-    "bytes": 1729
+    "bytes": 2777
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": null
    },
    {
     "url": "/v5/css/fonts.css",
     "status": 200,
     "bytes": 893
+   },
+   {
+    "url": "/v5/css/v5.css",
+    "status": 200,
+    "bytes": 32379
+   },
+   {
+    "url": "/data/editorial/index.json",
+    "status": 200,
+    "bytes": 317
+   },
+   {
+    "url": "/v5/data/home.json",
+    "status": 200,
+    "bytes": 2225
+   },
+   {
+    "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
+    "status": 200,
+    "bytes": 24110
+   }
+  ],
+  "desktop:legacy-matriz": [],
+  "desktop:legacy-eventos": [],
+  "mobile:home": [
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 2777
+   },
+   {
+    "url": "/v5/css/fonts.css",
+    "status": 200,
+    "bytes": 893
+   },
+   {
+    "url": "/v5/css/v5.css",
+    "status": 200,
+    "bytes": 32379
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 58324
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
@@ -1200,24 +2577,14 @@
     "bytes": 90104
    },
    {
-    "url": "/v5/css/v5.css",
-    "status": 200,
-    "bytes": 10710
-   },
-   {
-    "url": "/v5/js/v5.js",
-    "status": 200,
-    "bytes": 27034
-   },
-   {
-    "url": "/v5/data/home.json",
-    "status": 200,
-    "bytes": null
-   },
-   {
     "url": "/v5/fonts/archivo-latin.woff2",
     "status": 200,
     "bytes": null
+   },
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 2777
    },
    {
     "url": "/v5/css/fonts.css",
@@ -1227,29 +2594,34 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 10710
+    "bytes": 32379
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 27034
+    "bytes": 58324
    },
    {
-    "url": "/v5/",
+    "url": "/data/editorial/index.json",
     "status": 200,
-    "bytes": 1729
+    "bytes": 317
    },
    {
     "url": "/v5/data/home.json",
     "status": 200,
     "bytes": 2225
+   },
+   {
+    "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
+    "status": 200,
+    "bytes": 24110
    }
   ],
   "mobile:story": [
    {
     "url": "/v5/data/historia/dark-horse.json",
     "status": 200,
-    "bytes": 12716
+    "bytes": 13181
    }
   ],
   "mobile:search-moraes": [
@@ -1269,14 +2641,14 @@
     "bytes": 21995
    },
    {
-    "url": "/v5/data/busca/s/3.json",
-    "status": 200,
-    "bytes": 64291
-   },
-   {
     "url": "/v5/data/busca/s/0.json",
     "status": 200,
     "bytes": 68305
+   },
+   {
+    "url": "/v5/data/busca/s/3.json",
+    "status": 200,
+    "bytes": 64291
    },
    {
     "url": "/v5/data/busca/s/4.json",
@@ -1311,12 +2683,71 @@
    }
   ],
   "mobile:profissionais": [],
-  "mobile:search-vazio": []
+  "mobile:search-vazio": [],
+  "mobile:epist-atibaia": [
+   {
+    "url": "/v5/data/historia/atibaia.json",
+    "status": 200,
+    "bytes": 30663
+   }
+  ],
+  "mobile:checar": [
+   {
+    "url": "/v5/data/checar.json",
+    "status": 200,
+    "bytes": 17
+   }
+  ],
+  "mobile:agora-item": [],
+  "mobile:home-agora": [
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 2777
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": null
+   },
+   {
+    "url": "/v5/css/fonts.css",
+    "status": 200,
+    "bytes": 893
+   },
+   {
+    "url": "/v5/css/v5.css",
+    "status": 200,
+    "bytes": 32379
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 58324
+   },
+   {
+    "url": "/data/editorial/index.json",
+    "status": 200,
+    "bytes": 317
+   },
+   {
+    "url": "/v5/data/home.json",
+    "status": 200,
+    "bytes": 2225
+   },
+   {
+    "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
+    "status": 200,
+    "bytes": 24110
+   }
+  ],
+  "mobile:legacy-matriz": [],
+  "mobile:legacy-eventos": []
  },
  "evidence": {
   "desktop:home_data_bytes": 2225,
-  "desktop:story_data_bytes": 12716,
-  "desktop:story_ja_falaram_top_px": 894.125,
+  "desktop:story_data_bytes": 13181,
+  "desktop:story_ja_falaram_top_px": 1147.9375,
   "desktop:story_sections": [
    "O que sabemos",
    "Já falaram sobre isso",
@@ -1344,9 +2775,10 @@
    "agora": "AGORA\n3 histórias\nSem Desconto / INSS\n15 registros mencionam\n21 set 2026\nCPMI do INSS\n8 registros mencionam\n28 mar 2026\nDeath Care / cemitérios\n1 registro menciona\n17 set 2026\n\nO que já foi dito sobre"
   },
   "search_inss_recount_from_archive": 170,
+  "allegations_checked": 55,
   "mobile:home_data_bytes": 2225,
-  "mobile:story_data_bytes": 12716,
-  "mobile:story_ja_falaram_top_px": 1168.8125,
+  "mobile:story_data_bytes": 13181,
+  "mobile:story_ja_falaram_top_px": 1241.84375,
   "mobile:story_sections": [
    "O que sabemos",
    "Já falaram sobre isso",
@@ -1389,8 +2821,8 @@
    "agora": "AGORA\n3 histórias\nSem Desconto / INSS\n15 registros mencionam\n21 set 2026\nCPMI do INSS\n8 registros mencionam\n28 mar 2026\nDeath Care / cemitérios\n1 registro menciona\n17 set 2026\n\nO que já foi dito sobre"
   },
   "v5_data": {
-   "files": 680,
-   "total_bytes": 7405682,
+   "files": 682,
+   "total_bytes": 7445772,
    "home_json_bytes": 2225,
    "largest": {
     "file": "v5/data/busca/s/14.json",
@@ -1404,6 +2836,12 @@
   "V5_STORY_QA": "PASS",
   "V5_SEARCH_QA": "PASS",
   "V5_AG_TIMESTAMP_E2E": "PASS",
+  "V5_EPISTEMIC_QA": "PASS",
+  "V5_CHECAR_QA": "PASS",
+  "V5_ROUTES_QA": "PASS",
+  "ACCESSIBILITY": "PASS",
+  "MOBILE": "PASS",
+  "VISUAL_IDENTITY": "PASS",
   "BOUNDARY": "PASS",
   "PERFORMANCE": "PASS",
   "BUILD": "PASS"

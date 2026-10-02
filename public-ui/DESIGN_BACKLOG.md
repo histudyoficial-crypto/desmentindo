@@ -1,5 +1,7 @@
 # DESIGN_BACKLOG — Desmentindo v4
 
+> Backlog canônico de apresentação a partir de 02/10/2026: `public-ui/handoff/DESIGN_BACKLOG.md`. Esta tabela fica como histórico da v4.
+
 Campos: TELA · COMPONENTE · PROBLEMA · SEVERIDADE · EVIDÊNCIA · CORREÇÃO PROPOSTA · SITUAÇÃO.
 P0/P1 corrigidos na hora; P2/P3 registrados.
 
