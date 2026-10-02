@@ -36,6 +36,12 @@
       '<div class="said-foot"><span class="said-when">' + tdate(o.date) + " · " + e(o.t_label) + "</span>" +
       '<a class="go" href="' + e(o.deep_link) + '" target="_blank" rel="noopener" aria-label="Ver trecho no vídeo, a partir de ' + e(o.t_label) + '">Ver trecho</a></div></li>';
   }
+  // Status de fonte primária calculado por afirmação ↔ fonte (no backend); aqui só o texto público de cada estado.
+  var EV_NOTE = {
+    AVAILABLE: "",
+    PARTIAL: "Parte das afirmações tem documento oficial entre as fontes; o restante vem do conteúdo público das matérias citadas.",
+    NOT_AVAILABLE: "Com base no conteúdo público das matérias citadas. A fonte primária (decisão, petição ou documento) ainda não foi obtida."
+  };
   var NOTE = '<p class="quiet">O texto resume o que é dito naquele minuto. Confira no vídeo.</p>';
   function unavailable(arch) {
     var na = (arch || []).filter(function (a) { return !a.available; }).map(function (a) { return a.name; });
@@ -95,7 +101,9 @@
     return Promise.all([load("home.json"), ED]).then(function (res) {
       var H = res[0], EDN = res[1];
       H.agora = EDN && EDN.items && EDN.items.length ? { edition: EDN.edition, label: EDN.label, items: EDN.items.map(function (it) {
-        return { id: it.id, date: it.date, title: it.title, text: it.text, sources: it.sources || [], primary: !!(it.evidence && it.evidence.primary_source_obtained) };
+        var ev = it.evidence || {};
+        var st = ev.primary_source_status || (ev.primary_source_obtained ? "AVAILABLE" : "NOT_AVAILABLE");
+        return { id: it.id, date: it.date, title: it.title, text: it.text, sources: it.sources || [], evidence: st };
       }) } : null;
       var h = '<section class="hero"><h1 class="name">DESMENTINDO</h1><p class="motto">Notícias passam. O que foi dito fica.</p>' +
         searchForm("", "q-home", true) +
@@ -111,7 +119,7 @@
               '<p class="src">Fontes: ' + it.sources.map(function (s) {
                 return '<a href="' + e(s.url) + '" rel="noopener" target="_blank" title="' + e(s.title) + '">' + e(s.name) + "</a>";
               }).join(" · ") + "</p>" +
-              (it.primary ? "" : '<p class="quiet ed-ev">Com base no conteúdo público das matérias citadas. A fonte primária (decisão, petição ou documento) ainda não foi obtida.</p>') +
+              (EV_NOTE[it.evidence] ? '<p class="quiet ed-ev">' + EV_NOTE[it.evidence] + "</p>" : "") +
               "</li>";
           }).join("") + "</ul></section>";
       }
