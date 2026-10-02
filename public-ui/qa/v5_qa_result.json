@@ -7,6 +7,8 @@
     "ok": true,
     "info": [
      "/data/editorial/index.json",
+     "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
+     "/data/editorial/index.json",
      "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc"
     ]
    },
@@ -387,8 +389,6 @@
     "check": "mobile:home: nenhum download do arquivo completo (data/ag, data/corpus)",
     "ok": true,
     "info": [
-     "/data/editorial/index.json",
-     "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
      "/data/editorial/index.json",
      "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc"
     ]
@@ -1594,11 +1594,11 @@
     "info": 0
    },
    {
-    "check": "declaração atribuída só com confirmação humana individual (12 pendentes ficam neutros)",
+    "check": "declaração atribuída só com confirmação humana individual (0 pendentes ficam neutros)",
     "ok": true,
     "info": {
-     "declaracao": 0,
-     "confirmadas": 0
+     "declaracao": 9,
+     "confirmadas": 9
     }
    },
    {
@@ -2343,7 +2343,7 @@
    {
     "check": "node public-ui/build-v5-data.mjs --check",
     "ok": true,
-    "info": "alegações exibidas: 55 (alegação 43 · declaração 0 · em revisão 12)\ndata/editorial: edição 2026-10-01 válida (11 itens)\nv5/data em sincronia (682 arquivos)"
+    "info": "alegações exibidas: 55 (alegação 43 · declaração 9 · atribuído neutro 3)\ndata/editorial: edição 2026-10-01 válida (11 itens)\nv5/data em sincronia (682 arquivos)"
    }
   ]
  },
@@ -2365,14 +2365,29 @@
     "bytes": 32379
    },
    {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": 90104
+   },
+   {
     "url": "/v5/js/v5.js",
     "status": 200,
     "bytes": 58324
    },
    {
-    "url": "/v5/fonts/archivo-latin.woff2",
+    "url": "/data/editorial/index.json",
     "status": 200,
-    "bytes": 90104
+    "bytes": null
+   },
+   {
+    "url": "/v5/data/home.json",
+    "status": 200,
+    "bytes": null
+   },
+   {
+    "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
+    "status": 200,
+    "bytes": null
    },
    {
     "url": "/v5/",
@@ -2439,9 +2454,9 @@
     "bytes": 21995
    },
    {
-    "url": "/v5/data/busca/s/4.json",
+    "url": "/v5/data/busca/s/0.json",
     "status": 200,
-    "bytes": 77446
+    "bytes": 68305
    },
    {
     "url": "/v5/data/busca/s/3.json",
@@ -2449,9 +2464,9 @@
     "bytes": 64291
    },
    {
-    "url": "/v5/data/busca/s/0.json",
+    "url": "/v5/data/busca/s/4.json",
     "status": 200,
-    "bytes": 68305
+    "bytes": 77446
    }
   ],
   "desktop:search-inss": [
@@ -2504,8 +2519,8 @@
     "bytes": null
    },
    {
-    "url": "/v5/fonts/archivo-latin.woff2",
-    "status": 200,
+    "url": "/v5/js/v5.js",
+    "status": 304,
     "bytes": null
    },
    {
@@ -2514,24 +2529,24 @@
     "bytes": 2777
    },
    {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": null
+   },
+   {
     "url": "/v5/css/fonts.css",
     "status": 200,
     "bytes": 893
    },
    {
-    "url": "/v5/js/v5.js",
+    "url": "/v5/data/home.json",
     "status": 200,
-    "bytes": 58324
+    "bytes": 2225
    },
    {
     "url": "/data/editorial/index.json",
     "status": 200,
     "bytes": 317
-   },
-   {
-    "url": "/v5/data/home.json",
-    "status": 200,
-    "bytes": 2225
    },
    {
     "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
@@ -2548,19 +2563,14 @@
     "bytes": 2777
    },
    {
-    "url": "/v5/css/fonts.css",
-    "status": 200,
-    "bytes": 893
-   },
-   {
     "url": "/v5/css/v5.css",
     "status": 200,
     "bytes": 32379
    },
    {
-    "url": "/v5/fonts/archivo-latin.woff2",
+    "url": "/v5/css/fonts.css",
     "status": 200,
-    "bytes": 90104
+    "bytes": 893
    },
    {
     "url": "/v5/js/v5.js",
@@ -2568,19 +2578,9 @@
     "bytes": 58324
    },
    {
-    "url": "/data/editorial/index.json",
+    "url": "/v5/fonts/archivo-latin.woff2",
     "status": 200,
-    "bytes": null
-   },
-   {
-    "url": "/v5/data/home.json",
-    "status": 200,
-    "bytes": null
-   },
-   {
-    "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
-    "status": 200,
-    "bytes": null
+    "bytes": 90104
    },
    {
     "url": "/v5/",
@@ -2723,8 +2723,8 @@
    },
    {
     "url": "/v5/css/v5.css",
-    "status": 304,
-    "bytes": null
+    "status": 200,
+    "bytes": 32379
    },
    {
     "url": "/v5/js/v5.js",
@@ -2828,7 +2828,7 @@
   },
   "v5_data": {
    "files": 682,
-   "total_bytes": 7445427,
+   "total_bytes": 7445630,
    "home_json_bytes": 2225,
    "largest": {
     "file": "v5/data/busca/s/14.json",

@@ -1,8 +1,8 @@
 {
  "schema": "desmentindo.presentation.attribution_audit.v1",
  "audited_at": "2026-10-02",
- "status": "12 itens em HUMAN_REVIEW individual (PENDING): rótulo neutro ATRIBUÍDO até decisão de Johnny; os demais seguem a classificação do dado (alegação).",
- "note": "Camada de apresentação. Não altera o dado (nat). Texto mudou → hash não bate → volta ao rótulo do dado (ALEGAÇÃO ATRIBUÍDA). Itens com human_review.status != CONFIRMED/KEPT_PREVIOUS exibem o rótulo neutro ATRIBUÍDO.",
+ "status": "12 itens decididos individualmente por Johnny (02/10, Command Center): CONFIRMAR a proposta da v2 em todos. 'by' = linha de atribuição auditada (cadeia da fonte).",
+ "note": "Camada de apresentação. Não altera o dado (nat). Texto mudou → hash não bate → volta ao rótulo do dado (ALEGAÇÃO ATRIBUÍDA). Itens com human_review.status != CONFIRMED/KEPT_PREVIOUS exibem o rótulo neutro ATRIBUÍDO. 'by' (quando presente e o hash bate) substitui a atribuição do dado na linha pública: é procedência (quem disse o quê), não classificação.",
  "items": [
   {
    "n": 1,
@@ -39,10 +39,13 @@
    "proposed": "ATTRIBUTED_STATEMENT",
    "justification": "Conteúdo de mensagem atribuída (encontro com o presidente); não imputa irregularidade.",
    "human_review": {
-    "status": "PENDING",
+    "status": "CONFIRMED",
     "cr_id": "CR-20261002-01",
-    "where": "Command Center (privado)"
-   }
+    "review_version": 2,
+    "decided_at": "2026-10-02T21:26:57Z",
+    "decided_by": "Johnny"
+   },
+   "by": "Mensagem atribuída a Walfrido Warde, segundo Perfil Brasil"
   },
   {
    "n": 3,
@@ -99,10 +102,13 @@
    "proposed": "ATTRIBUTED_STATEMENT",
    "justification": "Mensagem atribuída (oferta de estratégia jurídica, 'sem nada em troca'); não imputa irregularidade.",
    "human_review": {
-    "status": "PENDING",
+    "status": "CONFIRMED",
     "cr_id": "CR-20261002-02",
-    "where": "Command Center (privado)"
-   }
+    "review_version": 2,
+    "decided_at": "2026-10-02T21:26:57Z",
+    "decided_by": "Johnny"
+   },
+   "by": "Mensagens atribuídas a Walfrido Warde, segundo coluna de O Globo (via Gazeta do Povo)"
   },
   {
    "n": 6,
@@ -229,12 +235,15 @@
    ],
    "previous_classification": "alegacao_atribuida (dado) · exibido SEM rótulo (como fato)",
    "proposed": "ATTRIBUTED_STATEMENT",
-   "justification": "PF declara não ter recebido documentos; é afirmação de fato processual, não imputação.",
+   "justification": "Relato jornalístico de ato processual atribuído à PF (pedido de documentos); não imputa irregularidade. Sem documento da PF, a força é a da reportagem.",
    "human_review": {
-    "status": "PENDING",
+    "status": "CONFIRMED",
     "cr_id": "CR-20261002-03",
-    "where": "Command Center (privado)"
-   }
+    "review_version": 2,
+    "decided_at": "2026-10-02T21:26:58Z",
+    "decided_by": "Johnny"
+   },
+   "by": "Segundo o Jornal da Chapada, citando o Jornal Nacional, com base em informações da Polícia Federal"
   },
   {
    "n": 13,
@@ -360,10 +369,13 @@
    "proposed": "ATTRIBUTED_STATEMENT",
    "justification": "Declaração de Garotinho sobre vídeo; inclui que não há imagem do senador. Não imputa irregularidade.",
    "human_review": {
-    "status": "PENDING",
+    "status": "CONFIRMED",
     "cr_id": "CR-20261002-04",
-    "where": "Command Center (privado)"
-   }
+    "review_version": 2,
+    "decided_at": "2026-10-02T21:26:58Z",
+    "decided_by": "Johnny"
+   },
+   "by": "Anthony Garotinho (segundo a Gazeta do Povo)"
   },
   {
    "n": 20,
@@ -400,10 +412,13 @@
    "proposed": "ATTRIBUTED_STATEMENT",
    "justification": "Crítica/opinião de advogado e comentaristas; a matéria não afirma participação dos ministros.",
    "human_review": {
-    "status": "PENDING",
+    "status": "CONFIRMED",
     "cr_id": "CR-20261002-05",
-    "where": "Command Center (privado)"
-   }
+    "review_version": 2,
+    "decided_at": "2026-10-02T21:26:58Z",
+    "decided_by": "Johnny"
+   },
+   "by": "Frederico Junkert, Daniel Vargas e Guilherme Kilter (segundo a Gazeta do Povo)"
   },
   {
    "n": 22,
@@ -456,10 +471,13 @@
    "proposed": "ATTRIBUTED_STATEMENT",
    "justification": "Nota institucional contestando declaração em sessão; disputa de informação, não imputação de irregularidade.",
    "human_review": {
-    "status": "PENDING",
+    "status": "CONFIRMED",
     "cr_id": "CR-20261002-06",
-    "where": "Command Center (privado)"
-   }
+    "review_version": 2,
+    "decided_at": "2026-10-02T21:26:58Z",
+    "decided_by": "Johnny"
+   },
+   "by": "Força-Tarefa Greenfield (MPF-DF), em nota relatada pelo Diário do Poder"
   },
   {
    "n": 25,
@@ -478,10 +496,13 @@
    "proposed": "ATTRIBUTED_STATEMENT",
    "justification": "Relato genérico de ligação política; sem imputação. Atribuição ausente no dado (usa o veículo).",
    "human_review": {
-    "status": "PENDING",
+    "status": "CONFIRMED",
     "cr_id": "CR-20261002-07",
-    "where": "Command Center (privado)"
-   }
+    "review_version": 2,
+    "decided_at": "2026-10-02T21:26:58Z",
+    "decided_by": "Johnny"
+   },
+   "by": "Poder360 (reportagem própria)"
   },
   {
    "n": 26,
@@ -501,10 +522,13 @@
    "proposed": "ATTRIBUTED_STATEMENT",
    "justification": "Ato processual (homologação) informado por veículo; informação atribuída, não alegação.",
    "human_review": {
-    "status": "PENDING",
+    "status": "CONFIRMED",
     "cr_id": "CR-20261002-08",
-    "where": "Command Center (privado)"
-   }
+    "review_version": 2,
+    "decided_at": "2026-10-02T21:26:59Z",
+    "decided_by": "Johnny"
+   },
+   "by": "Diego Escosteguy (blog O Bastidor), segundo o Poder360 (homologação de 30/12/2020, sob sigilo); Agência Brasil (suspensão de 09/03/2020)"
   },
   {
    "n": 27,
@@ -520,13 +544,16 @@
     "https://economia.uol.com.br/colunas/mariana-barbosa/2026/02/19"
    ],
    "previous_classification": "alegacao_atribuida (dado) · exibido SEM rótulo (como fato)",
-   "proposed": "ATTRIBUTED_STATEMENT",
-   "justification": "Coluna sobre negócios empresariais; o próprio registro diz não caracterizar vínculo.",
+   "proposed": "HUMAN_REVIEW",
+   "justification": "Não há declarante identificável: a coluna relata o que fontes anônimas disseram. 'Declaração atribuída' sugeriria um autor que não existe no material; o rótulo neutro com a cadeia explícita descreve exatamente o que se sabe.",
    "human_review": {
-    "status": "PENDING",
+    "status": "CONFIRMED",
     "cr_id": "CR-20261002-09",
-    "where": "Command Center (privado)"
-   }
+    "review_version": 2,
+    "decided_at": "2026-10-02T21:26:59Z",
+    "decided_by": "Johnny"
+   },
+   "by": "Coluna de Mariana Barbosa (UOL), segundo fontes não identificadas"
   },
   {
    "n": 28,
@@ -636,10 +663,13 @@
    "proposed": "HUMAN_REVIEW",
    "justification": "Reportagem diz que o então advogado fez parecer para réus; o enquadramento 'para beneficiar réus' pode sugerir impropriedade sem imputá-la. Dúvida material.",
    "human_review": {
-    "status": "PENDING",
+    "status": "CONFIRMED",
     "cr_id": "CR-20261002-11",
-    "where": "Command Center (privado)"
-   }
+    "review_version": 2,
+    "decided_at": "2026-10-02T21:26:59Z",
+    "decided_by": "Johnny"
+   },
+   "by": "Folha de S.Paulo (reportagem), republicada pelo IHU"
   },
   {
    "n": 34,
@@ -748,10 +778,13 @@
    "proposed": "ATTRIBUTED_STATEMENT",
    "justification": "Relatório da PF CITA autoridades e expressamente não imputa crime; o que é atribuído é a citação feita por interceptados.",
    "human_review": {
-    "status": "PENDING",
+    "status": "CONFIRMED",
     "cr_id": "CR-20261002-10",
-    "where": "Command Center (privado)"
-   }
+    "review_version": 2,
+    "decided_at": "2026-10-02T21:26:59Z",
+    "decided_by": "Johnny"
+   },
+   "by": "Agência Estado (via Gazeta do Povo), sobre relatório da PF; as menções vêm de interceptações de investigados"
   },
   {
    "n": 40,
@@ -899,10 +932,13 @@
    "proposed": "HUMAN_REVIEW",
    "justification": "Mistura ato documentado (relatoria por prevenção) com opinião da revista de que atrasou investigações. Dúvida material.",
    "human_review": {
-    "status": "PENDING",
+    "status": "CONFIRMED",
     "cr_id": "CR-20261002-12",
-    "where": "Command Center (privado)"
-   }
+    "review_version": 2,
+    "decided_at": "2026-10-02T21:26:59Z",
+    "decided_by": "Johnny"
+   },
+   "by": "Revista piauí (decisão sigilosa e avaliação de que atrasou as investigações); CNN (pedido da PGR e redistribuição)"
   },
   {
    "n": 48,

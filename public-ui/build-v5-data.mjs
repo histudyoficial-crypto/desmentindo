@@ -154,7 +154,7 @@ function attribution(x) {
   const kind = cls === "ATTRIBUTED_STATEMENT" ? "declaracao" : cls === "HUMAN_REVIEW" ? "atribuido" : "alegacao";
   const src = x.sources[0];
   ATTR_LOG.push({ ev: x.e.id, kind, hr });
-  return { kind, by: cleanAttr(x.e.alde) || (src ? src.outlet : null), resp: x.e.resp ? cut(cleanAttr(x.e.resp), 170) : null,
+  return { kind, by: (ok && a.by) || cleanAttr(x.e.alde) || (src ? src.outlet : null), resp: x.e.resp ? cut(cleanAttr(x.e.resp), 170) : null,
            src: src ? { outlet: src.outlet, url: src.url } : null };
 }
 const EVENTS = D.ev.map((e, i) => ({
@@ -238,7 +238,7 @@ const STORIES = D.casos.filter(c => (byCase[c] || []).length).map(buildStory);
   const knownAlleg = STORIES.flatMap(s => s.known).filter(k => EVENTS.some(x => x.allegation && x.date === k.date && cut(x.text, 220) === k.text));
   if (knownAlleg.length) throw new Error("ALLEGATION_IN_WHAT_WE_KNOW: " + knownAlleg.length);
   const al = shown.filter(x => x.allegation);
-  console.log(`alegações exibidas: ${al.length} (alegação ${al.filter(x => x.attr.kind === "alegacao").length} · declaração ${al.filter(x => x.attr.kind === "declaracao").length} · em revisão ${al.filter(x => x.attr.kind === "atribuido").length})`);
+  console.log(`alegações exibidas: ${al.length} (alegação ${al.filter(x => x.attr.kind === "alegacao").length} · declaração ${al.filter(x => x.attr.kind === "declaracao").length} · atribuído neutro ${al.filter(x => x.attr.kind === "atribuido").length})`);
 }
 const RANKED = STORIES.filter(s => s.key !== EXCLUDE_CASE).sort((a, b) => cmp(b.lastPublished, a.lastPublished) || b.records - a.records);
 const storyIdx = Object.fromEntries(STORIES.map((s, i) => [s.key, i]));
