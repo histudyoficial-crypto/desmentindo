@@ -84,13 +84,39 @@
   var P = {};
   // ---------------------------------------------------------------- HOME
   P.home = function () {
-    return load("home.json").then(function (H) {
+    // Edição editorial aprovada: JSON próprio publicado em /data/editorial/ (versionado pelo carimbo de build e
+    // pelo sha256 do índice). Sem edição ou falha de leitura → a Home segue como antes (nunca inventa conteúdo).
+    var ED = fetch("/data/editorial/index.json" + (DV ? "?v=" + DV : "")).then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (idx) {
+        var x = idx && idx.editions && idx.editions[0];
+        if (!x || !/^data\/editorial\/edicoes\/\d{4}-\d{2}-\d{2}\.json$/.test(x.file)) return null;
+        return fetch("/" + x.file + "?v=" + String(x.sha256 || "").slice(0, 12)).then(function (r) { return r.ok ? r.json() : null; });
+      }).catch(function () { return null; });
+    return Promise.all([load("home.json"), ED]).then(function (res) {
+      var H = res[0], EDN = res[1];
+      H.agora = EDN && EDN.items && EDN.items.length ? { edition: EDN.edition, label: EDN.label, items: EDN.items.map(function (it) {
+        return { id: it.id, date: it.date, title: it.title, text: it.text, sources: it.sources || [], primary: !!(it.evidence && it.evidence.primary_source_obtained) };
+      }) } : null;
       var h = '<section class="hero"><h1 class="name">DESMENTINDO</h1><p class="motto">Notícias passam. O que foi dito fica.</p>' +
         searchForm("", "q-home", true) +
         '<p class="cue">Veja o que já foi dito sobre uma notícia, com a data, o minuto do vídeo e a fonte original.</p>' +
         '<p class="tries">Por exemplo: <a href="#/busca?q=Alexandre%20de%20Moraes">Alexandre de Moraes</a> · <a href="#/busca?q=INSS">INSS</a> · <a href="#/busca?q=Dark%20Horse">Dark Horse</a></p></section>';
+      var A = H.agora && H.agora.items && H.agora.items.length ? H.agora : null;
+      if (A) {
+        // Edição editorial (JSON próprio, aprovada no Human Gate): texto aprovado + fontes. Nada interno.
+        h += '<section class="sec" id="agora"><h2 class="h2">' + e(A.label || "Agora") + ' <span class="meta" style="letter-spacing:0;text-transform:none;font-weight:400">· edição de ' + e(fdate(A.edition)) + "</span></h2>" +
+          '<ul class="ed-list">' + A.items.map(function (it) {
+            return '<li class="ed-item" id="' + e(it.id) + '"><h3 class="ed-t">' + e(it.title) + "</h3>" +
+              '<p class="meta">' + tdate(it.date) + "</p><p>" + e(it.text) + "</p>" +
+              '<p class="src">Fontes: ' + it.sources.map(function (s) {
+                return '<a href="' + e(s.url) + '" rel="noopener" target="_blank" title="' + e(s.title) + '">' + e(s.name) + "</a>";
+              }).join(" · ") + "</p>" +
+              (it.primary ? "" : '<p class="quiet ed-ev">Com base no conteúdo público das matérias citadas. A fonte primária (decisão, petição ou documento) ainda não foi obtida.</p>') +
+              "</li>";
+          }).join("") + "</ul></section>";
+      }
       if (H.hero) {
-        h += '<section class="sec" id="agora"><h2 class="h2">Agora' + (H.edition ? ' <span class="meta" style="letter-spacing:0;text-transform:none;font-weight:400">· atualizado em ' + e(fdate(H.edition)) + "</span>" : "") + "</h2>" +
+        h += '<section class="sec" id="' + (A ? "acompanhamento" : "agora") + '"><h2 class="h2">' + (A ? "Em acompanhamento" : "Agora") + (H.edition && !A ? ' <span class="meta" style="letter-spacing:0;text-transform:none;font-weight:400">· atualizado em ' + e(fdate(H.edition)) + "</span>" : "") + "</h2>" +
           '<article class="story-main"><a href="#/historia/' + e(H.hero.slug) + '"><span class="t">' + e(H.hero.title) + "</span></a>" +
           (H.hero.text ? "<p>" + e(H.hero.text) + "</p>" : "") +
           '<p class="meta" style="margin-top:8px">Último registro em ' + tdate(H.hero.lastD) + "</p>" +
@@ -333,6 +359,7 @@
   }
 
   // ---------------------------------------------------------------- roteador
+  var routeSeq = 0;
   function route() {
     var hash = location.hash || "#/";
     var path = hash.slice(1).split("?")[0].split("#")[0];
@@ -346,10 +373,12 @@
     var door = fn === P.busca ? "busca" : (fn === P.arquivos || fn === P.arquivo) ? "arquivos" : (fn === P.home || fn === P.historia) ? "agora" : "";
     Array.prototype.forEach.call(document.querySelectorAll("[data-door]"), function (a) { if (a.getAttribute("data-door") === door) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
     pending = {};
+    var my = ++routeSeq; // só a navegação mais recente pode pintar a página (resposta atrasada de outra rota é descartada)
     fn(arg).then(function (h) {
+      if (my !== routeSeq) return;
       main.innerHTML = '<div class="wrap">' + h + "</div>";
       if (anchor) { var t = document.getElementById(anchor); if (t) t.scrollIntoView(); } else window.scrollTo(0, 0);
-    }, function () { main.innerHTML = '<div class="wrap"><p class="empty" style="padding:40px 0">Não conseguimos carregar esta página agora. Tente de novo.</p></div>'; });
+    }, function () { if (my !== routeSeq) return; main.innerHTML = '<div class="wrap"><p class="empty" style="padding:40px 0">Não conseguimos carregar esta página agora. Tente de novo.</p></div>'; });
   }
   // Âncoras internas (#ja-falaram) não trocam a rota.
   document.addEventListener("click", function (ev) {

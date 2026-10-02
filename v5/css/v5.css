@@ -68,6 +68,13 @@ h1, h2, h3 { margin: 0; }
 .story-main a:hover .t { text-decoration: underline; text-decoration-thickness: 2px; }
 .story-main p { margin: 10px 0 0; color: var(--ink-2); }
 .rows { list-style: none; margin: 26px 0 0; padding: 0; }
+.ed-list { list-style: none; margin: 8px 0 0; padding: 0; }
+.ed-item { border-top: 1px solid var(--rule); padding: 18px 0 20px; }
+.ed-item:first-child { border-top: 0; padding-top: 4px; }
+.ed-t { font-stretch: 78%; font-weight: 900; font-size: clamp(22px, 3.6vw, 28px); line-height: 1.08; margin: 0 0 6px; }
+.ed-item p { margin: 8px 0 0; color: var(--ink-2); }
+.ed-item .meta { margin-top: 0; }
+.ed-ev { margin-top: 10px; }
 .rows li { border-top: 1px solid var(--rule); }
 .rows a { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 14px 0; text-decoration: none; }
 .rows a:hover .rt { text-decoration: underline; }
