@@ -250,12 +250,31 @@ with sync_playwright() as pw:
             SJ = json.load(open(os.path.join(hist_dir, alleg_story + ".json"), encoding="utf8"))
             visit("epist-" + alleg_story, "#/historia/" + alleg_story, "h1.h1")
             want = [bool(c.get("allegation")) for c in SJ["chrono"]]
-            got = page.evaluate("Array.from(document.querySelectorAll('ol.tl li')).map(li => !!li.querySelector('.tag-alleg'))")
-            check("V5_EPISTEMIC_QA", f"{vp_name}: cronologia de '{alleg_story}' marca toda alegação atribuída (e só ela)", got == want, {"want": want, "got": got})
+            got = page.evaluate("Array.from(document.querySelectorAll('ol.tl li')).map(li => !!li.querySelector('.tag-alleg, .tag-said') && !!li.querySelector('.attr'))")
+            check("V5_EPISTEMIC_QA", f"{vp_name}: cronologia de '{alleg_story}' rotula e atribui toda alegação (e só ela)", got == want, {"want": want, "got": got})
             uw = [bool(u.get("allegation")) for u in SJ["updates"]]
-            ug = page.evaluate("Array.from(document.querySelectorAll('ul.upd li')).map(li => !!li.querySelector('.tag-alleg'))")
-            check("V5_EPISTEMIC_QA", f"{vp_name}: atualizações marcam alegação atribuída", ug == uw, {"want": uw, "got": ug})
-        else:
+            ug = page.evaluate("Array.from(document.querySelectorAll('ul.upd li')).map(li => !!li.querySelector('.tag-alleg, .tag-said') && !!li.querySelector('.attr'))")
+            check("V5_EPISTEMIC_QA", f"{vp_name}: atualizações rotulam e atribuem alegação", ug == uw, {"want": uw, "got": ug})
+        # ALLEGATION_RENDERED_AS_FACT (regressão): em TODAS as histórias, nenhuma alegação aparece sem rótulo e atribuição.
+        if vp_name == "desktop":
+            AUD = {x["event"]: x for x in json.load(open(os.path.join(ROOT, "public-ui", "attribution_audit.json"), encoding="utf8"))["items"]}
+            bad, n_alleg = [], 0
+            for f in sorted(os.listdir(hist_dir)):
+                SJ2 = json.load(open(os.path.join(hist_dir, f), encoding="utf8"))
+                want2 = [x.get("attr", {}).get("kind") if x and x.get("allegation") else None for x in [SJ2.get("summary")] + SJ2["chrono"] + SJ2["updates"]]
+                if not any(want2): continue
+                n_alleg += sum(1 for k in want2 if k)
+                page.goto(BASE + "#/__blank"); page.goto(BASE + "#/historia/" + f[:-5]); page.wait_for_selector("h1.h1"); page.wait_for_load_state("networkidle")
+                got2 = page.evaluate("""() => { const pick = el => { if (!el) return null; const t = el.querySelector(':scope > .tag-alleg, :scope > .tag-said, .tag-alleg, .tag-said'); return t ? t.textContent.trim().toLowerCase() : 'SEM_ROTULO'; };
+                  const sum = document.querySelector('.page-head .summary'); const out = [sum && sum.querySelector('.tag-alleg, .tag-said') ? sum.querySelector('.tag-alleg, .tag-said').textContent.trim().toLowerCase() : null];
+                  document.querySelectorAll('ol.tl li').forEach(li => out.push(li.querySelector('.tag-alleg, .tag-said') ? li.querySelector('.tag-alleg, .tag-said').textContent.trim().toLowerCase() : null));
+                  document.querySelectorAll('ul.upd li').forEach(li => out.push(li.querySelector('.tag-alleg, .tag-said') ? li.querySelector('.tag-alleg, .tag-said').textContent.trim().toLowerCase() : null));
+                  return out; }""")
+                label = {"alegacao": "alegação atribuída", "declaracao": "declaração atribuída", "atribuido": "atribuído"}
+                if [label.get(k) for k in want2] != got2: bad.append({"story": f[:-5], "want": want2, "got": got2})
+            R["evidence"]["allegations_checked"] = n_alleg
+            check("V5_EPISTEMIC_QA", f"ALLEGATION_RENDERED_AS_FACT = 0 em todas as histórias ({n_alleg} itens de alegação conferidos)", not bad, bad[:3])
+        if not alleg_story:
             check("V5_EPISTEMIC_QA", "há história com alegação na cronologia para testar", False)
         kn = page.evaluate("Array.from(document.querySelectorAll('ul.items li')).every(li => !li.querySelector('.src') || !!li.querySelector('.tag-fact'))")
         check("V5_EPISTEMIC_QA", f"{vp_name}: 'O que sabemos' só com fato com fonte, rotulado", kn)
@@ -263,7 +282,10 @@ with sync_playwright() as pw:
 
         # ------------------------------------------------ CHECAR (página pública)
         data, text = visit("checar", "#/checar", "h1.h1")
-        check("V5_CHECAR_QA", f"{vp_name}:checar: diz que o envio ainda não está aberto (nada é recebido nem guardado)", "envio pelo site ainda não está aberto" in text)
+        check("V5_CHECAR_QA", f"{vp_name}:checar: diz que o envio ainda não está aberto (nada é recebido nem guardado)", "envio pelo site ainda não está aberto" in text and "não recebe nem guarda nada" in text)
+        check("V5_CHECAR_QA", f"{vp_name}:checar: CHECAR_SUBMISSIONS = CLOSED (sem campo de envio, sem CTA de envio, fora da navegação principal)",
+              page.locator("textarea, input[type=file]").count() == 0 and not re.search(r"cola aqui|envie (seu|o) (print|material)|mande (pra|para) a gente", text, re.I)
+              and page.locator('.doors a[href="#/checar"], .tabbar a[href="#/checar"]').count() == 0)
         check("V5_CHECAR_QA", f"{vp_name}:checar: 7 passos (entrada → decomposição → checagem → encontramos → contexto → conclusão → saída)", page.locator("ol.steps li").count() == 7)
         check("V5_CHECAR_QA", f"{vp_name}:checar: paridade de formato (6 pares)", page.locator("ul.parity li").count() == 6)
         check("V5_CHECAR_QA", f"{vp_name}:checar: legenda com os 5 selos + 'checamos se foi dito/aconteceu'",
@@ -319,6 +341,10 @@ with sync_playwright() as pw:
             check("V5_HOME_QA", f"{vp_name}:home: fontes sem tooltip (title) como única informação", page.locator("#agora a[title]").count() == 0)
 
         # ------------------------------------------------ rotas antigas: nada de 404 silencioso
+        # o redirecionamento servido em /desmentindo_local.html (gerado no deploy) preserva o #/rota
+        stub = subprocess.run(["node", "public-ui/build-root.mjs", "--out", "/dev/null", "--legacy-out", "/dev/stdout", "--no-build-info"], cwd=ROOT, capture_output=True, text=True).stdout
+        check("V5_ROUTES_QA", f"{vp_name}: /desmentindo_local.html aposentado (redireciona para a raiz com a mesma rota; sem o app anterior)",
+              'content="retired"' in stub and 'location.replace("/" + (location.hash || ""))' in stub and "const D" not in stub)
         for name, h_, expect in (("legacy-caso", "#/caso?c=Lava%20Jato", "#/historia/lava-jato"), ("legacy-pessoa", "#/pessoa?n=Dias%20Toffoli", "#/arquivo/dias-toffoli"),
                                  ("legacy-corpus", "#/corpus", "#/arquivos"), ("legacy-narrativas", "#/narrativas", "#/checar")):
             page.goto(BASE + "#/__blank"); page.goto(BASE + h_)
@@ -328,7 +354,10 @@ with sync_playwright() as pw:
         data, text = visit("legacy-matriz", "#/matriz", "h1.h1")
         check("V5_ROUTES_QA", f"{vp_name}: rota retirada (matriz) explica e não aponta para o módulo bloqueado", "saiu da página pública" in text and page.locator('a[href*="desmentindo_local"]').count() == 0)
         data, text = visit("legacy-eventos", "#/eventos", "h1.h1")
-        check("V5_ROUTES_QA", f"{vp_name}: rota movida (eventos) leva ao arquivo anterior", page.locator('a[href="/desmentindo_local.html#/eventos"]').count() == 1)
+        check("V5_ROUTES_QA", f"{vp_name}: rota encerrada (eventos) explica e não aponta para o site anterior", "foi encerrada" in text and page.locator('a[href*="desmentindo_local"]').count() == 0)
+        page.goto(BASE + "#/__blank"); page.goto(BASE + "#/eventos?ev=EV-0001")
+        page.wait_for_function("() => location.hash.indexOf('#/historia/') === 0", timeout=10000)
+        check("V5_ROUTES_QA", f"{vp_name}: link antigo de registro (?ev=) → história que o contém", page.evaluate("location.hash") == "#/historia/" + json.load(open(os.path.join(ROOT, "v5", "data", "rotas.json")))["eventos"]["EV-0001"])
 
         # ------------------------------------------------ ACESSIBILIDADE (amostra por página)
         for name, h_, w in (("a11y-home", "", ".hero .name"), ("a11y-story", "#/historia/" + args.story, "h1.h1"), ("a11y-checar", "#/checar", "h1.h1"), ("a11y-busca", "#/busca?q=INSS", "#nos-arquivos")):
@@ -345,7 +374,7 @@ with sync_playwright() as pw:
         check("ACCESSIBILITY", f"{vp_name}: foco visível ao navegar por teclado", foc["outline"] != "none" and foc["w"] != "0px", foc)
         if vp_name == "mobile":
             tb = page.evaluate("Array.from(document.querySelectorAll('.tabbar a')).map(a => { const r = a.getBoundingClientRect(); return [a.textContent.trim(), Math.round(r.height)]; })")
-            check("MOBILE", "barra inferior: 5 itens com texto e toque ≥ 44px", len(tb) == 5 and all(t and h >= 44 for t, h in tb), tb)
+            check("MOBILE", "barra inferior: 4 itens com texto e toque ≥ 44px (Checar fora até o envio abrir)", len(tb) == 4 and all(t and h >= 44 for t, h in tb), tb)
         ctx.close()
 
     # ------------------------------------------------ 375 px: nenhuma página com rolagem horizontal

@@ -154,7 +154,13 @@ DOCUMENTADO = "Encontramos documentação que sustenta a afirmação no contexto
 "Isso não significa que nunca aconteceu." Alegação ≠ fato (rótulo). Vínculo ≠ culpa: ligação não confirmada é
 pontilhada, nunca linha cheia. Fonte localizada ≠ confirmação. Nenhum ID interno na superfície (scan em CI, deploy e QA).
 
-## DECISIONS_NEEDED_FROM_JOHNNY (3)
+## Decisões de Johnny (02/10/2026)
+- **LEGACY_PUBLIC_APP = RETIRE** → `/desmentindo_local.html` vira redirecionamento no deploy (gate `LEGACY_PUBLIC_APP_RETIRED`); links antigos (`#/caso`, `#/pessoa`, `?ev=`, módulos) levam ao equivalente público ou explicam; nenhum módulo proibido vai para a v5.
+- **CHECAR_PUBLIC_EXAMPLE = OFF** até decisão editorial explícita (readiness técnico ≠ aprovação).
+- **CHECAR_SUBMISSIONS = CLOSED** até validação ponta a ponta; Checar fora da navegação principal; sem chamada de envio.
+- **P0 alegações:** auditoria semântica dos itens (`P0_ALLEGATION_AUDIT.md`); fala atribuída ≠ alegação.
+
+## Decisões originais (histórico)
 1. **Arquivo anterior** (`/desmentindo_local.html`): retirar da superfície pública os módulos proibidos (Matriz, Mapa,
    Vínculos, Segundo cérebro, Termômetro, Fichas, Contagens) — ou o arquivo anterior inteiro — mantendo os "movidos"?
 2. **Exemplo público do Checar**: liberar a peça N001 (já publicada na v4; envolve Banco Master/GLT-001) como exemplo

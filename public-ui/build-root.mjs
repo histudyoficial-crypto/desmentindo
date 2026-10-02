@@ -59,6 +59,21 @@ h = h
   .replace(/<span>Cópia de prévia · <a href="\.\.\/">desmentindo\.com\.br<\/a><\/span>/, "");
 if (/noindex/.test(h)) throw new Error("raiz não pode ter noindex");
 fs.writeFileSync(out, h);
+
+// LEGACY_PUBLIC_APP = RETIRED (decisão de Johnny, 02/10/2026): um só Desmentindo público. O app anterior continua no
+// Git (index.html/desmentindo_local.html do repositório = histórico técnico e fonte de dados do Publisher), mas a URL
+// pública /desmentindo_local.html passa a servir só um redirecionamento para a raiz, preservando o #/rota — o
+// adaptador de rotas antigas da v5 leva cada link ao equivalente público (ou explica por que saiu).
+export const LEGACY_STUB = `<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, follow"><meta name="desmentindo-legacy" content="retired">
+<link rel="canonical" href="https://desmentindo.com.br/"><title>Desmentindo</title>
+<script>location.replace("/" + (location.hash || ""));</script></head>
+<body><p>O site anterior do Desmentindo foi encerrado. <a href="/">Ir para desmentindo.com.br</a></p></body></html>
+`;
+const li = process.argv.indexOf("--legacy-out");
+const legacyOut = li > 0 ? path.resolve(process.argv[li + 1]) : (out === path.join(ROOT, "index.html") ? path.join(ROOT, "desmentindo_local.html") : null);
+if (legacyOut) fs.writeFileSync(legacyOut, LEGACY_STUB);
 if (!process.argv.includes("--no-build-info")) {
   // índice editorial vazio só no workspace do deploy quando ainda não há edição publicada (evita 404 na Home);
   // nunca sobrescreve um índice real.

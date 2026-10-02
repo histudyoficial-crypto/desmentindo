@@ -138,6 +138,19 @@ const personBySlug = Object.fromEntries(PERSONS.map(p => [p.slug, p]));
 const personByName = Object.fromEntries(PERSONS.map(p => [p.name, p]));
 
 // ---------------------------------------------------------------- histórias
+// Auditoria das alegações exibidas (public-ui/attribution_audit.json, camada de apresentação; não altera o dado).
+// Vale só se o texto do registro não mudou (hash); senão, volta ao rótulo do dado (ALEGAÇÃO ATRIBUÍDA).
+const AUDIT = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "attribution_audit.json"), "utf8")).items.map(x => [x.event, x]));
+const evHash = t => crypto.createHash("sha256").update(String(t || "").normalize("NFC").replace(/\s+/g, " ").trim()).digest("hex").slice(0, 16);
+const cleanAttr = t => (t && t !== "None" ? String(t).replace(/,?\s*segundo (o )?resumo( de busca)?;?/gi, "").replace(/\(\s*,\s*/g, "(").replace(/\s+\)/g, ")").trim() : null);
+function attribution(x) {
+  if (!x.allegation) return undefined;
+  const a = AUDIT[x.e.id], ok = a && a.text_sha256 === evHash(x.e.desc);
+  const kind = !ok ? "alegacao" : a.proposed === "ATTRIBUTED_STATEMENT" ? "declaracao" : a.proposed === "HUMAN_REVIEW" ? "atribuido" : "alegacao";
+  const src = x.sources[0];
+  return { kind, by: cleanAttr(x.e.alde) || (src ? src.outlet : null), resp: x.e.resp ? cut(cleanAttr(x.e.resp), 170) : null,
+           src: src ? { outlet: src.outlet, url: src.url } : null };
+}
 const EVENTS = D.ev.map((e, i) => ({
   i, e, date: validDate(e.d) ? e.d : null, published: validDate(e.dp) ? e.dp : null,
   allegation: e.nat === "alegacao_atribuida", text: pub(e.desc),
@@ -187,22 +200,34 @@ function buildStory(caso) {
   }
   const shownIds = new Set([summaryEv, ...facts.filter(x => x !== summaryEv).slice(0, 3)].filter(Boolean).map(x => x.i));
   // Cronologia só quando ajuda: registros em anos diferentes; sem repetir o que já está acima.
-  const rest = dated.filter(x => !shownIds.has(x.i));
+  // Mesmo registro duplicado no dado (mesma data, mesmo começo de texto) aparece uma vez só.
+  const recKey = x => x.date + "|" + String(x.text).slice(0, 80);
+  const seenChrono = new Set();
+  const rest = dated.filter(x => !shownIds.has(x.i)).filter(x => { const k = recKey(x); if (seenChrono.has(k)) return false; seenChrono.add(k); return true; });
   const chronoSrc = firstY !== lastY && rest.length >= 3 ? pickSpread(rest.slice().reverse(), 6) : [];
-  const chrono = chronoSrc.map(x => ({ date: x.date, allegation: x.allegation || undefined, text: cut(x.text, 150) }));
+  const chrono = chronoSrc.map(x => ({ date: x.date, allegation: x.allegation || undefined, attr: attribution(x), text: cut(x.text, 150) }));
   for (const x of chronoSrc) shownIds.add(x.i);
-  const updates = all.filter(x => x.published && !shownIds.has(x.i)).sort((a, b) => cmp(b.published, a.published) || b.i - a.i).slice(0, 3)
-    .map(x => ({ published: x.published, allegation: x.allegation || undefined, text: cut(x.text, 150) }));
+  const seenUpd = new Set([...chronoSrc, ...dated.filter(x => shownIds.has(x.i))].map(recKey));
+  const updates = all.filter(x => x.published && !shownIds.has(x.i)).filter(x => { const k = recKey(x); if (seenUpd.has(k)) return false; seenUpd.add(k); return true; }).sort((a, b) => cmp(b.published, a.published) || b.i - a.i).slice(0, 3)
+    .map(x => ({ published: x.published, allegation: x.allegation || undefined, attr: attribution(x), text: cut(x.text, 150) }));
 
   return {
     slug: slugify(caso), key: caso, title: label(caso),
     span: firstY ? (firstY === lastY ? String(firstY) : firstY + "–" + lastY) : null,
     lastD: dated[0] ? dated[0].date : null, lastPublished, records: all.length, n_sources: sources.length,
-    summary: summaryEv ? { date: summaryEv.date, allegation: summaryEv.allegation || undefined, text: cut(summaryEv.text, 260), source: summaryEv.sources[0] ? { title: summaryEv.sources[0].title, outlet: summaryEv.sources[0].outlet, url: summaryEv.sources[0].url } : null } : null,
+    summary: summaryEv ? { date: summaryEv.date, allegation: summaryEv.allegation || undefined, attr: attribution(summaryEv), text: cut(summaryEv.text, 260), source: summaryEv.sources[0] ? { title: summaryEv.sources[0].title, outlet: summaryEv.sources[0].outlet, url: summaryEv.sources[0].url } : null } : null,
     known, said, people, found, chrono, sources: sources.slice(0, 40), sources_total: sources.length, updates,
   };
 }
 const STORIES = D.casos.filter(c => (byCase[c] || []).length).map(buildStory);
+// ALLEGATION_RENDERED_AS_FACT (fail closed): nenhum item de alegação sai sem atribuição.
+{
+  const shown = STORIES.filter(s => s.key !== EXCLUDE_CASE).flatMap(s => [s.summary, ...s.chrono, ...s.updates].filter(Boolean));
+  const bad = shown.filter(x => x.allegation && !(x.attr && x.attr.kind && x.attr.by));
+  if (bad.length) throw new Error("ALLEGATION_RENDERED_AS_FACT: " + bad.length + " item(ns) sem atribuição");
+  const al = shown.filter(x => x.allegation);
+  console.log(`alegações exibidas: ${al.length} (alegação ${al.filter(x => x.attr.kind === "alegacao").length} · declaração ${al.filter(x => x.attr.kind === "declaracao").length} · em revisão ${al.filter(x => x.attr.kind === "atribuido").length})`);
+}
 const RANKED = STORIES.filter(s => s.key !== EXCLUDE_CASE).sort((a, b) => cmp(b.lastPublished, a.lastPublished) || b.records - a.records);
 const storyIdx = Object.fromEntries(STORIES.map((s, i) => [s.key, i]));
 
@@ -370,6 +395,8 @@ const files = {
   "rotas.json": {
     casos: Object.fromEntries(STORIES.filter(s => s.key !== EXCLUDE_CASE).map(s => [s.key, s.slug])),
     pessoas: Object.fromEntries(PERSONS.map(p => [p.name, p.slug])),
+    // #/…?ev=<registro> do app anterior → a história pública que contém o registro
+    eventos: Object.fromEntries(D.ev.map(e => [e.id, (e.c || []).filter(c => c !== EXCLUDE_CASE && storyIdx[c] !== undefined).map(c => STORIES[storyIdx[c]].slug)[0]]).filter(x => x[1])),
   },
   // Checar: exemplo público "original × checado" só com checagem já publicada E liberada por Johnny
   // (CHECAR_PUBLIC_EXAMPLE). Padrão = nenhum (fail closed): a página explica o método e não mostra exemplo.

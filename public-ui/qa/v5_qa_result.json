@@ -1549,7 +1549,7 @@
     "info": 0
    },
    {
-    "check": "desktop: cronologia de 'atibaia' marca toda alegação atribuída (e só ela)",
+    "check": "desktop: cronologia de 'atibaia' rotula e atribui toda alegação (e só ela)",
     "ok": true,
     "info": {
      "want": [
@@ -1571,7 +1571,7 @@
     }
    },
    {
-    "check": "desktop: atualizações marcam alegação atribuída",
+    "check": "desktop: atualizações rotulam e atribuem alegação",
     "ok": true,
     "info": {
      "want": [
@@ -1585,6 +1585,11 @@
       false
      ]
     }
+   },
+   {
+    "check": "ALLEGATION_RENDERED_AS_FACT = 0 em todas as histórias (55 itens de alegação conferidos)",
+    "ok": true,
+    "info": []
    },
    {
     "check": "desktop: 'O que sabemos' só com fato com fonte, rotulado",
@@ -1607,7 +1612,7 @@
     "info": 0
    },
    {
-    "check": "mobile: cronologia de 'atibaia' marca toda alegação atribuída (e só ela)",
+    "check": "mobile: cronologia de 'atibaia' rotula e atribui toda alegação (e só ela)",
     "ok": true,
     "info": {
      "want": [
@@ -1629,7 +1634,7 @@
     }
    },
    {
-    "check": "mobile: atualizações marcam alegação atribuída",
+    "check": "mobile: atualizações rotulam e atribuem alegação",
     "ok": true,
     "info": {
      "want": [
@@ -1668,6 +1673,11 @@
    },
    {
     "check": "desktop:checar: diz que o envio ainda não está aberto (nada é recebido nem guardado)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:checar: CHECAR_SUBMISSIONS = CLOSED (sem campo de envio, sem CTA de envio, fora da navegação principal)",
     "ok": true,
     "info": null
    },
@@ -1755,6 +1765,11 @@
    },
    {
     "check": "mobile:checar: diz que o envio ainda não está aberto (nada é recebido nem guardado)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:checar: CHECAR_SUBMISSIONS = CLOSED (sem campo de envio, sem CTA de envio, fora da navegação principal)",
     "ok": true,
     "info": null
    },
@@ -1860,6 +1875,11 @@
     ]
    },
    {
+    "check": "desktop: /desmentindo_local.html aposentado (redireciona para a raiz com a mesma rota; sem o app anterior)",
+    "ok": true,
+    "info": null
+   },
+   {
     "check": "desktop:legacy-caso: #/caso?c=Lava%20Jato → #/historia/lava-jato",
     "ok": true,
     "info": null
@@ -1905,7 +1925,12 @@
     "info": 0
    },
    {
-    "check": "desktop: rota movida (eventos) leva ao arquivo anterior",
+    "check": "desktop: rota encerrada (eventos) explica e não aponta para o site anterior",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: link antigo de registro (?ev=) → história que o contém",
     "ok": true,
     "info": null
    },
@@ -1935,6 +1960,11 @@
      "TSE decide derrubar posts com notícia falsa sobre Flávio e Nossa Senhora",
      "Entenda o que o TSE decidiu sobre a fake news de Nossa Senhora Aparecida"
     ]
+   },
+   {
+    "check": "mobile: /desmentindo_local.html aposentado (redireciona para a raiz com a mesma rota; sem o app anterior)",
+    "ok": true,
+    "info": null
    },
    {
     "check": "mobile:legacy-caso: #/caso?c=Lava%20Jato → #/historia/lava-jato",
@@ -1982,7 +2012,12 @@
     "info": 0
    },
    {
-    "check": "mobile: rota movida (eventos) leva ao arquivo anterior",
+    "check": "mobile: rota encerrada (eventos) explica e não aponta para o site anterior",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: link antigo de registro (?ev=) → história que o contém",
     "ok": true,
     "info": null
    }
@@ -2105,7 +2140,7 @@
   ],
   "MOBILE": [
    {
-    "check": "barra inferior: 5 itens com texto e toque ≥ 44px",
+    "check": "barra inferior: 4 itens com texto e toque ≥ 44px (Checar fora até o envio abrir)",
     "ok": true,
     "info": [
      [
@@ -2118,10 +2153,6 @@
      ],
      [
       "⌕Pesquisar",
-      54
-     ],
-     [
-      "✓Checar",
       54
      ],
      [
@@ -2180,7 +2211,7 @@
    {
     "check": "node public-ui/build-v5-data.mjs --check",
     "ok": true,
-    "info": "data/editorial: edição 2026-10-01 válida (11 itens)\nv5/data em sincronia (682 arquivos)"
+    "info": "alegações exibidas: 55 (alegação 43 · declaração 10 · em revisão 2)\ndata/editorial: edição 2026-10-01 válida (11 itens)\nv5/data em sincronia (682 arquivos)"
    }
   ]
  },
@@ -2189,7 +2220,7 @@
    {
     "url": "/v5/",
     "status": 200,
-    "bytes": 2910
+    "bytes": 2777
    },
    {
     "url": "/v5/css/fonts.css",
@@ -2199,12 +2230,12 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 28617
+    "bytes": 28973
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 55041
+    "bytes": 56696
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
@@ -2214,7 +2245,7 @@
    {
     "url": "/v5/",
     "status": 200,
-    "bytes": 2910
+    "bytes": 2777
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
@@ -2229,12 +2260,12 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 28617
+    "bytes": 28973
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 55041
+    "bytes": 56696
    },
    {
     "url": "/data/editorial/index.json",
@@ -2256,7 +2287,7 @@
    {
     "url": "/v5/data/historia/dark-horse.json",
     "status": 200,
-    "bytes": 12734
+    "bytes": 13181
    }
   ],
   "desktop:search-moraes": [
@@ -2266,19 +2297,14 @@
     "bytes": 19491
    },
    {
-    "url": "/v5/data/busca/t/mo.json",
-    "status": 200,
-    "bytes": 21995
-   },
-   {
     "url": "/v5/data/busca/t/al.json",
     "status": 200,
     "bytes": 18713
    },
    {
-    "url": "/v5/data/busca/s/4.json",
+    "url": "/v5/data/busca/t/mo.json",
     "status": 200,
-    "bytes": 77446
+    "bytes": 21995
    },
    {
     "url": "/v5/data/busca/s/0.json",
@@ -2289,6 +2315,11 @@
     "url": "/v5/data/busca/s/3.json",
     "status": 200,
     "bytes": 64291
+   },
+   {
+    "url": "/v5/data/busca/s/4.json",
+    "status": 200,
+    "bytes": 77446
    }
   ],
   "desktop:search-inss": [
@@ -2323,7 +2354,7 @@
    {
     "url": "/v5/data/historia/atibaia.json",
     "status": 200,
-    "bytes": 30085
+    "bytes": 30663
    }
   ],
   "desktop:checar": [
@@ -2336,19 +2367,9 @@
   "desktop:agora-item": [],
   "desktop:home-agora": [
    {
-    "url": "/v5/css/v5.css",
-    "status": 304,
-    "bytes": null
-   },
-   {
-    "url": "/v5/js/v5.js",
-    "status": 304,
-    "bytes": null
-   },
-   {
     "url": "/v5/",
     "status": 200,
-    "bytes": 2910
+    "bytes": 2777
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
@@ -2361,14 +2382,24 @@
     "bytes": 893
    },
    {
-    "url": "/v5/data/home.json",
+    "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 2225
+    "bytes": 28973
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 56696
    },
    {
     "url": "/data/editorial/index.json",
     "status": 200,
     "bytes": 317
+   },
+   {
+    "url": "/v5/data/home.json",
+    "status": 200,
+    "bytes": 2225
    },
    {
     "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
@@ -2382,12 +2413,7 @@
    {
     "url": "/v5/",
     "status": 200,
-    "bytes": 2910
-   },
-   {
-    "url": "/v5/css/v5.css",
-    "status": 200,
-    "bytes": 28617
+    "bytes": 2777
    },
    {
     "url": "/v5/css/fonts.css",
@@ -2395,14 +2421,24 @@
     "bytes": 893
    },
    {
-    "url": "/v5/js/v5.js",
-    "status": 200,
-    "bytes": 55041
-   },
-   {
     "url": "/v5/fonts/archivo-latin.woff2",
     "status": 200,
     "bytes": 90104
+   },
+   {
+    "url": "/v5/css/v5.css",
+    "status": 200,
+    "bytes": 28973
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 56696
+   },
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 2777
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
@@ -2415,19 +2451,14 @@
     "bytes": 893
    },
    {
-    "url": "/v5/",
-    "status": 200,
-    "bytes": 2910
-   },
-   {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 28617
+    "bytes": 28973
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 55041
+    "bytes": 56696
    },
    {
     "url": "/data/editorial/index.json",
@@ -2449,7 +2480,7 @@
    {
     "url": "/v5/data/historia/dark-horse.json",
     "status": 200,
-    "bytes": 12734
+    "bytes": 13181
    }
   ],
   "mobile:search-moraes": [
@@ -2516,7 +2547,7 @@
    {
     "url": "/v5/data/historia/atibaia.json",
     "status": 200,
-    "bytes": 30085
+    "bytes": 30663
    }
   ],
   "mobile:checar": [
@@ -2531,7 +2562,7 @@
    {
     "url": "/v5/",
     "status": 200,
-    "bytes": 2910
+    "bytes": 2777
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
@@ -2545,13 +2576,13 @@
    },
    {
     "url": "/v5/css/v5.css",
-    "status": 304,
-    "bytes": null
+    "status": 200,
+    "bytes": 28973
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 55041
+    "bytes": 56696
    },
    {
     "url": "/data/editorial/index.json",
@@ -2574,7 +2605,7 @@
  },
  "evidence": {
   "desktop:home_data_bytes": 2225,
-  "desktop:story_data_bytes": 12734,
+  "desktop:story_data_bytes": 13181,
   "desktop:story_ja_falaram_top_px": 1094.109375,
   "desktop:story_sections": [
    "O que sabemos",
@@ -2603,8 +2634,9 @@
    "agora": "AGORA\n3 histórias\nSem Desconto / INSS\n15 registros mencionam\n21 set 2026\nCPMI do INSS\n8 registros mencionam\n28 mar 2026\nDeath Care / cemitérios\n1 registro menciona\n17 set 2026\n\nO que já foi dito sobre"
   },
   "search_inss_recount_from_archive": 170,
+  "allegations_checked": 55,
   "mobile:home_data_bytes": 2225,
-  "mobile:story_data_bytes": 12734,
+  "mobile:story_data_bytes": 13181,
   "mobile:story_ja_falaram_top_px": 1189.40625,
   "mobile:story_sections": [
    "O que sabemos",
@@ -2649,7 +2681,7 @@
   },
   "v5_data": {
    "files": 682,
-   "total_bytes": 7408647,
+   "total_bytes": 7445437,
    "home_json_bytes": 2225,
    "largest": {
     "file": "v5/data/busca/s/14.json",

@@ -62,7 +62,20 @@
   }
   var NAO_ENC_TXT = "Não encontramos registro nos arquivos consultados. Isso não significa que nunca aconteceu.";
   // Registro da história: alegação atribuída nunca aparece como fato.
-  function natTag(x) { return x && x.allegation ? '<span class="tag tag-alleg">Alegação atribuída</span> ' : ""; }
+  // Quem alegou / quem disse, resposta e fonte vêm do dado (sem inventar). "declaracao" = fala atribuída que não é
+  // acusação; "atribuido" = classificação em revisão humana (rótulo neutro). Nunca sai como fato sem rótulo.
+  var ATTR_TAG = { alegacao: ["tag-alleg", "Alegação atribuída", "Quem alega"], declaracao: ["tag-said", "Declaração atribuída", "Quem disse"], atribuido: ["tag-said", "Atribuído", "Segundo"] };
+  function natTag(x) {
+    if (!x || !x.allegation) return "";
+    var a = x.attr || { kind: "alegacao" }, t = ATTR_TAG[a.kind] || ATTR_TAG.alegacao;
+    return '<span class="tag ' + t[0] + '">' + t[1] + "</span> ";
+  }
+  function attrNote(x) {
+    if (!x || !x.allegation || !x.attr) return "";
+    var a = x.attr, t = ATTR_TAG[a.kind] || ATTR_TAG.alegacao;
+    return '<p class="attr">' + (a.by ? "<b>" + t[2] + ":</b> " + e(a.by) : "") + (a.resp ? "<br><b>Resposta:</b> " + e(a.resp) : "") +
+      (a.src ? '<br><b>Fonte:</b> <a href="' + e(a.src.url) + '" target="_blank" rel="noopener">' + e(a.src.outlet) + "</a>" : "") + "</p>";
+  }
   var KIND = { Documento: ["k-doc", "▤"], "Fonte oficial": ["k-doc", "▤"], "Vídeo": ["k-vid", "▶"], "Opinião": ["k-src", "↗"] };
   function railCard(x) {
     var k = KIND[x.kind] || ["k-src", "↗"];
@@ -197,7 +210,7 @@
       var h = '<section class="page-head"><p class="kicker"><span class="tag tag-ink">História</span>' + (s.span ? " " + e(s.span.replace("–", " a ")) : "") + '</p><h1 class="h1">' + e(s.title) + "</h1>";
       if (s.lastD) h += '<p class="bigdate"><span>Último registro</span><b>' + tdate(s.lastD) + "</b></p>";
       if (s.summary) {
-        h += '<p class="summary">' + natTag(s.summary) + e(s.summary.text) + "</p>" +
+        h += '<p class="summary">' + natTag(s.summary) + e(s.summary.text) + "</p>" + attrNote(s.summary) +
           '<p class="src">' + tdate(s.summary.date) + (s.summary.source ? " · " + ext(s.summary.source.url, e(s.summary.source.outlet || "fonte"), "") : "") + "</p>";
       }
       // Números com contexto (BIG NUMBER): navegacionais, nunca avaliação.
@@ -237,7 +250,7 @@
       if (s.chrono.length) {
         // VISUAL TIMELINE: do mais antigo ao mais recente; o último marco é o "agora" (amarelo).
         h += '<section class="sec"><h2 class="h2">Cronologia</h2><ol class="tl">' + s.chrono.map(function (c, i) {
-          return '<li' + (i === s.chrono.length - 1 ? ' class="now"' : "") + ">" + tdate(c.date) + (c.allegation ? '<span class="tag tag-alleg">Alegação atribuída</span>' : "") + "<p>" + e(c.text) + "</p></li>";
+          return '<li' + (i === s.chrono.length - 1 ? ' class="now"' : "") + ">" + tdate(c.date) + natTag(c) + "<p>" + e(c.text) + "</p>" + attrNote(c) + "</li>";
         }).join("") + "</ol></section>";
       }
       if (s.sources.length) {
@@ -248,7 +261,7 @@
       }
       if (s.updates.length) {
         h += '<section class="sec"><h2 class="h2">Atualizações</h2><ul class="upd">' + s.updates.map(function (u) {
-          return '<li><span class="tag tag-ink">↻ Atualizado em ' + e(fdate(u.published)) + "</span> " + natTag(u) + "<p>" + e(u.text) + "</p></li>";
+          return '<li><span class="tag tag-ink">↻ Atualizado em ' + e(fdate(u.published)) + "</span> " + natTag(u) + "<p>" + e(u.text) + "</p>" + attrNote(u) + "</li>";
         }).join("") + "</ul></section>";
       }
       h += '<p class="transp"><span>' + plural(s.records, "registro", "registros") + "</span><span>" + plural(s.n_sources, "fonte", "fontes") + "</span>" +
@@ -563,9 +576,10 @@
 
   P.checar = function () {
     document.title = "Checar · Desmentindo";
-    var h = '<section class="page-head chk-hero"><p class="kicker chk-k">Checar uma mensagem, post ou notícia</p><h1 class="h1">Recebeu? A gente confere.</h1>' +
-      '<p class="lead">Você entrega um print, post, vídeo, tabela, gráfico, infográfico, linha do tempo ou mapa. A gente separa cada afirmação, confere uma por uma e devolve no mesmo formato, agora checado.</p>' +
-      '<p class="notice"><b>O envio pelo site ainda não está aberto.</b> Enquanto isso, veja se o assunto já apareceu antes nos arquivos:</p>' +
+    // CHECAR_SUBMISSIONS = CLOSED (decisão de Johnny, 02/10): a página apresenta o produto; nenhum chamado de envio.
+    var h = '<section class="page-head chk-hero"><p class="kicker chk-k">Checar · em preparação</p><h1 class="h1">Como o Desmentindo checa</h1>' +
+      '<p class="lead">Quando o envio abrir, você vai poder mandar um print, post, vídeo, tabela, gráfico, infográfico, linha do tempo ou mapa. A gente separa cada afirmação, confere uma por uma e devolve no mesmo formato, agora checado.</p>' +
+      '<p class="notice"><b>O envio pelo site ainda não está aberto.</b> Esta página não recebe nem guarda nada. Enquanto isso, veja se o assunto já apareceu antes nos arquivos:</p>' +
       '<div style="margin-top:14px">' + searchForm("", "q-checar") + "</div></section>";
     h += '<section class="sec" id="como"><h2 class="h2">Como checamos</h2><ol class="steps">' +
       "<li><b>Entrada</b><p>O material como chegou: print, post, vídeo, tabela, infográfico, linha do tempo ou mapa.</p></li>" +
@@ -608,21 +622,30 @@
     retired: { matriz: "Matriz", mapa: "Mapa", rede: "Vínculos e hipóteses", cerebro: "Segundo cérebro", fichas: "Pessoas e casos", contagens: "Contagens", regime: "Termômetro do regime" }
   };
   function legacyRoute(name, query) {
-    if (typeof LEGACY[name] === "string") return Promise.resolve({ go: LEGACY[name] });
     var q = new URLSearchParams(query || "");
-    if (name === "caso" || name === "pessoa") {
-      var key = q.get(name === "caso" ? "c" : "n") || "";
+    var ev = q.get("ev"), key = q.get("c") || q.get("n") || "";
+    // Registro específico (#/…?ev=) → a história pública que o contém; afirmação (?cl=) → Checar.
+    if (ev || q.get("cl") || name === "caso" || name === "pessoa" || (name === "cerebro" && key)) {
       return load("rotas.json").then(function (R) {
-        var slug = (name === "caso" ? R.casos : R.pessoas)[key];
-        return { go: slug ? (name === "caso" ? "#/historia/" : "#/arquivo/") + slug : key ? "#/busca?q=" + encodeURIComponent(key) : "#/" };
-      }, function () { return { go: key ? "#/busca?q=" + encodeURIComponent(key) : "#/" }; });
+        if (ev && R.eventos && R.eventos[ev]) return { go: "#/historia/" + R.eventos[ev] };
+        if (q.get("cl")) return { go: "#/checar" };
+        if (name === "caso" && R.casos[key]) return { go: "#/historia/" + R.casos[key] };
+        if ((name === "pessoa" || name === "cerebro") && R.pessoas[key]) return { go: "#/arquivo/" + R.pessoas[key] };
+        return key ? { go: "#/busca?q=" + encodeURIComponent(key) } : legacyPage(name);
+      }, function () { return key ? { go: "#/busca?q=" + encodeURIComponent(key) } : legacyPage(name); });
     }
-    if (LEGACY.moved[name]) return Promise.resolve({ html: '<section class="page-head"><p class="kicker">Endereço antigo</p><h1 class="h1">' + e(LEGACY.moved[name]) + " mudou de lugar</h1>" +
-      '<p class="lead">Esta seção era do site anterior. O conteúdo continua no arquivo anterior, enquanto migramos para as histórias e a pesquisa.</p>' +
-      '<p><a class="btn-ink" href="/desmentindo_local.html#/' + e(name) + (query ? "?" + e(query) : "") + '">Abrir no arquivo anterior</a></p>' + searchForm("", "q-legacy") + "</section>" });
-    if (LEGACY.retired[name]) return Promise.resolve({ html: '<section class="page-head"><p class="kicker">Endereço antigo</p><h1 class="h1">' + e(LEGACY.retired[name]) + " saiu da página pública</h1>" +
-      '<p class="lead">O Desmentindo não publica perfis, rankings, mapas de pessoas nem painéis de pontuação. Aparecer junto não é ser culpado. A pesquisa mostra os registros, com data e fonte.</p>' + searchForm("", "q-legacy") + "</section>" });
-    return null;
+    if (typeof LEGACY[name] === "string") return Promise.resolve({ go: LEGACY[name] });
+    var pg = legacyPage(name);
+    return pg ? Promise.resolve(pg) : null;
+  }
+  // O site anterior foi encerrado (LEGACY_PUBLIC_APP = RETIRED): nenhum link para ele; nenhum módulo proibido trazido.
+  function legacyPage(name) {
+    if (typeof LEGACY[name] === "string") return { go: LEGACY[name] };
+    if (LEGACY.moved[name]) return { html: '<section class="page-head"><p class="kicker">Endereço antigo</p><h1 class="h1">' + e(LEGACY.moved[name]) + " foi encerrada</h1>" +
+      '<p class="lead">Esta seção era do site anterior do Desmentindo, que foi encerrado. Os registros, com data e fonte, estão nas histórias e na pesquisa.</p>' + searchForm("", "q-legacy") + "</section>" };
+    if (LEGACY.retired[name]) return { html: '<section class="page-head"><p class="kicker">Endereço antigo</p><h1 class="h1">' + e(LEGACY.retired[name]) + " saiu da página pública</h1>" +
+      '<p class="lead">O Desmentindo não publica perfis, rankings, mapas de pessoas nem painéis de pontuação. Aparecer junto não é ser culpado. A pesquisa mostra os registros, com data e fonte.</p>' + searchForm("", "q-legacy") + "</section>" };
+    return { go: "#/" };
   }
 
   function notFound() {
@@ -656,7 +679,7 @@
     var fn = P[name] || P.home;
     document.body.classList.toggle("is-home", fn === P.home);
     document.title = "Desmentindo";
-    setDoor(fn === P.busca ? "busca" : (fn === P.arquivos || fn === P.arquivo) ? "arquivos" : fn === P.checar ? "checar" : (fn === P.home || fn === P.historia || fn === P.agora) ? "agora" : "");
+    setDoor(fn === P.busca ? "busca" : (fn === P.arquivos || fn === P.arquivo) ? "arquivos" : (fn === P.home || fn === P.historia || fn === P.agora) ? "agora" : "");
     pending = {};
     var my = ++routeSeq; // só a navegação mais recente pode pintar a página (resposta atrasada de outra rota é descartada)
     fn(arg).then(function (h) {
