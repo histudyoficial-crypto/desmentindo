@@ -1,6 +1,6 @@
 # P0 — auditoria das alegações exibidas como fato (v5)
 
-Data: 2026-10-02 · Arquivo de dados da auditoria: `public-ui/attribution_audit.json` (status: **PROPOSTO, aguardando Johnny**).
+Data: 2026-10-02 · Arquivo de dados da auditoria: `public-ui/attribution_audit.json`. **12 itens em revisão humana individual no Command Center (CR-20261002-01…12), rótulo neutro "ATRIBUÍDO" até cada decisão; nenhuma aprovação em lote.** Os outros 43 seguem a classificação do próprio dado (alegação atribuída).
 
 **Achado:** na produção, 53 elementos (35 marcos de cronologia, 17 atualizações e 1 resumo) vêm de registros classificados no dado como
 `alegacao_atribuida` e eram exibidos **sem rótulo**, como se fossem fato. Ao remover uma duplicata do dado na cronologia (EV-0327/EV-0331,
@@ -76,7 +76,8 @@ do dado (ALEGAÇÃO ATRIBUÍDA) até nova auditoria. Regressão: o build falha c
 | 54 | J&F / JBS | cronologia | 2018-02-26 | Segundo a PGR (Conjur/Migalhas), executivos da J&F omitiram ao MPF a prestação de serviços de Marcello Miller ao grupo enquanto era procurador,… | PGR / MPF | sem rótulo (dado: alegação) | **ALEGAÇÃO ATRIBUÍDA** | PGR qualifica conduta como corrupção ativa; Miller nega; ação trancada. |
 | 55 | Compliance Zero / Master | cronologia | 2025-03 | Segundo Times Brasil, Congresso em Foco e Metrópoles, Cezinha de Madureira teria facilitado, em março de 2025 (São Paulo), encontro entre Daniel… | Mensagens extraídas pela PF e fontes citadas pela imprensa; Metrópoles cita… | sem rótulo (dado: alegação) | **ALEGAÇÃO ATRIBUÍDA** | Mensagens e fontes atribuem intermediação de encontro; Cezinha nega irregularidade; PF diz não apontar participação de ministros. |
 
-## Para decisão de Johnny
+## Para decisão de Johnny (Command Center, item a item)
 - **HUMAN_REVIEW (2):** #33 (parecer do então advogado Moraes "para beneficiar réus") e #47 (relatoria de Toffoli por prevenção + opinião da piauí sobre atraso).
 - **Reclassificação proposta (10 → DECLARAÇÃO ATRIBUÍDA):** #2, #5, #12, #19, #21, #24, #25, #26, #27, #39. Confirmar ou devolver para ALEGAÇÃO.
-- Para aplicar uma decisão: trocar `proposed` no item e `status` para `CONFIRMED` em `public-ui/attribution_audit.json`.
+- Opções por item: CONFIRMAR CLASSIFICAÇÃO PROPOSTA · MANTER CLASSIFICAÇÃO ANTERIOR · PEDIR ALTERAÇÃO · SEGURAR. A decisão fica no Control Plane privado (`control/CLASSIFICATION_REVIEWS.json`, só acrescenta) e é levada a este arquivo (`human_review.status`) num PR com merge humano.
+- Regra preservada nos testes: ATTRIBUTED_STATEMENT ≠ ATTRIBUTED_ALLEGATION ≠ FATO. A fonte pode provar que X alegou Y sem provar que Y aconteceu.

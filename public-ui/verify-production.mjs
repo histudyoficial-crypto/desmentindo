@@ -8,6 +8,7 @@
  *   DATA_MATCH          home.json servido == build deste commit; build-info.json com ui_commit e data_build_id deste deploy
  *   DATA_FRESHNESS      edição servida == D.meta.atualizado deste commit E edição editorial servida == data/editorial do commit
  *   EDITORIAL_MATCH     /data/editorial/index.json e a edição mais recente servidos == bytes do commit (sha256)
+ *   LEGACY_V4_PUBLIC_PREVIEW_RETIRED /v4/ = redirecionamento; /v4/data/* não é mais servido (404)
  *   LEGACY_PUBLIC_APP_RETIRED /desmentindo_local.html = redirecionamento para a raiz (app anterior fora do ar)
  *   INTERNAL_IDENTIFIER_SCAN nenhum id interno (PS-*, RV-*, DS-*, EVC-*, source_id…) no que a produção serve
  *   CACHE_POLICY        HTML da raiz com Cache-Control no-cache (sem reuso heurístico da Home antiga)
@@ -94,6 +95,9 @@ async function check() {
   g.EDITORIAL_MATCH = edOk;
   // LEGACY_PUBLIC_APP_RETIRED: /desmentindo_local.html serve só o redirecionamento (nunca o app anterior com o `D`).
   const legacyApp = await get("/desmentindo_local.html");
+  // LEGACY_V4_PUBLIC_PREVIEW_RETIRED: /v4/ = redirecionamento; os dados da prévia não são mais servidos.
+  const v4 = await get("/v4/"), v4data = await get("/v4/data/afirmacoes.json");
+  g.LEGACY_V4_PUBLIC_PREVIEW_RETIRED = v4.status === 200 && /name="desmentindo-legacy" content="retired-v4"/.test(v4.body) && v4data.status === 404;
   g.LEGACY_PUBLIC_APP_RETIRED = legacyApp.status === 200 && /name="desmentindo-legacy" content="retired"/.test(legacyApp.body) && !/const D ?= ?\{/.test(legacyApp.body);
   g.CACHE_POLICY = /no-cache/i.test(root.headers["cache-control"] || "");
   return { base: BASE, gates: g, internal_id_leaks: leaks, assets, served_build: m.slice(1), build_info: info, data: { ROOT_DATA_EDITION: served, LATEST_APPROVED_DATA_EDITION: approved, EDITORIAL_EDITION_SERVED: edServed, EDITORIAL_EDITION_APPROVED: editorial },

@@ -273,6 +273,14 @@ with sync_playwright() as pw:
                 label = {"alegacao": "alegação atribuída", "declaracao": "declaração atribuída", "atribuido": "atribuído"}
                 if [label.get(k) for k in want2] != got2: bad.append({"story": f[:-5], "want": want2, "got": got2})
             R["evidence"]["allegations_checked"] = n_alleg
+            # rótulos mutuamente exclusivos: nada é ao mesmo tempo "fato com fonte" e alegação/declaração/atribuído
+            mixed = page.evaluate("Array.from(document.querySelectorAll('li, p.summary')).filter(n => n.querySelector(':scope > .tag-fact, :scope .src > .tag-fact') && n.querySelector(':scope > .tag-alleg, :scope > .tag-said')).length")
+            check("V5_EPISTEMIC_QA", "ATTRIBUTED_STATEMENT ≠ ATTRIBUTED_ALLEGATION ≠ FATO: nenhum item com dois rótulos", mixed == 0, mixed)
+            pend = [x for x in AUD.values() if (x.get("human_review") or {}).get("status") not in (None, "CONFIRMED", "KEPT_PREVIOUS")]
+            decl = sum(1 for f in os.listdir(hist_dir) for x in [json.load(open(os.path.join(hist_dir, f), encoding="utf8"))]
+                       for it in [x.get("summary")] + x["chrono"] + x["updates"] if it and (it.get("attr") or {}).get("kind") == "declaracao")
+            confirmed = sum(1 for x in AUD.values() if (x.get("human_review") or {}).get("status") == "CONFIRMED" and x["proposed"] == "ATTRIBUTED_STATEMENT")
+            check("V5_EPISTEMIC_QA", f"declaração atribuída só com confirmação humana individual ({len(pend)} pendentes ficam neutros)", decl == 0 if confirmed == 0 else decl > 0, {"declaracao": decl, "confirmadas": confirmed})
             check("V5_EPISTEMIC_QA", f"ALLEGATION_RENDERED_AS_FACT = 0 em todas as histórias ({n_alleg} itens de alegação conferidos)", not bad, bad[:3])
         if not alleg_story:
             check("V5_EPISTEMIC_QA", "há história com alegação na cronologia para testar", False)
@@ -345,7 +353,10 @@ with sync_playwright() as pw:
         stub = subprocess.run(["node", "public-ui/build-root.mjs", "--out", "/dev/null", "--legacy-out", "/dev/stdout", "--no-build-info"], cwd=ROOT, capture_output=True, text=True).stdout
         check("V5_ROUTES_QA", f"{vp_name}: /desmentindo_local.html aposentado (redireciona para a raiz com a mesma rota; sem o app anterior)",
               'content="retired"' in stub and 'location.replace("/" + (location.hash || ""))' in stub and "const D" not in stub)
-        for name, h_, expect in (("legacy-caso", "#/caso?c=Lava%20Jato", "#/historia/lava-jato"), ("legacy-pessoa", "#/pessoa?n=Dias%20Toffoli", "#/arquivo/dias-toffoli"),
+        v4stub = subprocess.run(["node", "public-ui/build-root.mjs", "--out", "/dev/null", "--legacy-out", "/dev/null", "--v4-out", "/dev/stdout", "--no-build-info"], cwd=ROOT, capture_output=True, text=True).stdout
+        check("V5_ROUTES_QA", f"{vp_name}: LEGACY_V4_PUBLIC_PREVIEW_RETIRED (/v4/ redireciona para a raiz com a mesma rota)",
+              'content="retired-v4"' in v4stub and 'location.replace("/" + (location.hash || ""))' in v4stub)
+        for name, h_, expect in (("v4-circulando", "#/circulando", "#/checar"), ("v4-caso", "#/caso/lava-jato", "#/historia/lava-jato"), ("v4-data", "#/data", "#/profissionais"), ("legacy-caso", "#/caso?c=Lava%20Jato", "#/historia/lava-jato"), ("legacy-pessoa", "#/pessoa?n=Dias%20Toffoli", "#/arquivo/dias-toffoli"),
                                  ("legacy-corpus", "#/corpus", "#/arquivos"), ("legacy-narrativas", "#/narrativas", "#/checar")):
             page.goto(BASE + "#/__blank"); page.goto(BASE + h_)
             page.wait_for_function("(e) => location.hash === e", arg=expect, timeout=10000)

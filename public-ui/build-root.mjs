@@ -72,8 +72,23 @@ export const LEGACY_STUB = `<!doctype html>
 <body><p>O site anterior do Desmentindo foi encerrado. <a href="/">Ir para desmentindo.com.br</a></p></body></html>
 `;
 const li = process.argv.indexOf("--legacy-out");
-const legacyOut = li > 0 ? path.resolve(process.argv[li + 1]) : (out === path.join(ROOT, "index.html") ? path.join(ROOT, "desmentindo_local.html") : null);
+// Só o workspace do deploy (GitHub Actions) troca arquivos do repositório; localmente nada é apagado/sobrescrito.
+const DEPLOY_WS = out === path.join(ROOT, "index.html") && process.env.GITHUB_ACTIONS === "true";
+if (out === path.join(ROOT, "index.html") && !DEPLOY_WS) console.warn("aviso: fora do GitHub Actions — app anterior e /v4/ NÃO foram substituídos (use --legacy-out/--v4-out para testar)");
+const legacyOut = li > 0 ? path.resolve(process.argv[li + 1]) : (DEPLOY_WS ? path.join(ROOT, "desmentindo_local.html") : null);
 if (legacyOut) fs.writeFileSync(legacyOut, LEGACY_STUB);
+
+// LEGACY_V4_PUBLIC_PREVIEW_RETIRED (decisão de Johnny, 02/10/2026): a prévia /v4/ deixa de ser uma segunda experiência
+// pública. Só no workspace do deploy: a árvore v4/ é removida (o FTP apaga do servidor o que sumiu, inclusive os dados
+// da prévia) e fica apenas v4/index.html redirecionando para a raiz com a mesma rota. O código continua no Git.
+export const V4_STUB = LEGACY_STUB.replace('content="retired"', 'content="retired-v4"').replace("O site anterior do Desmentindo foi encerrado.", "A prévia v4 do Desmentindo foi encerrada.");
+const v4i = process.argv.indexOf("--v4-out");
+if (v4i > 0) fs.writeFileSync(path.resolve(process.argv[v4i + 1]), V4_STUB);
+else if (DEPLOY_WS) {
+  fs.rmSync(path.join(ROOT, "v4"), { recursive: true, force: true });
+  fs.mkdirSync(path.join(ROOT, "v4"), { recursive: true });
+  fs.writeFileSync(path.join(ROOT, "v4", "index.html"), V4_STUB);
+}
 if (!process.argv.includes("--no-build-info")) {
   // índice editorial vazio só no workspace do deploy quando ainda não há edição publicada (evita 404 na Home);
   // nunca sobrescreve um índice real.

@@ -1587,6 +1587,19 @@
     }
    },
    {
+    "check": "ATTRIBUTED_STATEMENT ≠ ATTRIBUTED_ALLEGATION ≠ FATO: nenhum item com dois rótulos",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "declaração atribuída só com confirmação humana individual (12 pendentes ficam neutros)",
+    "ok": true,
+    "info": {
+     "declaracao": 0,
+     "confirmadas": 0
+    }
+   },
+   {
     "check": "ALLEGATION_RENDERED_AS_FACT = 0 em todas as histórias (55 itens de alegação conferidos)",
     "ok": true,
     "info": []
@@ -1880,6 +1893,26 @@
     "info": null
    },
    {
+    "check": "desktop: LEGACY_V4_PUBLIC_PREVIEW_RETIRED (/v4/ redireciona para a raiz com a mesma rota)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:v4-circulando: #/circulando → #/checar",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:v4-caso: #/caso/lava-jato → #/historia/lava-jato",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:v4-data: #/data → #/profissionais",
+    "ok": true,
+    "info": null
+   },
+   {
     "check": "desktop:legacy-caso: #/caso?c=Lava%20Jato → #/historia/lava-jato",
     "ok": true,
     "info": null
@@ -1963,6 +1996,26 @@
    },
    {
     "check": "mobile: /desmentindo_local.html aposentado (redireciona para a raiz com a mesma rota; sem o app anterior)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: LEGACY_V4_PUBLIC_PREVIEW_RETIRED (/v4/ redireciona para a raiz com a mesma rota)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:v4-circulando: #/circulando → #/checar",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:v4-caso: #/caso/lava-jato → #/historia/lava-jato",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:v4-data: #/data → #/profissionais",
     "ok": true,
     "info": null
    },
@@ -2211,7 +2264,7 @@
    {
     "check": "node public-ui/build-v5-data.mjs --check",
     "ok": true,
-    "info": "alegações exibidas: 55 (alegação 43 · declaração 10 · em revisão 2)\ndata/editorial: edição 2026-10-01 válida (11 itens)\nv5/data em sincronia (682 arquivos)"
+    "info": "alegações exibidas: 55 (alegação 43 · declaração 0 · em revisão 12)\ndata/editorial: edição 2026-10-01 válida (11 itens)\nv5/data em sincronia (682 arquivos)"
    }
   ]
  },
@@ -2233,14 +2286,14 @@
     "bytes": 28973
    },
    {
-    "url": "/v5/js/v5.js",
-    "status": 200,
-    "bytes": 56696
-   },
-   {
     "url": "/v5/fonts/archivo-latin.woff2",
     "status": 200,
     "bytes": 90104
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 57411
    },
    {
     "url": "/v5/",
@@ -2265,7 +2318,7 @@
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 56696
+    "bytes": 57411
    },
    {
     "url": "/data/editorial/index.json",
@@ -2307,6 +2360,11 @@
     "bytes": 21995
    },
    {
+    "url": "/v5/data/busca/s/4.json",
+    "status": 200,
+    "bytes": 77446
+   },
+   {
     "url": "/v5/data/busca/s/0.json",
     "status": 200,
     "bytes": 68305
@@ -2315,11 +2373,6 @@
     "url": "/v5/data/busca/s/3.json",
     "status": 200,
     "bytes": 64291
-   },
-   {
-    "url": "/v5/data/busca/s/4.json",
-    "status": 200,
-    "bytes": 77446
    }
   ],
   "desktop:search-inss": [
@@ -2367,6 +2420,11 @@
   "desktop:agora-item": [],
   "desktop:home-agora": [
    {
+    "url": "/v5/js/v5.js",
+    "status": 304,
+    "bytes": null
+   },
+   {
     "url": "/v5/",
     "status": 200,
     "bytes": 2777
@@ -2385,11 +2443,6 @@
     "url": "/v5/css/v5.css",
     "status": 200,
     "bytes": 28973
-   },
-   {
-    "url": "/v5/js/v5.js",
-    "status": 200,
-    "bytes": 56696
    },
    {
     "url": "/data/editorial/index.json",
@@ -2421,11 +2474,6 @@
     "bytes": 893
    },
    {
-    "url": "/v5/fonts/archivo-latin.woff2",
-    "status": 200,
-    "bytes": 90104
-   },
-   {
     "url": "/v5/css/v5.css",
     "status": 200,
     "bytes": 28973
@@ -2433,17 +2481,22 @@
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 56696
+    "bytes": 57411
    },
    {
-    "url": "/v5/",
+    "url": "/v5/fonts/archivo-latin.woff2",
     "status": 200,
-    "bytes": 2777
+    "bytes": 90104
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
     "status": 200,
     "bytes": null
+   },
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 2777
    },
    {
     "url": "/v5/css/fonts.css",
@@ -2458,7 +2511,7 @@
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 56696
+    "bytes": 57411
    },
    {
     "url": "/data/editorial/index.json",
@@ -2490,14 +2543,14 @@
     "bytes": 19491
    },
    {
-    "url": "/v5/data/busca/t/al.json",
-    "status": 200,
-    "bytes": 18713
-   },
-   {
     "url": "/v5/data/busca/t/mo.json",
     "status": 200,
     "bytes": 21995
+   },
+   {
+    "url": "/v5/data/busca/t/al.json",
+    "status": 200,
+    "bytes": 18713
    },
    {
     "url": "/v5/data/busca/s/0.json",
@@ -2582,7 +2635,7 @@
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 56696
+    "bytes": 57411
    },
    {
     "url": "/data/editorial/index.json",
@@ -2681,7 +2734,7 @@
   },
   "v5_data": {
    "files": 682,
-   "total_bytes": 7445437,
+   "total_bytes": 7445427,
    "home_json_bytes": 2225,
    "largest": {
     "file": "v5/data/busca/s/14.json",

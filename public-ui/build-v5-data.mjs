@@ -143,11 +143,17 @@ const personByName = Object.fromEntries(PERSONS.map(p => [p.name, p]));
 const AUDIT = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "attribution_audit.json"), "utf8")).items.map(x => [x.event, x]));
 const evHash = t => crypto.createHash("sha256").update(String(t || "").normalize("NFC").replace(/\s+/g, " ").trim()).digest("hex").slice(0, 16);
 const cleanAttr = t => (t && t !== "None" ? String(t).replace(/,?\s*segundo (o )?resumo( de busca)?;?/gi, "").replace(/\(\s*,\s*/g, "(").replace(/\s+\)/g, ")").trim() : null);
+const ATTR_LOG = [];
 function attribution(x) {
   if (!x.allegation) return undefined;
   const a = AUDIT[x.e.id], ok = a && a.text_sha256 === evHash(x.e.desc);
-  const kind = !ok ? "alegacao" : a.proposed === "ATTRIBUTED_STATEMENT" ? "declaracao" : a.proposed === "HUMAN_REVIEW" ? "atribuido" : "alegacao";
+  // Revisão humana individual (Command Center): enquanto não decidida, rótulo neutro. CONFIRMED → proposta;
+  // KEPT_PREVIOUS → classificação do dado (alegação). Nunca aprovação em lote.
+  const hr = ok && a.human_review ? a.human_review.status : null;
+  const cls = !ok ? "ALLEGATION" : hr === "CONFIRMED" ? a.proposed : hr === "KEPT_PREVIOUS" ? "ALLEGATION" : hr ? "HUMAN_REVIEW" : a.proposed;
+  const kind = cls === "ATTRIBUTED_STATEMENT" ? "declaracao" : cls === "HUMAN_REVIEW" ? "atribuido" : "alegacao";
   const src = x.sources[0];
+  ATTR_LOG.push({ ev: x.e.id, kind, hr });
   return { kind, by: cleanAttr(x.e.alde) || (src ? src.outlet : null), resp: x.e.resp ? cut(cleanAttr(x.e.resp), 170) : null,
            src: src ? { outlet: src.outlet, url: src.url } : null };
 }
@@ -225,6 +231,12 @@ const STORIES = D.casos.filter(c => (byCase[c] || []).length).map(buildStory);
   const shown = STORIES.filter(s => s.key !== EXCLUDE_CASE).flatMap(s => [s.summary, ...s.chrono, ...s.updates].filter(Boolean));
   const bad = shown.filter(x => x.allegation && !(x.attr && x.attr.kind && x.attr.by));
   if (bad.length) throw new Error("ALLEGATION_RENDERED_AS_FACT: " + bad.length + " item(ns) sem atribuição");
+  // ATTRIBUTED_STATEMENT ≠ ATTRIBUTED_ALLEGATION ≠ FATO: declaração só com confirmação humana; revisão pendente = neutro;
+  // alegação nunca entra em "O que sabemos" (só fato com fonte).
+  const semBad = ATTR_LOG.filter(l => (l.kind === "declaracao" && l.hr && l.hr !== "CONFIRMED") || (l.hr && !["CONFIRMED", "KEPT_PREVIOUS"].includes(l.hr) && l.kind !== "atribuido"));
+  if (semBad.length) throw new Error("ATTRIBUTION_SEMANTICS: " + JSON.stringify(semBad.slice(0, 3)));
+  const knownAlleg = STORIES.flatMap(s => s.known).filter(k => EVENTS.some(x => x.allegation && x.date === k.date && cut(x.text, 220) === k.text));
+  if (knownAlleg.length) throw new Error("ALLEGATION_IN_WHAT_WE_KNOW: " + knownAlleg.length);
   const al = shown.filter(x => x.allegation);
   console.log(`alegações exibidas: ${al.length} (alegação ${al.filter(x => x.attr.kind === "alegacao").length} · declaração ${al.filter(x => x.attr.kind === "declaracao").length} · em revisão ${al.filter(x => x.attr.kind === "atribuido").length})`);
 }

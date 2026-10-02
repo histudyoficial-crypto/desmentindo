@@ -617,12 +617,17 @@
   // Nenhum link antigo vira 404 silencioso: redireciona para o equivalente ou explica o que mudou.
   var LEGACY = {
     home: "#/", inicio: "#/", noticias: "#/", busca: "#/busca", corpus: "#/arquivos", garcia: "#/arquivos", acervos: "#/arquivos", video: "#/arquivos", narrativas: "#/checar",
+    // prévia /v4/ (aposentada): mesmas portas da v5; peças checadas da v4 NÃO são trazidas (exemplo do Checar = OFF)
+    buscar: "#/busca", destaque: "#/", circulando: "#/checar", checamos: "#/checar", afirmacao: "#/checar", resultado: "#/checar",
+    registro: "#/busca", data: "#/profissionais", sobre: "#/arquivos", "como-trabalhamos": "#/checar", cards: "#/", correcoes: "#/", envie: "#/", contato: "#/",
     moved: { eventos: "Eventos e linha do tempo", trilhas: "Onde os casos param", mecanismos: "Mecanismos processuais", sit: "Situação atual", gazeta: "Gazeta do Povo", oeste: "Revista Oeste",
       cobertura: "Cobertura de opinião", opiniao: "Opinião do autor", mensagens: "Mensagens", glossario: "Glossário e método" },
     retired: { matriz: "Matriz", mapa: "Mapa", rede: "Vínculos e hipóteses", cerebro: "Segundo cérebro", fichas: "Pessoas e casos", contagens: "Contagens", regime: "Termômetro do regime" }
   };
-  function legacyRoute(name, query) {
+  function legacyRoute(name, query, arg) {
     var q = new URLSearchParams(query || "");
+    // v4: #/caso/<slug> → história com o mesmo slug, se existir
+    if (name === "caso" && arg) return load("historia/" + arg + ".json").then(function () { return { go: "#/historia/" + arg }; }, function () { return { go: "#/busca?q=" + encodeURIComponent(arg.replace(/-/g, " ")) }; });
     var ev = q.get("ev"), key = q.get("c") || q.get("n") || "";
     // Registro específico (#/…?ev=) → a história pública que o contém; afirmação (?cl=) → Checar.
     if (ev || q.get("cl") || name === "caso" || name === "pessoa" || (name === "cerebro" && key)) {
@@ -665,7 +670,7 @@
     var parts = path.split("/").filter(Boolean);
     var name = parts[0] || "home", arg = parts[1] ? decodeURIComponent(parts[1]) : null;
     if (!P[name] && name !== "home") {
-      var lg = legacyRoute(name, hash.slice(1).split("?")[1]);
+      var lg = legacyRoute(name, hash.slice(1).split("?")[1], arg);
       if (lg) {
         var mine = ++routeSeq;
         lg.then(function (r) {

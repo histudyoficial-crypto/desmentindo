@@ -10,7 +10,7 @@ PRIVATE OPS → HUMAN GATE → APPROVED PUBLIC ARTIFACT → PUBLIC REPO (PR do P
 ## Mapa
 - `index.html` (= `desmentindo_local.html`), `js/`, `data/`, `img/`: app legado (fonte de dados do Publisher; não é mais a raiz quando ROOT_VERSION=v5). **LEGACY_PUBLIC_APP = RETIRED (Johnny, 02/10/2026):** um só Desmentindo público — no deploy, `/desmentindo_local.html` vira um redirecionamento para a raiz (a rota `#/…` é preservada e o adaptador da v5 leva ao equivalente público). O app anterior fica só como histórico técnico no Git. `ROOT_VERSION=legacy` é rollback de emergência e reexpõe o app anterior; preferir reverter o PR. Deploy FTP (`deploy-locaweb.yml`) a cada push em `main`.
 - `automation/publisher_runtime.py` + `desmentindo-publisher.yml`: Publisher horário (Vault outbox → PR). **Nunca faz merge.**
-- `v4/`: nova interface pública (design canônico v4). Os dados vêm de adaptadores (`public-ui/build_public_data.py`); o modelo canônico não é alterado.
+- `v4/`: implementação anterior do design (prévia). **LEGACY_V4_PUBLIC_PREVIEW_RETIRED (Johnny, 02/10/2026):** no deploy a árvore `v4/` é removida e `/v4/` redireciona para a raiz (rota preservada); o código e os dados ficam no Git. Nada da v4 (ex.: peça N001) é trazido para a v5 automaticamente.
 - `v5/`: interface pública em produção desde 01/10/2026 (início oficial da operação). A RAIZ do site é gerada no deploy
   por `public-ui/build-root.mjs` a partir de `v5/index.html` (indexável; assets e dados em `/v5/`). `/v5/` segue como
   cópia de prévia `noindex`. ROLLBACK: trocar `public-ui/ROOT_VERSION` de `v5` para `legacy` (1 commit) → a raiz volta
@@ -34,7 +34,8 @@ PRIVATE OPS → HUMAN GATE → APPROVED PUBLIC ARTIFACT → PUBLIC REPO (PR do P
 
 ## Checar
 - `#/checar` apresenta o produto. **CHECAR_SUBMISSIONS = CLOSED** até o fluxo ponta a ponta (GLT-001) ser validado e Johnny autorizar: sem campo de envio, sem upload, sem chamada que sugira envio, fora da navegação principal. **CHECAR_PUBLIC_EXAMPLE = OFF** (`build-v5-data.mjs`) até decisão editorial explícita.
-- Alegação atribuída nunca aparece como fato: rótulo + quem alega + resposta + fonte (`public-ui/attribution_audit.json`; build falha com `ALLEGATION_RENDERED_AS_FACT`).
+- ONE PUBLIC DESMENTINDO: `/` é a única plataforma pública; `/desmentindo_local.html` e `/v4/` são só redirecionamentos (gates `LEGACY_PUBLIC_APP_RETIRED`, `LEGACY_V4_PUBLIC_PREVIEW_RETIRED`).
+- Alegação atribuída nunca aparece como fato: rótulo + quem alega + resposta + fonte (`public-ui/attribution_audit.json`; build falha com `ALLEGATION_RENDERED_AS_FACT`/`ATTRIBUTION_SEMANTICS`). Declaração atribuída ≠ alegação atribuída ≠ fato; reclassificação só por revisão humana individual (Command Center), nunca em lote; pendente = rótulo neutro "ATRIBUÍDO".
 
 ## Proibido sem autorização de Johnny
 Publicar, fazer merge em `main`, ativar cron, alterar Publisher/deploy (exceto proteção documentada), apagar dados, reorganizar Corpus, colocar credenciais em arquivos.
