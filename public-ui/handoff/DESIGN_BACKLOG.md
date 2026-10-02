@@ -28,7 +28,7 @@
 | Checar | Envio | Não existe canal de envio. | P1 | — | CHECAR_SUBMISSIONS = CLOSED até GLT-001; contrato e política no repositório privado. | FECHADO POR DECISÃO |
 | Checar | Exemplo ORIGINAL × CHECADO | Única peça checada publicada (N001) envolve Banco Master (GLT-001). | P1 | `v4/data/afirmacoes.json` | CHECAR_PUBLIC_EXAMPLE = OFF até decisão editorial explícita. | OFF POR DECISÃO |
 | Está circulando / Já checamos | Feed | Só 1 peça checada; falta origem por afirmação. | P1 | dados | Campos `origem {tipo, visto_em}` e feed de checagens. | ABERTO (DATA_GAP) |
-| Páginas internas | Busca no cabeçalho | Design tem busca no cabeçalho (desktop). | P2 | DM Cabecalho | Campo compacto no topo das páginas internas. | ABERTO |
+| Páginas internas | Busca no cabeçalho | Design tem busca no cabeçalho (desktop). | P2 | DM Cabecalho | Campo compacto no topo das páginas internas. | DEFERRED_POST_GLT001 (Johnny, 02/10) |
 | História | Hero | Design v4 usa hero escuro (tipográfico sem foto); v5 mantém cabeçalho claro com data protagonista. | P2 | DM Historia v4 | Variante escura quando houver gancho editorial (campo `gancho`). | ABERTO |
 | História | Isso já apareceu antes | Faixa 4:3 por ano não implementada (lista de trechos mantida). | P2 | DM Historia v4 | Faixa por ano com o presente em amarelo. | ABERTO |
 | História | O que ele NÃO diz | Sem campo no dado; o bloco não é inventado. | P2 | DM Historia v4 | Campo `documento.nao_diz`. | ABERTO (DATA_GAP) |
@@ -40,7 +40,8 @@
 | Para profissionais | Identidade Desmentindo Data | Página com a identidade da publicação; Data sem selo próprio. | P1 | gate visual 02/10 | Selo DESMENTINDO DATA, cartões com barra azul, "O que não fazemos". | CORRIGIDO NO PR #11 |
 | História | Hero | Cabeçalho claro × hero tipográfico v4 (fundo --ink). | P2 | gate visual 02/10 | Hero escuro com título, data do último registro e cartão da fonte. | CORRIGIDO NO PR #11 |
 | Shell | Navegação/faixa/marca/origem | Item ativo sem 4 px amarelo; faixa-assinatura não ocupava a largura; marca escondida no celular; sem cor de origem. | P2 | gate visual 02/10 | Tokens do DM Cabecalho e cores de origem aplicados. | CORRIGIDO NO PR #11 |
-| Pesquisa | Título-resumo e filtros | Falta "Apareceu N vezes… a primeira em…" e os filtros Tudo/Histórias/Vídeos/Documentos. | P2 | DM Familia CD "resultado" | Implementar após o GLT-001. | ABERTO |
-| Listas | Grade | Coluna de 760 px nas páginas de lista; o design usa grade de 1280. | P2 | DM Familia CD | Avaliar grade larga para listas, mantendo 760 para leitura. | ABERTO |
-| Arquivos | Cartões por origem | Arquivos em linhas, não em cartões com barra de origem. | P2 | DM Familia CD "arquivos" | Cartões por origem. | ABERTO |
-| Para profissionais | Seções | Sem navegação profissional, "Para quem" nem "Dez coisas" (EM ESTUDO; L2). | P2 | DM Profissionais v3 | Depois de confirmar os estados reais das capacidades. | ABERTO |
+| Pesquisa | Título-resumo e filtros | Falta "Apareceu N vezes… a primeira em…" e os filtros Tudo/Histórias/Vídeos/Documentos. | P2 | DM Familia CD "resultado" | Implementar após o GLT-001. | DEFERRED_POST_GLT001 (Johnny, 02/10) |
+| Listas | Grade | Coluna de 760 px nas páginas de lista; o design usa grade de 1280. | P2 | DM Familia CD | Avaliar grade larga para listas, mantendo 760 para leitura. | DEFERRED_POST_GLT001 (Johnny, 02/10) |
+| Arquivos | Cartões por origem | Arquivos em linhas, não em cartões com barra de origem. | P2 | DM Familia CD "arquivos" | Cartões por origem. | DEFERRED_POST_GLT001 (Johnny, 02/10) |
+| Para profissionais | Seções | Sem navegação profissional, "Para quem" nem "Dez coisas" (EM ESTUDO; L2). | P2 | DM Profissionais v3 | Depois de confirmar os estados reais das capacidades. | DEFERRED_POST_GLT001 (Johnny, 02/10) |
+| Celular / História | Botão de busca no cabeçalho do celular; tamanho do título do hero; glifo ⌕ com fonte do sistema | Refinamentos cosméticos encontrados no gate visual. | P3 | gate visual 02/10 | — | DEFERRED_POST_GLT001 (Johnny, 02/10) |
