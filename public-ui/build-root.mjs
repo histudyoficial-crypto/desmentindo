@@ -36,7 +36,7 @@ const commit = (process.env.DESMENTINDO_BUILD_COMMIT || process.env.GITHUB_SHA |
 const ui = commit.slice(0, 12);
 const home = JSON.parse(fs.readFileSync(path.join(ROOT, "v5", "data", "home.json"), "utf8"));
 const dataBuild = crypto.createHash("sha256");
-for (const f of ["v5/data/home.json", "v5/data/busca/meta.json"]) {
+for (const f of ["v5/data/home.json", "v5/data/busca/meta.json", "data/editorial/index.json"]) {
   const fp = path.join(ROOT, f);
   if (fs.existsSync(fp)) dataBuild.update(fs.readFileSync(fp));
 }
@@ -60,6 +60,13 @@ h = h
 if (/noindex/.test(h)) throw new Error("raiz não pode ter noindex");
 fs.writeFileSync(out, h);
 if (!process.argv.includes("--no-build-info")) {
+  // índice editorial vazio só no workspace do deploy quando ainda não há edição publicada (evita 404 na Home);
+  // nunca sobrescreve um índice real.
+  const edIdx = path.join(ROOT, "data", "editorial", "index.json");
+  if (!fs.existsSync(edIdx)) {
+    fs.mkdirSync(path.dirname(edIdx), { recursive: true });
+    fs.writeFileSync(edIdx, JSON.stringify({ schema: "desmentindo.public.editorial_index.v1", latest: null, editions: [] }) + "\n");
+  }
   // build-info técnico (não visual) — só no workspace do deploy; base do DATA_FRESHNESS gate
   const info = { ui_version: "v5", ui_commit: commit, data_build_id: dataId, data_edition: home.edition || null,
                  data_source: "index.html (dados públicos aprovados, Publisher) → public-ui/build-v5-data.mjs",

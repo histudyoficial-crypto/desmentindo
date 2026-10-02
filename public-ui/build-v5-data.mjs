@@ -7,6 +7,7 @@
  *   - data/manifest.*.json (meta ms-manifest): disponibilidade de cada arquivo de vídeo
  *   - data/corpus/manifest.json → links.*.json (trechos ELEGÍVEIS por caso e por pessoa)
  *   - data/ag/corpus.*.json (vídeos e trechos com segundo) — lido aqui, nunca no navegador
+ *   - data/editorial/ (edições aprovadas no Human Gate, JSON próprio; DATA ≠ PRESENTATION)
  *
  * Grava v5/data/ com arquivos pequenos por rota e um índice de busca fragmentado.
  * Não inventa dado: sem campo, sem bloco.
@@ -14,6 +15,7 @@
  *   node public-ui/build-v5-data.mjs          # gera v5/data/
  *   node public-ui/build-v5-data.mjs --check  # falha se v5/data/ estiver desatualizado
  */
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -206,10 +208,46 @@ const storyIdx = Object.fromEntries(STORIES.map((s, i) => [s.key, i]));
 // ---------------------------------------------------------------- arquivos (público)
 const archivesPublic = ARCHIVES.map(a => ({ key: a.key, name: a.name, available: a.available, videos_indexed: a.videos_indexed, videos_total: a.videos_total, latest: a.latest }));
 
+// ---------------------------------------------------------------- edição editorial (DATA ≠ PRESENTATION)
+// Conteúdo aprovado no Human Gate chega como JSON próprio (data/editorial/), não mais embutido no index.html.
+// Ausente → null (compatível com o app legado). Íntegra conferida pelo sha256 do índice; esquema validado; falha
+// fechada: arquivo divergente ou campo fora do contrato derruba o build (nada é publicado pela metade).
+const EDITORIAL_FIELDS = ["id", "date", "label", "title", "text", "sources", "evidence"];
+function loadEditorial() {
+  const idxPath = path.join(ROOT, "data", "editorial", "index.json");
+  if (!fs.existsSync(idxPath)) return null;
+  const idx = readJSON("data/editorial/index.json");
+  if (idx.schema !== "desmentindo.public.editorial_index.v1" || !Array.isArray(idx.editions))
+    throw new Error("data/editorial/index.json fora do contrato");
+  if (!idx.editions.length) return null; // índice vazio (deploy sem edição publicada)
+  const latest = idx.editions[0];
+  if (!/^data\/editorial\/edicoes\/\d{4}-\d{2}-\d{2}\.json$/.test(latest.file)) throw new Error("edição fora de data/editorial/edicoes/");
+  const raw = fs.readFileSync(path.join(ROOT, latest.file));
+  const sha = crypto.createHash("sha256").update(raw).digest("hex");
+  if (sha !== latest.sha256) throw new Error("edição " + latest.edition + ": sha256 diverge do índice");
+  const ed = JSON.parse(raw.toString("utf8"));
+  if (ed.schema !== "desmentindo.public.editorial_edition.v1" || ed.edition !== latest.edition || !validDate(ed.edition))
+    throw new Error("edição " + latest.edition + " fora do contrato");
+  const items = ed.items.map(it => {
+    const extra = Object.keys(it).filter(k => !EDITORIAL_FIELDS.includes(k));
+    if (extra.length) throw new Error("campo fora do contrato em " + it.id + ": " + extra.join(","));
+    if (!it.id || !validDate(it.date) || !it.title || !it.text) throw new Error("item incompleto: " + it.id);
+    if (!it.sources.length || it.sources.some(s => !/^https:\/\//.test(s.url))) throw new Error("fonte inválida em " + it.id);
+    return { id: it.id, date: it.date, label: it.label, title: it.title, text: it.text,
+             sources: it.sources.map(s => ({ name: s.name, title: s.title, url: s.url })),
+             primary: !!(it.evidence && it.evidence.primary_source_obtained) };
+  });
+  return { edition: ed.edition, label: ed.label || "AGORA", items };
+}
+const EDITORIAL = loadEditorial();
+
 // ---------------------------------------------------------------- home
 const teaser = s => ({ slug: s.slug, title: s.title, lastD: s.lastD, said: s.said.length });
 const hero = RANKED[0];
 const saidStories = RANKED.filter(s => s.said.length).sort((a, b) => cmp(b.said[0].date, a.said[0].date)).slice(0, 3);
+// A edição editorial NÃO é copiada para v5/data: a v5 lê data/editorial/ direto (DATA ≠ PRESENTATION), assim o
+// PR do Publisher e o código da interface podem entrar em qualquer ordem. Aqui ela só é validada (falha fechada).
+if (EDITORIAL) console.log(`data/editorial: edição ${EDITORIAL.edition} válida (${EDITORIAL.items.length} itens)`);
 const HOME = {
   edition: validDate(D.meta.atualizado) ? D.meta.atualizado : null,
   hero: hero ? { ...teaser(hero), text: hero.summary ? cut(hero.summary.text, 220) : null } : null,

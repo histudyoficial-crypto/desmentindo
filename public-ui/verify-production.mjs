@@ -6,7 +6,8 @@
  *   ROOT_VERSION_MATCH  bytes da raiz servida == raiz gerada por build-root.mjs neste commit
  *   ASSETS_MATCH        v5.js / v5.css / fonts.css servidos == arquivos do commit
  *   DATA_MATCH          home.json servido == build deste commit; build-info.json com ui_commit e data_build_id deste deploy
- *   DATA_FRESHNESS      edição servida == edição dos dados públicos aprovados (D.meta.atualizado) deste commit
+ *   DATA_FRESHNESS      edição servida == D.meta.atualizado deste commit E edição editorial servida == data/editorial do commit
+ *   EDITORIAL_MATCH     /data/editorial/index.json e a edição mais recente servidos == bytes do commit (sha256)
  *   CACHE_POLICY        HTML da raiz com Cache-Control no-cache (sem reuso heurístico da Home antiga)
  *   node public-ui/verify-production.mjs [--base https://desmentindo.com.br] [--retries 3]
  */
@@ -54,11 +55,32 @@ async function check() {
   let src;
   try { src = execFileSync("git", ["show", "HEAD:index.html"], { cwd: ROOT, maxBuffer: 64 << 20 }).toString("utf8"); }
   catch { src = local("index.html").toString("utf8"); }
-  const approved = (/"atualizado"\s*:\s*"(\d{4}-\d{2}-\d{2})"/.exec(src) || [])[1] || null;
+  const legacy = (/"atualizado"\s*:\s*"(\d{4}-\d{2}-\d{2})"/.exec(src) || [])[1] || null;
+  // edição editorial aprovada (JSON próprio, data/editorial/index.json) deste commit — a mais recente das duas vale
+  let editorial = null;
+  try { editorial = JSON.parse(execFileSync("git", ["show", "HEAD:data/editorial/index.json"], { cwd: ROOT }).toString("utf8")).latest || null; }
+  catch { try { editorial = JSON.parse(local("data/editorial/index.json").toString("utf8")).latest || null; } catch { editorial = null; } }
+  const approved = legacy;
   const served = home.status === 200 ? JSON.parse(home.body).edition : null;
-  g.DATA_FRESHNESS = !!served && served === approved;
+  // edição editorial: o índice servido tem de ser byte a byte o do commit, e a edição mais recente também
+  let edLocal = null;
+  try { edLocal = execFileSync("git", ["show", "HEAD:data/editorial/index.json"], { cwd: ROOT }); }
+  catch { try { edLocal = local("data/editorial/index.json"); } catch { edLocal = null; } }
+  let edOk = true, edServed = null;
+  if (edLocal) {
+    const ei = await get("/data/editorial/index.json");
+    const idx = JSON.parse(edLocal.toString("utf8"));
+    edServed = ei.status === 200 ? JSON.parse(ei.body).latest : null;
+    edOk = ei.status === 200 && sha(ei.body) === sha(edLocal);
+    if (idx.editions.length) {
+      const f = await get("/" + idx.editions[0].file);
+      edOk = edOk && f.status === 200 && sha(f.body) === idx.editions[0].sha256;
+    }
+  }
+  g.DATA_FRESHNESS = !!served && served === approved && edOk;
+  g.EDITORIAL_MATCH = edOk;
   g.CACHE_POLICY = /no-cache/i.test(root.headers["cache-control"] || "");
-  return { base: BASE, gates: g, assets, served_build: m.slice(1), build_info: info, data: { ROOT_DATA_EDITION: served, LATEST_APPROVED_DATA_EDITION: approved },
+  return { base: BASE, gates: g, assets, served_build: m.slice(1), build_info: info, data: { ROOT_DATA_EDITION: served, LATEST_APPROVED_DATA_EDITION: approved, EDITORIAL_EDITION_SERVED: edServed, EDITORIAL_EDITION_APPROVED: editorial },
            root_headers: { "cache-control": root.headers["cache-control"] || null, "last-modified": root.headers["last-modified"] || null, etag: root.headers.etag || null },
            root_sha256: sha(root.body), expected_sha256: sha(expected) };
 }
