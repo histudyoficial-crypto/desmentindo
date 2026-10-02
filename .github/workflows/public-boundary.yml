@@ -70,6 +70,10 @@ jobs:
             if grep -q noindex /tmp/root.html; then echo 'raiz com noindex'; exit 1; fi
           fi
           if grep -n -E 'AUTONOMOUS_TEST_RUN|RV-20[0-9]{6}-[0-9]{3}|WAITING_REVIEW|desmentindo-ops|MORNING_OPEN|ANTHROPIC_API_KEY' /tmp/root.html; then exit 1; fi
+      - name: INTERNAL_IDENTIFIER_PUBLIC_LEAK (fail closed) — JSON editorial, v5 (HTML/JS/CSS/dados) e raiz gerada
+        run: |
+          node public-ui/build-root.mjs --out /tmp/root-ids.html --no-build-info
+          node public-ui/internal-ids.mjs data/editorial v5 /tmp/root-ids.html
       - name: Dados da v5 em sincronia com os dados públicos
         run: |
           if [ -f public-ui/build-v5-data.mjs ]; then

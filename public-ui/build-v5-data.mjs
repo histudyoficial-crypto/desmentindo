@@ -19,6 +19,7 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { INTERNAL_IDS } from "./internal-ids.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "v5", "data");
@@ -233,6 +234,10 @@ function loadEditorial() {
     if (extra.length) throw new Error("campo fora do contrato em " + it.id + ": " + extra.join(","));
     if (!it.id || !validDate(it.date) || !it.title || !it.text) throw new Error("item incompleto: " + it.id);
     if (!it.sources.length || it.sources.some(s => !/^https:\/\//.test(s.url))) throw new Error("fonte inválida em " + it.id);
+    const est = it.evidence && it.evidence.primary_source_status;
+    if (est !== undefined && !["AVAILABLE", "PARTIAL", "NOT_AVAILABLE"].includes(est)) throw new Error("primary_source_status inválido em " + it.id);
+    const leak = INTERNAL_IDS.exec(JSON.stringify(it));
+    if (leak) throw new Error("INTERNAL_IDENTIFIER_PUBLIC_LEAK em " + it.id + ": " + leak[0]);
     return { id: it.id, date: it.date, label: it.label, title: it.title, text: it.text,
              sources: it.sources.map(s => ({ name: s.name, title: s.title, url: s.url })),
              primary: !!(it.evidence && it.evidence.primary_source_obtained) };

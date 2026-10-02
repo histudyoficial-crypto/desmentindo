@@ -10,6 +10,9 @@ import argparse, json, os, re, subprocess, sys, unicodedata
 from urllib.parse import urlparse, parse_qs
 from playwright.sync_api import sync_playwright
 
+# INTERNAL_IDENTIFIER_PUBLIC_LEAK — mesma regra de public-ui/internal-ids.mjs
+INTERNAL_IDS = re.compile(r"\bPS-[A-Z]{2,}-\d{8}|\bRV-20\d{6}-\d{3}\b|\bDS-20\d{2}-\d{2}-\d{2}-\d{3}\b|\bDSNR-|\bEVC-20\d{6}-\d{3}|\bHI-[0-9a-f]{12}\b|\bRQ-[0-9a-f]{12}\b|\bSC-\d{3}\b|\bWI-\d{8}-\d{3}|\bINC-20\d{6}-\d{3}\b|\bDQ-\d{4}\b|\bD-20\d{12}-[0-9a-f]{6,}|\b(source_id|evidence_id|review_id|event_id|claim_id|story_id|item_id|query_id)\b|\[fonte prim[aá]ria\]", re.I)
+
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 ap = argparse.ArgumentParser()
 ap.add_argument("--base", default="http://127.0.0.1:8765")
@@ -117,6 +120,10 @@ with sync_playwright() as pw:
             check(gate_of(name), f"{vp_name}:{name}: sem rolagem horizontal", ow <= 0, ow)
             text = page.inner_text("body")
             page_text_ok(text, "BOUNDARY", f"{vp_name}:{name}")
+            # DOM inteiro (atributos incluídos: title/tooltip, aria-label, href, data-*) + texto visível
+            dom = page.evaluate("document.documentElement.outerHTML")
+            leaks = sorted(set(m.group(0) for m in INTERNAL_IDS.finditer(dom + "\n" + text)))
+            check("BOUNDARY", f"{vp_name}:{name}: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)", not leaks, leaks)
             return data, text
 
         def gate_of(name):

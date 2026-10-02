@@ -8,6 +8,7 @@
  *   DATA_MATCH          home.json servido == build deste commit; build-info.json com ui_commit e data_build_id deste deploy
  *   DATA_FRESHNESS      edição servida == D.meta.atualizado deste commit E edição editorial servida == data/editorial do commit
  *   EDITORIAL_MATCH     /data/editorial/index.json e a edição mais recente servidos == bytes do commit (sha256)
+ *   INTERNAL_IDENTIFIER_SCAN nenhum id interno (PS-*, RV-*, DS-*, EVC-*, source_id…) no que a produção serve
  *   CACHE_POLICY        HTML da raiz com Cache-Control no-cache (sem reuso heurístico da Home antiga)
  *   node public-ui/verify-production.mjs [--base https://desmentindo.com.br] [--retries 3]
  */
@@ -17,6 +18,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { findLeaks } from "./internal-ids.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d; };
@@ -78,9 +80,19 @@ async function check() {
     }
   }
   g.DATA_FRESHNESS = !!served && served === approved && edOk;
+  // INTERNAL_IDENTIFIER_SCAN: nada servido (raiz, JS, dados, edição editorial) pode carregar id interno — fail closed
+  const scanned = [["/", root.body], ["/v5/js/v5.js", (await get("/v5/js/v5.js")).body], ["/v5/data/home.json", home.body]];
+  if (edLocal) {
+    const ei = await get("/data/editorial/index.json");
+    scanned.push(["/data/editorial/index.json", ei.body]);
+    const idx = JSON.parse(edLocal.toString("utf8"));
+    for (const e of idx.editions.slice(0, 3)) scanned.push(["/" + e.file, (await get("/" + e.file)).body]);
+  }
+  const leaks = scanned.flatMap(([u, b]) => findLeaks(b.toString("utf8")).map(x => u + ": " + x));
+  g.INTERNAL_IDENTIFIER_SCAN = leaks.length === 0;
   g.EDITORIAL_MATCH = edOk;
   g.CACHE_POLICY = /no-cache/i.test(root.headers["cache-control"] || "");
-  return { base: BASE, gates: g, assets, served_build: m.slice(1), build_info: info, data: { ROOT_DATA_EDITION: served, LATEST_APPROVED_DATA_EDITION: approved, EDITORIAL_EDITION_SERVED: edServed, EDITORIAL_EDITION_APPROVED: editorial },
+  return { base: BASE, gates: g, internal_id_leaks: leaks, assets, served_build: m.slice(1), build_info: info, data: { ROOT_DATA_EDITION: served, LATEST_APPROVED_DATA_EDITION: approved, EDITORIAL_EDITION_SERVED: edServed, EDITORIAL_EDITION_APPROVED: editorial },
            root_headers: { "cache-control": root.headers["cache-control"] || null, "last-modified": root.headers["last-modified"] || null, etag: root.headers.etag || null },
            root_sha256: sha(root.body), expected_sha256: sha(expected) };
 }
