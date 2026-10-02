@@ -553,7 +553,11 @@
     "decided_at": "2026-10-02T21:26:59Z",
     "decided_by": "Johnny"
    },
-   "by": "Coluna de Mariana Barbosa (UOL), segundo fontes não identificadas"
+   "by": "Coluna de Mariana Barbosa (UOL), segundo fontes não identificadas",
+   "source_url_fix": {
+    "https://economia.uol.com.br/colunas/mariana-barbosa/2026/02/19": "https://economia.uol.com.br/colunas/mariana-barbosa/2026/02/19/augusto-lima-negocia-venda-do-credcesta-para-o-picpay-dizem-fontes.htm"
+   },
+   "source_url_fix_note": "URL do dado é índice de data (404). Canônico verificado em 02/10/2026: HTTP 200, og:url idêntico, título 'Augusto Lima tentou vender Credcesta para o PicPay, dizem fontes' (Mariana Barbosa, UOL, 19/02/2026)."
   },
   {
    "n": 28,

@@ -7,7 +7,6 @@
     "ok": true,
     "info": [
      "/data/editorial/index.json",
-     "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
      "/data/editorial/index.json",
      "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc"
     ]
@@ -2350,9 +2349,9 @@
  "requests": {
   "desktop:home": [
    {
-    "url": "/v5/",
+    "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 2777
+    "bytes": 32379
    },
    {
     "url": "/v5/css/fonts.css",
@@ -2360,19 +2359,19 @@
     "bytes": 893
    },
    {
-    "url": "/v5/css/v5.css",
+    "url": "/v5/",
     "status": 200,
-    "bytes": 32379
-   },
-   {
-    "url": "/v5/fonts/archivo-latin.woff2",
-    "status": 200,
-    "bytes": 90104
+    "bytes": 2777
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
     "bytes": 58324
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": 90104
    },
    {
     "url": "/data/editorial/index.json",
@@ -2381,11 +2380,6 @@
    },
    {
     "url": "/v5/data/home.json",
-    "status": 200,
-    "bytes": null
-   },
-   {
-    "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
     "status": 200,
     "bytes": null
    },
@@ -2459,14 +2453,14 @@
     "bytes": 68305
    },
    {
-    "url": "/v5/data/busca/s/3.json",
-    "status": 200,
-    "bytes": 64291
-   },
-   {
     "url": "/v5/data/busca/s/4.json",
     "status": 200,
     "bytes": 77446
+   },
+   {
+    "url": "/v5/data/busca/s/3.json",
+    "status": 200,
+    "bytes": 64291
    }
   ],
   "desktop:search-inss": [
@@ -2514,11 +2508,6 @@
   "desktop:agora-item": [],
   "desktop:home-agora": [
    {
-    "url": "/v5/css/v5.css",
-    "status": 304,
-    "bytes": null
-   },
-   {
     "url": "/v5/js/v5.js",
     "status": 304,
     "bytes": null
@@ -2539,14 +2528,19 @@
     "bytes": 893
    },
    {
-    "url": "/v5/data/home.json",
+    "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 2225
+    "bytes": 32379
    },
    {
     "url": "/data/editorial/index.json",
     "status": 200,
     "bytes": 317
+   },
+   {
+    "url": "/v5/data/home.json",
+    "status": 200,
+    "bytes": 2225
    },
    {
     "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
@@ -2563,14 +2557,14 @@
     "bytes": 2777
    },
    {
-    "url": "/v5/css/v5.css",
-    "status": 200,
-    "bytes": 32379
-   },
-   {
     "url": "/v5/css/fonts.css",
     "status": 200,
     "bytes": 893
+   },
+   {
+    "url": "/v5/css/v5.css",
+    "status": 200,
+    "bytes": 32379
    },
    {
     "url": "/v5/js/v5.js",
@@ -2583,14 +2577,14 @@
     "bytes": 90104
    },
    {
-    "url": "/v5/",
-    "status": 200,
-    "bytes": 2777
-   },
-   {
     "url": "/v5/fonts/archivo-latin.woff2",
     "status": 200,
     "bytes": null
+   },
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 2777
    },
    {
     "url": "/v5/css/fonts.css",
@@ -2828,7 +2822,7 @@
   },
   "v5_data": {
    "files": 682,
-   "total_bytes": 7445630,
+   "total_bytes": 7445772,
    "home_json_bytes": 2225,
    "largest": {
     "file": "v5/data/busca/s/14.json",

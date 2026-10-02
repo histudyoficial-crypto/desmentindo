@@ -157,10 +157,13 @@ function attribution(x) {
   return { kind, by: (ok && a.by) || cleanAttr(x.e.alde) || (src ? src.outlet : null), resp: x.e.resp ? cut(cleanAttr(x.e.resp), 170) : null,
            src: src ? { outlet: src.outlet, url: src.url } : null };
 }
+// Correção de link de fonte auditada (ex.: URL que cai em 404 no dado legado → URL canônico verificado). Só vale se o
+// texto do registro não mudou (hash); o rótulo e a classificação não mudam.
+const fixUrl = (e, u) => { const a = AUDIT[e.id]; return a && a.source_url_fix && a.text_sha256 === evHash(e.desc) && a.source_url_fix[u] || u; };
 const EVENTS = D.ev.map((e, i) => ({
   i, e, date: validDate(e.d) ? e.d : null, published: validDate(e.dp) ? e.dp : null,
   allegation: e.nat === "alegacao_atribuida", text: pub(e.desc),
-  sources: (() => { const seen = new Set(); return (e.fontes || []).filter(f => f.url && !seen.has(f.url) && seen.add(f.url)).map(f => ({ title: pub(f.t), outlet: host(f.url), url: f.url, kind: srcKind(f.tp), tp: f.tp, loc: f.loc })); })(),
+  sources: (() => { const seen = new Set(); return (e.fontes || []).filter(f => f.url && !seen.has(f.url) && seen.add(f.url)).map(f => { const url = fixUrl(e, f.url); return { title: pub(f.t), outlet: host(url), url, kind: srcKind(f.tp), tp: f.tp, loc: f.loc }; }); })(),
 }));
 const byCase = {};
 for (const x of EVENTS) for (const c of x.e.c) (byCase[c] = byCase[c] || []).push(x);
