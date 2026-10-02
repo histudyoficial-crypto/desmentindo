@@ -37,7 +37,8 @@ UNAVAILABLE = [s["display_name"] for s in MS["sources"] if not (s.get("capabilit
 MARKERS = re.compile(r"AUTONOMOUS_TEST_RUN|RV-2026|DS-20\d\d-|EVC-2026|WAITING_REVIEW|HUMAN_REVIEW_QUEUE|review_reason|decision_ref|desmentindo-ops|MORNING_OPEN|LEGACY_PROJECT_MORNING|ANTHROPIC_API_KEY|sk-ant-")
 JARGON = re.compile(r"\bRHR\b|\bOccurrences?\b|Media Salience|Audit Index|Human Review|\bpipeline\b|\bscores?\b", re.I)
 # "corpus" só é aceito como termo jurídico/calendário vindo do texto público ("habeas corpus", "Corpus Christi").
-CORPUS_BAD = re.compile(r"(?<!habeas )(?<!habeas-)(?<!habeas)\bcorpus\b(?! christi)", re.I)
+# (a chave `corpus: "#/…"` do mapa de rotas antigas no JS é endereço do app anterior, não texto exibido)
+CORPUS_BAD = re.compile(r"(?<!habeas )(?<!habeas-)(?<!habeas)\bcorpus\b(?! christi)(?!: \"#/)", re.I)
 
 def segment_at(video_id, t):
     v = VID.get(video_id)
@@ -127,6 +128,9 @@ with sync_playwright() as pw:
             return data, text
 
         def gate_of(name):
+            if name.startswith(("checar", "ovc")): return "V5_CHECAR_QA"
+            if name.startswith(("legacy", "agora-item")): return "V5_ROUTES_QA"
+            if name.startswith("epist"): return "V5_EPISTEMIC_QA"
             return {"home": "V5_HOME_QA", "story": "V5_STORY_QA"}.get(name, "V5_SEARCH_QA" if name.startswith("search") else "V5_HOME_QA")
 
         # ------------------------------------------------ HOME
@@ -237,7 +241,121 @@ with sync_playwright() as pw:
                 check("V5_SEARCH_QA", f"{vp_name}: busca sem resultado diz que não quer dizer que nunca foi dito", "não quer dizer que nunca foi dito" in text)
             if name == "arquivo-pessoa" and vp_name == "mobile":
                 page.screenshot(path=os.path.join(args.shots, f"pessoa-{vp_name}.png"))
+
+        # ------------------------------------------------ SEMÂNTICA: alegação atribuída nunca aparece como fato
+        hist_dir = os.path.join(ROOT, "v5", "data", "historia")
+        alleg_story = next((f[:-5] for f in sorted(os.listdir(hist_dir))
+                            if any(c.get("allegation") for c in json.load(open(os.path.join(hist_dir, f), encoding="utf8"))["chrono"])), None)
+        if alleg_story:
+            SJ = json.load(open(os.path.join(hist_dir, alleg_story + ".json"), encoding="utf8"))
+            visit("epist-" + alleg_story, "#/historia/" + alleg_story, "h1.h1")
+            want = [bool(c.get("allegation")) for c in SJ["chrono"]]
+            got = page.evaluate("Array.from(document.querySelectorAll('ol.tl li')).map(li => !!li.querySelector('.tag-alleg'))")
+            check("V5_EPISTEMIC_QA", f"{vp_name}: cronologia de '{alleg_story}' marca toda alegação atribuída (e só ela)", got == want, {"want": want, "got": got})
+            uw = [bool(u.get("allegation")) for u in SJ["updates"]]
+            ug = page.evaluate("Array.from(document.querySelectorAll('ul.upd li')).map(li => !!li.querySelector('.tag-alleg'))")
+            check("V5_EPISTEMIC_QA", f"{vp_name}: atualizações marcam alegação atribuída", ug == uw, {"want": uw, "got": ug})
+        else:
+            check("V5_EPISTEMIC_QA", "há história com alegação na cronologia para testar", False)
+        kn = page.evaluate("Array.from(document.querySelectorAll('ul.items li')).every(li => !li.querySelector('.src') || !!li.querySelector('.tag-fact'))")
+        check("V5_EPISTEMIC_QA", f"{vp_name}: 'O que sabemos' só com fato com fonte, rotulado", kn)
+        check("V5_EPISTEMIC_QA", f"{vp_name}: documento localizado com a regra 'ainda precisamos verificar'", page.locator(".spot").count() == 0 or "ainda precisamos verificar o que ele realmente sustenta" in page.inner_text(".spot"))
+
+        # ------------------------------------------------ CHECAR (página pública)
+        data, text = visit("checar", "#/checar", "h1.h1")
+        check("V5_CHECAR_QA", f"{vp_name}:checar: diz que o envio ainda não está aberto (nada é recebido nem guardado)", "envio pelo site ainda não está aberto" in text)
+        check("V5_CHECAR_QA", f"{vp_name}:checar: 7 passos (entrada → decomposição → checagem → encontramos → contexto → conclusão → saída)", page.locator("ol.steps li").count() == 7)
+        check("V5_CHECAR_QA", f"{vp_name}:checar: paridade de formato (6 pares)", page.locator("ul.parity li").count() == 6)
+        check("V5_CHECAR_QA", f"{vp_name}:checar: legenda com os 5 selos + 'checamos se foi dito/aconteceu'",
+              page.locator(".legend .selo").count() == 5 and "checamos se foi dito" in text.lower() and "checamos se aconteceu" in text.lower())
+        CJ = json.load(open(os.path.join(ROOT, "v5", "data", "checar.json"), encoding="utf8"))
+        public_example = bool(CJ.get("example") or CJ.get("circulating"))
+        check("V5_CHECAR_QA", f"{vp_name}:checar: exemplo público só se liberado (checar.json)", (page.locator(".ovc").count() > 0) == public_example, public_example)
+        # ORIGINAL × CHECADO e paridade de saída: peça REAL já publicada (v4/data/afirmacoes.json) + fixtures de teste
+        # (formatos tabela/linha do tempo) injetadas só no navegador do QA. Nada disso é publicado.
+        FIX = [{"format": "table", "input": {"type": "Tabela", "outlet": "FIXTURE DE TESTE"}, "status": "EM_CHECAGEM",
+                "table": {"cols": ["Item", "Valor"], "rows": [{"cells": ["A", "10"], "claim": {"selo": "DOCUMENTADO", "check": "ACONTECEU"}},
+                                                              {"cells": ["B", "20"], "claim": {"selo": "valor_desconhecido"}},
+                                                              {"cells": ["C", "—"], "claim": {"selo": "NAO_ENCONTRAMOS", "check": "FOI_DITO"}}]}},
+               {"format": "timeline", "input": {"type": "Linha do tempo", "outlet": "FIXTURE DE TESTE"},
+                "events": [{"date": "2019", "text": "Marco 1", "selo": "DOCUMENTADO", "check": "ACONTECEU"}, {"date": "2021-05", "text": "Marco 2", "selo": "AINDA_NAO_DA", "check": "FOI_DITO"}]}]
+        r = page.evaluate("""async (fx) => {
+          const A = await (await fetch('/v4/data/afirmacoes.json')).json();
+          const C = window.DesmentindoCheck, m = C.fromCirculating(A.circulating[0], A.claims);
+          const box = document.querySelector('main .wrap');
+          box.innerHTML = '<h1 class="h1">QA</h1>' + C.originalVsChecked(m) + C.originalVsChecked(fx[0]) + C.originalVsChecked(fx[1]);
+          const v = box.querySelectorAll('.ovc'), chk = v[0].querySelector('.ovc-chk'), orig = v[0].querySelector('.ovc-orig');
+          const weak = m.links.filter(l => !['DOCUMENTADO','PARCIALMENTE_DOCUMENTADO','EM_CHECAGEM'].includes(l.selo)).length;
+          return { n: m.groups.reduce((n,g)=>n+g.items.length,0) + m.links.length, total: A.circulating[0].claims,
+                   selos: chk.querySelectorAll('.cl .st .selo, .links .st .selo').length, orig_selos: orig.querySelectorAll('.selo').length,
+                   weak, dotted: chk.querySelectorAll('.lk-AINDA_NAO_DA, .lk-NAO_ENCONTRAMOS').length, solid_unconfirmed: [...chk.querySelectorAll('.lk-DOCUMENTADO')].length - m.links.filter(l=>l.selo==='DOCUMENTADO').length,
+                   html: box.innerHTML, unk: v[1].querySelectorAll('td .s-EM_CHECAGEM').length, naoenc: v[1].innerText.includes('Isso não significa que nunca aconteceu'),
+                   formats: [...v].map(x => x.dataset.format), asset: !!chk.querySelector('.asset-foot .asset-brand') };
+        }""", FIX)
+        check("V5_CHECAR_QA", f"{vp_name}:ovc: todas as afirmações da peça real aparecem checadas (saída não empobrece a entrada)", r["n"] == r["total"] == r["selos"], {k: r[k] for k in ("n", "total", "selos")})
+        check("V5_CHECAR_QA", f"{vp_name}:ovc: ORIGINAL sem selo (o que entrou) × CHECADO com selo (o que sobrou)", r["orig_selos"] == 0 and r["selos"] > 0)
+        check("V5_CHECAR_QA", f"{vp_name}:ovc: ligação não confirmada é pontilhada; nenhuma aparece como documentada", r["dotted"] == r["weak"] and r["solid_unconfirmed"] == 0, {k: r[k] for k in ("weak", "dotted", "solid_unconfirmed")})
+        check("V5_CHECAR_QA", f"{vp_name}:ovc: paridade de formato (mapa de relações, tabela, linha do tempo)", r["formats"] == ["relations", "table", "timeline"], r["formats"])
+        check("V5_CHECAR_QA", f"{vp_name}:ovc: valor desconhecido → EM CHECAGEM; 'não encontramos' com a frase obrigatória", r["unk"] == 1 and r["naoenc"])
+        check("V5_CHECAR_QA", f"{vp_name}:ovc: peça checada com marca, data e endereço (base para derivação)", r["asset"])
+        ids = sorted(set(re.findall(r"\bCL-\d{3}\b|\bN\d{3}\b", r["html"])) | set(m.group(0) for m in INTERNAL_IDS.finditer(r["html"])))
+        check("V5_CHECAR_QA", f"{vp_name}:ovc: sem ID interno na saída", not ids, ids)
+        ow = page.evaluate("document.documentElement.scrollWidth - window.innerWidth")
+        check("V5_CHECAR_QA", f"{vp_name}:ovc: sem rolagem horizontal", ow <= 0, ow)
+        page.screenshot(path=os.path.join(args.shots, f"ovc-{vp_name}-full.png"), full_page=True)
+
+        # ------------------------------------------------ AGORA: uma notícia = uma URL; nada só no hover
+        ED = json.load(open(os.path.join(ROOT, "data", "editorial", "index.json"), encoding="utf8"))
+        if ED.get("editions"):
+            EDN = json.load(open(os.path.join(ROOT, ED["editions"][0]["file"]), encoding="utf8"))
+            it = EDN["items"][0]
+            data, text = visit("agora-item", "#/agora/" + it["id"], "h1.h1")
+            check("V5_ROUTES_QA", f"{vp_name}:agora-item: título e texto aprovados, sem alteração", page.inner_text("h1.h1").strip() == it["title"] and it["text"] in text)
+            titles = page.evaluate("Array.from(document.querySelectorAll('.rail .rt2')).map(x => x.textContent)")
+            check("V5_ROUTES_QA", f"{vp_name}:agora-item: título de cada fonte visível (não depende de hover)", titles == [x.get("title") or x["name"] for x in it["sources"]], titles)
+            data, text = visit("home-agora", "", ".hero .name")
+            check("V5_HOME_QA", f"{vp_name}:home: AGORA enxuto (3 com texto, resto em linhas) e todos os itens com link próprio",
+                  page.locator("#agora .ed-item").count() == min(3, len(EDN["items"])) and page.locator('#agora a[href^="#/agora/"]').count() >= len(EDN["items"]))
+            check("V5_HOME_QA", f"{vp_name}:home: fontes sem tooltip (title) como única informação", page.locator("#agora a[title]").count() == 0)
+
+        # ------------------------------------------------ rotas antigas: nada de 404 silencioso
+        for name, h_, expect in (("legacy-caso", "#/caso?c=Lava%20Jato", "#/historia/lava-jato"), ("legacy-pessoa", "#/pessoa?n=Dias%20Toffoli", "#/arquivo/dias-toffoli"),
+                                 ("legacy-corpus", "#/corpus", "#/arquivos"), ("legacy-narrativas", "#/narrativas", "#/checar")):
+            page.goto(BASE + "#/__blank"); page.goto(BASE + h_)
+            page.wait_for_function("(e) => location.hash === e", arg=expect, timeout=10000)
+            page.wait_for_selector("h1.h1", timeout=10000)
+            check("V5_ROUTES_QA", f"{vp_name}:{name}: {h_} → {expect}", page.evaluate("location.hash") == expect)
+        data, text = visit("legacy-matriz", "#/matriz", "h1.h1")
+        check("V5_ROUTES_QA", f"{vp_name}: rota retirada (matriz) explica e não aponta para o módulo bloqueado", "saiu da página pública" in text and page.locator('a[href*="desmentindo_local"]').count() == 0)
+        data, text = visit("legacy-eventos", "#/eventos", "h1.h1")
+        check("V5_ROUTES_QA", f"{vp_name}: rota movida (eventos) leva ao arquivo anterior", page.locator('a[href="/desmentindo_local.html#/eventos"]').count() == 1)
+
+        # ------------------------------------------------ ACESSIBILIDADE (amostra por página)
+        for name, h_, w in (("a11y-home", "", ".hero .name"), ("a11y-story", "#/historia/" + args.story, "h1.h1"), ("a11y-checar", "#/checar", "h1.h1"), ("a11y-busca", "#/busca?q=INSS", "#nos-arquivos")):
+            page.goto(BASE + "#/__blank"); page.goto(BASE + h_); page.wait_for_selector(w); page.wait_for_load_state("networkidle")
+            a = page.evaluate("""() => ({ h1: document.querySelectorAll('main h1').length,
+              unlabeled: [...document.querySelectorAll('input, textarea, select')].filter(i => !(i.labels && i.labels.length) && !i.getAttribute('aria-label')).length,
+              emptyLinks: [...document.querySelectorAll('a')].filter(x => x.offsetParent && !x.textContent.trim() && !x.getAttribute('aria-label')).length,
+              imgsNoAlt: [...document.querySelectorAll('img')].filter(i => !i.hasAttribute('alt')).length,
+              skip: !!document.querySelector('a.skip[href="#main"]'), lang: document.documentElement.lang })""")
+            check("ACCESSIBILITY", f"{vp_name}:{name}: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+                  a["h1"] == 1 and a["unlabeled"] == 0 and a["emptyLinks"] == 0 and a["imgsNoAlt"] == 0 and a["skip"] and a["lang"] == "pt-BR", a)
+        page.keyboard.press("Tab"); page.keyboard.press("Tab")
+        foc = page.evaluate("(() => { const el = document.activeElement, c = getComputedStyle(el); return { tag: el.tagName, outline: c.outlineStyle, w: c.outlineWidth }; })()")
+        check("ACCESSIBILITY", f"{vp_name}: foco visível ao navegar por teclado", foc["outline"] != "none" and foc["w"] != "0px", foc)
+        if vp_name == "mobile":
+            tb = page.evaluate("Array.from(document.querySelectorAll('.tabbar a')).map(a => { const r = a.getBoundingClientRect(); return [a.textContent.trim(), Math.round(r.height)]; })")
+            check("MOBILE", "barra inferior: 5 itens com texto e toque ≥ 44px", len(tb) == 5 and all(t and h >= 44 for t, h in tb), tb)
         ctx.close()
+
+    # ------------------------------------------------ 375 px: nenhuma página com rolagem horizontal
+    ctx = browser.new_context(viewport={"width": 375, "height": 812}, is_mobile=True, has_touch=True)
+    page = ctx.new_page()
+    for h_ in ("", "#/historia/" + args.story, "#/busca?q=INSS", "#/arquivo/alexandre-de-moraes", "#/arquivos", "#/profissionais", "#/checar", "#/matriz"):
+        page.goto(BASE + "#/__blank"); page.goto(BASE + h_); page.wait_for_selector("main h1", timeout=15000); page.wait_for_load_state("networkidle")
+        ow = page.evaluate("document.documentElement.scrollWidth - window.innerWidth")
+        check("MOBILE", f"375px {h_ or '#/'}: sem rolagem horizontal", ow <= 0, ow)
+    ctx.close()
     browser.close()
 
 # ---------------------------------------------------------------- arquivos da v5 (texto)
@@ -276,7 +394,7 @@ for cmd in (["node", "public-ui/build-public-data.mjs", "--check"], ["node", "pu
     r = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True)
     check("BUILD", " ".join(cmd), r.returncode == 0, (r.stdout + r.stderr).strip()[-300:])
 
-gates = ["V5_HOME_QA", "V5_STORY_QA", "V5_SEARCH_QA", "V5_AG_TIMESTAMP_E2E", "BOUNDARY", "PERFORMANCE", "BUILD"]
+gates = ["V5_HOME_QA", "V5_STORY_QA", "V5_SEARCH_QA", "V5_AG_TIMESTAMP_E2E", "V5_EPISTEMIC_QA", "V5_CHECAR_QA", "V5_ROUTES_QA", "ACCESSIBILITY", "MOBILE", "BOUNDARY", "PERFORMANCE", "BUILD"]
 R["gates"] = {g: ("FAIL" if g in fails else "PASS") for g in gates}
 R["failures"] = fails
 R["note_5s"] = "Teste dos 5 segundos é heurístico: confere se a primeira dobra tem marca, frase de explicação, busca e a pista explícita de 'o que já foi dito, com data, minuto do vídeo e fonte'. Não substitui teste com pessoas."

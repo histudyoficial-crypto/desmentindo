@@ -43,6 +43,35 @@
     NOT_AVAILABLE: "Com base no conteúdo público das matérias citadas. A fonte primária (decisão, petição ou documento) ainda não foi obtida."
   };
   var NOTE = '<p class="quiet">O texto resume o que é dito naquele minuto. Confira no vídeo.</p>';
+
+  // ---------------------------------------------------------------- estados epistêmicos (handoff §5)
+  // Selo da afirmação: forma + palavra. Valor desconhecido → EM CHECAGEM (nunca estado conclusivo).
+  var SELO = {
+    DOCUMENTADO: ["■", "Documentado"],
+    PARCIALMENTE_DOCUMENTADO: ["◧", "Parcialmente documentado"],
+    AINDA_NAO_DA: ["?", "Ainda não dá para confirmar"],
+    NAO_ENCONTRAMOS: ["□", "Não encontramos registro"],
+    EM_CHECAGEM: ["◉", "Em checagem"]
+  };
+  var SELO_ORDER = ["DOCUMENTADO", "PARCIALMENTE_DOCUMENTADO", "AINDA_NAO_DA", "NAO_ENCONTRAMOS", "EM_CHECAGEM"];
+  function seloKey(s) { return SELO[s] ? s : "EM_CHECAGEM"; }
+  function checkedWhat(c) { return c === "FOI_DITO" ? "Checamos se foi dito" : c === "ACONTECEU" ? "Checamos se aconteceu" : ""; }
+  function selo(s, check) {
+    var k = seloKey(s), w = checkedWhat(check);
+    return '<span class="selo s-' + k + '"><span aria-hidden="true">' + SELO[k][0] + "</span>" + SELO[k][1] + "</span>" + (w ? ' <span class="chkd">' + w + "</span>" : "");
+  }
+  var NAO_ENC_TXT = "Não encontramos registro nos arquivos consultados. Isso não significa que nunca aconteceu.";
+  // Registro da história: alegação atribuída nunca aparece como fato.
+  function natTag(x) { return x && x.allegation ? '<span class="tag tag-alleg">Alegação atribuída</span> ' : ""; }
+  var KIND = { Documento: ["k-doc", "▤"], "Fonte oficial": ["k-doc", "▤"], "Vídeo": ["k-vid", "▶"], "Opinião": ["k-src", "↗"] };
+  function railCard(x) {
+    var k = KIND[x.kind] || ["k-src", "↗"];
+    return '<li class="' + k[0] + '"><span class="rk"><i aria-hidden="true">' + k[1] + "</i>" + e(x.kind || "Fonte") + "</span>" +
+      '<span class="rt2">' + e(x.title) + '</span><span class="rm">' + e(x.outlet || "") + (x.date ? " · " + e(fdate(x.date)) : "") + "</span>" +
+      '<a class="open" href="' + e(x.url) + '" target="_blank" rel="noopener">Abrir <span aria-hidden="true">→</span><span class="sr"> ' + e(x.title) + "</span></a></li>";
+  }
+  var SRC_RULE = '<p class="rule-note"><b>Fonte localizada</b>: isso, sozinho, não confirma a afirmação. <b>Documento localizado</b>: ainda precisamos verificar o que ele realmente sustenta.</p>';
+  function smooth() { return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"; }
   function unavailable(arch) {
     var na = (arch || []).filter(function (a) { return !a.available; }).map(function (a) { return a.name; });
     if (!na.length) return "";
@@ -89,39 +118,55 @@
 
   var P = {};
   // ---------------------------------------------------------------- HOME
-  P.home = function () {
-    // Edição editorial aprovada: JSON próprio publicado em /data/editorial/ (versionado pelo carimbo de build e
-    // pelo sha256 do índice). Sem edição ou falha de leitura → a Home segue como antes (nunca inventa conteúdo).
-    var ED = fetch("/data/editorial/index.json" + (DV ? "?v=" + DV : "")).then(function (r) { return r.ok ? r.json() : null; })
+  // Edição editorial aprovada: JSON próprio publicado em /data/editorial/ (versionado pelo carimbo de build e
+  // pelo sha256 do índice). Sem edição ou falha de leitura → null (nunca inventa conteúdo).
+  var edPromise = null;
+  function loadEdition() {
+    if (!edPromise) edPromise = fetch("/data/editorial/index.json" + (DV ? "?v=" + DV : "")).then(function (r) { return r.ok ? r.json() : null; })
       .then(function (idx) {
         var x = idx && idx.editions && idx.editions[0];
         if (!x || !/^data\/editorial\/edicoes\/\d{4}-\d{2}-\d{2}\.json$/.test(x.file)) return null;
         return fetch("/" + x.file + "?v=" + String(x.sha256 || "").slice(0, 12)).then(function (r) { return r.ok ? r.json() : null; });
       }).catch(function () { return null; });
+    return edPromise;
+  }
+  function edItems(EDN) {
+    return EDN && EDN.items && EDN.items.length ? EDN.items.map(function (it) {
+      var ev = it.evidence || {};
+      var st = ev.primary_source_status || (ev.primary_source_obtained ? "AVAILABLE" : "NOT_AVAILABLE");
+      return { id: it.id, date: it.date, title: it.title, text: it.text, sources: it.sources || [], evidence: st };
+    }) : [];
+  }
+  P.home = function () {
+    var ED = loadEdition();
     return Promise.all([load("home.json"), ED]).then(function (res) {
       var H = res[0], EDN = res[1];
-      H.agora = EDN && EDN.items && EDN.items.length ? { edition: EDN.edition, label: EDN.label, items: EDN.items.map(function (it) {
-        var ev = it.evidence || {};
-        var st = ev.primary_source_status || (ev.primary_source_obtained ? "AVAILABLE" : "NOT_AVAILABLE");
-        return { id: it.id, date: it.date, title: it.title, text: it.text, sources: it.sources || [], evidence: st };
-      }) } : null;
-      var h = '<section class="hero"><h1 class="name">DESMENTINDO</h1><p class="motto">Notícias passam. O que foi dito fica.</p>' +
+      H.agora = edItems(EDN).length ? { edition: EDN.edition, label: EDN.label, items: edItems(EDN) } : null;
+      var today = new Date(), wd = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"][today.getDay()];
+      var h = '<div class="sig" role="note"><div class="sig-in"><span>O que foi dito. Quando foi dito. E de onde veio.</span>' +
+        '<time datetime="' + today.toISOString().slice(0, 10) + '">' + wd + " · " + today.getDate() + " " + MES[today.getMonth()] + " " + today.getFullYear() + "</time></div></div>";
+      h += '<section class="hero"><h1 class="name">DESMENTINDO</h1><p class="motto">Notícias passam. O que foi dito fica.</p>' +
         searchForm("", "q-home", true) +
         '<p class="cue">Veja o que já foi dito sobre uma notícia, com a data, o minuto do vídeo e a fonte original.</p>' +
         '<p class="tries">Por exemplo: <a href="#/busca?q=Alexandre%20de%20Moraes">Alexandre de Moraes</a> · <a href="#/busca?q=INSS">INSS</a> · <a href="#/busca?q=Dark%20Horse">Dark Horse</a></p></section>';
       var A = H.agora && H.agora.items && H.agora.items.length ? H.agora : null;
       if (A) {
         // Edição editorial (JSON próprio, aprovada no Human Gate): texto aprovado + fontes. Nada interno.
+        // AGORA não domina a Home: 3 itens com texto, o resto em linhas; cada item tem página própria (#/agora/<id>).
+        var full = A.items.slice(0, 3), rest = A.items.slice(3);
         h += '<section class="sec" id="agora"><h2 class="h2">' + e(A.label || "Agora") + ' <span class="meta" style="letter-spacing:0;text-transform:none;font-weight:400">· edição de ' + e(fdate(A.edition)) + "</span></h2>" +
-          '<ul class="ed-list">' + A.items.map(function (it) {
-            return '<li class="ed-item" id="' + e(it.id) + '"><h3 class="ed-t">' + e(it.title) + "</h3>" +
+          '<ul class="ed-list">' + full.map(function (it) {
+            return '<li class="ed-item" id="' + e(it.id) + '"><h3 class="ed-t"><a href="#/agora/' + e(it.id) + '">' + e(it.title) + "</a></h3>" +
               '<p class="meta">' + tdate(it.date) + "</p><p>" + e(it.text) + "</p>" +
               '<p class="src">Fontes: ' + it.sources.map(function (s) {
-                return '<a href="' + e(s.url) + '" rel="noopener" target="_blank" title="' + e(s.title) + '">' + e(s.name) + "</a>";
-              }).join(" · ") + "</p>" +
+                return '<a href="' + e(s.url) + '" rel="noopener" target="_blank">' + e(s.name) + "</a>";
+              }).join(" · ") + ' · <a class="link" href="#/agora/' + e(it.id) + '">documentos e detalhes</a></p>' +
               (EV_NOTE[it.evidence] ? '<p class="quiet ed-ev">' + EV_NOTE[it.evidence] + "</p>" : "") +
               "</li>";
-          }).join("") + "</ul></section>";
+          }).join("") + "</ul>" +
+          (rest.length ? '<ul class="ed-rows">' + rest.map(function (it) {
+            return '<li><a href="#/agora/' + e(it.id) + '"><span class="rt">' + e(it.title) + '</span><span class="rd">' + tdate(it.date) + "</span></a></li>";
+          }).join("") + "</ul>" : "") + "</section>";
       }
       if (H.hero) {
         h += '<section class="sec" id="' + (A ? "acompanhamento" : "agora") + '"><h2 class="h2">' + (A ? "Em acompanhamento" : "Agora") + (H.edition && !A ? ' <span class="meta" style="letter-spacing:0;text-transform:none;font-weight:400">· atualizado em ' + e(fdate(H.edition)) + "</span>" : "") + "</h2>" +
@@ -149,23 +194,29 @@
     return Promise.all([load("historia/" + slug + ".json"), load("home.json")]).then(function (r) {
       var s = r[0], arch = r[1].archives;
       document.title = s.title + " · Desmentindo";
-      var h = '<section class="page-head"><p class="kicker">Agora' + (s.span ? " · " + e(s.span.replace("–", " a ")) : "") + '</p><h1 class="h1">' + e(s.title) + "</h1>";
+      var h = '<section class="page-head"><p class="kicker"><span class="tag tag-ink">História</span>' + (s.span ? " " + e(s.span.replace("–", " a ")) : "") + '</p><h1 class="h1">' + e(s.title) + "</h1>";
+      if (s.lastD) h += '<p class="bigdate"><span>Último registro</span><b>' + tdate(s.lastD) + "</b></p>";
       if (s.summary) {
-        h += '<p class="summary">' + e(s.summary.text) + "</p>" +
+        h += '<p class="summary">' + natTag(s.summary) + e(s.summary.text) + "</p>" +
           '<p class="src">' + tdate(s.summary.date) + (s.summary.source ? " · " + ext(s.summary.source.url, e(s.summary.source.outlet || "fonte"), "") : "") + "</p>";
       }
+      // Números com contexto (BIG NUMBER): navegacionais, nunca avaliação.
+      h += '<div class="facts">' +
+        '<div><p class="fl">Registros</p><p class="fv num">' + nf(s.records) + '</p><p class="fs">fatos e alegações guardados nesta história</p></div>' +
+        '<div><p class="fl">Fontes</p><p class="fv num">' + nf(s.n_sources) + '</p><p class="fs">links que você pode abrir e conferir</p></div>' +
+        "</div>";
       if (s.said.length) h += '<a class="jump" href="#ja-falaram" data-jump>Já falaram sobre isso · ' + plural(s.said.length, "trecho", "trechos") + "</a>";
       h += "</section>";
       if (s.known.length) {
         h += '<section class="sec"><h2 class="h2">O que sabemos</h2><ul class="items">' + s.known.map(function (k) {
-          return "<li>" + tdate(k.date) + "<p>" + e(k.text) + "</p>" + (k.source ? '<p class="src">' + ext(k.source.url, e(k.source.outlet || "fonte"), "") + "</p>" : "") + "</li>";
+          return "<li>" + tdate(k.date) + "<p>" + e(k.text) + "</p>" + (k.source ? '<p class="src"><span class="tag tag-fact">Fato com fonte</span> ' + ext(k.source.url, e(k.source.outlet || "fonte"), "") + "</p>" : "") + "</li>";
         }).join("") + "</ul></section>";
       }
       // JÁ FALARAM SOBRE ISSO
       if (s.said.length || s.people.length) {
         h += '<section class="sec" id="ja-falaram"><h2 class="h2">Já falaram sobre isso</h2>';
         if (s.said.length) {
-          h += moreList("said-" + s.slug, s.said, function (o) { return saidItem(o); }, 3) + NOTE + unavailable(arch);
+          h += moreList("said-" + s.slug, s.said, function (o) { return saidItem(o); }, 3) + NOTE + '<p class="rule-note">Aparecer antes não prova o fato de hoje.</p>' + unavailable(arch);
           if (s.people.length) h += '<p class="people">Também nos arquivos: ' + s.people.map(person).join("") + "</p>";
         } else {
           h += '<p style="margin:0;color:var(--ink-2)">Ainda não ligamos trechos de vídeo a esta história. Pessoas citadas nela têm trechos nos arquivos:</p>' +
@@ -174,20 +225,34 @@
         h += "</section>";
       }
       if (s.found) {
-        h += '<section class="sec"><h2 class="h2">O que encontramos</h2><div class="doc"><p class="meta" style="margin:0">Documento localizado · ' + tdate(s.found.date) + '</p><p class="dt" style="margin:4px 0 0">' + ext(s.found.url, e(s.found.title)) + "</p>" +
-          (s.found.says ? "<q>" + e(s.found.says.replace(/^["'“‘«]|["'”’»]$/g, "")) + "</q>" : "") + "</div></section>";
+        // DOCUMENT SPOTLIGHT: cartão tipográfico (a imagem do documento não existe no modelo); nunca redigitar o original.
+        h += '<section class="sec"><h2 class="h2">O que encontramos</h2><div class="spot">' +
+          '<div class="spot-doc"><div class="spot-page"><span class="gl" aria-hidden="true">▤</span><p>' + e(s.found.outlet || "") + "</p></div></div>" +
+          '<div class="spot-txt"><p class="spot-k">O documento · ' + tdate(s.found.date) + '</p><p class="spot-t">' + e(s.found.title) + "</p>" +
+          (s.found.says ? '<div class="spot-says"><b>O que ele diz</b>' + e(s.found.says.replace(/^["'“‘«]|["'”’»]$/g, "")) + "</div>" : "") +
+          (s.found.context ? '<div class="spot-ctx"><b>O registro desta história</b>' + e(s.found.context) + "</div>" : "") +
+          '<a class="btn-ink" href="' + e(s.found.url) + '" target="_blank" rel="noopener">Ver documento original</a>' +
+          '<p class="rule-note"><b>Documento localizado</b>: ainda precisamos verificar o que ele realmente sustenta.</p></div></div></section>';
       }
       if (s.chrono.length) {
-        h += '<section class="sec"><h2 class="h2">Cronologia</h2><ol class="chrono">' + s.chrono.map(function (c) { return "<li>" + tdate(c.date) + "<p>" + e(c.text) + "</p></li>"; }).join("") + "</ol></section>";
+        // VISUAL TIMELINE: do mais antigo ao mais recente; o último marco é o "agora" (amarelo).
+        h += '<section class="sec"><h2 class="h2">Cronologia</h2><ol class="tl">' + s.chrono.map(function (c, i) {
+          return '<li' + (i === s.chrono.length - 1 ? ' class="now"' : "") + ">" + tdate(c.date) + (c.allegation ? '<span class="tag tag-alleg">Alegação atribuída</span>' : "") + "<p>" + e(c.text) + "</p></li>";
+        }).join("") + "</ol></section>";
       }
       if (s.sources.length) {
-        var src = function (x) { return '<li><span class="k">' + e(x.kind) + "</span>" + ext(x.url, e(x.title)) + (x.outlet ? ' <span class="meta">· ' + e(x.outlet) + "</span>" : "") + "</li>"; };
-        h += '<section class="sec"><h2 class="h2">Fontes</h2><ul class="srcs">' + s.sources.slice(0, 5).map(src).join("") + "</ul>" +
-          (s.sources.length > 5 ? "<details><summary>Ver mais " + nf(s.sources.length - 5) + (s.sources_total > s.sources.length ? " (das " + nf(s.sources_total) + " fontes)" : "") + '</summary><ul class="srcs">' + s.sources.slice(5).map(src).join("") + "</ul></details>" : "") + "</section>";
+        h += '<section class="sec"><h2 class="h2">Fontes</h2><ul class="rail">' + s.sources.slice(0, 8).map(railCard).join("") + "</ul>" + SRC_RULE +
+          (s.sources.length > 8 ? "<details><summary>Ver mais " + nf(s.sources.length - 8) + (s.sources_total > s.sources.length ? " (das " + nf(s.sources_total) + " fontes)" : "") + '</summary><ul class="srcs">' + s.sources.slice(8).map(function (x) {
+            return '<li><span class="k">' + e(x.kind) + "</span>" + ext(x.url, e(x.title)) + (x.outlet ? ' <span class="meta">· ' + e(x.outlet) + "</span>" : "") + "</li>";
+          }).join("") + "</ul></details>" : "") + "</section>";
       }
       if (s.updates.length) {
-        h += '<section class="sec"><h2 class="h2">Atualizações</h2><ul class="items">' + s.updates.map(function (u) { return "<li>" + tdate(u.published) + "<p>" + e(u.text) + "</p></li>"; }).join("") + "</ul></section>";
+        h += '<section class="sec"><h2 class="h2">Atualizações</h2><ul class="upd">' + s.updates.map(function (u) {
+          return '<li><span class="tag tag-ink">↻ Atualizado em ' + e(fdate(u.published)) + "</span> " + natTag(u) + "<p>" + e(u.text) + "</p></li>";
+        }).join("") + "</ul></section>";
       }
+      h += '<p class="transp"><span>' + plural(s.records, "registro", "registros") + "</span><span>" + plural(s.n_sources, "fonte", "fontes") + "</span>" +
+        (s.lastPublished ? "<span>Atualizado em " + tdate(s.lastPublished) + "</span>" : "") + "</p>";
       return h;
     }, function () { return notFound(); });
   };
@@ -243,7 +308,7 @@
   P.busca = function () {
     var q = qparam("q");
     document.title = (q ? q + " · " : "") + "Pesquisa · Desmentindo";
-    var head = '<section class="page-head"><p class="kicker">Pesquise o arquivo</p>' + searchForm(q, "q-busca") + "</section>";
+    var head = '<section class="page-head"><h1 class="kicker">Pesquise o arquivo</h1>' + searchForm(q, "q-busca") + "</section>";
     if (!q) return load("home.json").then(function (H) {
       return head + '<section class="sec"><p style="margin:0">Pesquise uma pessoa, empresa, órgão, assunto ou acontecimento. Mostramos as histórias, o que já foi dito nos vídeos (com data e minuto) e os documentos.</p>' + archList(H.archives) + "</section>";
     });
@@ -289,13 +354,16 @@
             if (!box) return;
             var first = ag.slice(0, 6);
             segs(first, M).then(function (items) {
-              box.innerHTML = '<ul class="said-list" id="ag-list">' + items.map(function (o) { return saidItem(o, null, true); }).join("") + "</ul>" +
+              // Resultado agrupado por ANO, do mais recente ao mais antigo (busca por nome = onde aparece, nunca "tudo sobre").
+              var yState = { y: null };
+              var byYear = function (list) { return list.map(function (o) { var y = (o.date || "").slice(0, 4), h0 = y && y !== yState.y ? '<li class="yr">' + e(y) + "</li>" : ""; if (y) yState.y = y; return h0 + saidItem(o, null, true); }).join(""); };
+              box.innerHTML = '<ul class="said-list" id="ag-list">' + byYear(items) + "</ul>" +
                 (ag.length > first.length ? '<button class="more-btn" id="ag-more">Mostrar mais ' + nf(ag.length - first.length) + "</button>" : "") + NOTE;
               var shown = first.length, btn = document.getElementById("ag-more");
               if (btn) btn.addEventListener("click", function () {
                 var next = ag.slice(shown, shown + 10);
                 segs(next, M).then(function (more) {
-                  document.getElementById("ag-list").insertAdjacentHTML("beforeend", more.map(function (o) { return saidItem(o, null, true); }).join(""));
+                  document.getElementById("ag-list").insertAdjacentHTML("beforeend", byYear(more));
                   shown += next.length;
                   if (shown >= ag.length) btn.remove(); else btn.textContent = "Mostrar mais " + nf(ag.length - shown);
                 });
@@ -351,9 +419,12 @@
     return load("arquivos.json").then(function (A) {
       var h = '<section class="page-head"><p class="kicker">Desmentindo Data</p><h1 class="h1">Para profissionais</h1>' +
         '<p class="lead">O Desmentindo é a publicação. O Desmentindo Data é para quem usa esses arquivos no trabalho: redações, pesquisa e escolas.</p></section>';
-      h += '<section class="sec"><h2 class="h2">O que já existe</h2><ul class="items">' +
-        "<li><p><strong>Pesquisar</strong> trechos de " + nf(A.archives.filter(function (a) { return a.available; }).reduce(function (n, a) { return n + a.videos_indexed; }, 0)) + " vídeos, com data e minuto.</p></li>" +
-        "<li><p><strong>Consultar</strong> " + nf(A.stats.stories) + " histórias com " + nf(A.stats.records) + " registros, com data e fonte.</p></li></ul></section>";
+      // PROFESSIONAL CAPABILITY CARD: só o que JÁ EXISTE no ar; nada prometido sem confirmação (handoff L2).
+      var vids = A.archives.filter(function (a) { return a.available; }).reduce(function (n, a) { return n + a.videos_indexed; }, 0);
+      h += '<section class="sec"><h2 class="h2">O que já existe</h2><ol class="steps">' +
+        '<li><span class="tag tag-ink">Já existe</span><b>Pesquisar</b><p>Trechos de ' + nf(vids) + " vídeos, com data e o minuto exato.</p></li>" +
+        '<li><span class="tag tag-ink">Já existe</span><b>Consultar</b><p>' + nf(A.stats.stories) + " histórias com " + nf(A.stats.records) + " registros, com data e fonte.</p></li>" +
+        '<li><span class="tag tag-ink">Já existe</span><b>Abrir a fonte</b><p>As fontes de cada história abrem o documento, a reportagem ou o vídeo original.</p></li></ol></section>';
       h += '<section class="sec"><h2 class="h2">Cobertura dos arquivos de vídeo</h2><ul class="arch">' + A.archives.map(function (a) {
         return '<li><span class="an">' + e(a.name) + '</span><span class="as' + (a.available ? " ok" : "") + '">' + nf(a.videos_indexed) + " de " + nf(a.videos_total) + " vídeos processados" + (a.available ? (a.latest ? " · até " + e(fdate(a.latest)) : "") : " · ainda não disponível para pesquisa") + "</span></li>";
       }).join("") + "</ul></section>";
@@ -362,12 +433,207 @@
     });
   };
 
+  // ---------------------------------------------------------------- AGORA: uma notícia = uma URL (#/agora/<id>)
+  P.agora = function (id) {
+    return loadEdition().then(function (EDN) {
+      var items = edItems(EDN), it = items.filter(function (x) { return x.id === id; })[0];
+      if (!it) return notFound();
+      document.title = it.title + " · Desmentindo";
+      var h = '<section class="page-head"><p class="kicker"><span class="tag tag-ink">' + e(EDN.label || "Agora") + "</span> edição de " + e(fdate(EDN.edition)) + "</p>" +
+        '<h1 class="h1">' + e(it.title) + '</h1><p class="bigdate"><span>Publicado em</span><b>' + tdate(it.date) + "</b></p>" +
+        '<p class="summary">' + e(it.text) + "</p></section>";
+      h += '<section class="sec"><h2 class="h2">Fontes</h2><ul class="rail">' + it.sources.map(function (x) {
+        var off = /\((documento oficial|comunicação oficial)\)$/.test(x.name || "");
+        return railCard({ kind: off ? "Fonte oficial" : "Reportagem", title: x.title || x.name, outlet: x.name, url: x.url });
+      }).join("") + "</ul>" + SRC_RULE + (EV_NOTE[it.evidence] ? '<p class="quiet">' + EV_NOTE[it.evidence] + "</p>" : "") + "</section>";
+      h += '<section class="sec"><h2 class="h2">Pesquise o que já foi dito</h2>' + searchForm("", "q-agora") +
+        '<p class="rule-note">Procure uma pessoa, órgão ou assunto desta notícia nos arquivos. Aparecer antes não prova o fato de hoje.</p></section>';
+      var others = items.filter(function (x) { return x.id !== id; });
+      if (others.length) h += '<section class="sec"><h2 class="h2">Também no Agora</h2><ul class="ed-rows">' + others.map(function (o) {
+        return '<li><a href="#/agora/' + e(o.id) + '"><span class="rt">' + e(o.title) + '</span><span class="rd">' + tdate(o.date) + "</span></a></li>";
+      }).join("") + "</ul></section>";
+      return h;
+    });
+  };
+
+  // ---------------------------------------------------------------- CHECAR (apresentação)
+  // CHECK_OUTPUT_PARITY = REQUIRED_WHEN_FEASIBLE: o resultado volta no MESMO formato da entrada (mapa de relações →
+  // mapa checado, tabela → tabela checada, linha do tempo → linha do tempo checada, card/print → reconstrução checada).
+  // Contrato de apresentação (CHECK_MODEL):
+  //   { format: "relations"|"table"|"timeline"|"card", input: {type, outlet, date, title, note},
+  //     status, checked_at, groups: [{title, sub, items: [CLAIM]}], links: [CLAIM],
+  //     table: {cols: [..], rows: [{cells: [..], claim: CLAIM}]}, events: [{date, ...CLAIM}] }
+  //   CLAIM = { text, selo, check, kind, proves, not_proves, sources: [{title, outlet, url}] }
+  // O ORIGINAL mostra o que entrou (sem selo); o CHECADO mostra o que sobrou, com selo por afirmação. A força do traço
+  // nunca é maior que a do selo: ligação não confirmada é pontilhada, alegação é marcada como alegação.
+  function claimLi(c, checked) {
+    if (!checked) return "<li>" + e(c.text) + "</li>";
+    var k = seloKey(c.selo);
+    return "<li>" + (c.n ? '<span class="cn">nº ' + c.n + "</span> " : "") + e(c.text) + '<div class="st">' + selo(k, c.check) + (c.kind ? ' <span class="meta">' + e(c.kind) + "</span>" : "") + "</div>" +
+      (k === "NAO_ENCONTRAMOS" ? '<p class="rule-note">' + NAO_ENC_TXT + "</p>" : "") +
+      (c.proves || c.not_proves || (c.sources || []).length ? "<details><summary>O que encontramos</summary>" +
+        (c.proves ? '<p class="pv"><b>O que sustenta</b><br>' + e(c.proves) + "</p>" : "") +
+        (c.not_proves ? '<p class="np"><b>O que não sustenta</b><br>' + e(c.not_proves) + "</p>" : "") +
+        ((c.sources || []).length ? '<p class="srcl">' + c.sources.map(function (x) { return ext(x.url, e(x.outlet || x.title || "fonte")); }).join(" · ") + "</p>" : "") +
+        "</details>" : "") + "</li>";
+  }
+  function linkLi(l, checked) {
+    var k = checked ? seloKey(l.selo) : "orig";
+    var lt = !checked ? "No original: seta" : k === "DOCUMENTADO" ? "Ligação documentada" : k === "PARCIALMENTE_DOCUMENTADO" ? "Ligação documentada em parte" :
+      k === "EM_CHECAGEM" ? "Ligação em checagem" : "Ligação não confirmada";
+    return '<li><p class="lk lk-' + k + '"><span class="ln" aria-hidden="true"></span><span class="lt">' + lt + "</span></p>" + (checked && l.n ? '<span class="cn">nº ' + l.n + "</span> " : "") + e(l.text) +
+      (checked ? '<div class="cl"><div class="st">' + selo(k, l.check) + "</div></div>" : "") + "</li>";
+  }
+  var RENDER = {
+    relations: function (m, checked) {
+      return m.groups.map(function (g) {
+        return '<div class="grp"><div class="grp-h"><b>' + e(g.title) + "</b>" + (g.sub ? "<span>" + e(g.sub) + "</span>" : "") + '</div><ul class="cl">' +
+          g.items.map(function (c) { return claimLi(c, checked); }).join("") + "</ul></div>";
+      }).join("") + (m.links && m.links.length ? '<div class="grp"><div class="grp-h"><b>' + (checked ? "As setas do original, checadas" : "As setas (o que o original liga)") + '</b></div><ul class="links">' +
+        m.links.map(function (l) { return linkLi(l, checked); }).join("") + "</ul></div>" : "");
+    },
+    table: function (m, checked) {
+      return '<div class="tbl-wrap"><table class="tbl"><thead><tr>' + m.table.cols.map(function (c) { return '<th scope="col">' + e(c) + "</th>"; }).join("") +
+        (checked ? '<th scope="col">Checado</th>' : "") + "</tr></thead><tbody>" + m.table.rows.map(function (r) {
+          return "<tr>" + r.cells.map(function (c) { return "<td>" + e(c) + "</td>"; }).join("") + (checked ? "<td>" + selo(r.claim.selo, r.claim.check) + "</td>" : "") + "</tr>";
+        }).join("") + "</tbody></table></div>";
+    },
+    timeline: function (m, checked) {
+      return '<ol class="tl">' + m.events.map(function (ev, i) {
+        return '<li' + (i === m.events.length - 1 ? ' class="now"' : "") + ">" + tdate(ev.date) + "<p>" + e(ev.text) + "</p>" + (checked ? '<div class="cl"><div class="st">' + selo(ev.selo, ev.check) + "</div></div>" : "") + "</li>";
+      }).join("") + "</ol>";
+    },
+    card: function (m, checked) {
+      return '<ul class="cl grp">' + m.groups[0].items.map(function (c) { return claimLi(c, checked); }).join("") + "</ul>";
+    }
+  };
+  function allClaims(m) {
+    var out = [];
+    (m.groups || []).forEach(function (g) { out = out.concat(g.items); });
+    out = out.concat(m.links || []);
+    ((m.table || {}).rows || []).forEach(function (r) { out.push(r.claim); });
+    (m.events || []).forEach(function (x) { out.push(x); });
+    return out;
+  }
+  function propBar(m) {
+    var n = {}, all = allClaims(m);
+    if (!all.length) return "";
+    all.forEach(function (c) { var k = seloKey(c.selo); n[k] = (n[k] || 0) + 1; });
+    var keys = SELO_ORDER.filter(function (k) { return n[k]; });
+    return '<div class="ovc-sum"><div class="prop" role="img" aria-label="' + e(keys.map(function (k) { return n[k] + " " + SELO[k][1].toLowerCase(); }).join(", ")) + '">' +
+      keys.map(function (k) { return '<i class="p-' + k + '" style="width:' + (100 * n[k] / all.length).toFixed(2) + '%"></i>'; }).join("") + "</div>" +
+      '<ul class="prop-leg">' + keys.map(function (k) { return "<li>" + selo(k) + " " + nf(n[k]) + "</li>"; }).join("") + "</ul>" +
+      (n.NAO_ENCONTRAMOS ? '<p class="rule-note">' + NAO_ENC_TXT + "</p>" : "") +
+      '<p class="rule-note">' + plural(all.length, "afirmação separada e checada", "afirmações separadas e checadas") + ". O número conta afirmações, não é nota.</p></div>";
+  }
+  var FORMAT_NAME = { relations: ["Mapa de relações", "Mapa de relações checado"], table: ["Tabela", "Tabela checada"], timeline: ["Linha do tempo", "Linha do tempo checada"], card: ["Card", "Card checado"] };
+  function originalVsChecked(m) {
+    var f = RENDER[m.format] ? m.format : "card", nm = FORMAT_NAME[f], inp = m.input || {};
+    return '<div class="ovc" data-format="' + f + '">' +
+      '<section class="ovc-orig" aria-label="Original"><div class="ovc-head"><span class="t">Original</span><span class="tag tag-ring">' + e(inp.type || nm[0]) + "</span></div>" +
+      '<p class="ovc-meta">' + e(inp.outlet || "") + (inp.date ? " · " + tdate(inp.date) : "") + "</p>" +
+      (inp.title ? '<p class="spot-t" style="margin:0 0 10px">' + e(inp.title) + "</p>" : "") + RENDER[f](m, false) +
+      (inp.note ? '<p class="ovc-note">' + e(inp.note) + "</p>" : "") + "</section>" +
+      '<section class="ovc-chk asset" aria-label="Checado pelo Desmentindo"><div class="ovc-head"><span class="t">Checado pelo Desmentindo</span><span class="tag tag-fact">' + e(nm[1]) + "</span>" +
+      (m.status ? selo(m.status) : "") + "</div>" + propBar(m) + RENDER[f](m, true) +
+      '<p class="asset-foot"><span class="asset-brand"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>DESMENTINDO</span>' +
+      "<span>" + (m.checked_at ? "Checado em " + e(fdate(m.checked_at)) + " · " : "") + "desmentindo.com.br</span></p></section></div>";
+  }
+  // Adaptador: peça que circulou (dados públicos já publicados) → CHECK_MODEL. Sem IDs internos na saída.
+  function checkModelFromCirculating(circ, claims) {
+    var by = {}; claims.forEach(function (c) { by[c.id] = c; });
+    var inBlock = {}; circ.blocks.forEach(function (b) { b.claims.forEach(function (id) { inBlock[id] = 1; }); });
+    var mine = claims.filter(function (c) { return c.origin && circ.origin && c.origin.title === circ.text || inBlock[c.id]; });
+    // Numeração pública na ordem de leitura (blocos, depois setas); referências internas viram "afirmação nº N".
+    var num = {}, k = 0;
+    circ.blocks.forEach(function (b) { b.claims.forEach(function (id) { if (by[id] && !num[id]) num[id] = ++k; }); });
+    mine.forEach(function (c) { if (!num[c.id]) num[c.id] = ++k; });
+    var deref = function (t) { return t == null ? t : String(t).replace(/\bCL-(\d{3})\b/g, function (m0, d) { var id = "CL-" + d; return num[id] ? "afirmação nº " + num[id] : "outra afirmação"; }); };
+    var pick = function (c) { return { n: num[c.id], text: deref(c.text), selo: c.selo, check: c.check, kind: c.kind, proves: deref(c.proves), not_proves: deref(c.not_proves), sources: (c.sources || []).map(function (x) { return { title: x.title, outlet: x.outlet, url: x.url }; }) }; };
+    var dates = mine.map(function (c) { return c.checked_at; }).filter(Boolean).sort();
+    return {
+      format: /infogr|mapa|rela/i.test((circ.origin || {}).type || "") || circ.blocks.length > 1 ? "relations" : "card",
+      input: { type: (circ.origin || {}).type, outlet: (circ.origin || {}).outlet, date: (circ.origin || {}).date, title: circ.text, note: circ.note },
+      status: circ.status, checked_at: dates[dates.length - 1] || null,
+      groups: circ.blocks.map(function (b) { return { title: b.title, sub: b.sub, items: b.claims.filter(function (id) { return by[id]; }).map(function (id) { return pick(by[id]); }) }; }),
+      links: mine.filter(function (c) { return !inBlock[c.id]; }).map(pick)
+    };
+  }
+  window.DesmentindoCheck = { originalVsChecked: originalVsChecked, fromCirculating: checkModelFromCirculating, selo: selo };
+
+  P.checar = function () {
+    document.title = "Checar · Desmentindo";
+    var h = '<section class="page-head chk-hero"><p class="kicker chk-k">Checar uma mensagem, post ou notícia</p><h1 class="h1">Recebeu? A gente confere.</h1>' +
+      '<p class="lead">Você entrega um print, post, vídeo, tabela, gráfico, infográfico, linha do tempo ou mapa. A gente separa cada afirmação, confere uma por uma e devolve no mesmo formato, agora checado.</p>' +
+      '<p class="notice"><b>O envio pelo site ainda não está aberto.</b> Enquanto isso, veja se o assunto já apareceu antes nos arquivos:</p>' +
+      '<div style="margin-top:14px">' + searchForm("", "q-checar") + "</div></section>";
+    h += '<section class="sec" id="como"><h2 class="h2">Como checamos</h2><ol class="steps">' +
+      "<li><b>Entrada</b><p>O material como chegou: print, post, vídeo, tabela, infográfico, linha do tempo ou mapa.</p></li>" +
+      "<li><b>Separar</b><p>Cada afirmação vira uma linha. Pessoas, datas, valores e relações continuam lá.</p></li>" +
+      "<li><b>Checar</b><p>Para cada uma: checamos se foi dito ou se aconteceu.</p></li>" +
+      "<li><b>O que encontramos</b><p>Documentos e fontes, com data. O que sustentam e o que não sustentam.</p></li>" +
+      "<li><b>Contexto</b><p>O que veio antes, quando e onde. Olha a data.</p></li>" +
+      "<li><b>O que dá para concluir</b><p>Nunca mais forte que as fontes. Investigação não é culpa. Alegação não é fato.</p></li>" +
+      "<li><b>De volta no mesmo formato</b><p>Original ao lado do checado, para ver o que entrou e o que sobrou.</p></li></ol></section>";
+    h += '<section class="sec"><h2 class="h2">O formato volta igual</h2><ul class="parity">' +
+      [["Infográfico", "Infográfico checado"], ["Card", "Card checado"], ["Tabela", "Tabela checada"], ["Linha do tempo", "Linha do tempo checada"], ["Mapa de relações", "Mapa de relações checado"], ["Print", "Reconstrução checada"]].map(function (p) {
+        return "<li>" + e(p[0]) + ' <span aria-hidden="true">→</span><span class="sr">vira</span> <span class="to">' + e(p[1]) + "</span></li>";
+      }).join("") + '</ul><p class="rule-note">Não é cópia pixel a pixel: é a mesma informação, no mesmo formato, com o estado de cada afirmação corrigido. O resultado nunca fica mais pobre que a entrada.</p></section>';
+    h += '<section class="sec"><h2 class="h2">Como ler o resultado</h2><ul class="legend">' +
+      SELO_ORDER.map(function (k) {
+        var why = { DOCUMENTADO: "Encontramos documentação que sustenta a afirmação no contexto apresentado.", PARCIALMENTE_DOCUMENTADO: "Uma parte tem documento; dizemos qual parte sim e qual não.",
+          AINDA_NAO_DA: "O que existe hoje não basta para confirmar nem para descartar.", NAO_ENCONTRAMOS: NAO_ENC_TXT, EM_CHECAGEM: "Ainda estamos conferindo. Nada concluído." }[k];
+        return "<li>" + selo(k) + ' <span class="why">' + why + "</span></li>";
+      }).join("") +
+      '<li><span class="chkd">Checamos se foi dito</span> <span class="why">Um vídeo da fala documenta que foi dito, não que o fato aconteceu.</span></li>' +
+      '<li><span class="chkd">Checamos se aconteceu</span> <span class="why">Uma reportagem sobre acusação documenta a acusação, não o fato.</span></li>' +
+      '<li><p class="lk lk-DOCUMENTADO" style="margin:0"><span class="ln" aria-hidden="true"></span><span class="lt">Linha cheia</span></p><span class="why">Ligação documentada. Ligação não é culpa, influência nem ilegalidade.</span></li>' +
+      '<li><p class="lk lk-AINDA_NAO_DA" style="margin:0"><span class="ln" aria-hidden="true"></span><span class="lt">Pontilhada</span></p><span class="why">Ligação que o original desenha, mas que não confirmamos.</span></li>' +
+      "</ul></section>";
+    // Exemplo público só com checagem já publicada E liberada (v5/data/checar.json com "example"); sem isso, nada é
+    // mostrado nem inventado.
+    return load("checar.json").then(function (C) {
+      var m = C && (C.example || (C.circulating && C.claims ? checkModelFromCirculating(C.circulating, C.claims) : null));
+      if (!m) return h;
+      return h + '<section class="sec"><h2 class="h2">Exemplo: original × checado</h2>' + originalVsChecked(m) + "</section>";
+    }, function () { return h; });
+  };
+
+  // ---------------------------------------------------------------- rotas antigas (app anterior, links históricos)
+  // Nenhum link antigo vira 404 silencioso: redireciona para o equivalente ou explica o que mudou.
+  var LEGACY = {
+    home: "#/", inicio: "#/", noticias: "#/", busca: "#/busca", corpus: "#/arquivos", garcia: "#/arquivos", acervos: "#/arquivos", video: "#/arquivos", narrativas: "#/checar",
+    moved: { eventos: "Eventos e linha do tempo", trilhas: "Onde os casos param", mecanismos: "Mecanismos processuais", sit: "Situação atual", gazeta: "Gazeta do Povo", oeste: "Revista Oeste",
+      cobertura: "Cobertura de opinião", opiniao: "Opinião do autor", mensagens: "Mensagens", glossario: "Glossário e método" },
+    retired: { matriz: "Matriz", mapa: "Mapa", rede: "Vínculos e hipóteses", cerebro: "Segundo cérebro", fichas: "Pessoas e casos", contagens: "Contagens", regime: "Termômetro do regime" }
+  };
+  function legacyRoute(name, query) {
+    if (typeof LEGACY[name] === "string") return Promise.resolve({ go: LEGACY[name] });
+    var q = new URLSearchParams(query || "");
+    if (name === "caso" || name === "pessoa") {
+      var key = q.get(name === "caso" ? "c" : "n") || "";
+      return load("rotas.json").then(function (R) {
+        var slug = (name === "caso" ? R.casos : R.pessoas)[key];
+        return { go: slug ? (name === "caso" ? "#/historia/" : "#/arquivo/") + slug : key ? "#/busca?q=" + encodeURIComponent(key) : "#/" };
+      }, function () { return { go: key ? "#/busca?q=" + encodeURIComponent(key) : "#/" }; });
+    }
+    if (LEGACY.moved[name]) return Promise.resolve({ html: '<section class="page-head"><p class="kicker">Endereço antigo</p><h1 class="h1">' + e(LEGACY.moved[name]) + " mudou de lugar</h1>" +
+      '<p class="lead">Esta seção era do site anterior. O conteúdo continua no arquivo anterior, enquanto migramos para as histórias e a pesquisa.</p>' +
+      '<p><a class="btn-ink" href="/desmentindo_local.html#/' + e(name) + (query ? "?" + e(query) : "") + '">Abrir no arquivo anterior</a></p>' + searchForm("", "q-legacy") + "</section>" });
+    if (LEGACY.retired[name]) return Promise.resolve({ html: '<section class="page-head"><p class="kicker">Endereço antigo</p><h1 class="h1">' + e(LEGACY.retired[name]) + " saiu da página pública</h1>" +
+      '<p class="lead">O Desmentindo não publica perfis, rankings, mapas de pessoas nem painéis de pontuação. Aparecer junto não é ser culpado. A pesquisa mostra os registros, com data e fonte.</p>' + searchForm("", "q-legacy") + "</section>" });
+    return null;
+  }
+
   function notFound() {
     return '<section class="page-head"><h1 class="h1">Página não encontrada</h1><p class="lead">Ela não existe ou mudou de endereço.</p>' + searchForm("", "q-nf") + "</section>";
   }
 
   // ---------------------------------------------------------------- roteador
   var routeSeq = 0;
+  function setDoor(door) {
+    Array.prototype.forEach.call(document.querySelectorAll("[data-door]"), function (a) { if (a.getAttribute("data-door") === door) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+  }
   function route() {
     var hash = location.hash || "#/";
     var path = hash.slice(1).split("?")[0].split("#")[0];
@@ -375,11 +641,22 @@
     if (/^ja-falaram|^agora/.test(hash.slice(1))) return; // âncora na própria página
     var parts = path.split("/").filter(Boolean);
     var name = parts[0] || "home", arg = parts[1] ? decodeURIComponent(parts[1]) : null;
+    if (!P[name] && name !== "home") {
+      var lg = legacyRoute(name, hash.slice(1).split("?")[1]);
+      if (lg) {
+        var mine = ++routeSeq;
+        lg.then(function (r) {
+          if (mine !== routeSeq) return;
+          if (r.go) { location.replace(r.go); return; }
+          setDoor(""); main.innerHTML = '<div class="wrap">' + r.html + "</div>"; window.scrollTo(0, 0);
+        });
+        return;
+      }
+    }
     var fn = P[name] || P.home;
     document.body.classList.toggle("is-home", fn === P.home);
     document.title = "Desmentindo";
-    var door = fn === P.busca ? "busca" : (fn === P.arquivos || fn === P.arquivo) ? "arquivos" : (fn === P.home || fn === P.historia) ? "agora" : "";
-    Array.prototype.forEach.call(document.querySelectorAll("[data-door]"), function (a) { if (a.getAttribute("data-door") === door) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+    setDoor(fn === P.busca ? "busca" : (fn === P.arquivos || fn === P.arquivo) ? "arquivos" : fn === P.checar ? "checar" : (fn === P.home || fn === P.historia || fn === P.agora) ? "agora" : "");
     pending = {};
     var my = ++routeSeq; // só a navegação mais recente pode pintar a página (resposta atrasada de outra rota é descartada)
     fn(arg).then(function (h) {
@@ -394,7 +671,7 @@
     if (!a) return;
     ev.preventDefault();
     var t = document.getElementById(a.getAttribute("data-jump") || "ja-falaram");
-    if (t) t.scrollIntoView({ behavior: "smooth" });
+    if (t) t.scrollIntoView({ behavior: smooth() });
   });
   window.addEventListener("hashchange", route);
   route();

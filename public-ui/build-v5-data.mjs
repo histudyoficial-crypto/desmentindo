@@ -189,16 +189,16 @@ function buildStory(caso) {
   // Cronologia só quando ajuda: registros em anos diferentes; sem repetir o que já está acima.
   const rest = dated.filter(x => !shownIds.has(x.i));
   const chronoSrc = firstY !== lastY && rest.length >= 3 ? pickSpread(rest.slice().reverse(), 6) : [];
-  const chrono = chronoSrc.map(x => ({ date: x.date, text: cut(x.text, 150) }));
+  const chrono = chronoSrc.map(x => ({ date: x.date, allegation: x.allegation || undefined, text: cut(x.text, 150) }));
   for (const x of chronoSrc) shownIds.add(x.i);
   const updates = all.filter(x => x.published && !shownIds.has(x.i)).sort((a, b) => cmp(b.published, a.published) || b.i - a.i).slice(0, 3)
-    .map(x => ({ published: x.published, text: cut(x.text, 150) }));
+    .map(x => ({ published: x.published, allegation: x.allegation || undefined, text: cut(x.text, 150) }));
 
   return {
     slug: slugify(caso), key: caso, title: label(caso),
     span: firstY ? (firstY === lastY ? String(firstY) : firstY + "–" + lastY) : null,
     lastD: dated[0] ? dated[0].date : null, lastPublished, records: all.length, n_sources: sources.length,
-    summary: summaryEv ? { date: summaryEv.date, text: cut(summaryEv.text, 260), source: summaryEv.sources[0] ? { title: summaryEv.sources[0].title, outlet: summaryEv.sources[0].outlet, url: summaryEv.sources[0].url } : null } : null,
+    summary: summaryEv ? { date: summaryEv.date, allegation: summaryEv.allegation || undefined, text: cut(summaryEv.text, 260), source: summaryEv.sources[0] ? { title: summaryEv.sources[0].title, outlet: summaryEv.sources[0].outlet, url: summaryEv.sources[0].url } : null } : null,
     known, said, people, found, chrono, sources: sources.slice(0, 40), sources_total: sources.length, updates,
   };
 }
@@ -345,6 +345,20 @@ function personPage(p) {
   };
 }
 
+// ---------------------------------------------------------------- Checar (exemplo público)
+// null = nenhum exemplo público (padrão). Para liberar, Johnny escolhe uma peça JÁ publicada e checada
+// (ex.: "N001" de v4/data/afirmacoes.json) — decisão humana, nunca automática.
+const CHECAR_PUBLIC_EXAMPLE = null;
+function checarPublic() {
+  if (!CHECAR_PUBLIC_EXAMPLE) return { example: null };
+  const A = JSON.parse(fs.readFileSync(path.join(ROOT, "v4", "data", "afirmacoes.json"), "utf8"));
+  const circ = A.circulating.find(c => c.id === CHECAR_PUBLIC_EXAMPLE);
+  if (!circ) throw new Error("CHECAR_PUBLIC_EXAMPLE não encontrado: " + CHECAR_PUBLIC_EXAMPLE);
+  const ids = new Set(circ.blocks.flatMap(b => b.claims));
+  const claims = A.claims.filter(c => ids.has(c.id) || (c.origin && c.origin.title === circ.text));
+  return { example: null, circulating: circ, claims };
+}
+
 // ---------------------------------------------------------------- write / check
 const files = {
   "home.json": HOME,
@@ -352,6 +366,14 @@ const files = {
     stories: STORIES.filter(s => s.key !== EXCLUDE_CASE).map(s => ({ slug: s.slug, title: s.title, said: s.said.length })).filter(s => s.said) ,
     stats: { stories: RANKED.length, records: D.ev.length, segments: SEG.length } },
   "busca/meta.json": SEARCH_META,
+  // Links do app anterior (#/caso?c=…, #/pessoa?n=…) → história/consulta equivalente. Só o que existe na v5.
+  "rotas.json": {
+    casos: Object.fromEntries(STORIES.filter(s => s.key !== EXCLUDE_CASE).map(s => [s.key, s.slug])),
+    pessoas: Object.fromEntries(PERSONS.map(p => [p.name, p.slug])),
+  },
+  // Checar: exemplo público "original × checado" só com checagem já publicada E liberada por Johnny
+  // (CHECAR_PUBLIC_EXAMPLE). Padrão = nenhum (fail closed): a página explica o método e não mostra exemplo.
+  "checar.json": checarPublic(),
 };
 for (const s of STORIES) if (s.key !== EXCLUDE_CASE) { const { key, ...rest } = s; files["historia/" + s.slug + ".json"] = rest; }
 for (const p of PERSONS) files["arquivo/" + p.slug + ".json"] = personPage(p);
