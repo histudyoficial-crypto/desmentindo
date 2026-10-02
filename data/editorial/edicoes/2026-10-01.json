@@ -43,7 +43,10 @@
     }
    ],
    "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
     "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 14,
     "basis": "conteúdo público das matérias citadas"
    }
   },
@@ -66,7 +69,10 @@
     }
    ],
    "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
     "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 5,
     "basis": "conteúdo público das matérias citadas"
    }
   },
@@ -89,7 +95,10 @@
     }
    ],
    "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
     "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 4,
     "basis": "conteúdo público das matérias citadas"
    }
   },
@@ -112,7 +121,10 @@
     }
    ],
    "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
     "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 8,
     "basis": "conteúdo público das matérias citadas"
    }
   },
@@ -140,7 +152,10 @@
     }
    ],
    "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
     "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 5,
     "basis": "conteúdo público das matérias citadas"
    }
   },
@@ -163,7 +178,10 @@
     }
    ],
    "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
     "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 5,
     "basis": "conteúdo público das matérias citadas"
    }
   },
@@ -206,7 +224,10 @@
     }
    ],
    "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
     "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 0,
     "basis": "conteúdo público das matérias citadas"
    }
   },
@@ -229,7 +250,10 @@
     }
    ],
    "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
     "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 4,
     "basis": "conteúdo público das matérias citadas"
    }
   },
@@ -267,7 +291,10 @@
     }
    ],
    "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
     "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 5,
     "basis": "conteúdo público das matérias citadas"
    }
   },
@@ -384,13 +411,13 @@
      "url": "https://98fmnatal.com.br/politica/tse-tem-placar-de-3x1-para-manter-retirada-de-posts-sobre-nossa-senhora-aparecida/396122"
     },
     {
-     "name": "TSE (consulta processual)",
-     "title": "[fonte primária] PS-TSE-20260925-RP0602260",
+     "name": "TSE (documento oficial)",
+     "title": "Decisão — Representação nº 0602260-84.2026.6.00.0000 (Min. André Mendonça), 25/09/2026",
      "url": "https://consultaunificadapje.tse.jus.br/consulta-publica-unificada/documento?extensaoArquivo=text/html&path=tse/2026/9/25/17/40/42/486501e7dfaaa7c983f330dfb881c68272f53950a66a9b24411c718de44257d1"
     },
     {
-     "name": "TSE (consulta processual)",
-     "title": "[fonte primária] PS-TSE-20260929-RP0602260",
+     "name": "TSE (documento oficial)",
+     "title": "Decisão — mesma Representação, 29/09/2026 (pedido de Erika Hilton)",
      "url": "https://consultaunificadapje.tse.jus.br/consulta-publica-unificada/documento?extensaoArquivo=text/html&path=tse/2026/9/29/16/59/28/e4caa46311ef65c15ca0e1888a33aae2da8d91a5bbe8ece6048da21a59e4e5ff"
     },
     {
@@ -399,14 +426,17 @@
      "url": "https://g1.globo.com/politica/blog/valdo-cruz/post/2026/09/30/tse-vai-limitar-decisao-de-andre-mendonca-ao-que-e-de-fato-fake-news-contra-flavio-bolsonaro.ghtml"
     },
     {
-     "name": "STF (notícias)",
-     "title": "[fonte primária] PS-STF-20260930-DINO",
+     "name": "STF (comunicação oficial)",
+     "title": "STF manda investigar ataques contra símbolos religiosos (Notícias STF)",
      "url": "https://noticias.stf.jus.br/postsnoticias/stf-manda-investigar-ataques-contra-simbolos-religiosos/"
     }
    ],
    "evidence": {
+    "primary_source_status": "PARTIAL",
     "primary_source_obtained": false,
-    "basis": "conteúdo público das matérias citadas"
+    "claims_with_primary_source": 5,
+    "claims_total": 18,
+    "basis": "conteúdo público das matérias citadas; parte das afirmações tem documento oficial vinculado"
    }
   },
   {
@@ -438,7 +468,10 @@
     }
    ],
    "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
     "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 0,
     "basis": "conteúdo público das matérias citadas"
    }
   }
