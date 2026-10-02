@@ -388,6 +388,8 @@
     "ok": true,
     "info": [
      "/data/editorial/index.json",
+     "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
+     "/data/editorial/index.json",
      "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc"
     ]
    },
@@ -1166,7 +1168,7 @@
    {
     "check": "desktop:story: 'Já falaram' começa até 1,5 tela (1200px)",
     "ok": true,
-    "info": 1094.109375
+    "info": 1147.9375
    },
    {
     "check": "desktop:story: atalho para 'Já falaram' visível na primeira dobra",
@@ -1196,7 +1198,7 @@
    {
     "check": "mobile:story: 'Já falaram' começa até 1,5 tela (1266px)",
     "ok": true,
-    "info": 1189.40625
+    "info": 1241.84375
    },
    {
     "check": "mobile:story: atalho para 'Já falaram' visível na primeira dobra",
@@ -2191,6 +2193,83 @@
     }
    }
   ],
+  "VISUAL_IDENTITY": [
+   {
+    "check": "desktop: História abre com o hero tipográfico do v4 (fundo --ink, título branco, data amarela)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: paleta canônica (papel #F3F2F2, texto #201E1D, sem vermelho do Modernist base)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: marca DESMENTINDO visível no cabeçalho das páginas internas",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: cantos retos (raio 0) em cartões e botões",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "item ativo da navegação com borda inferior amarela de 4px (DM Cabecalho)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: cor de origem nos trechos (Alexandre Garcia #6B3FA0)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: faixa-assinatura escura de largura total, sem rolagem horizontal",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: Desmentindo Data com identidade própria (selo DATA azul) e 'O que não fazemos'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: História abre com o hero tipográfico do v4 (fundo --ink, título branco, data amarela)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: paleta canônica (papel #F3F2F2, texto #201E1D, sem vermelho do Modernist base)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: marca DESMENTINDO visível no cabeçalho das páginas internas",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: cantos retos (raio 0) em cartões e botões",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: cor de origem nos trechos (Alexandre Garcia #6B3FA0)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: faixa-assinatura escura de largura total, sem rolagem horizontal",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: Desmentindo Data com identidade própria (selo DATA azul) e 'O que não fazemos'",
+    "ok": true,
+    "info": null
+   }
+  ],
   "MOBILE": [
    {
     "check": "barra inferior: 4 itens com texto e toque ≥ 44px (Checar fora até o envio abrir)",
@@ -2283,17 +2362,17 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 28973
+    "bytes": 32379
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 58324
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
     "status": 200,
     "bytes": 90104
-   },
-   {
-    "url": "/v5/js/v5.js",
-    "status": 200,
-    "bytes": 57411
    },
    {
     "url": "/v5/",
@@ -2313,12 +2392,12 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 28973
+    "bytes": 32379
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 57411
+    "bytes": 58324
    },
    {
     "url": "/data/editorial/index.json",
@@ -2365,14 +2444,14 @@
     "bytes": 77446
    },
    {
-    "url": "/v5/data/busca/s/0.json",
-    "status": 200,
-    "bytes": 68305
-   },
-   {
     "url": "/v5/data/busca/s/3.json",
     "status": 200,
     "bytes": 64291
+   },
+   {
+    "url": "/v5/data/busca/s/0.json",
+    "status": 200,
+    "bytes": 68305
    }
   ],
   "desktop:search-inss": [
@@ -2420,8 +2499,13 @@
   "desktop:agora-item": [],
   "desktop:home-agora": [
    {
-    "url": "/v5/js/v5.js",
+    "url": "/v5/css/v5.css",
     "status": 304,
+    "bytes": null
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
     "bytes": null
    },
    {
@@ -2430,19 +2514,14 @@
     "bytes": 2777
    },
    {
-    "url": "/v5/fonts/archivo-latin.woff2",
-    "status": 200,
-    "bytes": null
-   },
-   {
     "url": "/v5/css/fonts.css",
     "status": 200,
     "bytes": 893
    },
    {
-    "url": "/v5/css/v5.css",
+    "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 28973
+    "bytes": 58324
    },
    {
     "url": "/data/editorial/index.json",
@@ -2476,12 +2555,7 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 28973
-   },
-   {
-    "url": "/v5/js/v5.js",
-    "status": 200,
-    "bytes": 57411
+    "bytes": 32379
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
@@ -2489,7 +2563,22 @@
     "bytes": 90104
    },
    {
-    "url": "/v5/fonts/archivo-latin.woff2",
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 58324
+   },
+   {
+    "url": "/data/editorial/index.json",
+    "status": 200,
+    "bytes": null
+   },
+   {
+    "url": "/v5/data/home.json",
+    "status": 200,
+    "bytes": null
+   },
+   {
+    "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
     "status": 200,
     "bytes": null
    },
@@ -2499,6 +2588,11 @@
     "bytes": 2777
    },
    {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": null
+   },
+   {
     "url": "/v5/css/fonts.css",
     "status": 200,
     "bytes": 893
@@ -2506,12 +2600,12 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 28973
+    "bytes": 32379
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 57411
+    "bytes": 58324
    },
    {
     "url": "/data/editorial/index.json",
@@ -2543,14 +2637,14 @@
     "bytes": 19491
    },
    {
-    "url": "/v5/data/busca/t/mo.json",
-    "status": 200,
-    "bytes": 21995
-   },
-   {
     "url": "/v5/data/busca/t/al.json",
     "status": 200,
     "bytes": 18713
+   },
+   {
+    "url": "/v5/data/busca/t/mo.json",
+    "status": 200,
+    "bytes": 21995
    },
    {
     "url": "/v5/data/busca/s/0.json",
@@ -2629,13 +2723,13 @@
    },
    {
     "url": "/v5/css/v5.css",
-    "status": 200,
-    "bytes": 28973
+    "status": 304,
+    "bytes": null
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 57411
+    "bytes": 58324
    },
    {
     "url": "/data/editorial/index.json",
@@ -2659,7 +2753,7 @@
  "evidence": {
   "desktop:home_data_bytes": 2225,
   "desktop:story_data_bytes": 13181,
-  "desktop:story_ja_falaram_top_px": 1094.109375,
+  "desktop:story_ja_falaram_top_px": 1147.9375,
   "desktop:story_sections": [
    "O que sabemos",
    "Já falaram sobre isso",
@@ -2690,7 +2784,7 @@
   "allegations_checked": 55,
   "mobile:home_data_bytes": 2225,
   "mobile:story_data_bytes": 13181,
-  "mobile:story_ja_falaram_top_px": 1189.40625,
+  "mobile:story_ja_falaram_top_px": 1241.84375,
   "mobile:story_sections": [
    "O que sabemos",
    "Já falaram sobre isso",
@@ -2753,6 +2847,7 @@
   "V5_ROUTES_QA": "PASS",
   "ACCESSIBILITY": "PASS",
   "MOBILE": "PASS",
+  "VISUAL_IDENTITY": "PASS",
   "BOUNDARY": "PASS",
   "PERFORMANCE": "PASS",
   "BUILD": "PASS"

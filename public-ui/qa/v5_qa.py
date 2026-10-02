@@ -266,7 +266,7 @@ with sync_playwright() as pw:
                 n_alleg += sum(1 for k in want2 if k)
                 page.goto(BASE + "#/__blank"); page.goto(BASE + "#/historia/" + f[:-5]); page.wait_for_selector("h1.h1"); page.wait_for_load_state("networkidle")
                 got2 = page.evaluate("""() => { const pick = el => { if (!el) return null; const t = el.querySelector(':scope > .tag-alleg, :scope > .tag-said, .tag-alleg, .tag-said'); return t ? t.textContent.trim().toLowerCase() : 'SEM_ROTULO'; };
-                  const sum = document.querySelector('.page-head .summary'); const out = [sum && sum.querySelector('.tag-alleg, .tag-said') ? sum.querySelector('.tag-alleg, .tag-said').textContent.trim().toLowerCase() : null];
+                  const sum = document.querySelector('.page-sub .summary, .page-head .summary'); const out = [sum && sum.querySelector('.tag-alleg, .tag-said') ? sum.querySelector('.tag-alleg, .tag-said').textContent.trim().toLowerCase() : null];
                   document.querySelectorAll('ol.tl li').forEach(li => out.push(li.querySelector('.tag-alleg, .tag-said') ? li.querySelector('.tag-alleg, .tag-said').textContent.trim().toLowerCase() : null));
                   document.querySelectorAll('ul.upd li').forEach(li => out.push(li.querySelector('.tag-alleg, .tag-said') ? li.querySelector('.tag-alleg, .tag-said').textContent.trim().toLowerCase() : null));
                   return out; }""")
@@ -386,6 +386,29 @@ with sync_playwright() as pw:
         if vp_name == "mobile":
             tb = page.evaluate("Array.from(document.querySelectorAll('.tabbar a')).map(a => { const r = a.getBoundingClientRect(); return [a.textContent.trim(), Math.round(r.height)]; })")
             check("MOBILE", "barra inferior: 4 itens com texto e toque ≥ 44px (Checar fora até o envio abrir)", len(tb) == 4 and all(t and h >= 44 for t, h in tb), tb)
+
+        # ------------------------------------------------ IDENTIDADE VISUAL (tokens canônicos do v4; não substitui a comparação lado a lado)
+        def css(sel, prop):
+            return page.evaluate(f"(() => {{ const el = document.querySelector({json.dumps(sel)}); return el ? getComputedStyle(el).getPropertyValue({json.dumps(prop)}) : null; }})()")
+        page.goto(BASE + "#/__blank"); page.goto(BASE + "#/historia/" + args.story); page.wait_for_selector("h1.h1"); page.wait_for_load_state("networkidle")
+        check("VISUAL_IDENTITY", f"{vp_name}: História abre com o hero tipográfico do v4 (fundo --ink, título branco, data amarela)",
+              css(".hero-ink", "background-color") == "rgb(32, 30, 29)" and css(".hero-ink .h1", "color") == "rgb(255, 255, 255)" and css(".hero-ink .bigdate b", "color") == "rgb(255, 223, 0)")
+        check("VISUAL_IDENTITY", f"{vp_name}: paleta canônica (papel #F3F2F2, texto #201E1D, sem vermelho do Modernist base)",
+              css("body", "background-color") == "rgb(243, 242, 242)" and css("body", "color") == "rgb(32, 30, 29)" and "#EC3013" not in open(os.path.join(ROOT, "v5", "css", "v5.css")).read().upper())
+        check("VISUAL_IDENTITY", f"{vp_name}: marca DESMENTINDO visível no cabeçalho das páginas internas", page.locator(".top .brand-word").is_visible())
+        check("VISUAL_IDENTITY", f"{vp_name}: cantos retos (raio 0) em cartões e botões",
+              all((css(s_, "border-radius") or "0px") in ("0px", "") for s_ in (".facts", ".spot", ".rail li", ".go")))
+        if vp_name == "desktop":
+            check("VISUAL_IDENTITY", "item ativo da navegação com borda inferior amarela de 4px (DM Cabecalho)",
+                  css('.doors a[aria-current="page"]', "border-bottom-color") == "rgb(255, 223, 0)" and css('.doors a[aria-current="page"]', "border-bottom-width") == "4px")
+        check("VISUAL_IDENTITY", f"{vp_name}: cor de origem nos trechos (Alexandre Garcia #6B3FA0)", "107, 63, 160" in (css('.said[data-src="Alexandre Garcia"]', "box-shadow") or ""))
+        page.goto(BASE + "#/__blank"); page.goto(BASE); page.wait_for_selector(".sig"); page.wait_for_load_state("networkidle")
+        sig_ok = page.evaluate("(() => { const cs = getComputedStyle(document.querySelector('.sig')); return cs.clipPath.indexOf('inset') === 0 && cs.boxShadow !== 'none'; })()")
+        check("VISUAL_IDENTITY", f"{vp_name}: faixa-assinatura escura de largura total, sem rolagem horizontal",
+              sig_ok and page.evaluate("document.documentElement.scrollWidth - window.innerWidth") <= 0)
+        page.goto(BASE + "#/__blank"); page.goto(BASE + "#/profissionais"); page.wait_for_selector("h1.h1"); page.wait_for_load_state("networkidle")
+        check("VISUAL_IDENTITY", f"{vp_name}: Desmentindo Data com identidade própria (selo DATA azul) e 'O que não fazemos'",
+              css(".data-mark .dt", "background-color") == "rgb(0, 39, 118)" and page.locator(".dont").count() == 1)
         ctx.close()
 
     # ------------------------------------------------ 375 px: nenhuma página com rolagem horizontal
@@ -434,7 +457,7 @@ for cmd in (["node", "public-ui/build-public-data.mjs", "--check"], ["node", "pu
     r = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True)
     check("BUILD", " ".join(cmd), r.returncode == 0, (r.stdout + r.stderr).strip()[-300:])
 
-gates = ["V5_HOME_QA", "V5_STORY_QA", "V5_SEARCH_QA", "V5_AG_TIMESTAMP_E2E", "V5_EPISTEMIC_QA", "V5_CHECAR_QA", "V5_ROUTES_QA", "ACCESSIBILITY", "MOBILE", "BOUNDARY", "PERFORMANCE", "BUILD"]
+gates = ["V5_HOME_QA", "V5_STORY_QA", "V5_SEARCH_QA", "V5_AG_TIMESTAMP_E2E", "V5_EPISTEMIC_QA", "V5_CHECAR_QA", "V5_ROUTES_QA", "ACCESSIBILITY", "MOBILE", "VISUAL_IDENTITY", "BOUNDARY", "PERFORMANCE", "BUILD"]
 R["gates"] = {g: ("FAIL" if g in fails else "PASS") for g in gates}
 R["failures"] = fails
 R["note_5s"] = "Teste dos 5 segundos é heurístico: confere se a primeira dobra tem marca, frase de explicação, busca e a pista explícita de 'o que já foi dito, com data, minuto do vídeo e fonte'. Não substitui teste com pessoas."

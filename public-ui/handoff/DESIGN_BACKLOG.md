@@ -37,3 +37,10 @@
 | Todas | URL limpa | `/historia/slug` do design × `#/historia/slug`. | P3 | site estático | Gerar páginas estáticas por história. | ABERTO |
 | História | Cronologia | Registro duplicado no dado (EV-0327/EV-0331) aparecia duas vezes. | P2 | Consórcio Nordeste | Mesma data + mesmo começo de texto aparece uma vez; o dado não é alterado. | CORRIGIDO NO PR #11 |
 | Prévia `/v4/` | Segunda interface pública | A prévia v4 segue publicada (noindex) e mostra a peça N001; contraria ONE PUBLIC DESMENTINDO. | P1 | `/v4/` | LEGACY_V4_PUBLIC_PREVIEW_RETIRED (Johnny, 02/10): no deploy, v4/ some e /v4/ redireciona para a raiz; gate de produção. | CORRIGIDO NO PR #11 (aguarda merge) |
+| Para profissionais | Identidade Desmentindo Data | Página com a identidade da publicação; Data sem selo próprio. | P1 | gate visual 02/10 | Selo DESMENTINDO DATA, cartões com barra azul, "O que não fazemos". | CORRIGIDO NO PR #11 |
+| História | Hero | Cabeçalho claro × hero tipográfico v4 (fundo --ink). | P2 | gate visual 02/10 | Hero escuro com título, data do último registro e cartão da fonte. | CORRIGIDO NO PR #11 |
+| Shell | Navegação/faixa/marca/origem | Item ativo sem 4 px amarelo; faixa-assinatura não ocupava a largura; marca escondida no celular; sem cor de origem. | P2 | gate visual 02/10 | Tokens do DM Cabecalho e cores de origem aplicados. | CORRIGIDO NO PR #11 |
+| Pesquisa | Título-resumo e filtros | Falta "Apareceu N vezes… a primeira em…" e os filtros Tudo/Histórias/Vídeos/Documentos. | P2 | DM Familia CD "resultado" | Implementar após o GLT-001. | ABERTO |
+| Listas | Grade | Coluna de 760 px nas páginas de lista; o design usa grade de 1280. | P2 | DM Familia CD | Avaliar grade larga para listas, mantendo 760 para leitura. | ABERTO |
+| Arquivos | Cartões por origem | Arquivos em linhas, não em cartões com barra de origem. | P2 | DM Familia CD "arquivos" | Cartões por origem. | ABERTO |
+| Para profissionais | Seções | Sem navegação profissional, "Para quem" nem "Dez coisas" (EM ESTUDO; L2). | P2 | DM Profissionais v3 | Depois de confirmar os estados reais das capacidades. | ABERTO |

@@ -29,7 +29,7 @@
 
   // ---------------------------------------------------------------- componente: JÁ FALARAM SOBRE ISSO
   function saidItem(o, story, noWho) {
-    return '<li class="said" data-video="' + e(o.video_id) + '" data-t="' + o.t_seconds + '" data-date="' + e(o.date) + '">' +
+    return '<li class="said" data-src="' + e(o.source_name || "") + '" data-video="' + e(o.video_id) + '" data-t="' + o.t_seconds + '" data-date="' + e(o.date) + '">' +
       (story ? '<p class="said-story">Sobre <a href="#/historia/' + e(story.slug) + '">' + e(story.title) + "</a></p>" : "") +
       (noWho ? "" : '<p class="said-who">' + e(o.source_name) + "</p>") +
       '<p class="said-x">' + e(o.excerpt) + "</p>" +
@@ -92,7 +92,7 @@
   }
   function archList(arch) {
     return '<ul class="arch">' + arch.map(function (a) {
-      return "<li><span class=\"an\">" + e(a.name) + "</span>" + (a.available
+      return '<li data-src="' + e(a.name) + '"><span class="an">' + e(a.name) + "</span>" + (a.available
         ? '<span class="as ok">' + nf(a.videos_indexed) + " vídeos · pesquisa disponível</span>"
         : '<span class="as">Arquivo ainda não disponível para pesquisa</span>') + "</li>";
     }).join("") + "</ul>";
@@ -207,12 +207,14 @@
     return Promise.all([load("historia/" + slug + ".json"), load("home.json")]).then(function (r) {
       var s = r[0], arch = r[1].archives;
       document.title = s.title + " · Desmentindo";
-      var h = '<section class="page-head"><p class="kicker"><span class="tag tag-ink">História</span>' + (s.span ? " " + e(s.span.replace("–", " a ")) : "") + '</p><h1 class="h1">' + e(s.title) + "</h1>";
-      if (s.lastD) h += '<p class="bigdate"><span>Último registro</span><b>' + tdate(s.lastD) + "</b></p>";
-      if (s.summary) {
-        h += '<p class="summary">' + natTag(s.summary) + e(s.summary.text) + "</p>" + attrNote(s.summary) +
-          '<p class="src">' + tdate(s.summary.date) + (s.summary.source ? " · " + ext(s.summary.source.url, e(s.summary.source.outlet || "fonte"), "") : "") + "</p>";
-      }
+      // EDITORIAL HERO, variante tipográfica do v4 (sem imagem no dado): fundo --ink, título, data do último registro
+      // e cartão da fonte. Sem parágrafo dentro do hero; o resumo vem logo abaixo.
+      var src0 = s.summary && s.summary.source;
+      var h = '<section class="page-head hero-ink"><p class="kicker"><span class="tag tag-paper">História</span>' + (s.span ? " " + e(s.span.replace("–", " a ")) : "") + '</p><h1 class="h1">' + e(s.title) + "</h1>" +
+        '<div class="hero-row">' + (s.lastD ? '<p class="bigdate"><span>Último registro</span><b>' + tdate(s.lastD) + "</b></p>" : "") +
+        (src0 ? '<a class="hero-src" href="' + e(src0.url) + '" target="_blank" rel="noopener"><span class="rk"><i aria-hidden="true">↗</i>Fonte do resumo</span><span class="hs-t">' + e(src0.outlet || "fonte") + "</span><span>" + tdate(s.summary.date) + " · Abrir →</span></a>" : "") +
+        "</div></section><section class=\"page-sub\">";
+      if (s.summary) h += '<p class="summary">' + natTag(s.summary) + e(s.summary.text) + "</p>" + attrNote(s.summary);
       // Números com contexto (BIG NUMBER): navegacionais, nunca avaliação.
       h += '<div class="facts">' +
         '<div><p class="fl">Registros</p><p class="fv num">' + nf(s.records) + '</p><p class="fs">fatos e alegações guardados nesta história</p></div>' +
@@ -430,18 +432,19 @@
   P.profissionais = function () {
     document.title = "Para profissionais · Desmentindo";
     return load("arquivos.json").then(function (A) {
-      var h = '<section class="page-head"><p class="kicker">Desmentindo Data</p><h1 class="h1">Para profissionais</h1>' +
+      var h = '<section class="page-head"><p class="data-mark" aria-label="Desmentindo Data"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-word">DESMENTINDO</span><span class="dt">DATA</span></p><h1 class="h1">Para profissionais</h1>' +
         '<p class="lead">O Desmentindo é a publicação. O Desmentindo Data é para quem usa esses arquivos no trabalho: redações, pesquisa e escolas.</p></section>';
       // PROFESSIONAL CAPABILITY CARD: só o que JÁ EXISTE no ar; nada prometido sem confirmação (handoff L2).
       var vids = A.archives.filter(function (a) { return a.available; }).reduce(function (n, a) { return n + a.videos_indexed; }, 0);
-      h += '<section class="sec"><h2 class="h2">O que já existe</h2><ol class="steps">' +
+      h += '<section class="sec"><h2 class="h2">O que já existe</h2><ol class="steps data">' +
         '<li><span class="tag tag-ink">Já existe</span><b>Pesquisar</b><p>Trechos de ' + nf(vids) + " vídeos, com data e o minuto exato.</p></li>" +
         '<li><span class="tag tag-ink">Já existe</span><b>Consultar</b><p>' + nf(A.stats.stories) + " histórias com " + nf(A.stats.records) + " registros, com data e fonte.</p></li>" +
         '<li><span class="tag tag-ink">Já existe</span><b>Abrir a fonte</b><p>As fontes de cada história abrem o documento, a reportagem ou o vídeo original.</p></li></ol></section>';
       h += '<section class="sec"><h2 class="h2">Cobertura dos arquivos de vídeo</h2><ul class="arch">' + A.archives.map(function (a) {
-        return '<li><span class="an">' + e(a.name) + '</span><span class="as' + (a.available ? " ok" : "") + '">' + nf(a.videos_indexed) + " de " + nf(a.videos_total) + " vídeos processados" + (a.available ? (a.latest ? " · até " + e(fdate(a.latest)) : "") : " · ainda não disponível para pesquisa") + "</span></li>";
+        return '<li data-src="' + e(a.name) + '"><span class="an">' + e(a.name) + '</span><span class="as' + (a.available ? " ok" : "") + '">' + nf(a.videos_indexed) + " de " + nf(a.videos_total) + " vídeos processados" + (a.available ? (a.latest ? " · até " + e(fdate(a.latest)) : "") : " · ainda não disponível para pesquisa") + "</span></li>";
       }).join("") + "</ul></section>";
-      h += '<section class="sec"><p class="quiet" style="margin:0">Não produzimos perfil, ranking ou nota de pessoas. A unidade é o fato, a história, o que foi dito e o documento.</p></section>';
+      h += '<section class="sec"><div class="dont"><b>O que não fazemos</b><ul><li>Lista de pessoas monitoradas.</li><li>Ranking de pessoas.</li><li>Nota de suspeita ou de risco sobre alguém.</li><li>Perfil político de pessoas.</li><li>Checagem encomendada por cliente.</li></ul></div>' +
+        '<p class="quiet">A unidade é o fato, a história, o que foi dito e o documento.</p></section>';
       return h;
     });
   };
