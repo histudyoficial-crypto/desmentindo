@@ -98,7 +98,17 @@ h1, h2, h3 { margin: 0; }
 .go::before { content: ""; border-left: 8px solid currentColor; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
 .go:hover { background: #000; }
 .go[hidden] { display: none; }
-.said-yt { font-size: 13px; font-weight: 700; color: var(--ink-2); }
+.said-yt { font-size: 12px; font-weight: 500; color: var(--muted); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.said-yt:hover { color: var(--ink-2); }
+.vposter { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; margin: 4px 0 12px; padding: 0; border: 0; cursor: pointer; overflow: hidden;
+  background: linear-gradient(135deg, #2A2826 0%, #201E1D 55%, #0F2A5E 100%); }
+.vposter img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.vplay { position: absolute; left: 50%; top: 50%; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; background: var(--yellow, #FFDF00); box-shadow: 0 2px 10px rgba(0,0,0,.35); }
+.vplay::after { content: ""; position: absolute; left: 26px; top: 19px; border-left: 19px solid var(--ink, #201E1D); border-top: 13px solid transparent; border-bottom: 13px solid transparent; }
+.vts { position: absolute; right: 10px; bottom: 10px; background: rgba(0,0,0,.8); color: #fff; font-weight: 800; font-size: 14px; padding: 3px 7px; font-variant-numeric: tabular-nums; }
+.vposter:focus-visible { outline: 3px solid var(--yellow, #FFDF00); outline-offset: -3px; }
+.said:not(.said-open) { padding-top: 12px; padding-bottom: 14px; }
+.said:not(.said-open) .said-x { font-size: 16px; margin: 4px 0 6px; }
 .vplayer { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; margin: 4px 0 12px; }
 .vplayer iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .vplayer.vfail { aspect-ratio: auto; background: var(--paper, #F3F2F2); border: 1px dashed var(--rule); padding: 14px; display: grid; gap: 10px; justify-items: start; }

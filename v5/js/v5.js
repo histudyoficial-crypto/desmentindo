@@ -72,18 +72,65 @@
       w.innerHTML = '<p>Não foi possível carregar o vídeo aqui.</p>' + (a ? '<a class="go" href="' + e(a.href) + '" target="_blank" rel="noopener">Assistir no YouTube' + (lbl ? " a partir de " + e(lbl) : "") + "</a>" : "");
     });
   });
+  // Em cada lista de trechos, o PRIMEIRO card já mostra o vídeo (miniatura oficial + play + minuto, sem iframe e sem autoplay);
+  // os demais ficam compactos e abrem o player no próprio card ao tocar "Ver trecho". Um player aberto por lista.
+  function whenLabel(li) { return (((li.querySelector(".said-when") || {}).textContent) || "").split("·").pop().trim(); }
+  function posterFor(li) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "vposter";
+    b.setAttribute("aria-label", "Ver trecho aqui, a partir de " + whenLabel(li));
+    var img = document.createElement("img");
+    img.alt = ""; img.loading = "lazy"; img.decoding = "async";
+    img.src = "https://i.ytimg.com/vi/" + encodeURIComponent(li.getAttribute("data-video")) + "/hqdefault.jpg";
+    img.addEventListener("error", function () { img.remove(); });
+    b.appendChild(img);
+    b.insertAdjacentHTML("beforeend", '<span class="vplay" aria-hidden="true"></span><span class="vts">' + e(whenLabel(li)) + "</span>");
+    return b;
+  }
+  function primeLists(root) {
+    [].forEach.call((root || document).querySelectorAll("ul.said-list"), function (ul) {
+      if (ul.querySelector(".said-open")) return;
+      // Um bloco = um card aberto: listas irmãs (ex.: anos em "Nos arquivos") só abrem a primeira.
+      for (var sib = ul.previousElementSibling; sib; sib = sib.previousElementSibling) if (sib.matches("ul.said-list")) return;
+      var li = ul.querySelector("li.said[data-video]");
+      if (!li) return;
+      li.classList.add("said-open");
+      li.insertBefore(posterFor(li), li.querySelector(".said-foot"));
+      var go = li.querySelector("a.go[data-play]");
+      if (go) go.hidden = true;
+    });
+  }
+  function closeOthers(li) {
+    var ul = li.closest("ul.said-list");
+    if (!ul) return;
+    [].forEach.call(ul.querySelectorAll("li.said .vplayer"), function (w) {
+      var o = w.closest("li.said");
+      if (o === li) return;
+      w.remove();
+      if (o.classList.contains("said-open")) o.insertBefore(posterFor(o), o.querySelector(".said-foot"));
+      else { var g = o.querySelector("a.go[data-play]"); if (g) g.hidden = false; }
+    });
+  }
+  function play(li, deepLink) {
+    closeOthers(li);
+    var p = inlinePlayer(li, li.getAttribute("data-video"), li.getAttribute("data-t"), whenLabel(li), deepLink);
+    if (!p) return;
+    var poster = li.querySelector(".vposter");
+    if (poster) poster.replaceWith(p); else li.insertBefore(p, li.querySelector(".said-foot"));
+    var go = li.querySelector("a.go[data-play]");
+    if (go) go.hidden = true;
+  }
   document.addEventListener("click", function (ev) {
-    var a = ev.target.closest && ev.target.closest("a.go[data-play]");
-    if (!a || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button) return;
-    var li = a.closest("[data-video]");
+    var t = ev.target.closest && ev.target.closest("a.go[data-play], button.vposter");
+    if (!t || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button) return;
+    var li = t.closest("li.said[data-video]");
     if (!li) return;
     ev.preventDefault();
-    var label = (li.querySelector(".said-when") || {}).textContent || "";
-    label = label.split("·").pop().trim();
-    var p = inlinePlayer(li, li.getAttribute("data-video"), li.getAttribute("data-t"), label, a.getAttribute("href"));
-    if (p) li.insertBefore(p, li.querySelector(".said-foot"));
-    a.hidden = true;
+    var yt = li.querySelector("a.said-yt");
+    play(li, (yt && yt.getAttribute("href")) || t.getAttribute("href"));
   });
+  // Listas montadas depois (busca, "Mostrar mais", troca de rota) também ganham o primeiro card aberto.
+  new MutationObserver(function () { primeLists(document); }).observe(document.documentElement, { childList: true, subtree: true });
   // Status de fonte primária calculado por afirmação ↔ fonte (no backend); aqui só o texto público de cada estado.
   var EV_NOTE = {
     AVAILABLE: "",
