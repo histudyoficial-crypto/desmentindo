@@ -199,7 +199,7 @@ with sync_playwright() as pw:
         # ------------------------------------------------ SEARCH
         for q, slug in (("Alexandre de Moraes", "moraes"), ("INSS", "inss")):
             data, text = visit("search-" + slug, "#/busca?q=" + q.replace(" ", "%20"), "#nos-arquivos")
-            page.wait_for_selector("#ag-list li.said", timeout=15000)
+            page.wait_for_selector("#res-list-0 li.said", timeout=15000)
             page.wait_for_load_state("networkidle")
             R["requests"][f"{vp_name}:search-{slug}"] = list(reqs)
             data = [x for x in reqs if "/v5/data/" in x["url"]]
@@ -223,7 +223,7 @@ with sync_playwright() as pw:
                         if all(w in ws for w in toks): cnt += 1
                 R["evidence"][f"search_{slug}_recount_from_archive"] = cnt
                 check("V5_SEARCH_QA", f"search '{q}': contagem exibida = recontagem no arquivo AG", cnt == n, {"shown": n, "recount": cnt})
-            fl = page.locator("#ag-list li.said").first
+            fl = page.locator("#res-list-0 li.said").first
             verify_link(fl.locator("a.go").get_attribute("href"), fl.locator("time").get_attribute("datetime"), "V5_SEARCH_QA", f"{vp_name}:search '{q}'")
             na = page.inner_text("#nos-arquivos")
             check("V5_SEARCH_QA", f"{vp_name}:search '{q}': Caio Coppolla e Te Atualizei como indisponíveis", all(nm in na for nm in UNAVAILABLE) and "ainda não disponíve" in na)

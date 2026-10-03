@@ -86,19 +86,34 @@ const deepLink = (id, s) => "https://www.youtube.com/watch?v=" + id + "&t=" + s 
 // ---------------------------------------------------------------- arquivo AG: só trechos publicáveis
 // Fora do público: trechos com etiqueta entre colchetes (ex.: "[caso sensível]", exceções) e confiança baixa ("B").
 const publicSeg = sg => sg && typeof sg.x === "string" && sg.x.trim() && !/^\s*\[/.test(sg.x) && sg.c !== "B" && Number.isInteger(sg.s) && sg.s >= 0;
-const VIDEOS = AG.videos.slice().sort((a, b) => cmp(b.u, a.u) || b.seq - a.seq); // mais recente primeiro
-const SEG = []; // {id, v, d, s, x}
-const segAt = new Map(); // "video|s" -> segmento público
-for (const v of VIDEOS) {
-  const d = (v.u || "").slice(0, 10);
-  if (!validDate(d)) continue;
-  for (const sg of v.sg.slice().sort((a, b) => a.s - b.s)) {
-    if (!publicSeg(sg)) continue;
-    const key = v.id + "|" + sg.s;
-    if (segAt.has(key)) continue;
-    const o = { id: SEG.length, v: v.id, d, s: sg.s, x: sg.x.trim() };
-    SEG.push(o); segAt.set(key, o);
+// Arquivos de vídeo pesquisáveis = os que o manifesto declara searchable + has_deep_links e com dataset publicado.
+// Mesmo formato de dataset para todos (AG/TA/CC). Trechos agrupados por arquivo (AG primeiro); dentro de cada
+// arquivo, mais recente primeiro. SRC_RANGES diz a que arquivo pertence cada id de trecho (sem carregar blocos).
+const SEARCH_SOURCES = MS.sources
+  .filter(s => s.dataset && s.capabilities && s.capabilities.searchable && s.capabilities.has_deep_links)
+  .sort((a, b) => (b.source_id === "youtube:alexandre_garcia") - (a.source_id === "youtube:alexandre_garcia"));
+const SEG = []; // {id, v, d, s, x, src}
+const segAt = new Map(); // "video|s" -> segmento público (só AG: é o arquivo dos vínculos curados)
+const SRC_RANGES = [];
+for (const src of SEARCH_SOURCES) {
+  const ds = src === AG_SRC ? AG : readJSON(src.dataset.url);
+  const start = SEG.length;
+  const videos = ds.videos.slice().sort((a, b) => cmp(b.u, a.u) || b.seq - a.seq); // mais recente primeiro
+  for (const v of videos) {
+    const d = (v.u || "").slice(0, 10);
+    if (!validDate(d)) continue;
+    const seen = new Set();
+    for (const sg of v.sg.slice().sort((a, b) => a.s - b.s)) {
+      if (!publicSeg(sg)) continue;
+      const key = v.id + "|" + sg.s;
+      if (seen.has(key)) continue; // um trecho por (vídeo, segundo), como sempre
+      seen.add(key);
+      const o = { id: SEG.length, v: v.id, d, s: sg.s, x: sg.x.trim(), src: SRC_RANGES.length };
+      SEG.push(o);
+      if (src === AG_SRC && !segAt.has(key)) segAt.set(key, o);
+    }
   }
+  SRC_RANGES.push({ key: src.source_id, name: src.display_name, start, end: SEG.length });
 }
 const AG_NAME = AG_SRC ? AG_SRC.display_name : "Alexandre Garcia";
 const AG_OK = !!(AG_SRC && AG_SRC.capabilities && AG_SRC.capabilities.searchable && AG_SRC.capabilities.has_deep_links);
@@ -371,6 +386,8 @@ const SEARCH_META = {
   docs: DOCS.map(d => [d.title, d.outlet, d.url, d.date, d.story]),
   persons: PERSONS.map(p => [p.name, p.slug, p.occ.length]),
   archives: archivesPublic, ag_name: AG_NAME, ag_searchable: AG_OK,
+  // [nome, primeiro id, fim (exclusivo)] por arquivo pesquisável — resultado separado por arquivo, nunca misturado.
+  src: SRC_RANGES.map(r => [r.name, r.start, r.end, r.key]),
 };
 
 // ---------------------------------------------------------------- pessoa (arquivo de consulta)

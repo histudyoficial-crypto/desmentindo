@@ -93,7 +93,9 @@
   function archList(arch) {
     return '<ul class="arch">' + arch.map(function (a) {
       return '<li data-src="' + e(a.name) + '"><span class="an">' + e(a.name) + "</span>" + (a.available
-        ? '<span class="as ok">' + nf(a.videos_indexed) + " vídeos · pesquisa disponível</span>"
+        ? '<span class="as ok">' + (a.videos_total && a.videos_indexed < a.videos_total
+            ? nf(a.videos_indexed) + " de " + nf(a.videos_total) + " vídeos disponíveis para pesquisa · cobertura parcial"
+            : nf(a.videos_indexed) + " vídeos · pesquisa disponível") + "</span>"
         : '<span class="as">Arquivo ainda não disponível para pesquisa</span>') + "</li>";
     }).join("") + "</ul>";
   }
@@ -310,13 +312,18 @@
       return lists.reduce(function (A, B) { return A.map(function (a, i) { return inter(a, B[i]); }); });
     });
   }
+  // Arquivo de cada trecho (faixas de id do meta.src); meta antigo sem src = só AG.
+  function srcName(id, M) {
+    var r = (M.src || []).filter(function (x) { return id >= x[1] && id < x[2]; })[0];
+    return r ? r[0] : M.ag_name;
+  }
   function segs(ids, M) {
     var need = uniq(ids.map(function (id) { return Math.floor(id / M.chunk); }));
     return Promise.all(need.map(function (c) { return load("busca/s/" + c + ".json"); })).then(function (chunks) {
       var by = {}; need.forEach(function (c, i) { by[c] = chunks[i]; });
       return ids.map(function (id) {
         var c = Math.floor(id / M.chunk), C = by[c], r = C.r[id - c * M.chunk], v = C.v[r[0]];
-        return { source_name: M.ag_name, video_id: v[0], date: v[1], t_seconds: r[1], t_label: tLabel(r[1]), excerpt: r[2], deep_link: "https://www.youtube.com/watch?v=" + v[0] + "&t=" + r[1] + "s" };
+        return { source_name: srcName(id, M), video_id: v[0], date: v[1], t_seconds: r[1], t_label: tLabel(r[1]), excerpt: r[2], deep_link: "https://www.youtube.com/watch?v=" + v[0] + "&t=" + r[1] + "s" };
       });
     });
   }
@@ -352,10 +359,16 @@
         }
         h += '<section class="group" id="nos-arquivos"><div class="group-h"><h2 class="h2">Nos arquivos</h2></div>';
         persons.forEach(function (p) { h += '<p style="margin:0 0 10px"><a class="link" href="#/arquivo/' + e(p[1]) + '">' + e(p[0]) + ": " + plural(p[2], "trecho de vídeo reunido", "trechos de vídeo reunidos") + "</a></p>"; });
-        M.archives.forEach(function (a) {
-          if (!a.available) return;
-          h += '<div class="src-h"><strong>' + e(a.name) + '</strong><span class="n" data-count="' + ag.length + '">' + (ag.length ? plural(ag.length, "trecho", "trechos") + " mencionam" : "nenhum trecho com essas palavras") + "</span></div>";
-          if (ag.length) h += '<div id="ag-res"><p class="meta">Carregando trechos…</p></div>';
+        // Um bloco por arquivo pesquisável, nunca misturado: cada um com sua contagem e seus trechos.
+        var groups = (M.src && M.src.length ? M.src : [[M.ag_name, 0, Infinity]]).map(function (r, gi) {
+          return { name: r[0], gi: gi, ids: ag.filter(function (id) { return id >= r[1] && id < r[2]; }) };
+        });
+        var cov = {}; M.archives.forEach(function (a) { cov[a.name] = a; });
+        groups.forEach(function (g) {
+          var a = cov[g.name], part = a && a.videos_total && a.videos_indexed < a.videos_total
+            ? ' <span class="meta">(' + nf(a.videos_indexed) + " de " + nf(a.videos_total) + " vídeos pesquisáveis)</span>" : "";
+          h += '<div class="src-h"><strong>' + e(g.name) + "</strong>" + part + '<span class="n" data-count="' + g.ids.length + '">' + (g.ids.length ? plural(g.ids.length, "trecho", "trechos") + " mencionam" : "nenhum trecho com essas palavras") + "</span></div>";
+          if (g.ids.length) h += '<div id="res-' + g.gi + '"><p class="meta">Carregando trechos…</p></div>';
         });
         h += unavailable(M.archives) + "</section>";
         if (docs.length) {
@@ -363,29 +376,30 @@
             docs.slice(0, 6).map(function (d) { return "<li>" + ext(d[2], e(d[0])) + ' <span class="meta">· ' + tdate(d[3]) + (d[1] ? " · " + e(d[1]) : "") + "</span></li>"; }).join("") + "</ul></section>";
         }
         if (!any) h += '<section class="sec"><p class="empty">Nada encontrado para “' + e(q) + '” nas histórias nem nos vídeos pesquisáveis. Isso não quer dizer que nunca foi dito.</p></section>';
-        if (ag.length) {
+        groups.forEach(function (g) {
+          if (!g.ids.length) return;
           setTimeout(function () {
-            var box = document.getElementById("ag-res");
+            var box = document.getElementById("res-" + g.gi), list = g.ids;
             if (!box) return;
-            var first = ag.slice(0, 6);
+            var first = list.slice(0, 6);
             segs(first, M).then(function (items) {
               // Resultado agrupado por ANO, do mais recente ao mais antigo (busca por nome = onde aparece, nunca "tudo sobre").
               var yState = { y: null };
-              var byYear = function (list) { return list.map(function (o) { var y = (o.date || "").slice(0, 4), h0 = y && y !== yState.y ? '<li class="yr">' + e(y) + "</li>" : ""; if (y) yState.y = y; return h0 + saidItem(o, null, true); }).join(""); };
-              box.innerHTML = '<ul class="said-list" id="ag-list">' + byYear(items) + "</ul>" +
-                (ag.length > first.length ? '<button class="more-btn" id="ag-more">Mostrar mais ' + nf(ag.length - first.length) + "</button>" : "") + NOTE;
-              var shown = first.length, btn = document.getElementById("ag-more");
+              var byYear = function (l) { return l.map(function (o) { var y = (o.date || "").slice(0, 4), h0 = y && y !== yState.y ? '<li class="yr">' + e(y) + "</li>" : ""; if (y) yState.y = y; return h0 + saidItem(o, null, true); }).join(""); };
+              box.innerHTML = '<ul class="said-list" id="res-list-' + g.gi + '">' + byYear(items) + "</ul>" +
+                (list.length > first.length ? '<button class="more-btn" id="res-more-' + g.gi + '">Mostrar mais ' + nf(list.length - first.length) + "</button>" : "") + NOTE;
+              var shown = first.length, btn = document.getElementById("res-more-" + g.gi);
               if (btn) btn.addEventListener("click", function () {
-                var next = ag.slice(shown, shown + 10);
+                var next = list.slice(shown, shown + 10);
                 segs(next, M).then(function (more) {
-                  document.getElementById("ag-list").insertAdjacentHTML("beforeend", byYear(more));
+                  document.getElementById("res-list-" + g.gi).insertAdjacentHTML("beforeend", byYear(more));
                   shown += next.length;
-                  if (shown >= ag.length) btn.remove(); else btn.textContent = "Mostrar mais " + nf(ag.length - shown);
+                  if (shown >= list.length) btn.remove(); else btn.textContent = "Mostrar mais " + nf(list.length - shown);
                 });
               });
             }, function () { box.innerHTML = '<p class="empty">Não conseguimos carregar os trechos agora. É uma falha nossa, não “nada encontrado”. Tente de novo.</p>'; });
           }, 0);
-        }
+        });
         return h;
       });
     });
