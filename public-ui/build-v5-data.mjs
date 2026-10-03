@@ -59,6 +59,14 @@ const OTHER = OTHER_SRC.map(s => {
   if (s.dataset.sha256 && h !== s.dataset.sha256) throw new Error("sha256 diverge em " + s.dataset.url);
   return { src: s, data: JSON.parse(b.toString("utf8")) };
 });
+// RIGHTS (fail closed): dataset público de vídeo leva só a paráfrase atribuída (x), nunca o trecho literal
+// da transcrição (campo "e" / "excerpt" / "transcript"). Citação literal é caso a caso (Rights Gate, art. 46 III).
+for (const { src, data } of [{ src: AG_SRC, data: AG }, ...OTHER]) {
+  const meta = data.meta || {};
+  const bad = Object.keys(meta.extra_segment_fields || {}).filter(k => k === "e")
+    .concat(data.videos.some(v => (v.sg || []).some(sg => "e" in sg || "excerpt" in sg || "transcript" in sg)) ? ["segmento com trecho literal"] : []);
+  if (bad.length) throw new Error("RIGHTS_TRANSCRIPT_IN_PUBLIC_DATASET: " + (src ? src.source_id : "?") + " — " + bad.join(", "));
+}
 
 // ---------------------------------------------------------------- helpers
 const DATE_RE = /^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?$/;
