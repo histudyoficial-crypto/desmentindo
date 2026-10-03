@@ -7,6 +7,7 @@
     "ok": true,
     "info": [
      "/data/editorial/index.json",
+     "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
      "/data/editorial/index.json",
      "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc"
     ]
@@ -137,16 +138,6 @@
     "info": []
    },
    {
-    "check": "desktop:arquivos: Te Atualizei marcado como indisponível",
-    "ok": true,
-    "info": null
-   },
-   {
-    "check": "desktop:arquivos: Caio Coppolla marcado como indisponível",
-    "ok": true,
-    "info": null
-   },
-   {
     "check": "desktop:arquivo-pessoa: nenhum download do arquivo completo (data/ag, data/corpus)",
     "ok": true,
     "info": []
@@ -195,16 +186,6 @@
     "check": "desktop:profissionais: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
     "ok": true,
     "info": []
-   },
-   {
-    "check": "desktop:profissionais: Te Atualizei marcado como indisponível",
-    "ok": true,
-    "info": null
-   },
-   {
-    "check": "desktop:profissionais: Caio Coppolla marcado como indisponível",
-    "ok": true,
-    "info": null
    },
    {
     "check": "desktop:search-vazio: nenhum download do arquivo completo (data/ag, data/corpus)",
@@ -518,16 +499,6 @@
     "info": []
    },
    {
-    "check": "mobile:arquivos: Te Atualizei marcado como indisponível",
-    "ok": true,
-    "info": null
-   },
-   {
-    "check": "mobile:arquivos: Caio Coppolla marcado como indisponível",
-    "ok": true,
-    "info": null
-   },
-   {
     "check": "mobile:arquivo-pessoa: nenhum download do arquivo completo (data/ag, data/corpus)",
     "ok": true,
     "info": []
@@ -576,16 +547,6 @@
     "check": "mobile:profissionais: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
     "ok": true,
     "info": []
-   },
-   {
-    "check": "mobile:profissionais: Te Atualizei marcado como indisponível",
-    "ok": true,
-    "info": null
-   },
-   {
-    "check": "mobile:profissionais: Caio Coppolla marcado como indisponível",
-    "ok": true,
-    "info": null
    },
    {
     "check": "mobile:search-vazio: nenhum download do arquivo completo (data/ag, data/corpus)",
@@ -785,7 +746,7 @@
    {
     "check": "desktop:home: dados iniciais < 100 KB",
     "ok": true,
-    "info": 2225
+    "info": 2242
    },
    {
     "check": "desktop:story: todo arquivo de dados < 400 KB",
@@ -870,7 +831,7 @@
    {
     "check": "mobile:home: dados iniciais < 100 KB",
     "ok": true,
-    "info": 2225
+    "info": 2242
    },
    {
     "check": "mobile:story: todo arquivo de dados < 400 KB",
@@ -1358,9 +1319,12 @@
     }
    },
    {
-    "check": "desktop:search 'Alexandre de Moraes': Caio Coppolla e Te Atualizei como indisponíveis",
+    "check": "desktop:search 'Alexandre de Moraes': cobertura parcial declarada por arquivo",
     "ok": true,
-    "info": null
+    "info": [
+     "Te Atualizei",
+     "Caio Coppolla"
+    ]
    },
    {
     "check": "desktop:search-inss: sem erro de JS",
@@ -1412,9 +1376,12 @@
     }
    },
    {
-    "check": "desktop:search 'INSS': Caio Coppolla e Te Atualizei como indisponíveis",
+    "check": "desktop:search 'INSS': cobertura parcial declarada por arquivo",
     "ok": true,
-    "info": null
+    "info": [
+     "Te Atualizei",
+     "Caio Coppolla"
+    ]
    },
    {
     "check": "desktop:search-vazio: sem erro de JS",
@@ -1472,9 +1439,12 @@
     }
    },
    {
-    "check": "mobile:search 'Alexandre de Moraes': Caio Coppolla e Te Atualizei como indisponíveis",
+    "check": "mobile:search 'Alexandre de Moraes': cobertura parcial declarada por arquivo",
     "ok": true,
-    "info": null
+    "info": [
+     "Te Atualizei",
+     "Caio Coppolla"
+    ]
    },
    {
     "check": "mobile:search-inss: sem erro de JS",
@@ -1518,9 +1488,12 @@
     }
    },
    {
-    "check": "mobile:search 'INSS': Caio Coppolla e Te Atualizei como indisponíveis",
+    "check": "mobile:search 'INSS': cobertura parcial declarada por arquivo",
     "ok": true,
-    "info": null
+    "info": [
+     "Te Atualizei",
+     "Caio Coppolla"
+    ]
    },
    {
     "check": "mobile:search-vazio: sem erro de JS",
@@ -2342,16 +2315,16 @@
    {
     "check": "node public-ui/build-v5-data.mjs --check",
     "ok": true,
-    "info": "alegações exibidas: 55 (alegação 43 · declaração 9 · atribuído neutro 3)\ndata/editorial: edição 2026-10-01 válida (11 itens)\nv5/data em sincronia (682 arquivos)"
+    "info": "alegações exibidas: 55 (alegação 43 · declaração 9 · atribuído neutro 3)\ndata/editorial: edição 2026-10-01 válida (11 itens)\nv5/data em sincronia (819 arquivos)"
    }
   ]
  },
  "requests": {
   "desktop:home": [
    {
-    "url": "/v5/css/v5.css",
+    "url": "/v5/",
     "status": 200,
-    "bytes": 32379
+    "bytes": 2777
    },
    {
     "url": "/v5/css/fonts.css",
@@ -2359,19 +2332,19 @@
     "bytes": 893
    },
    {
-    "url": "/v5/",
+    "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 2777
-   },
-   {
-    "url": "/v5/js/v5.js",
-    "status": 200,
-    "bytes": 58324
+    "bytes": 32891
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
     "status": 200,
     "bytes": 90104
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 62686
    },
    {
     "url": "/data/editorial/index.json",
@@ -2384,6 +2357,11 @@
     "bytes": null
    },
    {
+    "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
+    "status": 200,
+    "bytes": null
+   },
+   {
     "url": "/v5/",
     "status": 200,
     "bytes": 2777
@@ -2401,12 +2379,12 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 32379
+    "bytes": 32891
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 58324
+    "bytes": 62686
    },
    {
     "url": "/data/editorial/index.json",
@@ -2416,7 +2394,7 @@
    {
     "url": "/v5/data/home.json",
     "status": 200,
-    "bytes": 2225
+    "bytes": 2242
    },
    {
     "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
@@ -2435,17 +2413,17 @@
    {
     "url": "/v5/data/busca/meta.json",
     "status": 200,
-    "bytes": 19491
-   },
-   {
-    "url": "/v5/data/busca/t/al.json",
-    "status": 200,
-    "bytes": 18713
+    "bytes": 20376
    },
    {
     "url": "/v5/data/busca/t/mo.json",
     "status": 200,
-    "bytes": 21995
+    "bytes": 35946
+   },
+   {
+    "url": "/v5/data/busca/t/al.json",
+    "status": 200,
+    "bytes": 34479
    },
    {
     "url": "/v5/data/busca/s/0.json",
@@ -2453,40 +2431,65 @@
     "bytes": 68305
    },
    {
+    "url": "/v5/data/busca/s/3.json",
+    "status": 200,
+    "bytes": 64291
+   },
+   {
     "url": "/v5/data/busca/s/4.json",
     "status": 200,
     "bytes": 77446
    },
    {
-    "url": "/v5/data/busca/s/3.json",
+    "url": "/v5/data/busca/s/48.json",
     "status": 200,
-    "bytes": 64291
+    "bytes": 89355
+   },
+   {
+    "url": "/v5/data/busca/s/49.json",
+    "status": 200,
+    "bytes": 95794
+   },
+   {
+    "url": "/v5/data/busca/s/79.json",
+    "status": 200,
+    "bytes": 102030
    }
   ],
   "desktop:search-inss": [
    {
     "url": "/v5/data/busca/t/in.json",
     "status": 200,
-    "bytes": 54410
+    "bytes": 91773
    },
    {
     "url": "/v5/data/busca/s/1.json",
     "status": 200,
     "bytes": 81013
+   },
+   {
+    "url": "/v5/data/busca/s/83.json",
+    "status": 200,
+    "bytes": 92740
+   },
+   {
+    "url": "/v5/data/busca/s/80.json",
+    "status": 200,
+    "bytes": 83805
    }
   ],
   "desktop:arquivos": [
    {
     "url": "/v5/data/arquivos.json",
     "status": 200,
-    "bytes": 2850
+    "bytes": 2867
    }
   ],
   "desktop:arquivo-pessoa": [
    {
     "url": "/v5/data/arquivo/alexandre-de-moraes.json",
     "status": 200,
-    "bytes": 124921
+    "bytes": 124935
    }
   ],
   "desktop:profissionais": [],
@@ -2513,11 +2516,6 @@
     "bytes": null
    },
    {
-    "url": "/v5/",
-    "status": 200,
-    "bytes": 2777
-   },
-   {
     "url": "/v5/fonts/archivo-latin.woff2",
     "status": 200,
     "bytes": null
@@ -2528,9 +2526,14 @@
     "bytes": 893
    },
    {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 2777
+   },
+   {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 32379
+    "bytes": 32891
    },
    {
     "url": "/data/editorial/index.json",
@@ -2540,7 +2543,7 @@
    {
     "url": "/v5/data/home.json",
     "status": 200,
-    "bytes": 2225
+    "bytes": 2242
    },
    {
     "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
@@ -2564,12 +2567,12 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 32379
+    "bytes": 32891
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 58324
+    "bytes": 62686
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
@@ -2577,14 +2580,14 @@
     "bytes": 90104
    },
    {
-    "url": "/v5/fonts/archivo-latin.woff2",
-    "status": 200,
-    "bytes": null
-   },
-   {
     "url": "/v5/",
     "status": 200,
     "bytes": 2777
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": null
    },
    {
     "url": "/v5/css/fonts.css",
@@ -2594,12 +2597,12 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 32379
+    "bytes": 32891
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 58324
+    "bytes": 62686
    },
    {
     "url": "/data/editorial/index.json",
@@ -2609,7 +2612,7 @@
    {
     "url": "/v5/data/home.json",
     "status": 200,
-    "bytes": 2225
+    "bytes": 2242
    },
    {
     "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
@@ -2628,17 +2631,22 @@
    {
     "url": "/v5/data/busca/meta.json",
     "status": 200,
-    "bytes": 19491
-   },
-   {
-    "url": "/v5/data/busca/t/al.json",
-    "status": 200,
-    "bytes": 18713
+    "bytes": 20376
    },
    {
     "url": "/v5/data/busca/t/mo.json",
     "status": 200,
-    "bytes": 21995
+    "bytes": 35946
+   },
+   {
+    "url": "/v5/data/busca/t/al.json",
+    "status": 200,
+    "bytes": 34479
+   },
+   {
+    "url": "/v5/data/busca/s/4.json",
+    "status": 200,
+    "bytes": 77446
    },
    {
     "url": "/v5/data/busca/s/0.json",
@@ -2646,40 +2654,60 @@
     "bytes": 68305
    },
    {
+    "url": "/v5/data/busca/s/48.json",
+    "status": 200,
+    "bytes": 89355
+   },
+   {
     "url": "/v5/data/busca/s/3.json",
     "status": 200,
     "bytes": 64291
    },
    {
-    "url": "/v5/data/busca/s/4.json",
+    "url": "/v5/data/busca/s/79.json",
     "status": 200,
-    "bytes": 77446
+    "bytes": 102030
+   },
+   {
+    "url": "/v5/data/busca/s/49.json",
+    "status": 200,
+    "bytes": 95794
    }
   ],
   "mobile:search-inss": [
    {
     "url": "/v5/data/busca/t/in.json",
     "status": 200,
-    "bytes": 54410
+    "bytes": 91773
    },
    {
     "url": "/v5/data/busca/s/1.json",
     "status": 200,
     "bytes": 81013
+   },
+   {
+    "url": "/v5/data/busca/s/83.json",
+    "status": 200,
+    "bytes": 92740
+   },
+   {
+    "url": "/v5/data/busca/s/80.json",
+    "status": 200,
+    "bytes": 83805
    }
   ],
   "mobile:arquivos": [
    {
     "url": "/v5/data/arquivos.json",
     "status": 200,
-    "bytes": 2850
+    "bytes": 2867
    }
   ],
   "mobile:arquivo-pessoa": [
    {
     "url": "/v5/data/arquivo/alexandre-de-moraes.json",
     "status": 200,
-    "bytes": 124921
+    "bytes": 124935
    }
   ],
   "mobile:profissionais": [],
@@ -2701,11 +2729,6 @@
   "mobile:agora-item": [],
   "mobile:home-agora": [
    {
-    "url": "/v5/",
-    "status": 200,
-    "bytes": 2777
-   },
-   {
     "url": "/v5/fonts/archivo-latin.woff2",
     "status": 200,
     "bytes": null
@@ -2716,14 +2739,19 @@
     "bytes": 893
    },
    {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 2777
+   },
+   {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 32379
+    "bytes": 32891
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 58324
+    "bytes": 62686
    },
    {
     "url": "/data/editorial/index.json",
@@ -2733,7 +2761,7 @@
    {
     "url": "/v5/data/home.json",
     "status": 200,
-    "bytes": 2225
+    "bytes": 2242
    },
    {
     "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
@@ -2745,7 +2773,7 @@
   "mobile:legacy-eventos": []
  },
  "evidence": {
-  "desktop:home_data_bytes": 2225,
+  "desktop:home_data_bytes": 2242,
   "desktop:story_data_bytes": 13181,
   "desktop:story_ja_falaram_top_px": 1147.9375,
   "desktop:story_sections": [
@@ -2754,7 +2782,7 @@
    "Cronologia",
    "Fontes"
   ],
-  "desktop:search_moraes_data_bytes": 270241,
+  "desktop:search_moraes_data_bytes": 588022,
   "desktop:search_moraes": {
    "groups": [
     "Agora",
@@ -2764,7 +2792,7 @@
    "agora": "AGORA\n10 histórias\nCompliance Zero / Master\n27 registros mencionam\n27 set 2026\nDark Horse\n3 registros mencionam\n13 set 2026\nSem Desconto / INSS\n2 registros mencionam\n21 set 2026\nVer mais 7 histórias\n\n"
   },
   "search_moraes_recount_from_archive": 371,
-  "desktop:search_inss_data_bytes": 135423,
+  "desktop:search_inss_data_bytes": 349331,
   "desktop:search_inss": {
    "groups": [
     "Agora",
@@ -2776,7 +2804,7 @@
   },
   "search_inss_recount_from_archive": 170,
   "allegations_checked": 55,
-  "mobile:home_data_bytes": 2225,
+  "mobile:home_data_bytes": 2242,
   "mobile:story_data_bytes": 13181,
   "mobile:story_ja_falaram_top_px": 1241.84375,
   "mobile:story_sections": [
@@ -2801,7 +2829,7 @@
     "x": "Dino procura ligacao de Mario Frias com crime organizado no caso Dark Horse; manchete antes da prova"
    }
   },
-  "mobile:search_moraes_data_bytes": 270241,
+  "mobile:search_moraes_data_bytes": 588022,
   "mobile:search_moraes": {
    "groups": [
     "Agora",
@@ -2810,7 +2838,7 @@
    "ag_count": 371,
    "agora": "AGORA\n10 histórias\nCompliance Zero / Master\n27 registros mencionam\n27 set 2026\nDark Horse\n3 registros mencionam\n13 set 2026\nSem Desconto / INSS\n2 registros mencionam\n21 set 2026\nVer mais 7 histórias\n\n"
   },
-  "mobile:search_inss_data_bytes": 135423,
+  "mobile:search_inss_data_bytes": 349331,
   "mobile:search_inss": {
    "groups": [
     "Agora",
@@ -2821,14 +2849,14 @@
    "agora": "AGORA\n3 histórias\nSem Desconto / INSS\n15 registros mencionam\n21 set 2026\nCPMI do INSS\n8 registros mencionam\n28 mar 2026\nDeath Care / cemitérios\n1 registro menciona\n17 set 2026\n\nO que já foi dito sobre"
   },
   "v5_data": {
-   "files": 682,
-   "total_bytes": 7445772,
-   "home_json_bytes": 2225,
+   "files": 819,
+   "total_bytes": 13180077,
+   "home_json_bytes": 2242,
    "largest": {
     "file": "v5/data/busca/s/14.json",
     "bytes": 173136
    },
-   "search_meta_bytes": 19491
+   "search_meta_bytes": 20376
   }
  },
  "gates": {
