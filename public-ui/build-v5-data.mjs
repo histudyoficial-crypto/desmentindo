@@ -7,6 +7,7 @@
  *   - data/manifest.*.json (meta ms-manifest): disponibilidade de cada arquivo de vídeo
  *   - data/corpus/manifest.json → links.*.json (trechos ELEGÍVEIS por caso e por pessoa)
  *   - data/ag/corpus.*.json (vídeos e trechos com segundo) — lido aqui, nunca no navegador
+ *   - data/ta/corpus.*.json (Te Atualizei, mesmo contrato do AG; cobertura PARCIAL declarada no manifesto)
  *   - data/editorial/ (edições aprovadas no Human Gate, JSON próprio; DATA ≠ PRESENTATION)
  *
  * Grava v5/data/ com arquivos pequenos por rota e um índice de busca fragmentado.
@@ -50,6 +51,14 @@ const LM = readJSON(meta("acervos-manifest"));
 const LINKS = readJSON(LM.dataset.url);
 const AG_SRC = MS.sources.find(s => s.source_id === "youtube:alexandre_garcia");
 const AG = AG_SRC && AG_SRC.dataset ? readJSON(AG_SRC.dataset.url) : { videos: [] };
+// Demais arquivos pesquisáveis (mesmo contrato do AG). Só entram com dataset verificado E searchable no manifesto.
+const OTHER_SRC = MS.sources.filter(s => s.source_id !== "youtube:alexandre_garcia" && s.dataset && s.capabilities && s.capabilities.searchable && s.capabilities.has_deep_links);
+const OTHER = OTHER_SRC.map(s => {
+  const b = fs.readFileSync(path.join(ROOT, s.dataset.url));
+  const h = crypto.createHash("sha256").update(b).digest("hex");
+  if (s.dataset.sha256 && h !== s.dataset.sha256) throw new Error("sha256 diverge em " + s.dataset.url);
+  return { src: s, data: JSON.parse(b.toString("utf8")) };
+});
 
 // ---------------------------------------------------------------- helpers
 const DATE_RE = /^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?$/;
@@ -101,6 +110,24 @@ for (const v of VIDEOS) {
   }
 }
 const AG_NAME = AG_SRC ? AG_SRC.display_name : "Alexandre Garcia";
+// Faixas de ids por arquivo: AG primeiro (ids estáveis), depois os demais em ordem do manifesto.
+const SEG_SOURCES = [{ key: AG_SRC ? AG_SRC.source_id : "youtube:alexandre_garcia", name: AG_NAME, start: 0, end: SEG.length }];
+// Outros arquivos: fora do público também o que foi minimizado por privacidade (p=1).
+for (const { src, data } of OTHER) {
+  const start = SEG.length, seen = new Set(), k = SEG_SOURCES.length;
+  for (const v of data.videos.slice().sort((a, b) => cmp(b.u, a.u) || b.seq - a.seq)) {
+    const d = (v.u || "").slice(0, 10);
+    if (!validDate(d)) continue;
+    for (const sg of v.sg.slice().sort((a, b) => a.s - b.s)) {
+      if (!publicSeg(sg) || sg.p === 1) continue;
+      const key = v.id + "|" + sg.s + "|" + sg.x;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      SEG.push({ id: SEG.length, v: v.id, d, s: sg.s, x: sg.x.trim(), k });
+    }
+  }
+  SEG_SOURCES.push({ key: src.source_id, name: src.display_name, start, end: SEG.length });
+}
 const AG_OK = !!(AG_SRC && AG_SRC.capabilities && AG_SRC.capabilities.searchable && AG_SRC.capabilities.has_deep_links);
 
 // Trecho público: só se o par (vídeo, segundo) do link existe no arquivo AG. O texto exibido é o do segmento.
@@ -361,7 +388,7 @@ const CHUNK = 700;
 const CHUNKS = [];
 for (let i = 0; i < SEG.length; i += CHUNK) {
   const part = SEG.slice(i, i + CHUNK), vids = [], vi = {};
-  const rows = part.map(sg => { if (vi[sg.v] === undefined) { vi[sg.v] = vids.length; vids.push([sg.v, sg.d]); } return [vi[sg.v], sg.s, cut(sg.x, 240)]; });
+  const rows = part.map(sg => { if (vi[sg.v] === undefined) { vi[sg.v] = vids.length; vids.push(sg.k ? [sg.v, sg.d, sg.k] : [sg.v, sg.d]); } return [vi[sg.v], sg.s, cut(sg.x, 240)]; });
   CHUNKS.push({ v: vids, r: rows });
 }
 const SEARCH_META = {
@@ -371,6 +398,7 @@ const SEARCH_META = {
   docs: DOCS.map(d => [d.title, d.outlet, d.url, d.date, d.story]),
   persons: PERSONS.map(p => [p.name, p.slug, p.occ.length]),
   archives: archivesPublic, ag_name: AG_NAME, ag_searchable: AG_OK,
+  seg_sources: SEG_SOURCES,
 };
 
 // ---------------------------------------------------------------- pessoa (arquivo de consulta)
@@ -382,6 +410,8 @@ function personPage(p) {
     stories: Object.keys(stories).map(c => STORIES[storyIdx[c]]).sort((a, b) => cmp(b.lastD, a.lastD)).map(s => ({ slug: s.slug, title: s.title, lastD: s.lastD, records: stories[s.key] })),
     occ: p.occ.map(({ relation, source_name, ...o }) => o), source_name: AG_NAME,
     archives: archivesPublic.filter(a => !a.available).map(a => a.name),
+    // Arquivos pesquisáveis que ainda NÃO entram nesta página (só AG tem trechos reunidos por pessoa).
+    not_here: archivesPublic.filter(a => a.available && a.key !== (AG_SRC && AG_SRC.source_id)).map(a => a.name),
   };
 }
 

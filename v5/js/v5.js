@@ -316,7 +316,8 @@
       var by = {}; need.forEach(function (c, i) { by[c] = chunks[i]; });
       return ids.map(function (id) {
         var c = Math.floor(id / M.chunk), C = by[c], r = C.r[id - c * M.chunk], v = C.v[r[0]];
-        return { source_name: M.ag_name, video_id: v[0], date: v[1], t_seconds: r[1], t_label: tLabel(r[1]), excerpt: r[2], deep_link: "https://www.youtube.com/watch?v=" + v[0] + "&t=" + r[1] + "s" };
+        var srcs = M.seg_sources || [{ name: M.ag_name }];
+        return { source_name: (srcs[v[2] || 0] || srcs[0]).name, video_id: v[0], date: v[1], t_seconds: r[1], t_label: tLabel(r[1]), excerpt: r[2], deep_link: "https://www.youtube.com/watch?v=" + v[0] + "&t=" + r[1] + "s" };
       });
     });
   }
@@ -352,10 +353,18 @@
         }
         h += '<section class="group" id="nos-arquivos"><div class="group-h"><h2 class="h2">Nos arquivos</h2></div>';
         persons.forEach(function (p) { h += '<p style="margin:0 0 10px"><a class="link" href="#/arquivo/' + e(p[1]) + '">' + e(p[0]) + ": " + plural(p[2], "trecho de vídeo reunido", "trechos de vídeo reunidos") + "</a></p>"; });
+        // Um bloco por arquivo pesquisável, cada um com os SEUS trechos (faixa de ids do arquivo) e a sua cobertura.
+        var srcs = M.seg_sources || [{ key: (M.archives.filter(function (a) { return a.available; })[0] || {}).key, start: 0, end: Infinity }];
+        var byKey = {}; srcs.forEach(function (s) { byKey[s.key] = s; });
+        var blocks = [];
         M.archives.forEach(function (a) {
           if (!a.available) return;
-          h += '<div class="src-h"><strong>' + e(a.name) + '</strong><span class="n" data-count="' + ag.length + '">' + (ag.length ? plural(ag.length, "trecho", "trechos") + " mencionam" : "nenhum trecho com essas palavras") + "</span></div>";
-          if (ag.length) h += '<div id="ag-res"><p class="meta">Carregando trechos…</p></div>';
+          var sr = byKey[a.key];
+          var ids = sr ? ag.filter(function (id) { return id >= sr.start && id < sr.end; }) : [];
+          var bi = blocks.length; blocks.push(ids);
+          var cov = a.videos_total && a.videos_indexed < a.videos_total ? ' <span class="meta">· pesquisa em ' + nf(a.videos_indexed) + " de " + nf(a.videos_total) + " vídeos</span>" : "";
+          h += '<div class="src-h"><strong>' + e(a.name) + "</strong>" + cov + '<span class="n" data-count="' + ids.length + '">' + (ids.length ? plural(ids.length, "trecho", "trechos") + " mencionam" : "nenhum trecho com essas palavras") + "</span></div>";
+          if (ids.length) h += '<div id="ag-res-' + bi + '"><p class="meta">Carregando trechos…</p></div>';
         });
         h += unavailable(M.archives) + "</section>";
         if (docs.length) {
@@ -363,29 +372,30 @@
             docs.slice(0, 6).map(function (d) { return "<li>" + ext(d[2], e(d[0])) + ' <span class="meta">· ' + tdate(d[3]) + (d[1] ? " · " + e(d[1]) : "") + "</span></li>"; }).join("") + "</ul></section>";
         }
         if (!any) h += '<section class="sec"><p class="empty">Nada encontrado para “' + e(q) + '” nas histórias nem nos vídeos pesquisáveis. Isso não quer dizer que nunca foi dito.</p></section>';
-        if (ag.length) {
+        blocks.forEach(function (ag, bi) {
+          if (!ag.length) return;
           setTimeout(function () {
-            var box = document.getElementById("ag-res");
+            var box = document.getElementById("ag-res-" + bi);
             if (!box) return;
             var first = ag.slice(0, 6);
             segs(first, M).then(function (items) {
               // Resultado agrupado por ANO, do mais recente ao mais antigo (busca por nome = onde aparece, nunca "tudo sobre").
               var yState = { y: null };
               var byYear = function (list) { return list.map(function (o) { var y = (o.date || "").slice(0, 4), h0 = y && y !== yState.y ? '<li class="yr">' + e(y) + "</li>" : ""; if (y) yState.y = y; return h0 + saidItem(o, null, true); }).join(""); };
-              box.innerHTML = '<ul class="said-list" id="ag-list">' + byYear(items) + "</ul>" +
-                (ag.length > first.length ? '<button class="more-btn" id="ag-more">Mostrar mais ' + nf(ag.length - first.length) + "</button>" : "") + NOTE;
-              var shown = first.length, btn = document.getElementById("ag-more");
+              box.innerHTML = '<ul class="said-list" id="ag-list-' + bi + '">' + byYear(items) + "</ul>" +
+                (ag.length > first.length ? '<button class="more-btn" id="ag-more-' + bi + '">Mostrar mais ' + nf(ag.length - first.length) + "</button>" : "") + NOTE;
+              var shown = first.length, btn = document.getElementById("ag-more-" + bi);
               if (btn) btn.addEventListener("click", function () {
                 var next = ag.slice(shown, shown + 10);
                 segs(next, M).then(function (more) {
-                  document.getElementById("ag-list").insertAdjacentHTML("beforeend", byYear(more));
+                  document.getElementById("ag-list-" + bi).insertAdjacentHTML("beforeend", byYear(more));
                   shown += next.length;
                   if (shown >= ag.length) btn.remove(); else btn.textContent = "Mostrar mais " + nf(ag.length - shown);
                 });
               });
             }, function () { box.innerHTML = '<p class="empty">Não conseguimos carregar os trechos agora. É uma falha nossa, não “nada encontrado”. Tente de novo.</p>'; });
           }, 0);
-        }
+        });
         return h;
       });
     });
@@ -397,7 +407,8 @@
       document.title = A.name + " nos arquivos · Desmentindo";
       var h = '<section class="page-head"><p class="kicker">Nos arquivos</p><h1 class="h1">' + e(A.name) + "</h1>" +
         '<p class="lead">' + plural(A.count, "trecho", "trechos") + " de " + e(A.source_name) + " citam " + e(A.name) + ", em " + plural(A.videos, "vídeo", "vídeos") + ". Do mais recente ao mais antigo.</p>" +
-        '<p class="quiet">Ser citado não indica culpa, nem posição de quem fala. ' + (A.archives.length ? e(A.archives.join(" e ")) + ": arquivos ainda não disponíveis para pesquisa." : "") + "</p></section>";
+        '<p class="quiet">Ser citado não indica culpa, nem posição de quem fala. ' + (A.archives.length ? e(A.archives.join(" e ")) + ": arquivos ainda não disponíveis para pesquisa. " : "") +
+          (A.not_here && A.not_here.length ? e(A.not_here.join(" e ")) + ": ainda não reunido nesta página; use a pesquisa." : "") + "</p></section>";
       if (A.stories.length) {
         h += '<section class="sec"><h2 class="h2">Nas histórias</h2><ul class="rows" style="margin:0">' + A.stories.map(function (s) {
           return '<li><a href="#/historia/' + e(s.slug) + '"><span class="rt">' + e(s.title) + '</span><span class="rd">' + tdate(s.lastD) + "</span></a></li>";
