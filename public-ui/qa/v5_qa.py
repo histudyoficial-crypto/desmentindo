@@ -92,6 +92,8 @@ with sync_playwright() as pw:
 
     for vp_name, vp in (("desktop", {"width": 1280, "height": 800}), ("mobile", {"width": 390, "height": 844})):
         ctx = browser.new_context(viewport=vp, device_scale_factor=1, is_mobile=vp_name == "mobile", has_touch=vp_name == "mobile")
+        # Miniaturas oficiais do YouTube (i.ytimg.com) servidas localmente: o QA não depende de host externo.
+        ctx.route(re.compile(r"https://i\.ytimg\.com/.*"), lambda r: r.fulfill(status=200, content_type="image/gif", body=b"GIF89a\x01\x00\x01\x00\x80\x00\x00\x00\x00\x00\xff\xff\xff!\xf9\x04\x01\x00\x00\x00\x00,\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02\x02D\x01\x00;"))
         page = ctx.new_page()
         errors, reqs = [], []
         page.on("pageerror", lambda ex: errors.append(str(ex)))
@@ -418,6 +420,7 @@ with sync_playwright() as pw:
 
     # ------------------------------------------------ 375 px: nenhuma página com rolagem horizontal
     ctx = browser.new_context(viewport={"width": 375, "height": 812}, is_mobile=True, has_touch=True)
+    ctx.route(re.compile(r"https://i\.ytimg\.com/.*"), lambda r: r.fulfill(status=200, content_type="image/gif", body=b"GIF89a\x01\x00\x01\x00\x80\x00\x00\x00\x00\x00\xff\xff\xff!\xf9\x04\x01\x00\x00\x00\x00,\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02\x02D\x01\x00;"))
     page = ctx.new_page()
     for h_ in ("", "#/historia/" + args.story, "#/busca?q=INSS", "#/arquivo/alexandre-de-moraes", "#/arquivos", "#/profissionais", "#/checar", "#/matriz"):
         page.goto(BASE + "#/__blank"); page.goto(BASE + h_); page.wait_for_selector("main h1", timeout=15000); page.wait_for_load_state("networkidle")

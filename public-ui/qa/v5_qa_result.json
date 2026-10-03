@@ -7,8 +7,6 @@
     "ok": true,
     "info": [
      "/data/editorial/index.json",
-     "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
-     "/data/editorial/index.json",
      "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc"
     ]
    },
@@ -2334,7 +2332,32 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 32891
+    "bytes": 34033
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 65100
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": 90104
+   },
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 2777
+   },
+   {
+    "url": "/v5/css/v5.css",
+    "status": 200,
+    "bytes": 34033
+   },
+   {
+    "url": "/v5/css/fonts.css",
+    "status": 200,
+    "bytes": 893
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
@@ -2344,57 +2367,17 @@
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 62686
-   },
-   {
-    "url": "/data/editorial/index.json",
-    "status": 200,
-    "bytes": null
-   },
-   {
-    "url": "/v5/data/home.json",
-    "status": 200,
-    "bytes": null
-   },
-   {
-    "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
-    "status": 200,
-    "bytes": null
-   },
-   {
-    "url": "/v5/",
-    "status": 200,
-    "bytes": 2777
-   },
-   {
-    "url": "/v5/fonts/archivo-latin.woff2",
-    "status": 200,
-    "bytes": null
-   },
-   {
-    "url": "/v5/css/fonts.css",
-    "status": 200,
-    "bytes": 893
-   },
-   {
-    "url": "/v5/css/v5.css",
-    "status": 200,
-    "bytes": 32891
-   },
-   {
-    "url": "/v5/js/v5.js",
-    "status": 200,
-    "bytes": 62686
-   },
-   {
-    "url": "/data/editorial/index.json",
-    "status": 200,
-    "bytes": 317
+    "bytes": 65100
    },
    {
     "url": "/v5/data/home.json",
     "status": 200,
     "bytes": 2242
+   },
+   {
+    "url": "/data/editorial/index.json",
+    "status": 200,
+    "bytes": 317
    },
    {
     "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
@@ -2416,34 +2399,14 @@
     "bytes": 20376
    },
    {
-    "url": "/v5/data/busca/t/mo.json",
-    "status": 200,
-    "bytes": 35946
-   },
-   {
     "url": "/v5/data/busca/t/al.json",
     "status": 200,
     "bytes": 34479
    },
    {
-    "url": "/v5/data/busca/s/0.json",
+    "url": "/v5/data/busca/t/mo.json",
     "status": 200,
-    "bytes": 68305
-   },
-   {
-    "url": "/v5/data/busca/s/3.json",
-    "status": 200,
-    "bytes": 64291
-   },
-   {
-    "url": "/v5/data/busca/s/4.json",
-    "status": 200,
-    "bytes": 77446
-   },
-   {
-    "url": "/v5/data/busca/s/48.json",
-    "status": 200,
-    "bytes": 89355
+    "bytes": 35946
    },
    {
     "url": "/v5/data/busca/s/49.json",
@@ -2451,9 +2414,34 @@
     "bytes": 95794
    },
    {
+    "url": "/v5/data/busca/s/48.json",
+    "status": 200,
+    "bytes": 89355
+   },
+   {
     "url": "/v5/data/busca/s/79.json",
     "status": 200,
     "bytes": 102030
+   },
+   {
+    "url": "/v5/data/busca/s/0.json",
+    "status": 200,
+    "bytes": 68305
+   },
+   {
+    "url": "/v5/data/busca/s/4.json",
+    "status": 200,
+    "bytes": 77446
+   },
+   {
+    "url": "/v5/data/busca/s/3.json",
+    "status": 200,
+    "bytes": 64291
+   },
+   {
+    "url": "https://i.ytimg.com/vi/R9odnQZu6b0/hqdefault.jpg",
+    "status": 200,
+    "bytes": 43
    }
   ],
   "desktop:search-inss": [
@@ -2463,9 +2451,19 @@
     "bytes": 91773
    },
    {
+    "url": "/v5/data/busca/s/80.json",
+    "status": 200,
+    "bytes": 83805
+   },
+   {
     "url": "/v5/data/busca/s/1.json",
     "status": 200,
     "bytes": 81013
+   },
+   {
+    "url": "https://i.ytimg.com/vi/b4Sm8VZFO-g/hqdefault.jpg",
+    "status": 200,
+    "bytes": 43
    },
    {
     "url": "/v5/data/busca/s/83.json",
@@ -2473,9 +2471,9 @@
     "bytes": 92740
    },
    {
-    "url": "/v5/data/busca/s/80.json",
+    "url": "https://i.ytimg.com/vi/xRlNHcOODaA/hqdefault.jpg",
     "status": 200,
-    "bytes": 83805
+    "bytes": 43
    }
   ],
   "desktop:arquivos": [
@@ -2490,6 +2488,11 @@
     "url": "/v5/data/arquivo/alexandre-de-moraes.json",
     "status": 200,
     "bytes": 124935
+   },
+   {
+    "url": "https://i.ytimg.com/vi/R9odnQZu6b0/hqdefault.jpg",
+    "status": 200,
+    "bytes": 43
    }
   ],
   "desktop:profissionais": [],
@@ -2511,21 +2514,6 @@
   "desktop:agora-item": [],
   "desktop:home-agora": [
    {
-    "url": "/v5/js/v5.js",
-    "status": 304,
-    "bytes": null
-   },
-   {
-    "url": "/v5/fonts/archivo-latin.woff2",
-    "status": 200,
-    "bytes": null
-   },
-   {
-    "url": "/v5/css/fonts.css",
-    "status": 200,
-    "bytes": 893
-   },
-   {
     "url": "/v5/",
     "status": 200,
     "bytes": 2777
@@ -2533,7 +2521,22 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 32891
+    "bytes": 34033
+   },
+   {
+    "url": "/v5/css/fonts.css",
+    "status": 200,
+    "bytes": 893
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 65100
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": 90104
    },
    {
     "url": "/data/editorial/index.json",
@@ -2567,12 +2570,12 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 32891
+    "bytes": 34033
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 62686
+    "bytes": 65100
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
@@ -2585,11 +2588,6 @@
     "bytes": 2777
    },
    {
-    "url": "/v5/fonts/archivo-latin.woff2",
-    "status": 200,
-    "bytes": null
-   },
-   {
     "url": "/v5/css/fonts.css",
     "status": 200,
     "bytes": 893
@@ -2597,12 +2595,17 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 32891
+    "bytes": 34033
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": 90104
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 62686
+    "bytes": 65100
    },
    {
     "url": "/data/editorial/index.json",
@@ -2625,6 +2628,11 @@
     "url": "/v5/data/historia/dark-horse.json",
     "status": 200,
     "bytes": 13181
+   },
+   {
+    "url": "https://i.ytimg.com/vi/GZ8jWAg9pAA/hqdefault.jpg",
+    "status": 200,
+    "bytes": 43
    }
   ],
   "mobile:search-moraes": [
@@ -2634,29 +2642,14 @@
     "bytes": 20376
    },
    {
-    "url": "/v5/data/busca/t/mo.json",
-    "status": 200,
-    "bytes": 35946
-   },
-   {
     "url": "/v5/data/busca/t/al.json",
     "status": 200,
     "bytes": 34479
    },
    {
-    "url": "/v5/data/busca/s/4.json",
+    "url": "/v5/data/busca/t/mo.json",
     "status": 200,
-    "bytes": 77446
-   },
-   {
-    "url": "/v5/data/busca/s/0.json",
-    "status": 200,
-    "bytes": 68305
-   },
-   {
-    "url": "/v5/data/busca/s/48.json",
-    "status": 200,
-    "bytes": 89355
+    "bytes": 35946
    },
    {
     "url": "/v5/data/busca/s/3.json",
@@ -2664,14 +2657,34 @@
     "bytes": 64291
    },
    {
-    "url": "/v5/data/busca/s/79.json",
+    "url": "/v5/data/busca/s/0.json",
     "status": 200,
-    "bytes": 102030
+    "bytes": 68305
+   },
+   {
+    "url": "/v5/data/busca/s/4.json",
+    "status": 200,
+    "bytes": 77446
    },
    {
     "url": "/v5/data/busca/s/49.json",
     "status": 200,
     "bytes": 95794
+   },
+   {
+    "url": "/v5/data/busca/s/48.json",
+    "status": 200,
+    "bytes": 89355
+   },
+   {
+    "url": "/v5/data/busca/s/79.json",
+    "status": 200,
+    "bytes": 102030
+   },
+   {
+    "url": "https://i.ytimg.com/vi/R9odnQZu6b0/hqdefault.jpg",
+    "status": 200,
+    "bytes": 43
    }
   ],
   "mobile:search-inss": [
@@ -2686,14 +2699,24 @@
     "bytes": 81013
    },
    {
+    "url": "/v5/data/busca/s/80.json",
+    "status": 200,
+    "bytes": 83805
+   },
+   {
     "url": "/v5/data/busca/s/83.json",
     "status": 200,
     "bytes": 92740
    },
    {
-    "url": "/v5/data/busca/s/80.json",
+    "url": "https://i.ytimg.com/vi/b4Sm8VZFO-g/hqdefault.jpg",
     "status": 200,
-    "bytes": 83805
+    "bytes": 43
+   },
+   {
+    "url": "https://i.ytimg.com/vi/xRlNHcOODaA/hqdefault.jpg",
+    "status": 200,
+    "bytes": 43
    }
   ],
   "mobile:arquivos": [
@@ -2708,6 +2731,11 @@
     "url": "/v5/data/arquivo/alexandre-de-moraes.json",
     "status": 200,
     "bytes": 124935
+   },
+   {
+    "url": "https://i.ytimg.com/vi/R9odnQZu6b0/hqdefault.jpg",
+    "status": 200,
+    "bytes": 43
    }
   ],
   "mobile:profissionais": [],
@@ -2729,9 +2757,9 @@
   "mobile:agora-item": [],
   "mobile:home-agora": [
    {
-    "url": "/v5/fonts/archivo-latin.woff2",
+    "url": "/v5/",
     "status": 200,
-    "bytes": null
+    "bytes": 2777
    },
    {
     "url": "/v5/css/fonts.css",
@@ -2739,29 +2767,29 @@
     "bytes": 893
    },
    {
-    "url": "/v5/",
-    "status": 200,
-    "bytes": 2777
-   },
-   {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 32891
+    "bytes": 34033
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": 90104
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 62686
-   },
-   {
-    "url": "/data/editorial/index.json",
-    "status": 200,
-    "bytes": 317
+    "bytes": 65100
    },
    {
     "url": "/v5/data/home.json",
     "status": 200,
     "bytes": 2242
+   },
+   {
+    "url": "/data/editorial/index.json",
+    "status": 200,
+    "bytes": 317
    },
    {
     "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
