@@ -93,7 +93,9 @@
   function archList(arch) {
     return '<ul class="arch">' + arch.map(function (a) {
       return '<li data-src="' + e(a.name) + '"><span class="an">' + e(a.name) + "</span>" + (a.available
-        ? '<span class="as ok">' + nf(a.videos_indexed) + " vídeos · pesquisa disponível</span>"
+        ? '<span class="as ok">' + (a.videos_total && a.videos_indexed < a.videos_total
+            ? nf(a.videos_indexed) + " de " + nf(a.videos_total) + " vídeos disponíveis para pesquisa · cobertura parcial"
+            : nf(a.videos_indexed) + " vídeos · pesquisa disponível") + "</span>"
         : '<span class="as">Arquivo ainda não disponível para pesquisa</span>') + "</li>";
     }).join("") + "</ul>";
   }
