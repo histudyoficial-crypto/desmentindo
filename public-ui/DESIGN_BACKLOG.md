@@ -23,3 +23,4 @@ P0/P1 corrigidos na hora; P2/P3 registrados.
 | — | Tablet | Breakpoint de tablet não desenhado (L4); grades auto-fit reorganizam. | P3 | handoff L4 | — | ABERTO (L4) |
 | História | Performance | "Compliance Zero / Master" gera 668 KB de JSON (226 registros completos). | P2 | `v4/data/historias/` | Paginar registros por ano | ABERTO |
 | Vídeo | VIDEO EVIDENCE | Sem minutagem no modelo; mostra "▶ VÍDEO" e "minutagem não registrada". | P3 | fontes sem timestamp | Campo `t` na fonte de vídeo | ABERTO |
+| Vídeo | VÍDEO INLINE (premissa do produto, 03/10/2026) | "Ver trecho" abre o player oficial do YouTube (modo de privacidade) dentro do card, no minuto; "Assistir no YouTube ↗" é a ação secundária; fallback visível. Componente comum `saidItem`/`inlinePlayer` (`v5/js/v5.js`), sem iframe antes do toque. | P0 | decisão de Johnny | Verificar no site real: 1 trecho AG, 1 TA, 1 CC, desktop e mobile | IMPLEMENTADO, falta verificar em produção |

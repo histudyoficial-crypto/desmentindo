@@ -97,6 +97,12 @@ h1, h2, h3 { margin: 0; }
 .go { display: inline-flex; align-items: center; gap: 7px; background: var(--ink); color: var(--white); text-decoration: none; font-weight: 800; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; padding: 9px 13px; }
 .go::before { content: ""; border-left: 8px solid currentColor; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
 .go:hover { background: #000; }
+.go[hidden] { display: none; }
+.said-yt { font-size: 13px; font-weight: 700; color: var(--ink-2); }
+.vplayer { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; margin: 4px 0 12px; }
+.vplayer iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.vplayer.vfail { aspect-ratio: auto; background: var(--paper, #F3F2F2); border: 1px dashed var(--rule); padding: 14px; display: grid; gap: 10px; justify-items: start; }
+.vplayer.vfail p { margin: 0; font-size: 15px; }
 .said-story { font-size: 14px; color: var(--muted); margin: 0 0 4px; }
 .said-story a { color: var(--ink-2); font-weight: 700; }
 .arch { list-style: none; margin: 18px 0 0; padding: 0; }

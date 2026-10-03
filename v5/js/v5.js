@@ -34,8 +34,56 @@
       (noWho ? "" : '<p class="said-who">' + e(o.source_name) + "</p>") +
       '<p class="said-x">' + e(o.excerpt) + "</p>" +
       '<div class="said-foot"><span class="said-when">' + tdate(o.date) + " · " + e(o.t_label) + "</span>" +
-      '<a class="go" href="' + e(o.deep_link) + '" target="_blank" rel="noopener" aria-label="Ver trecho no vídeo, a partir de ' + e(o.t_label) + '">Ver trecho</a></div></li>';
+      '<a class="go" data-play href="' + e(o.deep_link) + '" target="_blank" rel="noopener" aria-label="Ver trecho aqui, a partir de ' + e(o.t_label) + '">Ver trecho</a>' +
+      '<a class="said-yt" href="' + e(o.deep_link) + '" target="_blank" rel="noopener">Assistir no YouTube <span aria-hidden="true">↗</span></a></div></li>';
   }
+  // ---------------------------------------------------------------- vídeo no minuto, dentro da página (premissa do produto)
+  // "Ver trecho" = player oficial do YouTube (modo de privacidade) dentro do próprio card, começando no minuto.
+  // Nenhum iframe carrega antes do toque. "Assistir no YouTube" fica como ação secundária. Nada é baixado nem hospedado.
+  // Se o player não carregar, o card diz isso e oferece o vídeo original no mesmo minuto.
+  function inlinePlayer(box, videoId, t, label, deepLink) {
+    if (box.querySelector(".vplayer")) return;
+    var wrap = document.createElement("div");
+    wrap.className = "vplayer";
+    var f = document.createElement("iframe");
+    f.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(videoId) + "?start=" + (Math.max(0, parseInt(t, 10) || 0)) + "&autoplay=1&playsinline=1&rel=0";
+    f.title = "Vídeo a partir de " + label;
+    f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+    f.allowFullscreen = true;
+    f.referrerPolicy = "strict-origin-when-cross-origin";
+    var loaded = false;
+    function fail() {
+      if (loaded || !wrap.isConnected) return;
+      wrap.className = "vplayer vfail";
+      wrap.innerHTML = '<p>Não foi possível carregar o vídeo aqui.</p><a class="go" href="' + e(deepLink) + '" target="_blank" rel="noopener">Assistir no YouTube a partir de ' + e(label) + "</a>";
+    }
+    f.addEventListener("load", function () { loaded = true; });
+    var timer = setTimeout(fail, 10000);
+    f.addEventListener("load", function () { clearTimeout(timer); });
+    wrap.appendChild(f);
+    return wrap;
+  }
+  document.addEventListener("securitypolicyviolation", function (ev) {
+    if (!/youtube/.test(ev.blockedURI || "")) return;
+    [].forEach.call(document.querySelectorAll(".vplayer:not(.vfail)"), function (w) {
+      var li = w.closest("[data-video]"), a = li && li.querySelector("a.said-yt"), when = li && li.querySelector(".said-when");
+      var lbl = when ? when.textContent.split("·").pop().trim() : "";
+      w.className = "vplayer vfail";
+      w.innerHTML = '<p>Não foi possível carregar o vídeo aqui.</p>' + (a ? '<a class="go" href="' + e(a.href) + '" target="_blank" rel="noopener">Assistir no YouTube' + (lbl ? " a partir de " + e(lbl) : "") + "</a>" : "");
+    });
+  });
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest("a.go[data-play]");
+    if (!a || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button) return;
+    var li = a.closest("[data-video]");
+    if (!li) return;
+    ev.preventDefault();
+    var label = (li.querySelector(".said-when") || {}).textContent || "";
+    label = label.split("·").pop().trim();
+    var p = inlinePlayer(li, li.getAttribute("data-video"), li.getAttribute("data-t"), label, a.getAttribute("href"));
+    if (p) li.insertBefore(p, li.querySelector(".said-foot"));
+    a.hidden = true;
+  });
   // Status de fonte primária calculado por afirmação ↔ fonte (no backend); aqui só o texto público de cada estado.
   var EV_NOTE = {
     AVAILABLE: "",
