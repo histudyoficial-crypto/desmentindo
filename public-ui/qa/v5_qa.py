@@ -226,7 +226,12 @@ with sync_playwright() as pw:
             fl = page.locator("#ag-list-0 li.said").first
             verify_link(fl.locator("a.go").get_attribute("href"), fl.locator("time").get_attribute("datetime"), "V5_SEARCH_QA", f"{vp_name}:search '{q}'")
             na = page.inner_text("#nos-arquivos")
-            check("V5_SEARCH_QA", f"{vp_name}:search '{q}': Caio Coppolla e Te Atualizei como indisponíveis", all(nm in na for nm in UNAVAILABLE) and "ainda não disponíve" in na)
+            if UNAVAILABLE:
+                check("V5_SEARCH_QA", f"{vp_name}:search '{q}': {' e '.join(UNAVAILABLE)} como indisponíveis", all(nm in na for nm in UNAVAILABLE) and "ainda não disponíve" in na)
+            # arquivo pesquisável com cobertura parcial declara a cobertura no próprio bloco (nunca 'arquivo completo')
+            PARTIAL = [s for s in MS["sources"] if (s.get("capabilities") or {}).get("searchable") and s["coverage"]["videos_indexed"] < s["coverage"]["videos_total"]]
+            check("V5_SEARCH_QA", f"{vp_name}:search '{q}': cobertura parcial declarada por arquivo",
+                  all(s["display_name"] in na and f"{s['coverage']['videos_indexed']} de {s['coverage']['videos_total']}" in na.replace(".", "") for s in PARTIAL), [s["display_name"] for s in PARTIAL])
             if slug == "moraes":
                 page.screenshot(path=os.path.join(args.shots, f"search-{vp_name}.png"))
                 page.screenshot(path=os.path.join(args.shots, f"search-{vp_name}-full.png"), full_page=True)
