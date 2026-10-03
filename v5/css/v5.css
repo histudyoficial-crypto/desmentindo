@@ -98,7 +98,8 @@ h1, h2, h3 { margin: 0; }
 .go::before { content: ""; border-left: 8px solid currentColor; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
 .go:hover { background: #000; }
 .go[hidden] { display: none; }
-.said-yt { font-size: 13px; font-weight: 700; color: var(--ink-2); }
+.said-yt { font-size: 12px; font-weight: 500; color: var(--muted); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.said-yt:hover { color: var(--ink-2); }
 .vposter { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; margin: 4px 0 12px; padding: 0; border: 0; cursor: pointer; overflow: hidden;
   background: linear-gradient(135deg, #2A2826 0%, #201E1D 55%, #0F2A5E 100%); }
 .vposter img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
