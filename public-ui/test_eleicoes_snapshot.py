@@ -118,5 +118,15 @@ class ContratoU(unittest.TestCase):
             self.assertFalse(os.path.exists(out))
 
 
+class HoraTSE(unittest.TestCase):
+    def test_dt_ht_em_outro_fuso_nao_vira_hora_de_brasilia(self):
+        r = {"dt": "05/10/2026", "ht": "09:19:47", "dg": "04/10/2026", "hg": "17:23:29"}
+        self.assertEqual(S.tse_coherent(r), "2026-10-04T17:23:29-03:00")
+
+    def test_dt_ht_coerente(self):
+        r = {"dt": "04/10/2026", "ht": "17:22:57", "dg": "04/10/2026", "hg": "17:23:37"}
+        self.assertEqual(S.tse_coherent(r), "2026-10-04T17:22:57-03:00")
+
+
 if __name__ == "__main__":
     unittest.main()

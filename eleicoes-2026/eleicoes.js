@@ -58,13 +58,24 @@
   }
 
   // ---------------------------------------------------------------- placar (resultado atual)
+  // Hora do TSE. dg/hg (geração do arquivo) está em horário de Brasília. dt/ht (totalização) só é mostrado se for
+  // coerente com a geração: no arquivo do exterior o TSE publica dt/ht em outro fuso (ex.: 05/10 09:19 gerado em
+  // 04/10 17:23 BRT). Incoerente → mostra a geração, rotulada; nunca uma hora de Brasília errada.
+  function brtMs(dd, hh) { var m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(dd || ""), t = /^(\d{2}):(\d{2}):(\d{2})$/.exec(hh || "");
+    return m && t ? Date.UTC(+m[3], +m[2] - 1, +m[1], +t[1] + 3, +t[2], +t[3]) : null; }
+  function tseWhen(d) {
+    var tot = brtMs(d.dt, d.ht), gen = brtMs(d.dg, d.hg);
+    if (tot != null && (gen == null || tot <= gen + 5 * 60e3)) return "Totalizado pelo TSE em " + d.dt.slice(0, 5) + " " + d.ht;
+    if (gen != null) return "Arquivo gerado pelo TSE em " + d.dg.slice(0, 5) + " " + d.hg + " (horário de Brasília)";
+    return null;
+  }
   function parseResult(d) {
     var cands = (d.cand || []).map(function (c) {
       return { id: c.sqcand, n: c.n, name: c.nm, party: c.cc, votes: int(c.vap), pct: pct(c.pvap), order: int(c.seq), st: c.st || "" };
     }).sort(function (a, b) { return (a.order == null ? 1e9 : a.order) - (b.order == null ? 1e9 : b.order) || (b.votes || 0) - (a.votes || 0); });
     return {
       final: String(d.tf || "").toLowerCase() === "s", pst: pct(d.pst), st: int(d.st), s: int(d.s),
-      tseTime: (d.dt && d.ht) ? d.dt.slice(0, 5) + " " + d.ht : (d.dg && d.hg ? d.dg.slice(0, 5) + " " + d.hg : null),
+      tseTime: tseWhen(d),
       turnout: { v: int(d.c), p: pct(d.pc) }, blank: { v: int(d.vb), p: pct(d.pvb) }, nul: { v: int(d.tvn), p: pct(d.ptvn) },
       valid: int(d.vv), cands: cands
     };
@@ -77,7 +88,7 @@
       : '<span class="st st-partial">Parcial · ' + fPct(R.pst) + " das seções totalizadas</span>";
     el.innerHTML = (opts && opts.title ? '<h3 class="btitle">' + esc(opts.title) + "</h3>" : "") +
       '<div class="board-head">' + status +
-      '<p class="when">' + (R.tseTime ? "Totalizado pelo TSE em " + esc(R.tseTime) : "Horário do TSE não informado") +
+      '<p class="when">' + (R.tseTime ? esc(R.tseTime) : "Horário do TSE não informado") +
       (opts && opts.readAt ? ' · lido às ' + hhmmss(opts.readAt) : "") + "</p></div>" +
       '<ol class="cands">' + R.cands.map(function (c) {
         var w = c.pct == null ? 0 : Math.max(0.5, c.pct / max * 100);

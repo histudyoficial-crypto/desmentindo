@@ -20,7 +20,7 @@ concurrency:
 jobs:
   snapshot:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 345
     steps:
       - uses: actions/checkout@v4
       - name: Branch de dados
@@ -36,16 +36,24 @@ jobs:
             git -C dados rm -rq . || true
             printf 'Dados públicos de apuração (TSE) do Desmentindo · Eleições 2026. Gerado por .github/workflows/eleicoes-2026-snapshot.yml.\n' > dados/README.md
           fi
-      - name: Snapshot
-        run: python3 public-ui/eleicoes_snapshot.py --out dados/presidente-br.json
-      - name: Gravar (só se mudou)
+      # O cron do GitHub não disparou na noite da apuração (04/10, 17:00–17:25 BRT sem nenhuma execução agendada).
+      # Disparo manual = laço próprio: um snapshot a cada 5 min por até 5h30 (o script é idempotente: grava no máximo
+      # FIRST_RESULT, 1 por hora cheia BRT e FINAL; o resto é SKIP e não gera commit). Agendado = uma passada, como antes.
+      - name: Snapshot e gravação (só se mudou)
+        env:
+          LOOP: ${{ github.event_name == 'workflow_dispatch' && '66' || '1' }}
         run: |
-          cd dados
-          git add -A
-          if git diff --cached --quiet; then echo "nada novo"; exit 0; fi
-          git commit -q -m "eleicoes-2026: snapshot $(python3 -c "import json;d=json.load(open('presidente-br.json'));s=d['snapshots'];print((s[-1]['kind']+' '+str(s[-1]['percent_totalized'])) if s else 'sem snapshot')")"
-          for i in 1 2 3; do
-            git push -q origin eleicoes-2026-dados && exit 0
-            sleep $((i*5)); git fetch -q origin eleicoes-2026-dados && git rebase -q FETCH_HEAD || true
+          for n in $(seq 1 "$LOOP"); do
+            python3 public-ui/eleicoes_snapshot.py --out dados/presidente-br.json || echo "snapshot falhou nesta passada"
+            ( cd dados
+              git add -A
+              if git diff --cached --quiet; then echo "nada novo"; exit 0; fi
+              git commit -q -m "eleicoes-2026: snapshot $(python3 -c "import json;d=json.load(open('presidente-br.json'));s=d['snapshots'];print((s[-1]['kind']+' '+str(s[-1]['percent_totalized'])) if s else 'sem snapshot')")"
+              for i in 1 2 3; do
+                git push -q origin eleicoes-2026-dados && exit 0
+                sleep $((i*5)); git fetch -q origin eleicoes-2026-dados && git rebase -q FETCH_HEAD || true
+              done
+              exit 1 ) || echo "push falhou nesta passada"
+            if [ -f dados/presidente-br.json ] && python3 -c "import json,sys;sys.exit(0 if (json.load(open('dados/presidente-br.json')).get('summary') or {}).get('final_captured') else 1)"; then echo "FINAL registrado"; break; fi
+            if [ "$n" -lt "$LOOP" ]; then sleep 300; fi
           done
-          exit 1
