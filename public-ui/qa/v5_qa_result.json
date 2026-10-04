@@ -1,0 +1,2897 @@
+{
+ "viewports": {},
+ "checks": {
+  "BOUNDARY": [
+   {
+    "check": "desktop:home: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": [
+     "/data/editorial/index.json",
+     "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc"
+    ]
+   },
+   {
+    "check": "desktop:home: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:home: noindex",
+    "ok": true,
+    "info": "noindex, nofollow"
+   },
+   {
+    "check": "desktop:story: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:story: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:story: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:story: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:story: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-moraes: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-moraes: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-moraes: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-moraes: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-moraes: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-inss: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-inss: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-inss: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-inss: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-inss: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:arquivos: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:arquivos: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:arquivos: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:arquivos: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:arquivos: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:arquivo-pessoa: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:arquivo-pessoa: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:arquivo-pessoa: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:arquivo-pessoa: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:arquivo-pessoa: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:profissionais: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:profissionais: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:profissionais: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:profissionais: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:profissionais: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-vazio: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-vazio: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-vazio: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-vazio: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-vazio: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:epist-atibaia: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:epist-atibaia: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:epist-atibaia: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:epist-atibaia: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:epist-atibaia: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:checar: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:checar: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:checar: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:checar: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:checar: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:agora-item: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:agora-item: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:agora-item: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:agora-item: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:agora-item: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:home-agora: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": [
+     "/data/editorial/index.json",
+     "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc"
+    ]
+   },
+   {
+    "check": "desktop:home-agora: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home-agora: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home-agora: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home-agora: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:legacy-matriz: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:legacy-matriz: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-matriz: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-matriz: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-matriz: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:legacy-eventos: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:legacy-eventos: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-eventos: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-eventos: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-eventos: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:home: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": [
+     "/data/editorial/index.json",
+     "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc"
+    ]
+   },
+   {
+    "check": "mobile:home: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:home: noindex",
+    "ok": true,
+    "info": "noindex, nofollow"
+   },
+   {
+    "check": "mobile:story: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:story: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:story: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:story: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:story: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-moraes: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-moraes: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-moraes: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-moraes: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-moraes: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-inss: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-inss: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-inss: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-inss: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-inss: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:arquivos: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:arquivos: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:arquivos: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:arquivos: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:arquivos: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:arquivo-pessoa: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:arquivo-pessoa: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:arquivo-pessoa: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:arquivo-pessoa: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:arquivo-pessoa: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:profissionais: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:profissionais: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:profissionais: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:profissionais: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:profissionais: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-vazio: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-vazio: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-vazio: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-vazio: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-vazio: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:epist-atibaia: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:epist-atibaia: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:epist-atibaia: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:epist-atibaia: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:epist-atibaia: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:checar: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:checar: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:checar: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:checar: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:checar: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:agora-item: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:agora-item: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:agora-item: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:agora-item: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:agora-item: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:home-agora: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": [
+     "/data/editorial/index.json",
+     "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc"
+    ]
+   },
+   {
+    "check": "mobile:home-agora: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home-agora: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home-agora: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home-agora: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:legacy-matriz: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:legacy-matriz: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-matriz: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-matriz: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-matriz: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:legacy-eventos: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:legacy-eventos: sem '0 resultados'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-eventos: sem marcadores internos no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-eventos: sem jargão interno no texto",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-eventos: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "arquivos da v5 sem marcadores internos nem jargão",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "sem campos de nota/ranking de pessoa",
+    "ok": true,
+    "info": []
+   }
+  ],
+  "PERFORMANCE": [
+   {
+    "check": "desktop:home: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:home: dados iniciais < 100 KB",
+    "ok": true,
+    "info": 2242
+   },
+   {
+    "check": "desktop:story: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-moraes: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-moraes: todo arquivo < 400 KB (após trechos)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:search-inss: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-inss: todo arquivo < 400 KB (após trechos)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:arquivos: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:arquivo-pessoa: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:profissionais: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-vazio: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:epist-atibaia: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:checar: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:agora-item: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:home-agora: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:legacy-matriz: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:legacy-eventos: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:home: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:home: dados iniciais < 100 KB",
+    "ok": true,
+    "info": 2242
+   },
+   {
+    "check": "mobile:story: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-moraes: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-moraes: todo arquivo < 400 KB (após trechos)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-inss: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-inss: todo arquivo < 400 KB (após trechos)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:arquivos: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:arquivo-pessoa: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:profissionais: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-vazio: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:epist-atibaia: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:checar: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:agora-item: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:home-agora: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:legacy-matriz: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:legacy-eventos: todo arquivo de dados < 400 KB",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "maior arquivo de v5/data < 400 KB",
+    "ok": true,
+    "info": [
+     "v5/data/busca/s/14.json",
+     173136
+    ]
+   }
+  ],
+  "V5_HOME_QA": [
+   {
+    "check": "desktop:home: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:home: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:home: marca DESMENTINDO na primeira dobra",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home: mensagem na primeira dobra",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home: busca na primeira dobra",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home: placeholder da busca",
+    "ok": true,
+    "info": "Pesquise uma pessoa, assunto ou acontecimento"
+   },
+   {
+    "check": "desktop:home: teste dos 5 segundos (marca + explicação + busca + pista de 'o que já foi dito com fonte verificável' na 1ª dobra)",
+    "ok": true,
+    "info": "Veja o que já foi dito sobre uma notícia, com a data, o minuto do vídeo e a fonte original."
+   },
+   {
+    "check": "desktop:home: seção Já falaram sobre isso com Alexandre Garcia, Caio Coppolla e Te Atualizei",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home: Agora enxuto (1 principal + até 3)",
+    "ok": true,
+    "info": 1
+   },
+   {
+    "check": "desktop:arquivos: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:arquivos: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:arquivo-pessoa: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:arquivo-pessoa: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:profissionais: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:profissionais: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:home-agora: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:home-agora: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:home: AGORA enxuto (3 com texto, resto em linhas) e todos os itens com link próprio",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:home: fontes sem tooltip (title) como única informação",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:home: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:home: marca DESMENTINDO na primeira dobra",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home: mensagem na primeira dobra",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home: busca na primeira dobra",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home: placeholder da busca",
+    "ok": true,
+    "info": "Pesquise uma pessoa, assunto ou acontecimento"
+   },
+   {
+    "check": "mobile:home: teste dos 5 segundos (marca + explicação + busca + pista de 'o que já foi dito com fonte verificável' na 1ª dobra)",
+    "ok": true,
+    "info": "Veja o que já foi dito sobre uma notícia, com a data, o minuto do vídeo e a fonte original."
+   },
+   {
+    "check": "mobile:home: seção Já falaram sobre isso com Alexandre Garcia, Caio Coppolla e Te Atualizei",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home: Agora enxuto (1 principal + até 3)",
+    "ok": true,
+    "info": 1
+   },
+   {
+    "check": "mobile:arquivos: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:arquivos: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:arquivo-pessoa: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:arquivo-pessoa: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:profissionais: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:profissionais: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:home-agora: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:home-agora: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:home: AGORA enxuto (3 com texto, resto em linhas) e todos os itens com link próprio",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:home: fontes sem tooltip (title) como única informação",
+    "ok": true,
+    "info": null
+   }
+  ],
+  "V5_STORY_QA": [
+   {
+    "check": "desktop:story: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:story: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:story: seção 'Já falaram sobre isso' existe",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:story: 'Já falaram' começa até 1,5 tela (1200px)",
+    "ok": true,
+    "info": 1147.9375
+   },
+   {
+    "check": "desktop:story: atalho para 'Já falaram' visível na primeira dobra",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:story: sem bloco vazio",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:story: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:story: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:story: seção 'Já falaram sobre isso' existe",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:story: 'Já falaram' começa até 1,5 tela (1266px)",
+    "ok": true,
+    "info": 1241.84375
+   },
+   {
+    "check": "mobile:story: atalho para 'Já falaram' visível na primeira dobra",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:story: sem bloco vazio",
+    "ok": true,
+    "info": null
+   }
+  ],
+  "V5_AG_TIMESTAMP_E2E": [
+   {
+    "check": "desktop:story: link aponta para segmento real (vídeo + segundo)",
+    "ok": true,
+    "info": {
+     "href": "https://www.youtube.com/watch?v=GZ8jWAg9pAA&t=302s",
+     "video_id": "GZ8jWAg9pAA",
+     "t": 302
+    }
+   },
+   {
+    "check": "desktop:story: data exibida = data de publicação do vídeo",
+    "ok": true,
+    "info": {
+     "shown": "2026-09-14",
+     "video_u": "2026-09-14T09:51:08-07:00"
+    }
+   },
+   {
+    "check": "desktop:story: fonte = Alexandre Garcia",
+    "ok": true,
+    "info": "ALEXANDRE GARCIA"
+   },
+   {
+    "check": "desktop:story: data exibida por extenso confere",
+    "ok": true,
+    "info": "14 set 2026"
+   },
+   {
+    "check": "desktop:story: minuto exibido = t do segmento",
+    "ok": true,
+    "info": {
+     "shown": "14 set 2026 · 5:02",
+     "expected": "5:02"
+    }
+   },
+   {
+    "check": "desktop:story: texto exibido = texto do segmento",
+    "ok": true,
+    "info": {
+     "shown": "Dino procura ligacao de Mario Frias com crime organizado no caso Dark Horse; manchete antes da prova",
+     "segment": "Dino procura ligacao de Mario Frias com crime organizado no caso Dark Horse; manchete antes da prova"
+    }
+   },
+   {
+    "check": "desktop:story: trecho é ELEGÍVEL no caso 'Dark Horse' (data/corpus/links)",
+    "ok": true,
+    "info": "Dark Horse"
+   },
+   {
+    "check": "mobile:story: link aponta para segmento real (vídeo + segundo)",
+    "ok": true,
+    "info": {
+     "href": "https://www.youtube.com/watch?v=GZ8jWAg9pAA&t=302s",
+     "video_id": "GZ8jWAg9pAA",
+     "t": 302
+    }
+   },
+   {
+    "check": "mobile:story: data exibida = data de publicação do vídeo",
+    "ok": true,
+    "info": {
+     "shown": "2026-09-14",
+     "video_u": "2026-09-14T09:51:08-07:00"
+    }
+   },
+   {
+    "check": "mobile:story: fonte = Alexandre Garcia",
+    "ok": true,
+    "info": "ALEXANDRE GARCIA"
+   },
+   {
+    "check": "mobile:story: data exibida por extenso confere",
+    "ok": true,
+    "info": "14 set 2026"
+   },
+   {
+    "check": "mobile:story: minuto exibido = t do segmento",
+    "ok": true,
+    "info": {
+     "shown": "14 set 2026 · 5:02",
+     "expected": "5:02"
+    }
+   },
+   {
+    "check": "mobile:story: texto exibido = texto do segmento",
+    "ok": true,
+    "info": {
+     "shown": "Dino procura ligacao de Mario Frias com crime organizado no caso Dark Horse; manchete antes da prova",
+     "segment": "Dino procura ligacao de Mario Frias com crime organizado no caso Dark Horse; manchete antes da prova"
+    }
+   },
+   {
+    "check": "mobile:story: trecho é ELEGÍVEL no caso 'Dark Horse' (data/corpus/links)",
+    "ok": true,
+    "info": "Dark Horse"
+   }
+  ],
+  "V5_SEARCH_QA": [
+   {
+    "check": "desktop:search-moraes: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-moraes: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:search 'Alexandre de Moraes': grupo AGORA e/ou NOS ARQUIVOS",
+    "ok": true,
+    "info": [
+     "Agora",
+     "Nos arquivos"
+    ]
+   },
+   {
+    "check": "desktop:search 'Alexandre de Moraes': contagem real > 0 no arquivo Alexandre Garcia",
+    "ok": true,
+    "info": 371
+   },
+   {
+    "check": "search 'Alexandre de Moraes': contagem exibida = recontagem no arquivo AG",
+    "ok": true,
+    "info": {
+     "shown": 371,
+     "recount": 371
+    }
+   },
+   {
+    "check": "desktop:search 'Alexandre de Moraes': link aponta para segmento real (vídeo + segundo)",
+    "ok": true,
+    "info": {
+     "href": "https://www.youtube.com/watch?v=R9odnQZu6b0&t=13s",
+     "video_id": "R9odnQZu6b0",
+     "t": 13
+    }
+   },
+   {
+    "check": "desktop:search 'Alexandre de Moraes': data exibida = data de publicação do vídeo",
+    "ok": true,
+    "info": {
+     "shown": "2026-09-23",
+     "video_u": "2026-09-23T15:37:46-07:00"
+    }
+   },
+   {
+    "check": "desktop:search 'Alexandre de Moraes': cobertura parcial declarada por arquivo",
+    "ok": true,
+    "info": [
+     "Te Atualizei",
+     "Caio Coppolla"
+    ]
+   },
+   {
+    "check": "desktop:search-inss: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-inss: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:search 'INSS': grupo AGORA e/ou NOS ARQUIVOS",
+    "ok": true,
+    "info": [
+     "Agora",
+     "Nos arquivos",
+     "Documentos"
+    ]
+   },
+   {
+    "check": "desktop:search 'INSS': contagem real > 0 no arquivo Alexandre Garcia",
+    "ok": true,
+    "info": 170
+   },
+   {
+    "check": "search 'INSS': contagem exibida = recontagem no arquivo AG",
+    "ok": true,
+    "info": {
+     "shown": 170,
+     "recount": 170
+    }
+   },
+   {
+    "check": "desktop:search 'INSS': link aponta para segmento real (vídeo + segundo)",
+    "ok": true,
+    "info": {
+     "href": "https://www.youtube.com/watch?v=xRlNHcOODaA&t=225s",
+     "video_id": "xRlNHcOODaA",
+     "t": 225
+    }
+   },
+   {
+    "check": "desktop:search 'INSS': data exibida = data de publicação do vídeo",
+    "ok": true,
+    "info": {
+     "shown": "2026-09-22",
+     "video_u": "2026-09-22T09:40:49-07:00"
+    }
+   },
+   {
+    "check": "desktop:search 'INSS': cobertura parcial declarada por arquivo",
+    "ok": true,
+    "info": [
+     "Te Atualizei",
+     "Caio Coppolla"
+    ]
+   },
+   {
+    "check": "desktop:search-vazio: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:search-vazio: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop: busca sem resultado diz que não quer dizer que nunca foi dito",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:search-moraes: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-moraes: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:search 'Alexandre de Moraes': grupo AGORA e/ou NOS ARQUIVOS",
+    "ok": true,
+    "info": [
+     "Agora",
+     "Nos arquivos"
+    ]
+   },
+   {
+    "check": "mobile:search 'Alexandre de Moraes': contagem real > 0 no arquivo Alexandre Garcia",
+    "ok": true,
+    "info": 371
+   },
+   {
+    "check": "mobile:search 'Alexandre de Moraes': link aponta para segmento real (vídeo + segundo)",
+    "ok": true,
+    "info": {
+     "href": "https://www.youtube.com/watch?v=R9odnQZu6b0&t=13s",
+     "video_id": "R9odnQZu6b0",
+     "t": 13
+    }
+   },
+   {
+    "check": "mobile:search 'Alexandre de Moraes': data exibida = data de publicação do vídeo",
+    "ok": true,
+    "info": {
+     "shown": "2026-09-23",
+     "video_u": "2026-09-23T15:37:46-07:00"
+    }
+   },
+   {
+    "check": "mobile:search 'Alexandre de Moraes': cobertura parcial declarada por arquivo",
+    "ok": true,
+    "info": [
+     "Te Atualizei",
+     "Caio Coppolla"
+    ]
+   },
+   {
+    "check": "mobile:search-inss: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-inss: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:search 'INSS': grupo AGORA e/ou NOS ARQUIVOS",
+    "ok": true,
+    "info": [
+     "Agora",
+     "Nos arquivos",
+     "Documentos"
+    ]
+   },
+   {
+    "check": "mobile:search 'INSS': contagem real > 0 no arquivo Alexandre Garcia",
+    "ok": true,
+    "info": 170
+   },
+   {
+    "check": "mobile:search 'INSS': link aponta para segmento real (vídeo + segundo)",
+    "ok": true,
+    "info": {
+     "href": "https://www.youtube.com/watch?v=xRlNHcOODaA&t=225s",
+     "video_id": "xRlNHcOODaA",
+     "t": 225
+    }
+   },
+   {
+    "check": "mobile:search 'INSS': data exibida = data de publicação do vídeo",
+    "ok": true,
+    "info": {
+     "shown": "2026-09-22",
+     "video_u": "2026-09-22T09:40:49-07:00"
+    }
+   },
+   {
+    "check": "mobile:search 'INSS': cobertura parcial declarada por arquivo",
+    "ok": true,
+    "info": [
+     "Te Atualizei",
+     "Caio Coppolla"
+    ]
+   },
+   {
+    "check": "mobile:search-vazio: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:search-vazio: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile: busca sem resultado diz que não quer dizer que nunca foi dito",
+    "ok": true,
+    "info": null
+   }
+  ],
+  "V5_EPISTEMIC_QA": [
+   {
+    "check": "desktop:epist-atibaia: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:epist-atibaia: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop: cronologia de 'atibaia' rotula e atribui toda alegação (e só ela)",
+    "ok": true,
+    "info": {
+     "want": [
+      false,
+      true,
+      false,
+      false,
+      false,
+      false
+     ],
+     "got": [
+      false,
+      true,
+      false,
+      false,
+      false,
+      false
+     ]
+    }
+   },
+   {
+    "check": "desktop: atualizações rotulam e atribuem alegação",
+    "ok": true,
+    "info": {
+     "want": [
+      false,
+      false,
+      false
+     ],
+     "got": [
+      false,
+      false,
+      false
+     ]
+    }
+   },
+   {
+    "check": "ATTRIBUTED_STATEMENT ≠ ATTRIBUTED_ALLEGATION ≠ FATO: nenhum item com dois rótulos",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "declaração atribuída só com confirmação humana individual (0 pendentes ficam neutros)",
+    "ok": true,
+    "info": {
+     "declaracao": 9,
+     "confirmadas": 9
+    }
+   },
+   {
+    "check": "ALLEGATION_RENDERED_AS_FACT = 0 em todas as histórias (55 itens de alegação conferidos)",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop: 'O que sabemos' só com fato com fonte, rotulado",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: documento localizado com a regra 'ainda precisamos verificar'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:epist-atibaia: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:epist-atibaia: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile: cronologia de 'atibaia' rotula e atribui toda alegação (e só ela)",
+    "ok": true,
+    "info": {
+     "want": [
+      false,
+      true,
+      false,
+      false,
+      false,
+      false
+     ],
+     "got": [
+      false,
+      true,
+      false,
+      false,
+      false,
+      false
+     ]
+    }
+   },
+   {
+    "check": "mobile: atualizações rotulam e atribuem alegação",
+    "ok": true,
+    "info": {
+     "want": [
+      false,
+      false,
+      false
+     ],
+     "got": [
+      false,
+      false,
+      false
+     ]
+    }
+   },
+   {
+    "check": "mobile: 'O que sabemos' só com fato com fonte, rotulado",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: documento localizado com a regra 'ainda precisamos verificar'",
+    "ok": true,
+    "info": null
+   }
+  ],
+  "V5_CHECAR_QA": [
+   {
+    "check": "desktop:checar: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:checar: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:checar: diz que o envio ainda não está aberto (nada é recebido nem guardado)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:checar: CHECAR_SUBMISSIONS = CLOSED (sem campo de envio, sem CTA de envio, fora da navegação principal)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:checar: 7 passos (entrada → decomposição → checagem → encontramos → contexto → conclusão → saída)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:checar: paridade de formato (6 pares)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:checar: legenda com os 5 selos + 'checamos se foi dito/aconteceu'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:checar: exemplo público só se liberado (checar.json)",
+    "ok": true,
+    "info": false
+   },
+   {
+    "check": "desktop:ovc: todas as afirmações da peça real aparecem checadas (saída não empobrece a entrada)",
+    "ok": true,
+    "info": {
+     "n": 27,
+     "total": 27,
+     "selos": 27
+    }
+   },
+   {
+    "check": "desktop:ovc: ORIGINAL sem selo (o que entrou) × CHECADO com selo (o que sobrou)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:ovc: ligação não confirmada é pontilhada; nenhuma aparece como documentada",
+    "ok": true,
+    "info": {
+     "weak": 5,
+     "dotted": 5,
+     "solid_unconfirmed": 0
+    }
+   },
+   {
+    "check": "desktop:ovc: paridade de formato (mapa de relações, tabela, linha do tempo)",
+    "ok": true,
+    "info": [
+     "relations",
+     "table",
+     "timeline"
+    ]
+   },
+   {
+    "check": "desktop:ovc: valor desconhecido → EM CHECAGEM; 'não encontramos' com a frase obrigatória",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:ovc: peça checada com marca, data e endereço (base para derivação)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:ovc: sem ID interno na saída",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:ovc: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:checar: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:checar: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:checar: diz que o envio ainda não está aberto (nada é recebido nem guardado)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:checar: CHECAR_SUBMISSIONS = CLOSED (sem campo de envio, sem CTA de envio, fora da navegação principal)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:checar: 7 passos (entrada → decomposição → checagem → encontramos → contexto → conclusão → saída)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:checar: paridade de formato (6 pares)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:checar: legenda com os 5 selos + 'checamos se foi dito/aconteceu'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:checar: exemplo público só se liberado (checar.json)",
+    "ok": true,
+    "info": false
+   },
+   {
+    "check": "mobile:ovc: todas as afirmações da peça real aparecem checadas (saída não empobrece a entrada)",
+    "ok": true,
+    "info": {
+     "n": 27,
+     "total": 27,
+     "selos": 27
+    }
+   },
+   {
+    "check": "mobile:ovc: ORIGINAL sem selo (o que entrou) × CHECADO com selo (o que sobrou)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:ovc: ligação não confirmada é pontilhada; nenhuma aparece como documentada",
+    "ok": true,
+    "info": {
+     "weak": 5,
+     "dotted": 5,
+     "solid_unconfirmed": 0
+    }
+   },
+   {
+    "check": "mobile:ovc: paridade de formato (mapa de relações, tabela, linha do tempo)",
+    "ok": true,
+    "info": [
+     "relations",
+     "table",
+     "timeline"
+    ]
+   },
+   {
+    "check": "mobile:ovc: valor desconhecido → EM CHECAGEM; 'não encontramos' com a frase obrigatória",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:ovc: peça checada com marca, data e endereço (base para derivação)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:ovc: sem ID interno na saída",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:ovc: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   }
+  ],
+  "V5_ROUTES_QA": [
+   {
+    "check": "desktop:agora-item: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:agora-item: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop:agora-item: título e texto aprovados, sem alteração",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:agora-item: título de cada fonte visível (não depende de hover)",
+    "ok": true,
+    "info": [
+     "Após Mendonça mudar voto, TSE decide liberar post de humorista sobre Nossa Senhora Aparecida",
+     "Nossa Senhora: Mendonça mudou de voto após conversas com Nunes Marques e ministros do TSE",
+     "Mendonça cita resolução editada por Moraes em voto sobre Nossa Senhora",
+     "TSE decide derrubar notícias falsas sobre Nossa Senhora e Flávio Bolsonaro",
+     "TSE decide derrubar posts com notícia falsa sobre Flávio e Nossa Senhora",
+     "Entenda o que o TSE decidiu sobre a fake news de Nossa Senhora Aparecida"
+    ]
+   },
+   {
+    "check": "desktop: /desmentindo_local.html aposentado (redireciona para a raiz com a mesma rota; sem o app anterior)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: LEGACY_V4_PUBLIC_PREVIEW_RETIRED (/v4/ redireciona para a raiz com a mesma rota)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:v4-circulando: #/circulando → #/checar",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:v4-caso: #/caso/lava-jato → #/historia/lava-jato",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:v4-data: #/data → #/profissionais",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-caso: #/caso?c=Lava%20Jato → #/historia/lava-jato",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-pessoa: #/pessoa?n=Dias%20Toffoli → #/arquivo/dias-toffoli",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-corpus: #/corpus → #/arquivos",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-narrativas: #/narrativas → #/checar",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-matriz: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:legacy-matriz: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop: rota retirada (matriz) explica e não aponta para o módulo bloqueado",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop:legacy-eventos: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "desktop:legacy-eventos: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "desktop: rota encerrada (eventos) explica e não aponta para o site anterior",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: link antigo de registro (?ev=) → história que o contém",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:agora-item: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:agora-item: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile:agora-item: título e texto aprovados, sem alteração",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:agora-item: título de cada fonte visível (não depende de hover)",
+    "ok": true,
+    "info": [
+     "Após Mendonça mudar voto, TSE decide liberar post de humorista sobre Nossa Senhora Aparecida",
+     "Nossa Senhora: Mendonça mudou de voto após conversas com Nunes Marques e ministros do TSE",
+     "Mendonça cita resolução editada por Moraes em voto sobre Nossa Senhora",
+     "TSE decide derrubar notícias falsas sobre Nossa Senhora e Flávio Bolsonaro",
+     "TSE decide derrubar posts com notícia falsa sobre Flávio e Nossa Senhora",
+     "Entenda o que o TSE decidiu sobre a fake news de Nossa Senhora Aparecida"
+    ]
+   },
+   {
+    "check": "mobile: /desmentindo_local.html aposentado (redireciona para a raiz com a mesma rota; sem o app anterior)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: LEGACY_V4_PUBLIC_PREVIEW_RETIRED (/v4/ redireciona para a raiz com a mesma rota)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:v4-circulando: #/circulando → #/checar",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:v4-caso: #/caso/lava-jato → #/historia/lava-jato",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:v4-data: #/data → #/profissionais",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-caso: #/caso?c=Lava%20Jato → #/historia/lava-jato",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-pessoa: #/pessoa?n=Dias%20Toffoli → #/arquivo/dias-toffoli",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-corpus: #/corpus → #/arquivos",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-narrativas: #/narrativas → #/checar",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-matriz: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:legacy-matriz: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile: rota retirada (matriz) explica e não aponta para o módulo bloqueado",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile:legacy-eventos: sem erro de JS",
+    "ok": true,
+    "info": []
+   },
+   {
+    "check": "mobile:legacy-eventos: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "mobile: rota encerrada (eventos) explica e não aponta para o site anterior",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: link antigo de registro (?ev=) → história que o contém",
+    "ok": true,
+    "info": null
+   }
+  ],
+  "ACCESSIBILITY": [
+   {
+    "check": "desktop:a11y-home: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+    "ok": true,
+    "info": {
+     "h1": 1,
+     "unlabeled": 0,
+     "emptyLinks": 0,
+     "imgsNoAlt": 0,
+     "skip": true,
+     "lang": "pt-BR"
+    }
+   },
+   {
+    "check": "desktop:a11y-story: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+    "ok": true,
+    "info": {
+     "h1": 1,
+     "unlabeled": 0,
+     "emptyLinks": 0,
+     "imgsNoAlt": 0,
+     "skip": true,
+     "lang": "pt-BR"
+    }
+   },
+   {
+    "check": "desktop:a11y-checar: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+    "ok": true,
+    "info": {
+     "h1": 1,
+     "unlabeled": 0,
+     "emptyLinks": 0,
+     "imgsNoAlt": 0,
+     "skip": true,
+     "lang": "pt-BR"
+    }
+   },
+   {
+    "check": "desktop:a11y-busca: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+    "ok": true,
+    "info": {
+     "h1": 1,
+     "unlabeled": 0,
+     "emptyLinks": 0,
+     "imgsNoAlt": 0,
+     "skip": true,
+     "lang": "pt-BR"
+    }
+   },
+   {
+    "check": "desktop: foco visível ao navegar por teclado",
+    "ok": true,
+    "info": {
+     "tag": "A",
+     "outline": "solid",
+     "w": "2px"
+    }
+   },
+   {
+    "check": "mobile:a11y-home: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+    "ok": true,
+    "info": {
+     "h1": 1,
+     "unlabeled": 0,
+     "emptyLinks": 0,
+     "imgsNoAlt": 0,
+     "skip": true,
+     "lang": "pt-BR"
+    }
+   },
+   {
+    "check": "mobile:a11y-story: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+    "ok": true,
+    "info": {
+     "h1": 1,
+     "unlabeled": 0,
+     "emptyLinks": 0,
+     "imgsNoAlt": 0,
+     "skip": true,
+     "lang": "pt-BR"
+    }
+   },
+   {
+    "check": "mobile:a11y-checar: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+    "ok": true,
+    "info": {
+     "h1": 1,
+     "unlabeled": 0,
+     "emptyLinks": 0,
+     "imgsNoAlt": 0,
+     "skip": true,
+     "lang": "pt-BR"
+    }
+   },
+   {
+    "check": "mobile:a11y-busca: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+    "ok": true,
+    "info": {
+     "h1": 1,
+     "unlabeled": 0,
+     "emptyLinks": 0,
+     "imgsNoAlt": 0,
+     "skip": true,
+     "lang": "pt-BR"
+    }
+   },
+   {
+    "check": "mobile: foco visível ao navegar por teclado",
+    "ok": true,
+    "info": {
+     "tag": "A",
+     "outline": "solid",
+     "w": "2px"
+    }
+   }
+  ],
+  "VISUAL_IDENTITY": [
+   {
+    "check": "desktop: História abre com o hero tipográfico do v4 (fundo --ink, título branco, data amarela)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: paleta canônica (papel #F3F2F2, texto #201E1D, sem vermelho do Modernist base)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: marca DESMENTINDO visível no cabeçalho das páginas internas",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: cantos retos (raio 0) em cartões e botões",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "item ativo da navegação com borda inferior amarela de 4px (DM Cabecalho)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: cor de origem nos trechos (Alexandre Garcia #6B3FA0)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: faixa-assinatura escura de largura total, sem rolagem horizontal",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "desktop: Desmentindo Data com identidade própria (selo DATA azul) e 'O que não fazemos'",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: História abre com o hero tipográfico do v4 (fundo --ink, título branco, data amarela)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: paleta canônica (papel #F3F2F2, texto #201E1D, sem vermelho do Modernist base)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: marca DESMENTINDO visível no cabeçalho das páginas internas",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: cantos retos (raio 0) em cartões e botões",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: cor de origem nos trechos (Alexandre Garcia #6B3FA0)",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: faixa-assinatura escura de largura total, sem rolagem horizontal",
+    "ok": true,
+    "info": null
+   },
+   {
+    "check": "mobile: Desmentindo Data com identidade própria (selo DATA azul) e 'O que não fazemos'",
+    "ok": true,
+    "info": null
+   }
+  ],
+  "MOBILE": [
+   {
+    "check": "barra inferior: 4 itens com texto e toque ≥ 44px (Checar fora até o envio abrir)",
+    "ok": true,
+    "info": [
+     [
+      "●Agora",
+      54
+     ],
+     [
+      "▶Já falaram",
+      54
+     ],
+     [
+      "⌕Pesquisar",
+      54
+     ],
+     [
+      "≡Mais",
+      54
+     ]
+    ]
+   },
+   {
+    "check": "375px #/: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "375px #/historia/dark-horse: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "375px #/busca?q=INSS: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "375px #/arquivo/alexandre-de-moraes: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "375px #/arquivos: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "375px #/profissionais: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "375px #/checar: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "375px #/matriz: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   }
+  ],
+  "BUILD": [
+   {
+    "check": "node public-ui/build-public-data.mjs --check",
+    "ok": true,
+    "info": "v4/data em sincronia (38 arquivos)"
+   },
+   {
+    "check": "node public-ui/build-v5-data.mjs --check",
+    "ok": true,
+    "info": "alegações exibidas: 55 (alegação 43 · declaração 9 · atribuído neutro 3)\ndata/editorial: edição 2026-10-01 válida (11 itens)\nv5/data em sincronia (819 arquivos)"
+   }
+  ]
+ },
+ "requests": {
+  "desktop:home": [
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 2777
+   },
+   {
+    "url": "/v5/css/fonts.css",
+    "status": 200,
+    "bytes": 893
+   },
+   {
+    "url": "/v5/css/v5.css",
+    "status": 200,
+    "bytes": 34133
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 65330
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": 90104
+   },
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 2777
+   },
+   {
+    "url": "/v5/css/fonts.css",
+    "status": 200,
+    "bytes": 893
+   },
+   {
+    "url": "/v5/css/v5.css",
+    "status": 200,
+    "bytes": 34133
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 65330
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": 90104
+   },
+   {
+    "url": "/data/editorial/index.json",
+    "status": 200,
+    "bytes": 317
+   },
+   {
+    "url": "/v5/data/home.json",
+    "status": 200,
+    "bytes": 2242
+   },
+   {
+    "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
+    "status": 200,
+    "bytes": 24110
+   }
+  ],
+  "desktop:story": [
+   {
+    "url": "/v5/data/historia/dark-horse.json",
+    "status": 200,
+    "bytes": 13181
+   }
+  ],
+  "desktop:search-moraes": [
+   {
+    "url": "/v5/data/busca/meta.json",
+    "status": 200,
+    "bytes": 20376
+   },
+   {
+    "url": "/v5/data/busca/t/mo.json",
+    "status": 200,
+    "bytes": 35946
+   },
+   {
+    "url": "/v5/data/busca/t/al.json",
+    "status": 200,
+    "bytes": 34479
+   },
+   {
+    "url": "/v5/data/busca/s/0.json",
+    "status": 200,
+    "bytes": 68305
+   },
+   {
+    "url": "/v5/data/busca/s/4.json",
+    "status": 200,
+    "bytes": 77446
+   },
+   {
+    "url": "/v5/data/busca/s/48.json",
+    "status": 200,
+    "bytes": 89355
+   },
+   {
+    "url": "/v5/data/busca/s/3.json",
+    "status": 200,
+    "bytes": 64291
+   },
+   {
+    "url": "/v5/data/busca/s/79.json",
+    "status": 200,
+    "bytes": 102030
+   },
+   {
+    "url": "/v5/data/busca/s/49.json",
+    "status": 200,
+    "bytes": 95794
+   },
+   {
+    "url": "https://i.ytimg.com/vi/R9odnQZu6b0/hqdefault.jpg",
+    "status": 200,
+    "bytes": 43
+   }
+  ],
+  "desktop:search-inss": [
+   {
+    "url": "/v5/data/busca/t/in.json",
+    "status": 200,
+    "bytes": 91773
+   },
+   {
+    "url": "/v5/data/busca/s/1.json",
+    "status": 200,
+    "bytes": 81013
+   },
+   {
+    "url": "/v5/data/busca/s/80.json",
+    "status": 200,
+    "bytes": 83805
+   },
+   {
+    "url": "/v5/data/busca/s/83.json",
+    "status": 200,
+    "bytes": 92740
+   },
+   {
+    "url": "https://i.ytimg.com/vi/xRlNHcOODaA/hqdefault.jpg",
+    "status": 200,
+    "bytes": 43
+   }
+  ],
+  "desktop:arquivos": [
+   {
+    "url": "/v5/data/arquivos.json",
+    "status": 200,
+    "bytes": 2867
+   }
+  ],
+  "desktop:arquivo-pessoa": [
+   {
+    "url": "/v5/data/arquivo/alexandre-de-moraes.json",
+    "status": 200,
+    "bytes": 124935
+   },
+   {
+    "url": "https://i.ytimg.com/vi/R9odnQZu6b0/hqdefault.jpg",
+    "status": 200,
+    "bytes": 43
+   }
+  ],
+  "desktop:profissionais": [],
+  "desktop:search-vazio": [],
+  "desktop:epist-atibaia": [
+   {
+    "url": "/v5/data/historia/atibaia.json",
+    "status": 200,
+    "bytes": 30663
+   },
+   {
+    "url": "https://i.ytimg.com/vi/a4RbhwuWHDQ/hqdefault.jpg",
+    "status": 200,
+    "bytes": 43
+   }
+  ],
+  "desktop:checar": [
+   {
+    "url": "/v5/data/checar.json",
+    "status": 200,
+    "bytes": 17
+   }
+  ],
+  "desktop:agora-item": [],
+  "desktop:home-agora": [
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 2777
+   },
+   {
+    "url": "/v5/css/fonts.css",
+    "status": 200,
+    "bytes": 893
+   },
+   {
+    "url": "/v5/css/v5.css",
+    "status": 200,
+    "bytes": 34133
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": 90104
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 65330
+   },
+   {
+    "url": "/data/editorial/index.json",
+    "status": 200,
+    "bytes": 317
+   },
+   {
+    "url": "/v5/data/home.json",
+    "status": 200,
+    "bytes": 2242
+   },
+   {
+    "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
+    "status": 200,
+    "bytes": 24110
+   }
+  ],
+  "desktop:legacy-matriz": [],
+  "desktop:legacy-eventos": [],
+  "mobile:home": [
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 2777
+   },
+   {
+    "url": "/v5/css/v5.css",
+    "status": 200,
+    "bytes": 34133
+   },
+   {
+    "url": "/v5/css/fonts.css",
+    "status": 200,
+    "bytes": 893
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": 90104
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 65330
+   },
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 2777
+   },
+   {
+    "url": "/v5/css/fonts.css",
+    "status": 200,
+    "bytes": 893
+   },
+   {
+    "url": "/v5/css/v5.css",
+    "status": 200,
+    "bytes": 34133
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 65330
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": 90104
+   },
+   {
+    "url": "/data/editorial/index.json",
+    "status": 200,
+    "bytes": 317
+   },
+   {
+    "url": "/v5/data/home.json",
+    "status": 200,
+    "bytes": 2242
+   },
+   {
+    "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
+    "status": 200,
+    "bytes": 24110
+   }
+  ],
+  "mobile:story": [
+   {
+    "url": "/v5/data/historia/dark-horse.json",
+    "status": 200,
+    "bytes": 13181
+   },
+   {
+    "url": "https://i.ytimg.com/vi/GZ8jWAg9pAA/hqdefault.jpg",
+    "status": 200,
+    "bytes": 43
+   }
+  ],
+  "mobile:search-moraes": [
+   {
+    "url": "/v5/data/busca/meta.json",
+    "status": 200,
+    "bytes": 20376
+   },
+   {
+    "url": "/v5/data/busca/t/mo.json",
+    "status": 200,
+    "bytes": 35946
+   },
+   {
+    "url": "/v5/data/busca/t/al.json",
+    "status": 200,
+    "bytes": 34479
+   },
+   {
+    "url": "/v5/data/busca/s/3.json",
+    "status": 200,
+    "bytes": 64291
+   },
+   {
+    "url": "/v5/data/busca/s/48.json",
+    "status": 200,
+    "bytes": 89355
+   },
+   {
+    "url": "/v5/data/busca/s/0.json",
+    "status": 200,
+    "bytes": 68305
+   },
+   {
+    "url": "/v5/data/busca/s/79.json",
+    "status": 200,
+    "bytes": 102030
+   },
+   {
+    "url": "/v5/data/busca/s/4.json",
+    "status": 200,
+    "bytes": 77446
+   },
+   {
+    "url": "/v5/data/busca/s/49.json",
+    "status": 200,
+    "bytes": 95794
+   },
+   {
+    "url": "https://i.ytimg.com/vi/R9odnQZu6b0/hqdefault.jpg",
+    "status": 200,
+    "bytes": 43
+   }
+  ],
+  "mobile:search-inss": [
+   {
+    "url": "/v5/data/busca/t/in.json",
+    "status": 200,
+    "bytes": 91773
+   },
+   {
+    "url": "/v5/data/busca/s/1.json",
+    "status": 200,
+    "bytes": 81013
+   },
+   {
+    "url": "/v5/data/busca/s/80.json",
+    "status": 200,
+    "bytes": 83805
+   },
+   {
+    "url": "/v5/data/busca/s/83.json",
+    "status": 200,
+    "bytes": 92740
+   },
+   {
+    "url": "https://i.ytimg.com/vi/xRlNHcOODaA/hqdefault.jpg",
+    "status": 200,
+    "bytes": 43
+   }
+  ],
+  "mobile:arquivos": [
+   {
+    "url": "/v5/data/arquivos.json",
+    "status": 200,
+    "bytes": 2867
+   }
+  ],
+  "mobile:arquivo-pessoa": [
+   {
+    "url": "/v5/data/arquivo/alexandre-de-moraes.json",
+    "status": 200,
+    "bytes": 124935
+   }
+  ],
+  "mobile:profissionais": [],
+  "mobile:search-vazio": [],
+  "mobile:epist-atibaia": [
+   {
+    "url": "/v5/data/historia/atibaia.json",
+    "status": 200,
+    "bytes": 30663
+   }
+  ],
+  "mobile:checar": [
+   {
+    "url": "/v5/data/checar.json",
+    "status": 200,
+    "bytes": 17
+   }
+  ],
+  "mobile:agora-item": [],
+  "mobile:home-agora": [
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 2777
+   },
+   {
+    "url": "/v5/css/fonts.css",
+    "status": 200,
+    "bytes": 893
+   },
+   {
+    "url": "/v5/css/v5.css",
+    "status": 200,
+    "bytes": 34133
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": 90104
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 65330
+   },
+   {
+    "url": "/data/editorial/index.json",
+    "status": 200,
+    "bytes": 317
+   },
+   {
+    "url": "/v5/data/home.json",
+    "status": 200,
+    "bytes": 2242
+   },
+   {
+    "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
+    "status": 200,
+    "bytes": 24110
+   }
+  ],
+  "mobile:legacy-matriz": [],
+  "mobile:legacy-eventos": []
+ },
+ "evidence": {
+  "desktop:home_data_bytes": 2242,
+  "desktop:story_data_bytes": 13181,
+  "desktop:story_ja_falaram_top_px": 1147.9375,
+  "desktop:story_sections": [
+   "O que sabemos",
+   "Já falaram sobre isso",
+   "Cronologia",
+   "Fontes"
+  ],
+  "desktop:search_moraes_data_bytes": 588022,
+  "desktop:search_moraes": {
+   "groups": [
+    "Agora",
+    "Nos arquivos"
+   ],
+   "ag_count": 371,
+   "agora": "AGORA\n10 histórias\nCompliance Zero / Master\n27 registros mencionam\n27 set 2026\nDark Horse\n3 registros mencionam\n13 set 2026\nSem Desconto / INSS\n2 registros mencionam\n21 set 2026\nVer mais 7 histórias\n\n"
+  },
+  "search_moraes_recount_from_archive": 371,
+  "desktop:search_inss_data_bytes": 349331,
+  "desktop:search_inss": {
+   "groups": [
+    "Agora",
+    "Nos arquivos",
+    "Documentos"
+   ],
+   "ag_count": 170,
+   "agora": "AGORA\n3 histórias\nSem Desconto / INSS\n15 registros mencionam\n21 set 2026\nCPMI do INSS\n8 registros mencionam\n28 mar 2026\nDeath Care / cemitérios\n1 registro menciona\n17 set 2026\n\nO que já foi dito sobre"
+  },
+  "search_inss_recount_from_archive": 170,
+  "allegations_checked": 55,
+  "mobile:home_data_bytes": 2242,
+  "mobile:story_data_bytes": 13181,
+  "mobile:story_ja_falaram_top_px": 1241.84375,
+  "mobile:story_sections": [
+   "O que sabemos",
+   "Já falaram sobre isso",
+   "Cronologia",
+   "Fontes"
+  ],
+  "e2e": {
+   "story": "dark-horse",
+   "case_key": "Dark Horse",
+   "deep_link": "https://www.youtube.com/watch?v=GZ8jWAg9pAA&t=302s",
+   "shown_date": "14 set 2026",
+   "shown_t": "14 set 2026 · 5:02",
+   "excerpt": "Dino procura ligacao de Mario Frias com crime organizado no caso Dark Horse; manchete antes da prova",
+   "corpus_segment": {
+    "video_id": "GZ8jWAg9pAA",
+    "published": "2026-09-14T09:51:08-07:00",
+    "s": 302,
+    "y": "P",
+    "c": "M",
+    "x": "Dino procura ligacao de Mario Frias com crime organizado no caso Dark Horse; manchete antes da prova"
+   }
+  },
+  "mobile:search_moraes_data_bytes": 588022,
+  "mobile:search_moraes": {
+   "groups": [
+    "Agora",
+    "Nos arquivos"
+   ],
+   "ag_count": 371,
+   "agora": "AGORA\n10 histórias\nCompliance Zero / Master\n27 registros mencionam\n27 set 2026\nDark Horse\n3 registros mencionam\n13 set 2026\nSem Desconto / INSS\n2 registros mencionam\n21 set 2026\nVer mais 7 histórias\n\n"
+  },
+  "mobile:search_inss_data_bytes": 349331,
+  "mobile:search_inss": {
+   "groups": [
+    "Agora",
+    "Nos arquivos",
+    "Documentos"
+   ],
+   "ag_count": 170,
+   "agora": "AGORA\n3 histórias\nSem Desconto / INSS\n15 registros mencionam\n21 set 2026\nCPMI do INSS\n8 registros mencionam\n28 mar 2026\nDeath Care / cemitérios\n1 registro menciona\n17 set 2026\n\nO que já foi dito sobre"
+  },
+  "v5_data": {
+   "files": 819,
+   "total_bytes": 13180077,
+   "home_json_bytes": 2242,
+   "largest": {
+    "file": "v5/data/busca/s/14.json",
+    "bytes": 173136
+   },
+   "search_meta_bytes": 20376
+  }
+ },
+ "gates": {
+  "V5_HOME_QA": "PASS",
+  "V5_STORY_QA": "PASS",
+  "V5_SEARCH_QA": "PASS",
+  "V5_AG_TIMESTAMP_E2E": "PASS",
+  "V5_EPISTEMIC_QA": "PASS",
+  "V5_CHECAR_QA": "PASS",
+  "V5_ROUTES_QA": "PASS",
+  "ACCESSIBILITY": "PASS",
+  "MOBILE": "PASS",
+  "VISUAL_IDENTITY": "PASS",
+  "BOUNDARY": "PASS",
+  "PERFORMANCE": "PASS",
+  "BUILD": "PASS"
+ },
+ "failures": {},
+ "note_5s": "Teste dos 5 segundos é heurístico: confere se a primeira dobra tem marca, frase de explicação, busca e a pista explícita de 'o que já foi dito, com data, minuto do vídeo e fonte'. Não substitui teste com pessoas."
+}

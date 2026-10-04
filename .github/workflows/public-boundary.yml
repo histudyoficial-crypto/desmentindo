@@ -1,0 +1,104 @@
+name: Fronteira pública — validar
+
+# Garante que nada operacional/privado entre no repositório público.
+# Só valida: sem deploy, sem schedule, permissões de leitura.
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: public-boundary-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  boundary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Caminhos privados não podem existir aqui
+        run: |
+          bad=0
+          for p in control operations reports command-center; do
+            if [ -e "$p" ]; then echo "Caminho privado no repo público: $p/"; bad=1; fi
+          done
+          exit $bad
+      - name: Campos internos e scores de pessoa não podem aparecer nos arquivos públicos novos
+        run: |
+          for d in v4 v5; do
+            if [ -d "$d" ] && grep -R -n -I -E '"(review_reason|decision_ref|human_review|HUMAN_REVIEW_QUEUE|incident_id|person_score|political_score|suspicion_score|wrongdoing_score|controversy_score|person_ranking|person_watchlist)"' "$d/"; then
+              echo "Campo interno/proibido encontrado em $d/."; exit 1
+            fi
+          done
+      - name: Marcadores privados/de teste não podem aparecer na v5
+        run: |
+          if [ -d v5 ] && grep -R -n -I -E 'AUTONOMOUS_TEST_RUN|RV-20[0-9]{6}-[0-9]{3}|DS-20[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{3}|EVC-20[0-9]{6}-[0-9]{3}|WAITING_REVIEW|desmentindo-ops|MORNING_OPEN|LEGACY_PROJECT_MORNING|ANTHROPIC_API_KEY' v5/; then
+            echo 'Marcador privado encontrado em v5/.'; exit 1
+          fi
+      - name: Edição editorial pública (data/editorial) sem campo interno nem marcador privado
+        run: |
+          if [ -d data/editorial ]; then
+            if grep -R -n -I -E '"(review_reason|decision_ref|decision|decision_history|human_review|review_id|story_id|comment|flags|rhr_context|approved_at|approved_by)"' data/editorial/; then
+              echo 'Campo interno em data/editorial/.'; exit 1
+            fi
+            if grep -R -n -I -E 'RV-20[0-9]{6}-[0-9]{3}|DS-20[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{3}|DSNR-|EVC-20[0-9]{6}|WAITING_REVIEW|MORNING_AUTO|desmentindo-ops|claude\.ai|dropbox|\[caso sens' data/editorial/; then
+              echo 'Marcador privado em data/editorial/.'; exit 1
+            fi
+          fi
+      - name: Nenhum segredo em texto
+        run: |
+          if git ls-files -z | xargs -0 grep -I -n -E 'ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|sk-ant-[A-Za-z0-9_-]{10,}|AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----' ; then
+            echo 'Possível segredo versionado.'; exit 1
+          fi
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Dados da v4 em sincronia com o app legado
+        run: |
+          if [ -f public-ui/build-public-data.mjs ]; then
+            node public-ui/build-public-data.mjs --check
+          fi
+      - name: Página da raiz gerada (v5) sem noindex e sem marcador privado
+        run: |
+          node public-ui/build-root.mjs --out /tmp/root.html --no-build-info
+          if [ "$(tr -d '[:space:]' < public-ui/ROOT_VERSION)" = "v5" ]; then
+            grep -q 'name="desmentindo-root" content="v5"' /tmp/root.html
+            if grep -q noindex /tmp/root.html; then echo 'raiz com noindex'; exit 1; fi
+          fi
+          if grep -n -E 'AUTONOMOUS_TEST_RUN|RV-20[0-9]{6}-[0-9]{3}|WAITING_REVIEW|desmentindo-ops|MORNING_OPEN|ANTHROPIC_API_KEY' /tmp/root.html; then exit 1; fi
+      - name: INTERNAL_IDENTIFIER_PUBLIC_LEAK (fail closed) — JSON editorial, v5 (HTML/JS/CSS/dados) e raiz gerada
+        run: |
+          node public-ui/build-root.mjs --out /tmp/root-ids.html --no-build-info --pages-out /tmp/pages
+          node public-ui/internal-ids.mjs data/editorial v5 /tmp/root-ids.html /tmp/pages
+      - name: Páginas compartilháveis (uma por FECHAMENTO/MATÉRIA, com prévia própria) e medição desligada sem id
+        run: node public-ui/check-share-pages.mjs /tmp/pages /tmp/root-ids.html
+      - name: Eleições 2026 — páginas geradas em sincronia, sem marcador interno, e regras dos snapshots
+        run: |
+          node public-ui/build-eleicoes.mjs --check
+          node public-ui/internal-ids.mjs eleicoes-2026
+          python3 -m unittest public-ui/test_eleicoes_snapshot.py -v
+      - name: Dados da v5 em sincronia com os dados públicos
+        run: |
+          if [ -f public-ui/build-v5-data.mjs ]; then
+            node public-ui/build-v5-data.mjs --check
+          fi
+
+  # Diagnóstico somente leitura do que a produção serve (cabeçalhos de cache e tipo da raiz). Não altera nada.
+  production-headers:
+    if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cabeçalhos servidos por desmentindo.com.br
+        run: |
+          for u in https://desmentindo.com.br/ "https://desmentindo.com.br/?cb=$RANDOM" https://www.desmentindo.com.br/ http://desmentindo.com.br/ \
+                   https://desmentindo.com.br/index.html https://desmentindo.com.br/v5/ https://desmentindo.com.br/v5/js/v5.js \
+                   https://desmentindo.com.br/v5/css/v5.css https://desmentindo.com.br/v5/data/home.json https://desmentindo.com.br/v4/; do
+            echo "=== $u"
+            curl -sS -o /tmp/b -D - -H 'Cache-Control: no-cache' "$u" | grep -i -E '^(HTTP|cache-control|expires|last-modified|etag|age|server|via|x-|vary|content-type|location)' || true
+            printf 'sha256=%s bytes=%s root_v5=%s legacy_app=%s\n' "$(sha256sum /tmp/b | cut -c1-16)" "$(wc -c < /tmp/b)" \
+              "$(grep -c 'name="desmentindo-root" content="v5"' /tmp/b)" "$(grep -c 'const D *=' /tmp/b)"
+          done

@@ -1,0 +1,65 @@
+name: Deploy para Locaweb (desmentindo.com.br)
+
+on:
+  push:
+    branches: [main]
+    # Commits operacionais (Control Plane / relatórios) não disparam deploy.
+    paths-ignore:
+      - 'control/**'
+      - 'operations/**'
+      - 'reports/**'
+      - 'command-center/**'
+      - 'CLAUDE.md'
+      - 'public-ui/**'
+  workflow_dispatch: {}
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Dados das interfaces públicas (v4 e v5) gerados a partir do que está no ar,
+      # para não ficarem velhos quando o Publisher atualiza index.html/data.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Gerar dados públicos da v4 e da v5
+        run: |
+          node public-ui/build-public-data.mjs
+          node public-ui/build-v5-data.mjs
+
+      # Raiz do site: v5 (ROOT_VERSION=v5) ou app legado (ROOT_VERSION=legacy = rollback em 1 commit).
+      # O index.html do repositório (legado, alimentado pelo Publisher) só é substituído no workspace do deploy,
+      # DEPOIS dos builds que leem os dados dele.
+      - name: Gerar a página da raiz
+        run: node public-ui/build-root.mjs
+
+      - name: Deploy via FTP para /public_html
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          protocol: ftp
+          local-dir: ./
+          server-dir: /public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/README.md
+            control/**
+            operations/**
+            reports/**
+            command-center/**
+            CLAUDE.md
+            public-ui/**
+
+      # Verificação PÓS-DEPLOY: a produção serve exatamente o que este commit gera (UI v5, assets, dados, edição,
+      # política de cache). Divergência = workflow vermelho (P0 visível), nunca "200 OK" silencioso.
+      - name: Verificar produção (raiz == v5 deste commit; dados e cache)
+        run: node public-ui/verify-production.mjs --retries 4

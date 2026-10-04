@@ -1,0 +1,51 @@
+name: Eleições 2026 — snapshots da apuração oficial (TSE)
+
+# Histórico da apuração (Presidente · Brasil · 1º turno): FIRST_RESULT → HOURLY → FINAL, idempotente.
+# Lê só o arquivo público de totalização do TSE e grava um JSON pequeno no branch de dados
+# `eleicoes-2026-dados` (não é main: não dispara deploy nem toca o site). A página lê esse arquivo.
+# Sem segredo além do GITHUB_TOKEN do próprio repo. Não publica conteúdo editorial.
+on:
+  schedule:
+    - cron: "*/5 20-23 4 10 *"   # 17:00–20:55 BRT de 04/10
+    - cron: "*/5 0-8 5 10 *"     # 21:00–05:55 BRT (05/10 em UTC)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: eleicoes-2026-snapshot
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Branch de dados
+        run: |
+          git config user.name "desmentindo-eleicoes[bot]"
+          git config user.email "noreply@desmentindo.com.br"
+          if git fetch -q origin eleicoes-2026-dados; then
+            git worktree add -q dados FETCH_HEAD
+            git -C dados checkout -q -B eleicoes-2026-dados
+          else
+            git worktree add -q --detach dados
+            git -C dados checkout -q --orphan eleicoes-2026-dados
+            git -C dados rm -rq . || true
+            printf 'Dados públicos de apuração (TSE) do Desmentindo · Eleições 2026. Gerado por .github/workflows/eleicoes-2026-snapshot.yml.\n' > dados/README.md
+          fi
+      - name: Snapshot
+        run: python3 public-ui/eleicoes_snapshot.py --out dados/presidente-br.json
+      - name: Gravar (só se mudou)
+        run: |
+          cd dados
+          git add -A
+          if git diff --cached --quiet; then echo "nada novo"; exit 0; fi
+          git commit -q -m "eleicoes-2026: snapshot $(python3 -c "import json;d=json.load(open('presidente-br.json'));s=d['snapshots'];print((s[-1]['kind']+' '+str(s[-1]['percent_totalized'])) if s else 'sem snapshot')")"
+          for i in 1 2 3; do
+            git push -q origin eleicoes-2026-dados && exit 0
+            sleep $((i*5)); git fetch -q origin eleicoes-2026-dados && git rebase -q FETCH_HEAD || true
+          done
+          exit 1

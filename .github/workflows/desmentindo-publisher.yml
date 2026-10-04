@@ -1,0 +1,48 @@
+name: Desmentindo Publisher
+
+# Unattended discovery + validation + Pull Request preparation for the
+# Autonomous Publishing Bridge (Vault -> this repo -> Locaweb deploy).
+#
+# This workflow NEVER pushes to `main` and NEVER merges a Pull Request.
+# It only opens/updates PRs from validated Publication Candidates found
+# in the Dropbox Vault production outbox. A human must review and merge
+# each PR on GitHub for the change to reach `main` (and from there the
+# existing deploy-locaweb.yml workflow takes it to desmentindo.com.br).
+#
+# Cadence: hourly. GitHub Actions cron is always UTC; the operational
+# reference timezone for this project is America/Sao_Paulo.
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: '0 * * * *'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: desmentindo-publisher
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Desmentindo Publisher (discover, validate, open/update PRs)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DROPBOX_APP_KEY: ${{ secrets.DROPBOX_APP_KEY }}
+          DROPBOX_APP_SECRET: ${{ secrets.DROPBOX_APP_SECRET }}
+          DROPBOX_REFRESH_TOKEN: ${{ secrets.DROPBOX_REFRESH_TOKEN }}
+        run: python3 automation/publisher_runtime.py
