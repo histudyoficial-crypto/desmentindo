@@ -23,6 +23,41 @@
   function tdate(d) { return '<time datetime="' + e(d) + '">' + e(fdate(d)) + "</time>"; }
   function nf(n) { return Number(n).toLocaleString("pt-BR"); }
   function plural(n, a, b) { return nf(n) + " " + (n === 1 ? a : b); }
+  // "sáb · 3 out 2026": dia da semana derivado só da data publicada (sem hora, sem fuso).
+  function fwd(d) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(d || "")) return fdate(d);
+    return ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"][new Date(d + "T12:00:00Z").getUTCDay()] + " · " + fdate(d);
+  }
+  // ---------------------------------------------------------------- MANDAR (compartilhar V1, Direção 1)
+  // Web Share nativo quando o aparelho oferece; sempre "Copiar link". URL canônica da página compartilhável
+  // (/fechamento/<data>/, /materia/<slug>/), que preserva título e prévia (OG). Sem SDK, sem conta, sem evento novo.
+  var SITE = "https://desmentindo.com.br";
+  function shareBar(url, title) {
+    return '<p class="share" data-url="' + e(url) + '" data-title="' + e(title || "") + '"><span class="share-k">Mandar <span aria-hidden="true">↗</span></span>' +
+      (navigator.share ? '<button type="button" class="share-b" data-share="native">Compartilhar…</button>' : "") +
+      '<button type="button" class="share-b" data-share="copy">Copiar link</button><span class="share-ok" role="status" aria-live="polite"></span></p>';
+  }
+  function copyText(t) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t);
+    return new Promise(function (ok, no) {
+      var ta = document.createElement("textarea");
+      ta.value = t; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      var done = false; try { done = document.execCommand("copy"); } catch (x) { /* sem suporte */ }
+      ta.remove(); if (done) ok(); else no(new Error("copy"));
+    });
+  }
+  document.addEventListener("click", function (ev) {
+    var b = ev.target.closest && ev.target.closest("button[data-share]");
+    if (!b) return;
+    var bar = b.closest(".share"), url = bar.getAttribute("data-url"), ok = bar.querySelector(".share-ok");
+    if (b.getAttribute("data-share") === "native" && navigator.share) {
+      navigator.share({ title: bar.getAttribute("data-title") || document.title, url: url }).catch(function () { /* cancelado pelo leitor */ });
+      return;
+    }
+    copyText(url).then(function () { ok.textContent = "Link copiado"; }, function () { ok.textContent = "Não deu para copiar. O link é " + url; });
+    setTimeout(function () { ok.textContent = ""; }, 4000);
+  });
   function ext(url, label, cls) { return '<a class="' + (cls || "link") + '" href="' + e(url) + '" target="_blank" rel="noopener">' + label + "</a>"; }
   function tLabel(s) { var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), x = String(s % 60).padStart(2, "0"); return h ? h + ":" + String(m).padStart(2, "0") + ":" + x : m + ":" + x; }
   function qparam(name) { var q = location.hash.split("?")[1] || ""; var m = new RegExp("(?:^|&)" + name + "=([^&]*)").exec(q); return m ? decodeURIComponent(m[1].replace(/\+/g, " ")) : ""; }
@@ -133,16 +168,16 @@
   // Em cada lista de trechos, o PRIMEIRO card já mostra o vídeo (miniatura oficial + play + minuto, sem iframe e sem autoplay);
   // os demais ficam compactos e abrem o player no próprio card ao tocar "Ver trecho". Um player aberto por lista.
   function whenLabel(li) { return (((li.querySelector(".said-when") || {}).textContent) || "").split("·").pop().trim(); }
+  // Pôster tipográfico (Direção 1): FONTE · DATA · ▶ MINUTO · "Ver trecho". Sem miniatura automática do YouTube, que
+  // pode mostrar outra pessoa ou outro assunto. Só texto do próprio card; o toque abre o player oficial no minuto.
   function posterFor(li) {
     var b = document.createElement("button");
-    b.type = "button"; b.className = "vposter";
-    b.setAttribute("aria-label", "Ver trecho aqui, a partir de " + whenLabel(li));
-    var img = document.createElement("img");
-    img.alt = ""; img.loading = "lazy"; img.decoding = "async";
-    img.src = "https://i.ytimg.com/vi/" + encodeURIComponent(li.getAttribute("data-video")) + "/hqdefault.jpg";
-    img.addEventListener("error", function () { img.remove(); });
-    b.appendChild(img);
-    b.insertAdjacentHTML("beforeend", '<span class="vplay" aria-hidden="true"></span><span class="vts">' + e(whenLabel(li)) + "</span>");
+    b.type = "button"; b.className = "vposter vtype";
+    var src = li.getAttribute("data-src") || "", d = li.getAttribute("data-date") || "", w = whenLabel(li);
+    b.setAttribute("aria-label", "Ver trecho aqui" + (src ? ", " + src : "") + (d ? ", " + fdate(d) : "") + ", a partir de " + w);
+    b.innerHTML = '<span class="vt-top">' + (src ? '<span class="vt-src">' + e(src) + "</span>" : "") + (d ? '<span class="vt-date">' + e(fdate(d)) + "</span>" : "") + "</span>" +
+      '<span class="vt-mid"><span class="vplay" aria-hidden="true"></span><span class="vt-min">' + e(w) + "</span></span>" +
+      '<span class="vt-go">Ver trecho · abre no minuto</span>';
     return b;
   }
   function primeLists(root) {
@@ -321,28 +356,39 @@
       var od = opDay(), today = new Date(od + "T12:00:00Z"), wd = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"][today.getUTCDay()];
       var h = '<div class="sig" role="note"><div class="sig-in"><span>O que foi dito. Quando foi dito. E de onde veio.</span>' +
         '<time datetime="' + od + '">' + wd + " · " + today.getUTCDate() + " " + MES[today.getUTCMonth()] + " " + today.getUTCFullYear() + "</time></div></div>";
-      h += '<section class="hero"><h1 class="name">DESMENTINDO</h1><p class="motto">Notícias passam. O que foi dito fica.</p>' +
-        searchForm("", "q-home", true) +
-        '<p class="cue">Veja o que já foi dito sobre uma notícia, com a data, o minuto do vídeo e a fonte original.</p>' +
-        '<p class="tries">Por exemplo: <a href="#/busca?q=Alexandre%20de%20Moraes">Alexandre de Moraes</a> · <a href="#/busca?q=INSS">INSS</a> · <a href="#/busca?q=Dark%20Horse">Dark Horse</a></p></section>';
+      // Direção 1 ("A edição do dia"): marca compacta; a primeira dobra responde que dia é, o que há hoje e qual é o
+      // último FECHAMENTO. A busca continua na porta "Pesquisar" e no fim da Home (não é mais a ação principal).
+      h += '<section class="hero hero-c"><h1 class="name">DESMENTINDO</h1><p class="motto">Notícias passam. O que foi dito fica.</p></section>';
+      var A = H.agora && H.agora.items && H.agora.items.length ? H.agora : null;
+      // Faixa AGORA · HOJE (compacta): só com AGORA do dia operacional corrente (regra de recência acima).
+      var strip = A ? '<section class="ah" aria-label="Agora, hoje"><p class="ah-k"><span class="ah-dot" aria-hidden="true"></span>Agora · hoje' +
+        ' <span class="ah-d">· ' + e(fdate(A.edition)) + " · " + plural(A.items.length, "notícia", "notícias") + "</span></p>" +
+        '<p class="ah-t"><a href="#/agora/' + e(A.items[0].id) + '">' + e(A.items[0].title) + "</a></p>" +
+        '<p class="ah-go"><a href="#agora" data-jump="agora">' + (A.items.length > 1 ? "Ver as " + nf(A.items.length) + " de hoje" : "Ver a de hoje") + ' <span aria-hidden="true">→</span></a></p></section>' : "";
+      var fxToday = LF && LF.edition_date === od;
+      if (!fxToday) h += strip;   // FECHAMENTO de hoje publicado: ele assume o topo e a faixa vem depois, sem competir
       // FECHAMENTO = produto principal (decisão D-06, 04/10): o mais recente publicado vem antes do AGORA.
       // Sem edição fixa: o índice publicado diz qual é a última; a Home muda sozinha quando entra uma nova.
       if (LF && LF.edition_date) {
         var fu = "#/fechamento/" + LF.edition_date, pts = (LF.opening && LF.opening.points) || [];
-        h += '<section class="sec fx-home" id="fechamento"><h2 class="h2">Fechamento <span class="meta" style="letter-spacing:0;text-transform:none;font-weight:400">· ' +
-          e(fdate(LF.edition_date)) + (LF.cutoff_at ? ", verificado até " + e(fhm(LF.cutoff_at)) : "") + "</span></h2>" +
-          '<p class="fx-home-t"><a href="' + e(fu) + '">' + e(LF.public_title) + "</a></p>" +
+        var lead = (LF.main_stories || []).filter(function (x) { return x.lead; })[0];
+        h += '<section class="sec fx-home" id="fechamento" aria-labelledby="fx-home-t"><p class="fx-home-k"><span class="tag tag-ink">Fechamento</span> ' +
+          e(fwd(LF.edition_date)) + (LF.cutoff_at ? " · verificado até " + e(fhm(LF.cutoff_at)) : "") + "</p>" +
+          '<h2 class="fx-home-t" id="fx-home-t"><a href="' + e(fu) + '">' + e(LF.public_title) + "</a></h2>" +
           (pts.length ? '<ol class="fx-open">' + pts.map(function (p) {
             return '<li><a href="' + e(fu + "#" + p.story) + '">' + e(p.text) + "</a></li>";
           }).join("") + "</ol>" : "") +
-          '<p class="fx-home-go"><a class="link" href="' + e(fu) + '">Ler o fechamento completo</a></p></section>';
+          (lead && lead.conclusion ? '<p class="fx-home-c"><b>O que dá para concluir:</b> ' + e(lead.conclusion) + "</p>" : "") +
+          '<div class="fx-home-go"><a class="btn-ink" href="' + e(fu) + '">Ler o fechamento <span aria-hidden="true">→</span></a>' +
+          shareBar(SITE + "/fechamento/" + LF.edition_date + "/", LF.public_title) + "</div></section>";
       }
-      var A = H.agora && H.agora.items && H.agora.items.length ? H.agora : null;
+      if (fxToday) h += strip;
+      var agoraList = "";
       if (A) {
         // Edição editorial (JSON próprio, aprovada no Human Gate): texto aprovado + fontes. Nada interno.
         // AGORA não domina a Home: 3 itens com texto, o resto em linhas; cada item tem página própria (#/agora/<id>).
         var full = A.items.slice(0, 3), rest = A.items.slice(3);
-        h += '<section class="sec" id="agora"><h2 class="h2">' + e(A.label || "Agora") + ' <span class="meta" style="letter-spacing:0;text-transform:none;font-weight:400">· edição de ' + e(fdate(A.edition)) + "</span></h2>" +
+        agoraList += '<section class="sec" id="agora"><h2 class="h2">' + e(A.label || "Agora") + ' <span class="meta" style="letter-spacing:0;text-transform:none;font-weight:400">· edição de ' + e(fdate(A.edition)) + "</span></h2>" +
           '<ul class="ed-list">' + full.map(function (it) {
             return '<li class="ed-item" id="' + e(it.id) + '"><h3 class="ed-t"><a href="#/agora/' + e(it.id) + '">' + e(it.title) + "</a></h3>" +
               '<p class="meta">' + tdate(it.date) + "</p><p>" + e(it.text) + "</p>" +
@@ -362,6 +408,7 @@
       if (fx.length) h += '<section class="sec" id="' + (LF ? "materias" : "fechamento") + '"><h2 class="h2">' + (LF ? "Matérias" : "Fechamento e matérias") + '</h2><ul class="ed-rows">' + fx.map(function (x) {
         return '<li><a href="' + e(x.href) + '"><span class="rt">' + e(x.t) + '</span><span class="rd">' + tdate(x.d) + "</span></a></li>";
       }).join("") + "</ul></section>";
+      h += agoraList;   // as notícias do AGORA de hoje, com texto e fontes, depois das matérias (destino de "Ver as N de hoje")
       if (H.hero) {
         h += '<section class="sec" id="acompanhamento"><h2 class="h2">Em acompanhamento</h2>' +
           '<article class="story-main"><a href="#/historia/' + e(H.hero.slug) + '"><span class="t">' + e(H.hero.title) + "</span></a>" +
@@ -379,6 +426,9 @@
           '<h3 class="h2" style="margin-top:34px">Nos arquivos</h3>' + archList(H.archives) +
           '<p class="quiet"><a class="link" href="#/arquivos">Ver tudo o que já está nos arquivos</a></p></section>';
       }
+      h += '<section class="sec" id="pesquisa"><h2 class="h2">Pesquise o arquivo</h2>' + searchForm("", "q-home", true) +
+        '<p class="cue">Veja o que já foi dito sobre uma notícia, com a data, o minuto do vídeo e a fonte original.</p>' +
+        '<p class="tries">Por exemplo: <a href="#/busca?q=Alexandre%20de%20Moraes">Alexandre de Moraes</a> · <a href="#/busca?q=INSS">INSS</a> · <a href="#/busca?q=Dark%20Horse">Dark Horse</a></p></section>';
       return h;
     });
   };
@@ -721,8 +771,15 @@
     return d ? d.getUTCDate() + " " + MES[d.getUTCMonth()] + ", " + fhm(iso) : "";
   }
   function setDesc(s) { var m = document.querySelector('meta[name="description"]'); if (m && s) m.setAttribute("content", s); }
+  // Coberturas em ordem de horário de publicação (não é ranking): sem horário vai para o fim, na ordem do dado.
+  function byTime(cov) {
+    return cov.map(function (c, i) { return { c: c, i: i, t: Date.parse(c.published_at || "") }; }).sort(function (a, b) {
+      return (isNaN(a.t) ? 1 : 0) - (isNaN(b.t) ? 1 : 0) || (isNaN(a.t) ? 0 : a.t - b.t) || a.i - b.i;
+    }).map(function (x) { return x.c; });
+  }
+  var COV_NOTE = "Em ordem de horário. Quem não aparece não foi encontrado até o corte; isso não indica motivo.";
   function covList(cov) {
-    return '<ul class="fx-cov">' + cov.map(function (c) {
+    return '<ul class="fx-cov">' + byTime(cov).map(function (c) {
       return '<li><p class="fx-who"><a href="' + e(c.url) + '" target="_blank" rel="noopener"><b>' + e(c.outlet) + '</b> <span aria-hidden="true">↗</span>' +
         '<span class="sr"> ' + e(c.title || c.headline || "") + "</span></a>" + (c.published_at ? "<span>" + e(fts(c.published_at)) + "</span>" : "") + "</p>" +
         (c.headline ? '<p class="fx-hl">' + e(c.headline) + "</p>" : "") + (c.summary ? "<p>" + e(c.summary) + "</p>" : "") + "</li>";
@@ -731,6 +788,9 @@
   function srcLinks(srcs) {
     return '<p class="src">' + srcs.map(function (s) { return '<a href="' + e(s.url) + '" target="_blank" rel="noopener">' + e(s.outlet) + "</a>"; }).join(" · ") + "</p>";
   }
+  // EM1_RULE (determinística, testada em public-ui/test-direcao1.mjs): de 1 a 5 pontos e no máximo 600 caracteres
+  // somados (~100 palavras, menos de 1 minuto a 200 palavras/min). Fora disso o rótulo não aparece.
+  function em1(pts) { var n = 0; pts.forEach(function (p) { n += String(p.text || "").length; }); return pts.length >= 1 && pts.length <= 5 && n <= 600; }
   var BASIS_TXT = { "manchete": "só a manchete", "manchete e resumo": "manchete e resumo", "texto da matéria": "texto da matéria" };
 
   P.fechamento = function (date) {
@@ -738,28 +798,41 @@
       if (!F) return notFound();
       document.title = F.public_title + " · Desmentindo";
       setDesc((F.opening && F.opening.points || []).map(function (p) { return p.text; }).join(" "));
-      var h = '<section class="page-head fx-head"><p class="kicker"><span class="tag tag-ink">Fechamento</span> ' + e(fdate(F.edition_date)) +
+      var h = '<section class="page-head fx-head"><p class="kicker"><span class="tag tag-ink">Fechamento</span> ' + e(fwd(F.edition_date)) +
         (F.context ? " · " + e(F.context) : "") + "</p>" +
         '<h1 class="h1">' + e(F.public_title) + "</h1>" +
         '<p class="fx-cut">Conteúdo verificado até <b>' + e(fhm(F.cutoff_at)) + "</b> de " + e(fdate(F.edition_date)) +
-        (F.published_at ? ' · publicado em <time datetime="' + e(F.published_at) + '">' + e(fts(F.published_at)) + "</time>" : "") + "</p>";
-      if (F.opening && F.opening.points && F.opening.points.length) {
-        h += '<h2 class="fx-open-h">' + e(F.opening.title) + '</h2><ol class="fx-open">' + F.opening.points.map(function (p) {
+        (F.published_at ? ' · publicado em <time datetime="' + e(F.published_at) + '">' + e(fts(F.published_at)) + "</time>" : "") + "</p>" +
+        shareBar(SITE + "/fechamento/" + F.edition_date + "/", F.public_title);
+      var pts = (F.opening && F.opening.points) || [];
+      if (pts.length) {
+        // "Em 1 minuto": só os pontos de abertura aprovados (cada um aponta para uma história principal). O rótulo
+        // aparece apenas pela regra fixa EM1_RULE; fora dela, fica só o título aprovado da abertura.
+        h += '<div class="fx-1m">' + (em1(pts) ? '<p class="fx-1m-k">Em 1 minuto</p>' : "") + '<h2 class="fx-open-h">' + e(F.opening.title) + '</h2><ol class="fx-open">' + pts.map(function (p) {
           return '<li><a href="#' + e(p.story) + '" data-jump="' + e(p.story) + '">' + e(p.text) + "</a></li>";
-        }).join("") + "</ol>";
+        }).join("") + "</ol></div>";
       }
       h += "</section>";
       if (F.main_stories && F.main_stories.length) {
-        h += '<section class="sec"><h2 class="h2">Histórias principais</h2>' + F.main_stories.map(function (s) {
+        // Divulgação progressiva: a principal abre inteira; nas demais, os blocos abrem ao toque. Título, linha do
+        // tempo (estado), conclusão e veículos ficam sempre visíveis.
+        h += '<section class="sec"><h2 class="h2">Histórias principais</h2>' + F.main_stories.map(function (s, i) {
+          var open = s.lead || (i === 0 && !F.main_stories.some(function (x) { return x.lead; }));
+          var blk = function (title, body) { return '<details class="fx-blk"' + (open ? " open" : "") + "><summary>" + title + "</summary>" + body + "</details>"; };
           var x = '<article class="fx-story' + (s.lead ? " fx-lead" : "") + '" id="' + e(s.id) + '">' + (s.lead ? '<p class="kicker">Principal</p>' : "") +
             '<h3 class="fx-h">' + e(s.headline) + "</h3>" + (s.dek ? '<p class="fx-dek">' + e(s.dek) + "</p>" : "");
           if (s.steps) x += '<ol class="fx-steps">' + s.steps.map(function (st) {
             return '<li class="' + (st.done ? "done" : "open") + '"><b>' + e(st.label) + "</b><span>" + e(st.text) + "</span></li>";
           }).join("") + "</ol>";
-          x += '<h4 class="fx-k">O que aconteceu</h4><p>' + e(s.what_happened) + "</p>";
-          if (s.what_changed) x += '<h4 class="fx-k">O que há de novo</h4><p class="fx-new">' + e(s.what_changed) + "</p>";
-          if (s.coverage && s.coverage.length) x += '<h4 class="fx-k">Como estão cobrindo</h4>' + covList(s.coverage);
-          if (s.official) x += '<h4 class="fx-k">Manifestações oficiais</h4><ul class="fx-plain">' + s.official.map(function (o) { return "<li>" + e(o) + "</li>"; }).join("") + "</ul>";
+          x += blk("O que aconteceu", "<p>" + e(s.what_happened) + "</p>");
+          if (s.what_changed) x += blk("O que há de novo", '<p class="fx-new">' + e(s.what_changed) + "</p>");
+          if (s.coverage && s.coverage.length) x += blk("Coberturas encontradas até o corte (" + nf(s.coverage.length) + ")", covList(s.coverage) + '<p class="rule-note">' + COV_NOTE + "</p>");
+          if (s.official) x += blk("Manifestações oficiais", '<ul class="fx-plain">' + s.official.map(function (o) { return "<li>" + e(o) + "</li>"; }).join("") + "</ul>");
+          if (!open && s.coverage && s.coverage.length) {
+            var seen = {};
+            x += '<p class="src fx-srcline">Veículos: ' + byTime(s.coverage).filter(function (c) { if (seen[c.outlet]) return false; seen[c.outlet] = 1; return true; })
+              .map(function (c) { return '<a href="' + e(c.url) + '" target="_blank" rel="noopener">' + e(c.outlet) + "</a>"; }).join(" · ") + "</p>";
+          }
           x += '<div class="fx-concl"><h4 class="fx-k">O que dá para concluir</h4><p>' + e(s.conclusion) + "</p>" +
             (s.open_questions ? '<p class="fx-open-q"><b>Em aberto:</b> ' + e(s.open_questions) + "</p>" : "") + "</div>";
           return x + "</article>";
@@ -799,15 +872,22 @@
     li = li.replace('<p class="said-x">', (v.video_title ? '<p class="fx-vt">' + e(v.video_title) + "</p>" : "") + '<p class="said-x">');
     return v.context ? li.replace('<div class="said-foot">', '<p class="fx-ctx">' + e(v.context) + '</p><div class="said-foot">') : li;
   }
+  // Status publicado → selo canônico só quando o texto é exatamente um dos selos (ex.: "Parcialmente documentado").
+  // Qualquer outro status ("Decisão provisória") sai como rótulo neutro, sem cor de selo e sem criar estado novo.
+  function statusTag(t) {
+    var k = Object.keys(SELO).filter(function (x) { return SELO[x][1].toLowerCase() === String(t || "").trim().toLowerCase(); })[0];
+    return k ? selo(k) : '<span class="tag tag-ring">' + e(t) + "</span>";
+  }
   P.materia = function (slug) {
     return loadTyped("materias", slug).then(function (M) {
       if (!M) return notFound();
       document.title = M.public_title + " · Desmentindo";
       setDesc(M.dek);
       var h = '<section class="page-head hero-ink fx-mhead"><p class="kicker"><span class="tag tag-paper">' + e(M.kicker || "Matéria") + "</span>" +
-        (M.status ? ' <span class="fx-st">' + e(M.status) + "</span>" : "") + "</p>" +
+        (M.status ? " " + statusTag(M.status) : "") + "</p>" +
         '<h1 class="h1">' + e(M.public_title) + "</h1>" + (M.dek ? '<p class="fx-mdek">' + e(M.dek) + "</p>" : "") +
-        '<p class="fx-pub">' + tdate(M.date) + (M.updated_at && M.updated_at !== M.published_at ? " · atualizado em " + e(fts(M.updated_at)) : "") + "</p>";
+        '<p class="fx-pub">' + tdate(M.date) + (M.updated_at && M.updated_at !== M.published_at ? " · atualizado em " + e(fts(M.updated_at)) : "") + "</p>" +
+        shareBar(SITE + "/materia/" + M.slug + "/", M.public_title);
       if (M.art) h += '<figure class="fx-art"><picture><source media="(min-width: 620px)" srcset="' + e(M.art.desktop) + '"><img src="' + e(M.art.mobile) + '" alt="" loading="lazy" decoding="async"></picture>' +
         (M.art.caption ? "<figcaption>" + e(M.art.caption) + "</figcaption>" : "") + "</figure>";
       h += "</section>";
@@ -816,6 +896,14 @@
         h += '<section class="sec"><h2 class="h2">O que mudou hoje</h2><ul class="items">' + M.what_changed.map(function (c) {
           return '<li><span class="fx-when">' + e(c.when) + "</span><p>" + e(c.text) + "</p></li>";
         }).join("") + "</ul>" + (M.correction ? '<p class="fx-fix"><b>Correção:</b> ' + e(M.correction) + "</p>" : "") + "</section>";
+      }
+      if (M.conclusion) {
+        var C = M.conclusion, yes = C.points.filter(function (p) { return p.holds; }), no = C.points.filter(function (p) { return !p.holds; });
+        var pl = function (arr, cls) { return "<ul>" + arr.map(function (p) { return '<li class="' + cls + '">' + e(p.text) + "</li>"; }).join("") + "</ul>"; };
+        h += '<section class="sec" id="concluir"><h2 class="h2">O que dá para concluir hoje</h2><div class="fx-mconcl"><p class="fx-cst">' + statusTag(C.status) + "</p>" +
+          (yes.length ? '<h3 class="fx-ck">Sabemos</h3>' + pl(yes, "y") : "") +
+          (no.length ? '<h3 class="fx-ck">Ainda não dá para dizer</h3>' + pl(no, "n") : "") +
+          (C.limits && C.limits.length ? '<p class="fx-lims">' + C.limits.map(function (l) { return "<span>" + e(l) + "</span>"; }).join("") + "</p>" : "") + "</div></section>";
       }
       if ((M.videos && M.videos.length) || M.partial_videos) {
         h += '<section class="sec" id="ja-falaram"><h2 class="h2">' + e(M.videos_title || "Já falaram sobre isso") + "</h2>" +
@@ -835,18 +923,13 @@
             }).join("") + "</span>" : "") + "</li>";
         }).join("") + "</ol></section>";
       }
-      if (M.coverage && M.coverage.length) h += '<section class="sec"><h2 class="h2">Quem está cobrindo</h2>' + covList(M.coverage) + (M.coverage_note ? '<p class="rule-note">' + e(M.coverage_note) + "</p>" : "") + "</section>";
+      if (M.coverage && M.coverage.length) h += '<section class="sec"><h2 class="h2">Quem está cobrindo</h2>' + covList(M.coverage) +
+        '<p class="rule-note">Em ordem de horário. Quem não aparece não foi encontrado; isso não indica motivo.</p>' + (M.coverage_note ? '<p class="rule-note">' + e(M.coverage_note) + "</p>" : "") + "</section>";
       if (M.documents && M.documents.length) {
         h += '<section class="sec"><h2 class="h2">Documentos</h2><ul class="fx-docs">' + M.documents.map(function (d) {
           return '<li><span class="tag ' + (d.located ? "tag-fact" : "tag-ring") + '">' + e(d.status) + '</span><p class="fx-hl">' + e(d.title) + "</p>" +
             (d.note ? "<p>" + e(d.note) + "</p>" : "") + (d.url ? ext(d.url, "Ver documento ↗", "link") : "") + "</li>";
         }).join("") + "</ul></section>";
-      }
-      if (M.conclusion) {
-        var C = M.conclusion;
-        h += '<section class="sec"><h2 class="h2">O que dá para concluir hoje</h2><div class="fx-mconcl"><p class="fx-st">' + e(C.status) + "</p><ul>" +
-          C.points.map(function (p) { return '<li class="' + (p.holds ? "y" : "n") + '">' + e(p.text) + "</li>"; }).join("") + "</ul>" +
-          (C.limits && C.limits.length ? '<p class="fx-lims">' + C.limits.map(function (l) { return "<span>" + e(l) + "</span>"; }).join("") + "</p>" : "") + "</div></section>";
       }
       if (M.see_for_yourself && M.see_for_yourself.length) {
         h += '<section class="sec"><h2 class="h2">Veja por você mesmo</h2><ul class="srcs">' + M.see_for_yourself.map(function (s) {
@@ -1079,7 +1162,7 @@
     var fn = P[name] || P.home;
     document.body.classList.toggle("is-home", fn === P.home);
     document.title = "Desmentindo";
-    setDoor(fn === P.busca ? "busca" : (fn === P.arquivos || fn === P.arquivo) ? "arquivos" : (fn === P.home || fn === P.historia || fn === P.agora || fn === P.fechamento || fn === P.materia) ? "agora" : "");
+    setDoor(fn === P.busca ? "busca" : (fn === P.arquivos || fn === P.arquivo) ? "arquivos" : fn === P.fechamento ? "fechamento" : (fn === P.home || fn === P.historia || fn === P.agora || fn === P.materia) ? "agora" : "");
     pending = {};
     var my = ++routeSeq; // só a navegação mais recente pode pintar a página (resposta atrasada de outra rota é descartada)
     fn(arg).then(function (h) {

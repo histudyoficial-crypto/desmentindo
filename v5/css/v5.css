@@ -196,7 +196,7 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
 @media (max-width: 640px) {
   .doors { display: none; }
   body { padding-bottom: calc(54px + env(safe-area-inset-bottom)); }
-  .tabbar { display: grid; grid-template-columns: repeat(4, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: var(--white); border-top: 2px solid var(--ink); padding-bottom: env(safe-area-inset-bottom); }
+  .tabbar { display: grid; grid-template-columns: repeat(5, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: var(--white); border-top: 2px solid var(--ink); padding-bottom: env(safe-area-inset-bottom); }
   .tabbar a { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; min-height: 54px; font-size: 11.5px; font-weight: 800; text-decoration: none; color: var(--ink-2); border-top: 4px solid transparent; margin-top: -2px; }
   .tabbar a span { font-size: 15px; line-height: 1; }
   .tabbar a[aria-current="page"] { color: var(--ink); border-top-color: var(--yellow); }
@@ -477,7 +477,6 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
 .fx-list p { margin: 0; }
 .fx-list .src { font-size: 13.5px; color: var(--muted); margin-top: 6px; }
 .fx-voice { font-size: 15px; margin-top: 8px !important; }
-.fx-mhead .fx-st { display: inline-block; font-size: 12px; font-weight: 800; background: var(--yellow); color: var(--ink); padding: 2px 8px; margin-left: 6px; letter-spacing: .02em; }
 .fx-mdek { font-size: 18px; margin: 8px 0 0; color: var(--gray-200); }
 .fx-pub { font-size: 13px; color: var(--gray-400); margin: 8px 0 0; }
 .fx-art { margin: 16px 0 0; }
@@ -503,7 +502,6 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
 .fx-docs li { background: var(--white); box-shadow: 0 0 0 1px var(--rule); padding: 12px 14px; }
 .fx-docs p { margin: 4px 0 0; }
 .fx-mconcl { background: var(--yellow-pale); padding: 12px 14px; }
-.fx-mconcl .fx-st { font-weight: 800; margin: 0 0 6px; }
 .fx-mconcl ul { margin: 0; padding: 0; list-style: none; }
 .fx-mconcl li { padding: 4px 0 4px 24px; position: relative; }
 .fx-mconcl li.y::before { content: "✓"; position: absolute; left: 0; color: var(--green-ink); font-weight: 900; }
@@ -518,7 +516,72 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
 @media (min-width: 760px) { .fx-concl { margin: 16px -16px -16px; } .fx-tl li { grid-template-columns: 130px 1fr; } }
 
 /* FECHAMENTO no topo da Home (D-06, 04/10/2026): mesmo vocabulário da página do Fechamento */
-.fx-home .fx-home-t { font-weight: 900; font-stretch: 80%; font-size: clamp(24px, 6vw, 32px); line-height: 1.05; margin: 0 0 12px; }
+.fx-home .fx-home-t { font-weight: 900; font-stretch: 80%; font-size: clamp(28px, 7.4vw, 44px); line-height: 1.02; margin: 0 0 14px; }
 .fx-home .fx-home-t a { text-decoration: none; }
 .fx-home .fx-open { margin-bottom: 12px; }
 .fx-home .fx-home-go { margin: 0; }
+
+/* ---------------------------------------------------------------- Direção 1 · "A edição do dia" (04/10/2026)
+   Só hierarquia, escala, ordem e divulgação progressiva. Mesmos tokens, mesma tipografia, mesmos selos. */
+/* Home: marca compacta (a primeira dobra é do dia, não do logotipo) */
+.hero.hero-c { padding: 16px 0 4px; }
+.hero.hero-c .name { font-size: clamp(34px, 9vw, 64px); line-height: .9; }
+.hero.hero-c .motto { font-size: clamp(16px, 2.4vw, 19px); margin: 8px 0 0; color: var(--ink-2); }
+/* Faixa AGORA · HOJE: compacta, estado do dia (não é manchete de urgência) */
+.ah { margin: 12px 0 0; padding: 10px 12px 12px; background: var(--white); box-shadow: inset 4px 0 0 var(--ink), 0 0 0 1px var(--rule); }
+.ah-k { margin: 0; font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.ah-k .ah-d { letter-spacing: .06em; color: var(--ink-2); font-weight: 700; }
+.ah-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); flex: none; }
+.ah-t { margin: 6px 0 0; font-weight: 800; font-size: 17px; line-height: 1.25; }
+.ah-t a { text-decoration: none; }
+.ah-t a:hover { text-decoration: underline; }
+.ah-go { margin: 6px 0 0; font-size: 14px; font-weight: 700; }
+.ah-go a { color: var(--link); text-underline-offset: 3px; display: inline-block; padding: 4px 0; }
+/* FECHAMENTO na Home: o produto do dia, com peso de edição */
+.sec.fx-home { padding-top: 12px; }
+.fx-home { border-top: 5px solid var(--ink); margin-top: 18px; }
+.fx-home-k { margin: 4px 0 8px; font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
+.fx-home-c { display: none; margin: 0 0 14px; padding: 10px 12px; background: var(--yellow-pale); font-size: 15.5px; }
+@media (min-width: 900px) { .fx-home-c { display: block; } }
+.fx-home .fx-home-go { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
+.fx-home .fx-home-go .btn-ink { margin-top: 0; padding: 12px 16px; font-size: 15px; }
+#pesquisa .qform { margin-top: 4px; }
+/* MANDAR (compartilhar V1) */
+.share { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 12px 0 0; font-size: 14px; }
+.share-k { font-weight: 800; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; margin-right: 2px; }
+.share-b { font: inherit; font-weight: 700; font-size: 14px; min-height: 40px; padding: 8px 12px; background: var(--white); color: var(--ink); border: 0; box-shadow: inset 0 0 0 1.5px var(--ink); cursor: pointer; }
+.share-b:hover { background: var(--paper); }
+.share-b:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.share-ok { font-weight: 700; color: var(--green-ink); }
+.share-ok:empty { display: none; }
+.hero-ink .share-k { color: #CFCBCA; }
+.hero-ink .share-b { background: transparent; color: var(--white); box-shadow: inset 0 0 0 1.5px #CFCBCA; }
+.hero-ink .share-b:hover { background: #000; }
+.hero-ink .share-ok { color: #9FE3B5; }
+/* FECHAMENTO: "Em 1 minuto" e blocos que abrem ao toque */
+.fx-1m { margin-top: 18px; padding: 12px 14px 14px; background: var(--white); box-shadow: inset 0 4px 0 var(--yellow), 0 0 0 1px var(--rule); }
+.fx-1m-k { margin: 0 0 2px; font-size: 11.5px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+.fx-blk { border-top: 1px solid var(--rule); margin-top: 12px; }
+.fx-blk > summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 10px; min-height: 44px; padding: 8px 0;
+  font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.fx-blk > summary::-webkit-details-marker { display: none; }
+.fx-blk > summary::after { content: "+ Abrir"; font-size: 12px; letter-spacing: .04em; color: var(--link); white-space: nowrap; }
+.fx-blk[open] > summary::after { content: "− Fechar"; }
+.fx-blk > summary:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.fx-blk > :not(summary) { margin-bottom: 8px; }
+.fx-srcline { margin: 10px 0 0 !important; }
+/* MATÉRIA: Sabemos / Ainda não dá para dizer */
+.fx-cst { margin: 0 0 8px; }
+.fx-ck { font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin: 12px 0 2px; }
+.fx-mhead .tag-ring { box-shadow: inset 0 0 0 1.5px #CFCBCA; color: var(--white); }
+.fx-mhead .selo { vertical-align: 2px; }
+/* Vídeo: pôster tipográfico (sem miniatura automática) */
+.vposter.vtype { display: flex; flex-direction: column; justify-content: space-between; padding: 14px 16px; text-align: left; color: var(--white); background: var(--ink); font: inherit; }
+.vtype .vt-top { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.vtype .vt-date { color: #CFCBCA; font-variant-numeric: tabular-nums; }
+.vtype .vt-mid { display: flex; align-items: center; gap: 14px; }
+.vtype .vplay { position: relative; left: auto; top: auto; margin: 0; flex: none; width: 56px; height: 56px; }
+.vtype .vplay::after { left: 22px; top: 16px; border-left-width: 17px; border-top-width: 12px; border-bottom-width: 12px; }
+.vtype .vt-min { font-weight: 900; font-stretch: 80%; font-size: clamp(30px, 9vw, 44px); line-height: 1; font-variant-numeric: tabular-nums; }
+.vtype .vt-go { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--yellow); }
+.vtype:hover .vt-go { text-decoration: underline; }
