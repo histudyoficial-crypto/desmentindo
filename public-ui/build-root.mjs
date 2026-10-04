@@ -67,6 +67,19 @@ const analyticsTag = AN.provider === "umami" && AN.website_id
   : "";
 if (analyticsTag && !/^[0-9a-f-]{36}$/.test(AN.website_id)) throw new Error("analytics.json: website_id inválido");
 
+// CAPTAÇÃO (T3/T4, 04/10): faixa "Receba o FECHAMENTO" acima do topo, só quando public-ui/capture.json tiver um destino
+// real (https, host permitido para o canal). Sem destino → nenhuma faixa. Nenhum dado do leitor passa pelo site.
+const CAP = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "capture.json"), "utf8"));
+let captureTag = "";
+if (CAP.enabled) {
+  let u = null;
+  try { u = new URL(CAP.destination); } catch (e) { /* inválido */ }
+  const hosts = (CAP.allowed_hosts || {})[CAP.channel] || [];
+  if (!u || u.protocol !== "https:" || !hosts.includes(u.hostname)) throw new Error("capture.json: destination precisa ser https num host permitido para o canal");
+  const a = s => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+  captureTag = `<meta name="desmentindo-capture" content="${a(u.href)}" data-channel="${a(CAP.channel)}" data-promise="${a(CAP.copy.promise)}" data-detail="${a(CAP.copy.detail)}" data-cta="${a(CAP.copy.cta)}" data-short="${a(CAP.copy.short)}">`;
+}
+
 // COMPARTILHAMENTO (T2, P0-A de 04/10): prévia de link. Quem gera prévia (WhatsApp, LinkedIn, X) não roda JS nem vê o
 // "#/rota", então cada FECHAMENTO e MATÉRIA ganha uma página estática própria com título, descrição, canonical e Open Graph.
 const SITE = "https://desmentindo.com.br";
@@ -87,7 +100,7 @@ const ROOT_DESC = (/<meta name="description" content="([^"]*)">/.exec(h) || [])[
 h = h.replace(/<meta name="description" content="[^"]*">\n?/, "")
   .replace('<link rel="canonical" href="https://desmentindo.com.br/">',
     meta({ title: "Desmentindo", desc: ROOT_DESC, url: SITE + "/", image: "/img/og/desmentindo.png", type: "website" }))
-  .replace("</head>", (analyticsTag ? analyticsTag + "\n" : "") + "</head>");
+  .replace("</head>", (analyticsTag ? analyticsTag + "\n" : "") + (captureTag ? captureTag + "\n" : "") + "</head>");
 fs.writeFileSync(out, h);
 
 // Página por edição: mesma raiz, caminhos absolutos (a página fica em /fechamento/<data>/), e abre direto na rota.

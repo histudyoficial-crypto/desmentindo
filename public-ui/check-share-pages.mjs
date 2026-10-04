@@ -44,5 +44,10 @@ const AN = read("public-ui/analytics.json");
 const hasAn = /name="desmentindo-analytics"/.test(root);
 if (!AN.website_id && hasAn) fail.push("medição ligada sem website_id");
 if (AN.website_id && (!hasAn || !/data-auto-track="false"/.test(root) || !root.includes(`src="${AN.script_src}"`))) fail.push("medição configurada mas tag inválida");
+const CAP = read("public-ui/capture.json");
+const hasCap = /name="desmentindo-capture"/.test(root);
+if (!CAP.enabled && hasCap) fail.push("faixa de captação ligada sem destino configurado");
+if (CAP.enabled && !hasCap) fail.push("captação configurada mas a faixa não foi gerada");
+if (/name="desmentindo-capture"[^>]*content="(?!https:\/\/)/.test(root)) fail.push("destino da captação não é https");
 if (fail.length) { console.error("SHARE_PAGES_INVALID\n  " + fail.join("\n  ")); process.exit(1); }
-console.log(`SHARE_PAGES_VALID (${fs.readdirSync(dir).length} tipos) · medição ${hasAn ? "LIGADA" : "desligada (sem website_id)"}`);
+console.log(`SHARE_PAGES_VALID (${fs.readdirSync(dir).length} tipos) · medição ${hasAn ? "LIGADA" : "desligada (sem website_id)"} · captação ${hasCap ? "LIGADA" : "desligada (sem destino)"}`);
