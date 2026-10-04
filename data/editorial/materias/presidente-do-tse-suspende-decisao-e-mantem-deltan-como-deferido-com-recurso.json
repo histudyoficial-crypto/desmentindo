@@ -1,0 +1,158 @@
+{
+ "schema": "desmentindo.public.materia.v1",
+ "type": "MATERIA",
+ "slug": "presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso",
+ "date": "2026-10-04",
+ "public_title": "Presidente do TSE suspende decisão e mantém Deltan como “deferido com recurso”",
+ "kicker": "Eleições 2026 · Senado (PR)",
+ "status": "Decisão provisória",
+ "dek": "No sábado, um ministro do TSE indeferiu a candidatura. Neste domingo, Nunes Marques suspendeu essa decisão em liminar: os votos são processados, e o plenário do TSE decide se valem.",
+ "published_at": "2026-10-04T15:25:29Z",
+ "updated_at": "2026-10-04T15:25:29Z",
+ "facts": [
+  {
+   "value": "2",
+   "label": "decisões individuais no TSE em menos de 24 horas"
+  },
+  {
+   "value": "4 a 3",
+   "label": "placar do TRE-PR que aprovou a candidatura (8 set)"
+  },
+  {
+   "value": "Plenário",
+   "label": "do TSE decide se os votos valem"
+  }
+ ],
+ "what_changed": [
+  {
+   "when": "sáb (3) · noite",
+   "text": "O ministro Floriano de Azevedo Marques, do TSE, indeferiu o registro de Deltan Dallagnol (Novo) ao Senado pelo Paraná e reverteu o TRE-PR."
+  },
+  {
+   "when": "dom (4) · manhã",
+   "text": "O presidente do TSE, Kassio Nunes Marques, suspendeu essa decisão em liminar."
+  },
+  {
+   "when": "dom (4)",
+   "text": "O registro fica como “deferido com recurso”; os votos dados à chapa são processados, com validade condicionada à decisão do plenário do TSE."
+  }
+ ],
+ "videos_title": "Já falaram sobre isso",
+ "videos_note": "Nenhum trecho do arquivo trata destas decisões.",
+ "archive_note": "Busca sem trecho sobre o caso: Alexandre Garcia (3.701 de 3.701 vídeos), Te Atualizei (501 de 581) e Caio Coppolla (107 de 553; coberturas parciais).",
+ "timeline": [
+  {
+   "when": "8 set",
+   "text": "TRE-PR aprova a candidatura por 4 a 3; PT e PDT recorrem ao TSE"
+  },
+  {
+   "when": "2 out",
+   "text": "Procuradoria-Geral Eleitoral defende manter o registro"
+  },
+  {
+   "when": "3 out",
+   "text": "Zeca Dirceu pede a Gilmar Mendes, do STF, que anule os votos de Deltan (manchete da Gazeta do Povo)"
+  },
+  {
+   "when": "3 out · noite",
+   "text": "Floriano de Azevedo Marques (TSE) indefere o registro"
+  },
+  {
+   "when": "Hoje",
+   "text": "Nunes Marques suspende a decisão em liminar; registro “deferido com recurso”",
+   "today": true
+  }
+ ],
+ "coverage": [
+  {
+   "outlet": "g1",
+   "published_at": "2026-10-04",
+   "headline": "Nunes Marques suspende decisão que indeferiu candidatura de Deltan ao Senado pelo Paraná",
+   "summary": "Detalha o efeito: registro “deferido com recurso” e votos processados.",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/04/nunes-marques-suspende-decisao-que-indeferiu-candidatura-de-deltan-ao-senado-pelo-parana.ghtml"
+  },
+  {
+   "outlet": "Folha de S.Paulo",
+   "published_at": "2026-10-03",
+   "headline": "TSE indefere candidatura de Deltan Dallagnol ao Senado pelo Paraná",
+   "summary": "Relata a decisão de Floriano e que ela é individual, sujeita ao plenário.",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-indefere-candidatura-de-deltan-dallagnol-ao-senado-pelo-parana.shtml"
+  },
+  {
+   "outlet": "Estadão",
+   "published_at": "2026-10-03",
+   "headline": "TSE nega registro a Deltan Dallagnol, que fica impedido de concorrer ao Senado a 12 horas da eleição",
+   "summary": "Manchete da noite de sábado, antes da liminar; registra que Deltan chamou a decisão de ilegal.",
+   "url": "https://estadao.com.br/politica/eleicoes/tse-nega-registro-de-candidatura-a-deltan-dallagnol-que-fica-impedido-de-concorrer-ao-senado"
+  }
+ ],
+ "coverage_note": "A suspensão aparece também em Estadão, Jovem Pan, UOL, Veja e Poder360. O efeito sobre os votos foi conferido no texto do g1.",
+ "documents": [
+  {
+   "status": "Documento primário não localizado",
+   "located": false,
+   "title": "Decisão de Floriano de Azevedo Marques (TSE, 3 out)",
+   "note": "Conteúdo relatado por Folha e Estadão."
+  },
+  {
+   "status": "Documento primário não localizado",
+   "located": false,
+   "title": "Liminar de Kassio Nunes Marques (TSE, 4 out)",
+   "note": "Efeito relatado pelo g1."
+  }
+ ],
+ "conclusion": {
+  "status": "Decisão provisória",
+  "points": [
+   {
+    "holds": true,
+    "text": "Neste domingo, por liminar do presidente do TSE, o registro de Deltan está como “deferido com recurso”."
+   },
+   {
+    "holds": true,
+    "text": "Os votos dados a ele são processados."
+   },
+   {
+    "holds": false,
+    "text": "Ainda não dá para dizer se esses votos valerão: isso depende do plenário do TSE."
+   }
+  ],
+  "limits": [
+   "Liminar, não decisão final",
+   "Decisões originais não obtidas",
+   "Pedido da defesa ao STF, relatado em coluna, sem desfecho conhecido"
+  ]
+ },
+ "see_for_yourself": [
+  {
+   "kind": "news",
+   "label": "g1 · 4 out",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/04/nunes-marques-suspende-decisao-que-indeferiu-candidatura-de-deltan-ao-senado-pelo-parana.ghtml"
+  },
+  {
+   "kind": "news",
+   "label": "Estadão · 4 out",
+   "url": "https://estadao.com.br/politica/eleicoes/nunes-marques-suspende-decisao-que-indeferiu-candidatura-de-deltan-dallagnol"
+  },
+  {
+   "kind": "news",
+   "label": "Poder360 · 4 out",
+   "url": "https://poder360.com.br/poder-justica/nunes-marques-reverte-decisao-e-autoriza-votos-para-deltan"
+  },
+  {
+   "kind": "news",
+   "label": "Folha de S.Paulo · 3 out",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-indefere-candidatura-de-deltan-dallagnol-ao-senado-pelo-parana.shtml"
+  },
+  {
+   "kind": "news",
+   "label": "Estadão · 3 out",
+   "url": "https://estadao.com.br/politica/eleicoes/tse-nega-registro-de-candidatura-a-deltan-dallagnol-que-fica-impedido-de-concorrer-ao-senado"
+  },
+  {
+   "kind": "news",
+   "label": "Jovem Pan · coluna · 4 out",
+   "url": "https://jovempan.com.br/colunistas/bruno-pinheiro/deltan-aciona-fux-para-barrar-decisao-de-dino-sobre-votos-no-dia-da-eleicao"
+  }
+ ]
+}

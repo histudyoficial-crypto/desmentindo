@@ -1,7 +1,16 @@
 {
  "schema": "desmentindo.public.materia_index.v1",
- "latest": "fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro",
+ "latest": "presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso",
  "items": [
+  {
+   "slug": "presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso",
+   "date": "2026-10-04",
+   "title": "Presidente do TSE suspende decisão e mantém Deltan como “deferido com recurso”",
+   "kicker": "Eleições 2026 · Senado (PR)",
+   "dek": "No sábado, um ministro do TSE indeferiu a candidatura. Neste domingo, Nunes Marques suspendeu essa decisão em liminar: os votos são processados, e o plenário do TSE decide se valem.",
+   "file": "data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json",
+   "sha256": "2b7ed500efec105eee2e89ac2458a9e1bd17c744a376231253b973a6339edc41"
+  },
   {
    "slug": "fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro",
    "date": "2026-10-03",
