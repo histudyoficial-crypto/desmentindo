@@ -1,0 +1,524 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-03",
+ "public_title": "FECHAMENTO — 3 de outubro de 2026",
+ "published_at": "2026-10-04T02:34:49Z",
+ "cutoff_at": "2026-10-03T19:36:05-03:00",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "Deltan no Senado: há parecer a favor e pedido para anular votos; nenhuma decisão até o corte.",
+    "story": "deltan-no-senado-parecer-a-favor-pedido-para-anular-votos-nenhuma-decisao"
+   },
+   {
+    "text": "Embaixada dos EUA: a campanha de Lula pede investigação no TSE; EUA e PF falam em segurança.",
+    "story": "embaixada-dos-eua-campanha-de-lula-pede-que-o-tse-investigue-a-suspensao-do"
+   },
+   {
+    "text": "Rio: votos em Garotinho para governador serão considerados nulos.",
+    "story": "rio-votos-em-garotinho-para-governador-serao-considerados-nulos"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "deltan-no-senado-parecer-a-favor-pedido-para-anular-votos-nenhuma-decisao",
+   "headline": "Deltan no Senado: parecer a favor, pedido para anular votos, nenhuma decisão",
+   "dek": "Na véspera da votação, a candidatura segue válida; não há decisão nova até o corte.",
+   "lead": true,
+   "what_happened": "A Procuradoria-Geral Eleitoral defendeu na sexta (2) que o TSE mantenha o registro de Deltan Dallagnol (Novo) ao Senado pelo Paraná. O TRE-PR tinha aprovado a candidatura por 4 a 3 em 8 de setembro; a coligação de PT e PDT recorreu ao TSE.",
+   "what_changed": "Neste sábado (3), segundo manchete da Gazeta do Povo, Zeca Dirceu pediu a Gilmar Mendes, do STF, que anule os votos de Deltan. Até 19:36, as coberturas coletadas não registram decisão sobre esse pedido.",
+   "steps": [
+    {
+     "label": "Parecer",
+     "text": "PGE a favor do registro · sex (2)",
+     "done": true
+    },
+    {
+     "label": "Pedido",
+     "text": "anular os votos de Deltan · sáb (3)",
+     "done": true
+    },
+    {
+     "label": "Decisão",
+     "text": "nenhuma até 19:36 (nem TSE, nem STF)",
+     "done": false
+    }
+   ],
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "MPE defende que o TSE mantenha candidatura de Deltan Dallagnol ao Senado",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/02/mpe-defende-que-o-tse-mantenha-candidatura-de-deltan-dallagnol-ao-senado.ghtml",
+     "published_at": "2026-10-02T18:38:28Z",
+     "summary": "Destacou que a manifestação do MPE não precisa ser seguida pelos ministros do TSE.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Folha",
+     "title": "Procuradoria Geral Eleitoral opina a favor de candidatura de Deltan ao Senado",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/procuradoria-geral-eleitoral-opina-a-favor-de-candidatura-de-deltan-ao-senado.shtml",
+     "published_at": "2026-10-02T21:11:00Z",
+     "summary": "Trouxe o argumento do vice-procurador-geral eleitoral: a inelegibilidade de 2022 não teria eficácia automática sobre 2026.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "PGE pede ao TSE que mantenha registro de candidatura de Dallagnol",
+     "url": "https://estadao.com.br/politica/eleicoes/pge-pede-ao-tse-que-mantenha-registro-de-candidatura-de-dallagnol-nprp",
+     "published_at": "2026-10-02T22:45:22Z",
+     "summary": "Ressaltou que Deltan está proibido de fazer campanha, mas a candidatura segue válida até o julgamento definitivo.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Candidatos usam ação sobre Deltan para recorrer a Gilmar contra decisões da Justiça Eleitoral",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/candidatos-usam-acao-sobre-deltan-para-recorrer-a-gilmar-contra-decisoes-da-justica-eleitoral",
+     "published_at": "2026-10-03T01:10:41Z",
+     "summary": "Relatou que uma decisão de Gilmar no caso Deltan ampliou o uso da reclamação, hoje citada por candidatos para contestar a Justiça Eleitoral.",
+     "basis": "manchete e resumo"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Zeca Dirceu pede a Gilmar Mendes para anular votos de Deltan Dallagnol para o Senado",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/parana-2026/zeca-dirceu-pede-a-gilmar-mendes-para-anular-votos-de-deltan-para-o-senado",
+     "published_at": "2026-10-03T19:38:41Z",
+     "summary": "Noticiou o pedido de Zeca Dirceu para anular os votos de Deltan.",
+     "basis": "manchete"
+    }
+   ],
+   "conclusion": "Há um parecer e um pedido em sentidos opostos. Nenhum dos dois decide. Até o julgamento no TSE, a candidatura está válida.",
+   "open_questions": "Quando o TSE julga o registro; se e como o STF responde ao pedido de anulação."
+  },
+  {
+   "id": "embaixada-dos-eua-campanha-de-lula-pede-que-o-tse-investigue-a-suspensao-do",
+   "headline": "Embaixada dos EUA: campanha de Lula pede que o TSE investigue a suspensão do atendimento",
+   "dek": "Os EUA alegam segurança; a PF fez uma operação; a campanha vê interferência na eleição. Não há decisão do TSE.",
+   "lead": false,
+   "what_happened": "Os EUA suspenderam o atendimento presencial na embaixada e nos consulados no Brasil na quinta (1º), alegando segurança. A Austrália fez o mesmo na sexta (2). Na sexta, a PF cumpriu dois mandados de busca contra suspeitos de planejar uma ação contra a embaixada. Também na sexta, a campanha de Lula pediu ao TSE que inclua a suspensão numa investigação sobre suposta interferência externa na eleição.",
+   "what_changed": "Até 19:36, não encontramos novo ato neste sábado (3). A cobertura avançou: a CNN ouviu analistas que dizem ser comum os EUA fecharem embaixadas antes de eleições tensas.",
+   "official": [
+    "Embaixada dos EUA: suspensão por questões de segurança (via g1).",
+    "PF: operação para investigar potenciais ameaças às representações americanas (nota, via Folha); risco de ataque não confirmado (via Gazeta)."
+   ],
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "Lula pede que TSE investigue suspensão de serviços de embaixadas dos EUA",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/lula-pede-que-tse-investigue-suspensao-de-servicos-de-embaixadas-dos-eua.shtml",
+     "published_at": "2026-10-03T02:29:00Z",
+     "summary": "Destacou o pedido e a fala dos advogados de Lula, que atribuem a suspensão a interferência americana articulada \"ao que tudo indica\" por Flávio e Eduardo Bolsonaro. É alegação, não fato apurado.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Lula pede ao TSE que suspensão de serviços da embaixada dos EUA seja incluída em investigação sobre interferência externa",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/02/campanha-de-lula-pede-ao-tse-que-suspensao-de-servicos-da-embaixada-dos-eua-seja-incluida-em-investigacao-sobre-interferencia-externa.ghtml",
+     "published_at": "2026-10-02T23:22:01Z",
+     "summary": "Juntou ao pedido a explicação dos EUA (segurança) e a operação da PF.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "PF faz operação após alerta de possível ataque contra Embaixada dos EUA no Brasil",
+     "url": "https://gazetadopovo.com.br/republica/pf-faz-operacao-apos-alerta-de-possivel-ataque-contra-embaixada-dos-eua-no-brasil",
+     "published_at": "2026-10-02T20:41:26Z",
+     "summary": "Destacou que a PF diz que o risco de ataque não foi confirmado.",
+     "basis": "manchete e resumo"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "title": "É comum EUA fecharem embaixada antes de eleições tensas, dizem analistas",
+     "url": "https://cnnbrasil.com.br/internacional/e-comum-eua-fecharem-embaixada-antes-de-eleicoes-tensas-dizem-analistas",
+     "published_at": "2026-10-03T08:00:53Z",
+     "summary": "Trouxe analistas: a decisão teria sido motivada por ameaça na internet, e o clima eleitoral pode ter pesado.",
+     "basis": "manchete e resumo"
+    }
+   ],
+   "conclusion": "Há um pedido da campanha ao TSE e duas explicações oficiais (EUA e PF) que falam em segurança. Que houve interferência é alegação da campanha, sem decisão até aqui.",
+   "open_questions": "Se o TSE vai aceitar incluir o caso na investigação; qual era a ameaça citada pelos EUA (o governo brasileiro apura)."
+  },
+  {
+   "id": "rio-votos-em-garotinho-para-governador-serao-considerados-nulos",
+   "headline": "Rio: votos em Garotinho para governador serão considerados nulos",
+   "dek": "Uma decisão do TSE na sexta muda o que significa votar nele amanhã. Ele contesta.",
+   "lead": false,
+   "what_happened": "O ministro Floriano Marques, do TSE, determinou na sexta (2) que os votos em Anthony Garotinho (Republicanos) para o governo do Rio sejam considerados nulos. Ele também suspendeu o acesso do candidato aos fundos públicos e vetou a propaganda da campanha. O TRE-RJ já havia mantido o indeferimento da candidatura em 30 de setembro.",
+   "what_changed": "Neste sábado (3), a Veja avaliou que a disputa judicial deve ser definida só depois do 1º turno.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "Ministro do TSE determina que votos em Garotinho sejam considerados nulos",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/ministro-do-tse-determina-que-votos-em-garotinho-sejam-considerados-nulos.shtml",
+     "published_at": "2026-10-02T22:15:00Z",
+     "summary": "Registrou a reação de Garotinho: diz que uma decisão colegiada foi mudada por medida individual.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "TSE determina que votos em Garotinho sejam considerados nulos em eleição ao governo do Rio",
+     "url": "https://estadao.com.br/politica/tse-determina-que-votos-em-garotinho-sejam-considerados-nulos-em-eleicao-ao-governo-do-rio",
+     "published_at": "2026-10-02T22:16:48Z",
+     "summary": "Detalhou o corte de fundos e de propaganda e o histórico no TRE-RJ.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Veja",
+     "title": "Ministro do TSE revoga liminar que assegurava campanha de Garotinho",
+     "url": "https://veja.abril.com.br/politica/ministro-do-tse-revoga-liminar-que-assegurava-campanha-de-garotinho",
+     "published_at": "2026-10-02T22:09:02Z",
+     "summary": "Enquadrou como revogação da liminar que garantia dinheiro público e horário gratuito.",
+     "basis": "manchete e resumo"
+    },
+    {
+     "outlet": "Veja",
+     "title": "O fator Garotinho: mesmo sem chances de vitória, ex-governador vira peça-chave no Rio",
+     "url": "https://veja.abril.com.br/politica/o-fator-garotinho-mesmo-sem-chances-de-vitoria-ex-governador-vira-peca-chave-no-rio",
+     "published_at": "2026-10-03T11:00:49Z",
+     "summary": "Avaliou que, mesmo sem chances de vitória, Garotinho vira peça-chave no Rio.",
+     "basis": "manchete e resumo"
+    }
+   ],
+   "conclusion": "Há uma decisão individual de ministro do TSE em vigor. Garotinho contesta. O caso pode voltar aos tribunais depois do 1º turno.",
+   "open_questions": "Se a decisão será revista antes ou depois da votação."
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "moro-e-o-direito-de-resposta",
+   "title": "Moro e o direito de resposta",
+   "text": "Gilmar Mendes, do STF, derrubou neste sábado (3) decisões do presidente do TRE-PR que davam a Sergio Moro (PL) direito de resposta contra propaganda de Sandro Alex (PSD) que o liga à defesa do aborto, o que Moro nega. Segundo o g1, a decisão não afirma que Moro defenda o aborto.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/03/gilmar-moro-sandro-parana.ghtml",
+     "published_at": "2026-10-03T08:44:22Z"
+    },
+    {
+     "outlet": "UOL",
+     "url": "https://noticias.uol.com.br/eleicoes/2026/10/03/decisao-gilmar-moro-direito-de-resposta-aborto.ghtm",
+     "published_at": "2026-10-03T10:01:31Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/gilmar-mendes-derruba-decisao-do-tre-pr-sobre-direito-de-resposta-de-moro-em-caso-sobre-aborto",
+     "published_at": "2026-10-03T10:43:45Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/parana-2026/gilmar-libera-propaganda-de-opositor-que-tenta-vincular-moro-a-defesa-do-aborto",
+     "published_at": "2026-10-03T13:36:48Z"
+    }
+   ]
+  },
+  {
+   "id": "pec-do-fim-da-escala-6x1",
+   "title": "PEC do fim da escala 6x1",
+   "text": "Alcolumbre marcou para terça (6), dois dias depois do 1º turno, o início da análise no plenário do Senado: três sessões, de 6 a 8/10. A PEC reduz a jornada de 44 para 40 horas semanais, sem redução de salário.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/02/fim-da-escala-6x1-alcolumbre-marca-para-proxima-semana-inicio-da-discussao-da-pec-que-diminui-a-jornada-de-trabalho.ghtml",
+     "published_at": "2026-10-02T21:18:57Z"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/presidente-do-senado-marca-para-segunda-votacao-do-fim-da-escala-6x1",
+     "published_at": "2026-10-02T22:50:00Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/colunas/painel/2026/10/governistas-articulam-pular-intervalo-entre-sessoes-e-votar-fim-da-6x1-antes-do-segundo-turno.shtml",
+     "published_at": "2026-10-02T23:24:00Z"
+    }
+   ]
+  },
+  {
+   "id": "tse-e-as-redes-o-que-deve-sair-do-ar",
+   "title": "TSE e as redes: o que deve sair do ar",
+   "text": "André Mendonça detalhou às plataformas que só devem ser removidos posts que liguem falsamente Flávio Bolsonaro à retirada de Nossa Senhora Aparecida como padroeira. Crítica e mera menção ao tema ficam no ar (sexta, 2).",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/02/mendonca-manda-redes-apagarem-posts-associando-flavio-bolsonaro-a-retirada-do-posto-de-padroeira-de-nossa-senhora.ghtml",
+     "published_at": "2026-10-02T12:23:11Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/mendonca-notifica-x-posts-relacionados-flavio-nossa-senhora",
+     "published_at": "2026-10-02T15:03:19Z"
+    }
+   ]
+  },
+  {
+   "id": "bets-no-stf",
+   "title": "Bets no STF",
+   "text": "Luiz Fux é o relator das ações contra a medida provisória que proibiu as apostas. Segundo a Gazeta (sexta à noite), a AGU passou a pedir que o STF declare a lei das bets inconstitucional. PoderData/AYA: 52% aprovam a proibição, 31% desaprovam (CNN, sábado).",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/02/fux-sera-relator-no-stf-de-acoes-de-entidades-contra-proibicao-das-bets.ghtml",
+     "published_at": "2026-10-02T13:45:21Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/economia/agu-volta-atras-e-pede-que-stf-declare-lei-das-bets-inconstitucional-dragao-era-indomavel",
+     "published_at": "2026-10-03T01:28:56Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/eleicoes/poderdata-aya-proibicao-de-bets-e-aprovada-por-52-31-desaprovam",
+     "published_at": "2026-10-03T10:34:08Z"
+    }
+   ]
+  },
+  {
+   "id": "alagoas",
+   "title": "Alagoas",
+   "text": "Gilmar Mendes suspendeu o afastamento do desembargador Tutmés Airan, determinado pelo CNJ. Airan reassumiu e passou a comandar o estado interinamente. A apuração no CNJ continua.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/03/gilmar-mendes-determina-retorno-de-desembargador-do-tjal-afastado-pelo-cnj.ghtml",
+     "published_at": "2026-10-03T03:00:57Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-justica/gilmar-mendes-suspende-afastamento-de-desembargador-de-alagoas",
+     "published_at": "2026-10-03T11:03:54Z"
+    }
+   ]
+  }
+ ],
+ "following": [
+  {
+   "id": "caso-master",
+   "title": "Caso Master",
+   "text": "Até 19:36, não identificamos novo fato verificado relevante no caso. A última movimentação registrada é de sexta (2): Fachin anunciou reunião com a PF sobre menções a ministros no celular de Daniel Vorcaro. Continuamos acompanhando.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/fachin-marca-reuniao-com-pf-sobre-achados-no-celular-de-vorcaro-contra-ministros-do-stf.shtml",
+     "published_at": "2026-10-02T19:39:00Z"
+    }
+   ],
+   "voice": {
+    "kind": "Entrevista",
+    "who": "Marcus André Melo, cientista político, à Folha",
+    "summary": "Avalia que o caso expõe um entrelaçamento inédito entre interesses públicos e privados.",
+    "title": "Brasil chega à eleição sob degradação institucional sem precedentes, diz coautor de livro sobre democracia",
+    "url": "https://www1.folha.uol.com.br/poder/2026/10/brasil-chega-a-eleicao-sob-degradacao-institucional-sem-precedentes-diz-coautor-de-livro-sobre-democracia.shtml",
+    "published_at": "2026-10-03T02:00:00Z"
+   }
+  }
+ ],
+ "opinion": [
+  {
+   "kind": "Opinião",
+   "who": "Silvio Ribas, Gazeta do Povo (Vozes)",
+   "title": "Intervenções judiciais jogam as eleições no caos",
+   "url": "https://gazetadopovo.com.br/vozes/silvio-ribas/intervencoes-judiciais-jogam-as-eleicoes-2026-no-caos",
+   "published_at": "2026-10-03T13:25:12Z",
+   "note": "Só o título; o argumento não é resumido aqui."
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "g1",
+   "title": "MPE defende que o TSE mantenha candidatura de Deltan Dallagnol ao Senado",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/02/mpe-defende-que-o-tse-mantenha-candidatura-de-deltan-dallagnol-ao-senado.ghtml",
+   "published_at": "2026-10-02T18:38:28Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Procuradoria Geral Eleitoral opina a favor de candidatura de Deltan ao Senado",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/procuradoria-geral-eleitoral-opina-a-favor-de-candidatura-de-deltan-ao-senado.shtml",
+   "published_at": "2026-10-02T21:11:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "PGE pede ao TSE que mantenha registro de candidatura de Dallagnol",
+   "url": "https://estadao.com.br/politica/eleicoes/pge-pede-ao-tse-que-mantenha-registro-de-candidatura-de-dallagnol-nprp",
+   "published_at": "2026-10-02T22:45:22Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Candidatos usam ação sobre Deltan para recorrer a Gilmar contra decisões da Justiça Eleitoral",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/candidatos-usam-acao-sobre-deltan-para-recorrer-a-gilmar-contra-decisoes-da-justica-eleitoral",
+   "published_at": "2026-10-03T01:10:41Z",
+   "basis": "manchete e resumo"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Zeca Dirceu pede a Gilmar Mendes para anular votos de Deltan Dallagnol para o Senado",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/parana-2026/zeca-dirceu-pede-a-gilmar-mendes-para-anular-votos-de-deltan-para-o-senado",
+   "published_at": "2026-10-03T19:38:41Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Lula pede que TSE investigue suspensão de serviços de embaixadas dos EUA",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/lula-pede-que-tse-investigue-suspensao-de-servicos-de-embaixadas-dos-eua.shtml",
+   "published_at": "2026-10-03T02:29:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Lula pede ao TSE que suspensão de serviços da embaixada dos EUA seja incluída em investigação sobre interferência externa",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/02/campanha-de-lula-pede-ao-tse-que-suspensao-de-servicos-da-embaixada-dos-eua-seja-incluida-em-investigacao-sobre-interferencia-externa.ghtml",
+   "published_at": "2026-10-02T23:22:01Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "PF faz operação após alerta de possível ataque contra Embaixada dos EUA no Brasil",
+   "url": "https://gazetadopovo.com.br/republica/pf-faz-operacao-apos-alerta-de-possivel-ataque-contra-embaixada-dos-eua-no-brasil",
+   "published_at": "2026-10-02T20:41:26Z",
+   "basis": "manchete e resumo"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "É comum EUA fecharem embaixada antes de eleições tensas, dizem analistas",
+   "url": "https://cnnbrasil.com.br/internacional/e-comum-eua-fecharem-embaixada-antes-de-eleicoes-tensas-dizem-analistas",
+   "published_at": "2026-10-03T08:00:53Z",
+   "basis": "manchete e resumo"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Ministro do TSE determina que votos em Garotinho sejam considerados nulos",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/ministro-do-tse-determina-que-votos-em-garotinho-sejam-considerados-nulos.shtml",
+   "published_at": "2026-10-02T22:15:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "TSE determina que votos em Garotinho sejam considerados nulos em eleição ao governo do Rio",
+   "url": "https://estadao.com.br/politica/tse-determina-que-votos-em-garotinho-sejam-considerados-nulos-em-eleicao-ao-governo-do-rio",
+   "published_at": "2026-10-02T22:16:48Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Veja",
+   "title": "Ministro do TSE revoga liminar que assegurava campanha de Garotinho",
+   "url": "https://veja.abril.com.br/politica/ministro-do-tse-revoga-liminar-que-assegurava-campanha-de-garotinho",
+   "published_at": "2026-10-02T22:09:02Z",
+   "basis": "manchete e resumo"
+  },
+  {
+   "outlet": "Veja",
+   "title": "O fator Garotinho: mesmo sem chances de vitória, ex-governador vira peça-chave no Rio",
+   "url": "https://veja.abril.com.br/politica/o-fator-garotinho-mesmo-sem-chances-de-vitoria-ex-governador-vira-peca-chave-no-rio",
+   "published_at": "2026-10-03T11:00:49Z",
+   "basis": "manchete e resumo"
+  },
+  {
+   "outlet": "g1",
+   "title": "Gilmar derruba direito de resposta de Moro e libera propaganda de Sandro Alex sobre aborto",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/03/gilmar-moro-sandro-parana.ghtml",
+   "published_at": "2026-10-03T08:44:22Z"
+  },
+  {
+   "outlet": "UOL",
+   "title": "Gilmar derruba direito de resposta de Moro após opositor ligá-lo ao aborto",
+   "url": "https://noticias.uol.com.br/eleicoes/2026/10/03/decisao-gilmar-moro-direito-de-resposta-aborto.ghtm",
+   "published_at": "2026-10-03T10:01:31Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Gilmar Mendes derruba decisão do TRE-PR sobre direito de resposta de Moro em caso sobre aborto",
+   "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/gilmar-mendes-derruba-decisao-do-tre-pr-sobre-direito-de-resposta-de-moro-em-caso-sobre-aborto",
+   "published_at": "2026-10-03T10:43:45Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Gilmar libera propaganda de opositor que tenta vincular Moro a defesa do aborto",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/parana-2026/gilmar-libera-propaganda-de-opositor-que-tenta-vincular-moro-a-defesa-do-aborto",
+   "published_at": "2026-10-03T13:36:48Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Fim da escala 6x1: Alcolumbre marca para próxima semana início da discussão da PEC que diminui a jornada de trabalho",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/02/fim-da-escala-6x1-alcolumbre-marca-para-proxima-semana-inicio-da-discussao-da-pec-que-diminui-a-jornada-de-trabalho.ghtml",
+   "published_at": "2026-10-02T21:18:57Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Presidente do Senado marca para segunda votação do fim da escala 6x1",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/presidente-do-senado-marca-para-segunda-votacao-do-fim-da-escala-6x1",
+   "published_at": "2026-10-02T22:50:00Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Governistas articulam pular intervalo entre sessões e votar fim da 6x1 antes do segundo turno",
+   "url": "https://www1.folha.uol.com.br/colunas/painel/2026/10/governistas-articulam-pular-intervalo-entre-sessoes-e-votar-fim-da-6x1-antes-do-segundo-turno.shtml",
+   "published_at": "2026-10-02T23:24:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Mendonça comunica às plataformas novos critérios para exclusão de posts associando Flávio Bolsonaro à retirada do posto de padroeira de Nossa Senhora",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/02/mendonca-manda-redes-apagarem-posts-associando-flavio-bolsonaro-a-retirada-do-posto-de-padroeira-de-nossa-senhora.ghtml",
+   "published_at": "2026-10-02T12:23:11Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Mendonça notifica “X” sobre posts relacionados a Flávio e Nossa Senhora",
+   "url": "https://gazetadopovo.com.br/republica/mendonca-notifica-x-posts-relacionados-flavio-nossa-senhora",
+   "published_at": "2026-10-02T15:03:19Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Ministro Luiz Fux será relator no STF de ações de entidades contra proibição das bets",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/02/fux-sera-relator-no-stf-de-acoes-de-entidades-contra-proibicao-das-bets.ghtml",
+   "published_at": "2026-10-02T13:45:21Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "AGU volta atrás e pede que STF declare lei das bets inconstitucional: “Dragão era indomável”",
+   "url": "https://gazetadopovo.com.br/economia/agu-volta-atras-e-pede-que-stf-declare-lei-das-bets-inconstitucional-dragao-era-indomavel",
+   "published_at": "2026-10-03T01:28:56Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "PoderData/AYA: Proibição de bets é aprovada por 52%; 31% desaprovam",
+   "url": "https://cnnbrasil.com.br/eleicoes/poderdata-aya-proibicao-de-bets-e-aprovada-por-52-31-desaprovam",
+   "published_at": "2026-10-03T10:34:08Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Gilmar Mendes determina retorno de desembargador do TJAL afastado pelo CNJ",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/03/gilmar-mendes-determina-retorno-de-desembargador-do-tjal-afastado-pelo-cnj.ghtml",
+   "published_at": "2026-10-03T03:00:57Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Gilmar Mendes suspende afastamento de desembargador de Alagoas",
+   "url": "https://poder360.com.br/poder-justica/gilmar-mendes-suspende-afastamento-de-desembargador-de-alagoas",
+   "published_at": "2026-10-03T11:03:54Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Fachin marca reunião com PF e diz que menções a ministros no caso Master devem ser apuradas 'sem exceção'",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/fachin-marca-reuniao-com-pf-sobre-achados-no-celular-de-vorcaro-contra-ministros-do-stf.shtml",
+   "published_at": "2026-10-02T19:39:00Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Brasil chega à eleição sob degradação institucional sem precedentes, diz coautor de livro sobre democracia",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/brasil-chega-a-eleicao-sob-degradacao-institucional-sem-precedentes-diz-coautor-de-livro-sobre-democracia.shtml",
+   "published_at": "2026-10-03T02:00:00Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Intervenções judiciais jogam as eleições no caos",
+   "url": "https://gazetadopovo.com.br/vozes/silvio-ribas/intervencoes-judiciais-jogam-as-eleicoes-2026-no-caos",
+   "published_at": "2026-10-03T13:25:12Z"
+  }
+ ],
+ "note": "Também consultamos os canais monitorados e a Revista Oeste até 19:36; nesta edição não há trecho verificado deles. Nenhum documento oficial foi localizado por caminho autorizado; as manifestações oficiais aparecem como relatadas pelos veículos.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
