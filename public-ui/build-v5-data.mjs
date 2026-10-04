@@ -321,6 +321,37 @@ function loadEditorial() {
 }
 const EDITORIAL = loadEditorial();
 
+// FECHAMENTO e MATÉRIA (G3, 04/10/2026): índices próprios em data/editorial/{fechamentos,materias}/. Mesma regra: só
+// validação (falha fechada) — sha256 do índice, esquema, nenhum id interno, links https, vídeo com id e minuto válidos.
+function loadTyped(dir, idxSchema, docSchema, fileRe, key) {
+  const rel = `data/editorial/${dir}/index.json`;
+  if (!fs.existsSync(path.join(ROOT, rel))) return [];
+  const idx = readJSON(rel);
+  if (idx.schema !== idxSchema || !Array.isArray(idx.items)) throw new Error(rel + " fora do contrato");
+  return idx.items.map(x => {
+    if (!fileRe.test(x.file) || !validDate(x.date) || !x.title) throw new Error(rel + ": item fora do contrato");
+    const raw = fs.readFileSync(path.join(ROOT, x.file));
+    if (crypto.createHash("sha256").update(raw).digest("hex") !== x.sha256) throw new Error(x.file + ": sha256 diverge do índice");
+    const doc = JSON.parse(raw.toString("utf8"));
+    if (doc.schema !== docSchema || !doc.public_title || doc.public_title !== x.title) throw new Error(x.file + " fora do contrato");
+    const txt = JSON.stringify(doc);
+    const leak = INTERNAL_IDS.exec(txt) || /\b(CONTEXT_MATCH|PARTIAL_CONTEXT_MATCH|QUERY_UNAVAILABLE|EVALUATION_FAILED|NOT_EXECUTED)\b/.exec(txt);
+    if (leak) throw new Error("INTERNAL_IDENTIFIER_PUBLIC_LEAK em " + x.file + ": " + leak[0]);
+    for (const m of txt.matchAll(/"(?:url|deep_link)":"([^"]*)"/g)) if (!/^https:\/\//.test(m[1])) throw new Error("link não https em " + x.file);
+    for (const v of [...(doc.videos || []), ...((doc.partial_videos || {}).items || [])])
+      if (!/^[\w-]{11}$/.test(v.video_id) || !(v.t_seconds >= 0) || v.deep_link !== `https://www.youtube.com/watch?v=${v.video_id}&t=${v.t_seconds}s`)
+        throw new Error("vídeo fora do contrato em " + x.file);
+    if (doc.art) for (const a of [doc.art.mobile, doc.art.desktop])
+      if (!/^\/data\/editorial\/materias\/[a-z0-9-]+\/arte-[md]\.svg$/.test(a) || !fs.existsSync(path.join(ROOT, a.slice(1)))) throw new Error("ilustração ausente em " + x.file);
+    return x[key];
+  });
+}
+const FECHAMENTOS = loadTyped("fechamentos", "desmentindo.public.fechamento_index.v1", "desmentindo.public.fechamento.v1",
+  /^data\/editorial\/fechamentos\/\d{4}-\d{2}-\d{2}\.json$/, "date");
+const MATERIAS = loadTyped("materias", "desmentindo.public.materia_index.v1", "desmentindo.public.materia.v1",
+  /^data\/editorial\/materias\/[a-z0-9-]+\.json$/, "slug");
+if (FECHAMENTOS.length || MATERIAS.length) console.log(`data/editorial: ${FECHAMENTOS.length} fechamento(s), ${MATERIAS.length} matéria(s) válidos`);
+
 // ---------------------------------------------------------------- home
 const teaser = s => ({ slug: s.slug, title: s.title, lastD: s.lastD, said: s.said.length });
 const hero = RANKED[0];
