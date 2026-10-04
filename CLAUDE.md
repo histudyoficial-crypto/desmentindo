@@ -41,4 +41,5 @@ PRIVATE OPS → HUMAN GATE → APPROVED PUBLIC ARTIFACT → PUBLIC REPO (PR do P
 
 ## Proibido sem autorização de Johnny
 Publicar, fazer merge em `main`, ativar cron, alterar Publisher/deploy (exceto proteção documentada), apagar dados, reorganizar Corpus, colocar credenciais em arquivos.
+- **Eleições 2026** (`eleicoes-2026/`, gerado por `public-ui/build-eleicoes.mjs`): resultado oficial do TSE lido no navegador (CORS liberado pelo TSE), sem número antes das 17h de 04/10, desconhecido = “—”. Histórico da apuração: `.github/workflows/eleicoes-2026-snapshot.yml` + `public-ui/eleicoes_snapshot.py` gravam no branch `eleicoes-2026-dados` (FIRST_RESULT → 1 por hora → FINAL só com tf=s do TSE).
 - **Recência da Home** (`v5/js/v5.js`, `opDay`): AGORA só aparece na Home no dia operacional da edição (America/Sao_Paulo); de outro dia, sai da Home e continua em `#/agora/<id>`. FECHAMENTO fica até o próximo. Arquivo, Já falaram e Pesquisa não expiram.
