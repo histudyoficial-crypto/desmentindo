@@ -307,14 +307,20 @@
       return { id: it.id, date: it.date, title: it.title, text: it.text, sources: it.sources || [], evidence: st };
     }) : [];
   }
+  // RECÊNCIA DA HOME (P0 de 04/10): conteúdo temporal só aparece como corrente no DIA OPERACIONAL em que foi editado.
+  // Dia operacional = data em America/Sao_Paulo (UTC−3 fixo; sem horário de verão desde 2019), nunca o fuso do aparelho.
+  // AGORA de outro dia sai da Home (continua acessível em #/agora/<id> e no arquivo); nada é apagado, renomeado ou redatado.
+  // FECHAMENTO não expira: o último publicado fica até o próximo. Arquivo, Já falaram e Pesquisa não têm expiração.
+  function opDay(ms) { return new Date((ms == null ? Date.now() : ms) - 3 * 3600e3).toISOString().slice(0, 10); }
+  function agoraIsCurrent(EDN) { return !!(EDN && EDN.edition && EDN.edition === opDay()); }
   P.home = function () {
     var ED = loadEdition();
     return Promise.all([load("home.json"), ED, loadIdx("fechamentos"), loadIdx("materias"), loadTyped("fechamentos")]).then(function (res) {
       var H = res[0], EDN = res[1], FI = res[2], MI = res[3], LF = res[4];
-      H.agora = edItems(EDN).length ? { edition: EDN.edition, label: EDN.label, items: edItems(EDN) } : null;
-      var today = new Date(), wd = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"][today.getDay()];
+      H.agora = agoraIsCurrent(EDN) && edItems(EDN).length ? { edition: EDN.edition, label: EDN.label, items: edItems(EDN) } : null;
+      var od = opDay(), today = new Date(od + "T12:00:00Z"), wd = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"][today.getUTCDay()];
       var h = '<div class="sig" role="note"><div class="sig-in"><span>O que foi dito. Quando foi dito. E de onde veio.</span>' +
-        '<time datetime="' + today.toISOString().slice(0, 10) + '">' + wd + " · " + today.getDate() + " " + MES[today.getMonth()] + " " + today.getFullYear() + "</time></div></div>";
+        '<time datetime="' + od + '">' + wd + " · " + today.getUTCDate() + " " + MES[today.getUTCMonth()] + " " + today.getUTCFullYear() + "</time></div></div>";
       h += '<section class="hero"><h1 class="name">DESMENTINDO</h1><p class="motto">Notícias passam. O que foi dito fica.</p>' +
         searchForm("", "q-home", true) +
         '<p class="cue">Veja o que já foi dito sobre uma notícia, com a data, o minuto do vídeo e a fonte original.</p>' +
@@ -357,7 +363,7 @@
         return '<li><a href="' + e(x.href) + '"><span class="rt">' + e(x.t) + '</span><span class="rd">' + tdate(x.d) + "</span></a></li>";
       }).join("") + "</ul></section>";
       if (H.hero) {
-        h += '<section class="sec" id="' + (A ? "acompanhamento" : "agora") + '"><h2 class="h2">' + (A ? "Em acompanhamento" : "Agora") + (H.edition && !A ? ' <span class="meta" style="letter-spacing:0;text-transform:none;font-weight:400">· atualizado em ' + e(fdate(H.edition)) + "</span>" : "") + "</h2>" +
+        h += '<section class="sec" id="acompanhamento"><h2 class="h2">Em acompanhamento</h2>' +
           '<article class="story-main"><a href="#/historia/' + e(H.hero.slug) + '"><span class="t">' + e(H.hero.title) + "</span></a>" +
           (H.hero.text ? "<p>" + e(H.hero.text) + "</p>" : "") +
           '<p class="meta" style="margin-top:8px">Último registro em ' + tdate(H.hero.lastD) + "</p>" +
