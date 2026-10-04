@@ -1,0 +1,172 @@
+{
+ "schema": "desmentindo.eleicoes2026.snapshots.v1",
+ "scope": "BR",
+ "office": "Presidente",
+ "round": 1,
+ "source": "TSE · https://resultados.tse.jus.br/oficial/ele2026/6257/dados/br/br-c0001-e006257-u.json",
+ "rule": "Cada snapshot é o que o TSE mostrava naquele momento. Não é projeção, tendência nem vencedor. Desconhecido = null.",
+ "snapshots": [
+  {
+   "captured_at": "2026-10-04T20:25:15Z",
+   "tse_updated_at": "2026-10-04T17:24:02-03:00",
+   "tse_generated_at": "2026-10-04T17:24:17-03:00",
+   "scope": "BR",
+   "office": "Presidente",
+   "round": 1,
+   "election_code": "6257",
+   "source_url": "https://resultados.tse.jus.br/oficial/ele2026/6257/dados/br/br-c0001-e006257-u.json",
+   "percent_totalized": 1.51,
+   "sections_totalized": 7550,
+   "sections_total": 499248,
+   "status": "PARTIAL",
+   "tse_final_flag": "n",
+   "turnout": {
+    "votes": 1826477,
+    "percentage": 71.56
+   },
+   "blank_votes": {
+    "votes": 27358,
+    "percentage": 1.5
+   },
+   "null_votes": {
+    "votes": 40407,
+    "percentage": 2.21
+   },
+   "valid_votes": 1758712,
+   "candidates": [
+    {
+     "candidate_id": "280002551544",
+     "number": "22",
+     "candidate_name": "FLAVIO BOLSONARO",
+     "party": "PL",
+     "votes": 864743,
+     "percentage": 49.17,
+     "tse_order": 1,
+     "tse_status": null
+    },
+    {
+     "candidate_id": "280002551932",
+     "number": "55",
+     "candidate_name": "RONALDO CAIADO",
+     "party": "PSD",
+     "votes": 40827,
+     "percentage": 2.32,
+     "tse_order": 5,
+     "tse_status": null
+    },
+    {
+     "candidate_id": "280002542548",
+     "number": "13",
+     "candidate_name": "LULA",
+     "party": "PT",
+     "votes": 741885,
+     "percentage": 42.18,
+     "tse_order": 2,
+     "tse_status": null
+    },
+    {
+     "candidate_id": "280002552484",
+     "number": "27",
+     "candidate_name": "CLARIANA BARAO",
+     "party": "DC",
+     "votes": 1292,
+     "percentage": 0.07,
+     "tse_order": 8,
+     "tse_status": null
+    },
+    {
+     "candidate_id": "280002551975",
+     "number": "21",
+     "candidate_name": "EDMILSON COSTA",
+     "party": "PCB",
+     "votes": 612,
+     "percentage": 0.03,
+     "tse_order": 10,
+     "tse_status": null
+    },
+    {
+     "candidate_id": "280002541457",
+     "number": "16",
+     "candidate_name": "HERTZ DIAS",
+     "party": "PSTU",
+     "votes": 854,
+     "percentage": 0.05,
+     "tse_order": 9,
+     "tse_status": null
+    },
+    {
+     "candidate_id": "280002551547",
+     "number": "70",
+     "candidate_name": "ESCRITOR AUGUSTO CURY",
+     "party": "AVANTE",
+     "votes": 54087,
+     "percentage": 3.08,
+     "tse_order": 3,
+     "tse_status": null
+    },
+    {
+     "candidate_id": "280002539826",
+     "number": "30",
+     "candidate_name": "ZEMA",
+     "party": "NOVO",
+     "votes": 7154,
+     "percentage": 0.41,
+     "tse_order": 6,
+     "tse_status": null
+    },
+    {
+     "candidate_id": "280002538811",
+     "number": "80",
+     "candidate_name": "SAMARA",
+     "party": "UP",
+     "votes": 2709,
+     "percentage": 0.15,
+     "tse_order": 7,
+     "tse_status": null
+    },
+    {
+     "candidate_id": "280002548139",
+     "number": "35",
+     "candidate_name": "VETERINÁRIO WILSON GRASSI",
+     "party": "DEMOCRATA",
+     "votes": 509,
+     "percentage": 0.03,
+     "tse_order": 11,
+     "tse_status": null
+    },
+    {
+     "candidate_id": "280002540694",
+     "number": "14",
+     "candidate_name": "RENAN SANTOS",
+     "party": "MISSÃO",
+     "votes": 43657,
+     "percentage": 2.48,
+     "tse_order": 4,
+     "tse_status": null
+    },
+    {
+     "candidate_id": "280002552487",
+     "number": "29",
+     "candidate_name": "RUI COSTA PIMENTA",
+     "party": "PCO",
+     "votes": 383,
+     "percentage": 0.02,
+     "tse_order": 12,
+     "tse_status": null
+    }
+   ],
+   "kind": "FIRST_RESULT",
+   "window": "H2026-10-04T17",
+   "seq": 1
+  }
+ ],
+ "no_change": [],
+ "summary": {
+  "snapshot_count": 1,
+  "first_result_at": "2026-10-04T17:24:02-03:00",
+  "last_snapshot_at": "2026-10-04T20:25:15Z",
+  "last_tse_update": "2026-10-04T17:24:02-03:00",
+  "current_totalized": 1.51,
+  "final_captured": false
+ }
+}
