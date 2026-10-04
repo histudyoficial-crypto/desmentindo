@@ -27,6 +27,64 @@
   function tLabel(s) { var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), x = String(s % 60).padStart(2, "0"); return h ? h + ":" + String(m).padStart(2, "0") + ":" + x : m + ":" + x; }
   function qparam(name) { var q = location.hash.split("?")[1] || ""; var m = new RegExp("(?:^|&)" + name + "=([^&]*)").exec(q); return m ? decodeURIComponent(m[1].replace(/\+/g, " ")) : ""; }
 
+  // ---------------------------------------------------------------- medição de audiência (T3; D-01 de 04/10/2026)
+  // Só existe quando a página declara <meta name="desmentindo-analytics">, gerado a partir de public-ui/analytics.json.
+  // Umami Cloud: sem cookie, sem identificador próprio, sem dado pessoal. A URL enviada nunca leva o texto de uma busca
+  // (a parte "?…" do #/rota fica de fora); os parâmetros utm_* do link original seguem para atribuir a origem.
+  var AN = !!document.querySelector('meta[name="desmentindo-analytics"]');
+  var anQ = [], anTimer = 0;
+  function anFlush() {
+    if (!AN) return;
+    if (window.umami && typeof window.umami.track === "function") { while (anQ.length) { try { anQ.shift()(); } catch (x) { /* medição nunca quebra a página */ } } return; }
+    if (anTimer) return;
+    var tries = 0;
+    anTimer = setInterval(function () {
+      if ((window.umami && typeof window.umami.track === "function") || ++tries > 40) { clearInterval(anTimer); anTimer = 0; if (tries <= 40) anFlush(); else anQ = []; }
+    }, 250);
+  }
+  function anUrl() { return location.pathname + location.search + location.hash.split("?")[0]; }
+  function anPage() {
+    if (!AN) return;
+    // o título da página de busca contém o texto pesquisado: nunca é enviado
+    var url = anUrl(), title = /^#\/busca/.test(location.hash || "") ? "Pesquisa · Desmentindo" : document.title;
+    anQ.push(function () { window.umami.track(function (p) { p.url = url; p.title = title; return p; }); });
+    anFlush();
+  }
+  function anEvent(name, data) {
+    if (!AN) return;
+    anQ.push(function () { window.umami.track(name, data); });
+    anFlush();
+  }
+  // Leitura engajada (regra estável, documentada em Privacidade): numa página de FECHAMENTO ou MATÉRIA, pelo menos 60 s
+  // com a aba visível E rolagem até a metade da página. Conta uma vez por visita à página.
+  var ENG_SECONDS = 60, ENG_DEPTH = 0.5, eng = null;
+  function pageKind() { var m = /^#\/(fechamento|materia)\/([^?#/]+)/.exec(location.hash || ""); return m ? { type: m[1], id: decodeURIComponent(m[2]) } : null; }
+  function engStart() {
+    if (eng && eng.iv) clearInterval(eng.iv);
+    eng = null;
+    var k = pageKind();
+    if (!AN || !k) return;
+    eng = { k: k, secs: 0, depth: 0, done: false };
+    eng.iv = setInterval(function () {
+      if (!eng || eng.done) return;
+      if (document.visibilityState === "visible") eng.secs += 1;
+      var de = document.documentElement, d = (window.scrollY + window.innerHeight) / Math.max(1, de.scrollHeight);
+      if (d > eng.depth) eng.depth = d;
+      if (eng.secs >= ENG_SECONDS && eng.depth >= ENG_DEPTH) {
+        eng.done = true; clearInterval(eng.iv);
+        anEvent("ENGAGED_READING", { type: eng.k.type, edition: eng.k.id });
+      }
+    }, 1000);
+  }
+  document.addEventListener("click", function (ev) {
+    if (!AN) return;
+    var a = ev.target.closest && ev.target.closest('a[href^="http"]');
+    var k = pageKind();
+    if (!a || !k || a.closest("li.said")) return; // trechos de vídeo contam como VIDEO_PLAY
+    var host = ""; try { host = new URL(a.href).hostname.replace(/^www\d?\./, ""); } catch (x) { return; }
+    if (host && host !== location.hostname) anEvent("SOURCE_CLICK", { type: k.type, host: host });
+  }, true);
+
   // ---------------------------------------------------------------- componente: JÁ FALARAM SOBRE ISSO
   function saidItem(o, story, noWho) {
     return '<li class="said" data-src="' + e(o.source_name || "") + '" data-video="' + e(o.video_id) + '" data-t="' + o.t_seconds + '" data-date="' + e(o.date) + '">' +
@@ -117,6 +175,8 @@
     if (!p) return;
     var poster = li.querySelector(".vposter");
     if (poster) poster.replaceWith(p); else li.insertBefore(p, li.querySelector(".said-foot"));
+    var pk = pageKind();
+    anEvent("VIDEO_PLAY", { type: pk ? pk.type : (location.hash.split("/")[1] || "home").split("?")[0] });
     var go = li.querySelector("a.go[data-play]");
     if (go) go.hidden = true;
   }
@@ -249,8 +309,8 @@
   }
   P.home = function () {
     var ED = loadEdition();
-    return Promise.all([load("home.json"), ED, loadIdx("fechamentos"), loadIdx("materias")]).then(function (res) {
-      var H = res[0], EDN = res[1], FI = res[2], MI = res[3];
+    return Promise.all([load("home.json"), ED, loadIdx("fechamentos"), loadIdx("materias"), loadTyped("fechamentos")]).then(function (res) {
+      var H = res[0], EDN = res[1], FI = res[2], MI = res[3], LF = res[4];
       H.agora = edItems(EDN).length ? { edition: EDN.edition, label: EDN.label, items: edItems(EDN) } : null;
       var today = new Date(), wd = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"][today.getDay()];
       var h = '<div class="sig" role="note"><div class="sig-in"><span>O que foi dito. Quando foi dito. E de onde veio.</span>' +
@@ -259,6 +319,18 @@
         searchForm("", "q-home", true) +
         '<p class="cue">Veja o que já foi dito sobre uma notícia, com a data, o minuto do vídeo e a fonte original.</p>' +
         '<p class="tries">Por exemplo: <a href="#/busca?q=Alexandre%20de%20Moraes">Alexandre de Moraes</a> · <a href="#/busca?q=INSS">INSS</a> · <a href="#/busca?q=Dark%20Horse">Dark Horse</a></p></section>';
+      // FECHAMENTO = produto principal (decisão D-06, 04/10): o mais recente publicado vem antes do AGORA.
+      // Sem edição fixa: o índice publicado diz qual é a última; a Home muda sozinha quando entra uma nova.
+      if (LF && LF.edition_date) {
+        var fu = "#/fechamento/" + LF.edition_date, pts = (LF.opening && LF.opening.points) || [];
+        h += '<section class="sec fx-home" id="fechamento"><h2 class="h2">Fechamento <span class="meta" style="letter-spacing:0;text-transform:none;font-weight:400">· ' +
+          e(fdate(LF.edition_date)) + (LF.cutoff_at ? ", verificado até " + e(fhm(LF.cutoff_at)) : "") + "</span></h2>" +
+          '<p class="fx-home-t"><a href="' + e(fu) + '">' + e(LF.public_title) + "</a></p>" +
+          (pts.length ? '<ol class="fx-open">' + pts.map(function (p) {
+            return '<li><a href="' + e(fu + "#" + p.story) + '">' + e(p.text) + "</a></li>";
+          }).join("") + "</ol>" : "") +
+          '<p class="fx-home-go"><a class="link" href="' + e(fu) + '">Ler o fechamento completo</a></p></section>';
+      }
       var A = H.agora && H.agora.items && H.agora.items.length ? H.agora : null;
       if (A) {
         // Edição editorial (JSON próprio, aprovada no Human Gate): texto aprovado + fontes. Nada interno.
@@ -279,9 +351,9 @@
           }).join("") + "</ul>" : "") + "</section>";
       }
       // Fechamento e matérias aprovados: só um atalho para a página própria (Home não muda de desenho).
-      var fx = (FI && FI.items || []).slice(0, 1).map(function (x) { return { href: "#/fechamento/" + x.date, t: x.title, d: x.date }; })
+      var fx = (LF ? [] : (FI && FI.items || []).slice(0, 1).map(function (x) { return { href: "#/fechamento/" + x.date, t: x.title, d: x.date }; }))
         .concat((MI && MI.items || []).slice(0, 3).map(function (x) { return { href: "#/materia/" + x.slug, t: x.title, d: x.date }; }));
-      if (fx.length) h += '<section class="sec" id="fechamento"><h2 class="h2">Fechamento e matérias</h2><ul class="ed-rows">' + fx.map(function (x) {
+      if (fx.length) h += '<section class="sec" id="' + (LF ? "materias" : "fechamento") + '"><h2 class="h2">' + (LF ? "Matérias" : "Fechamento e matérias") + '</h2><ul class="ed-rows">' + fx.map(function (x) {
         return '<li><a href="' + e(x.href) + '"><span class="rt">' + e(x.t) + '</span><span class="rd">' + tdate(x.d) + "</span></a></li>";
       }).join("") + "</ul></section>";
       if (H.hero) {
@@ -584,6 +656,27 @@
       }).join("") + "</ul></section>";
       return h;
     });
+  };
+
+  // ---------------------------------------------------------------- privacidade (descrição factual da medição)
+  P.privacidade = function () {
+    document.title = "Privacidade · Desmentindo";
+    var m = document.querySelector('meta[name="desmentindo-analytics"]');
+    var ret = m && m.getAttribute("data-retention");
+    var h = '<section class="page-head"><p class="kicker">Desmentindo</p><h1 class="h1">Privacidade</h1>' +
+      '<p class="lead">O Desmentindo não tem cadastro, não usa cookies de medição e não identifica quem lê.</p></section><section class="sec prose">';
+    if (!m) {
+      h += "<p>Hoje o site não usa nenhuma ferramenta de medição de audiência.</p>";
+    } else {
+      h += '<h2 class="h2">Medição de audiência</h2>' +
+        "<p>Para saber quantas pessoas leem o Desmentindo, o que leem e de onde chegam, usamos o <b>Umami Cloud</b>, uma ferramenta de medição que não usa cookies e não guarda um identificador no seu navegador.</p>" +
+        "<p><b>O que é registrado:</b> a página aberta (sem o texto de buscas), a página de onde você veio, os parâmetros de campanha do link (utm), tipo de dispositivo, navegador, sistema, idioma e localização aproximada (país e região). Também três ações de leitura: <i>leitura engajada</i> (pelo menos 60 segundos com a página visível e rolagem até a metade de um Fechamento ou Matéria), <i>clique em uma fonte</i> (só o endereço do site da fonte) e <i>play de vídeo</i>.</p>" +
+        "<p><b>Como a visita é contada:</b> a ferramenta usa o endereço IP e o navegador para formar um código de visita anônimo, que muda todo mês. Não enviamos nome, e-mail, telefone ou qualquer identificador de pessoa.</p>" +
+        "<p><b>Para quê:</b> medir audiência agregada e melhorar o produto. Não vendemos dados e não fazemos publicidade direcionada.</p>" +
+        (ret ? "<p><b>Por quanto tempo:</b> " + e(ret) + ".</p>" : "") +
+        "<p>Se o seu navegador envia o sinal “Do Not Track”, nada é medido.</p>";
+    }
+    return Promise.resolve(h + "</section>");
   };
 
   // ---------------------------------------------------------------- FECHAMENTO e MATÉRIA (aprovados no Human Gate)
@@ -980,6 +1073,7 @@
       if (my !== routeSeq) return;
       main.innerHTML = '<div class="wrap">' + h + "</div>";
       if (anchor) { var t = document.getElementById(anchor); if (t) t.scrollIntoView(); } else window.scrollTo(0, 0);
+      anPage(); engStart();
     }, function () { if (my !== routeSeq) return; main.innerHTML = '<div class="wrap"><p class="empty" style="padding:40px 0">Não conseguimos carregar esta página agora. Tente de novo.</p></div>'; });
   }
   // Âncoras internas (#ja-falaram) não trocam a rota.
