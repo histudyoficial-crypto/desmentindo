@@ -21,7 +21,9 @@ import urllib.request
 BASE = "https://resultados.tse.jus.br/oficial/ele2026"
 ELE = "6257"            # Eleição Ordinária Federal 2026 · 1º turno (config oficial ele-c.json, pleito 3220)
 CARGO = "0001"          # Presidente
-SOURCE = f"{BASE}/{ELE}/dados-simplificados/br/br-c{CARGO}-e{int(ELE):06d}-r.json"
+# Contrato real (verificado 04/10/2026 17:15 BRT): totalização em dados/<uf>/<uf>-c<cargo>-e<ele>-u.json (estrutura aninhada).
+# "dados-simplificados/*-r.json" não existe mais no TSE desde 2024.
+SOURCE = f"{BASE}/{ELE}/dados/br/br-c{CARGO}-e{int(ELE):06d}-u.json"
 BRT = dt.timezone(dt.timedelta(hours=-3))
 STOP_AFTER = dt.datetime(2026, 10, 7, tzinfo=BRT)   # o cron é só desta eleição
 
@@ -50,6 +52,24 @@ def tse_time(d, t):
         return dt.datetime.strptime(f"{d} {t}", "%d/%m/%Y %H:%M:%S").replace(tzinfo=BRT).isoformat()
     except (TypeError, ValueError):
         return None
+
+
+def flatten(raw):
+    """Arquivo oficial "-u.json" → formato plano lido por parse(). Estrito: estrutura desconhecida → sem candidatos.
+    Sem seção totalizada (s.st = 0: arquivo pré-carregado com zeros) → sem candidatos: zero de arquivo vazio não é resultado."""
+    if not raw or "carg" not in raw:
+        return {"cand": []}
+    cg = next((c for c in raw.get("carg") or [] if num(c.get("cd")) == int(CARGO)), None)
+    s, e, v = raw.get("s") or {}, raw.get("e") or {}, raw.get("v") or {}
+    if not cg or not (num(s.get("st")) or 0) > 0:
+        return {"cand": []}
+    cand = [{"sqcand": c.get("sqcand"), "n": c.get("n"), "nm": c.get("nmu") or c.get("nm"), "cc": p.get("sg"),
+             "vap": c.get("vap"), "pvap": c.get("pvap"), "seq": c.get("seq"), "st": c.get("st")}
+            for a in cg.get("agr") or [] for p in a.get("par") or [] for c in p.get("cand") or []]
+    return {"cand": cand, "tf": raw.get("tf"), "pst": s.get("pst"), "st": s.get("st"), "s": s.get("ts"),
+            "dt": raw.get("dt"), "ht": raw.get("ht"), "dg": raw.get("dg"), "hg": raw.get("hg"),
+            "c": e.get("c"), "pc": e.get("pc"), "vb": v.get("vb"), "pvb": v.get("pvb"), "tvn": v.get("tvn"),
+            "ptvn": v.get("ptvn"), "vv": v.get("vv")}
 
 
 def parse(raw, captured_at):
@@ -145,6 +165,7 @@ def main():
         print("SNAPSHOT=SKIP (fora da janela desta eleição)")
         return 0
     raw = json.load(open(a.input, encoding="utf-8")) if a.input else fetch()
+    raw = flatten(raw) if raw is not None else None
     if raw is None or not raw.get("cand"):
         print("SNAPSHOT=NOT_AVAILABLE (TSE ainda não publicou totalização)")
         return 0

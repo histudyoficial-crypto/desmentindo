@@ -29,7 +29,25 @@
   var hhmmss = function (ms) { return new Date(ms - 3 * 3600e3).toISOString().slice(11, 19); };
   function track(name, data) { try { if (window.umami && window.umami.track) window.umami.track(name, data); } catch (e) { /* medição nunca quebra a página */ } }
 
-  function resultUrl(uf, mun) { return BASE + "/" + ELE + "/dados-simplificados/" + uf + "/" + uf + (mun || "") + "-c" + CARGO + "-e" + ELE6 + "-r.json"; }
+  // Contrato real (verificado em 04/10/2026 17:15 BRT): o TSE publica a totalização em dados/<uf>/<uf><mun>-c<cargo>-e<ele>-u.json
+  // (estrutura aninhada carg → agr → par → cand, com s/e/v). "dados-simplificados/*-r.json" não existe mais desde 2024.
+  function resultUrl(uf, mun) { return BASE + "/" + ELE + "/dados/" + uf + "/" + uf + (mun || "") + "-c" + CARGO + "-e" + ELE6 + "-u.json"; }
+  // Converte o arquivo oficial para o formato plano que a página lê. Estrito: estrutura desconhecida → sem candidatos
+  // ("—"). Antes de o TSE totalizar alguma seção (s.st = 0, arquivo pré-carregado com zeros) também não há candidatos:
+  // zero do arquivo vazio nunca aparece como resultado.
+  function flat(d) {
+    if (!d || d.notYet) return d || { notYet: true };
+    if (!d.carg) return { cand: [] };
+    var cg = d.carg.filter(function (c) { return int(c.cd) === int(CARGO); })[0], S = d.s || {}, E = d.e || {}, V = d.v || {};
+    if (!cg || !(int(S.st) > 0)) return { cand: [] };
+    var cand = [];
+    (cg.agr || []).forEach(function (a) { (a.par || []).forEach(function (p) { (p.cand || []).forEach(function (c) {
+      cand.push({ sqcand: c.sqcand, n: c.n, nm: c.nmu || c.nm, cc: p.sg, vap: c.vap, pvap: c.pvap, seq: c.seq, st: c.st });
+    }); }); });
+    return { cand: cand, tf: d.tf, pst: S.pst, st: S.st, s: S.ts, dt: d.dt, ht: d.ht, dg: d.dg, hg: d.hg,
+      c: E.c, pc: E.pc, vb: V.vb, pvb: V.pvb, tvn: V.tvn, ptvn: V.ptvn, vv: V.vv };
+  }
+  function getResult(url) { return getJSON(url).then(flat); }
 
   function getJSON(url) {
     return fetch(url, { cache: "no-cache" }).then(function (r) {
@@ -80,7 +98,7 @@
   function loadCurrent() {
     var el = $("placar"), url = resultUrl(SCOPE);
     if (NOW() < RELEASE) return;
-    return getJSON(url).then(function (d) {
+    return getResult(url).then(function (d) {
       if (d.notYet || !(d.cand && d.cand.length)) {
         if (!current.last) el.innerHTML = '<p class="empty">O TSE ainda não publicou totalização para este recorte. A página consulta de novo a cada 90 segundos.</p>';
         return;
@@ -182,7 +200,7 @@
       track("ELEICOES_RECORTE", { nivel: "municipio" });
       var url = resultUrl(SCOPE, m);
       $("munBoard").innerHTML = '<p class="empty">Lendo o TSE…</p>';
-      getJSON(url).then(function (d) {
+      getResult(url).then(function (d) {
         if (d.notYet || !(d.cand && d.cand.length)) { $("munBoard").innerHTML = '<p class="empty">O TSE ainda não publicou totalização para este município.</p>'; return; }
         var nm = (cfg.mun || []).filter(function (x) { return x.cd === m; })[0];
         board(parseResult(d), $("munBoard"), { readAt: NOW(), url: url, title: (SCOPE === "zz" ? "Cidade: " : "Município: ") + (nm ? nm.nm : m) });
@@ -278,7 +296,7 @@
     function next() {
       if (i >= ufs.length) return Promise.resolve();
       var uf = ufs[i++];
-      return getJSON(resultUrl(uf)).then(function (d) {
+      return getResult(resultUrl(uf)).then(function (d) {
         if (!d.notYet && d.cand && d.cand.length) map.data[uf] = parseResult(d);   // falha/ausente: mantém o último dado daquela UF
       }).catch(function () {}).then(next);
     }
@@ -288,7 +306,7 @@
   function loadExterior() {
     var el = $("exterior"); if (!el || NOW() < RELEASE) return;
     var url = resultUrl("zz");
-    getJSON(url).then(function (d) {
+    getResult(url).then(function (d) {
       if (d.notYet || !(d.cand && d.cand.length)) { el.innerHTML = '<p class="empty">O TSE ainda não publicou totalização do exterior.</p>'; return; }
       board(parseResult(d), el, { readAt: NOW(), url: url });
     }).catch(function () { if (!el.querySelector(".cands")) el.innerHTML = '<p class="empty">Não foi possível ler o TSE agora.</p>'; });
@@ -307,7 +325,7 @@
     if ($("buState")) $("buState").textContent = "Disponível conforme o TSE publica cada seção.";
     if (SCOPE === "br") {
       // a ordem de cores segue a cédula nacional do TSE: lê o Brasil primeiro, depois as UFs
-      getJSON(resultUrl("br")).then(function (d) { (d.cand || []).map(function (c) { return { id: c.sqcand, order: int(c.seq) }; })
+      getResult(resultUrl("br")).then(function (d) { (d.cand || []).map(function (c) { return { id: c.sqcand, order: int(c.seq) }; })
         .sort(function (a, b) { return (a.order || 99) - (b.order || 99); }).forEach(function (c) { colorOf(c); }); })
         .catch(function () {}).then(loadMap);
       loadExterior();
