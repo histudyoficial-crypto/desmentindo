@@ -249,8 +249,8 @@
   }
   P.home = function () {
     var ED = loadEdition();
-    return Promise.all([load("home.json"), ED]).then(function (res) {
-      var H = res[0], EDN = res[1];
+    return Promise.all([load("home.json"), ED, loadIdx("fechamentos"), loadIdx("materias")]).then(function (res) {
+      var H = res[0], EDN = res[1], FI = res[2], MI = res[3];
       H.agora = edItems(EDN).length ? { edition: EDN.edition, label: EDN.label, items: edItems(EDN) } : null;
       var today = new Date(), wd = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"][today.getDay()];
       var h = '<div class="sig" role="note"><div class="sig-in"><span>O que foi dito. Quando foi dito. E de onde veio.</span>' +
@@ -278,6 +278,12 @@
             return '<li><a href="#/agora/' + e(it.id) + '"><span class="rt">' + e(it.title) + '</span><span class="rd">' + tdate(it.date) + "</span></a></li>";
           }).join("") + "</ul>" : "") + "</section>";
       }
+      // Fechamento e matérias aprovados: só um atalho para a página própria (Home não muda de desenho).
+      var fx = (FI && FI.items || []).slice(0, 1).map(function (x) { return { href: "#/fechamento/" + x.date, t: x.title, d: x.date }; })
+        .concat((MI && MI.items || []).slice(0, 3).map(function (x) { return { href: "#/materia/" + x.slug, t: x.title, d: x.date }; }));
+      if (fx.length) h += '<section class="sec" id="fechamento"><h2 class="h2">Fechamento e matérias</h2><ul class="ed-rows">' + fx.map(function (x) {
+        return '<li><a href="' + e(x.href) + '"><span class="rt">' + e(x.t) + '</span><span class="rd">' + tdate(x.d) + "</span></a></li>";
+      }).join("") + "</ul></section>";
       if (H.hero) {
         h += '<section class="sec" id="' + (A ? "acompanhamento" : "agora") + '"><h2 class="h2">' + (A ? "Em acompanhamento" : "Agora") + (H.edition && !A ? ' <span class="meta" style="letter-spacing:0;text-transform:none;font-weight:400">· atualizado em ' + e(fdate(H.edition)) + "</span>" : "") + "</h2>" +
           '<article class="story-main"><a href="#/historia/' + e(H.hero.slug) + '"><span class="t">' + e(H.hero.title) + "</span></a>" +
@@ -580,6 +586,178 @@
     });
   };
 
+  // ---------------------------------------------------------------- FECHAMENTO e MATÉRIA (aprovados no Human Gate)
+  // Publicados pelo Publisher em /data/editorial/fechamentos/ e /data/editorial/materias/, com índices próprios (o AGORA
+  // não muda). A página só apresenta o artefato aprovado: não escolhe, não resume, não completa. Sem índice → nada aparece.
+  var typedIdx = {};
+  function loadIdx(kind) {
+    if (!typedIdx[kind]) typedIdx[kind] = fetch("/data/editorial/" + kind + "/index.json" + (DV ? "?v=" + DV : ""))
+      .then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+    return typedIdx[kind];
+  }
+  var TYPED_FILE = { fechamentos: /^data\/editorial\/fechamentos\/\d{4}-\d{2}-\d{2}\.json$/, materias: /^data\/editorial\/materias\/[a-z0-9-]+\.json$/ };
+  function loadTyped(kind, key) {
+    return loadIdx(kind).then(function (idx) {
+      if (!idx || !idx.items) return null;
+      key = key || idx.latest;
+      var x = idx.items.filter(function (i) { return kind === "fechamentos" ? i.date === key : i.slug === key; })[0];
+      if (!x || !TYPED_FILE[kind].test(x.file)) return null;
+      return fetch("/" + x.file + "?v=" + String(x.sha256 || "").slice(0, 12)).then(function (r) { return r.ok ? r.json() : null; });
+    }).catch(function () { return null; });
+  }
+  // horário de Brasília (UTC−3, sem horário de verão) a partir de ISO com fuso
+  function brt(iso) { var t = Date.parse(iso); return isNaN(t) ? null : new Date(t - 3 * 3600e3); }
+  function fhm(iso) { var d = brt(iso); return d ? String(d.getUTCHours()).padStart(2, "0") + ":" + String(d.getUTCMinutes()).padStart(2, "0") : ""; }
+  function fts(iso) {
+    if (!iso) return "";
+    if (/^\d{4}-\d{2}-\d{2}$/.test(iso)) return fdate(iso);
+    var d = brt(iso);
+    return d ? d.getUTCDate() + " " + MES[d.getUTCMonth()] + ", " + fhm(iso) : "";
+  }
+  function setDesc(s) { var m = document.querySelector('meta[name="description"]'); if (m && s) m.setAttribute("content", s); }
+  function covList(cov) {
+    return '<ul class="fx-cov">' + cov.map(function (c) {
+      return '<li><p class="fx-who"><a href="' + e(c.url) + '" target="_blank" rel="noopener"><b>' + e(c.outlet) + '</b> <span aria-hidden="true">↗</span>' +
+        '<span class="sr"> ' + e(c.title || c.headline || "") + "</span></a>" + (c.published_at ? "<span>" + e(fts(c.published_at)) + "</span>" : "") + "</p>" +
+        (c.headline ? '<p class="fx-hl">' + e(c.headline) + "</p>" : "") + (c.summary ? "<p>" + e(c.summary) + "</p>" : "") + "</li>";
+    }).join("") + "</ul>";
+  }
+  function srcLinks(srcs) {
+    return '<p class="src">' + srcs.map(function (s) { return '<a href="' + e(s.url) + '" target="_blank" rel="noopener">' + e(s.outlet) + "</a>"; }).join(" · ") + "</p>";
+  }
+  var BASIS_TXT = { "manchete": "só a manchete", "manchete e resumo": "manchete e resumo", "texto da matéria": "texto da matéria" };
+
+  P.fechamento = function (date) {
+    return loadTyped("fechamentos", date).then(function (F) {
+      if (!F) return notFound();
+      document.title = F.public_title + " · Desmentindo";
+      setDesc((F.opening && F.opening.points || []).map(function (p) { return p.text; }).join(" "));
+      var h = '<section class="page-head fx-head"><p class="kicker"><span class="tag tag-ink">Fechamento</span> ' + e(fdate(F.edition_date)) +
+        (F.context ? " · " + e(F.context) : "") + "</p>" +
+        '<h1 class="h1">' + e(F.public_title) + "</h1>" +
+        '<p class="fx-cut">Conteúdo verificado até <b>' + e(fhm(F.cutoff_at)) + "</b> de " + e(fdate(F.edition_date)) +
+        (F.published_at ? ' · publicado em <time datetime="' + e(F.published_at) + '">' + e(fts(F.published_at)) + "</time>" : "") + "</p>";
+      if (F.opening && F.opening.points && F.opening.points.length) {
+        h += '<h2 class="fx-open-h">' + e(F.opening.title) + '</h2><ol class="fx-open">' + F.opening.points.map(function (p) {
+          return '<li><a href="#' + e(p.story) + '" data-jump="' + e(p.story) + '">' + e(p.text) + "</a></li>";
+        }).join("") + "</ol>";
+      }
+      h += "</section>";
+      if (F.main_stories && F.main_stories.length) {
+        h += '<section class="sec"><h2 class="h2">Histórias principais</h2>' + F.main_stories.map(function (s) {
+          var x = '<article class="fx-story' + (s.lead ? " fx-lead" : "") + '" id="' + e(s.id) + '">' + (s.lead ? '<p class="kicker">Principal</p>' : "") +
+            '<h3 class="fx-h">' + e(s.headline) + "</h3>" + (s.dek ? '<p class="fx-dek">' + e(s.dek) + "</p>" : "");
+          if (s.steps) x += '<ol class="fx-steps">' + s.steps.map(function (st) {
+            return '<li class="' + (st.done ? "done" : "open") + '"><b>' + e(st.label) + "</b><span>" + e(st.text) + "</span></li>";
+          }).join("") + "</ol>";
+          x += '<h4 class="fx-k">O que aconteceu</h4><p>' + e(s.what_happened) + "</p>";
+          if (s.what_changed) x += '<h4 class="fx-k">O que há de novo</h4><p class="fx-new">' + e(s.what_changed) + "</p>";
+          if (s.coverage && s.coverage.length) x += '<h4 class="fx-k">Como estão cobrindo</h4>' + covList(s.coverage);
+          if (s.official) x += '<h4 class="fx-k">Manifestações oficiais</h4><ul class="fx-plain">' + s.official.map(function (o) { return "<li>" + e(o) + "</li>"; }).join("") + "</ul>";
+          x += '<div class="fx-concl"><h4 class="fx-k">O que dá para concluir</h4><p>' + e(s.conclusion) + "</p>" +
+            (s.open_questions ? '<p class="fx-open-q"><b>Em aberto:</b> ' + e(s.open_questions) + "</p>" : "") + "</div>";
+          return x + "</article>";
+        }).join("") + "</section>";
+      }
+      if (F.other_stories && F.other_stories.length) {
+        h += '<section class="sec"><h2 class="h2">Outras que você precisa saber</h2><ul class="fx-list">' + F.other_stories.map(function (o) {
+          return '<li id="' + e(o.id) + '"><h3>' + e(o.title) + "</h3><p>" + e(o.text) + "</p>" + srcLinks(o.sources) + "</li>";
+        }).join("") + "</ul></section>";
+      }
+      if (F.following && F.following.length) {
+        h += '<section class="sec"><h2 class="h2">Acompanhando</h2><ul class="fx-list fx-fol">' + F.following.map(function (o) {
+          return '<li id="' + e(o.id) + '"><h3>' + e(o.title) + "</h3><p>" + e(o.text) + "</p>" + srcLinks(o.sources) +
+            (o.voice ? '<p class="fx-voice"><span class="tag tag-ring">' + e(o.voice.kind) + "</span> " + e(o.voice.who) + ": " + e(o.voice.summary) +
+              ' <a class="link" href="' + e(o.voice.url) + '" target="_blank" rel="noopener">Ler</a></p>' : "") + "</li>";
+        }).join("") + "</ul></section>";
+      }
+      if (F.opinion && F.opinion.length) {
+        h += '<section class="sec"><h2 class="h2">Opinião</h2><ul class="fx-list">' + F.opinion.map(function (o) {
+          return '<li><p><span class="tag tag-alleg">' + e(o.kind) + "</span> " + e(o.who) + ': <a class="link" href="' + e(o.url) + '" target="_blank" rel="noopener">' + e(o.title) + "</a></p>" +
+            (o.note ? '<p class="quiet">' + e(o.note) + "</p>" : "") + "</li>";
+        }).join("") + '</ul><p class="rule-note">Opinião não é fato: mostramos quem disse e onde.</p></section>';
+      }
+      if (F.sources && F.sources.length) {
+        h += '<section class="sec"><h2 class="h2">Veja por você mesmo</h2><details><summary>Todas as fontes desta edição (' + nf(F.sources.length) + ')</summary><ul class="srcs">' +
+          F.sources.map(function (s) {
+            return "<li><b>" + e(s.outlet) + "</b> · " + e(fts(s.published_at)) + " · " + ext(s.url, e(s.title || s.outlet), "link") +
+              (s.basis ? ' <span class="meta">(' + e(BASIS_TXT[s.basis] || s.basis) + ")</span>" : "") + "</li>";
+          }).join("") + "</ul></details>" + (F.note ? '<p class="quiet">' + e(F.note) + "</p>" : "") + SRC_RULE + "</section>";
+      }
+      return h;
+    });
+  };
+
+  function videoItem(v) {
+    var li = saidItem({ source_name: v.channel, video_id: v.video_id, t_seconds: v.t_seconds, date: v.date, excerpt: v.said, t_label: v.t_label, deep_link: v.deep_link });
+    li = li.replace('<p class="said-x">', (v.video_title ? '<p class="fx-vt">' + e(v.video_title) + "</p>" : "") + '<p class="said-x">');
+    return v.context ? li.replace('<div class="said-foot">', '<p class="fx-ctx">' + e(v.context) + '</p><div class="said-foot">') : li;
+  }
+  P.materia = function (slug) {
+    return loadTyped("materias", slug).then(function (M) {
+      if (!M) return notFound();
+      document.title = M.public_title + " · Desmentindo";
+      setDesc(M.dek);
+      var h = '<section class="page-head hero-ink fx-mhead"><p class="kicker"><span class="tag tag-paper">' + e(M.kicker || "Matéria") + "</span>" +
+        (M.status ? ' <span class="fx-st">' + e(M.status) + "</span>" : "") + "</p>" +
+        '<h1 class="h1">' + e(M.public_title) + "</h1>" + (M.dek ? '<p class="fx-mdek">' + e(M.dek) + "</p>" : "") +
+        '<p class="fx-pub">' + tdate(M.date) + (M.updated_at && M.updated_at !== M.published_at ? " · atualizado em " + e(fts(M.updated_at)) : "") + "</p>";
+      if (M.art) h += '<figure class="fx-art"><picture><source media="(min-width: 620px)" srcset="' + e(M.art.desktop) + '"><img src="' + e(M.art.mobile) + '" alt="" loading="lazy" decoding="async"></picture>' +
+        (M.art.caption ? "<figcaption>" + e(M.art.caption) + "</figcaption>" : "") + "</figure>";
+      h += "</section>";
+      if (M.facts && M.facts.length) h += '<div class="facts fx-facts">' + M.facts.map(function (f) { return '<div><p class="fv num">' + e(f.value) + '</p><p class="fs">' + e(f.label) + "</p></div>"; }).join("") + "</div>";
+      if (M.what_changed && M.what_changed.length) {
+        h += '<section class="sec"><h2 class="h2">O que mudou hoje</h2><ul class="items">' + M.what_changed.map(function (c) {
+          return '<li><span class="fx-when">' + e(c.when) + "</span><p>" + e(c.text) + "</p></li>";
+        }).join("") + "</ul>" + (M.correction ? '<p class="fx-fix"><b>Correção:</b> ' + e(M.correction) + "</p>" : "") + "</section>";
+      }
+      if ((M.videos && M.videos.length) || M.partial_videos) {
+        h += '<section class="sec" id="ja-falaram"><h2 class="h2">' + e(M.videos_title || "Já falaram sobre isso") + "</h2>" +
+          (M.videos_note ? '<p class="quiet">' + e(M.videos_note) + "</p>" : "") +
+          '<ul class="said-list">' + (M.videos || []).map(videoItem).join("") + "</ul>";
+        if (M.partial_videos && M.partial_videos.items.length) {
+          h += '<p class="fx-partial"><span class="tag tag-alleg">' + e(M.partial_videos.label) + "</span> " + e(M.partial_videos.who) + "</p>" +
+            '<ul class="said-list">' + M.partial_videos.items.map(videoItem).join("") + "</ul>";
+        }
+        h += (M.archive_note ? '<p class="quiet">' + e(M.archive_note) + "</p>" : "") + NOTE + "</section>";
+      }
+      if (M.timeline && M.timeline.length) {
+        h += '<section class="sec"><h2 class="h2">Linha do tempo · com o que foi dito</h2><ol class="fx-tl">' + M.timeline.map(function (t) {
+          return '<li' + (t.today ? ' class="today"' : "") + '><span class="d">' + e(t.when) + '</span><span class="ev">' + e(t.text) + "</span>" +
+            (t.clips ? '<span class="fx-chips">' + t.clips.map(function (c) {
+              return '<a href="' + e(c.url) + '" target="_blank" rel="noopener"><i>' + e(c.channel) + "</i>▶ " + e(c.t_label) + " <span>" + e(c.text) + "</span></a>";
+            }).join("") + "</span>" : "") + "</li>";
+        }).join("") + "</ol></section>";
+      }
+      if (M.coverage && M.coverage.length) h += '<section class="sec"><h2 class="h2">Quem está cobrindo</h2>' + covList(M.coverage) + (M.coverage_note ? '<p class="rule-note">' + e(M.coverage_note) + "</p>" : "") + "</section>";
+      if (M.documents && M.documents.length) {
+        h += '<section class="sec"><h2 class="h2">Documentos</h2><ul class="fx-docs">' + M.documents.map(function (d) {
+          return '<li><span class="tag ' + (d.located ? "tag-fact" : "tag-ring") + '">' + e(d.status) + '</span><p class="fx-hl">' + e(d.title) + "</p>" +
+            (d.note ? "<p>" + e(d.note) + "</p>" : "") + (d.url ? ext(d.url, "Ver documento ↗", "link") : "") + "</li>";
+        }).join("") + "</ul></section>";
+      }
+      if (M.conclusion) {
+        var C = M.conclusion;
+        h += '<section class="sec"><h2 class="h2">O que dá para concluir hoje</h2><div class="fx-mconcl"><p class="fx-st">' + e(C.status) + "</p><ul>" +
+          C.points.map(function (p) { return '<li class="' + (p.holds ? "y" : "n") + '">' + e(p.text) + "</li>"; }).join("") + "</ul>" +
+          (C.limits && C.limits.length ? '<p class="fx-lims">' + C.limits.map(function (l) { return "<span>" + e(l) + "</span>"; }).join("") + "</p>" : "") + "</div></section>";
+      }
+      if (M.see_for_yourself && M.see_for_yourself.length) {
+        h += '<section class="sec"><h2 class="h2">Veja por você mesmo</h2><ul class="srcs">' + M.see_for_yourself.map(function (s) {
+          return '<li><span class="k">' + (s.kind === "video" ? "Vídeo" : s.kind === "document" ? "Documento" : "Reportagem") + "</span>" + ext(s.url, e(s.label), "link") + "</li>";
+        }).join("") + "</ul>" + SRC_RULE + "</section>";
+      }
+      if (M.people && M.people.length) {
+        h += '<section class="sec" id="pessoas"><h2 class="h2">' + e(M.people_title || "Pessoas nesta história") + "</h2>" + (M.people_note ? '<p class="quiet">' + e(M.people_note) + "</p>" : "") +
+          '<ul class="fx-people">' + M.people.map(function (p) {
+            return '<li><p class="fx-pn">' + e(p.name) + '</p><p class="meta">' + e(p.when) + "</p><p>" + e(p.role) + '</p><p class="fx-why">' + e(p.why) + "</p>" +
+              '<p class="meta">' + e(p.status) + "</p></li>";
+          }).join("") + "</ul></section>";
+      }
+      return h;
+    });
+  };
+
   // ---------------------------------------------------------------- CHECAR (apresentação)
   // CHECK_OUTPUT_PARITY = REQUIRED_WHEN_FEASIBLE: o resultado volta no MESMO formato da entrada (mapa de relações →
   // mapa checado, tabela → tabela checada, linha do tempo → linha do tempo checada, card/print → reconstrução checada).
@@ -795,7 +973,7 @@
     var fn = P[name] || P.home;
     document.body.classList.toggle("is-home", fn === P.home);
     document.title = "Desmentindo";
-    setDoor(fn === P.busca ? "busca" : (fn === P.arquivos || fn === P.arquivo) ? "arquivos" : (fn === P.home || fn === P.historia || fn === P.agora) ? "agora" : "");
+    setDoor(fn === P.busca ? "busca" : (fn === P.arquivos || fn === P.arquivo) ? "arquivos" : (fn === P.home || fn === P.historia || fn === P.agora || fn === P.fechamento || fn === P.materia) ? "agora" : "");
     pending = {};
     var my = ++routeSeq; // só a navegação mais recente pode pintar a página (resposta atrasada de outra rota é descartada)
     fn(arg).then(function (h) {
