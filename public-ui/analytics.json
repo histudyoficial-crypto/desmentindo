@@ -1,7 +1,7 @@
 {
   "provider": "umami",
-  "website_id": null,
+  "website_id": "0dee5fb0-ace1-44cb-beba-d6b8733092c2",
   "script_src": "https://cloud.umami.is/script.js",
   "respect_do_not_track": true,
-  "note": "Decisão D-01 (04/10/2026): Umami Cloud. Sem website_id = nenhuma medição no site. O id do site não é segredo (aparece no HTML), mas só entra aqui depois do cadastro e do aviso de privacidade publicado."
+  "note": "Decisão D-01 (04/10/2026): Umami Cloud, propriedade criada por Johnny. O website_id não é segredo (aparece no HTML) e não é API key. data-auto-track=false: o site envia o pageview por rota (rotas por hash + páginas por edição), o que evita o pageview em dobro. Sem Distinct ID, sem session replay, sem identificador próprio."
 }
