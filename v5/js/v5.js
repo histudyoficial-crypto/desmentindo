@@ -671,6 +671,7 @@
       h += '<h2 class="h2">Medição de audiência</h2>' +
         "<p>Para saber quantas pessoas leem o Desmentindo, o que leem e de onde chegam, usamos o <b>Umami Cloud</b>, uma ferramenta de medição que não usa cookies e não guarda um identificador no seu navegador.</p>" +
         "<p><b>O que é registrado:</b> a página aberta (sem o texto de buscas), a página de onde você veio, os parâmetros de campanha do link (utm), tipo de dispositivo, navegador, sistema, idioma e localização aproximada (país e região). Também estas ações: <i>leitura engajada</i> (pelo menos 60 segundos com a página visível e rolagem até a metade de um Fechamento ou Matéria), <i>clique em uma fonte</i> (só o endereço do site da fonte) e <i>play de vídeo</i>.</p>" +
+        "<p>Nas páginas de Eleições 2026, também registramos até que nível a pessoa navegou (registro da apuração, município, zona ou seção), sem identificar quem navegou.</p>" +
         "<p><b>Como a visita é contada:</b> a ferramenta usa o endereço IP e o navegador para formar um código de visita anônimo, que muda todo mês. Não enviamos nome, e-mail, telefone ou qualquer identificador de pessoa.</p>" +
         "<p><b>Para quê:</b> medir audiência agregada e melhorar o produto. Não vendemos dados e não fazemos publicidade direcionada.</p>" +
         (ret ? "<p><b>Por quanto tempo:</b> " + e(ret) + ".</p>" : "") +
