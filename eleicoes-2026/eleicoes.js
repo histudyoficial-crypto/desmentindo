@@ -158,15 +158,15 @@
   function explorer() {
     var box = $("explorar");
     if (!box || SCOPE === "br" || NOW() < RELEASE) return;
-    box.innerHTML = '<div class="pick"><label>Município<select id="selMun" disabled><option>Carregando…</option></select></label>' +
+    box.innerHTML = '<div class="pick"><label>' + (SCOPE === "zz" ? "Cidade" : "Município") + '<select id="selMun" disabled><option>Carregando…</option></select></label>' +
       '<label>Zona<select id="selZona" disabled><option value="">—</option></select></label>' +
       '<label>Seção<select id="selSec" disabled><option value="">—</option></select></label></div><div id="munBoard"></div><div id="secBox"></div>';
     var sm = $("selMun"), sz = $("selZona"), ss = $("selSec"), st = readHash();
     getJSON(BASE + "/" + ELE + "/config/mun-e" + ELE6 + "-cm.json").then(function (c) {
-      var abr = (c.abr || []).filter(function (a) { return a.cd === SCOPE; })[0];
+      var abr = (c.abr || []).filter(function (a) { return String(a.cd).toLowerCase() === SCOPE; })[0];
       var mus = (abr && abr.mu || []).slice().sort(function (a, b) { return a.nm.localeCompare(b.nm, "pt-BR"); });
       cfg.mun = mus;
-      sm.innerHTML = '<option value="">Escolha o município</option>' + mus.map(function (m) { return '<option value="' + esc(m.cd) + '">' + esc(m.nm) + "</option>"; }).join("");
+      sm.innerHTML = '<option value="">' + (SCOPE === "zz" ? "Escolha a cidade" : "Escolha o município") + '</option>' + mus.map(function (m) { return '<option value="' + esc(m.cd) + '">' + esc(m.nm) + "</option>"; }).join("");
       sm.disabled = false;
       if (st.m) { sm.value = st.m; onMun(true); }
     }).catch(function () { sm.innerHTML = "<option>Não foi possível ler a lista do TSE</option>"; });
@@ -185,7 +185,7 @@
       getJSON(url).then(function (d) {
         if (d.notYet || !(d.cand && d.cand.length)) { $("munBoard").innerHTML = '<p class="empty">O TSE ainda não publicou totalização para este município.</p>'; return; }
         var nm = (cfg.mun || []).filter(function (x) { return x.cd === m; })[0];
-        board(parseResult(d), $("munBoard"), { readAt: NOW(), url: url, title: "Município: " + (nm ? nm.nm : m) });
+        board(parseResult(d), $("munBoard"), { readAt: NOW(), url: url, title: (SCOPE === "zz" ? "Cidade: " : "Município: ") + (nm ? nm.nm : m) });
       }).catch(function () { $("munBoard").innerHTML = '<p class="empty">Não foi possível ler o TSE agora.</p>'; });
       secTree().then(function (t) {
         var mu = (t.mu || []).filter(function (x) { return x.cd === m; })[0];
@@ -227,6 +227,73 @@
     ss.addEventListener("change", function () { onSec(false); });
   }
 
+
+  // ---------------------------------------------------------------- mapa por UF (só na página Brasil)
+  // Grade de quadrados na posição aproximada de cada UF (todas do mesmo tamanho: o número importa, não a área).
+  // Cor = candidato à frente na parcial daquela UF, pela ordem do TSE na cédula. Não indica partido nem lado.
+  // Cor nunca é o único sinal: cada quadrado traz UF e %, rótulo acessível completo, e a lista abaixo tem os números.
+  var GRID = [["rr",0,1],["ap",0,3],["am",1,1],["pa",1,2],["ma",1,3],["ce",1,4],["rn",1,5],["ac",2,0],["ro",2,1],["to",2,2],
+    ["pi",2,3],["pb",2,4],["pe",2,5],["mt",3,1],["go",3,2],["df",3,3],["ba",3,4],["al",3,5],["ms",4,1],["mg",4,2],["es",4,3],
+    ["se",4,4],["pr",5,1],["sp",5,2],["rj",5,3],["sc",6,1],["rs",7,1]];
+  var UFN = { ac: "Acre", al: "Alagoas", ap: "Amapá", am: "Amazonas", ba: "Bahia", ce: "Ceará", df: "Distrito Federal", es: "Espírito Santo",
+    go: "Goiás", ma: "Maranhão", mt: "Mato Grosso", ms: "Mato Grosso do Sul", mg: "Minas Gerais", pa: "Pará", pb: "Paraíba", pr: "Paraná",
+    pe: "Pernambuco", pi: "Piauí", rj: "Rio de Janeiro", rn: "Rio Grande do Norte", rs: "Rio Grande do Sul", ro: "Rondônia", rr: "Roraima",
+    sc: "Santa Catarina", sp: "São Paulo", se: "Sergipe", to: "Tocantins" };
+  var PALETTE = ["#2A6F77", "#B5651D", "#6B4E9B", "#4F7A28", "#8C3B5E", "#3D5A80", "#7A6A2F", "#A04A3A"];
+  var MAP_MS = 180000, map = { data: {}, color: {}, at: 0, timer: 0 };
+  function lead(R) {
+    var c = R.cands.filter(function (x) { return x.pct != null; }).slice().sort(function (a, b) { return b.pct - a.pct; });
+    if (!c.length) return null;
+    return { c: c[0], tie: c.length > 1 && c[1].pct === c[0].pct };
+  }
+  function colorOf(c) {
+    if (!(c.id in map.color)) map.color[c.id] = PALETTE[Object.keys(map.color).length % PALETTE.length];
+    return map.color[c.id];
+  }
+  function renderMap() {
+    var el = $("mapa"), list = $("mapaLista");
+    if (!el) return;
+    var cells = GRID.map(function (g) {
+      var uf = g[0], R = map.data[uf], L = R && lead(R);
+      var label = UFN[uf] + ": " + (!R ? "sem dado do TSE ainda" : L ? (L.tie ? "empate na parcial" : L.c.name + (R.final ? " mais votado" : " à frente na parcial") + " com " + fPct(L.c.pct)) + "; " + (R.final ? "totalização final" : fPct(R.pst) + " das seções totalizadas") : "sem votos totalizados");
+      var bg = R && L && !L.tie ? colorOf(L.c) : "";
+      return '<a class="tile' + (!R || !L ? " nodata" : L.tie ? " tie" : "") + '" href="/eleicoes-2026/' + uf + '/" style="grid-row:' + (g[1] + 1) + ";grid-column:" + (g[2] + 1) + (bg ? ";background:" + bg : "") + '" aria-label="' + esc(label) + '" title="' + esc(label) + '">' +
+        "<b>" + uf.toUpperCase() + "</b><span>" + (R && L ? (L.tie ? "empate" : fPct(L.c.pct)) : "—") + "</span></a>";
+    }).join("");
+    var seen = {};
+    var legend = GRID.map(function (g) { var R = map.data[g[0]], L = R && lead(R); return L && !L.tie ? L.c : null; }).filter(function (c) { if (!c || seen[c.id]) return false; seen[c.id] = 1; return true; });
+    el.innerHTML = '<div class="grid-map">' + cells + "</div>" +
+      (legend.length ? '<ul class="mlegend">' + legend.map(function (c) { return '<li><i style="background:' + colorOf(c) + '"></i>' + esc(c.name) + "</li>"; }).join("") + '<li><i class="nodata"></i>Sem dado do TSE ainda</li></ul>' : "") +
+      '<p class="note">Cores pela ordem do TSE na cédula, sem relação com partido ou lado. Mapa em quadrados do mesmo tamanho: mostra quem está à frente em cada estado, não quantos votos cada estado tem. Leitura do TSE às ' + (map.at ? hhmm(map.at) : "—") + ".</p>";
+    var rows = Object.keys(UFN).sort(function (a, b) { return UFN[a].localeCompare(UFN[b], "pt-BR"); }).map(function (uf) {
+      var R = map.data[uf], L = R && lead(R);
+      return "<tr><th scope=\"row\"><a href=\"/eleicoes-2026/" + uf + "/\">" + esc(UFN[uf]) + "</a></th><td>" + (L ? (L.tie ? "empate" : esc(L.c.name)) : "—") + "</td><td>" + (L && !L.tie ? fInt(L.c.votes) : "—") +
+        "</td><td>" + (L && !L.tie ? fPct(L.c.pct) : "—") + "</td><td>" + (R ? (R.final ? "final" : fPct(R.pst)) : "—") + "</td></tr>";
+    }).join("");
+    list.innerHTML = '<div class="tablewrap"><table class="uftab"><caption>Por estado: quem está à frente na parcial, com votos e % sobre os votos válidos, e quanto já foi totalizado. Não é resultado final enquanto a coluna não disser "final".</caption><thead><tr><th scope="col">Estado</th><th scope="col">À frente na parcial</th><th scope="col">Votos</th><th scope="col">%</th><th scope="col">Totalizado</th></tr></thead><tbody>' + rows + "</tbody></table></div>";
+  }
+  function loadMap() {
+    if (!$("mapa") || NOW() < RELEASE) return;
+    var ufs = Object.keys(UFN), i = 0, live = 0;
+    function next() {
+      if (i >= ufs.length) return Promise.resolve();
+      var uf = ufs[i++];
+      return getJSON(resultUrl(uf)).then(function (d) {
+        if (!d.notYet && d.cand && d.cand.length) map.data[uf] = parseResult(d);   // falha/ausente: mantém o último dado daquela UF
+      }).catch(function () {}).then(next);
+    }
+    var workers = []; for (var k = 0; k < 6; k++) workers.push(next());
+    return Promise.all(workers).then(function () { map.at = NOW(); renderMap(); });
+  }
+  function loadExterior() {
+    var el = $("exterior"); if (!el || NOW() < RELEASE) return;
+    var url = resultUrl("zz");
+    getJSON(url).then(function (d) {
+      if (d.notYet || !(d.cand && d.cand.length)) { el.innerHTML = '<p class="empty">O TSE ainda não publicou totalização do exterior.</p>'; return; }
+      board(parseResult(d), el, { readAt: NOW(), url: url });
+    }).catch(function () { if (!el.querySelector(".cands")) el.innerHTML = '<p class="empty">Não foi possível ler o TSE agora.</p>'; });
+  }
+
   // ---------------------------------------------------------------- início
   function start() {
     if (NOW() < RELEASE) {
@@ -237,6 +304,15 @@
       return;
     }
     loadCurrent(); schedule(); loadSnaps(); explorer();
+    if ($("buState")) $("buState").textContent = "Disponível conforme o TSE publica cada seção.";
+    if (SCOPE === "br") {
+      // a ordem de cores segue a cédula nacional do TSE: lê o Brasil primeiro, depois as UFs
+      getJSON(resultUrl("br")).then(function (d) { (d.cand || []).map(function (c) { return { id: c.sqcand, order: int(c.seq) }; })
+        .sort(function (a, b) { return (a.order || 99) - (b.order || 99); }).forEach(function (c) { colorOf(c); }); })
+        .catch(function () {}).then(loadMap);
+      loadExterior();
+      setInterval(function () { if (document.visibilityState === "visible") { loadMap(); loadExterior(); } }, MAP_MS);
+    }
     setInterval(function () { if (document.visibilityState === "visible") loadSnaps(); }, 10 * 60 * 1000);
   }
   start();

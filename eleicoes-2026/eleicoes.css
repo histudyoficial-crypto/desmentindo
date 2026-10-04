@@ -4,7 +4,7 @@
 *{box-sizing:border-box}html,body{margin:0}
 body{background:var(--paper);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;overflow-x:hidden;-webkit-text-size-adjust:100%}
 a{color:var(--blue)}:focus-visible{outline:2px solid var(--green);outline-offset:2px}
-.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
 .top{border-bottom:1px solid var(--rule);background:var(--paper)}
 .top .wrap{display:flex;align-items:center;gap:10px;min-height:52px}
 .brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink)}
@@ -64,3 +64,18 @@ footer{border-top:3px solid var(--ink);margin-top:28px;padding:14px 0 40px;font-
 .btitle{margin:4px 0 8px;font-size:17px}
 .legend{list-style:none;display:flex;flex-wrap:wrap;gap:6px 14px;margin:8px 0 0;padding:0;font-size:13px}
 .legend i{display:inline-block;width:14px;height:3px;margin-right:6px;vertical-align:middle}
+/* mapa por UF: grade de quadrados (mobile first) */
+.grid-map{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:1fr;gap:4px;max-width:420px;margin:0 auto}
+.tile{aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;color:#fff;background:#8A8786;min-width:0;line-height:1.1}
+.tile b{font-size:14px;font-weight:900;letter-spacing:.02em}.tile span{font-size:11px;font-variant-numeric:tabular-nums}
+.tile.nodata{background:var(--white);color:var(--muted);border:1px dashed var(--rule)}
+.tile.tie{background:repeating-linear-gradient(45deg,#6E6B6A,#6E6B6A 6px,#9A9796 6px,#9A9796 12px)}
+.tile:hover,.tile:focus-visible{outline:3px solid var(--ink);outline-offset:1px}
+.mlegend{list-style:none;display:flex;flex-wrap:wrap;gap:6px 14px;margin:12px 0 0;padding:0;font-size:13px}
+.mlegend i{display:inline-block;width:14px;height:14px;margin-right:6px;vertical-align:-2px}.mlegend i.nodata{background:var(--white);border:1px dashed var(--muted)}
+.tablewrap{overflow-x:auto;margin-top:14px;background:var(--white);border:1px solid var(--rule)}
+.uftab{width:100%;border-collapse:collapse;font-size:14px}.uftab caption{text-align:left;font-size:12.5px;color:var(--muted);padding:8px 10px}
+.uftab th,.uftab td{padding:7px 8px;border-top:1px solid var(--rule);text-align:left}.uftab td:nth-child(n+3){text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.uftab thead th{font-size:12px;color:var(--muted)}.uftab thead th:nth-child(n+3){text-align:right}
+.more{margin:10px 0 0;font-weight:700}
+@media(min-width:860px){.mapsec{display:grid;grid-template-columns:400px 1fr;gap:0 24px;align-items:start}.mapsec>h2,.mapsec>.sub{grid-column:1/-1}.mapsec .tablewrap{margin-top:0}}
