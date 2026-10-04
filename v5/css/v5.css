@@ -498,3 +498,9 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
 .fx-pn { font-weight: 800; }
 .fx-why { font-size: 15px; }
 @media (min-width: 760px) { .fx-concl { margin: 16px -16px -16px; } .fx-tl li { grid-template-columns: 130px 1fr; } }
+
+/* FECHAMENTO no topo da Home (D-06, 04/10/2026): mesmo vocabulário da página do Fechamento */
+.fx-home .fx-home-t { font-weight: 900; font-stretch: 80%; font-size: clamp(24px, 6vw, 32px); line-height: 1.05; margin: 0 0 12px; }
+.fx-home .fx-home-t a { text-decoration: none; }
+.fx-home .fx-open { margin-bottom: 12px; }
+.fx-home .fx-home-go { margin: 0; }

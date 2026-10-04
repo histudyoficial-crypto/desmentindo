@@ -58,7 +58,69 @@ h = h
   .replace(/href="fonts\//g, 'href="v5/fonts/')
   .replace(/<span>Cópia de prévia · <a href="\.\.\/">desmentindo\.com\.br<\/a><\/span>/, "");
 if (/noindex/.test(h)) throw new Error("raiz não pode ter noindex");
+
+// ANALYTICS (T3, decisão D-01 de 04/10): Umami Cloud, só quando public-ui/analytics.json tiver o website_id.
+// Sem id → nenhum script de medição. Sem cookie, sem identificador próprio, sem dado pessoal em evento.
+const AN = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "analytics.json"), "utf8"));
+const analyticsTag = AN.provider === "umami" && AN.website_id
+  ? `<meta name="desmentindo-analytics" content="umami"${AN.retention ? ` data-retention="${String(AN.retention).replace(/"/g, "")}"` : ""}>\n<script defer src="${AN.script_src}" data-website-id="${AN.website_id}" data-auto-track="false"${AN.respect_do_not_track ? ' data-do-not-track="true"' : ""}></script>`
+  : "";
+if (analyticsTag && !/^[0-9a-f-]{36}$/.test(AN.website_id)) throw new Error("analytics.json: website_id inválido");
+
+// COMPARTILHAMENTO (T2, P0-A de 04/10): prévia de link. Quem gera prévia (WhatsApp, LinkedIn, X) não roda JS nem vê o
+// "#/rota", então cada FECHAMENTO e MATÉRIA ganha uma página estática própria com título, descrição, canonical e Open Graph.
+const SITE = "https://desmentindo.com.br";
+const attr = s => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const cut = (s, n) => { s = String(s || "").replace(/\s+/g, " ").trim(); return s.length <= n ? s : s.slice(0, n - 1).replace(/\s+\S*$/, "") + "…"; };
+function meta({ title, desc, url, image, type, published }) {
+  return [`<link rel="canonical" href="${attr(url)}">`, `<meta name="description" content="${attr(desc)}">`,
+    `<meta property="og:site_name" content="Desmentindo">`, `<meta property="og:locale" content="pt_BR">`,
+    `<meta property="og:type" content="${type}">`, `<meta property="og:title" content="${attr(title)}">`,
+    `<meta property="og:description" content="${attr(desc)}">`, `<meta property="og:url" content="${attr(url)}">`,
+    `<meta property="og:image" content="${SITE}${image}">`, `<meta property="og:image:width" content="1200">`,
+    `<meta property="og:image:height" content="630">`, `<meta property="og:image:alt" content="${attr(title)}">`,
+    `<meta name="twitter:card" content="summary_large_image">`, `<meta name="twitter:title" content="${attr(title)}">`,
+    `<meta name="twitter:description" content="${attr(desc)}">`, `<meta name="twitter:image" content="${SITE}${image}">`]
+    .concat(published ? [`<meta property="article:published_time" content="${attr(published)}">`] : []).join("\n");
+}
+const ROOT_DESC = (/<meta name="description" content="([^"]*)">/.exec(h) || [])[1] || "Desmentindo";
+h = h.replace(/<meta name="description" content="[^"]*">\n?/, "")
+  .replace('<link rel="canonical" href="https://desmentindo.com.br/">',
+    meta({ title: "Desmentindo", desc: ROOT_DESC, url: SITE + "/", image: "/img/og/desmentindo.png", type: "website" }))
+  .replace("</head>", (analyticsTag ? analyticsTag + "\n" : "") + "</head>");
 fs.writeFileSync(out, h);
+
+// Página por edição: mesma raiz, caminhos absolutos (a página fica em /fechamento/<data>/), e abre direto na rota.
+const absRoot = h.replace(/(href|src)="v5\//g, '$1="/v5/').replace('<meta name="v5-base" content="v5/">', '<meta name="v5-base" content="/v5/">');
+function editionPage(o) {
+  const head = meta(o);
+  let p = absRoot.replace(/<title>[^<]*<\/title>/, `<title>${attr(o.title)} · Desmentindo</title>`);
+  p = p.replace(/<link rel="canonical"[\s\S]*?<meta name="twitter:image" content="[^"]*">/, head);
+  const go = `<script>if(!location.hash||location.hash==="#"||location.hash==="#/")history.replaceState(null,"",location.pathname+location.search+"#${o.route}");</script>`;
+  // links fixos (cabeçalho, barra e rodapé) levam à raiz; a navegação dentro da edição continua pelo #/rota
+  p = p.replace(/href="#\//g, 'href="/#/').replace('href="#rodape"', 'href="#rodape"');
+  return p.replace(/<script src="\/v5\/js\/v5\.js/, go + "\n$&");
+}
+const readJson = f => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, f), "utf8")); } catch { return null; } };
+export function editionPages() {
+  const pages = [];
+  for (const x of (readJson("data/editorial/fechamentos/index.json") || {}).items || []) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(x.date)) throw new Error("fechamento com data inválida: " + x.date);
+    const F = readJson(x.file) || {};
+    const pts = ((F.opening || {}).points || []).map(q => q.text).join(" ");
+    pages.push({ path: `fechamento/${x.date}/index.html`, route: `/fechamento/${x.date}`, title: x.title || F.public_title,
+      desc: cut(pts || "O que importou hoje, com fontes.", 200), url: `${SITE}/fechamento/${x.date}/`,
+      image: "/img/og/fechamento.png", type: "article", published: F.published_at });
+  }
+  for (const x of (readJson("data/editorial/materias/index.json") || {}).items || []) {
+    if (!/^[a-z0-9-]+$/.test(x.slug)) throw new Error("matéria com slug inválido: " + x.slug);
+    const M = readJson(x.file) || {};
+    pages.push({ path: `materia/${x.slug}/index.html`, route: `/materia/${x.slug}`, title: x.title || M.public_title,
+      desc: cut(x.dek || M.dek || "", 200), url: `${SITE}/materia/${x.slug}/`, image: "/img/og/materia.png",
+      type: "article", published: M.published_at });
+  }
+  return pages.map(o => ({ path: o.path, html: editionPage(o), url: o.url }));
+}
 
 // LEGACY_PUBLIC_APP = RETIRED (decisão de Johnny, 02/10/2026): um só Desmentindo público. O app anterior continua no
 // Git (index.html/desmentindo_local.html do repositório = histórico técnico e fonte de dados do Publisher), mas a URL
@@ -71,6 +133,18 @@ export const LEGACY_STUB = `<!doctype html>
 <script>location.replace("/" + (location.hash || ""));</script></head>
 <body><p>O site anterior do Desmentindo foi encerrado. <a href="/">Ir para desmentindo.com.br</a></p></body></html>
 `;
+// Páginas por edição: no workspace do deploy (vão para o servidor pelo FTP) ou em --pages-out <dir> (QA / fronteira).
+const po = process.argv.indexOf("--pages-out");
+const pagesDir = po > 0 ? path.resolve(process.argv[po + 1]) : (out === path.join(ROOT, "index.html") && process.env.GITHUB_ACTIONS === "true" ? ROOT : null);
+if (pagesDir) {
+  const pages = editionPages();
+  for (const pg of pages) {
+    const f = path.join(pagesDir, pg.path);
+    fs.mkdirSync(path.dirname(f), { recursive: true });
+    fs.writeFileSync(f, pg.html);
+  }
+  console.log(`páginas compartilháveis: ${pages.length} → ${path.relative(ROOT, pagesDir) || "."}`);
+}
 const li = process.argv.indexOf("--legacy-out");
 // Só o workspace do deploy (GitHub Actions) troca arquivos do repositório; localmente nada é apagado/sobrescrito.
 const DEPLOY_WS = out === path.join(ROOT, "index.html") && process.env.GITHUB_ACTIONS === "true";

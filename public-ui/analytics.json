@@ -1,0 +1,7 @@
+{
+  "provider": "umami",
+  "website_id": null,
+  "script_src": "https://cloud.umami.is/script.js",
+  "respect_do_not_track": true,
+  "note": "Decisão D-01 (04/10/2026): Umami Cloud. Sem website_id = nenhuma medição no site. O id do site não é segredo (aparece no HTML), mas só entra aqui depois do cadastro e do aviso de privacidade publicado."
+}

@@ -14,7 +14,7 @@ PRIVATE OPS → HUMAN GATE → APPROVED PUBLIC ARTIFACT → PUBLIC REPO (PR do P
 - `v5/`: interface pública em produção desde 01/10/2026 (início oficial da operação). A RAIZ do site é gerada no deploy
   por `public-ui/build-root.mjs` a partir de `v5/index.html` (indexável; assets e dados em `/v5/`). `/v5/` segue como
   cópia de prévia `noindex`. ROLLBACK: trocar `public-ui/ROOT_VERSION` de `v5` para `legacy` (1 commit) → a raiz volta
-  a ser o `index.html` legado. Dados de apresentação: `public-ui/build-public-data.mjs` (v4) e `build-v5-data.mjs` (v5)
+  a ser o `index.html` legado. O mesmo script gera, no deploy, uma página compartilhável por edição (`/fechamento/<data>/`, `/materia/<slug>/`) com título, descrição, canonical e Open Graph próprios (imagens em `img/og/`; checagem `public-ui/check-share-pages.mjs` no CI). Medição: Umami Cloud só com `website_id` em `public-ui/analytics.json` (sem cookie, sem identificador próprio, nada pessoal nos eventos). Dados de apresentação: `public-ui/build-public-data.mjs` (v4) e `build-v5-data.mjs` (v5)
   rodam no deploy a partir dos dados públicos aprovados (o `index.html` legado do Publisher) — nunca do Human Review.
 
 - `data/editorial/fechamentos/` e `data/editorial/materias/` (G3, Johnny 04/10/2026): FECHAMENTO e MATÉRIA aprovados no Human Gate, com índices próprios (o AGORA não muda). Chegam só pelo Publisher (outbox → PR → merge humano). A v5 apresenta em `#/fechamento/<data>` e `#/materia/<slug>` sem reeditorializar; vídeo = player compartilhado (primeiro do bloco aberto, sem autoplay, um player por bloco). `build-v5-data.mjs` valida o contrato e falha fechado.
