@@ -72,6 +72,15 @@ def flatten(raw):
             "ptvn": v.get("ptvn"), "vv": v.get("vv")}
 
 
+def tse_coherent(raw):
+    """Hora de totalização (dt/ht) só se coerente com a geração do arquivo (dg/hg, horário de Brasília): o TSE já publicou
+    dt/ht em outro fuso (exterior, 04/10/2026). Incoerente/ausente → hora de geração."""
+    tot, gen = tse_time(raw.get("dt"), raw.get("ht")), tse_time(raw.get("dg"), raw.get("hg"))
+    if tot and (not gen or dt.datetime.fromisoformat(tot) <= dt.datetime.fromisoformat(gen) + dt.timedelta(minutes=5)):
+        return tot
+    return gen
+
+
 def parse(raw, captured_at):
     cands = []
     for c in raw.get("cand") or []:
@@ -81,7 +90,7 @@ def parse(raw, captured_at):
     final = str(raw.get("tf") or "").lower() == "s"
     return {
         "captured_at": captured_at,
-        "tse_updated_at": tse_time(raw.get("dt"), raw.get("ht")) or tse_time(raw.get("dg"), raw.get("hg")),
+        "tse_updated_at": tse_coherent(raw),
         "tse_generated_at": tse_time(raw.get("dg"), raw.get("hg")),
         "scope": "BR", "office": "Presidente", "round": 1, "election_code": ELE, "source_url": SOURCE,
         "percent_totalized": pct(raw.get("pst")),
