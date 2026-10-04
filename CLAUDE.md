@@ -41,3 +41,4 @@ PRIVATE OPS → HUMAN GATE → APPROVED PUBLIC ARTIFACT → PUBLIC REPO (PR do P
 
 ## Proibido sem autorização de Johnny
 Publicar, fazer merge em `main`, ativar cron, alterar Publisher/deploy (exceto proteção documentada), apagar dados, reorganizar Corpus, colocar credenciais em arquivos.
+- **Recência da Home** (`v5/js/v5.js`, `opDay`): AGORA só aparece na Home no dia operacional da edição (America/Sao_Paulo); de outro dia, sai da Home e continua em `#/agora/<id>`. FECHAMENTO fica até o próximo. Arquivo, Já falaram e Pesquisa não expiram.
