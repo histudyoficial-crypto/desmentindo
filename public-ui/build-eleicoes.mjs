@@ -21,13 +21,14 @@ const umami = A.provider === "umami" && /^[0-9a-f-]{36}$/.test(A.website_id || "
   ? `<script defer src="${A.script_src}" data-website-id="${A.website_id}"${A.respect_do_not_track ? ' data-do-not-track="true"' : ""}></script>` : "";
 
 function page(uf, name) {
-  const br = !uf, where = br ? "Brasil" : name;
+  const br = !uf, zz = uf === "zz", where = br ? "Brasil" : name;
   const url = `${SITE}/eleicoes-2026/${br ? "" : uf + "/"}`;
   const title = `Eleições 2026 · Presidente · 1º turno — ${where} | Desmentindo`;
   const desc = br
     ? "Resultado oficial do TSE para presidente no Brasil, atualizado direto da fonte, com a evolução da apuração hora a hora e o caminho até cada seção e boletim de urna."
+    : zz ? "Resultado oficial do TSE para presidente no exterior, atualizado direto da fonte, com cidade, zona, seção e boletim de urna."
     : `Resultado oficial do TSE para presidente em ${name}, atualizado direto da fonte, com município, zona, seção e boletim de urna.`;
-  const nav = UFS.map(([c, n]) => `<li><a href="/eleicoes-2026/${c}/" title="${attr(n)}"${c === uf ? ' aria-current="page"' : ""}>${c.toUpperCase()}</a></li>`).join("");
+  const nav = UFS.concat([["zz", "Exterior"]]).map(([c, n]) => `<li><a href="/eleicoes-2026/${c}/" title="${attr(n)}"${c === uf ? ' aria-current="page"' : ""}>${c === "zz" ? "Exterior" : c.toUpperCase()}</a></li>`).join("");
   return `<!doctype html>
 <html lang="pt-BR">
 <head>
@@ -58,9 +59,12 @@ ${umami}
 <p class="lead">Números lidos direto da Justiça Eleitoral, sem soma nem estimativa nossa. Parcial mostra quantas seções já foram totalizadas.</p>
 </div>
 <section aria-labelledby="t-agora"><h2 id="t-agora">Resultado agora</h2><p class="stale" id="stale" hidden></p><div id="placar"><p class="empty">Carregando…</p></div></section>
-${br ? `<section aria-labelledby="t-evo"><h2 id="t-evo">Evolução da apuração</h2><p class="sub">Registros do que o TSE mostrava: o primeiro resultado, depois um por hora, e o final. Não é projeção nem tendência.</p><div id="evolucao"><p class="empty">Disponível depois das 17h.</p></div></section>` :
-`<section aria-labelledby="t-onde"><h2 id="t-onde">De onde vieram os votos</h2><p class="sub">Escolha o município, a zona e a seção. Na seção, você chega aos arquivos oficiais da urna, como o boletim de urna.</p><div id="explorar"><p class="empty">Disponível depois das 17h.</p></div></section>`}
-<section aria-labelledby="t-uf"><h2 id="t-uf">${br ? "Por estado" : "Outros estados"}</h2><ul class="ufs">${nav}</ul></section>
+${br ? `<section class="mapsec" aria-labelledby="t-mapa"><h2 id="t-mapa">Por estado</h2><p class="sub">Toque num estado para ver o resultado dele e descer até a seção e o boletim de urna. A cor indica quem está à frente na parcial daquele estado; os números estão na lista abaixo do mapa.</p><div id="mapa" class="mapa"><p class="empty">Disponível depois das 17h.</p></div><div id="mapaLista"></div></section>
+<section aria-labelledby="t-ext"><h2 id="t-ext">Exterior</h2><p class="sub">Votos de brasileiros no exterior, como o TSE publica. A divulgação segue o mesmo horário do Brasil.</p><div id="exterior"><p class="empty">Disponível depois das 17h.</p></div><p class="more"><a href="/eleicoes-2026/zz/">Ver o exterior por cidade, zona e seção →</a></p></section>
+<section aria-labelledby="t-evo"><h2 id="t-evo">Evolução da apuração</h2><p class="sub">Registros do que o TSE mostrava: o primeiro resultado, depois um por hora, e o final. Não é projeção nem tendência.</p><div id="evolucao"><p class="empty">Disponível depois das 17h.</p></div></section>
+<section aria-labelledby="t-bu"><h2 id="t-bu">Consulte os boletins de urna</h2><p class="sub">Escolha o estado (ou o exterior), depois o município, a zona e a seção. Na seção, você chega aos arquivos oficiais da urna publicados pelo TSE, como o boletim de urna (BU). <b id="buState">Aguardando dados oficiais (17h).</b></p><ul class="ufs">${UFS.concat([["zz", "Exterior"]]).map(([c, n]) => `<li><a href="/eleicoes-2026/${c}/#onde" title="${attr(n)}">${c === "zz" ? "Exterior" : c.toUpperCase()}</a></li>`).join("")}</ul></section>` :
+`<section aria-labelledby="t-onde" id="onde"><h2 id="t-onde">De onde vieram os votos</h2><p class="sub">${zz ? "Escolha a cidade, a zona e a seção." : "Escolha o município, a zona e a seção."} Na seção, você chega aos arquivos oficiais da urna, como o boletim de urna.</p><div id="explorar"><p class="empty">Disponível depois das 17h.</p></div></section>
+<section aria-labelledby="t-uf"><h2 id="t-uf">${zz ? "Estados" : "Outros estados e exterior"}</h2><ul class="ufs">${nav}</ul></section>`}
 <section aria-labelledby="t-regras"><h2 id="t-regras">Como ler esta página</h2><ul class="rules">
 <li>Resultado oficial é o que o TSE publica. Pesquisa eleitoral é outra coisa e não aparece aqui.</li>
 <li>Até a totalização final, todo número é parcial e vem com o % de seções totalizadas.</li>
@@ -76,6 +80,7 @@ ${br ? `<section aria-labelledby="t-evo"><h2 id="t-evo">Evolução da apuração
 
 const files = { "eleicoes-2026/index.html": page(null, null) };
 for (const [c, n] of UFS) files[`eleicoes-2026/${c}/index.html`] = page(c, n);
+files["eleicoes-2026/zz/index.html"] = page("zz", "Exterior");
 const check = process.argv.includes("--check");
 let bad = 0;
 for (const [rel, html] of Object.entries(files)) {
