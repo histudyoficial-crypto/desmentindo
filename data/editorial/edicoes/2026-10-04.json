@@ -1,0 +1,81 @@
+{
+ "schema": "desmentindo.public.editorial_edition.v1",
+ "edition": "2026-10-04",
+ "label": "AGORA",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova; fonte primária indicada quando obtida.",
+ "items": [
+  {
+   "id": "2026-10-04-presidente-do-tse-suspende-decisao-que-barrou-deltan-votos-serao",
+   "date": "2026-10-04",
+   "label": "AGORA",
+   "title": "Presidente do TSE suspende decisão que barrou Deltan; votos serão processados até o plenário decidir",
+   "text": "Na manhã deste domingo (4), o presidente do TSE, Kassio Nunes Marques, suspendeu em liminar a decisão do ministro Floriano de Azevedo Marques que, no sábado (3), havia indeferido o registro de Deltan Dallagnol (Novo) ao Senado pelo Paraná e anulado os votos da chapa. O registro volta a constar como “deferido com recurso” e os votos são processados, mas a validade deles depende do julgamento do plenário do TSE, ainda sem data. As restrições anteriores à campanha de Deltan continuam valendo.",
+   "sources": [
+    {
+     "name": "g1",
+     "title": "Nunes Marques suspende decisão que indeferiu candidatura de Deltan ao Senado pelo Paraná",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/04/nunes-marques-suspende-decisao-que-indeferiu-candidatura-de-deltan-ao-senado-pelo-parana.ghtml"
+    },
+    {
+     "name": "Estadão",
+     "title": "Nunes Marques suspende decisão que indeferiu candidatura de Deltan Dallagnol",
+     "url": "https://estadao.com.br/politica/eleicoes/nunes-marques-suspende-decisao-que-indeferiu-candidatura-de-deltan-dallagnol"
+    },
+    {
+     "name": "Folha de S.Paulo",
+     "title": "TSE indefere candidatura de Deltan Dallagnol ao Senado pelo Paraná",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-indefere-candidatura-de-deltan-dallagnol-ao-senado-pelo-parana.shtml"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-04-pf-leva-ao-menos-52-pessoas-a-delegacia-no-dia-da-votacao-segundo",
+   "date": "2026-10-04",
+   "label": "AGORA",
+   "title": "PF leva ao menos 52 pessoas à delegacia no dia da votação, segundo boletim citado pelo UOL",
+   "text": "O UOL, citando boletim da Polícia Federal, informa que ao menos 52 suspeitos de crimes eleitorais foram levados à delegacia neste domingo (4), em ao menos 18 estados. Na atualização das 12h22, o texto do UOL diz que a maioria das detenções foi por boca de urna, com casos também de propaganda proibida no dia da eleição e de compra de votos. Segundo o mesmo texto, R$ 769 mil em bens e valores foram apreendidos hoje, dos quais R$ 363 mil em dinheiro; no sábado (3), 55 pessoas tinham sido levadas à delegacia. A manchete do UOL ainda diz que a compra de votos lidera as ocorrências; o texto atualizado, não. O Desmentindo não obteve o boletim da PF, e os números são parciais. (Texto do UOL atualizado às 12h22.)",
+   "sources": [
+    {
+     "name": "UOL",
+     "title": "PF prende dezenas por crime eleitoral; compra de votos lidera ocorrências",
+     "url": "https://noticias.uol.com.br/eleicoes/2026/10/04/painel-crimes-eleitorais-tse.ghtm"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-04-folha-diz-ter-tirado-do-ar-datafolha-para-o-governo-do-ceara-por",
+   "date": "2026-10-04",
+   "label": "AGORA",
+   "title": "Folha diz ter tirado do ar Datafolha para o governo do Ceará por decisão judicial",
+   "text": "A Folha informou que retirou do ar a pesquisa Datafolha para o Governo do Ceará registrada no TSE, por decisão do desembargador eleitoral Francisco Luís Rios Alves assinada no sábado (3). Segundo o jornal, que é parte afetada, o motivo foi uma questão formal no registro, não problemas na pesquisa. O Desmentindo não obteve a decisão judicial.",
+   "sources": [
+    {
+     "name": "Folha de S.Paulo",
+     "title": "Por decisão judicial, Folha tira do ar Datafolha para o Governo do CE",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/por-decisao-judicial-folha-tira-do-ar-datafolha-para-o-governo-do-ce.shtml"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  }
+ ]
+}
