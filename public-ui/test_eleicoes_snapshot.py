@@ -79,7 +79,7 @@ class Snapshot(unittest.TestCase):
 
 def u(st, pst="0,00", vap=("0", "0"), ht="", tf="n"):
     # Formato real "-u.json" do TSE (estrutura verificada em 04/10/2026; valores fictícios de teste).
-    return {"ele": "6257", "tpabr": "br", "cdabr": "br", "dg": "04/10/2026", "hg": "17:20:00", "dt": "04/10/2026" if ht else "",
+    return {"ele": "6257", "tpabr": "br", "cdabr": "br", "dg": "04/10/2026", "hg": "17:07:40", "dt": "04/10/2026" if ht else "",
             "ht": ht, "tf": tf, "carg": [{"cd": "1", "agr": [
                 {"par": [{"sg": "P1", "cand": [{"n": "11", "sqcand": "A1", "nm": "NOME COMPLETO A", "nmu": "CANDIDATO A", "seq": "1", "st": "", "vap": vap[0], "pvap": "55,56"}]}]},
                 {"par": [{"sg": "P2", "cand": [{"n": "22", "sqcand": "B2", "nm": "NOME COMPLETO B", "nmu": "CANDIDATO B", "seq": "2", "st": "", "vap": vap[1], "pvap": "44,44"}]}]}]}],
@@ -122,6 +122,10 @@ class HoraTSE(unittest.TestCase):
     def test_dt_ht_em_outro_fuso_nao_vira_hora_de_brasilia(self):
         r = {"dt": "05/10/2026", "ht": "09:19:47", "dg": "04/10/2026", "hg": "17:23:29"}
         self.assertEqual(S.tse_coherent(r), "2026-10-04T17:23:29-03:00")
+
+    def test_dt_ht_no_fuso_da_uf_nao_vira_hora_de_brasilia(self):
+        r = {"dt": "04/10/2026", "ht": "15:20:16", "dg": "04/10/2026", "hg": "17:20:19"}   # AC, real
+        self.assertEqual(S.tse_coherent(r), "2026-10-04T17:20:19-03:00")
 
     def test_dt_ht_coerente(self):
         r = {"dt": "04/10/2026", "ht": "17:22:57", "dg": "04/10/2026", "hg": "17:23:37"}

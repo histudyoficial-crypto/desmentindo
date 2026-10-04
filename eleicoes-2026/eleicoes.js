@@ -58,14 +58,15 @@
   }
 
   // ---------------------------------------------------------------- placar (resultado atual)
-  // Hora do TSE. dg/hg (geração do arquivo) está em horário de Brasília. dt/ht (totalização) só é mostrado se for
-  // coerente com a geração: no arquivo do exterior o TSE publica dt/ht em outro fuso (ex.: 05/10 09:19 gerado em
-  // 04/10 17:23 BRT). Incoerente → mostra a geração, rotulada; nunca uma hora de Brasília errada.
+  // Hora do TSE. dg/hg (geração do arquivo) está em horário de Brasília. dt/ht (totalização) vem no fuso do local:
+  // exterior 05/10 09:19 num arquivo gerado 04/10 17:23 BRT; AC 15:20 e AM/RR/RO/MT/MS 16:20 em arquivos gerados 17:20
+  // BRT. Só é mostrado se estiver entre 10 min antes e 5 min depois da geração; senão mostra a geração, rotulada.
+  // Nunca uma hora de Brasília errada.
   function brtMs(dd, hh) { var m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(dd || ""), t = /^(\d{2}):(\d{2}):(\d{2})$/.exec(hh || "");
     return m && t ? Date.UTC(+m[3], +m[2] - 1, +m[1], +t[1] + 3, +t[2], +t[3]) : null; }
   function tseWhen(d) {
     var tot = brtMs(d.dt, d.ht), gen = brtMs(d.dg, d.hg);
-    if (tot != null && (gen == null || tot <= gen + 5 * 60e3)) return "Totalizado pelo TSE em " + d.dt.slice(0, 5) + " " + d.ht;
+    if (tot != null && (gen == null || (tot <= gen + 5 * 60e3 && tot >= gen - 10 * 60e3))) return "Totalizado pelo TSE em " + d.dt.slice(0, 5) + " " + d.ht;
     if (gen != null) return "Arquivo gerado pelo TSE em " + d.dg.slice(0, 5) + " " + d.hg + " (horário de Brasília)";
     return null;
   }

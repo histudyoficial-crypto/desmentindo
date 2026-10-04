@@ -74,9 +74,10 @@ def flatten(raw):
 
 def tse_coherent(raw):
     """Hora de totalização (dt/ht) só se coerente com a geração do arquivo (dg/hg, horário de Brasília): o TSE já publicou
-    dt/ht em outro fuso (exterior, 04/10/2026). Incoerente/ausente → hora de geração."""
+    dt/ht no fuso do local (exterior e UFs fora de Brasília, 04/10/2026). Fora da janela [geração −10 min, +5 min] → geração."""
     tot, gen = tse_time(raw.get("dt"), raw.get("ht")), tse_time(raw.get("dg"), raw.get("hg"))
-    if tot and (not gen or dt.datetime.fromisoformat(tot) <= dt.datetime.fromisoformat(gen) + dt.timedelta(minutes=5)):
+    if tot and (not gen or dt.datetime.fromisoformat(gen) - dt.timedelta(minutes=10)
+                <= dt.datetime.fromisoformat(tot) <= dt.datetime.fromisoformat(gen) + dt.timedelta(minutes=5)):
         return tot
     return gen
 
