@@ -37,6 +37,24 @@ time, .num { font-variant-numeric: tabular-nums; }
 .doors .short { display: none; }
 @media (max-width: 640px) { .doors .long { display: none; } .doors .short { display: inline; } .doors a { padding: 6px 6px; font-size: 13.5px; } }
 
+/* ---------------------------------------------------------------- faixa de captação (só com destino configurado) */
+.capbar { background: var(--yellow-pale); color: var(--ink); border-bottom: 1px solid #E8D98A; }
+.capbar-in { display: flex; align-items: center; justify-content: center; gap: 14px; max-width: 1080px; margin: 0 auto;
+  padding: 8px var(--gutter); min-height: 40px; text-decoration: none; font-size: 14.5px; line-height: 1.3; }
+.capbar-p { font-weight: 800; }
+.capbar-d { color: var(--ink-2); }
+.capbar-s { display: none; font-weight: 800; }
+.capbar-cta { flex: none; font-weight: 800; color: var(--paper); background: var(--ink); padding: 5px 12px; white-space: nowrap; }
+.capbar-in:hover .capbar-cta, .capbar-in:focus-visible .capbar-cta { background: var(--green-ink); }
+.capbar-in:focus-visible { outline: 2px solid var(--ink); outline-offset: -3px; }
+@media (max-width: 760px) {
+  .capbar-p, .capbar-d { display: none; }
+  .capbar-s { display: inline; }
+  .capbar-in { justify-content: space-between; gap: 10px; font-size: 14px; padding: 7px var(--gutter); min-height: 38px; }
+  .capbar-cta { padding: 4px 10px; font-size: 15px; }
+  .capbar-ct { display: none; }
+}
+
 /* ---------------------------------------------------------------- tipografia */
 .kicker { font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 10px; color: var(--ink-2); }
 h1, h2, h3 { margin: 0; }

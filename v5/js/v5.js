@@ -670,11 +670,17 @@
     } else {
       h += '<h2 class="h2">Medição de audiência</h2>' +
         "<p>Para saber quantas pessoas leem o Desmentindo, o que leem e de onde chegam, usamos o <b>Umami Cloud</b>, uma ferramenta de medição que não usa cookies e não guarda um identificador no seu navegador.</p>" +
-        "<p><b>O que é registrado:</b> a página aberta (sem o texto de buscas), a página de onde você veio, os parâmetros de campanha do link (utm), tipo de dispositivo, navegador, sistema, idioma e localização aproximada (país e região). Também três ações de leitura: <i>leitura engajada</i> (pelo menos 60 segundos com a página visível e rolagem até a metade de um Fechamento ou Matéria), <i>clique em uma fonte</i> (só o endereço do site da fonte) e <i>play de vídeo</i>.</p>" +
+        "<p><b>O que é registrado:</b> a página aberta (sem o texto de buscas), a página de onde você veio, os parâmetros de campanha do link (utm), tipo de dispositivo, navegador, sistema, idioma e localização aproximada (país e região). Também estas ações: <i>leitura engajada</i> (pelo menos 60 segundos com a página visível e rolagem até a metade de um Fechamento ou Matéria), <i>clique em uma fonte</i> (só o endereço do site da fonte) e <i>play de vídeo</i>.</p>" +
         "<p><b>Como a visita é contada:</b> a ferramenta usa o endereço IP e o navegador para formar um código de visita anônimo, que muda todo mês. Não enviamos nome, e-mail, telefone ou qualquer identificador de pessoa.</p>" +
         "<p><b>Para quê:</b> medir audiência agregada e melhorar o produto. Não vendemos dados e não fazemos publicidade direcionada.</p>" +
         (ret ? "<p><b>Por quanto tempo:</b> " + e(ret) + ".</p>" : "") +
         "<p>Se o seu navegador envia o sinal “Do Not Track”, nada é medido.</p>";
+    }
+    if (document.querySelector('meta[name="desmentindo-capture"]')) {
+      h += '<h2 class="h2">Receber o FECHAMENTO</h2>' +
+        "<p>A faixa “Receba o FECHAMENTO” no topo leva você ao nosso canal fora do site. O site não pede nem guarda seu número, e-mail ou nome. " +
+        (m ? "Na medição de audiência, registramos só que houve um toque na faixa (o canal e o tipo de página), sem identificar quem tocou. " : "") +
+        "No canal, valem também as regras de privacidade da plataforma.</p>";
     }
     return Promise.resolve(h + "</section>");
   };
@@ -1084,6 +1090,33 @@
     var t = document.getElementById(a.getAttribute("data-jump") || "ja-falaram");
     if (t) t.scrollIntoView({ behavior: smooth() });
   });
+  // ---------------------------------------------------------------- captação (T3/T4, 04/10/2026)
+  // Faixa "Receba o FECHAMENTO" acima do topo. Só existe com <meta name="desmentindo-capture"> (gerado de
+  // public-ui/capture.json com um destino real). O site não recebe nenhum dado do leitor: o toque leva ao canal, e a
+  // medição registra só o clique anônimo (canal + tipo de página), nunca quem clicou.
+  (function capInit() {
+    var m = document.querySelector('meta[name="desmentindo-capture"]');
+    var top = document.querySelector("header.top");
+    if (!m || !top) return;
+    var url = m.getAttribute("content"), ch = m.getAttribute("data-channel") || "";
+    var bar = document.createElement("aside");
+    bar.className = "capbar"; bar.setAttribute("aria-label", "Receber o FECHAMENTO");
+    bar.innerHTML = '<a class="capbar-in" target="_blank" rel="noopener">' +
+      '<span class="capbar-msg"><b class="capbar-p"></b> <span class="capbar-d"></span><b class="capbar-s"></b></span>' +
+      '<span class="capbar-cta"><span class="capbar-ct"></span> <span aria-hidden="true">→</span></span></a>';
+    var a = bar.querySelector("a");
+    a.href = url;
+    bar.querySelector(".capbar-p").textContent = m.getAttribute("data-promise") || "";
+    bar.querySelector(".capbar-d").textContent = m.getAttribute("data-detail") || "";
+    bar.querySelector(".capbar-s").textContent = m.getAttribute("data-short") || "";
+    bar.querySelector(".capbar-ct").textContent = m.getAttribute("data-cta") || "";
+    a.addEventListener("click", function () {
+      var k = pageKind();
+      anEvent("AUDIENCE_CAPTURE_CLICK", { channel: ch, placement: "top_bar", page: k ? k.type : "outra" });
+    });
+    top.parentNode.insertBefore(bar, top);
+  })();
+
   window.addEventListener("hashchange", route);
   route();
 })();

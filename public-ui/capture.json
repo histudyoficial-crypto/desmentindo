@@ -1,0 +1,14 @@
+{
+  "enabled": false,
+  "channel": null,
+  "destination": null,
+  "mode": "always",
+  "copy": {
+    "promise": "Receba o FECHAMENTO do dia.",
+    "detail": "O que aconteceu, o que estão dizendo e o que dá para concluir.",
+    "cta": "Quero receber",
+    "short": "Receba o FECHAMENTO todos os dias"
+  },
+  "allowed_hosts": { "whatsapp": ["whatsapp.com", "www.whatsapp.com"] },
+  "note": "Faixa de captação (T3/T4, 04/10/2026). Desligada até existir um destino real confirmado por Johnny (ex.: link do Canal do WhatsApp). O texto é hipótese de produto, não promessa de marca. mode=always na V1; dismissible/contextual ficam para teste futuro, sem identificador para esconder a faixa."
+}
