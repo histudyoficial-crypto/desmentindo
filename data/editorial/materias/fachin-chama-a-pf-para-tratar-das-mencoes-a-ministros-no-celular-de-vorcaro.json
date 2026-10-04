@@ -1,0 +1,347 @@
+{
+ "schema": "desmentindo.public.materia.v1",
+ "type": "MATERIA",
+ "slug": "fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro",
+ "date": "2026-10-03",
+ "public_title": "Fachin chama a PF para tratar das menções a ministros no celular de Vorcaro",
+ "kicker": "Caso Master",
+ "status": "Parcialmente documentado",
+ "dek": "A PF pediu a reunião. No mesmo dia, a Gazeta relatou que a defesa desistiu da delação.",
+ "art": {
+  "mobile": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro/arte-m.svg",
+  "desktop": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro/arte-d.svg",
+  "caption": "Arte: Desmentindo. Elementos ilustrativos; não reproduz o celular, as mensagens nem o documento reais."
+ },
+ "published_at": "2026-10-04T02:02:13Z",
+ "updated_at": "2026-10-04T02:02:13Z",
+ "facts": [
+  {
+   "value": "2ª sem.",
+   "label": "de outubro: reunião STF–PF"
+  },
+  {
+   "value": "6 a 7",
+   "label": "ministros ou familiares citados, conforme o veículo"
+  },
+  {
+   "value": "0",
+   "label": "ministros investigados, segundo a Gazeta"
+  }
+ ],
+ "what_changed": [
+  {
+   "when": "1º out",
+   "text": "A PF pediu a reunião; Fachin marcou para a 2ª semana de outubro."
+  },
+  {
+   "when": "2 out",
+   "text": "Fachin: casos “sem exceção de pessoa” terão “os encaminhamentos devidos”."
+  },
+  {
+   "when": "2 out",
+   "text": "Gazeta: defesa de Vorcaro abandona a delação."
+  }
+ ],
+ "correction": "quem preside o STF é Edson Fachin.",
+ "videos_title": "Já falaram sobre isso · assista do trecho",
+ "videos_note": "Cada vídeo começa no minuto em que o assunto aparece. Conferimos que foi dito, não que aconteceu.",
+ "videos": [
+  {
+   "channel": "Alexandre Garcia",
+   "video_id": "G8hZFued_gI",
+   "t_seconds": 642,
+   "t_label": "10:42",
+   "date": "2026-01-11",
+   "video_title": "Quem advoga pelo Master nos Três Poderes?",
+   "said": "Chama o celular apreendido de “caixa de Pandora”.",
+   "context": "Na época, o conteúdo ainda não era público",
+   "deep_link": "https://www.youtube.com/watch?v=G8hZFued_gI&t=642s"
+  },
+  {
+   "channel": "Te Atualizei",
+   "video_id": "hXTthEo80Zc",
+   "t_seconds": 188,
+   "t_label": "3:08",
+   "date": "2025-12-11",
+   "video_title": "EXPOSTOS - A MASTER crise que eles não esperavam",
+   "said": "Relata reportagem: mensagens tratariam pagamentos à esposa de um ministro como “prioridade”.",
+   "context": "Relato de reportagem; o ministro não era investigado",
+   "deep_link": "https://www.youtube.com/watch?v=hXTthEo80Zc&t=188s"
+  },
+  {
+   "channel": "Te Atualizei",
+   "video_id": "jyC-zWjdfQk",
+   "t_seconds": 210,
+   "t_label": "3:30",
+   "date": "2026-02-12",
+   "video_title": "VAI CAIR SOZINHO, TOFFOLI?",
+   "said": "Cita reportagem: a PF achou conversa de um ministro no celular. O ministro nega.",
+   "context": "Na época, a PF não sabia como tratar as menções",
+   "deep_link": "https://www.youtube.com/watch?v=jyC-zWjdfQk&t=210s"
+  },
+  {
+   "channel": "Te Atualizei",
+   "video_id": "88nsyP6p64Q",
+   "t_seconds": 458,
+   "t_label": "7:38",
+   "date": "2026-03-20",
+   "video_title": "A delação do APOCALIPSE POLÍTICO começou",
+   "said": "Cita colunista: Vorcaro não queria envolver o STF numa delação.",
+   "context": "Depois: em out/2026 a defesa abandonou a delação (Gazeta)",
+   "deep_link": "https://www.youtube.com/watch?v=88nsyP6p64Q&t=458s"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "video_id": "WosnXLR1p1A",
+   "t_seconds": 80,
+   "t_label": "1:20",
+   "date": "2025-12-05",
+   "video_title": "PCC: 6 bilhões em banco, 49 imóveis e 257 veículos bloqueados",
+   "said": "CPMI aprova convocar Vorcaro, inclusive sobre vínculos com ministros do Supremo.",
+   "context": "Na época, nenhuma mensagem tinha sido divulgada",
+   "deep_link": "https://www.youtube.com/watch?v=WosnXLR1p1A&t=80s"
+  }
+ ],
+ "partial_videos": {
+  "label": "Contexto parcial",
+  "who": "Caio Coppolla",
+  "items": [
+   {
+    "channel": "Caio Coppolla",
+    "video_id": "He5FV7B3Y3E",
+    "t_seconds": 284,
+    "t_label": "4:44",
+    "date": "2026-05-17",
+    "video_title": "Análise: o impacto eleitoral das mensagens entre Flávio e Vorcaro",
+    "said": "Diz que o celular de Vorcaro, apreendido pela PF, estava ao alcance de PF, PGR e STF, e discute o risco de as mensagens serem divulgadas.",
+    "context": "Contexto parcial: o trecho trata de mensagens com Flávio Bolsonaro, não das menções a ministros",
+    "deep_link": "https://www.youtube.com/watch?v=He5FV7B3Y3E&t=284s"
+   }
+  ]
+ },
+ "archive_note": "Alexandre Garcia: 3.701 de 3.701 vídeos pesquisados · Te Atualizei: 501 de 581 · Caio Coppolla: 107 de 553 (coberturas parciais).",
+ "timeline": [
+  {
+   "when": "nov 2025",
+   "text": "PF prende Daniel Vorcaro",
+   "clips": [
+    {
+     "channel": "AG",
+     "t_label": "2:59",
+     "text": "noticia a prisão",
+     "url": "https://www.youtube.com/watch?v=cqPNVo_WfM8&t=179s"
+    }
+   ]
+  },
+  {
+   "when": "dez 2025",
+   "text": "CPMI aprova convocar Vorcaro",
+   "clips": [
+    {
+     "channel": "AG",
+     "t_label": "1:20",
+     "text": "convocação",
+     "url": "https://www.youtube.com/watch?v=WosnXLR1p1A&t=80s"
+    },
+    {
+     "channel": "TA",
+     "t_label": "3:08",
+     "text": "“prioridade”",
+     "url": "https://www.youtube.com/watch?v=hXTthEo80Zc&t=188s"
+    }
+   ]
+  },
+  {
+   "when": "jan–fev 2026",
+   "text": "Celular vira “caixa de Pandora”; conversa de ministro é noticiada",
+   "clips": [
+    {
+     "channel": "AG",
+     "t_label": "10:42",
+     "text": "caixa de Pandora",
+     "url": "https://www.youtube.com/watch?v=G8hZFued_gI&t=642s"
+    },
+    {
+     "channel": "AG",
+     "t_label": "1:30",
+     "text": "camadas de sigilo",
+     "url": "https://www.youtube.com/watch?v=hbmvafbL1ak&t=90s"
+    },
+    {
+     "channel": "TA",
+     "t_label": "3:30",
+     "text": "ministro nega",
+     "url": "https://www.youtube.com/watch?v=jyC-zWjdfQk&t=210s"
+    }
+   ]
+  },
+  {
+   "when": "mar–mai 2026",
+   "text": "Propostas de delação não avançam",
+   "clips": [
+    {
+     "channel": "TA",
+     "t_label": "7:38",
+     "text": "sem o STF",
+     "url": "https://www.youtube.com/watch?v=88nsyP6p64Q&t=458s"
+    },
+    {
+     "channel": "TA",
+     "t_label": "18:56",
+     "text": "“em até duas semanas”",
+     "url": "https://www.youtube.com/watch?v=i8p0GSbWAgg&t=1136s"
+    },
+    {
+     "channel": "TA",
+     "t_label": "15:52",
+     "text": "proposta não aceita",
+     "url": "https://www.youtube.com/watch?v=koFv1xKqCdI&t=952s"
+    }
+   ]
+  },
+  {
+   "when": "30 set",
+   "text": "Vorcaro depõe à PF"
+  },
+  {
+   "when": "1º–2 out",
+   "text": "PF pede reunião; nota de Fachin; Gazeta relata fim da delação"
+  },
+  {
+   "when": "Hoje",
+   "text": "Reunião STF–PF marcada; delação fora da estratégia da defesa",
+   "today": true
+  }
+ ],
+ "coverage": [
+  {
+   "outlet": "Revista Oeste",
+   "published_at": "2026-10-02",
+   "headline": "Fachin vai discutir com PF menções a ministros do STF",
+   "summary": "Fala em ao menos sete ministros ou familiares.",
+   "url": "https://revistaoeste.com/politica/fachin-vai-discutir-com-pf-mencoes-a-ministros-do-stf-no-caso-master/"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "published_at": "2026-10-02",
+   "headline": "Vorcaro desiste de delação premiada e foca na liberdade",
+   "summary": "Única a relatar o fim da delação.",
+   "url": "https://www.gazetadopovo.com.br/republica/daniel-vorcaro-desiste-de-delacao-premiada-e-foca-estrategia-na-liberdade/"
+  },
+  {
+   "outlet": "Folha de S.Paulo",
+   "published_at": "2026-10-02",
+   "headline": "Fachin marca reunião com PF sobre achados no celular",
+   "summary": "Cita a nota e o ofício de Fachin.",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/fachin-marca-reuniao-com-pf-sobre-achados-no-celular-de-vorcaro-contra-ministros-do-stf.shtml"
+  }
+ ],
+ "coverage_note": "As três partem da mesma nota do STF: uma fonte, não três confirmações.",
+ "documents": [
+  {
+   "status": "Documento primário não localizado",
+   "located": false,
+   "title": "Nota e ofício do presidente do STF",
+   "note": "Informação atribuída à Folha."
+  },
+  {
+   "status": "Publicado por veículo",
+   "located": true,
+   "title": "Documento da PF com mensagens de Vorcaro",
+   "note": "Divulgado pela Folha; não reexaminado aqui.",
+   "url": "https://www1.folha.uol.com.br/poder/2026/09/leia-integra-de-documento-da-pf-com-mensagens-de-vorcaro-sobre-moraes-gonet-e-chefe-da-pf.shtml"
+  }
+ ],
+ "conclusion": {
+  "status": "Parcialmente documentado",
+  "points": [
+   {
+    "holds": true,
+    "text": "O presidente do STF anunciou reunião com a PF sobre as menções a ministros."
+   },
+   {
+    "holds": false,
+    "text": "Não dá para dizer que algum ministro cometeu irregularidade."
+   },
+   {
+    "holds": false,
+    "text": "O fim da delação ainda não tem ato formal."
+   }
+  ],
+  "limits": [
+   "Ministros citados negam",
+   "Número de citados varia",
+   "Previsões de delação não se confirmaram"
+  ]
+ },
+ "see_for_yourself": [
+  {
+   "kind": "video",
+   "label": "Alexandre Garcia · 11 jan 2026 · 10:42",
+   "url": "https://www.youtube.com/watch?v=G8hZFued_gI&t=642s"
+  },
+  {
+   "kind": "video",
+   "label": "Alexandre Garcia · 5 dez 2025 · 1:20",
+   "url": "https://www.youtube.com/watch?v=WosnXLR1p1A&t=80s"
+  },
+  {
+   "kind": "video",
+   "label": "Te Atualizei · 11 dez 2025 · 3:08",
+   "url": "https://www.youtube.com/watch?v=hXTthEo80Zc&t=188s"
+  },
+  {
+   "kind": "video",
+   "label": "Te Atualizei · 12 fev 2026 · 3:30",
+   "url": "https://www.youtube.com/watch?v=jyC-zWjdfQk&t=210s"
+  },
+  {
+   "kind": "video",
+   "label": "Te Atualizei · 20 mar 2026 · 7:38",
+   "url": "https://www.youtube.com/watch?v=88nsyP6p64Q&t=458s"
+  },
+  {
+   "kind": "document",
+   "label": "Documento da PF · via Folha",
+   "url": "https://www1.folha.uol.com.br/poder/2026/09/leia-integra-de-documento-da-pf-com-mensagens-de-vorcaro-sobre-moraes-gonet-e-chefe-da-pf.shtml"
+  },
+  {
+   "kind": "news",
+   "label": "Revista Oeste · 2 out",
+   "url": "https://revistaoeste.com/politica/fachin-vai-discutir-com-pf-mencoes-a-ministros-do-stf-no-caso-master/"
+  },
+  {
+   "kind": "news",
+   "label": "Gazeta do Povo · 2 out",
+   "url": "https://www.gazetadopovo.com.br/republica/daniel-vorcaro-desiste-de-delacao-premiada-e-foca-estrategia-na-liberdade/"
+  },
+  {
+   "kind": "news",
+   "label": "Gazeta do Povo · análise",
+   "url": "https://www.gazetadopovo.com.br/republica/vorcaro-indica-abandono-de-delacao-e-opcao-de-entregar-autoridades-fica-cada-vez-mais-distante/"
+  },
+  {
+   "kind": "news",
+   "label": "Folha de S.Paulo · 2 out",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/fachin-marca-reuniao-com-pf-sobre-achados-no-celular-de-vorcaro-contra-ministros-do-stf.shtml"
+  }
+ ],
+ "people_title": "Pessoas nesta história",
+ "people_note": "Atalhos para o que o arquivo já reúne sobre cada pessoa. Ordem da narrativa; não é ranking nem indica irregularidade.",
+ "people": [
+  {
+   "name": "Edson Fachin",
+   "when": "Na época desta história · out 2026",
+   "role": "Presidente do STF",
+   "why": "Anunciou em nota a reunião com a PF sobre as menções a ministros.",
+   "status": "Ficha em preparação"
+  },
+  {
+   "name": "Daniel Vorcaro",
+   "when": "Na época desta história · out 2026",
+   "role": "Dono do Banco Master, segundo as reportagens",
+   "why": "As menções estão no celular dele, apreendido pela PF. A Gazeta relata que a defesa abandonou a delação.",
+   "status": "Ficha em preparação"
+  }
+ ]
+}
