@@ -38,7 +38,12 @@
     "claims_with_primary_source": 0,
     "claims_total": 1,
     "basis": "conteúdo público das matérias citadas; parte das afirmações tem documento oficial vinculado"
-   }
+   },
+   "slot": "MORNING",
+   "category": "Eleições 2026",
+   "category_tone": "yellow",
+   "dek": "O plenário do TSE ainda vai julgar o registro de Garotinho, sem data marcada.",
+   "visual_variant": "EDITORIAL_ART"
   }
  ]
 }
