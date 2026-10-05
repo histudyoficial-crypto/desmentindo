@@ -422,8 +422,8 @@
 
   // ---------------------------------------------------------------- MANDAR (A6): botão → folha com a URL canônica,
   // "Compartilhar…" (Web Share, quando o aparelho oferece) e "Copiar link". Sem SDK, sem conta, sem evento novo.
-  function mandar(url, title, heading, cls) {
-    return '<button type="button" class="mandar' + (cls ? " " + cls : "") + '" data-mandar data-url="' + e(url) + '" data-title="' + e(title || "") + '" data-head="' + e(heading || "Mandar") + '">Mandar <span aria-hidden="true">↗</span></button>';
+  function mandar(url, title, heading, cls, label) {
+    return '<button type="button" class="mandar' + (cls ? " " + cls : "") + '" data-mandar data-url="' + e(url) + '" data-title="' + e(title || "") + '" data-head="' + e(heading || "Mandar") + '">' + e(label || "Mandar") + ' <span aria-hidden="true">↗</span></button>';
   }
   var sheetBack = null;
   function closeSheet() {
@@ -453,6 +453,16 @@
     if (ev.target.id === "mandar-sheet" || (ev.target.closest && ev.target.closest("[data-sheet-close]"))) closeSheet();
   });
   window.addEventListener("hashchange", closeSheet);
+  function openStory(t) { var b = t && t.classList && t.classList.contains("fxs") && !t.classList.contains("is-open") && t.querySelector("button.fxs-tog"); if (b) b.click(); }
+  // FECHAMENTO (A2): abrir e fechar a história inteira pelo cabeçalho.
+  document.addEventListener("click", function (ev) {
+    var b = ev.target.closest && ev.target.closest("button.fxs-tog");
+    if (!b) return;
+    var art = b.closest(".fxs"), body = art && art.querySelector(".fxs-body"), open = b.getAttribute("aria-expanded") !== "true";
+    if (!body) return;
+    b.setAttribute("aria-expanded", String(open)); body.hidden = !open; art.classList.toggle("is-open", open);
+    var sg = b.querySelector(".fxs-sign"); if (sg) sg.textContent = open ? "−" : "+";
+  });
 
   // ---------------------------------------------------------------- HISTÓRIA
   P.historia = function (slug) {
@@ -835,43 +845,46 @@
       if (!F) return notFound();
       document.title = F.public_title + " · Desmentindo";
       setDesc((F.opening && F.opening.points || []).map(function (p) { return p.text; }).join(" "));
-      var h = '<section class="page-head fx-head"><p class="kicker"><span class="tag tag-ink">Fechamento</span> ' + e(fwd(F.edition_date)) +
-        (F.context ? " · " + e(F.context) : "") + "</p>" +
-        '<h1 class="h1">' + e(F.public_title) + "</h1>" +
-        '<p class="fx-cut">Conteúdo verificado até <b>' + e(fhm(F.cutoff_at)) + "</b> de " + e(fdate(F.edition_date)) +
-        (F.published_at ? ' · publicado em <time datetime="' + e(F.published_at) + '">' + e(fts(F.published_at)) + "</time>" : "") + "</p>" +
-        mandar(SITE + "/fechamento/" + F.edition_date + "/", F.public_title, "Mandar o fechamento de " + dDay(F.edition_date));
+      var cut = fhm(F.cutoff_at), pub = F.published_at ? (fdate((brt(F.published_at) || new Date(0)).toISOString().slice(0, 10)) === fdate(F.edition_date) ? "às " + fhm(F.published_at) : "em " + fts(F.published_at)) : "";
+      // A2: cabeça escura com a LINHA DO CORTE (o que entrou ─ verificado até HH:MM ┄ próxima edição)
+      var h = '<section class="fxp-head"><p class="fxp-brand"><span>Desmentindo | Fechamento</span><span>' + e(dMid(F.edition_date) + " " + dParts(F.edition_date).y) + "</span></p>" +
+        '<h1 class="fxp-t">' + e(F.public_title) + "</h1>" + (F.context ? '<p class="fxp-ctx">' + e(F.context) + "</p>" : "") +
+        (cut ? '<div class="fxp-cut" role="img" aria-label="Conteúdo verificado até ' + e(cut) + '; o que saiu depois entra na próxima edição">' +
+          '<span class="c-in"><i></i>O que entrou</span><span class="c-at"><b>' + e(cut) + "</b>Verificado até</span><span class=\"c-next\"><i></i>Próxima edição</span></div>" : "") +
+        (pub || cut ? '<p class="fxp-pub">' + (pub ? "Publicado " + e(pub) + ". " : "") + (cut ? "O que saiu depois das " + e(cut) + " entra na próxima edição." : "") + "</p>" : "") + "</section>";
       var pts = (F.opening && F.opening.points) || [];
       if (pts.length) {
-        // "Em 1 minuto": só os pontos de abertura aprovados (cada um aponta para uma história principal). O rótulo
-        // aparece apenas pela regra fixa EM1_RULE; fora dela, fica só o título aprovado da abertura.
-        h += '<div class="fx-1m">' + (em1(pts) ? '<p class="fx-1m-k">Em 1 minuto</p>' : "") + '<h2 class="fx-open-h">' + e(F.opening.title) + '</h2><ol class="fx-open">' + pts.map(function (p) {
-          return '<li><a href="#' + e(p.story) + '" data-jump="' + e(p.story) + '">' + e(p.text) + "</a></li>";
+        // "Em 1 minuto": só os pontos de abertura aprovados; o rótulo segue a regra fixa EM1_RULE (senão, o título aprovado).
+        h += '<div class="fxp-1m"><h2 class="fxp-1mk">' + (em1(pts) ? "Em 1 minuto" : e(F.opening.title)) + '</h2><ol class="fxp-pts">' + pts.map(function (p, i) {
+          return '<li><b aria-hidden="true">' + (i + 1) + '</b><a href="#' + e(p.story) + '" data-jump="' + e(p.story) + '">' + e(p.text) + "</a></li>";
         }).join("") + "</ol></div>";
       }
-      h += "</section>";
       if (F.main_stories && F.main_stories.length) {
-        // Divulgação progressiva: a principal abre inteira; nas demais, os blocos abrem ao toque. Título, linha do
-        // tempo (estado), conclusão e veículos ficam sempre visíveis.
-        h += '<section class="sec"><h2 class="h2">Histórias principais</h2>' + F.main_stories.map(function (s, i) {
-          var open = s.lead || (i === 0 && !F.main_stories.some(function (x) { return x.lead; }));
-          var blk = function (title, body) { return '<details class="fx-blk"' + (open ? " open" : "") + "><summary>" + title + "</summary>" + body + "</details>"; };
-          var x = '<article class="fx-story' + (s.lead ? " fx-lead" : "") + '" id="' + e(s.id) + '">' + (s.lead ? '<p class="kicker">Principal</p>' : "") +
-            '<h3 class="fx-h">' + e(s.headline) + "</h3>" + (s.dek ? '<p class="fx-dek">' + e(s.dek) + "</p>" : "");
-          if (s.steps) x += '<ol class="fx-steps">' + s.steps.map(function (st) {
-            return '<li class="' + (st.done ? "done" : "open") + '"><b>' + e(st.label) + "</b><span>" + e(st.text) + "</span></li>";
-          }).join("") + "</ol>";
+        // A2 + F5: a história inteira abre e fecha pelo cabeçalho (aria-expanded); a principal começa aberta.
+        // Hierarquia: título → O QUE DÁ PARA CONCLUIR (sempre visível) → onde está a decisão → blocos recolhidos
+        // (O que aconteceu · O que há de novo · Manifestações) → coberturas em ordem de horário → Mandar esta história.
+        var leadI = F.main_stories.map(function (x) { return !!x.lead; }).indexOf(true);
+        h += '<section class="fxp-stories" aria-label="Histórias principais">' + F.main_stories.map(function (s, i) {
+          var open = leadI >= 0 ? i === leadI : i === 0, bid = "fxb-" + e(s.id);
+          var blk = function (title, body) { return '<details class="fx-blk"><summary>' + title + "</summary>" + body + "</details>"; };
+          var x = '<article class="fxs' + (i === 0 ? " fxs-1" : "") + (open ? " is-open" : "") + '" id="' + e(s.id) + '">' +
+            '<button type="button" class="fxs-tog" aria-expanded="' + open + '" aria-controls="' + bid + '"><span class="fxs-k"><span>' + (i + 1) + (s.lead ? " · Principal" : "") +
+            '</span><span class="fxs-sign" aria-hidden="true">' + (open ? "−" : "+") + '</span></span><span class="fxs-h">' + e(s.headline) + "</span></button>" +
+            '<div class="fxs-c"><p class="fxs-ck">O que dá para concluir' + (cut ? " até " + e(cut) : "") + "</p><p>" + e(s.conclusion) + "</p>" +
+            (s.open_questions ? '<p class="fx-open-q"><b>Em aberto:</b> ' + e(s.open_questions) + "</p>" : "") + "</div>" +
+            '<div class="fxs-body" id="' + bid + '"' + (open ? "" : " hidden") + ">" + (s.dek ? '<p class="fx-dek">' + e(s.dek) + "</p>" : "");
+          if (s.steps && s.steps.length) x += '<div class="fxs-sec"><p class="fxs-sk">Onde está a decisão</p><ol class="fxs-steps" style="--n:' + s.steps.length + '">' + s.steps.map(function (st) {
+            return '<li class="' + (st.done ? "done" : "open") + '"><i aria-hidden="true"></i><b>' + e(st.label) + "</b><span>" + e(st.text) + "</span></li>";
+          }).join("") + '</ol><p class="fxs-leg">Verde = existe e tem fonte. Tracejado = ainda não existe.</p></div>';
           x += blk("O que aconteceu", "<p>" + e(s.what_happened) + "</p>");
           if (s.what_changed) x += blk("O que há de novo", '<p class="fx-new">' + e(s.what_changed) + "</p>");
-          if (s.coverage && s.coverage.length) x += blk("Coberturas encontradas até o corte (" + nf(s.coverage.length) + ")", covList(s.coverage) + '<p class="rule-note">' + COV_NOTE + "</p>");
           if (s.official) x += blk("Manifestações oficiais", '<ul class="fx-plain">' + s.official.map(function (o) { return "<li>" + e(o) + "</li>"; }).join("") + "</ul>");
-          if (!open && s.coverage && s.coverage.length) {
-            var seen = {};
-            x += '<p class="src fx-srcline">Veículos: ' + byTime(s.coverage).filter(function (c) { if (seen[c.outlet]) return false; seen[c.outlet] = 1; return true; })
-              .map(function (c) { return '<a href="' + e(c.url) + '" target="_blank" rel="noopener">' + e(c.outlet) + "</a>"; }).join(" · ") + "</p>";
-          }
-          x += '<div class="fx-concl"><h4 class="fx-k">O que dá para concluir</h4><p>' + e(s.conclusion) + "</p>" +
-            (s.open_questions ? '<p class="fx-open-q"><b>Em aberto:</b> ' + e(s.open_questions) + "</p>" : "") + "</div>";
+          if (s.coverage && s.coverage.length) x += '<div class="fxs-sec"><p class="fxs-sk">Coberturas encontradas até o corte</p><ol class="fxs-cov">' + byTime(s.coverage).map(function (c) {
+            var t = brt(c.published_at || ""), when = t ? WD3[t.getUTCDay()] + " " + fhm(c.published_at) : "";
+            return "<li><i aria-hidden=\"true\"></i>" + (when ? '<b class="num">' + e(when) + "</b> · " : "") + '<a href="' + e(c.url) + '" target="_blank" rel="noopener"><b>' + e(c.outlet) + "</b></a>" +
+              (c.summary || c.headline ? "<span>" + e(c.summary || c.headline) + "</span>" : "") + "</li>";
+          }).join("") + '</ol><p class="fxs-leg">' + COV_NOTE + "</p></div>";
+          x += mandar(SITE + "/fechamento/" + F.edition_date + "/#" + s.id, s.headline, "Mandar esta história", "mandar-story", "Mandar esta história") + "</div>";
           return x + "</article>";
         }).join("") + "</section>";
       }
@@ -1205,7 +1218,7 @@
     fn(arg).then(function (h) {
       if (my !== routeSeq) return;
       main.innerHTML = '<div class="wrap">' + h + "</div>";
-      if (anchor) { var t = document.getElementById(anchor); if (t) t.scrollIntoView(); } else window.scrollTo(0, 0);
+      if (anchor) { var t = document.getElementById(anchor); if (t) { openStory(t); t.scrollIntoView(); } } else window.scrollTo(0, 0);
       anPage(); engStart();
     }, function () { if (my !== routeSeq) return; main.innerHTML = '<div class="wrap"><p class="empty" style="padding:40px 0">Não conseguimos carregar esta página agora. Tente de novo.</p></div>'; });
   }
@@ -1215,7 +1228,7 @@
     if (!a) return;
     ev.preventDefault();
     var t = document.getElementById(a.getAttribute("data-jump") || "ja-falaram");
-    if (t) t.scrollIntoView({ behavior: smooth() });
+    if (t) { openStory(t); t.scrollIntoView({ behavior: smooth() }); }
   });
   // ---------------------------------------------------------------- captação (T3/T4, 04/10/2026)
   // Faixa "Receba o FECHAMENTO" acima do topo. Só existe com <meta name="desmentindo-capture"> (gerado de
