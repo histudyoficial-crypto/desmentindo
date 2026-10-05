@@ -1702,6 +1702,12 @@
    "checked_at": "2026-10-05T08:05:35Z",
    "tse_updated_at": "2026-10-05T02:58:39-03:00",
    "note": "TSE sem dado novo nesta hora; nenhum snapshot duplicado"
+  },
+  {
+   "window": "H2026-10-05T06",
+   "checked_at": "2026-10-05T09:14:05Z",
+   "tse_updated_at": "2026-10-05T02:58:39-03:00",
+   "note": "TSE sem dado novo nesta hora; nenhum snapshot duplicado"
   }
  ],
  "summary": {
