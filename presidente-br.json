@@ -1690,7 +1690,14 @@
    "seq": 11
   }
  ],
- "no_change": [],
+ "no_change": [
+  {
+   "window": "H2026-10-05T04",
+   "checked_at": "2026-10-05T07:00:32Z",
+   "tse_updated_at": "2026-10-05T02:58:39-03:00",
+   "note": "TSE sem dado novo nesta hora; nenhum snapshot duplicado"
+  }
+ ],
  "summary": {
   "snapshot_count": 11,
   "first_result_at": "2026-10-04T17:24:02-03:00",
