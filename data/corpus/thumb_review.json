@@ -1,0 +1,10 @@
+{
+  "schema": "desmentindo.public.thumb_review.v1",
+  "rule": "Miniatura do vídeo ≠ evidência do conteúdo do trecho. A miniatura oficial só aparece num card quando há revisão SAFE para ESTE vídeo NESTE contexto (video_id@slug). Sem revisão, ou revisão UNSAFE, o card usa o pôster editorial do Desmentindo.",
+  "criteria": "UNSAFE se a miniatura mostra outra pessoa identificável, outro caso ou acusação que não é o assunto do trecho citado. SAFE se mostra o próprio autor do vídeo e o mesmo tema/instituição do trecho, sem terceiro identificável.",
+  "reviews": {
+    "GZ8jWAg9pAA@dark-horse": {"verdict": "SAFE", "reviewed_at": "2026-10-05", "note": "Mostra o autor do vídeo e o STF; o trecho trata de decisão de ministro do STF. Sem terceiro identificável."},
+    "WCDptFX5OZg@farra-dos-guardanapos": {"verdict": "SAFE", "reviewed_at": "2026-10-05", "note": "Mostra o autor do vídeo e silhuetas anônimas sobre festa de políticos; o trecho trata da festa de Paris (2009). Sem terceiro identificável."},
+    "a4RbhwuWHDQ@atibaia": {"verdict": "UNSAFE", "reviewed_at": "2026-10-05", "note": "A miniatura mostra outra pessoa e outro caso, não o assunto do trecho citado (Atibaia)."}
+  }
+}

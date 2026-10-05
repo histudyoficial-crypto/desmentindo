@@ -151,6 +151,14 @@
     wrap.appendChild(f);
     return wrap;
   }
+  document.addEventListener("error", function (ev) {
+    var im = ev.target;
+    if (!im || im.tagName !== "IMG" || !im.classList.contains("vm-img")) return;
+    var a = im.parentNode;
+    a.classList.remove("has-img"); a.classList.add("vm-ed");
+    im.insertAdjacentHTML("afterend", '<i class="vm-a1" aria-hidden="true"></i><i class="vm-a2" aria-hidden="true"></i>');
+    im.remove();
+  }, true);
   document.addEventListener("securitypolicyviolation", function (ev) {
     if (!/youtube/.test(ev.blockedURI || "")) return;
     [].forEach.call(document.querySelectorAll(".vplayer:not(.vfail)"), function (w) {
@@ -160,7 +168,7 @@
       w.innerHTML = '<p>Não foi possível carregar o vídeo aqui.</p>' + (a ? '<a class="go" href="' + e(a.href) + '" target="_blank" rel="noopener">Assistir no YouTube' + (lbl ? " a partir de " + e(lbl) : "") + "</a>" : "");
     });
   });
-  // Em cada lista de trechos, o PRIMEIRO card já mostra o vídeo (miniatura oficial + play + minuto, sem iframe e sem autoplay);
+  // Em cada lista de trechos, o PRIMEIRO card já mostra o vídeo (pôster tipográfico + play + minuto, sem iframe e sem autoplay);
   // os demais ficam compactos e abrem o player no próprio card ao tocar "Ver trecho". Um player aberto por lista.
   function whenLabel(li) { return (((li.querySelector(".said-when") || {}).textContent) || "").split("·").pop().trim(); }
   // Pôster tipográfico (Direção 1): FONTE · DATA · ▶ MINUTO · "Ver trecho". Sem miniatura automática do YouTube, que
@@ -429,12 +437,22 @@
         '<span class="hm-mx"><span class="hm-mk">' + e(x.kicker || "Matéria") + " · " + e(dDay(x.date)) + '</span><b class="hm-mt">' + e(x.title) + "</b></span></a></li>";
     }).join("") + "</ul></section>";
   }
-  // Trecho compacto (A1: pôster 92px + fonte · data + texto; A4: só o pôster). Toque → player oficial no próprio card.
+  // Miniatura oficial do vídeo SÓ quando o build marcou o item com thumb === true, o que exige revisão SAFE para este vídeo
+  // neste contexto (data/corpus/thumb_review.json). Miniatura ≠ evidência do trecho: sem revisão → pôster editorial.
+  var YT_ID = /^[\w-]{11}$/;
+  function thumbSrc(o) {
+    return o && o.thumb === true && YT_ID.test(o.video_id || "") ? "https://i.ytimg.com/vi/" + o.video_id + "/mqdefault.jpg" : "";
+  }
+  // Trecho compacto: imagem real (revisada) ou pôster editorial + FONTE · DATA + ▶ MINUTO; abaixo, fonte e trecho do corpus.
+  // Toque → player oficial no próprio card, no minuto (a imagem nunca é link externo direto).
   function miniSaid(o, story) {
+    var th = thumbSrc(o);
     return '<li class="said said-c" data-src="' + e(o.source_name || "") + '" data-video="' + e(o.video_id) + '" data-t="' + o.t_seconds + '" data-date="' + e(o.date) + '">' +
-      '<a class="vmini" data-play href="' + e(o.deep_link) + '" target="_blank" rel="noopener" aria-label="Ver trecho aqui, ' + e(o.source_name) + ", " + e(fdate(o.date)) + ", a partir de " + e(o.t_label) + '">' +
+      '<a class="vmini ' + (th ? "has-img" : "vm-ed") + '" data-play href="' + e(o.deep_link) + '" target="_blank" rel="noopener" aria-label="Ver trecho aqui, ' + e(o.source_name) + ", " + e(fdate(o.date)) + ", a partir de " + e(o.t_label) + '">' +
+      (th ? '<img class="vm-img" src="' + e(th) + '" alt="Miniatura do vídeo de ' + e(o.source_name) + ", " + e(fdate(o.date)) + '" width="320" height="180" loading="lazy" decoding="async">'
+          : '<i class="vm-a1" aria-hidden="true"></i><i class="vm-a2" aria-hidden="true"></i>') +
       '<span class="vm-src">' + e(initials(o.source_name)) + " · " + e(dDay(o.date)) + '</span><b class="vm-min">▶ ' + e(o.t_label) + "</b></a>" +
-      '<div class="said-ct"><p class="said-who">' + e(o.source_name) + " · " + e(dDay(o.date)) + '</p><p class="said-x">' +
+      '<div class="said-ct"><p class="said-who">' + e(o.source_name) + '</p><p class="said-x">' +
       (story ? '<a href="#/historia/' + e(story.slug) + '">' + e(story.title) + "</a>: " : "") + e(o.excerpt) + "</p></div>" +
       '<span class="said-when" hidden>' + e(fdate(o.date)) + " · " + e(o.t_label) + '</span><a class="said-yt" hidden href="' + e(o.deep_link) + '" target="_blank" rel="noopener">Assistir no YouTube</a>' +
       '<div class="said-foot"></div></li>';

@@ -43,7 +43,6 @@ eq("byTime não muta", cov.map(c => c.o), ["B", "X", "A", "Y", "C"]);
 
 // limites da V1 (bloqueados)
 const forbid = [
-  [/i\.ytimg\.com/, "miniatura automática do YouTube (pode associar pessoa errada)"],
   [/SHARE_ACTION/, "evento SHARE_ACTION (fora da V1)"],
   [/Voltar ao fechamento/, "MATÉRIA → FECHAMENTO sem relação no contrato de dados"],
   [/Ajudou\?/, "\"Ajudou?\" (bloqueado)"],
@@ -96,5 +95,41 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
   eq("escape", /&lt;b&gt;/.test(H.morningBlock("2026-10-05", [it(1, { title: "<b>x</b>" })])), true);
 }
 
+// JÁ FALARAM (05/10): miniatura real só revisada (thumb === true, vindo de revisão SAFE no build); o resto = pôster
+// editorial. Miniatura automática continua proibida: i.ytimg.com só pode aparecer dentro de thumbSrc.
+{
+  const yt = src.match(/i\.ytimg\.com/g) || [];
+  eq("ytimg só em thumbSrc", yt.length === 1 && fn("thumbSrc").includes("i.ytimg.com"), true);
+  const yid = (src.match(/var YT_ID = [^;]+;/) || [""])[0];
+  const T = new Function(`${MES}\n${yid}\n${fn("e")}\n${fn("dParts")}\n${fn("fdate")}\n${fn("dDay")}\n${fn("initials")}\n${fn("thumbSrc")}\n${fn("miniSaid")}\nreturn { thumbSrc, miniSaid };`)();
+  const o = (x = {}) => Object.assign({ source_name: "Alexandre Garcia", video_id: "GZ8jWAg9pAA", date: "2026-09-14", excerpt: "Trecho do corpus", t_seconds: 302, t_label: "5:02", deep_link: "https://www.youtube.com/watch?v=GZ8jWAg9pAA&t=302s" }, x);
+  const st = { slug: "dark-horse", title: "Dark Horse" };
+  // A/B/C: miniatura válida (genérico por fonte: AG, TA, CC)
+  for (const [name, id] of [["Alexandre Garcia", "GZ8jWAg9pAA"], ["Te Atualizei", "abcdefghijk"], ["Caio Coppolla", "ABC_def-123"]]) {
+    const h = T.miniSaid(o({ source_name: name, video_id: id, thumb: true }), st);
+    eq("thumb " + name, h.includes('src="https://i.ytimg.com/vi/' + id + '/mqdefault.jpg"') && /class="vmini has-img"/.test(h), true);
+    eq("thumb lazy/16:9 " + name, /loading="lazy"/.test(h) && /width="320" height="180"/.test(h), true);
+    eq("alt só com metadados " + name, h.includes('alt="Miniatura do vídeo de ' + name + ","), true);
+  }
+  // D: sem revisão → pôster editorial (nunca retângulo vazio, nunca ytimg)
+  const d = T.miniSaid(o(), st);
+  eq("sem thumb → editorial", /class="vmini vm-ed"/.test(d) && /vm-a1/.test(d) && !/ytimg/.test(d), true);
+  // E: revisão insegura nunca chega como true; qualquer valor ≠ true é ignorado; id inválido é ignorado
+  eq("thumb 'SAFE' string ignorado", T.thumbSrc(o({ thumb: "SAFE" })), "");
+  eq("id inválido", T.thumbSrc(o({ thumb: true, video_id: "../x" })), "");
+  // F/G: minuto presente / ausente
+  eq("minuto", /▶ 5:02/.test(d), true);
+  eq("fonte · data no overlay e no texto", /vm-src">AG · 14 set/.test(d) && /said-who">Alexandre Garcia</.test(d), true);
+  // H: toque abre o player no próprio card (data-play + minuto), imagem não é link externo direto
+  eq("player inline", /class="vmini[^"]*" data-play/.test(d) && /data-t="302"/.test(d), true);
+  eq("trecho do corpus + escape", /Trecho do corpus/.test(d) && /&lt;b&gt;/.test(T.miniSaid(o({ excerpt: "<b>x</b>" }), st)), true);
+  // registro de revisão: chaves video_id@slug, veredito SAFE/UNSAFE
+  const R = JSON.parse(fs.readFileSync(path.join(ROOT, "data/corpus/thumb_review.json"), "utf8"));
+  eq("thumb_review válido", Object.entries(R.reviews).every(([k, r]) => /^[\w-]{11}@[a-z0-9-]+$/.test(k) && ["SAFE", "UNSAFE"].includes(r.verdict)), true);
+  // dado publicado: thumb só onde a revisão é SAFE
+  const HOME = JSON.parse(fs.readFileSync(path.join(ROOT, "v5/data/home.json"), "utf8"));
+  eq("home: thumb só com SAFE", (HOME.said || []).every(s => (s.item.thumb === true) === ((R.reviews[s.item.video_id + "@" + s.slug] || {}).verdict === "SAFE")), true);
+}
+
 if (fail.length) { console.error("DIRECAO1_INVALID\n  " + fail.join("\n  ")); process.exit(1); }
-console.log("DIRECAO1_VALID (EM1_RULE, fwd, byTime, limites da V1, MORNING da Home)");
+console.log("DIRECAO1_VALID (EM1_RULE, fwd, byTime, limites da V1, MORNING da Home, miniaturas do Já falaram)");
