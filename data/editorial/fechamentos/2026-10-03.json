@@ -182,7 +182,21 @@
     }
    ],
    "conclusion": "Há uma decisão individual de ministro do TSE em vigor. Garotinho contesta. O caso pode voltar aos tribunais depois do 1º turno.",
-   "open_questions": "Se a decisão será revista antes ou depois da votação."
+   "open_questions": "Se a decisão será revista antes ou depois da votação.",
+   "correction": {
+    "date": "2026-10-05",
+    "text": "O texto original, de 3/10, dizia que os votos em Garotinho “serão considerados nulos”. A decisão citada falava em votos “anulados sub judice”, isto é, condicionados ao julgamento do registro pelo TSE, e não em anulação definitiva. Depois da publicação, em 4/10, o presidente do TSE decidiu que esses votos entram no cálculo dos percentuais até o julgamento colegiado; o arquivo oficial de resultados do TSE os registra assim.",
+    "source": [
+     {
+      "name": "TSE (documento oficial)",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/6259/dados/rj/rj-c0003-e006259-u.json"
+     },
+     {
+      "name": "O Globo",
+      "url": "https://oglobo.globo.com/politica/eleicoes-2026/noticia/2026/10/05/votos-de-garotinho-entram-no-calculo-da-eleicao-do-rio-ate-decisao-final-do-tse-diz-nunes-marques.ghtml"
+     }
+    ]
+   }
   }
  ],
  "other_stories": [
