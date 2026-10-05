@@ -379,11 +379,20 @@ const saidStories = RANKED.filter(s => s.said.length).sort((a, b) => cmp(b.said[
 // A edição editorial NÃO é copiada para v5/data: a v5 lê data/editorial/ direto (DATA ≠ PRESENTATION), assim o
 // PR do Publisher e o código da interface podem entrar em qualquer ordem. Aqui ela só é validada (falha fechada).
 if (EDITORIAL) console.log(`data/editorial: edição ${EDITORIAL.edition} válida (${EDITORIAL.items.length} itens)`);
+// Miniatura real só com revisão SAFE para o vídeo NESTE contexto (data/corpus/thumb_review.json). Miniatura ≠ evidência
+// do trecho: sem revisão, ou UNSAFE, a Home usa o pôster editorial. Falha fechada se o registro estiver malformado.
+const THUMB_REVIEW = fs.existsSync(path.join(ROOT, "data/corpus/thumb_review.json")) ? readJSON("data/corpus/thumb_review.json") : { reviews: {} };
+if (THUMB_REVIEW.schema && THUMB_REVIEW.schema !== "desmentindo.public.thumb_review.v1") throw new Error("thumb_review: schema inesperado");
+for (const [k, r] of Object.entries(THUMB_REVIEW.reviews || {})) {
+  if (!/^[\w-]{11}@[a-z0-9-]+$/.test(k) || !["SAFE", "UNSAFE"].includes(r && r.verdict) || !validDate(r.reviewed_at)) throw new Error("thumb_review: entrada inválida " + k);
+}
+const thumbSafe = (videoId, slug) => ((THUMB_REVIEW.reviews || {})[videoId + "@" + slug] || {}).verdict === "SAFE";
 const HOME = {
   edition: validDate(D.meta.atualizado) ? D.meta.atualizado : null,
   hero: hero ? { ...teaser(hero), text: hero.summary ? cut(hero.summary.text, 220) : null } : null,
   more: RANKED.slice(1, 4).map(teaser),
-  said: saidStories.map(s => ({ slug: s.slug, title: s.title, count: s.said.length, item: s.said[0] })),
+  said: saidStories.map(s => ({ slug: s.slug, title: s.title, count: s.said.length,
+    item: thumbSafe(s.said[0].video_id, s.slug) ? { ...s.said[0], thumb: true } : s.said[0] })),
   archives: archivesPublic,
 };
 
