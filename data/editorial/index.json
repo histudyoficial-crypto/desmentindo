@@ -5,8 +5,8 @@
   {
    "edition": "2026-10-05",
    "file": "data/editorial/edicoes/2026-10-05.json",
-   "items": 1,
-   "sha256": "17c070b935fbe662bd434a885c18879e324e64a0a4aac308fedc5a790f1160ff"
+   "items": 2,
+   "sha256": "98e2aa557836d39fc379ec25d88a5824ade12e1cbdce0369121fc1b96a46ed32"
   },
   {
    "edition": "2026-10-04",
@@ -21,5 +21,5 @@
    "sha256": "969d9f1ef8fc450cbae997a484744d50d406b07c7cf7308abaa2abd157b3977a"
   }
  ],
- "data_version": "c642e805d9e0"
+ "data_version": "448126e03706"
 }

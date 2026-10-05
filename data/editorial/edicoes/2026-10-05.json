@@ -44,6 +44,38 @@
    "category_tone": "yellow",
    "dek": "O plenário do TSE ainda vai julgar o registro de Garotinho, sem data marcada.",
    "visual_variant": "EDITORIAL_ART"
+  },
+  {
+   "id": "2026-10-05-tse-ainda-vai-julgar-os-registros-de-deltan-dallagnol-e-dr-furlan",
+   "date": "2026-10-05",
+   "label": "AGORA",
+   "title": "TSE ainda vai julgar os registros de Deltan Dallagnol e Dr. Furlan, eleitos no 1º turno",
+   "text": "O que vale agora: pelo resultado oficial do TSE, Deltan Dallagnol (Novo) foi eleito senador pelo Paraná, em segundo lugar, com 2.904.594 votos (25,14%). Dr. Furlan foi eleito governador do Amapá no 1º turno, com 281.595 votos (62,75% dos válidos). O que ainda está pendente: os dois registros de candidatura ainda serão julgados pelo plenário do TSE, sem data marcada. No caso de Deltan, os votos são computados porque o presidente do TSE suspendeu, em 4/10, a decisão individual que os anulava. No caso de Furlan, segundo o Estadão, o relator votou para negar o registro e um pedido de vista interrompeu o julgamento. Uma decisão do plenário pode mudar esses resultados. Fonte oficial: arquivos de resultados do TSE (Senado no Paraná e governo do Amapá).",
+   "sources": [
+    {
+     "name": "TSE (documento oficial)",
+     "title": "Resultado oficial do 1º turno — Senado, Paraná (arquivo de resultados do TSE)",
+     "url": "https://resultados.tse.jus.br/oficial/ele2026/6259/dados/pr/pr-c0005-e006259-u.json"
+    },
+    {
+     "name": "TSE (documento oficial)",
+     "title": "Resultado oficial do 1º turno — governador do Amapá (arquivo de resultados do TSE)",
+     "url": "https://resultados.tse.jus.br/oficial/ele2026/6259/dados/ap/ap-c0003-e006259-u.json"
+    },
+    {
+     "name": "InfoMoney",
+     "title": "Decisões do TSE podem alterar resultado para Garotinho, Dallagnol e Dr. Furlan",
+     "url": "https://www.infomoney.com.br/politica/decisoes-do-tse-podem-alterar-resultado-para-garotinho-dallagnol-e-dr-furlan/"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "PARTIAL",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas; parte das afirmações tem documento oficial vinculado"
+   },
+   "slot": "AFTERNOON"
   }
  ]
 }
