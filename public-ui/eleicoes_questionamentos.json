@@ -982,18 +982,26 @@
     "ao_vivo": "https://raw.githubusercontent.com/histudyoficial-crypto/desmentindo/eleicoes-2026-dados/arquivos-ausentes.json",
     "estado": {
      "schema": "eleicoes2026.arquivos-ausentes.v2",
-     "atualizado_em": "2026-10-05T15:47:18Z",
-     "ultima_tentativa": "2026-10-05T15:47:18Z",
+     "atualizado_em": "2026-10-05T22:48:51Z",
+     "last_checked": "2026-10-05T22:48:51Z",
+     "ultima_tentativa": "2026-10-05T22:48:51Z",
      "verificacao_ok": true,
      "base_madrugada_05_10": 5254,
-     "recuperadas": 4925,
-     "pendentes": 330,
-     "pendentes_sem_arquivo": 329,
-     "pendentes_sem_boletim": 1,
+     "recuperadas": 5239,
+     "pendentes": 15,
+     "pendentes_sem_arquivo": 15,
+     "pendentes_sem_boletim": 0,
      "pendentes_por_uf": {
-      "MG": 56,
-      "SP": 273,
-      "ZZ": 1
+      "MG": 3,
+      "SP": 12
+     },
+     "exemplo": {
+      "uf": "mg",
+      "m": "41335",
+      "z": "0319",
+      "s": "0058",
+      "municipio": "Betim",
+      "estado": "ARQUIVO_NAO_DISPONIVEL"
      }
     }
    },
@@ -1009,10 +1017,13 @@
     "Quando um arquivo aparece: guardamos o original, registramos horário e assinatura, lemos o boletim e conferimos o total do município."
    ],
    "encontramos": [
-    "Das 5.254 seções sem arquivo na madrugada de 05/10, 4.921 apareceram na manhã de 05/10 e outras 4 à tarde. Em todas, o boletim confere.",
-    "As 4 da tarde fecharam exatamente o total oficial de Bahia e Rio Grande do Sul.",
-    "Na verificação de 05/10, 12:47 (Brasília), restavam 329 sem arquivo: 273 em SP e 56 em MG. Acompanhamos também 1 seção do exterior (Porto, Portugal) que tem arquivos publicados, mas sem boletim de urna.",
-    "Não há indicação, nos dados, de que essas seções tenham algo em comum além de estarem em poucos municípios."
+    "Das 5.254 seções sem arquivo na madrugada de 05/10, 5.239 já apareceram: 4.921 na manhã de 05/10 e 318 depois, nas verificações seguintes.",
+    "Em todos os 319 boletins de urna obtidos desde então (1 dele de seção que já tinha outros arquivos publicados, mas ainda não o boletim), a seção do arquivo é a esperada e a soma dos votos é igual ao comparecimento.",
+    "Nos 7 municípios em que todas as seções já apareceram, a soma dos boletins é igual, número a número, ao resultado oficial do município — inclusive na cidade de São Paulo, agora com os boletins de todas as 26.683 seções.",
+    "Onde ainda faltam seções (Betim), nenhum número dos boletins passa do resultado oficial.",
+    "Em Uberlândia, todas as seções já apareceram; a conferência com o resultado oficial do município é feita na próxima verificação.",
+    "Na verificação de 05/10, 19:48 (Brasília), restavam 15 seções sem arquivo: 12 em Carapicuíba (SP) e 3 em Betim (MG). Ficam em 2 zonas eleitorais.",
+    "Os dados não mostram por que esses arquivos não foram publicados."
    ],
    "explica": "Explica a mensagem de erro ao abrir essas seções: o arquivo não está publicado. Na verificação de cada seção, o site mostra isso como “Arquivo oficial ainda não disponível”.",
    "nao_prova": "Arquivo ausente não significa fraude. Também não é motivo para ignorar: sem o boletim, essas seções não podem ser conferidas voto a voto.",
@@ -1021,8 +1032,9 @@
    ],
    "confira": [
     {
-     "txt": "Uma seção ainda sem arquivo: Campinas, zona 423, seção 292",
-     "href": "/eleicoes-2026/sp/#m=62910&z=0423&s=0292"
+     "txt": "Uma seção ainda sem arquivo na verificação de 05/10, 19:48 (Brasília): Betim, zona 319, seção 58",
+     "href": "/eleicoes-2026/mg/#m=41335&z=0319&s=0058",
+     "exemplo": true
     }
    ],
    "fontes": {
@@ -1331,7 +1343,7 @@
    "versao_oficial": "O TSE publica os dois resultados em arquivos separados, um por cargo. Não há manifestação do TSE sobre a comparação entre eles.",
    "outras_fontes": [],
    "testamos": [
-    "Somamos os 26.427 boletins de urna da capital, cargo por cargo, e comparamos com os dois resultados oficiais do município.",
+    "Somamos os 26.683 boletins de urna da capital, cargo por cargo, e comparamos com os dois resultados oficiais do município.",
     "Para cada seção, separamos os votos de presidente (Lula, Flávio, outros, brancos, nulos) e de governador (Tarcísio, Haddad, outros, brancos, nulos).",
     "Classificamos cada seção pelos vencedores dos dois cargos, medimos a diferença entre cargos e calculamos os limites matemáticos das combinações possíveis.",
     "Repetimos a conta nos 645 municípios do estado."
@@ -1340,8 +1352,8 @@
     {
      "titulo": "Por seção",
      "itens": [
-      "5.680 seções (21,5%) tiveram Lula à frente para presidente e Tarcísio à frente para governador. Chamamos isso de divergência agregada entre cargos — é o resultado da seção, não o voto de alguém.",
-      "Tarcísio teve fatia maior que Flávio em 99,96% das seções (no meio da distribuição, +10,3 pontos; em 80% das seções, entre +6,5 e +14,6).",
+      "5.714 seções (21,4%) tiveram Lula à frente para presidente e Tarcísio à frente para governador. Chamamos isso de divergência agregada entre cargos — é o resultado da seção, não o voto de alguém.",
+      "Tarcísio teve fatia maior que Flávio em 99,96% das seções (no meio da distribuição, +10,3 pontos; em 80% das seções, entre +6,4 e +14,6).",
       "Lula e Haddad ficaram próximos: no meio da distribuição, Lula teve 0,4 ponto a mais (80% das seções entre −2,3 e +3,0)."
      ],
      "tabela": [
@@ -1357,25 +1369,25 @@
        "A",
        "Lula à frente",
        "Haddad à frente",
-       "9.727",
-       "36,8%",
-       "3.354.778"
+       "9.896",
+       "37,1%",
+       "3.418.933"
       ],
       [
        "B",
        "Lula à frente",
        "Tarcísio à frente",
-       "5.680",
-       "21,5%",
-       "1.968.900"
+       "5.714",
+       "21,4%",
+       "1.981.553"
       ],
       [
        "C",
        "Flávio à frente",
        "Tarcísio à frente",
-       "10.569",
-       "40,0%",
-       "3.574.290"
+       "10.620",
+       "39,8%",
+       "3.591.494"
       ],
       [
        "D",
@@ -1389,9 +1401,9 @@
        "Empate",
        "—",
        "—",
-       "450",
+       "452",
        "1,7%",
-       "152.108"
+       "152.848"
       ]
      ],
      "histogramas": [
@@ -1404,14 +1416,14 @@
         "-4": 1,
         "-2": 5,
         "0": 64,
-        "2": 365,
-        "4": 1565,
-        "6": 3935,
-        "8": 6255,
-        "10": 6225,
-        "12": 4473,
-        "14": 2238,
-        "16": 906,
+        "2": 367,
+        "4": 1592,
+        "6": 3991,
+        "8": 6331,
+        "10": 6293,
+        "12": 4493,
+        "14": 2244,
+        "16": 907,
         "18": 290,
         "20": 83,
         "22": 14,
@@ -1427,13 +1439,13 @@
        "bins": {
         "-10": 3,
         "-8": 73,
-        "-6": 551,
-        "-4": 2784,
-        "-2": 7764,
-        "0": 9591,
-        "2": 4567,
-        "4": 951,
-        "6": 122,
+        "-6": 559,
+        "-4": 2800,
+        "-2": 7832,
+        "0": 9687,
+        "2": 4621,
+        "4": 962,
+        "6": 125,
         "8": 14,
         "10": 3,
         "12": 1,
@@ -1462,8 +1474,8 @@
     {
      "titulo": "Por local de votação",
      "itens": [
-      "471 dos 2.041 locais de votação com coordenada oficial tiveram, somadas as suas seções, Lula à frente e Tarcísio à frente.",
-      "O local de votação explica 50% da variação de “Tarcísio menos Flávio”: a diferença tem padrão no território, mas está espalhada pela cidade.",
+      "474 dos 2.057 locais de votação com coordenada oficial tiveram, somadas as suas seções, Lula à frente e Tarcísio à frente.",
+      "O local de votação explica 49% da variação de “Tarcísio menos Flávio”: a diferença tem padrão no território, mas está espalhada pela cidade.",
       "Onde outros candidatos a presidente tiveram mais votos, Tarcísio ficou mais à frente de Flávio (correlação de 0,85 entre locais). É uma associação entre lugares, não entre pessoas."
      ],
      "mapa": true
@@ -1538,8 +1550,8 @@
      "titulo": "Limites matemáticos",
      "itens": [
       "Seção por seção, com os totais de cada cargo, calculamos o mínimo e o máximo possível de cada combinação — sem identificar ninguém.",
-      "Combinação Lula para presidente e Tarcísio para governador: os totais exigem no mínimo 91 eleitores (em 42 seções) e permitem até 2.624.568. Ou seja: os números são compatíveis com quase ninguém e com muita gente fazendo essa combinação — os totais não decidem.",
-      "Quem votou em candidatos de lados diferentes nos dois cargos (contando outros, brancos e nulos): no mínimo 877.434 eleitores (12,7%). Esse mínimo vem principalmente dos votos em outros candidatos a presidente, que não têm equivalente na eleição para governador."
+      "Combinação Lula para presidente e Tarcísio para governador: os totais exigem no mínimo 91 eleitores (em 42 seções) e permitem até 2.650.229. Ou seja: os números são compatíveis com quase ninguém e com muita gente fazendo essa combinação — os totais não decidem.",
+      "Quem votou em candidatos de lados diferentes nos dois cargos (contando outros, brancos e nulos): no mínimo 886.033 eleitores (12,7%). Esse mínimo vem principalmente dos votos em outros candidatos a presidente, que não têm equivalente na eleição para governador."
      ]
     },
     {
@@ -1554,21 +1566,16 @@
    "encontramos": [
     "Os dois resultados cabem nos mesmos votos: não há contradição aritmética.",
     "A diferença entre os cargos não está concentrada em poucos lugares: Tarcísio ficou à frente de Flávio em praticamente todas as seções, com mais ou menos intensidade conforme o território.",
-    "Somando os boletins da capital e comparando com os dois resultados oficiais, as diferenças em cada número correspondem às 256 seções cujo arquivo o TSE ainda não disponibilizou (veja a pergunta sobre arquivos ausentes); nenhum número dos boletins passa do oficial.",
+    "Somando os boletins de urna de todas as 26.683 seções da capital, o resultado é igual, número a número, aos dois resultados oficiais do município — presidente e governador (votos de cada candidato, brancos, nulos e comparecimento).",
     "A afirmação de que os resultados seriam incompatíveis (B) não se sustenta nos dados. A afirmação sobre o comportamento de cada pessoa (A) não pode ser testada com totais."
    ],
    "explica": "Explica como os dois vencedores convivem: Tarcísio teve desempenho bem acima do de Flávio em quase toda a cidade, Lula e Haddad ficaram parecidos, e a soma de outros candidatos, brancos e nulos é diferente em cada cargo.",
    "nao_prova": "Não prova como cada pessoa votou — nem que eleitores de Lula votaram em Tarcísio, nem que não votaram. O voto é secreto; os totais só mostram padrões por seção, local e zona.",
    "nao_sabemos": [
-    "O conteúdo das 256 seções da capital cujo boletim ainda não está disponível.",
     "Como se distribuem, pessoa a pessoa, as combinações entre os dois cargos — isso não é observável.",
     "A comparação com 2022 (mesma cidade, mesmos cargos) ainda não foi feita."
    ],
    "confira": [
-    {
-     "txt": "Arquivos ainda não disponíveis (256 seções da capital)",
-     "href": "/eleicoes-2026/questionamentos/arquivos-ainda-nao-disponiveis/"
-    },
     {
      "txt": "Explore a capital seção por seção",
      "href": "/eleicoes-2026/sp/#m=71072"
@@ -1601,11 +1608,11 @@
     ],
     "imprensa": [],
     "analise": [
-     "Soma independente de 26.427 boletins de urna da capital e de todos os municípios paulistas, cargo por cargo.",
+     "Soma independente de 26.683 boletins de urna da capital e de todos os municípios paulistas, cargo por cargo.",
      "Limites por seção calculados como problema de transporte (mínimo e máximo de cada combinação, com os totais da seção fixos)."
     ]
    },
-   "metodologia": "Percentuais sobre os votos válidos de cada cargo. Quadrantes pelo vencedor de cada cargo na seção. Limites: para cada seção, tabela Presidente × Governador com os totais da seção fixos; mínimo e máximo de cada combinação por programação linear; a soma dos limites por seção é o limite da cidade, porque as seções são independentes. Votos para números que não são candidatos válidos a governador contam como nulos, como no resultado oficial. Bairro é o informado pelo TSE no cadastro do local; não foi conferido com mapas oficiais de bairros.",
+   "metodologia": "Percentuais sobre os votos válidos de cada cargo. Quadrantes pelo vencedor de cada cargo na seção. Limites: para cada seção, tabela Presidente × Governador com os totais da seção fixos; mínimo e máximo de cada combinação por programação linear; a soma dos limites por seção é o limite da cidade, porque as seções são independentes. Votos para números que não são candidatos válidos (a presidente ou a governador) contam como nulos, como no resultado oficial. Bairro é o informado pelo TSE no cadastro do local; não foi conferido com mapas oficiais de bairros.",
    "locais_mapa": [
     [
      -46.65106,
@@ -2898,6 +2905,11 @@
      "B"
     ],
     [
+     -46.45269,
+     -23.52662,
+     "B"
+    ],
+    [
      -46.45901,
      -23.52996,
      "B"
@@ -2905,6 +2917,16 @@
     [
      -46.45285,
      -23.51722,
+     "B"
+    ],
+    [
+     -46.45581,
+     -23.55013,
+     "B"
+    ],
+    [
+     -46.43709,
+     -23.5285,
      "B"
     ],
     [
@@ -2993,6 +3015,11 @@
      "B"
     ],
     [
+     -46.46304,
+     -23.52942,
+     "A"
+    ],
+    [
      -46.4587,
      -23.52985,
      "B"
@@ -3053,6 +3080,11 @@
      "C"
     ],
     [
+     -46.63805,
+     -23.49395,
+     "C"
+    ],
+    [
      -46.62276,
      -23.48988,
      "C"
@@ -3083,6 +3115,11 @@
      "C"
     ],
     [
+     -46.62646,
+     -23.48188,
+     "C"
+    ],
+    [
      -46.62395,
      -23.47704,
      "C"
@@ -3090,6 +3127,11 @@
     [
      -46.64792,
      -23.49314,
+     "C"
+    ],
+    [
+     -46.64481,
+     -23.49118,
      "C"
     ],
     [
@@ -7833,6 +7875,11 @@
      "A"
     ],
     [
+     -46.6943,
+     -23.73617,
+     "A"
+    ],
+    [
      -46.70287,
      -23.74841,
      "A"
@@ -7861,6 +7908,11 @@
      -46.68193,
      -23.74037,
      "B"
+    ],
+    [
+     -46.66846,
+     -23.75283,
+     "A"
     ],
     [
      -46.69018,
@@ -7898,6 +7950,11 @@
      "A"
     ],
     [
+     -46.6702,
+     -23.75348,
+     "A"
+    ],
+    [
      -46.69641,
      -23.75092,
      "A"
@@ -7908,8 +7965,18 @@
      "A"
     ],
     [
+     -46.66066,
+     -23.74382,
+     "A"
+    ],
+    [
      -46.67123,
      -23.74274,
+     "A"
+    ],
+    [
+     -46.66567,
+     -23.75896,
      "A"
     ],
     [
@@ -7928,6 +7995,11 @@
      "A"
     ],
     [
+     -46.66347,
+     -23.73453,
+     "A"
+    ],
+    [
      -46.68983,
      -23.7284,
      "B"
@@ -7935,6 +8007,11 @@
     [
      -46.69636,
      -23.75097,
+     "A"
+    ],
+    [
+     -46.67166,
+     -23.75355,
      "A"
     ],
     [
@@ -7950,6 +8027,16 @@
     [
      -46.69633,
      -23.75391,
+     "A"
+    ],
+    [
+     -46.67034,
+     -23.74281,
+     "A"
+    ],
+    [
+     -46.66834,
+     -23.74762,
      "A"
     ],
     [
