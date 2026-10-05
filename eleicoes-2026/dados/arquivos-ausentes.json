@@ -1,13 +1,19 @@
 {
+ "schema": "eleicoes2026.arquivos-ausentes.v2",
  "atualizado_em": "2026-10-05T15:47:18Z",
+ "ultima_tentativa": "2026-10-05T15:47:18Z",
+ "verificacao_ok": true,
  "base_madrugada_05_10": 5254,
  "recuperadas": 4925,
  "pendentes": 330,
+ "pendentes_sem_arquivo": 329,
+ "pendentes_sem_boletim": 1,
  "pendentes_por_uf": {
   "MG": 56,
   "SP": 273,
   "ZZ": 1
  },
+ "nota": "Contagem do acompanhamento horário do Eleições 2026. Não é atualização em tempo real.",
  "secoes": [
   {
    "uf": "mg",
@@ -2319,6 +2325,5 @@
    "s": "1870",
    "estado": "SEM_BOLETIM"
   }
- ],
- "nota": "Lista de acompanhamento do Eleições 2026. Atualizada quando a checagem encontra mudança; publicada por revisão humana."
+ ]
 }

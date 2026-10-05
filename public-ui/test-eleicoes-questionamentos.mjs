@@ -31,14 +31,29 @@ for (const q of D.questionamentos) {
   if (!fs.existsSync(f)) bad(`${q.id} página não gerada`);
   else {
     const h = fs.readFileSync(f, "utf8");
-    for (const t of ["O que aconteceu", "O que testamos", "O que encontramos", "O que isso não prova", "Confira você mesmo", "Fonte primária", "Análise Eleições 2026", "Ver como verificamos"])
-      if (!h.includes(t)) bad(`${q.id} página sem bloco "${t}"`);
+    for (const t of ["O que aconteceu", "O que testamos", "O que encontramos|O que podemos concluir", "O que isso não prova|O que não podemos concluir", "Confira você mesmo", "Fonte primária", "Análise Eleições 2026", "Ver como verificamos"])
+      if (!t.split("|").some(x => h.includes(x))) bad(`${q.id} página sem bloco "${t}"`);
     if (q.versao_oficial && !/^Não localizamos/.test(q.versao_oficial) && !h.includes("não é tratado aqui como prova")) bad(`${q.id} versão oficial sem aviso de independência`);
   }
 }
 const home = fs.readFileSync(path.join(ROOT, "eleicoes-2026", "index.html"), "utf8");
 if (!home.includes("Questionamentos sobre a eleição") || !home.includes("Ver todos os questionamentos")) bad("home sem seção de questionamentos");
 if (!fs.existsSync(path.join(ROOT, "eleicoes-2026", "questionamentos", "04-de-outubro", "index.html"))) bad("linha do tempo de 04/10 não gerada");
+// Última milha (05/10): Q7 com número renderizado e hora da última verificação (nunca "tempo real"); Q6 com a verificação
+// independente separada do arquivo oficial e o achado dos arquivos municipais rotulado; nav do produto em todas as páginas.
+const pg = s => fs.readFileSync(path.join(ROOT, "eleicoes-2026", "questionamentos", s, "index.html"), "utf8");
+const q7 = pg("arquivos-ainda-nao-disponiveis"), q6 = pg("boletins-de-urna-batem-com-resultado"), q1 = D.questionamentos.find(q => q.id === "Q1");
+if (!/<b id="qcPend">[\d.]+<\/b>/.test(q7) || !/Última verificação: <time datetime="\d{4}-\d\d-\d\dT/.test(q7) || !q7.includes("recuperados desde o início do monitoramento")) bad("Q7 sem contador renderizado/última verificação/recuperados");
+if (/tempo real/.test(q7) && !/não é (atualização em )?tempo real/.test(q7)) bad("Q7 sugere tempo real");
+if (!q6.includes("Arquivo oficial utilizado") || !q6.includes("Verificação independente feita por nós") || !q6.includes("INCONSISTÊNCIA ENTRE PUBLICAÇÕES OFICIAIS · SEM DIVERGÊNCIA DE VOTOS IDENTIFICADA")) bad("Q6 sem destaque/achado");
+if (!/^Sim\. A atualização pública do resultado presidencial ficou parada por cerca de uma hora/.test(q1.resposta)) bad("Q1 não abre com a confirmação da parada");
+for (const h of [home, q7, q6]) if (!h.includes('class="pnav"')) bad("página sem a navegação do produto");
+const q11 = D.questionamentos.find(q => q.id === "Q11");
+if (q11) {
+  const t11 = JSON.stringify(q11);
+  if (/eleitores de Lula votaram em Tarc[ií]sio(?! nem)|quem votou em Lula votou em Tarc|é normal haver voto cruzado|prova (de )?fraude/i.test(t11.replace(/nem que eleitores de Lula votaram em Tarcísio/, ""))) bad("Q11 com inferência individual, conclusão pressuposta ou acusação");
+  if (!t11.includes("DIVERG") && !/divergência agregada entre cargos/i.test(t11)) bad("Q11 sem o termo divergência agregada entre cargos");
+}
 const tl = JSON.stringify(D.linha_do_tempo); if (BANNED.test(tl) || MOCK.test(tl) || ASSERT_STOP.test(tl)) bad("linha do tempo com linguagem proibida");
 console.log(fail ? `QUESTIONAMENTOS_QA FAIL (${fail})` : `QUESTIONAMENTOS_QA PASS (${n} páginas + índice + 04/10 + home)`);
 process.exit(fail ? 1 : 0);

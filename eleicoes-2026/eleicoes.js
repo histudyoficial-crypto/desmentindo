@@ -160,7 +160,7 @@
   var GRID = [["rr",0,1],["ap",0,3],["am",1,1],["pa",1,2],["ma",1,3],["ce",1,4],["rn",1,5],["ac",2,0],["ro",2,1],["to",2,2],
     ["pi",2,3],["pb",2,4],["pe",2,5],["mt",3,1],["go",3,2],["df",3,3],["ba",3,4],["al",3,5],["ms",4,1],["mg",4,2],["es",4,3],
     ["se",4,4],["pr",5,1],["sp",5,2],["rj",5,3],["sc",6,1],["rs",7,1]];
-  var PALETTE = ["#2A6F77", "#B5651D", "#6B4E9B", "#4F7A28", "#8C3B5E", "#3D5A80", "#7A6A2F", "#A04A3A"];
+  var PALETTE = ["#2A6F77", "#9A5418", "#6B4E9B", "#4F7A28", "#8C3B5E", "#3D5A80", "#7A6A2F", "#A04A3A"];
   var SEQ = ["#F1EFEE", "#D9D4D0", "#B9B1AB", "#958A83", "#6E625C", "#463C38"];   // escala neutra (cedo → tarde / pouco → muito)
   var map = { data: {}, color: {}, at: 0, layer: "lider" };
   function lead(R) { var c = R.cands.filter(function (x) { return x.pct != null; }); return c.length ? { c: c[0], tie: c.length > 1 && c[1].pct === c[0].pct } : null; }
@@ -170,7 +170,7 @@
     var el = $("mapa"); if (!el) return;
     var past = current.snapSel != null, lay = map.layer, calc = calcData && calcData.uf;
     var cells = GRID.map(function (g) {
-      var uf = g[0], R = map.data[uf], Ld = R && lead(R), bg = "", txt = "—", label = UFN[uf] + ": ", cls = "";
+      var uf = g[0], R = map.data[uf], Ld = R && lead(R), bg = "", txt = "—", label = uf.toUpperCase() + " · " + UFN[uf] + ": ", cls = "";
       if (past) { cls = " nodata past"; label += "sem registro por estado neste instante"; txt = "s/ reg."; }
       else if (lay === "lider") {
         if (Ld && !Ld.tie) { bg = colorOf(Ld.c); txt = fPct(Ld.c.pct); label += Ld.c.name + (R.final ? " mais votado" : " à frente na parcial") + " com " + fPct(Ld.c.pct); }
@@ -182,7 +182,7 @@
         if (u && u.late15_pct != null) { bg = seq(u.late15_pct, 0, 45); txt = fPct(u.late15_pct, 1); label += fPct(u.late15_pct, 1) + " das seções entre as 15% que chegaram por último"; cls = " seqc"; }
         else { cls = " nodata"; label += "sem métrica calculada"; }
       }
-      return '<a class="tile' + cls + '" href="/eleicoes-2026/' + uf + '/" style="grid-row:' + (g[1] + 1) + ";grid-column:" + (g[2] + 1) + (bg ? ";background:" + bg : "") + '" aria-label="' + esc(label) + '" title="' + esc(label) + '"><b>' + uf.toUpperCase() + "</b><span>" + esc(txt) + "</span></a>";
+      return '<a class="tile' + cls + '" href="/eleicoes-2026/' + uf + '/" style="grid-row:' + (g[1] + 1) + ";grid-column:" + (g[2] + 1) + (bg ? ";background:" + bg : "") + '" title="' + esc(label) + '"><b>' + uf.toUpperCase() + "</b><span>" + esc(txt) + '</span><span class="vh"> — ' + esc(label) + "</span></a>";
     }).join("");
     var leg = "";
     if (past) leg = '<p class="note">Você está vendo um registro passado da linha do tempo. Só existe registro do Brasil; por estado não há registro deste instante, então o mapa não inventa cor. <button type="button" class="linkbtn" data-live>Voltar ao agora</button></p>';
@@ -274,7 +274,7 @@
     });
     var sel = current.snapSel;
     if (sel != null) g += '<line class="cursor" x1="' + xs(snaps[sel].t) + '" x2="' + xs(snaps[sel].t) + '" y1="' + (T - 6) + '" y2="' + (H - Bm) + '"/>';
-    box.innerHTML = '<div class="chartwrap"><svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="Percentual dos três mais votados em cada registro da apuração, só nos instantes registrados">' + g + "</svg></div>" +
+    box.innerHTML = '<div class="chartwrap" tabindex="0" role="region" aria-label="Gráfico da linha do tempo (role para os lados)"><svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="Percentual dos três mais votados em cada registro da apuração, só nos instantes registrados">' + g + "</svg></div>" +
       '<ul class="legend">' + last.map(function (c, k) { return '<li><i style="background:' + cols[k] + '"></i>' + esc(c.candidate_name) + "</li>"; }).join("") + '<li><i class="gapi"></i>Sem registro</li></ul>' +
       '<div class="tl-controls"><label for="tlRange">Instante</label><input id="tlRange" type="range" min="0" max="' + snaps.length + '" step="1" value="' + (sel == null ? snaps.length : sel) + '" aria-valuetext="' + esc(sel == null ? "agora" : hhmm(snaps[sel].t)) + '">' +
       '<output id="tlOut">' + (sel == null ? "Agora" : hhmm(snaps[sel].t) + " · " + fPct(snaps[sel].percent_totalized) + " totalizado") + "</output></div>" +
