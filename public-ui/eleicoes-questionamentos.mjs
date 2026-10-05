@@ -137,16 +137,31 @@ function mapa(pts) {
 <div class="qsvg qmap"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Mapa de ${nf(pts.length, 0)} locais de votação da cidade de São Paulo: ${nf(cnt.A, 0)} com Lula e Haddad à frente, ${nf(cnt.B, 0)} com Lula e Tarcísio à frente, ${nf(cnt.C, 0)} com Flávio e Tarcísio à frente">${dots}</svg></div>
 <p class="qnote">Cada ponto é um local de votação, na coordenada do cadastro oficial do TSE. Cor = quem ficou à frente em cada cargo, somando as seções do local. Não mostra o voto de ninguém.</p></figure>`;
 }
+function chartContra(c) {
+  const W = 440, H = 220, L = 34, R = 12, T = 12, B = 30, all = c.series.flatMap(s => s.v), lo = Math.min(0, ...all), hi = Math.max(...all) * 1.08;
+  const X = i => L + i * (W - L - R) / (c.pontos.length - 1), Y = v => T + (hi - v) / (hi - lo) * (H - T - B);
+  const COL = { ink: "var(--ink)", c1: C1, c2: C2, c3: C3 };
+  let g = [0, 2, 4, 6].filter(v => v <= hi).map(v => `<line x1="${L}" x2="${W - R}" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}" stroke="#E4E2E1"/><text x="${L - 6}" y="${(Y(v) + 4).toFixed(1)}" text-anchor="end" class="ax">${v}</text>`).join("");
+  g += c.pontos.map((p, i) => `<text x="${X(i).toFixed(1)}" y="${H - 10}" text-anchor="middle" class="ax">${esc(p)}</text>`).join("");
+  g += c.series.map(s => `<polyline fill="none" stroke="${COL[s.cor]}" stroke-width="${s.cor === "ink" ? 3 : 2}"${s.dash ? ` stroke-dasharray="${s.dash}"` : ""} points="${s.v.map((v, i) => X(i).toFixed(1) + "," + Y(v).toFixed(1)).join(" ")}"/>` +
+    s.v.map((v, i) => `<circle cx="${X(i).toFixed(1)}" cy="${Y(v).toFixed(1)}" r="3.5" fill="${COL[s.cor]}" stroke="#fff" stroke-width="1.5"><title>${esc(s.nome)} · ${esc(c.pontos[i])}: ${nf(v, 2)}</title></circle>`).join("")).join("");
+  const tab = `<details class="tablewrap"><summary>Ver os números</summary><div class="qtable" tabindex="0" role="region" aria-label="Tabela da curva"><table><thead><tr><th scope="col">Curva</th>${c.pontos.map(p => `<th scope="col">${esc(p)}</th>`).join("")}</tr></thead><tbody>${c.series.map(s => `<tr><th scope="row">${esc(s.nome)}</th>${s.v.map(v => `<td>${nf(v, 2)}</td>`).join("")}</tr>`).join("")}</tbody></table></div></details>`;
+  return `<figure class="qfig"><figcaption>${esc(c.titulo)}</figcaption><ul class="qleg">${c.series.map(s => `<li><i style="background:${COL[s.cor]}"></i>${esc(s.nome)}</li>`).join("")}</ul>
+<div class="qsvg"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(c.titulo)}. ${c.series.map(s => s.nome + ": de " + nf(s.v[0], 2) + " a " + nf(s.v[s.v.length - 1], 2)).join("; ")}">${g}</svg></div>${tab}</figure>`;
+}
 function blocos(q) {
   return (q.blocos || []).map(b => sec(b.titulo, list(b.itens) +
     (b.tabela ? `<div class="qtable" tabindex="0" role="region" aria-label="${esc(b.titulo)} (tabela; role para os lados)"><table><thead><tr>${b.tabela[0].map(c => `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead><tbody>${b.tabela.slice(1).map(r => `<tr><th scope="row">${esc(r[0])}</th>${r.slice(1).map(c => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>` : "") +
-    (b.histogramas ? `<div class="qhists">${b.histogramas.map(hist).join("")}</div>` : "") + (b.mapa && q.locais_mapa ? mapa(q.locais_mapa) : ""))).join("\n");
+    (b.histogramas ? `<div class="qhists">${b.histogramas.map(hist).join("")}</div>` : "") + (b.mapa && q.locais_mapa ? mapa(q.locais_mapa) : "") +
+    (b.grafico_transicoes && q.grafico ? chartTransicoes(q.grafico) + (q.arredondamento ? chartArred(q.arredondamento) : "") : "") +
+    (b.contrafactual ? chartContra(b.contrafactual) : ""))).join("\n");
 }
 
 function body(q, all) {
-  const g = q.grafico;
+  const g = q.grafico_no_bloco ? null : q.grafico;
+  const T = (k, d) => (q.rotulos && q.rotulos[k]) || d;
   const chart = !g ? "" : g.tipo === "barras_referencia" ? chartBars(g) : g.tipo === "transicoes" ? chartTransicoes(g) : g.tipo === "pontos_uf" ? chartUF(g) : "";
-  const extras = (q.arredondamento ? chartArred(q.arredondamento) : "") +
+  const extras = (q.arredondamento && !q.grafico_no_bloco ? chartArred(q.arredondamento) : "") +
     (q.fluxo ? `<ol class="qflow">${q.fluxo.map(f => `<li>${esc(f)}</li>`).join("")}</ol>` : "") +
     (q.numeros ? `<div class="qnums">${q.numeros.map(n => `<div><b>${esc(n[0])}</b><span>${esc(n[1])}</span></div>`).join("")}</div>` : "") +
     (q.tabela ? `<div class="qtable" tabindex="0" role="region" aria-label="Tabela (role para os lados)"><table><thead><tr>${q.tabela[0].map(c => `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead><tbody>${q.tabela.slice(1).map(r => `<tr><th scope="row">${esc(r[0])}</th>${r.slice(1).map(c => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>` : "") +
@@ -162,21 +177,22 @@ function body(q, all) {
   return `<article class="qart">
 <p class="kick"><a href="${BASE}">Questionamentos</a> · ${esc(q.tema)}</p>
 <h1>${esc(q.pergunta)}</h1>
+${q.painel_cargos ? painel(q.painel_cargos) : ""}
 <div class="qverdict">${badge(q.classificacao)}${q.classificacao_nota ? `<p>${esc(q.classificacao_nota)}</p>` : ""}</div>
 <p class="qlead">${esc(q.resposta)}</p>
 ${q.destaque ? destaque(q.destaque) : ""}
-${q.painel_cargos ? painel(q.painel_cargos) : ""}
 ${q.contador ? contador(q.contador) : ""}
-${q.hipotese ? sec(q.painel_cargos ? "Duas afirmações diferentes" : "A hipótese", `<p>${esc(q.hipotese)}</p>`, "hip") : ""}
-${sec("Por que isso chamou atenção", `<p>${esc(q.chamou_atencao)}</p>`)}
-${sec("O que aconteceu", list(q.aconteceu))}
+${q.hipotese ? sec(q.painel_cargos ? "Duas afirmações diferentes" : T("hipotese", "A hipótese"), `<p>${esc(q.hipotese)}</p>`, "hip") : ""}
+${sec(T("chamou_atencao", "Por que isso chamou atenção"), `<p>${esc(q.chamou_atencao)}</p>`)}
+${sec(T("aconteceu", "O que aconteceu"), list(q.aconteceu))}
 ${q.versao_oficial ? sec("Versão oficial", `<p class="qoff">${esc(q.versao_oficial)}</p>` + (/^Não localizamos/.test(q.versao_oficial) ? "" : `<p class="qnote">O que o TSE declara não é tratado aqui como prova. Abaixo, o que conseguimos testar de forma independente.</p>`), "off") : ""}
 ${q.outras_fontes && q.outras_fontes.length ? sec("O que outras fontes registraram", list(q.outras_fontes)) : ""}
-${sec("O que testamos", list(q.testamos))}
-${blocos(q)}
-${sec(q.painel_cargos ? "O que podemos concluir" : "O que encontramos", list(q.encontramos) + chart + extras, "found")}
-${sec("O que isso explica", `<p>${esc(q.explica)}</p>`)}
-${sec(q.painel_cargos ? "O que não podemos concluir" : "O que isso não prova", `<p>${esc(q.nao_prova)}</p>`, "limit")}
+${q.blocos_antes ? blocos(q) : ""}
+${sec(T("testamos", "O que testamos"), list(q.testamos))}
+${q.blocos_antes ? "" : blocos(q)}
+${sec(q.painel_cargos ? "O que podemos concluir" : T("encontramos", "O que encontramos"), list(q.encontramos) + chart + extras, "found")}
+${sec(T("explica", "O que isso explica"), `<p>${esc(q.explica)}</p>`)}
+${sec(q.painel_cargos ? "O que não podemos concluir" : T("nao_prova", "O que isso não prova"), `<p>${esc(q.nao_prova)}</p>`, "limit")}
 ${q.nao_sabemos && q.nao_sabemos.length ? sec("O que ainda não sabemos", list(q.nao_sabemos), "limit") : ""}
 ${sec("Confira você mesmo", `<ul class="qlinks">${q.confira.map(c => `<li><a href="${esc(c.href)}"${/^https?:/.test(c.href) ? ' rel="noopener" target="_blank"' : ""}>${esc(c.txt)} →</a></li>`).join("")}</ul>`)}
 ${sec("Fontes", fontes)}

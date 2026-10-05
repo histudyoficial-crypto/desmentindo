@@ -32,7 +32,9 @@ for (const q of D.questionamentos) {
   else {
     const h = fs.readFileSync(f, "utf8");
     for (const t of ["O que aconteceu", "O que testamos", "O que encontramos|O que podemos concluir", "O que isso não prova|O que não podemos concluir", "Confira você mesmo", "Fonte primária", "Análise Eleições 2026", "Ver como verificamos"])
-      if (!t.split("|").some(x => h.includes(x))) bad(`${q.id} página sem bloco "${t}"`);
+      if (!t.split("|").concat(Object.values(q.rotulos || {})).some(x => t.split("|").includes(x) ? h.includes(x) : false) &&
+          !(q.rotulos && Object.entries({ "O que aconteceu": "aconteceu", "O que testamos": "testamos", "O que encontramos|O que podemos concluir": "encontramos", "O que isso não prova|O que não podemos concluir": "nao_prova" })
+            .some(([k, f]) => k === t && q.rotulos[f] && h.includes(q.rotulos[f])))) bad(`${q.id} página sem bloco "${t}"`);
     if (q.versao_oficial && !/^Não localizamos/.test(q.versao_oficial) && !h.includes("não é tratado aqui como prova")) bad(`${q.id} versão oficial sem aviso de independência`);
   }
 }

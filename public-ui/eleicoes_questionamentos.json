@@ -230,30 +230,163 @@
    "id": "Q3",
    "slug": "flavio-caia-lula-subia-0-1",
    "tema": "Curva",
-   "pergunta": "Flávio caía 0,1 ponto enquanto Lula subia 0,1 ponto?",
-   "card": "Por que a porcentagem parecia mudar sempre 0,1?",
-   "classificacao": "NÃO SUSTENTADO PELOS DADOS",
-   "classificacao_nota": "O único caso em que isso apareceu na tela é EXPLICADO PELOS DADOS: arredondamento.",
-   "resposta": "Só uma vez, e por arredondamento. Das 12 atualizações do resultado nacional que registramos, uma apareceria como “Flávio −0,1, Lula +0,1” com uma casa decimal. A mudança real foi de −0,019 e +0,022 ponto percentual.",
-   "chamou_atencao": "Um blog e publicações no X afirmaram que, depois das paradas, Flávio descia exatamente 0,1% e Lula subia exatamente 0,1%, o que seria “estatisticamente quase impossível” numa eleição com outros candidatos.",
+   "pergunta": "Depois da parada, Flávio caiu e Lula subiu de forma regular demais?",
+   "card": "A curva depois da parada foi regular demais?",
+   "classificacao": "EXPLICADO PELOS DADOS",
+   "classificacao_nota": "A regularidade existe e vem da ordem em que as seções chegaram. O “−0,1 / +0,1” exato: NÃO SUSTENTADO PELOS DADOS.",
+   "resposta": "Sim, a curva foi muito regular — e isso tem explicação. Depois da volta da divulgação, em todos os intervalos de 5 minutos Lula reduziu a diferença, que caiu de 4,27 para 1,88 pontos. Esse padrão some quando sorteamos a ordem das seções no país inteiro e reaparece, igual, quando o sorteio respeita o local de votação de cada seção. Em 2022 aconteceu o mesmo. Já o passo exato de −0,1 / +0,1 não existe nos números reais.",
+   "rotulos": {
+    "chamou_atencao": "O que o post alega",
+    "aconteceu": "O que é verdade na observação",
+    "testamos": "Como testamos",
+    "encontramos": "Resultado",
+    "explica": "O que explica",
+    "nao_prova": "O que não explica",
+    "hipotese": "A hipótese"
+   },
+   "chamou_atencao": "Publicações no X e um blog afirmaram que, depois das paradas, Flávio descia exatamente 0,1% e Lula subia exatamente 0,1% — e, de forma mais geral, que a troca de posições foi suave e regular demais para ser natural. Uma imagem que circulou comparou com gráficos dos EUA.",
    "aconteceu": [
-    "O percentual de cada candidato é a divisão dos votos dele pelos votos válidos. A tela mostra esse número arredondado.",
-    "Quando o número real passa por uma fronteira de arredondamento (por exemplo, de 47,05 para 47,04), a tela pula 0,1 inteiro, mesmo que a mudança real seja de dois centésimos."
+    "A diferença entre Flávio e Lula caiu sem parar depois da retomada: era 7,16 pontos às 19:06, 4,27 às 20:08, 2,52 às 21:00 e terminou em 1,88.",
+    "Reconstruindo a curva pelos boletins de urna, em intervalos de 5 minutos depois das 19:59 Lula reduziu a diferença em 100% dos intervalos — 54 seguidos, sem nenhuma inversão.",
+    "Isso é verdade e é visível. A pergunta certa é de onde vem essa regularidade."
    ],
    "versao_oficial": null,
    "outras_fontes": [],
+   "blocos_antes": true,
+   "blocos": [
+    {
+     "titulo": "O teste do ±0,1",
+     "itens": [
+      "Testamos a afirmação literal nas 12 atualizações públicas do resultado nacional, com todas as casas decimais.",
+      "Só 1 apareceria como “−0,1 / +0,1” na tela com uma casa decimal. A mudança real foi de −0,019 e +0,022 ponto: o 0,1 veio do arredondamento.",
+      "As mudanças reais vão de quase 2 pontos no começo da noite a frações de milésimo de madrugada — não há um passo fixo. Resultado: NÃO SUSTENTADO PELOS DADOS."
+     ],
+     "grafico_transicoes": true
+    },
+    {
+     "titulo": "A questão mais importante: a curva foi regular demais?",
+     "itens": [
+      "Para responder, reconstruímos a curva com os boletins de urna, na ordem em que cada seção foi recebida pelo TSE, e comparamos com curvas sorteadas usando exatamente os mesmos boletins e os mesmos horários de chegada — mudando só qual seção chega em cada horário.",
+      "Fizemos isso com regras cada vez mais próximas da realidade: sorteio no país inteiro (irrealista, só referência), dentro de cada estado, município, zona, local de votação, e dentro do estado em janelas de 30 minutos. 10.000 sorteios em cada regra.",
+      "Também conferimos se a troca “um cai, o outro sobe” é por si só estranha: não é. Como Flávio e Lula somam 92% dos votos válidos, quando um sobe o outro quase sempre desce — a correlação esperada pela aritmética é −0,98."
+     ],
+     "contrafactual": {
+      "titulo": "Diferença Flávio − Lula (pontos) na curva real e com a ordem de chegada alterada",
+      "pontos": [
+       "19:06",
+       "19:31",
+       "20:08",
+       "21:00",
+       "22:00",
+       "final"
+      ],
+      "series": [
+       {
+        "nome": "Curva real (boletins na ordem de chegada)",
+        "v": [
+         7.1573,
+         5.0109,
+         4.2684,
+         2.5245,
+         1.9996,
+         1.8767
+        ],
+        "cor": "ink"
+       },
+       {
+        "nome": "Sorteio dentro do local de votação",
+        "v": [
+         6.9972,
+         5.0142,
+         4.269,
+         2.526,
+         1.9991,
+         1.8767
+        ],
+        "cor": "c3",
+        "dash": "6 4"
+       },
+       {
+        "nome": "Sorteio dentro de cada estado",
+        "v": [
+         5.3888,
+         3.9676,
+         3.4298,
+         2.2327,
+         1.9351,
+         1.8767
+        ],
+        "cor": "c2"
+       },
+       {
+        "nome": "Sorteio no país inteiro (sem geografia)",
+        "v": [
+         1.8804,
+         1.8775,
+         1.8774,
+         1.877,
+         1.8767,
+         1.8767
+        ],
+        "cor": "c1"
+       }
+      ]
+     },
+     "tabela": [
+      [
+       "Depois da parada (5 min)",
+       "Intervalos com Lula reduzindo a diferença",
+       "Inversões de direção",
+       "Maior sequência"
+      ],
+      [
+       "2026 · curva real",
+       "100%",
+       "0%",
+       "54"
+      ],
+      [
+       "2026 · sorteio no local (mediana)",
+       "100%",
+       "0%",
+       "54"
+      ],
+      [
+       "2026 · sorteio no país (mediana)",
+       "50%",
+       "51%",
+       "5"
+      ],
+      [
+       "2022 · curva real (depois das 20:08)",
+       "98,8%",
+       "1%",
+       "83"
+      ]
+     ]
+    },
+    {
+     "titulo": "E nos Estados Unidos?",
+     "itens": [
+      "A imagem que circulou usa gráficos de MÉDIA DE PESQUISAS (RealClearPolitics) de 2016 e 2020. Isso não é a contagem de votos e não pode ser comparado com a curva da apuração brasileira.",
+      "Para uma comparação de verdade, usamos a contagem divulgada durante a apuração de 2020 (série publicada pelo New York Times com dados da Edison Research, guardada por um projeto público), em 7 estados de contagem demorada.",
+      "Lá, a curva vai e volta muito mais: a direção da mudança se inverte em 18% a 60% das atualizações. Os votos chegam em lotes por condado e por tipo (correio, antecipado, no dia), com regras diferentes em cada estado. No Brasil, cada seção é um boletim e a chegada segue a geografia, de forma contínua.",
+      "Isso mostra que curvas de divulgação diferentes têm comportamentos diferentes conforme o sistema de contagem. Não é prova a favor nem contra o resultado brasileiro."
+     ]
+    }
+   ],
    "testamos": [
-    "Recalculamos o percentual exato de Flávio e Lula em cada uma das 12 atualizações públicas, com todas as casas decimais, e simulamos o que a tela mostraria com 1 e com 2 casas.",
-    "Reproduzimos cada atualização somando os boletins de urna na ordem em que as seções chegaram.",
-    "Reconstruímos a curva minuto a minuto e comparamos com sorteios que mantêm a geografia (estado, município, zona e local de votação)."
+    "Curva reconstruída pelos boletins de urna, em intervalos de 1, 5 e 15 minutos, separando 17:00–19:06, 19:06–20:08, depois das 20:08, e antes e depois do silêncio de 19:31–19:59.",
+    "Medidas definidas antes de calcular: correlação entre as mudanças dos dois, diferença de tamanho das mudanças, inversões de direção, maior sequência de queda da diferença, proporção de intervalos com Lula reduzindo a diferença, volatilidade, curvatura, saltos e regularidade de padrão.",
+    "Seis regras de sorteio, 10.000 sorteios cada; o mesmo procedimento, sem mudar nada, em 2022; e a contagem dos EUA em 2020 como referência."
    ],
    "encontramos": [
-    "1 de 12 atualizações apareceriam como “−0,1 / +0,1” com uma casa. Nenhuma tem mudança real perto de 0,1.",
-    "No caso encontrado (22:23 → 23:02), Flávio foi de 47,055% para 47,036% e Lula de 45,131% para 45,153%. Com uma casa, isso vira 47,1 → 47,0 e 45,1 → 45,2.",
-    "As mudanças reais vão de quase 2 pontos no começo da noite a frações de milésimo de madrugada — não há um passo fixo.",
-    "Os demais candidatos também mudavam ao mesmo tempo: não era um par fechado de “menos para um, mais para o outro”.",
-    "Somando os boletins de urna, as mudanças oficiais se reproduzem (ex.: 19:06 → 20:08: oficial −1,119 / +1,245; boletins −1,120 / +1,247).",
-    "Na curva minuto a minuto, o movimento “−0,1 / +0,1” aparece 17 vezes em 420 minutos — dentro do que se espera pela ordem geográfica de chegada (sorteio por local de votação: 14,9 em média)."
+    "A curva depois da parada foi, de fato, muito regular.",
+    "Essa regularidade não aparece quando a ordem de chegada é sorteada no país inteiro: ela não é acaso.",
+    "Ela aparece igual quando o sorteio respeita o local de votação de cada seção (e também estado + horário). Ou seja, vem da ordem geográfica em que as seções chegaram: no fim da noite, chegavam mais seções onde Lula tinha mais votos.",
+    "Com a geografia neutralizada, a diferença ficaria em 1,88 pontos desde as 19:06 — não haveria convergência. Só com o horário de cada estado, cerca de dois terços da convergência já aparecem.",
+    "Em 2022 a curva foi tão regular quanto (Lula reduziu a diferença em 98,8% dos intervalos depois das 20:08), com deslocamento maior: Bolsonaro tinha 4,00 pontos às 19:06 e Lula terminou com 5,23.",
+    "O passo exato de −0,1 / +0,1 não existe nos números reais: o único caso na tela foi arredondamento."
    ],
    "grafico": {
     "tipo": "transicoes",
@@ -385,21 +518,27 @@
      "23:02"
     ]
    },
+   "grafico_no_bloco": true,
    "arredondamento": {
     "f0": 47.0549,
     "f1": 47.0359,
     "l0": 45.1313,
     "l1": 45.1534
    },
-   "explica": "Explica a impressão de passos de 0,1: a tela arredonda, e no fim da apuração as mudanças reais são pequenas demais para aparecer de outra forma. A direção (Flávio caindo, Lula subindo) vem da ordem de chegada: as seções que chegaram por último votaram mais em Lula.",
-   "nao_prova": "Não prova que a ordem de chegada foi aleatória — ela é geográfica, e isso está documentado. Prova apenas que o padrão “±0,1 exato” não existe nos números reais.",
+   "explica": "Explica a regularidade: a curva é uma média acumulada de centenas de milhares de seções que chegam em ordem geográfica. Quando as últimas a chegar votam mais em um candidato, a diferença diminui um pouco a cada minuto, sempre na mesma direção. Explica também a troca “um cai, o outro sobe”: os dois somam quase todos os votos válidos.",
+   "nao_prova": "Não explica por que cada região chega na hora em que chega (isso depende de horário de encerramento, transmissão e logística, ver a pergunta sobre o Nordeste). E não substitui a conferência voto a voto: quem garante que os votos somados são os das urnas é a soma dos boletins (veja a pergunta sobre os boletins de urna).",
    "nao_sabemos": [
-    "Não há registro oficial das atualizações a cada poucos segundos entre 20:08 e 21:01; afirmações sobre esse intervalo específico ainda não são testáveis."
+    "A ordem exata entre seções recebidas no mesmo segundo: o horário de recepção tem precisão de segundo e muitas seções chegam juntas. Por isso, as medidas seção a seção não foram usadas na conclusão.",
+    "Não há registro oficial das atualizações a cada poucos segundos entre 20:08 e 21:01."
    ],
    "confira": [
     {
      "txt": "Arquivo oficial do resultado nacional",
      "href": "https://resultados.tse.jus.br/oficial/ele2026/6257/dados/br/br-c0001-e006257-u.json"
+    },
+    {
+     "txt": "Por que os votos do Nordeste chegam mais tarde?",
+     "href": "/eleicoes-2026/questionamentos/por-que-nordeste-chega-mais-tarde/"
     }
    ],
    "fontes": {
@@ -411,6 +550,10 @@
      {
       "nome": "TSE · arquivos de urna por seção (boletim de urna, registro digital do voto, log)",
       "url": "https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3220/"
+     },
+     {
+      "nome": "TSE · BU na Web 2022 (1º turno, com horário de recebimento)",
+      "url": "https://dadosabertos.tse.jus.br/"
      }
     ],
     "alegacao": [
@@ -423,13 +566,18 @@
       "url": null
      }
     ],
-    "imprensa": [],
+    "imprensa": [
+     {
+      "nome": "Contagem dos EUA 2020 (NYT/Edison), série guardada em github.com/alex/nyt-2020-election-scraper",
+      "url": "https://github.com/alex/nyt-2020-election-scraper"
+     }
+    ],
     "analise": [
-     "12 versões do arquivo nacional guardadas pelo coletor do Desmentindo (1 ponto de imprensa, 20:08).",
-     "Soma de 498.842 boletins de urna na ordem de chegada; 200 sorteios por nível geográfico."
+     "12 versões do arquivo nacional guardadas pelo coletor do Desmentindo.",
+     "Curva por boletins de urna (498.842 seções em 2026; 472.024 em 2022) e 10.000 sorteios por regra, com medidas registradas antes do cálculo."
     ]
    },
-   "metodologia": "Percentual = votos do candidato ÷ votos válidos, sem arredondar. “Exibido” = arredondamento comercial para 1 casa. Reprodução: soma cumulativa dos boletins de urna na ordem do horário de recepção até o número de seções de cada atualização (aproximação: a ordem de totalização pode diferir da de recepção).",
+   "metodologia": "Diferença = participação de Flávio menos a de Lula nos votos válidos acumulados, com as seções na ordem do horário de recepção (campo dr/hr do TSE; em 2022, DT_BU_RECEBIDO). Intervalos sem seção nova são omitidos. Sorteios: mesmos boletins e mesmos horários; muda só qual seção ocupa cada horário, dentro do grupo (país, estado, município, zona, local, estado × 30 min). As medidas e as regras foram registradas antes do cálculo. Desvio declarado: no nível de cada seção, o desempate entre seções do mesmo segundo cria suavidade artificial; essas medidas foram descartadas da conclusão. EUA: série publicada com 3 casas decimais, por atualização; não é comparável 1:1.",
    "gate": "READY TO PUBLISH"
   },
   {
