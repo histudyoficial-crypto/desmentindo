@@ -804,6 +804,7 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
 .fxs-c p { margin: 0; font-size: 14px; line-height: 1.4; }
 .fxs-c .fxs-ck { font-size: 10.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .fxs-c .fx-open-q { margin-top: 6px !important; font-size: 13.5px; }
+.fxs-c .fx-fix { margin-top: 6px !important; font-size: 13.5px; }
 .fxs-body { padding: 0 14px 14px; display: flex; flex-direction: column; gap: 12px; }
 .fxs-body[hidden] { display: none; }
 .fxs-body > .fx-dek { margin: 0; font-size: 15px; }
