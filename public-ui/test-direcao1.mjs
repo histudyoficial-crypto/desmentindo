@@ -56,5 +56,45 @@ for (const [re, why] of forbid) if (re.test(src)) fail.push("proibido na V1: " +
 if (!/navigator\.share/.test(src) || !/Copiar link/.test(src)) fail.push("Mandar sem Web Share ou sem Copiar link");
 if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail.push("SDK/integração de rede social");
 
+// HOME · MORNING (05/10): bloco "O que importa hoje" (funções reais do v5.js)
+{
+  const dec = src.match(/var SLOTS = [^\n]*\n/), mesl = src.match(/var MESL = [^\n]*\n/);
+  if (!dec || !mesl) fail.push("MORNING: declarações SLOTS/MESL ausentes");
+  const H = new Function(`${MES}\n${dec ? dec[0] : ""}\n${mesl ? mesl[0] : ""}\n${fn("e")}\n${fn("dParts")}\n${fn("imgOk")}\n${fn("morningItems")}\n${fn("mhVisual")}\n${fn("mhCat")}\n${fn("morningBlock")}\n` +
+    "return { imgOk, morningItems, morningBlock };")();
+  const it = (n, x) => Object.assign({ id: "n" + n, title: "Título " + n, slot: null, category: "", tone: "", dek: "", image: null, variant: "" }, x || {});
+  // seleção da manhã: slot MORNING ou sem slot; AFTERNOON/EVENING ficam na faixa AGORA
+  eq("morningItems", H.morningItems([it(1), it(2, { slot: "AFTERNOON" }), it(3, { slot: "MORNING" }), it(4, { slot: "EVENING" })]).map(x => x.id), ["n1", "n3"]);
+  // vazio → nada; 1 notícia → destaque sozinho; 6 → destaque + 3 secundárias + "ver todas"
+  eq("morning vazio", H.morningBlock("2026-10-05", []), "");
+  const one = H.morningBlock("2026-10-05", [it(1)]);
+  eq("1 item: mh-solo", /mh-solo/.test(one), true);
+  eq("1 item: sem secundárias", /mh-sec/.test(one), false);
+  eq("1 item: sem 'ver todas'", /mh-all/.test(one), false);
+  eq("cabeçalho", /Morning · 5 de outubro/.test(one) && /O que importa hoje/.test(one), true);
+  eq("sem imagem → arte editorial decorativa", /class="mh-art" aria-hidden="true"/.test(one), true);
+  const six = H.morningBlock("2026-10-05", [1, 2, 3, 4, 5, 6].map(n => it(n)));
+  eq("6 itens: 3 secundárias", (six.match(/<li>/g) || []).length, 3);
+  eq("6 itens: ver todas → #/agora", /class="mh-all" href="#\/agora"/.test(six), true);
+  eq("4 itens: sem 'ver todas'", /mh-all/.test(H.morningBlock("2026-10-05", [1, 2, 3, 4].map(n => it(n)))), false);
+  eq("rotas existentes", (six.match(/href="#\/agora\/n\d"/g) || []).length > 0 && !/href="#\/morning/.test(six), true);
+  // imagem: só do próprio site, com alt/largura/altura; destaque sem lazy, secundária com lazy
+  const img = { src: "/data/editorial/imagens/2026-10-05/rio.jpg", alt: "Urna eletrônica", width: 1600, height: 900, credit: "Foto: TSE" };
+  eq("imgOk local", H.imgOk(img), true);
+  eq("imgOk externa", H.imgOk(Object.assign({}, img, { src: "https://x.com/a.jpg" })), false);
+  eq("imgOk sem alt", H.imgOk({ src: img.src, width: 1, height: 1 }), false);
+  const doc = H.morningBlock("2026-10-05", [it(1, { image: img, variant: "DOCUMENTARY_IMAGE" }), it(2, { image: img })]);
+  eq("foto: alt", /alt="Urna eletrônica"/.test(doc), true);
+  eq("foto: width/height", /width="1600" height="900"/.test(doc), true);
+  eq("foto destaque sem lazy", /fetchpriority="high"/.test(doc), true);
+  eq("foto secundária lazy", /loading="lazy"/.test(doc), true);
+  eq("crédito no destaque", /mh-cr">Foto: TSE/.test(doc), true);
+  // categoria: texto sempre; cor só pelos 3 tons editoriais; sem tom → neutro
+  const cat = H.morningBlock("2026-10-05", [it(1, { category: "Eleições 2026", tone: "yellow" }), it(2, { category: "Economia" })]);
+  eq("categoria com tom", /class="mh-cat t-yellow">Eleições 2026</.test(cat), true);
+  eq("categoria sem tom = neutra", /class="mh-cat">Economia</.test(cat), true);
+  eq("escape", /&lt;b&gt;/.test(H.morningBlock("2026-10-05", [it(1, { title: "<b>x</b>" })])), true);
+}
+
 if (fail.length) { console.error("DIRECAO1_INVALID\n  " + fail.join("\n  ")); process.exit(1); }
-console.log("DIRECAO1_VALID (EM1_RULE, fwd, byTime, limites da V1)");
+console.log("DIRECAO1_VALID (EM1_RULE, fwd, byTime, limites da V1, MORNING da Home)");
