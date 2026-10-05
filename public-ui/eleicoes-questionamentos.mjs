@@ -149,12 +149,29 @@ function chartContra(c) {
   return `<figure class="qfig"><figcaption>${esc(c.titulo)}</figcaption><ul class="qleg">${c.series.map(s => `<li><i style="background:${COL[s.cor]}"></i>${esc(s.nome)}</li>`).join("")}</ul>
 <div class="qsvg"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(c.titulo)}. ${c.series.map(s => s.nome + ": de " + nf(s.v[0], 2) + " a " + nf(s.v[s.v.length - 1], 2)).join("; ")}">${g}</svg></div>${tab}</figure>`;
 }
+// Regra do projeto (05/10): OBSERVAÇÃO VERDADEIRA ≠ EXPLICAÇÃO VERDADEIRA — as duas são classificadas separadamente.
+function observacao(o) {
+  return `<section class="qobs" aria-label="Observação e explicação"><div><p class="k">A observação</p><p>${esc(o.obs)}</p><p class="qflag ok">${esc(o.obs_status)}</p></div>
+<div><p class="k">A explicação sugerida</p><p>${esc(o.exp)}</p><p class="qflag">${esc(o.exp_status)}</p>${o.exp_nota ? `<p class="qnote">${esc(o.exp_nota)}</p>` : ""}</div>
+<p class="qobsrule">Observação verdadeira não significa explicação verdadeira.</p></section>`;
+}
+function chartConta(c) {
+  // HTML/CSS (não SVG): rótulos longos quebram linha no celular; barras numa escala comum com o zero marcado.
+  const rows = c.parcelas.concat([c.total]), neg = Math.max(0, ...c.parcelas.map(r => -r[1])), pos = Math.max(...rows.map(r => r[1])), span = neg + pos;
+  const z = neg / span * 100;
+  const li = (r, tot) => { const v = r[1], w = Math.abs(v) / span * 100, left = v >= 0 ? z : z - w;
+    return `<li class="${tot ? "tot" : ""}"><span class="nm">${esc(r[0])}</span><b>${v > 0 ? "+" : v < 0 ? "−" : ""}${nf(Math.abs(v), 0)}</b>
+<span class="trk" aria-hidden="true"><i class="z" style="left:${z.toFixed(2)}%"></i><i class="bar" style="left:${left.toFixed(2)}%;width:${Math.max(0.4, w).toFixed(2)}%;background:${tot ? "var(--ink)" : v >= 0 ? C1 : C2}"></i></span></li>`; };
+  return `<figure class="qfig"><figcaption>${esc(c.titulo)}</figcaption><ul class="qleg"><li><i style="background:${C1}"></i>soma à vantagem</li><li><i style="background:${C2}"></i>reduz a vantagem</li></ul>
+<ol class="qconta">${c.parcelas.map(r => li(r, false)).join("")}${li(c.total, true)}</ol>
+<p class="qnote">As parcelas somam exatamente a diferença. É contabilidade dos totais de cada cargo, não o voto de ninguém.</p></figure>`;
+}
 function blocos(q) {
   return (q.blocos || []).map(b => sec(b.titulo, list(b.itens) +
     (b.tabela ? `<div class="qtable" tabindex="0" role="region" aria-label="${esc(b.titulo)} (tabela; role para os lados)"><table><thead><tr>${b.tabela[0].map(c => `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead><tbody>${b.tabela.slice(1).map(r => `<tr><th scope="row">${esc(r[0])}</th>${r.slice(1).map(c => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>` : "") +
     (b.histogramas ? `<div class="qhists">${b.histogramas.map(hist).join("")}</div>` : "") + (b.mapa && q.locais_mapa ? mapa(q.locais_mapa) : "") +
     (b.grafico_transicoes && q.grafico ? chartTransicoes(q.grafico) + (q.arredondamento ? chartArred(q.arredondamento) : "") : "") +
-    (b.contrafactual ? chartContra(b.contrafactual) : ""))).join("\n");
+    (b.contrafactual ? chartContra(b.contrafactual) : "") + (b.contabilidade ? chartConta(b.contabilidade) : ""))).join("\n");
 }
 
 function body(q, all) {
@@ -180,6 +197,7 @@ function body(q, all) {
 ${q.painel_cargos ? painel(q.painel_cargos) : ""}
 <div class="qverdict">${badge(q.classificacao)}${q.classificacao_nota ? `<p>${esc(q.classificacao_nota)}</p>` : ""}</div>
 <p class="qlead">${esc(q.resposta)}</p>
+${q.observacao ? observacao(q.observacao) : ""}
 ${q.destaque ? destaque(q.destaque) : ""}
 ${q.contador ? contador(q.contador) : ""}
 ${q.hipotese ? sec(q.painel_cargos ? "Duas afirmações diferentes" : T("hipotese", "A hipótese"), `<p>${esc(q.hipotese)}</p>`, "hip") : ""}

@@ -20,7 +20,7 @@
     }
     var txt = "Última verificação: " + br(d.atualizado_em) + " (Brasília)";
     if (h >= 2) { txt += " — há " + (h < 48 ? Math.floor(h) + " horas" : Math.floor(h / 24) + " dias") + ". Este número pode ter mudado desde então."; when.className = "qwhen stale"; }
-    if (d.verificacao_ok === false && d.ultima_tentativa) txt += " A tentativa de " + br(d.ultima_tentativa) + " não foi concluída; mostramos o último estado conhecido.";
+    if (d.verificacao_ok === false && d.ultima_tentativa) txt += (h >= 2 ? "" : ".") + " A tentativa de " + br(d.ultima_tentativa) + " não foi concluída; mostramos o último estado conhecido.";
     when.textContent = txt;
   }
   Promise.all([get(box.getAttribute("data-live")), get(box.getAttribute("data-src"))]).then(function (r) {

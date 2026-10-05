@@ -50,6 +50,13 @@ if (/tempo real/.test(q7) && !/não é (atualização em )?tempo real/.test(q7))
 if (!q6.includes("Arquivo oficial utilizado") || !q6.includes("Verificação independente feita por nós") || !q6.includes("INCONSISTÊNCIA ENTRE PUBLICAÇÕES OFICIAIS · SEM DIVERGÊNCIA DE VOTOS IDENTIFICADA")) bad("Q6 sem destaque/achado");
 if (!/^Sim\. A atualização pública do resultado presidencial ficou parada por cerca de uma hora/.test(q1.resposta)) bad("Q1 não abre com a confirmação da parada");
 for (const h of [home, q7, q6]) if (!h.includes('class="pnav"')) bad("página sem a navegação do produto");
+// Regra: observação verdadeira ≠ explicação verdadeira — quando há observação, as duas têm status próprio e aparecem na página.
+for (const q of D.questionamentos) if (q.observacao) {
+  const o = q.observacao, h = pg(q.slug);
+  if (!o.obs || !o.obs_status || !o.exp || !o.exp_status) bad(`${q.id} observação/explicação incompleta`);
+  if (!h.includes("Observação verdadeira não significa explicação verdadeira")) bad(`${q.id} sem a regra observação ≠ explicação na página`);
+}
+for (const id of ["Q3", "Q11"]) if (!D.questionamentos.find(q => q.id === id).observacao) bad(`${id} sem observação/explicação`);
 const q11 = D.questionamentos.find(q => q.id === "Q11");
 if (q11) {
   const t11 = JSON.stringify(q11);

@@ -261,3 +261,10 @@ footer{border-top:3px solid var(--ink);margin-top:28px;padding:14px 0 40px;font-
 .qpq{margin:12px 0 0;font-size:19px;font-weight:900}
 .qhists{display:grid;grid-template-columns:minmax(0,1fr);gap:0 14px}@media(min-width:760px){.qhists{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .qmap svg{max-width:520px;margin:0 auto}
+/* Observação ≠ explicação */
+.qobs{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin:16px 0}@media(min-width:620px){.qobs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.qobs>div{background:var(--white);border:1px solid var(--rule);border-top:4px solid var(--ink);padding:10px 12px}.qobs .k{margin:0;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.qobs>div>p{margin:6px 0}.qflag.ok{border-color:var(--green-ink);color:var(--green-ink)}.qobsrule{grid-column:1/-1;margin:0;font-weight:800;font-size:14.5px}
+.qconta{list-style:none;padding:0;margin:8px 0 0}.qconta li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:baseline;padding:6px 0}
+.qconta .nm{font-size:14px}.qconta b{font-variant-numeric:tabular-nums;font-size:15px}.qconta .tot{border-top:2px solid var(--ink);margin-top:4px;padding-top:8px}.qconta .tot .nm{font-weight:800}
+.qconta .trk{grid-column:1/-1;position:relative;display:block;height:14px}.qconta .bar{position:absolute;top:0;height:14px;border-radius:3px}.qconta .z{position:absolute;top:-4px;bottom:-4px;border-left:2px dashed var(--ink)}

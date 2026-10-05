@@ -234,7 +234,14 @@
    "card": "A curva depois da parada foi regular demais?",
    "classificacao": "EXPLICADO PELOS DADOS",
    "classificacao_nota": "A regularidade existe e vem da ordem em que as seções chegaram. O “−0,1 / +0,1” exato: NÃO SUSTENTADO PELOS DADOS.",
-   "resposta": "Sim, a curva foi muito regular — e isso tem explicação. Depois da volta da divulgação, em todos os intervalos de 5 minutos Lula reduziu a diferença, que caiu de 4,27 para 1,88 pontos. Esse padrão some quando sorteamos a ordem das seções no país inteiro e reaparece, igual, quando o sorteio respeita o local de votação de cada seção. Em 2022 aconteceu o mesmo. Já o passo exato de −0,1 / +0,1 não existe nos números reais.",
+   "resposta": "Você percebeu corretamente: depois da parada, a curva ficou muito regular — nós também medimos isso. Em todos os intervalos de 5 minutos depois da pausa, Lula reduziu a diferença, que caiu de 4,27 para 1,88 pontos. A pergunta seguinte é: essa regularidade exige uma explicação anormal? Fomos aos boletins de urna e testamos. O padrão some quando sorteamos a ordem das seções no país inteiro e reaparece, igual, quando o sorteio respeita o local de votação de cada seção. Em 2022 aconteceu o mesmo. Já o passo exato de −0,1 / +0,1 não existe nos números reais.",
+   "observacao": {
+    "obs": "Depois da parada, Flávio caiu e Lula subiu de forma muito regular.",
+    "obs_status": "CONFIRMADA",
+    "exp": "A regularidade indica manipulação.",
+    "exp_status": "NÃO DEMONSTRADA",
+    "exp_nota": "Os boletins de urna reproduzem o padrão pela ordem geográfica em que as seções chegaram."
+   },
    "rotulos": {
     "chamou_atencao": "O que o post alega",
     "aconteceu": "O que é verdade na observação",
@@ -248,7 +255,7 @@
    "aconteceu": [
     "A diferença entre Flávio e Lula caiu sem parar depois da retomada: era 7,16 pontos às 19:06, 4,27 às 20:08, 2,52 às 21:00 e terminou em 1,88.",
     "Reconstruindo a curva pelos boletins de urna, em intervalos de 5 minutos depois das 19:59 Lula reduziu a diferença em 100% dos intervalos — 54 seguidos, sem nenhuma inversão.",
-    "Isso é verdade e é visível. A pergunta certa é de onde vem essa regularidade."
+    "A regularidade observada é real. A pergunta seguinte é: ela exige uma explicação anormal?"
    ],
    "versao_oficial": null,
    "outras_fontes": [],
@@ -368,10 +375,10 @@
     {
      "titulo": "E nos Estados Unidos?",
      "itens": [
-      "A imagem que circulou usa gráficos de MÉDIA DE PESQUISAS (RealClearPolitics) de 2016 e 2020. Isso não é a contagem de votos e não pode ser comparado com a curva da apuração brasileira.",
+      "A imagem que circulou no X comparava curvas de MÉDIA DE PESQUISAS (RealClearPolitics, 2016 e 2020) com a curva de APURAÇÃO brasileira. Não são séries equivalentes: uma é opinião medida antes da eleição, a outra é contagem de votos.",
       "Para uma comparação de verdade, usamos a contagem divulgada durante a apuração de 2020 (série publicada pelo New York Times com dados da Edison Research, guardada por um projeto público), em 7 estados de contagem demorada.",
       "Lá, a curva vai e volta muito mais: a direção da mudança se inverte em 18% a 60% das atualizações. Os votos chegam em lotes por condado e por tipo (correio, antecipado, no dia), com regras diferentes em cada estado. No Brasil, cada seção é um boletim e a chegada segue a geografia, de forma contínua.",
-      "Isso mostra que curvas de divulgação diferentes têm comportamentos diferentes conforme o sistema de contagem. Não é prova a favor nem contra o resultado brasileiro."
+      "Não usamos os EUA para provar que a curva brasileira é normal. A comparação serve para mostrar que a trajetória de uma contagem depende da ordem geográfica e do tipo de voto que chega em cada momento."
      ]
     }
    ],
@@ -386,7 +393,9 @@
     "Ela aparece igual quando o sorteio respeita o local de votação de cada seção (e também estado + horário). Ou seja, vem da ordem geográfica em que as seções chegaram: no fim da noite, chegavam mais seções onde Lula tinha mais votos.",
     "Com a geografia neutralizada, a diferença ficaria em 1,88 pontos desde as 19:06 — não haveria convergência. Só com o horário de cada estado, cerca de dois terços da convergência já aparecem.",
     "Em 2022 a curva foi tão regular quanto (Lula reduziu a diferença em 98,8% dos intervalos depois das 20:08), com deslocamento maior: Bolsonaro tinha 4,00 pontos às 19:06 e Lula terminou com 5,23.",
-    "O passo exato de −0,1 / +0,1 não existe nos números reais: o único caso na tela foi arredondamento."
+    "Parte da troca “um cai, o outro sobe” é só aritmética: Flávio e Lula somam 92% dos votos válidos.",
+    "O passo exato de −0,1 / +0,1 não existe nos números reais: o único caso na tela foi arredondamento.",
+    "Limite: o horário de recepção tem precisão de segundo e cerca de 53 seções chegam no mesmo segundo. Por isso a análise usa intervalos de 1, 5 e 15 minutos, e não a ordem seção a seção."
    ],
    "grafico": {
     "tipo": "transicoes",
@@ -1261,10 +1270,17 @@
    "id": "Q11",
    "slug": "presidente-governador-sao-paulo",
    "tema": "Presidente × Governador",
-   "pergunta": "Como Lula venceu para presidente na cidade de São Paulo enquanto Tarcísio venceu para governador?",
-   "card": "Lula ganhou na capital paulista e Tarcísio também. Como?",
+   "pergunta": "Como Lula venceu para presidente e Tarcísio para governador na cidade de São Paulo?",
+   "card": "Lula e Tarcísio venceram na mesma cidade, em cargos diferentes. Como?",
    "classificacao": "EXPLICADO PELOS DADOS",
-   "classificacao_nota": "Os dois resultados convivem sem contradição nos números. O voto de cada pessoa é secreto e não pode ser conhecido.",
+   "classificacao_nota": "Os dois resultados convivem sem contradição nos números. Não sabemos como cada pessoa combinou seus votos: o voto é secreto.",
+   "observacao": {
+    "obs": "Lula e Tarcísio lideraram cargos diferentes na mesma cidade.",
+    "obs_status": "CONFIRMADA",
+    "exp": "Os dois resultados são incompatíveis.",
+    "exp_status": "NÃO SUSTENTADA",
+    "exp_nota": "Há divergência agregada entre cargos, espalhada pela cidade e explicada na contabilidade dos votos. Os totais não permitem contar quem combinou Lula e Tarcísio."
+   },
    "resposta": "Os dois resultados cabem nos mesmos votos. Em 99,96% das seções da cidade, Tarcísio teve uma fatia maior dos votos válidos do que Flávio — em geral, cerca de 10 pontos a mais —, enquanto Lula e Haddad ficaram perto um do outro. E 10,6% de quem votou escolheu outros candidatos a presidente; para governador, só 1,0%. Os totais não mostram como cada pessoa votou.",
    "painel_cargos": {
     "titulo": "São Paulo — capital",
@@ -1487,7 +1503,36 @@
        "− votos só para presidente (trânsito)",
        "−17.482"
       ]
-     ]
+     ],
+     "contabilidade": {
+      "titulo": "De onde vem a vantagem de Tarcísio sobre Flávio (votos, capital)",
+      "total": [
+       "Tarcísio − Flávio",
+       472949
+      ],
+      "parcelas": [
+       [
+        "Lula − Haddad",
+        227223
+       ],
+       [
+        "Outros candidatos (presidente − governador)",
+        669370
+       ],
+       [
+        "Brancos (presidente − governador)",
+        -154900
+       ],
+       [
+        "Nulos (presidente − governador)",
+        -251262
+       ],
+       [
+        "Só presidente (trânsito)",
+        -17482
+       ]
+      ]
+     }
     },
     {
      "titulo": "Limites matemáticos",
