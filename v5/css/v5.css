@@ -892,3 +892,72 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
 .hm-said .qform input { box-shadow: none; padding: 12px 10px; font-size: 13px; }
 .hm-said .qform button { padding: 12px; }
 .fxp-foot { margin: 16px 0 0; padding: 10px 12px; background: var(--white); box-shadow: 0 0 0 1px var(--rule); font-size: 12.5px; color: var(--ink-2); }
+
+/* ===================================================================================================== HOME · MORNING (05/10)
+   "O que importa hoje": abertura editorial do dia, entre a faixa AGORA e o FECHAMENTO, mais leve que ele (superfície
+   branca; o bloco escuro continua sendo do FECHAMENTO). Cores do Brasil só como acento, com os tokens que já existiam:
+   --green-ink (#007A2E) e --blue (#002776); amarelo = ação. Cor da categoria = tipo editorial, nunca posição política. */
+.ah-only .ah-go { display: block; margin: 0; }
+.mh { margin: 26px 0 0; padding: 22px 24px 24px; background: var(--white); box-shadow: 0 0 0 1px var(--rule); }
+.mh-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
+.mh-k { display: flex; align-items: center; gap: 7px; margin: 0; font-size: 11.5px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--green-ink); }
+.mh-k i { width: 8px; height: 8px; background: var(--green-ink); flex: none; }
+.mh-t { margin: 6px 0 0; font-stretch: 70%; font-weight: 900; font-size: 44px; line-height: .92; }
+.mh-sub { margin: 8px 0 0; max-width: 60ch; font-size: 15px; line-height: 1.4; color: var(--ink-2); }
+.mh-all { flex: none; padding: 4px 0; font-size: 14px; font-weight: 800; color: var(--link); text-underline-offset: 3px; }
+.mh-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 24px; margin-top: 18px; align-items: start; }
+.mh-grid.mh-solo { grid-template-columns: minmax(0, 1fr); }
+.mh-solo .mh-hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px; align-items: center; }
+.mh-vl { display: block; }
+.mh-fig { position: relative; margin: 0; }
+.mh-fig img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: var(--gray-200); }
+.mh-doc::after { content: ""; position: absolute; left: 0; top: 0; width: 30%; height: 6px; background: var(--yellow); }
+.mh-ed img { background: var(--ink); }
+.mh-cr { margin: 6px 0 0; font-size: 11.5px; color: var(--muted); }
+.mh-art { position: relative; overflow: hidden; aspect-ratio: 16 / 9; background: var(--ink); }
+.mh-art i { position: absolute; display: block; }
+.mh-a1 { left: 0; top: 0; width: 30%; height: 8px; background: var(--yellow); }
+.mh-a2 { right: 20%; top: 0; width: 7%; height: 100%; background: var(--green-ink); transform: skewX(-16deg); }
+.mh-a3 { right: 5%; bottom: -18%; width: 20%; aspect-ratio: 1; border-radius: 50%; background: var(--blue); }
+.mh-aw { position: absolute; left: 18px; bottom: 14px; color: var(--white); font-stretch: 70%; font-weight: 900; font-size: 24px; line-height: 1; letter-spacing: .02em; text-transform: uppercase; }
+.mh-art-s .mh-a1 { height: 5px; }
+.mh-hx { margin-top: 14px; }
+.mh-solo .mh-hx { margin-top: 0; }
+.mh-cat { display: inline-block; padding: 3px 8px; background: var(--ink); color: var(--white); font-size: 11px; font-weight: 800; letter-spacing: .1em; line-height: 1.3; text-transform: uppercase; }
+.mh-cat.t-yellow { background: var(--yellow); color: var(--ink); }
+.mh-cat.t-blue { background: var(--blue); color: var(--white); }
+.mh-cat.t-green { background: var(--green-ink); color: var(--white); }
+.mh-ht { margin: 8px 0 0; font-stretch: 70%; font-weight: 900; font-size: 40px; line-height: .95; }
+.mh-ht a, .mh-sec a { color: inherit; text-decoration: none; }
+.mh-ht a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
+.mh-dek { margin: 8px 0 0; font-size: 17px; line-height: 1.4; color: var(--ink-2); }
+.mh-go { margin: 14px 0 0; }
+.mh-read { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 10px 16px; background: var(--yellow); color: var(--ink); font-size: 15px; font-weight: 800; text-decoration: none; }
+.mh-read:hover { background: #F2D400; }
+.mh-sec { list-style: none; margin: 0; padding: 0; }
+.mh-sec li { padding: 12px 0; border-top: 1px solid var(--rule); }
+.mh-sec li:first-child { padding-top: 0; border-top: 0; }
+.mh-sec a { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 12px; align-items: start; }
+.mh-sec .mh-fig img, .mh-sec .mh-art { aspect-ratio: 4 / 3; }
+.mh-sec .mh-doc::after { height: 4px; }
+.mh-st { display: block; margin-top: 4px; font-size: 17px; font-weight: 800; line-height: 1.25; }
+.mh-sx .mh-cat { font-size: 10px; padding: 2px 6px; }
+.mh-sd { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: 4px; font-size: 14px; line-height: 1.35; color: var(--ink-2); }
+.mh-sec a:hover .mh-st { text-decoration: underline; }
+@media (max-width: 899px) {
+  .mh-grid, .mh-solo .mh-hero { grid-template-columns: minmax(0, 1fr); }
+  .mh-solo .mh-hx { margin-top: 14px; }
+}
+@media (max-width: 640px) {
+  .mh { margin: 0; padding: 18px 16px 20px; box-shadow: none; border-top: 1px solid var(--rule); }
+  .mh-head { display: block; }
+  .mh-t { font-size: 34px; }
+  .mh-sub { font-size: 14px; }
+  .mh-all { display: inline-block; margin-top: 8px; }
+  .mh-grid { gap: 16px; margin-top: 14px; }
+  .mh-ht { font-size: 30px; }
+  .mh-dek { font-size: 15.5px; }
+  .mh-aw { font-size: 18px; left: 12px; bottom: 10px; }
+  .mh-sec a { grid-template-columns: 88px minmax(0, 1fr); }
+  .mh-st { font-size: 15.5px; }
+}

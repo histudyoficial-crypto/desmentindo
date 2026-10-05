@@ -334,9 +334,23 @@
     return EDN && EDN.items && EDN.items.length ? EDN.items.map(function (it) {
       var ev = it.evidence || {};
       var st = ev.primary_source_status || (ev.primary_source_obtained ? "AVAILABLE" : "NOT_AVAILABLE");
-      return { id: it.id, date: it.date, title: it.title, text: it.text, sources: it.sources || [], evidence: st };
+      return { id: it.id, date: it.date, title: it.title, text: it.text, sources: it.sources || [], evidence: st,
+               slot: SLOTS.indexOf(it.slot) >= 0 ? it.slot : null, category: typeof it.category === "string" ? it.category : "",
+               tone: TONES.indexOf(it.category_tone) >= 0 ? it.category_tone : "", dek: typeof it.dek === "string" ? it.dek : "",
+               image: imgOk(it.image) ? it.image : null, variant: VARIANTS.indexOf(it.visual_variant) >= 0 ? it.visual_variant : "" };
     }) : [];
   }
+  // MORNING na Home (05/10): campos opcionais do item da edição. Cor da categoria = tipo editorial, nunca posição política:
+  // yellow = eleições/atenção · blue = instituições, Justiça, documentos · green = economia, sociedade, serviço.
+  // Sem category_tone → selo neutro (preto). A categoria aparece sempre em texto; a cor nunca é a única pista.
+  var SLOTS = ["MORNING", "AFTERNOON", "EVENING"], TONES = ["yellow", "blue", "green"], VARIANTS = ["DOCUMENTARY_IMAGE", "EDITORIAL_ART"];
+  function imgOk(im) {
+    return !!(im && typeof im.src === "string" && /^\/data\/editorial\/imagens\/[a-z0-9\/_-]+\.(jpe?g|png|webp|svg)$/.test(im.src) &&
+      typeof im.alt === "string" && im.width > 0 && im.height > 0);
+  }
+  // Itens da manhã: slot MORNING, ou sem slot (edições anteriores ao campo eram montadas no MORNING). AFTERNOON/EVENING
+  // ficam na faixa AGORA (atualização corrente); o bloco MORNING não vira outra coisa ao longo do dia.
+  function morningItems(items) { return items.filter(function (it) { return !it.slot || it.slot === "MORNING"; }); }
   // RECÊNCIA DA HOME (P0 de 04/10): conteúdo temporal só aparece como corrente no DIA OPERACIONAL em que foi editado.
   // Dia operacional = data em America/Sao_Paulo (UTC−3 fixo; sem horário de verão desde 2019), nunca o fuso do aparelho.
   // AGORA de outro dia sai da Home (continua acessível em #/agora/<id> e no arquivo); nada é apagado, renomeado ou redatado.
@@ -353,14 +367,43 @@
   function initials(n) { return String(n || "").split(/\s+/).filter(Boolean).map(function (w) { return w[0]; }).join("").slice(0, 3).toUpperCase(); }
   // Direção 1 · A1/A4. Ordem: faixa AGORA (só AGORA do dia e sem FECHAMENTO do dia) → FECHAMENTO (bloco escuro, maior
   // peso) → Matérias + Já falaram sobre isso (com a busca). A lista completa do AGORA fica em #/agora.
-  function agoraStrip(A) {
-    var n = A.items.length;
-    return '<section class="ah" aria-label="Agora, hoje"><div class="ah-in">' +
+  function agoraStrip(A, shown) {
+    var n = A.items.length, rest = A.items.filter(function (it) { return !shown || shown.indexOf(it.id) < 0; });
+    return '<section class="ah' + (rest.length ? "" : " ah-only") + '" aria-label="Agora, hoje"><div class="ah-in">' +
       '<p class="ah-k"><span class="ah-kk"><i class="ah-dot" aria-hidden="true"></i>Agora · <span class="ah-today">hoje</span><span class="ah-dd">' + e(dDay(A.edition)) + '</span></span>' +
       '<span class="ah-d">' + e(dDay(A.edition)) + " · " + plural(n, "notícia", "notícias") + "</span></p>" +
-      '<ul class="ah-list">' + A.items.slice(0, 3).map(function (it) { return '<li><a href="#/agora/' + e(it.id) + '">' + e(it.title) + "</a></li>"; }).join("") + "</ul>" +
+      (rest.length ? '<ul class="ah-list">' + rest.slice(0, 3).map(function (it) { return '<li><a href="#/agora/' + e(it.id) + '">' + e(it.title) + "</a></li>"; }).join("") + "</ul>" : "") +
       '<p class="ah-go"><a href="#/agora">' + (n > 1 ? "Ver as " + nf(n) + " de hoje" : "Ver a de hoje") + ' <span aria-hidden="true">→</span></a></p>' +
       '<p class="ah-note">O fechamento de hoje sai à noite.</p></div></section>';
+  }
+  // MORNING · O que importa hoje (05/10): abertura editorial do dia, entre a faixa AGORA e o FECHAMENTO, mais leve que ele.
+  // Fonte: a edição AGORA do dia (seleção aprovada da manhã), na ordem aprovada: 1º item = destaque, até 3 secundárias.
+  // Menos itens → menos cartões (nada de preencher espaço). Sem imagem aprovada → arte editorial própria (decorativa).
+  var MESL = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+  function mhVisual(it, hero) {
+    var im = it.image;
+    if (im) return '<figure class="mh-fig' + (it.variant === "EDITORIAL_ART" ? " mh-ed" : " mh-doc") + '"><img src="' + e(im.src) + '" alt="' + e(im.alt) + '" width="' + (+im.width) + '" height="' + (+im.height) + '"' +
+      (hero ? ' fetchpriority="high" decoding="async"' : ' loading="lazy" decoding="async"') + ">" +
+      (hero && im.credit ? '<figcaption class="mh-cr">' + e(im.credit) + "</figcaption>" : "") + "</figure>";
+    return '<div class="mh-art' + (hero ? "" : " mh-art-s") + '" aria-hidden="true"><i class="mh-a1"></i><i class="mh-a2"></i><i class="mh-a3"></i>' +
+      (hero ? '<span class="mh-aw">Desmentindo</span>' : "") + "</div>";
+  }
+  function mhCat(it) { return it.category ? '<span class="mh-cat' + (it.tone ? " t-" + it.tone : "") + '">' + e(it.category) + "</span>" : ""; }
+  function morningBlock(edition, items) {
+    if (!items.length) return "";
+    var p = dParts(edition), hero = items[0], sec = items.slice(1, 4), u = function (it) { return "#/agora/" + e(it.id); };
+    var h = '<section class="mh" id="morning" aria-labelledby="mh-t"><div class="mh-head"><div><p class="mh-k"><i aria-hidden="true"></i>Morning · ' + p.day + " de " + MESL[p.mon] + "</p>" +
+      '<h2 class="mh-t" id="mh-t">O que importa hoje</h2><p class="mh-sub">As principais notícias do começo do dia, com contexto, fontes e o que ainda está em aberto.</p></div>' +
+      (items.length > 4 ? '<a class="mh-all" href="#/agora">Ver todas as notícias do Morning <span aria-hidden="true">→</span></a>' : "") + "</div>";
+    h += '<div class="mh-grid' + (sec.length ? "" : " mh-solo") + '"><article class="mh-hero"><a class="mh-vl" href="' + u(hero) + '" tabindex="-1" aria-hidden="true">' + mhVisual(hero, true) + "</a>" +
+      '<div class="mh-hx">' + mhCat(hero) + '<h3 class="mh-ht"><a href="' + u(hero) + '">' + e(hero.title) + "</a></h3>" +
+      (hero.dek ? '<p class="mh-dek">' + e(hero.dek) + "</p>" : "") +
+      '<p class="mh-go"><a class="mh-read" href="' + u(hero) + '">Ler agora <span aria-hidden="true">→</span></a></p></div></article>';
+    if (sec.length) h += '<ul class="mh-sec" aria-label="Outras notícias da manhã">' + sec.map(function (it) {
+      return '<li><a href="' + u(it) + '">' + mhVisual(it, false) + '<span class="mh-sx">' + mhCat(it) + '<b class="mh-st">' + e(it.title) + "</b>" +
+        (it.dek ? '<span class="mh-sd">' + e(it.dek) + "</span>" : "") + "</span></a></li>";
+    }).join("") + "</ul>";
+    return h + "</div></section>";
   }
   function fxHome(F) {
     var fu = "#/fechamento/" + F.edition_date, pts = (F.opening && F.opening.points) || [], cut = F.cutoff_at ? fhm(F.cutoff_at) : "";
@@ -412,7 +455,9 @@
       var mats = (MI && MI.items || []).slice(0, 3);
       return Promise.all(mats.map(function (x) { return loadTyped("materias", x.slug); })).then(function (MD) {
         var h = '<div class="hm-sig" role="note"><span>Notícias passam. O que foi dito fica.</span><time datetime="' + od + '">' + e(dLong(od)) + "</time></div>";
-        if (A && !fxToday) h += agoraStrip(A);   // estado B (FECHAMENTO do dia publicado): a faixa some
+        var M = A ? morningItems(A.items) : [];
+        if (A && !fxToday) h += agoraStrip(A, M.slice(0, 4).map(function (it) { return it.id; }));   // estado B (FECHAMENTO do dia publicado): a faixa some
+        if (A) h += morningBlock(A.edition, M);
         if (LF && LF.edition_date) h += fxHome(LF);
         h += '<div class="hm-grid">' + matBlock(mats, MD) + saidBlock(H) + "</div>";
         return h + '<p class="hm-motto">Notícias passam. O que foi dito fica.</p>';

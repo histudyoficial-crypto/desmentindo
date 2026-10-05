@@ -289,6 +289,25 @@ const archivesPublic = ARCHIVES.map(a => ({ key: a.key, name: a.name, available:
 // Ausente → null (compatível com o app legado). Íntegra conferida pelo sha256 do índice; esquema validado; falha
 // fechada: arquivo divergente ou campo fora do contrato derruba o build (nada é publicado pela metade).
 const EDITORIAL_FIELDS = ["id", "date", "label", "title", "text", "sources", "evidence"];
+// Campos OPCIONAIS do bloco MORNING da Home (05/10). Ausentes = comportamento anterior. Presentes = validados (falha fechada).
+// Imagem só hospedada no próprio site (data/editorial/imagens/), com alt, largura e altura; DOCUMENTARY_IMAGE exige imagem
+// e crédito. Cor da categoria = tipo editorial (yellow/blue/green), nunca posição política.
+const MORNING_FIELDS = ["slot", "category", "category_tone", "dek", "image", "visual_variant"];
+function checkMorningFields(it) {
+  const bad = m => { throw new Error("campo do MORNING inválido em " + it.id + ": " + m); };
+  if (it.slot !== undefined && !["MORNING", "AFTERNOON", "EVENING"].includes(it.slot)) bad("slot");
+  if (it.category !== undefined && (typeof it.category !== "string" || !it.category.trim() || it.category.length > 40)) bad("category");
+  if (it.category_tone !== undefined && !["yellow", "blue", "green"].includes(it.category_tone)) bad("category_tone");
+  if (it.dek !== undefined && (typeof it.dek !== "string" || !it.dek.trim() || it.dek.length > 220)) bad("dek");
+  if (it.visual_variant !== undefined && !["DOCUMENTARY_IMAGE", "EDITORIAL_ART"].includes(it.visual_variant)) bad("visual_variant");
+  if (it.image !== undefined) {
+    const im = it.image;
+    if (!im || !/^\/data\/editorial\/imagens\/[a-z0-9\/_-]+\.(jpe?g|png|webp|svg)$/.test(im.src || "")) bad("image.src");
+    if (!fs.existsSync(path.join(ROOT, im.src.slice(1)))) bad("image.src ausente no repositório");
+    if (typeof im.alt !== "string" || !(Number.isInteger(im.width) && im.width > 0) || !(Number.isInteger(im.height) && im.height > 0)) bad("image.alt/width/height");
+    if (it.visual_variant === "DOCUMENTARY_IMAGE" && (!im.alt.trim() || typeof im.credit !== "string" || !im.credit.trim())) bad("foto documental sem alt ou crédito");
+  } else if (it.visual_variant === "DOCUMENTARY_IMAGE") bad("DOCUMENTARY_IMAGE sem imagem");
+}
 function loadEditorial() {
   const idxPath = path.join(ROOT, "data", "editorial", "index.json");
   if (!fs.existsSync(idxPath)) return null;
@@ -305,9 +324,10 @@ function loadEditorial() {
   if (ed.schema !== "desmentindo.public.editorial_edition.v1" || ed.edition !== latest.edition || !validDate(ed.edition))
     throw new Error("edição " + latest.edition + " fora do contrato");
   const items = ed.items.map(it => {
-    const extra = Object.keys(it).filter(k => !EDITORIAL_FIELDS.includes(k));
+    const extra = Object.keys(it).filter(k => !EDITORIAL_FIELDS.includes(k) && !MORNING_FIELDS.includes(k));
     if (extra.length) throw new Error("campo fora do contrato em " + it.id + ": " + extra.join(","));
     if (!it.id || !validDate(it.date) || !it.title || !it.text) throw new Error("item incompleto: " + it.id);
+    checkMorningFields(it);
     if (!it.sources.length || it.sources.some(s => !/^https:\/\//.test(s.url))) throw new Error("fonte inválida em " + it.id);
     const est = it.evidence && it.evidence.primary_source_status;
     if (est !== undefined && !["AVAILABLE", "PARTIAL", "NOT_AVAILABLE"].includes(est)) throw new Error("primary_source_status inválido em " + it.id);
