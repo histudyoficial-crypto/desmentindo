@@ -1,0 +1,376 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-04",
+ "public_title": "FECHAMENTO — 4 de outubro de 2026",
+ "published_at": "2026-10-05T13:13:23Z",
+ "cutoff_at": "2026-10-04T19:00:00-03:00",
+ "context": "Dia do 1º turno; apuração em andamento no corte",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "Apuração: às 17:58, com 12,45% das seções totalizadas, Flávio Bolsonaro tinha 51,09% dos votos válidos e Lula, 40,71%. Parcial, não final.",
+    "story": "apuracao-do-1-turno-o-que-o-tse-mostrava-as-17-58"
+   },
+   {
+    "text": "Deltan: liminar do presidente do TSE mantém o registro e os votos processados até o plenário decidir.",
+    "story": "deltan-liminar-do-presidente-do-tse-mantem-os-votos-processados-ate-o-plenario"
+   },
+   {
+    "text": "Interferência estrangeira: a PF abriu um procedimento prévio; o presidente do TSE diz não ver risco concreto.",
+    "story": "interferencia-estrangeira-pf-abre-procedimento-previo-presidente-do-tse-diz-nao"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "apuracao-do-1-turno-o-que-o-tse-mostrava-as-17-58",
+   "headline": "Apuração do 1º turno: o que o TSE mostrava às 17:58",
+   "dek": "Retrato do arquivo oficial às 17h58, com 12,45% das seções totalizadas — não é o resultado atual nem o final. O resultado ao vivo está na página Eleições 2026 do Desmentindo.",
+   "lead": true,
+   "what_happened": "A votação terminou às 17h (Brasília). Os primeiros arquivos oficiais com totalização apareceram por volta das 17h20.",
+   "what_changed": "No arquivo oficial do TSE com totalização às 17:58:28, com 12,45% das seções totalizadas, Flávio Bolsonaro (PL) tinha 7.369.884 votos (51,09% dos válidos) e Lula (PT), 5.872.874 (40,71%). Em seguida vinham Augusto Cury (Avante), com 2,98%, Ronaldo Caiado (PSD), com 2,39%, e Renan Santos (Missão), com 2,29%.",
+   "steps": [
+    {
+     "label": "Votação",
+     "text": "8h às 17h (Brasília)",
+     "done": true
+    },
+    {
+     "label": "Totalização",
+     "text": "12,45% das seções às 17:58",
+     "done": false
+    },
+    {
+     "label": "Resultado final",
+     "text": "não concluído no corte",
+     "done": false
+    }
+   ],
+   "official": [
+    "TSE, arquivo oficial de totalização para presidente (Brasil), totalização às 17:58:28: 62.168 de 499.248 seções (12,45%); comparecimento de 78,83% nessas seções."
+   ],
+   "coverage": [
+    {
+     "outlet": "UOL",
+     "title": "Com 10,08% das urnas apuradas, Flávio lidera com 50,96%, contra 40,78% de Lula, mostra TSE",
+     "url": "https://noticias.uol.com.br/ultimas-noticias/reuters/2026/10/04/com-1008-das-urnas-apuradas-flavio-lidera-com-5096-contra-4078-de-lula-mostra-tse.htm",
+     "published_at": "2026-10-04T21:04:16Z",
+     "summary": "Noticiou a parcial com 10,08% das urnas apuradas.",
+     "basis": "manchete"
+    },
+    {
+     "outlet": "UOL",
+     "title": "Com 21,96% das seções apuradas, Flávio lidera apuração com 51,07% dos votos, contra 40,82% de Lula, mostra TSE",
+     "url": "https://noticias.uol.com.br/ultimas-noticias/reuters/2026/10/04/com-2196-das-secoes-apuradas-flavio-lidera-apuracao-com-5107-dos-votos-contra-4082-de-lula-mostra-tse.htm",
+     "published_at": "2026-10-04T21:25:43Z",
+     "summary": "Noticiou a parcial com 21,96% das seções apuradas.",
+     "basis": "manchete"
+    }
+   ],
+   "conclusion": "Às 17h58, o resultado era parcial: 12,45% das seções. Esse é o retrato daquele horário, não o estado atual da apuração; o TSE só declara o resultado ao concluir a totalização.",
+   "open_questions": "O resultado final do 1º turno e se haverá 2º turno dependem da totalização completa do TSE."
+  },
+  {
+   "id": "deltan-liminar-do-presidente-do-tse-mantem-os-votos-processados-ate-o-plenario",
+   "headline": "Deltan: liminar do presidente do TSE mantém os votos processados até o plenário",
+   "dek": "A candidatura ao Senado pelo Paraná segue “deferida com recurso”; o plenário do TSE ainda não julgou.",
+   "lead": false,
+   "what_happened": "No sábado (3), o ministro Floriano de Azevedo Marques, do TSE, negou em decisão individual o registro de Deltan Dallagnol (Novo) ao Senado pelo Paraná, revertendo o TRE-PR, que tinha aprovado a candidatura por 4 a 3.",
+   "what_changed": "Na manhã deste domingo (4), o presidente do TSE, Kassio Nunes Marques, suspendeu essa decisão em liminar. O registro voltou a constar como “deferido com recurso” e os votos dados à chapa são processados; a validade deles depende do julgamento do plenário do TSE.",
+   "steps": [
+    {
+     "label": "Decisão individual",
+     "text": "registro negado · sáb (3)",
+     "done": true
+    },
+    {
+     "label": "Liminar",
+     "text": "decisão suspensa · dom (4)",
+     "done": true
+    },
+    {
+     "label": "Plenário do TSE",
+     "text": "sem julgamento até o corte",
+     "done": false
+    }
+   ],
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "TSE indefere candidatura de Deltan Dallagnol ao Senado pelo Paraná",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-indefere-candidatura-de-deltan-dallagnol-ao-senado-pelo-parana.shtml",
+     "published_at": "2026-10-03T23:12:00Z",
+     "summary": "Noticiou a decisão de sábado (3) que indeferiu a candidatura.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Nunes Marques suspende decisão que indeferiu candidatura de Deltan ao Senado pelo Paraná",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/04/nunes-marques-suspende-decisao-que-indeferiu-candidatura-de-deltan-ao-senado-pelo-parana.ghtml",
+     "published_at": "2026-10-04T12:02:24Z",
+     "summary": "Relatou a liminar e que os votos são processados, com validade condicionada ao plenário.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Folha",
+     "title": "Kassio suspende decisão, e Deltan volta a ter candidatura deferida",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/kassio-suspende-decisao-e-deltan-volta-a-ter-candidatura-deferida.shtml",
+     "published_at": "2026-10-04T14:26:00Z",
+     "summary": "Relatou que, com a liminar, a candidatura voltou a constar como deferida.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Deltan volta a ficar elegível com nova decisão do TSE",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/parana-2026/nunes-marques-suspende-decisao-que-barrou-candidatura-de-dallagnol",
+     "published_at": "2026-10-04T13:23:35Z",
+     "summary": "Noticiou a nova decisão do TSE sobre Deltan.",
+     "basis": "manchete"
+    }
+   ],
+   "conclusion": "A liminar não decide se Deltan pode disputar: mantém o registro e os votos processados até o plenário do TSE julgar.",
+   "open_questions": "Quando o plenário do TSE julga o caso."
+  },
+  {
+   "id": "interferencia-estrangeira-pf-abre-procedimento-previo-presidente-do-tse-diz-nao",
+   "headline": "Interferência estrangeira: PF abre procedimento prévio; presidente do TSE diz não ver risco",
+   "dek": "Há um procedimento preliminar da PF, não um inquérito. Nenhuma conclusão de investigação até o corte.",
+   "lead": false,
+   "what_happened": "Na sexta (2), a PF cumpriu dois mandados de busca em São Paulo e no entorno do Distrito Federal para investigar suposto planejamento de atos que poderiam colocar em risco instalações diplomáticas dos EUA.",
+   "what_changed": "Neste domingo (4), a PF abriu um procedimento prévio, a partir de representação da AGU, para analisar suspeitas de interferência e financiamento externo; o diretor-geral, Andrei Rodrigues, disse que o inquérito ainda não foi instaurado. À tarde, o presidente do TSE, Kassio Nunes Marques, disse não ver indicativo concreto de interferência. O Estadão noticiou que a PGR opinou que não havia elementos mínimos para investigar interferência dos EUA.",
+   "steps": [
+    {
+     "label": "Representação",
+     "text": "AGU pede apuração",
+     "done": true
+    },
+    {
+     "label": "Procedimento prévio",
+     "text": "aberto pela PF · dom (4)",
+     "done": true
+    },
+    {
+     "label": "Inquérito",
+     "text": "não instaurado até o corte",
+     "done": false
+    }
+   ],
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "PF abre procedimento prévio a pedido da AGU para investigar interferência externa na eleição",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/pf-abre-procedimento-previo-a-pedido-da-agu-para-investigar-interferencia-externa-na-eleicao.shtml",
+     "published_at": "2026-10-04T16:17:00Z",
+     "summary": "Relatou a abertura do procedimento prévio e a fala de Andrei Rodrigues de que o inquérito não foi instaurado.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "‘Não temos indicativo concreto de interferência nas eleições’, diz Nunes Marques",
+     "url": "https://estadao.com.br/politica/eleicoes/nao-temos-indicativo-concreto-de-interferencia-nas-eleicoes-diz-nunes-marques",
+     "published_at": "2026-10-04T17:24:26Z",
+     "summary": "Noticiou a fala de Nunes Marques de que não há indicativo concreto de interferência.",
+     "basis": "manchete"
+    },
+    {
+     "outlet": "g1",
+     "title": "Nunes Marques diz que não há risco de interferência estrangeira nas eleições",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/04/presidente-do-tse-nunes-marques-diz-que-nao-ha-risco-de-interferencia-estrangeira-nas-eleicoes.ghtml",
+     "published_at": "2026-10-04T17:44:04Z",
+     "summary": "Noticiou a fala de Nunes Marques sobre risco de interferência estrangeira.",
+     "basis": "manchete"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "PGR opinou que não havia elementos mínimos para investigar interferência dos EUA na eleição",
+     "url": "https://estadao.com.br/politica/eleicoes/pgr-opinou-que-nao-havia-elementos-minimos-para-investigar-interferencia-dos-eua-na-eleicao",
+     "published_at": "2026-10-04T19:31:39Z",
+     "summary": "Noticiou a manifestação da PGR sobre falta de elementos mínimos para investigar.",
+     "basis": "manchete"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "PF atende pedido do governo e abre apuração por suposta interferência estrangeira",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/pf-atende-pedido-governo-abre-apuracao-suposta-interferencia-estrangeira",
+     "published_at": "2026-10-04T19:32:05Z",
+     "summary": "Relatou que a PF atendeu ao pedido do governo e abriu a apuração.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "As duas coisas valem ao mesmo tempo: a PF apura em caráter preliminar, e o presidente do TSE disse, naquela tarde, não ver indicativo concreto de interferência. Uma afirmação não anula a outra, e nenhuma delas conclui se houve ou não interferência.",
+   "open_questions": "Se a PF instaura inquérito e o que o procedimento vai apurar."
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "crimes-eleitorais-no-dia-da-votacao",
+   "title": "Crimes eleitorais no dia da votação",
+   "text": "Segundo a Agência Brasil, a PF diz ter apreendido mais de R$ 30 milhões em casos de crimes eleitorais em 2026. A Folha relatou que propaganda irregular e boca de urna lideram as ocorrências registradas no dia, segundo dados do Ministério da Justiça. Os números são parciais.",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/pf-ja-apreendeu-mais-de-r-30-milhoes-em-crimes-eleitorais-em-2026",
+     "published_at": "2026-10-04T17:55:00Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/propaganda-irregular-e-boca-de-urna-lideram-ocorrencias-por-crimes-eleitorais.shtml",
+     "published_at": "2026-10-04T21:24:00Z"
+    }
+   ]
+  },
+  {
+   "id": "falta-de-luz-em-secoes-eleitorais",
+   "title": "Falta de luz em seções eleitorais",
+   "text": "Segundo balanço do presidente do TSE citado pela Agência Brasil, seções de 94 municípios do Paraná tiveram falta total ou parcial de energia, e a votação seguiu com baterias e geradores. Houve interrupções também em cidades de Mato Grosso do Sul (Estadão) e em zonas eleitorais de São Paulo durante a chuva (g1).",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tse-parana-tem-94-cidades-com-falta-de-luz-mas-votacao-segue-normal",
+     "published_at": "2026-10-04T20:28:00Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/eleicoes/eleitores-ficam-no-escuro-apos-falta-de-energia-em-cidades-de-ms",
+     "published_at": "2026-10-04T21:28:01Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/10/04/33-zonas-eleitorais-ficam-sem-energia-durante-chuva-que-atingiu-sp-mas-urnas-seguem-funcionando-com-bateria.ghtml",
+     "published_at": "2026-10-04T18:50:14Z"
+    }
+   ]
+  },
+  {
+   "id": "broches-com-camera-em-cabo-frio",
+   "title": "Broches com câmera em Cabo Frio",
+   "text": "A PF instaurou inquérito sobre a distribuição de broches com dispositivo eletrônico em Cabo Frio (RJ). Segundo a Agência Brasil, a suspeita da polícia é de que seriam usados para gravar o voto; a lei proíbe na cabine aparelhos capazes de filmar o voto.",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/pf-investiga-uso-de-broches-com-camera-para-gravar-votos",
+     "published_at": "2026-10-04T20:13:00Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "UOL",
+   "title": "Com 10,08% das urnas apuradas, Flávio lidera com 50,96%, contra 40,78% de Lula, mostra TSE",
+   "url": "https://noticias.uol.com.br/ultimas-noticias/reuters/2026/10/04/com-1008-das-urnas-apuradas-flavio-lidera-com-5096-contra-4078-de-lula-mostra-tse.htm",
+   "published_at": "2026-10-04T21:04:16Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "UOL",
+   "title": "Com 21,96% das seções apuradas, Flávio lidera apuração com 51,07% dos votos, contra 40,82% de Lula, mostra TSE",
+   "url": "https://noticias.uol.com.br/ultimas-noticias/reuters/2026/10/04/com-2196-das-secoes-apuradas-flavio-lidera-apuracao-com-5107-dos-votos-contra-4082-de-lula-mostra-tse.htm",
+   "published_at": "2026-10-04T21:25:43Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "Folha",
+   "title": "TSE indefere candidatura de Deltan Dallagnol ao Senado pelo Paraná",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-indefere-candidatura-de-deltan-dallagnol-ao-senado-pelo-parana.shtml",
+   "published_at": "2026-10-03T23:12:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Nunes Marques suspende decisão que indeferiu candidatura de Deltan ao Senado pelo Paraná",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/04/nunes-marques-suspende-decisao-que-indeferiu-candidatura-de-deltan-ao-senado-pelo-parana.ghtml",
+   "published_at": "2026-10-04T12:02:24Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Kassio suspende decisão, e Deltan volta a ter candidatura deferida",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/kassio-suspende-decisao-e-deltan-volta-a-ter-candidatura-deferida.shtml",
+   "published_at": "2026-10-04T14:26:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Deltan volta a ficar elegível com nova decisão do TSE",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/parana-2026/nunes-marques-suspende-decisao-que-barrou-candidatura-de-dallagnol",
+   "published_at": "2026-10-04T13:23:35Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "Folha",
+   "title": "PF abre procedimento prévio a pedido da AGU para investigar interferência externa na eleição",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/pf-abre-procedimento-previo-a-pedido-da-agu-para-investigar-interferencia-externa-na-eleicao.shtml",
+   "published_at": "2026-10-04T16:17:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "‘Não temos indicativo concreto de interferência nas eleições’, diz Nunes Marques",
+   "url": "https://estadao.com.br/politica/eleicoes/nao-temos-indicativo-concreto-de-interferencia-nas-eleicoes-diz-nunes-marques",
+   "published_at": "2026-10-04T17:24:26Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "g1",
+   "title": "Nunes Marques diz que não há risco de interferência estrangeira nas eleições",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/04/presidente-do-tse-nunes-marques-diz-que-nao-ha-risco-de-interferencia-estrangeira-nas-eleicoes.ghtml",
+   "published_at": "2026-10-04T17:44:04Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "PGR opinou que não havia elementos mínimos para investigar interferência dos EUA na eleição",
+   "url": "https://estadao.com.br/politica/eleicoes/pgr-opinou-que-nao-havia-elementos-minimos-para-investigar-interferencia-dos-eua-na-eleicao",
+   "published_at": "2026-10-04T19:31:39Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "PF atende pedido do governo e abre apuração por suposta interferência estrangeira",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/pf-atende-pedido-governo-abre-apuracao-suposta-interferencia-estrangeira",
+   "published_at": "2026-10-04T19:32:05Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "PF já apreendeu mais de R$ 30 milhões em crimes eleitorais em 2026",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/pf-ja-apreendeu-mais-de-r-30-milhoes-em-crimes-eleitorais-em-2026",
+   "published_at": "2026-10-04T17:55:00Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Propaganda irregular e boca de urna lideram ocorrências por crimes eleitorais",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/propaganda-irregular-e-boca-de-urna-lideram-ocorrencias-por-crimes-eleitorais.shtml",
+   "published_at": "2026-10-04T21:24:00Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "TSE: Paraná tem 94 cidades com falta de luz, mas votação segue normal",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tse-parana-tem-94-cidades-com-falta-de-luz-mas-votacao-segue-normal",
+   "published_at": "2026-10-04T20:28:00Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Eleitores ficam no escuro após falta de energia em cidades de MS",
+   "url": "https://estadao.com.br/politica/eleicoes/eleitores-ficam-no-escuro-apos-falta-de-energia-em-cidades-de-ms",
+   "published_at": "2026-10-04T21:28:01Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "33 zonas eleitorais ficam sem energia durante chuva que atingiu SP, mas urnas seguem funcionando com bateria",
+   "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/10/04/33-zonas-eleitorais-ficam-sem-energia-durante-chuva-que-atingiu-sp-mas-urnas-seguem-funcionando-com-bateria.ghtml",
+   "published_at": "2026-10-04T18:50:14Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "PF investiga uso de broches com câmera para gravar votos",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/pf-investiga-uso-de-broches-com-camera-para-gravar-votos",
+   "published_at": "2026-10-04T20:13:00Z"
+  }
+ ],
+ "note": "Também consultamos os canais monitorados até 19:00: nenhum vídeo novo no dia. A Revista Oeste não pôde ser consultada. O resultado da apuração vem do arquivo oficial do TSE; as demais manifestações oficiais aparecem como relatadas pelos veículos.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
