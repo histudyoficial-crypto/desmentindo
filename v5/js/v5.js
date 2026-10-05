@@ -122,7 +122,7 @@
       (noWho ? "" : '<p class="said-who">' + e(o.source_name) + "</p>") +
       '<p class="said-x">' + e(o.excerpt) + "</p>" +
       '<div class="said-foot"><span class="said-when">' + tdate(o.date) + " · " + e(o.t_label) + "</span>" +
-      '<a class="go" data-play href="' + e(o.deep_link) + '" target="_blank" rel="noopener" aria-label="Ver trecho aqui, a partir de ' + e(o.t_label) + '">Ver trecho</a>' +
+      '<a class="go" data-play href="' + e(o.deep_link) + '" target="_blank" rel="noopener" aria-label="Ver trecho aqui, a partir de ' + e(o.t_label) + '"><span class="go-l">Ver trecho</span><b class="go-m">▶ ' + e(o.t_label) + "</b></a>" +
       '<a class="said-yt" href="' + e(o.deep_link) + '" target="_blank" rel="noopener">Assistir no YouTube <span aria-hidden="true">↗</span></a></div></li>';
   }
   // ---------------------------------------------------------------- vídeo no minuto, dentro da página (premissa do produto)
@@ -887,6 +887,7 @@
           x += mandar(SITE + "/fechamento/" + F.edition_date + "/#" + s.id, s.headline, "Mandar esta história", "mandar-story", "Mandar esta história") + "</div>";
           return x + "</article>";
         }).join("") + "</section>";
+        if (cut) h += '<p class="fxp-foot num">Verificado até ' + e(cut) + (F.published_at ? " · publicado " + e(pub.replace(/^às /, "")) : "") + "</p>";
       }
       if (F.other_stories && F.other_stories.length) {
         h += '<section class="sec"><h2 class="h2">Outras que você precisa saber</h2><ul class="fx-list">' + F.other_stories.map(function (o) {
@@ -933,27 +934,23 @@
       if (!M) return notFound();
       document.title = M.public_title + " · Desmentindo";
       setDesc(M.dek);
-      var h = '<section class="page-head hero-ink fx-mhead"><p class="kicker"><span class="tag tag-paper">' + e(M.kicker || "Matéria") + "</span>" +
-        (M.status ? " " + statusTag(M.status) : "") + "</p>" +
+      // A3: arte primeiro, depois rótulos, título, linha-fina, data e Mandar; números; SABEMOS (azul = documentado) ×
+      // AINDA NÃO DÁ PARA DIZER; depois o que mudou, os trechos e o resto do contrato publicado.
+      var h = '<section class="page-head hero-ink fx-mhead">' + (M.art ? '<figure class="fx-art"><picture><source media="(min-width: 620px)" srcset="' + e(M.art.desktop) + '"><img src="' + e(M.art.mobile) + '" alt="" decoding="async"></picture>' +
+        (M.art.caption ? "<figcaption>" + e(M.art.caption) + "</figcaption>" : "") + "</figure>" : "") +
+        '<p class="kicker fx-mk"><span class="tag tag-paper">' + e(M.kicker || "Matéria") + "</span>" + (M.status ? " " + statusTag(M.status) : "") + "</p>" +
         '<h1 class="h1">' + e(M.public_title) + "</h1>" + (M.dek ? '<p class="fx-mdek">' + e(M.dek) + "</p>" : "") +
-        '<p class="fx-pub">' + tdate(M.date) + (M.updated_at && M.updated_at !== M.published_at ? " · atualizado em " + e(fts(M.updated_at)) : "") + "</p>" +
-        mandar(SITE + "/materia/" + M.slug + "/", M.public_title, "Mandar esta matéria");
-      if (M.art) h += '<figure class="fx-art"><picture><source media="(min-width: 620px)" srcset="' + e(M.art.desktop) + '"><img src="' + e(M.art.mobile) + '" alt="" loading="lazy" decoding="async"></picture>' +
-        (M.art.caption ? "<figcaption>" + e(M.art.caption) + "</figcaption>" : "") + "</figure>";
-      h += "</section>";
+        '<div class="fx-mrow"><p class="fx-pub">' + tdate(M.date) + (M.updated_at && M.updated_at !== M.published_at ? " · atualizado em " + e(fts(M.updated_at)) : "") + "</p>" +
+        mandar(SITE + "/materia/" + M.slug + "/", M.public_title, "Mandar esta matéria", "mandar-paper") + "</div></section>";
       if (M.facts && M.facts.length) h += '<div class="facts fx-facts">' + M.facts.map(function (f) { return '<div><p class="fv num">' + e(f.value) + '</p><p class="fs">' + e(f.label) + "</p></div>"; }).join("") + "</div>";
-      if (M.what_changed && M.what_changed.length) {
-        h += '<section class="sec"><h2 class="h2">O que mudou hoje</h2><ul class="items">' + M.what_changed.map(function (c) {
-          return '<li><span class="fx-when">' + e(c.when) + "</span><p>" + e(c.text) + "</p></li>";
-        }).join("") + "</ul>" + (M.correction ? '<p class="fx-fix"><b>Correção:</b> ' + e(M.correction) + "</p>" : "") + "</section>";
-      }
       if (M.conclusion) {
         var C = M.conclusion, yes = C.points.filter(function (p) { return p.holds; }), no = C.points.filter(function (p) { return !p.holds; });
         var pl = function (arr, cls) { return "<ul>" + arr.map(function (p) { return '<li class="' + cls + '">' + e(p.text) + "</li>"; }).join("") + "</ul>"; };
-        h += '<section class="sec" id="concluir"><h2 class="h2">O que dá para concluir hoje</h2><div class="fx-mconcl"><p class="fx-cst">' + statusTag(C.status) + "</p>" +
-          (yes.length ? '<h3 class="fx-ck">Sabemos</h3>' + pl(yes, "y") : "") +
-          (no.length ? '<h3 class="fx-ck">Ainda não dá para dizer</h3>' + pl(no, "n") : "") +
-          (C.limits && C.limits.length ? '<p class="fx-lims">' + C.limits.map(function (l) { return "<span>" + e(l) + "</span>"; }).join("") + "</p>" : "") + "</div></section>";
+        h += '<section class="sec" id="concluir"><h2 class="sr">O que dá para concluir hoje</h2><div class="fx-sab">' +
+          (yes.length ? '<div class="fx-yes"><h3 class="fx-ck">Sabemos</h3>' + pl(yes, "y") + "</div>" : "") +
+          (no.length ? '<div class="fx-no"><h3 class="fx-ck">Ainda não dá para dizer</h3>' + pl(no, "n") + "</div>" : "") + "</div>" +
+          (C.status && C.status !== M.status ? '<p class="fx-cst">' + statusTag(C.status) + "</p>" : "") +
+          (C.limits && C.limits.length ? '<p class="fx-lims">' + C.limits.map(function (l) { return "<span>" + e(l) + "</span>"; }).join("") + "</p>" : "") + "</section>";
       }
       if ((M.videos && M.videos.length) || M.partial_videos) {
         h += '<section class="sec" id="ja-falaram"><h2 class="h2">' + e(M.videos_title || "Já falaram sobre isso") + "</h2>" +
@@ -964,6 +961,11 @@
             '<ul class="said-list">' + M.partial_videos.items.map(videoItem).join("") + "</ul>";
         }
         h += (M.archive_note ? '<p class="quiet">' + e(M.archive_note) + "</p>" : "") + NOTE + "</section>";
+      }
+      if (M.what_changed && M.what_changed.length) {
+        h += '<section class="sec"><h2 class="h2">O que mudou hoje</h2><ul class="items">' + M.what_changed.map(function (c) {
+          return '<li><span class="fx-when">' + e(c.when) + "</span><p>" + e(c.text) + "</p></li>";
+        }).join("") + "</ul>" + (M.correction ? '<p class="fx-fix"><b>Correção:</b> ' + e(M.correction) + "</p>" : "") + "</section>";
       }
       if (M.timeline && M.timeline.length) {
         h += '<section class="sec"><h2 class="h2">Linha do tempo · com o que foi dito</h2><ol class="fx-tl">' + M.timeline.map(function (t) {
