@@ -17,26 +17,48 @@
 <link rel="preload" href="/v5/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/v5/css/fonts.css">
 <link rel="stylesheet" href="/eleicoes-2026/eleicoes.css">
+<script>/* reserva espaço do recorte aberto por link antes do 1º desenho (menos deslocamento de layout) */(function(h,d){d.className+=/(^|[#&])s=/.test(h)?" deep-s":/(^|[#&])z=/.test(h)?" deep-z":/(^|[#&])m=/.test(h)?" deep-m":""})(location.hash,document.documentElement)</script>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="0dee5fb0-ace1-44cb-beba-d6b8733092c2" data-do-not-track="true"></script>
 </head>
-<body data-scope="mt">
-<header class="top"><div class="wrap"><a class="brand" href="/" aria-label="Desmentindo — início"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span><b>DESMENTINDO</b></a><a class="crumb" href="/eleicoes-2026/">← Brasil</a></div></header>
-<main class="wrap">
+<body data-scope="mt" data-mode="resultados" data-calc="off" data-locais="off">
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+<header class="top"><div class="wrap topbar"><a class="brand" href="/" aria-label="Desmentindo — início"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span><b>DESMENTINDO</b></a>
+<nav class="crumbs" id="crumbs" aria-label="Você está em"><a href="/eleicoes-2026/">Brasil</a><span aria-hidden="true">›</span><b>Mato Grosso</b></nav>
+<div class="modes" role="group" aria-label="Modo de leitura"><button type="button" id="mRes" aria-pressed="true">Resultados</button><button type="button" id="mAud" aria-pressed="false">Auditoria</button></div></div></header>
+<main class="wrap" id="conteudo">
 <div class="head">
-<p class="kick"><span class="tag res">Resultado oficial · TSE</span>Eleições 2026 · Presidente · 1º turno</p>
+<p class="kick"><span class="tag res">Dado oficial · TSE</span>Eleições 2026 · Presidente · 1º turno</p>
 <h1>Mato Grosso</h1>
-<p class="lead">Números lidos direto da Justiça Eleitoral, sem soma nem estimativa nossa. Parcial mostra quantas seções já foram totalizadas.</p>
 </div>
-<section aria-labelledby="t-agora"><h2 id="t-agora">Resultado agora</h2><p class="stale" id="stale" hidden></p><div id="placar"><p class="empty">Carregando…</p></div></section>
-<section aria-labelledby="t-onde" id="onde"><h2 id="t-onde">De onde vieram os votos</h2><p class="sub">Escolha o município, a zona e a seção. Na seção, você chega aos arquivos oficiais da urna, como o boletim de urna.</p><div id="explorar"><p class="empty">Disponível depois das 17h.</p></div></section>
-<section aria-labelledby="t-uf"><h2 id="t-uf">Outros estados e exterior</h2><ul class="ufs"><li><a href="/eleicoes-2026/ac/" title="Acre">AC</a></li><li><a href="/eleicoes-2026/al/" title="Alagoas">AL</a></li><li><a href="/eleicoes-2026/ap/" title="Amapá">AP</a></li><li><a href="/eleicoes-2026/am/" title="Amazonas">AM</a></li><li><a href="/eleicoes-2026/ba/" title="Bahia">BA</a></li><li><a href="/eleicoes-2026/ce/" title="Ceará">CE</a></li><li><a href="/eleicoes-2026/df/" title="Distrito Federal">DF</a></li><li><a href="/eleicoes-2026/es/" title="Espírito Santo">ES</a></li><li><a href="/eleicoes-2026/go/" title="Goiás">GO</a></li><li><a href="/eleicoes-2026/ma/" title="Maranhão">MA</a></li><li><a href="/eleicoes-2026/mt/" title="Mato Grosso" aria-current="page">MT</a></li><li><a href="/eleicoes-2026/ms/" title="Mato Grosso do Sul">MS</a></li><li><a href="/eleicoes-2026/mg/" title="Minas Gerais">MG</a></li><li><a href="/eleicoes-2026/pa/" title="Pará">PA</a></li><li><a href="/eleicoes-2026/pb/" title="Paraíba">PB</a></li><li><a href="/eleicoes-2026/pr/" title="Paraná">PR</a></li><li><a href="/eleicoes-2026/pe/" title="Pernambuco">PE</a></li><li><a href="/eleicoes-2026/pi/" title="Piauí">PI</a></li><li><a href="/eleicoes-2026/rj/" title="Rio de Janeiro">RJ</a></li><li><a href="/eleicoes-2026/rn/" title="Rio Grande do Norte">RN</a></li><li><a href="/eleicoes-2026/rs/" title="Rio Grande do Sul">RS</a></li><li><a href="/eleicoes-2026/ro/" title="Rondônia">RO</a></li><li><a href="/eleicoes-2026/rr/" title="Roraima">RR</a></li><li><a href="/eleicoes-2026/sc/" title="Santa Catarina">SC</a></li><li><a href="/eleicoes-2026/sp/" title="São Paulo">SP</a></li><li><a href="/eleicoes-2026/se/" title="Sergipe">SE</a></li><li><a href="/eleicoes-2026/to/" title="Tocantins">TO</a></li><li><a href="/eleicoes-2026/zz/" title="Exterior">Exterior</a></li></ul></section>
+<section id="status" class="cards" aria-label="Situação da apuração"></section>
+<div class="layout">
+<section class="area-res" aria-labelledby="t-agora"><h2 id="t-agora">Resultado</h2><p class="stale" id="stale" hidden></p><p class="snapnote" id="snapnote" hidden></p><div id="placar"><p class="empty">Carregando…</p></div></section>
+<section class="area-terr" aria-labelledby="t-terr" id="onde"><h2 id="t-terr">Explorar o território</h2>
+<div class="busca"><label for="busca">Buscar município</label><input id="busca" type="search" autocomplete="off" placeholder="nome do município" aria-describedby="buscaDica"><p id="buscaDica" class="sub">Depois: zona, local de votação e seção.</p><ul id="buscaRes" class="buscares" aria-live="polite"></ul></div>
+<div id="explorar"><p class="empty">Disponível depois das 17h.</p></div>
+<details class="outros"><summary>Outros estados e exterior</summary><ul class="ufs"><li><a href="/eleicoes-2026/ac/" title="Acre">AC</a></li><li><a href="/eleicoes-2026/al/" title="Alagoas">AL</a></li><li><a href="/eleicoes-2026/ap/" title="Amapá">AP</a></li><li><a href="/eleicoes-2026/am/" title="Amazonas">AM</a></li><li><a href="/eleicoes-2026/ba/" title="Bahia">BA</a></li><li><a href="/eleicoes-2026/ce/" title="Ceará">CE</a></li><li><a href="/eleicoes-2026/df/" title="Distrito Federal">DF</a></li><li><a href="/eleicoes-2026/es/" title="Espírito Santo">ES</a></li><li><a href="/eleicoes-2026/go/" title="Goiás">GO</a></li><li><a href="/eleicoes-2026/ma/" title="Maranhão">MA</a></li><li><a href="/eleicoes-2026/mt/" title="Mato Grosso" aria-current="page">MT</a></li><li><a href="/eleicoes-2026/ms/" title="Mato Grosso do Sul">MS</a></li><li><a href="/eleicoes-2026/mg/" title="Minas Gerais">MG</a></li><li><a href="/eleicoes-2026/pa/" title="Pará">PA</a></li><li><a href="/eleicoes-2026/pb/" title="Paraíba">PB</a></li><li><a href="/eleicoes-2026/pr/" title="Paraná">PR</a></li><li><a href="/eleicoes-2026/pe/" title="Pernambuco">PE</a></li><li><a href="/eleicoes-2026/pi/" title="Piauí">PI</a></li><li><a href="/eleicoes-2026/rj/" title="Rio de Janeiro">RJ</a></li><li><a href="/eleicoes-2026/rn/" title="Rio Grande do Norte">RN</a></li><li><a href="/eleicoes-2026/rs/" title="Rio Grande do Sul">RS</a></li><li><a href="/eleicoes-2026/ro/" title="Rondônia">RO</a></li><li><a href="/eleicoes-2026/rr/" title="Roraima">RR</a></li><li><a href="/eleicoes-2026/sc/" title="Santa Catarina">SC</a></li><li><a href="/eleicoes-2026/sp/" title="São Paulo">SP</a></li><li><a href="/eleicoes-2026/se/" title="Sergipe">SE</a></li><li><a href="/eleicoes-2026/to/" title="Tocantins">TO</a></li><li><a href="/eleicoes-2026/zz/" title="Exterior">Exterior</a></li></ul></details>
+</section>
+<aside class="area-ctx" aria-labelledby="t-falta"><div id="secPanel" class="sheet" hidden role="region" aria-labelledby="sheetTitle"></div>
+<h2 id="t-falta">Quem ainda falta?</h2><div id="falta"><p class="empty">Disponível depois das 17h.</p></div>
+
+</aside>
+</div>
+
+<section class="area-aud" aria-labelledby="t-aud" id="auditoria"><h2 id="t-aud">Auditoria</h2>
+<p class="sub">O que cada número é, de onde vem e o que ainda falta. Use o modo Auditoria (no topo) para ver os detalhes técnicos abertos.</p>
+<div class="audgrid"><div><h3>Origem dos números</h3><ul class="rules"><li><span class="prov of">Dado oficial (TSE)</span> número publicado pela Justiça Eleitoral, lido direto dos arquivos públicos do TSE.</li>
+<li><span class="prov calc">Métrica calculada pelo Eleições 2026</span> conta feita por esta página a partir de arquivos oficiais (ex.: % de uma seção a partir do boletim). Não é número do TSE.</li></ul></div>
+<div><h3>Estado de cada seção</h3><dl class="estados"><div class="e-ok"><dt>Boletim publicado</dt><dd>O boletim de urna desta seção está publicado pelo TSE.</dd></div><div class="e-ok"><dt>Conferido</dt><dd>Boletim publicado e a soma dos boletins do município bate com o resultado oficial do município.</dd></div><div class="e-neutro"><dt>Seção agregada</dt><dd>Esta seção foi reunida a outra no dia da eleição. Os votos dela estão no boletim da seção principal; ela não tem arquivo próprio.</dd></div><div class="e-neutro"><dt>Sistema de Apuração</dt><dd>A seção foi apurada pelo Sistema de Apuração da Justiça Eleitoral, e não pela urna. O TSE publica o boletim desse sistema.</dd></div><div class="e-atencao"><dt>Fonte incompleta</dt><dd>O TSE publicou arquivos desta seção, mas sem boletim de urna. Os votos estão no total oficial; o boletim não está entre os arquivos.</dd></div><div class="e-atencao"><dt>Arquivo oficial ainda não disponível</dt><dd>O cadastro oficial indica que o arquivo desta seção foi gerado, mas ele ainda não está disponível para download. Status: ACOMPANHANDO. Não inferimos o motivo.</dd></div><div class="e-pendente"><dt>Pendente</dt><dd>O TSE ainda não gerou os arquivos desta seção.</dd></div><div class="e-erro"><dt>Consulta recusada</dt><dd>O servidor do TSE recusou a consulta agora (limite de acesso). Isso não diz nada sobre a seção. Tente mais tarde.</dd></div><div class="e-erro"><dt>Consulta não concluída</dt><dd>Não conseguimos falar com o TSE agora (rede ou erro temporário do servidor). Isso não diz nada sobre a seção.</dd></div><div class="e-erro"><dt>Arquivo ilegível</dt><dd>O arquivo chegou, mas não pôde ser lido. Nada foi concluído a partir dele.</dd></div></dl></div></div>
+<div id="calcbox" class="calcbox"></div></section>
 <section aria-labelledby="t-regras"><h2 id="t-regras">Como ler esta página</h2><ul class="rules">
 <li>Resultado oficial é o que o TSE publica. Pesquisa eleitoral é outra coisa e não aparece aqui.</li>
 <li>Até a totalização final, todo número é parcial e vem com o % de seções totalizadas.</li>
-<li>Dado que o TSE não informou aparece como “—”, nunca como zero.</li>
+<li>Dado que o TSE não informou aparece como “—”, nunca como zero. Entre dois registros da linha do tempo não desenhamos nada.</li>
+<li>Arquivo que ainda não está disponível não é indício de problema na votação, e não inferimos o motivo.</li>
 <li>Não fazemos previsão de vencedor nem projeção.</li></ul></section>
 </main>
 <footer><div class="wrap">Fonte: Tribunal Superior Eleitoral (resultados.tse.jus.br). <a href="/#/privacidade">Privacidade</a> · <a href="/">Desmentindo</a></div></footer>
+<script src="/eleicoes-2026/eleicoes-core.js" defer></script>
 <script src="/eleicoes-2026/eleicoes.js" defer></script>
 </body>
 </html>
