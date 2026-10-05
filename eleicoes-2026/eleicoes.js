@@ -26,7 +26,7 @@
   var CALC = window.__ELEICOES_CALC || (B.getAttribute("data-calc") === "on" ? "/eleicoes-2026/calculado/" : null);
   var LOCAIS = window.__ELEICOES_LOCAIS || (B.getAttribute("data-locais") === "on" ? "/eleicoes-2026/locais/" : null);
   var NOW = function () { return window.__ELEICOES_NOW ? window.__ELEICOES_NOW() : Date.now(); };
-  var L = { audit: "Auditoria", auditSec: "Auditoria da seção" };   // nomes públicos num só lugar (decisão editorial)
+  var L = { audit: "Verificação", auditSec: "Verificação da seção" };   // nomes públicos num só lugar (decisão editorial)
 
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };

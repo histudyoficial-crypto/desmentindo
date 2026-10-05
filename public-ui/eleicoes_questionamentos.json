@@ -1,0 +1,1156 @@
+{
+ "versao": "2026-10-05",
+ "rotulos": [
+  "CONFIRMADO",
+  "PARCIALMENTE CONFIRMADO",
+  "EXPLICADO PELOS DADOS",
+  "NÃO SUSTENTADO PELOS DADOS",
+  "INCONCLUSIVO",
+  "AINDA NÃO TESTÁVEL"
+ ],
+ "questionamentos": [
+  {
+   "id": "Q1",
+   "slug": "resultado-parado-uma-hora",
+   "tema": "Apuração",
+   "pergunta": "O resultado presidencial ficou parado por cerca de uma hora?",
+   "card": "A apuração realmente ficou parada?",
+   "classificacao": "CONFIRMADO",
+   "classificacao_nota": "A divulgação nacional parou. A causa: INCONCLUSIVO.",
+   "resposta": "Sim, a divulgação parou. O arquivo público com o resultado nacional de Presidente ficou com o dado das 19:06:33 até cerca de 20:08 — perto de uma hora. Os dados mostram também uma segunda pausa, em outra camada, entre 19:31 e 19:59. A causa da parada não pôde ser verificada de forma independente.",
+   "chamou_atencao": "Quem acompanhava a apuração viu o percentual de seções apuradas travar em 64,81% por mais de 50 minutos e, depois, saltar para quase 85% de uma vez.",
+   "aconteceu": [
+    "O arquivo nacional de Presidente que o TSE publica na internet continuou mostrando o resultado das 19:06:33 (64,81% das seções) até cerca de 20:08. Nosso coletor leu esse mesmo arquivo às 20:02:43 e ele ainda trazia 19:06:33.",
+    "Isso é a camada de PUBLICAÇÃO: o que o público via.",
+    "Na camada de RECEPÇÃO (o horário que o TSE registra em cada seção quando recebe os arquivos da urna), as seções continuaram chegando normalmente até as 19:21, desaceleraram e pararam por completo às 19:31:50, em todos os estados ao mesmo tempo. Voltaram às 19:59:21.",
+    "Na volta, o arquivo nacional mostrou 84,96% — praticamente tudo o que tinha sido recebido até 19:31:49. O salto não foi de “100 mil seções apuradas de uma vez”: foram seções recebidas entre 19:06 e 19:31 que ainda não tinham sido publicadas."
+   ],
+   "versao_oficial": "O TSE atribuiu o episódio a um “congestionamento no sistema responsável pela divulgação dos dados” e afirmou que a dificuldade “ficou restrita à conversão dos dados pelo programa de divulgação e não afetou a totalização dos votos”.",
+   "outras_fontes": [
+    "O Tempo registrou às 19:57 que a tela do TSE ainda mostrava 19:06:33.",
+    "Metrópoles registrou 84,96% às 20h08 e chamou o episódio de travamento de mais de uma hora."
+   ],
+   "testamos": [
+    "Lemos o arquivo nacional publicado e guardamos cada versão (com horário, tamanho e assinatura digital).",
+    "Reconstruímos, seção por seção, o horário de recepção de todas as 499 mil seções.",
+    "Somamos os boletins de urna para conferir se o resultado retomado correspondia ao que tinha sido recebido."
+   ],
+   "encontramos": [
+    "A parada da publicação é real e durou cerca de uma hora (19:06:33 → ~20:08).",
+    "A parte da explicação oficial que pode ser conferida é compatível com os dados: a publicação parou antes de a recepção parar, e o resultado retomado correspondia ao que já tinha sido recebido.",
+    "Há uma segunda pausa que a explicação oficial não cobre: entre 19:31:50 e 19:59:21 nenhuma seção do país teve horário de recepção registrado. Não sabemos qual sistema registra esse horário, então não dá para dizer se essa pausa foi da divulgação, da totalização ou de outra etapa."
+   ],
+   "explica": "Explica por que o percentual travou e depois saltou: o que estava parado era a publicação, enquanto seções continuavam chegando.",
+   "nao_prova": "Não prova que houve alteração de votos — nem prova que não houve problema algum além da divulgação. A soma dos boletins de urna bate com o resultado final (veja a pergunta sobre os boletins), mas isso não esclarece a causa da pausa de 19:31.",
+   "nao_sabemos": [
+    "Qual componente do sistema registra o horário de recepção (o TSE não documenta).",
+    "O que aconteceu dentro dos sistemas de totalização entre 19:06 e 20:08 — não é observável de fora."
+   ],
+   "linha_do_tempo": [
+    [
+     "19:06:33",
+     "Último resultado publicado antes da parada (64,81%)."
+    ],
+    [
+     "19:21",
+     "A recepção de seções desacelera."
+    ],
+    [
+     "19:31:50",
+     "Nenhuma seção registra recepção em nenhum estado."
+    ],
+    [
+     "19:57",
+     "Tela do TSE ainda em 19:06:33 (O Tempo)."
+    ],
+    [
+     "19:59:21",
+     "Recepção volta."
+    ],
+    [
+     "20:02:43",
+     "Arquivo nacional lido pelo coletor ainda em 19:06:33."
+    ],
+    [
+     "~20:08",
+     "Publicação volta: 84,96% (Metrópoles)."
+    ],
+    [
+     "21:01:08",
+     "Próximo registro do coletor: 98,48%."
+    ]
+   ],
+   "confira": [
+    {
+     "txt": "Veja a linha do tempo completa da noite de 04/10",
+     "href": "/eleicoes-2026/questionamentos/04-de-outubro/"
+    },
+    {
+     "txt": "Arquivo oficial do resultado nacional",
+     "href": "https://resultados.tse.jus.br/oficial/ele2026/6257/dados/br/br-c0001-e006257-u.json"
+    }
+   ],
+   "fontes": {
+    "primaria": [
+     {
+      "nome": "TSE · resultado nacional de Presidente (arquivo oficial)",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/6257/dados/br/br-c0001-e006257-u.json"
+     },
+     {
+      "nome": "TSE · arquivos de urna por seção (boletim de urna, registro digital do voto, log)",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3220/"
+     },
+     {
+      "nome": "TSE · nota oficial sobre o 1º turno",
+      "url": "https://www.tse.jus.br/comunicacao/noticias/2026/Outubro/presidente-do-tse-conclui-1o-turno-das-eleicoes-2026-e-projeta-mesma-tranquilidade-para-segunda-fase-do-pleito"
+     }
+    ],
+    "alegacao": [
+     {
+      "nome": "Publicações no X sobre a apuração (04 e 05/10/2026)",
+      "url": null
+     },
+     {
+      "nome": "O Grito — “História recorrente” (blog, 05/10/2026)",
+      "url": "https://ogritocensurado.wordpress.com/2026/10/05/historia-recorrente-2/"
+     }
+    ],
+    "imprensa": [
+     {
+      "nome": "O Tempo · “Site do TSE fica mais de 50 minutos sem atualizar apuração para presidente”",
+      "url": "https://www.otempo.com.br/eleicoes/2026/presidentes/2026/10/4/site-do-tse-fica-mais-de-50-minutos-sem-atualizar-apuracao-para-presidente"
+     },
+     {
+      "nome": "Metrópoles · “Sistema do TSE fica travado por mais de 1 hora”",
+      "url": "https://www.metropoles.com/brasil/sistema-do-tse-fica-travado-por-mais-de-1-hora-devido-a-volume-de-dados"
+     }
+    ],
+    "analise": [
+     "Versões do arquivo nacional guardadas pelo coletor do Desmentindo (horário, tamanho, SHA-256).",
+     "Horário de recepção de 498.842 seções (campo dr/hr do arquivo de cada seção)."
+    ]
+   },
+   "metodologia": "O horário de recepção usado é o campo dr/hr do arquivo auxiliar de cada seção (TSE). O TSE não documenta qual componente registra esse horário; por isso ele é tratado como marca operacional, não como prova de etapa. O ponto de ~20:08 vem da imprensa (precisão de minuto).",
+   "gate": "READY TO PUBLISH"
+  },
+  {
+   "id": "Q2",
+   "slug": "sistema-parou-votos-nordeste",
+   "tema": "Nordeste",
+   "pergunta": "O sistema parou quando começaram a entrar os votos do Nordeste?",
+   "card": "O apagão aconteceu quando chegaram votos do Nordeste?",
+   "classificacao": "NÃO SUSTENTADO PELOS DADOS",
+   "resposta": "Não é o que os dados mostram. Antes de cada parada da noite, a parte de seções do Nordeste entre as recém-chegadas estava abaixo do normal — entre 23% e 39%, quando o Nordeste representa 28% de todas as seções.",
+   "chamou_atencao": "Publicações no X e um blog afirmaram que “há apagão sempre que os votos do Nordeste são computados”.",
+   "hipotese": "Se a afirmação estivesse certa, as seções do Nordeste deveriam aparecer acima do normal logo antes de cada parada — e as paradas deveriam ser mais frequentes quando muitas seções do Nordeste chegam.",
+   "aconteceu": [
+    "Na noite de 04/10 houve várias pausas curtas na recepção de seções (todas as do país ao mesmo tempo) e a parada da divulgação às 19:06:33.",
+    "Medimos, para cada uma, de onde vinham as seções recebidas nos 5 minutos anteriores."
+   ],
+   "versao_oficial": "Não localizamos manifestação do TSE sobre a composição regional das seções recebidas antes das paradas.",
+   "outras_fontes": [],
+   "testamos": [
+    "A participação do Nordeste nas seções recebidas nos 5 e 30 minutos antes de cada evento, comparada com todas as outras janelas iguais da noite.",
+    "Minuto a minuto (17h–24h): se as pausas são mais prováveis quando o Nordeste é maioria entre as recém-chegadas — comparando apenas minutos com o mesmo volume de chegada, porque pausas acontecem mais quando chega pouca coisa, e no fim da noite o que chega é mais nordestino.",
+    "Estado por estado, em que momento as seções chegaram."
+   ],
+   "encontramos": [
+    "Nos 5 minutos antes de cada evento citado, o Nordeste era 23%, 25%, 26%, 39% das seções recebidas — abaixo do que acontece na maior parte da noite (entre o 18º e o 36º percentil de todas as janelas).",
+    "As pausas se concentram nos minutos de pouco movimento: 17% dos minutos de fluxo baixo têm pausa, contra 2% nos de fluxo alto.",
+    "Comparando minutos com o mesmo volume, a presença maior do Nordeste não aumenta a chance de pausa de forma que se distinga do acaso (p = 0,23).",
+    "Durante a parada da divulgação (19:06–20:08), o Nordeste foi 34% das seções que chegaram — um pouco acima, porque é a fase em que o Nordeste naturalmente pesa mais. Isso é efeito da fase da noite, não gatilho da parada."
+   ],
+   "grafico": {
+    "tipo": "barras_referencia",
+    "titulo": "Nordeste entre as seções recebidas nos 5 min antes de cada evento",
+    "unidade": "%",
+    "referencia": 25.8,
+    "referencia_rotulo": "média 17h–20h08",
+    "barras": [
+     [
+      "18:00:59 (pausa de 8 min)",
+      23.3
+     ],
+     [
+      "18:49:47 (pausa de 4 min)",
+      25.0
+     ],
+     [
+      "19:06:33 (divulgação para)",
+      26.1
+     ],
+     [
+      "19:31:50 (pausa de 27 min)",
+      38.8
+     ]
+    ]
+   },
+   "explica": "Explica por que a impressão surgiu: no fim da apuração, o que falta chegar é proporcionalmente mais nordestino, e é também quando pausas ficam mais visíveis.",
+   "nao_prova": "Não prova qual foi a causa das pausas. Só mostra que a chegada de seções do Nordeste não as antecede.",
+   "nao_sabemos": [
+    "A causa das pausas de recepção (o TSE não documenta o componente que registra o horário)."
+   ],
+   "confira": [
+    {
+     "txt": "Por que os votos do Nordeste chegam mais tarde?",
+     "href": "/eleicoes-2026/questionamentos/por-que-nordeste-chega-mais-tarde/"
+    },
+    {
+     "txt": "Linha do tempo da noite de 04/10",
+     "href": "/eleicoes-2026/questionamentos/04-de-outubro/"
+    }
+   ],
+   "fontes": {
+    "primaria": [
+     {
+      "nome": "TSE · arquivos de urna por seção (boletim de urna, registro digital do voto, log)",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3220/"
+     }
+    ],
+    "alegacao": [
+     {
+      "nome": "O Grito — “História recorrente” (blog, 05/10/2026)",
+      "url": "https://ogritocensurado.wordpress.com/2026/10/05/historia-recorrente-2/"
+     },
+     {
+      "nome": "Publicações no X sobre a apuração (04 e 05/10/2026)",
+      "url": null
+     }
+    ],
+    "imprensa": [],
+    "analise": [
+     "Horário de recepção e estado de 498.842 seções.",
+     "Teste por deslocamento circular (2.000 repetições) e comparação dentro do mesmo volume de chegada."
+    ]
+   },
+   "metodologia": "Pausa = intervalo de pelo menos 60 s sem nenhuma seção recebida em todo o país. Participação do Nordeste = seções de AL, BA, CE, MA, PB, PE, PI, RN e SE entre as recebidas na janela. O resultado vale para a camada de recepção.",
+   "gate": "READY TO PUBLISH"
+  },
+  {
+   "id": "Q3",
+   "slug": "flavio-caia-lula-subia-0-1",
+   "tema": "Curva",
+   "pergunta": "Flávio caía 0,1 ponto enquanto Lula subia 0,1 ponto?",
+   "card": "Por que a porcentagem parecia mudar sempre 0,1?",
+   "classificacao": "NÃO SUSTENTADO PELOS DADOS",
+   "classificacao_nota": "O único caso em que isso apareceu na tela é EXPLICADO PELOS DADOS: arredondamento.",
+   "resposta": "Só uma vez, e por arredondamento. Das 12 atualizações do resultado nacional que registramos, uma apareceria como “Flávio −0,1, Lula +0,1” com uma casa decimal. A mudança real foi de −0,019 e +0,022 ponto percentual.",
+   "chamou_atencao": "Um blog e publicações no X afirmaram que, depois das paradas, Flávio descia exatamente 0,1% e Lula subia exatamente 0,1%, o que seria “estatisticamente quase impossível” numa eleição com outros candidatos.",
+   "aconteceu": [
+    "O percentual de cada candidato é a divisão dos votos dele pelos votos válidos. A tela mostra esse número arredondado.",
+    "Quando o número real passa por uma fronteira de arredondamento (por exemplo, de 47,05 para 47,04), a tela pula 0,1 inteiro, mesmo que a mudança real seja de dois centésimos."
+   ],
+   "versao_oficial": null,
+   "outras_fontes": [],
+   "testamos": [
+    "Recalculamos o percentual exato de Flávio e Lula em cada uma das 12 atualizações públicas, com todas as casas decimais, e simulamos o que a tela mostraria com 1 e com 2 casas.",
+    "Reproduzimos cada atualização somando os boletins de urna na ordem em que as seções chegaram.",
+    "Reconstruímos a curva minuto a minuto e comparamos com sorteios que mantêm a geografia (estado, município, zona e local de votação)."
+   ],
+   "encontramos": [
+    "1 de 12 atualizações apareceriam como “−0,1 / +0,1” com uma casa. Nenhuma tem mudança real perto de 0,1.",
+    "No caso encontrado (22:23 → 23:02), Flávio foi de 47,055% para 47,036% e Lula de 45,131% para 45,153%. Com uma casa, isso vira 47,1 → 47,0 e 45,1 → 45,2.",
+    "As mudanças reais vão de quase 2 pontos no começo da noite a frações de milésimo de madrugada — não há um passo fixo.",
+    "Os demais candidatos também mudavam ao mesmo tempo: não era um par fechado de “menos para um, mais para o outro”.",
+    "Somando os boletins de urna, as mudanças oficiais se reproduzem (ex.: 19:06 → 20:08: oficial −1,119 / +1,245; boletins −1,120 / +1,247).",
+    "Na curva minuto a minuto, o movimento “−0,1 / +0,1” aparece 17 vezes em 420 minutos — dentro do que se espera pela ordem geográfica de chegada (sorteio por local de votação: 14,9 em média)."
+   ],
+   "grafico": {
+    "tipo": "transicoes",
+    "titulo": "Mudança real × mudança exibida com 1 casa decimal, em cada atualização (Flávio)",
+    "linhas": [
+     {
+      "de": "17:24",
+      "para": "17:58",
+      "real_f": 1.921779,
+      "real_l": -1.470393,
+      "exib_f": 1.9,
+      "exib_l": -1.5,
+      "bu_f": 1.8081,
+      "bu_l": -1.2952
+     },
+     {
+      "de": "17:58",
+      "para": "18:44",
+      "real_f": -0.888049,
+      "real_l": 0.918443,
+      "exib_f": -0.9,
+      "exib_l": 0.9,
+      "bu_f": -0.9405,
+      "bu_l": 0.9692
+     },
+     {
+      "de": "18:44",
+      "para": "19:06",
+      "real_f": -0.617974,
+      "real_l": 0.61596,
+      "exib_f": -0.6,
+      "exib_l": 0.6,
+      "bu_f": -0.6404,
+      "bu_l": 0.6453
+     },
+     {
+      "de": "19:06",
+      "para": "20:08",
+      "real_f": -1.118652,
+      "real_l": 1.244712,
+      "exib_f": -1.1,
+      "exib_l": 1.3,
+      "bu_f": -1.1202,
+      "bu_l": 1.2466
+     },
+     {
+      "de": "20:08",
+      "para": "21:01",
+      "real_f": -1.172962,
+      "real_l": 1.358323,
+      "exib_f": -1.2,
+      "exib_l": 1.4,
+      "bu_f": -1.1831,
+      "bu_l": 1.3759
+     },
+     {
+      "de": "21:01",
+      "para": "22:01",
+      "real_f": -0.212489,
+      "real_l": 0.250675,
+      "exib_f": -0.2,
+      "exib_l": 0.2,
+      "bu_f": -0.2132,
+      "bu_l": 0.2525
+     },
+     {
+      "de": "22:01",
+      "para": "22:23",
+      "real_f": -0.025892,
+      "real_l": 0.030131,
+      "exib_f": 0.0,
+      "exib_l": 0.0,
+      "bu_f": -0.0263,
+      "bu_l": 0.031
+     },
+     {
+      "de": "22:23",
+      "para": "23:02",
+      "real_f": -0.01892,
+      "real_l": 0.022092,
+      "exib_f": -0.1,
+      "exib_l": 0.1,
+      "bu_f": -0.0088,
+      "bu_l": 0.0101
+     },
+     {
+      "de": "23:02",
+      "para": "23:55",
+      "real_f": -0.007109,
+      "real_l": 0.008143,
+      "exib_f": 0.0,
+      "exib_l": 0.0,
+      "bu_f": 0.0,
+      "bu_l": 0.0
+     },
+     {
+      "de": "23:55",
+      "para": "00:45",
+      "real_f": -0.000644,
+      "real_l": 0.00076,
+      "exib_f": 0.0,
+      "exib_l": 0.0,
+      "bu_f": 0.0,
+      "bu_l": 0.0
+     },
+     {
+      "de": "00:45",
+      "para": "01:56",
+      "real_f": -0.000286,
+      "real_l": 0.000335,
+      "exib_f": 0.0,
+      "exib_l": 0.0,
+      "bu_f": 0.0,
+      "bu_l": 0.0
+     },
+     {
+      "de": "01:56",
+      "para": "02:58",
+      "real_f": -0.000139,
+      "real_l": 0.000159,
+      "exib_f": 0.0,
+      "exib_l": 0.0,
+      "bu_f": 0.0,
+      "bu_l": 0.0
+     }
+    ],
+    "destaque": [
+     "22:23",
+     "23:02"
+    ]
+   },
+   "arredondamento": {
+    "f0": 47.0549,
+    "f1": 47.0359,
+    "l0": 45.1313,
+    "l1": 45.1534
+   },
+   "explica": "Explica a impressão de passos de 0,1: a tela arredonda, e no fim da apuração as mudanças reais são pequenas demais para aparecer de outra forma. A direção (Flávio caindo, Lula subindo) vem da ordem de chegada: as seções que chegaram por último votaram mais em Lula.",
+   "nao_prova": "Não prova que a ordem de chegada foi aleatória — ela é geográfica, e isso está documentado. Prova apenas que o padrão “±0,1 exato” não existe nos números reais.",
+   "nao_sabemos": [
+    "Não há registro oficial das atualizações a cada poucos segundos entre 20:08 e 21:01; afirmações sobre esse intervalo específico ainda não são testáveis."
+   ],
+   "confira": [
+    {
+     "txt": "Arquivo oficial do resultado nacional",
+     "href": "https://resultados.tse.jus.br/oficial/ele2026/6257/dados/br/br-c0001-e006257-u.json"
+    }
+   ],
+   "fontes": {
+    "primaria": [
+     {
+      "nome": "TSE · resultado nacional de Presidente (arquivo oficial)",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/6257/dados/br/br-c0001-e006257-u.json"
+     },
+     {
+      "nome": "TSE · arquivos de urna por seção (boletim de urna, registro digital do voto, log)",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3220/"
+     }
+    ],
+    "alegacao": [
+     {
+      "nome": "O Grito — “História recorrente” (blog, 05/10/2026)",
+      "url": "https://ogritocensurado.wordpress.com/2026/10/05/historia-recorrente-2/"
+     },
+     {
+      "nome": "Publicações no X sobre a apuração (04 e 05/10/2026)",
+      "url": null
+     }
+    ],
+    "imprensa": [],
+    "analise": [
+     "12 versões do arquivo nacional guardadas pelo coletor do Desmentindo (1 ponto de imprensa, 20:08).",
+     "Soma de 498.842 boletins de urna na ordem de chegada; 200 sorteios por nível geográfico."
+    ]
+   },
+   "metodologia": "Percentual = votos do candidato ÷ votos válidos, sem arredondar. “Exibido” = arredondamento comercial para 1 casa. Reprodução: soma cumulativa dos boletins de urna na ordem do horário de recepção até o número de seções de cada atualização (aproximação: a ordem de totalização pode diferir da de recepção).",
+   "gate": "READY TO PUBLISH"
+  },
+  {
+   "id": "Q4",
+   "slug": "por-que-nordeste-chega-mais-tarde",
+   "tema": "Nordeste",
+   "pergunta": "Por que os votos do Nordeste chegam mais tarde?",
+   "card": "O Nordeste sempre chega por último?",
+   "classificacao": "PARCIALMENTE CONFIRMADO",
+   "classificacao_nota": "Em média, sim. Mas o Nordeste não é homogêneo, e o que mais pesa é o local de votação.",
+   "resposta": "Em média, as seções do Nordeste chegaram mais tarde: ficaram, em média, no 58º percentil da ordem de chegada, contra o 47º nos demais estados. Mas a Paraíba chegou antes de São Paulo e Minas, e o Rio de Janeiro chegou tão tarde quanto Ceará e Bahia.",
+   "chamou_atencao": "A pergunta circulou junto com a ideia de que o Nordeste “sempre demora mais”, mesmo não sendo o maior colégio eleitoral.",
+   "aconteceu": [
+    "Ordenamos as 498.842 seções pelo horário em que o TSE registrou a recepção e calculamos, para cada estado, a posição média nessa fila."
+   ],
+   "versao_oficial": "Não localizamos explicação do TSE para a ordem de chegada por estado.",
+   "outras_fontes": [],
+   "testamos": [
+    "Quanto da ordem de chegada se explica por região, estado, município, zona eleitoral e local de votação.",
+    "Se a diferença do Nordeste continua depois de levar em conta o tamanho do local, do município e da zona, o número de eleitores e o fuso horário."
+   ],
+   "encontramos": [
+    "A região explica 11% da variação na ordem de chegada; o estado, 21%; o município, 56%; o local de votação, 85%.",
+    "Ou seja: seções do mesmo local de votação chegam juntas, e é isso que mais define quando cada seção chega.",
+    "Dentro do Nordeste a diferença é grande: Paraíba, Piauí e Sergipe chegaram cedo; Alagoas, Ceará, Bahia e Pernambuco, tarde. Rio de Janeiro e Minas Gerais estão entre os mais tardios do país.",
+    "Mesmo levando em conta tamanho de local, município e zona, número de eleitores e fuso, os estados do Nordeste continuam chegando um pouco mais tarde em média. Isso não permite dizer por quê: a diferença se mistura com características de cada estado (estrutura dos tribunais regionais, rede, distâncias)."
+   ],
+   "grafico": {
+    "tipo": "pontos_uf",
+    "titulo": "Posição média na ordem de chegada, por estado (0 = primeiras seções, 100 = últimas)",
+    "pontos": [
+     [
+      "DF",
+      0.137,
+      false
+     ],
+     [
+      "TO",
+      0.198,
+      false
+     ],
+     [
+      "MS",
+      0.221,
+      false
+     ],
+     [
+      "PR",
+      0.24,
+      false
+     ],
+     [
+      "PB",
+      0.278,
+      true
+     ],
+     [
+      "AC",
+      0.281,
+      false
+     ],
+     [
+      "ES",
+      0.283,
+      false
+     ],
+     [
+      "RO",
+      0.301,
+      false
+     ],
+     [
+      "MT",
+      0.348,
+      false
+     ],
+     [
+      "RS",
+      0.363,
+      false
+     ],
+     [
+      "RR",
+      0.444,
+      false
+     ],
+     [
+      "AM",
+      0.447,
+      false
+     ],
+     [
+      "GO",
+      0.456,
+      false
+     ],
+     [
+      "PA",
+      0.477,
+      false
+     ],
+     [
+      "PI",
+      0.478,
+      true
+     ],
+     [
+      "SE",
+      0.488,
+      true
+     ],
+     [
+      "SC",
+      0.493,
+      false
+     ],
+     [
+      "AP",
+      0.507,
+      false
+     ],
+     [
+      "RN",
+      0.527,
+      true
+     ],
+     [
+      "SP",
+      0.537,
+      false
+     ],
+     [
+      "MG",
+      0.549,
+      false
+     ],
+     [
+      "MA",
+      0.577,
+      true
+     ],
+     [
+      "PE",
+      0.601,
+      true
+     ],
+     [
+      "BA",
+      0.648,
+      true
+     ],
+     [
+      "RJ",
+      0.649,
+      false
+     ],
+     [
+      "CE",
+      0.652,
+      true
+     ],
+     [
+      "AL",
+      0.711,
+      true
+     ]
+    ]
+   },
+   "explica": "Explica por que o fim da apuração tem mais votos do Nordeste: na média, as seções da região entram mais tarde — e isso também desloca os percentuais no fim da noite.",
+   "nao_prova": "Não mostra causa política nem diz nada sobre os votos dessas seções. Ordem de chegada é logística.",
+   "nao_sabemos": [
+    "Por que alguns estados (do Nordeste ou não) chegam mais tarde — os dados públicos não trazem a estrutura de transmissão de cada estado."
+   ],
+   "confira": [
+    {
+     "txt": "O sistema parou quando entraram os votos do Nordeste?",
+     "href": "/eleicoes-2026/questionamentos/sistema-parou-votos-nordeste/"
+    }
+   ],
+   "fontes": {
+    "primaria": [
+     {
+      "nome": "TSE · arquivos de urna por seção (boletim de urna, registro digital do voto, log)",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3220/"
+     },
+     {
+      "nome": "TSE · Eleitorado por local de votação 2026",
+      "url": "https://dadosabertos.tse.jus.br/"
+     }
+    ],
+    "alegacao": [
+     {
+      "nome": "O Grito — “História recorrente” (blog, 05/10/2026)",
+      "url": "https://ogritocensurado.wordpress.com/2026/10/05/historia-recorrente-2/"
+     }
+    ],
+    "imprensa": [],
+    "analise": [
+     "Horário de recepção de 498.842 seções; decomposição da variação por nível geográfico; regressão com controles logísticos."
+    ]
+   },
+   "metodologia": "Posição na ordem de chegada = percentil do horário de recepção (0 a 100). A comparação entre regiões é feita sobre médias por estado ponderadas pelo número de seções; o teste embaralha o rótulo de região entre estados (5.000 vezes).",
+   "gate": "READY TO PUBLISH"
+  },
+  {
+   "id": "Q5",
+   "slug": "congresso-conservador-presidente-diferente",
+   "tema": "Congresso × Presidente",
+   "pergunta": "Se o Congresso ficou mais conservador, como o resultado presidencial pode ser diferente?",
+   "card": "Congresso conservador e presidente diferente: faz sentido?",
+   "classificacao": "EXPLICADO PELOS DADOS",
+   "resposta": "Porque o eleitor vota em cargos diferentes de formas diferentes, e isso aparece seção por seção. Flávio teve 47,0% dos votos válidos para Presidente; o PL, partido dele, teve 22,7% na Câmara e 28,0% no Senado. “Congresso conservador” soma vários partidos.",
+   "chamou_atencao": "O argumento de que seria “incoerente” eleger um Congresso conservador e não o Presidente circulou como indício de problema.",
+   "aconteceu": [
+    "Cada boletim de urna traz, na mesma seção, os votos para Presidente, Governador, Senado, Câmara e Assembleia. Isso permite comparar os cargos no mesmo lugar, com os mesmos eleitores."
+   ],
+   "versao_oficial": null,
+   "outras_fontes": [],
+   "testamos": [
+    "Seção por seção, quanto o voto em Flávio acompanha o voto no PL nos outros cargos (e o mesmo para Lula e o PT), comparando seções do mesmo local de votação.",
+    "Se a diferença entre o voto presidencial e o voto nos outros cargos muda conforme a ordem de chegada da seção."
+   ],
+   "encontramos": [
+    "Onde o PL vai bem nos outros cargos, Flávio também vai: a associação dentro do mesmo local de votação é forte com o Senado (0,78) e o Governador (0,71), e moderada com a Câmara (0,53) e a Assembleia (0,49).",
+    "Votar em um partido para o Congresso e em outro nome para Presidente é comum e mensurável.",
+    "Encontramos um padrão pequeno: nas seções em que a votação terminou mais tarde, o voto presidencial em Lula fica levemente acima do que o voto nos outros cargos indicaria. O padrão está ligado ao horário de encerramento da votação, e não ao tempo de transmissão — é sobre quem votou por último na seção, não sobre o envio dos dados."
+   ],
+   "explica": "Explica como um Congresso com maioria de partidos de direita convive com uma disputa presidencial apertada: o voto se divide entre cargos.",
+   "nao_prova": "Não diz como cada pessoa votou (os dados são por seção, não por eleitor). Não diz se o voto dividido é “coerente” — isso é uma avaliação política, não um fato testável.",
+   "nao_sabemos": [
+    "Quem são os eleitores que votam no fim do horário em cada seção — o boletim não traz esse dado."
+   ],
+   "confira": [
+    {
+     "txt": "Abra uma seção e veja o boletim de urna",
+     "href": "/eleicoes-2026/sp/#m=62910&z=0033&s=0447"
+    }
+   ],
+   "fontes": {
+    "primaria": [
+     {
+      "nome": "TSE · arquivos de urna por seção (boletim de urna, registro digital do voto, log)",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3220/"
+     }
+    ],
+    "alegacao": [
+     {
+      "nome": "O Grito — “História recorrente” (blog, 05/10/2026)",
+      "url": "https://ogritocensurado.wordpress.com/2026/10/05/historia-recorrente-2/"
+     }
+    ],
+    "imprensa": [],
+    "analise": [
+     "Votos por cargo de 498.842 boletins de urna; comparação dentro do local de votação (61 mil locais)."
+    ]
+   },
+   "metodologia": "Associação = correlação entre os percentuais por seção, depois de descontar a média do local de votação (isso controla estado, município, zona e local). Câmara e Assembleia = votos no partido (nominais e de legenda); Senado = votos nos candidatos do partido.",
+   "gate": "READY TO PUBLISH"
+  },
+  {
+   "id": "Q6",
+   "slug": "boletins-de-urna-batem-com-resultado",
+   "tema": "Boletins de urna",
+   "pergunta": "Somando os Boletins de Urna, o resultado divulgado pelo TSE bate?",
+   "card": "Os boletins de urna batem com o resultado final?",
+   "classificacao": "CONFIRMADO",
+   "classificacao_nota": "Onde todos os boletins estão disponíveis, a soma bate voto a voto.",
+   "resposta": "Sim, onde todos os boletins estão disponíveis. Somamos 498.873 boletins de urna, um por um, e comparamos com o resultado oficial de cada município: em 5.698 dos 5.757 municípios e cidades do exterior, a soma é idêntica em todos os números. Os 59 restantes têm explicação documentada, e nenhuma diferença ficou sem explicação.",
+   "chamou_atencao": "Publicações afirmaram que o sistema “faz ajustes” durante a apuração. Se isso acontecesse na totalização, a soma dos boletins de cada seção não bateria com o resultado publicado.",
+   "aconteceu": [
+    "Cada urna imprime e grava um boletim (BU) com os votos da seção. O TSE publica esse arquivo, assinado, na internet.",
+    "O caminho é: urna → boletim de urna → transmissão → totalização → resultado publicado."
+   ],
+   "versao_oficial": "O TSE afirma que a totalização soma os boletins de urna transmitidos.",
+   "outras_fontes": [],
+   "testamos": [
+    "Baixamos e lemos 498.873 boletins de urna (incluindo 31 do Sistema de Apuração, usado quando a urna não funciona).",
+    "Somamos de forma independente, por município, estado e país, e comparamos com cada campo do resultado oficial: eleitores aptos, comparecimento, votos válidos, brancos, nulos e votos de cada candidato."
+   ],
+   "encontramos": [
+    "5.698 municípios e cidades do exterior: soma idêntica ao resultado oficial em todos os campos.",
+    "40 cidades do exterior: a seção não foi instalada — não houve votação, não há boletim, e o resultado oficial é zero.",
+    "11 municípios (BA e MG): o arquivo municipal do TSE ficou com a versão das ~21h de 04/10 e ainda contava 42 seções como não apuradas no dia seguinte, enquanto os arquivos do estado e do país já as incluíam. É uma inconsistência entre arquivos oficiais de divulgação, sem diferença de votos: o total estadual bate com a soma dos boletins.",
+    "8 municípios e cidades do exterior: têm seções sem boletim disponível — 7 em SP e MG, cujo arquivo o TSE ainda não disponibilizou, e 1 cidade do exterior com seção publicada sem boletim (veja a pergunta sobre arquivos ausentes). Sem o boletim, essas seções não podem ser conferidas voto a voto.",
+    "Por estado: 25 das 27 unidades da federação fecham exatamente. Bahia e Rio Grande do Sul passaram a fechar em 05/10, quando 4 boletins que faltavam foram publicados — a diferença era exatamente a soma deles. Minas Gerais e São Paulo só fecharão quando as seções que faltam forem publicadas."
+   ],
+   "fluxo": [
+    "Urna",
+    "Boletim de urna (assinado)",
+    "Transmissão",
+    "Totalização",
+    "Resultado publicado"
+   ],
+   "numeros": [
+    [
+     "498.873",
+     "boletins lidos e somados"
+    ],
+    [
+     "5.698",
+     "municípios com soma idêntica"
+    ],
+    [
+     "0",
+     "diferenças sem explicação"
+    ],
+    [
+     "25 de 27",
+     "estados fechando exatamente"
+    ]
+   ],
+   "explica": "A totalização não alterou os votos dos boletins: o resultado publicado é a soma deles.",
+   "nao_prova": "Não confere o boletim impresso na seção (papel/QR code) com o arquivo digital — esta checagem usou os boletins digitais publicados. Também não diz nada sobre o funcionamento interno da urna.",
+   "nao_sabemos": [
+    "O conteúdo das seções cujo arquivo ainda não foi publicado.",
+    "Se os boletins impressos coincidem com os digitais (ainda não conferimos boletins físicos ou QR codes)."
+   ],
+   "confira": [
+    {
+     "txt": "Confira uma seção você mesmo: Maceió, zona 1, seção 447",
+     "href": "/eleicoes-2026/al/#m=27855&z=0001&s=0447"
+    },
+    {
+     "txt": "Uma seção de Campinas recuperada depois",
+     "href": "/eleicoes-2026/sp/#m=62910&z=0274&s=0629"
+    }
+   ],
+   "fontes": {
+    "primaria": [
+     {
+      "nome": "TSE · arquivos de urna por seção (boletim de urna, registro digital do voto, log)",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3220/"
+     },
+     {
+      "nome": "TSE · resultado por município (arquivos oficiais)",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/6257/dados/"
+     }
+    ],
+    "alegacao": [
+     {
+      "nome": "Publicações no X sobre a apuração (04 e 05/10/2026)",
+      "url": null
+     },
+     {
+      "nome": "O Grito — “História recorrente” (blog, 05/10/2026)",
+      "url": "https://ogritocensurado.wordpress.com/2026/10/05/historia-recorrente-2/"
+     }
+    ],
+    "imprensa": [],
+    "analise": [
+     "Leitor próprio de boletim de urna (formato oficial ASN.1), conferido em cada seção: soma dos votos = comparecimento.",
+     "Reconciliação por campo contra o resultado oficial de 05/10 14:38 UTC; 4 boletins recuperados em 05/10 15:47 UTC."
+    ]
+   },
+   "metodologia": "Cada boletim é decodificado e conferido (soma dos votos = comparecimento; seção do arquivo = seção esperada). A soma por município é comparada campo a campo com o arquivo oficial do município; a do estado, com o do estado. O mesmo leitor roda no navegador, na verificação de cada seção.",
+   "gate": "READY TO PUBLISH"
+  },
+  {
+   "id": "Q7",
+   "slug": "arquivos-ainda-nao-disponiveis",
+   "tema": "Arquivos ausentes",
+   "pergunta": "Existem seções cujos arquivos o TSE ainda não disponibilizou?",
+   "card": "Ainda existem arquivos não publicados?",
+   "classificacao": "CONFIRMADO",
+   "classificacao_nota": "Estamos acompanhando.",
+   "resposta": "Sim. Na última checagem, 329 seções ainda não tinham os arquivos disponíveis para download, embora o cadastro oficial indique que foram gerados, e 1 seção no exterior tinha arquivos publicados, mas sem boletim de urna. Eram 5.254 seções sem arquivo na madrugada de 05/10; 4.925 já apareceram e foram conferidas.",
+   "contador": {
+    "arquivo": "/eleicoes-2026/dados/arquivos-ausentes.json"
+   },
+   "chamou_atencao": "Ao tentar abrir algumas seções, o site do TSE responde que o arquivo não existe. Para quem verifica, isso levanta dúvida.",
+   "aconteceu": [
+    "Para cada seção, o TSE publica um arquivo com a lista dos arquivos da urna (boletim, registro do voto, log).",
+    "Em algumas seções, o cadastro oficial marca que esse arquivo foi gerado, mas o endereço responde “NoSuchKey” — o objeto não está no armazenamento público."
+   ],
+   "versao_oficial": "Não localizamos manifestação do TSE sobre essas seções.",
+   "outras_fontes": [],
+   "testamos": [
+    "Consultamos de novo, com cuidado (poucas consultas por segundo e seções de controle que sempre respondem), cada seção que tinha falhado.",
+    "Quando um arquivo aparece: guardamos o original, registramos horário e assinatura, lemos o boletim e conferimos o total do município."
+   ],
+   "encontramos": [
+    "Das 5.254 seções sem arquivo na madrugada de 05/10, 4.921 apareceram na manhã de 05/10 e outras 4 à tarde. Em todas, o boletim confere.",
+    "As 4 da tarde fecharam exatamente o total oficial de Bahia e Rio Grande do Sul.",
+    "Restam 329 sem arquivo: 273 em SP e 56 em MG. Acompanhamos também 1 seção do exterior (Porto, Portugal) que tem arquivos publicados, mas sem boletim de urna.",
+    "Não há indicação, nos dados, de que essas seções tenham algo em comum além de estarem em poucos municípios."
+   ],
+   "explica": "Explica a mensagem de erro ao abrir essas seções: o arquivo não está publicado. Na verificação de cada seção, o site mostra isso como “Arquivo oficial ainda não disponível”.",
+   "nao_prova": "Arquivo ausente não significa fraude. Também não é motivo para ignorar: sem o boletim, essas seções não podem ser conferidas voto a voto.",
+   "nao_sabemos": [
+    "Por que esses arquivos não foram publicados — o TSE não informou."
+   ],
+   "confira": [
+    {
+     "txt": "Uma seção ainda sem arquivo: Campinas, zona 423, seção 292",
+     "href": "/eleicoes-2026/sp/#m=62910&z=0423&s=0292"
+    }
+   ],
+   "fontes": {
+    "primaria": [
+     {
+      "nome": "TSE · arquivos de urna por seção (boletim de urna, registro digital do voto, log)",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3220/"
+     }
+    ],
+    "alegacao": [],
+    "imprensa": [],
+    "analise": [
+     "Lista de acompanhamento das seções sem arquivo; consultas com controles; cada arquivo recuperado guardado com SHA-256."
+    ]
+   },
+   "metodologia": "Uma seção entra na lista quando o cadastro oficial informa data de geração e o arquivo responde 404 (NoSuchKey). Cada checagem consulta primeiro seções de controle; se alguma falhar, nada é concluído naquela rodada.",
+   "gate": "READY TO PUBLISH"
+  },
+  {
+   "id": "Q8",
+   "slug": "secoes-agregadas",
+   "tema": "Boletins de urna",
+   "pergunta": "O que aconteceu com as mais de 17 mil seções agregadas?",
+   "card": "E as 17 mil seções agregadas?",
+   "classificacao": "EXPLICADO PELOS DADOS",
+   "resposta": "Elas votaram junto com outra seção. No dia da eleição, 17.931 seções foram reunidas a outras (a “seção principal”), e os votos delas estão no boletim de urna da principal. Por isso não têm arquivo próprio — e por isso a soma dos boletins bate mesmo sem elas.",
+   "chamou_atencao": "Ao abrir uma dessas seções, a versão anterior desta página dizia “o TSE ainda não publicou arquivos desta seção”. A frase estava errada: não há arquivo a publicar.",
+   "aconteceu": [
+    "O cadastro oficial do TSE tem 517.179 seções: 499.248 principais e 17.931 agregadas. Cada agregada aparece na lista da sua principal.",
+    "16.142 seções principais receberam ao menos uma agregada."
+   ],
+   "versao_oficial": "O TSE registra a agregação no cadastro de seções.",
+   "outras_fontes": [],
+   "testamos": [
+    "Conferimos no cadastro oficial a lista de agregadas de cada principal.",
+    "Na soma dos boletins, as agregadas não entram em separado — e o total municipal bate (veja a pergunta sobre os boletins)."
+   ],
+   "encontramos": [
+    "Todas as 17.931 agregadas têm uma seção principal identificada no cadastro oficial.",
+    "Nenhuma seção do cadastro some do site: a agregada aparece como “Seção agregada”, com link para a principal."
+   ],
+   "explica": "Explica por que essas seções não têm boletim próprio.",
+   "nao_prova": "Não confere quantos eleitores de cada agregada votaram — o boletim da principal traz o total da seção principal com as agregadas.",
+   "nao_sabemos": [],
+   "confira": [
+    {
+     "txt": "Exemplo: Campinas, zona 275, seção 649 (agregada à 626)",
+     "href": "/eleicoes-2026/sp/#m=62910&z=0275&s=0649"
+    }
+   ],
+   "fontes": {
+    "primaria": [
+     {
+      "nome": "TSE · cadastro de seções (com seções agregadas)",
+      "url": null
+     },
+     {
+      "nome": "TSE · arquivos de urna por seção (boletim de urna, registro digital do voto, log)",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3220/"
+     }
+    ],
+    "alegacao": [],
+    "imprensa": [],
+    "analise": [
+     "Contagem no cadastro oficial de seções (05/10 14:38 UTC)."
+    ]
+   },
+   "metodologia": "Seção agregada = número que aparece na lista de agregadas (campo nsa) de outra seção no cadastro oficial do TSE.",
+   "gate": "READY TO PUBLISH"
+  },
+  {
+   "id": "Q9",
+   "slug": "apagao-so-eleicao-presidencial",
+   "tema": "Apuração",
+   "pergunta": "O apagão atingiu somente a eleição presidencial?",
+   "card": "A parada foi só na eleição para Presidente?",
+   "classificacao": "PARCIALMENTE CONFIRMADO",
+   "classificacao_nota": "Na divulgação, há registro de outro cargo seguindo. Na recepção, não: a pausa foi comum a todos.",
+   "resposta": "Em parte. Enquanto o resultado nacional de Presidente estava parado, o resultado de Governador do Ceará continuou sendo atualizado. Mas a pausa de 19:31 a 19:59 na recepção valeu para todos os cargos, porque o boletim de urna é um só para todos.",
+   "chamou_atencao": "Publicações afirmaram que só a Presidência travou, que a apuração continuou para governador e senador, e que “o arquivo com os dados é o mesmo”.",
+   "aconteceu": [
+    "Cada urna gera um único boletim com os votos de todos os cargos. A recepção é, portanto, comum a todos.",
+    "A totalização e a divulgação são separadas: há um arquivo de resultado para cada eleição e cargo."
+   ],
+   "versao_oficial": "O TSE atribuiu a parada a um congestionamento no sistema de divulgação e disse que a totalização não foi afetada. A nota não detalha quais cargos foram atingidos.",
+   "outras_fontes": [
+    "O Internet Archive guardou páginas do g1 com o resultado de Governador do Ceará às 18:43:58 (4,14% das seções) e às 19:49:42 (68,32%) — no meio da parada do resultado nacional de Presidente."
+   ],
+   "testamos": [
+    "Comparamos o resultado de Governador do Ceará capturado pelo Internet Archive com o horário de recepção das seções do Ceará.",
+    "Procuramos, no Internet Archive, versões noturnas dos arquivos oficiais de Senado, Câmara e Assembleia."
+   ],
+   "encontramos": [
+    "Às 19:49:42, o Governador do Ceará mostrava 16.237 seções apuradas. Até 19:31:49, o TSE tinha registrado a recepção de 16.280 seções do Ceará. Ou seja, o resultado de Governador acompanhou quase tudo o que tinha chegado, enquanto o de Presidente nacional seguia em 19:06:33.",
+    "Entre 19:31:50 e 19:59:21 não houve registro de recepção de nenhuma seção — o que vale para todos os cargos.",
+    "“O arquivo é o mesmo” é verdade para o boletim da seção e não é para a divulgação: Presidente e os cargos estaduais têm arquivos de resultado separados.",
+    "Para Senado, Câmara e Assembleia não encontramos nenhuma versão guardada daquela hora."
+   ],
+   "explica": "Explica como outros cargos podiam continuar andando na tela enquanto o de Presidente nacional estava parado: a divulgação é separada por cargo.",
+   "nao_prova": "Não mostra por que só o arquivo nacional de Presidente parou. Também não mostra se os arquivos de Presidente por estado pararam.",
+   "nao_sabemos": [
+    "O que aconteceu com Senado, Câmara e Assembleia naquela hora.",
+    "Se os resultados de Presidente por estado também ficaram parados."
+   ],
+   "confira": [
+    {
+     "txt": "Página do g1 (Ceará) guardada às 19:49:42",
+     "href": "https://web.archive.org/web/20261004224942/https://g1.globo.com/politica/eleicoes/2026/apuracao/ceara.ghtml"
+    },
+    {
+     "txt": "Linha do tempo da noite de 04/10",
+     "href": "/eleicoes-2026/questionamentos/04-de-outubro/"
+    }
+   ],
+   "fontes": {
+    "primaria": [
+     {
+      "nome": "TSE · arquivos de urna por seção (boletim de urna, registro digital do voto, log)",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3220/"
+     },
+     {
+      "nome": "TSE · resultado nacional de Presidente (arquivo oficial)",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/6257/dados/br/br-c0001-e006257-u.json"
+     },
+     {
+      "nome": "TSE · nota oficial sobre o 1º turno",
+      "url": "https://www.tse.jus.br/comunicacao/noticias/2026/Outubro/presidente-do-tse-conclui-1o-turno-das-eleicoes-2026-e-projeta-mesma-tranquilidade-para-segunda-fase-do-pleito"
+     }
+    ],
+    "alegacao": [
+     {
+      "nome": "O Grito — “História recorrente” (blog, 05/10/2026)",
+      "url": "https://ogritocensurado.wordpress.com/2026/10/05/historia-recorrente-2/"
+     },
+     {
+      "nome": "Publicações no X sobre a apuração (04 e 05/10/2026)",
+      "url": null
+     }
+    ],
+    "imprensa": [
+     {
+      "nome": "g1 · apuração Ceará (Internet Archive, 18:43:58 e 19:49:42)",
+      "url": "https://web.archive.org/web/20261004224942/https://g1.globo.com/politica/eleicoes/2026/apuracao/ceara.ghtml"
+     }
+    ],
+    "analise": [
+     "Horário de recepção das seções do Ceará; estrutura do boletim de urna (um arquivo com todos os cargos)."
+    ]
+   },
+   "metodologia": "Os horários das páginas do g1 são os da captura do Internet Archive, não do TSE; a página reproduz dados do TSE. As páginas de Pernambuco guardadas no mesmo período estavam sem números e não foram usadas.",
+   "gate": "READY TO PUBLISH"
+  },
+  {
+   "id": "Q10",
+   "slug": "ja-aconteceu-antes",
+   "tema": "Eleições anteriores",
+   "pergunta": "Isso já aconteceu em eleições anteriores?",
+   "card": "Isso já aconteceu em outras eleições?",
+   "classificacao": "INCONCLUSIVO",
+   "resposta": "Só dá para comparar com 2022, e não há um padrão repetido. Em 2022 também houve pausas na recepção, mas a maior com a apuração em andamento durou 7 minutos; a de 2026 durou 27. Para 2014 e 2018, os dados públicos não trazem o horário de recepção de cada seção.",
+   "chamou_atencao": "Um blog afirmou que “o padrão se repete desde 2014”.",
+   "aconteceu": [
+    "Para comparar, é preciso saber quando cada seção foi recebida em cada eleição. O TSE publica boletins de urna de eleições anteriores no Portal de Dados Abertos."
+   ],
+   "versao_oficial": null,
+   "outras_fontes": [
+    "No Internet Archive não há versões noturnas do resultado nacional de 2014 e 2018; de 2022, há só uma, das 18:03."
+   ],
+   "testamos": [
+    "Baixamos os boletins de urna oficiais de 2014, 2018 e 2022 (1º turno) e procuramos o horário de recepção de cada seção.",
+    "Para 2022 e 2026, medimos as pausas nacionais de recepção (pelo menos 60 segundos sem nenhuma seção recebida), quando aconteceram, de onde vinham as seções antes delas e como os percentuais se moveram depois."
+   ],
+   "encontramos": [
+    "2014: o arquivo oficial traz só a data de recebimento, sem a hora. Não dá para reconstruir a ordem.",
+    "2018: o arquivo oficial não traz horário de recebimento. Não dá para reconstruir a ordem.",
+    "2022: 7 pausas de pelo menos 1 minuto; 3 de pelo menos 3 minutos.",
+    "2026: 26 pausas de pelo menos 1 minuto; 8 de pelo menos 3 minutos (5 delas depois das 23h, quando faltavam poucas seções).",
+    "Em nenhum dos dois anos uma pausa foi seguida de “−0,1 / +0,1” na tela. Os movimentos depois das pausas seguem a ordem geográfica de chegada e mudam de ano para ano.",
+    "A parada pública de cerca de uma hora no resultado nacional só pode ser medida em 2026: não há registro guardado dos anos anteriores."
+   ],
+   "tabela": [
+    [
+     "",
+     "2022",
+     "2026"
+    ],
+    [
+     "Pausas de recepção ≥ 1 min",
+     "7",
+     "26"
+    ],
+    [
+     "Pausas ≥ 3 min",
+     "3",
+     "8"
+    ],
+    [
+     "Maior pausa com apuração em andamento",
+     "7 min",
+     "27 min"
+    ],
+    [
+     "Pausas seguidas de −0,1/+0,1 na tela",
+     "0",
+     "0"
+    ]
+   ],
+   "explica": "Explica que pausas na recepção são parte do funcionamento normal (acontecem em ciclos) — e que a de 2026 foi excepcionalmente longa.",
+   "nao_prova": "Não prova que não houve episódios parecidos em 2014 e 2018; só que os dados públicos desses anos não permitem verificar.",
+   "nao_sabemos": [
+    "O que aconteceu na divulgação em 2014, 2018 e 2022 — não há registros públicos guardados das atualizações daquelas noites."
+   ],
+   "confira": [
+    {
+     "txt": "Boletins de urna de anos anteriores (Portal de Dados Abertos do TSE)",
+     "href": "https://dadosabertos.tse.jus.br/dataset/?q=boletim+de+urna"
+    }
+   ],
+   "fontes": {
+    "primaria": [
+     {
+      "nome": "TSE · Portal de Dados Abertos — Boletim de urna 2014, 2018 e 2022",
+      "url": "https://dadosabertos.tse.jus.br/dataset/?q=boletim+de+urna"
+     },
+     {
+      "nome": "TSE · arquivos de urna por seção (boletim de urna, registro digital do voto, log)",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3220/"
+     }
+    ],
+    "alegacao": [
+     {
+      "nome": "O Grito — “História recorrente” (blog, 05/10/2026)",
+      "url": "https://ogritocensurado.wordpress.com/2026/10/05/historia-recorrente-2/"
+     }
+    ],
+    "imprensa": [],
+    "analise": [
+     "Horário de recebimento de 471.562 seções (2022) e 498.842 (2026); hashes oficiais dos arquivos de 2014 e 2018 conferidos."
+    ]
+   },
+   "metodologia": "2022: campo DT_BU_RECEBIDO do boletim na web (horário de Brasília). 2026: campo dr/hr do arquivo de cada seção. São campos diferentes do TSE; comparamos a forma das pausas, não a causa.",
+   "gate": "READY TO PUBLISH"
+  }
+ ],
+ "linha_do_tempo": {
+  "slug": "04-de-outubro",
+  "titulo": "A noite de 4 de outubro, passo a passo",
+  "intro": "O que o público viu, o que os arquivos do TSE registraram e o que não dá para concluir. Horários de Brasília.",
+  "eventos": [
+   {
+    "h": "17:00",
+    "t": "Começa a apuração",
+    "obs": "Fim da votação no país. Primeiro resultado publicado às 17:24.",
+    "sig": "—",
+    "nao": "—"
+   },
+   {
+    "h": "18:00:59",
+    "t": "Pausa de 8 minutos na recepção",
+    "obs": "Nenhuma seção registra recepção em todo o país por 468 segundos.",
+    "sig": "Pausas assim acontecem em ciclos ao longo da noite.",
+    "nao": "A causa não é documentada."
+   },
+   {
+    "h": "18:49:47",
+    "t": "Pausa de 4 minutos na recepção",
+    "obs": "253 segundos sem nenhuma seção recebida.",
+    "sig": "Mesmo padrão de ciclo.",
+    "nao": "A causa não é documentada."
+   },
+   {
+    "h": "19:06:33",
+    "t": "Último resultado nacional antes da parada",
+    "obs": "64,81% das seções. O arquivo foi gerado às 19:14:08 e continuou no ar até ~20:08.",
+    "sig": "Começa a parada da divulgação do resultado nacional de Presidente.",
+    "nao": "Não sabemos o que aconteceu dentro dos sistemas de totalização."
+   },
+   {
+    "h": "19:21",
+    "t": "A recepção desacelera",
+    "obs": "De cerca de 4 mil para 1,3–1,8 mil seções por minuto.",
+    "sig": "Sinal de que algo também mudou na camada de recepção.",
+    "nao": "Não identifica o componente."
+   },
+   {
+    "h": "19:31:50",
+    "t": "Recepção para em todo o país",
+    "obs": "Nenhuma seção com horário de recepção até 19:59:21 (27 minutos).",
+    "sig": "Pausa sincronizada em todos os estados — a mais longa da noite e 3,7 vezes a maior de 2022.",
+    "nao": "A explicação oficial (divulgação) não cobre esta pausa; não sabemos qual sistema registra esse horário."
+   },
+   {
+    "h": "19:49:42",
+    "t": "Governador do Ceará continua andando",
+    "obs": "g1 (Internet Archive): 68,32% das seções, quase tudo o que o Ceará tinha enviado.",
+    "sig": "A divulgação de outro cargo seguia.",
+    "nao": "Não sabemos sobre Senado, Câmara e Assembleia."
+   },
+   {
+    "h": "19:59:21",
+    "t": "Recepção volta",
+    "obs": "Seções voltam a chegar em pulsos.",
+    "sig": "—",
+    "nao": "—"
+   },
+   {
+    "h": "~20:08",
+    "t": "Resultado nacional volta",
+    "obs": "84,96% (Metrópoles) — quase tudo o que tinha sido recebido até 19:31:49.",
+    "sig": "O “salto” eram seções já recebidas e ainda não publicadas.",
+    "nao": "Não prova a causa da parada."
+   },
+   {
+    "h": "21:01:08",
+    "t": "98,48% apurado",
+    "obs": "Próxima versão registrada pelo coletor.",
+    "sig": "—",
+    "nao": "—"
+   },
+   {
+    "h": "02:58:39",
+    "t": "100% das seções",
+    "obs": "Arquivo nacional com 499.248 de 499.248 seções.",
+    "sig": "—",
+    "nao": "—"
+   }
+  ]
+ }
+}

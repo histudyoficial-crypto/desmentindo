@@ -82,6 +82,7 @@ jobs:
         run: |
           node public-ui/build-eleicoes.mjs --check
           node public-ui/test-eleicoes-core.mjs
+          node public-ui/test-eleicoes-questionamentos.mjs
           node public-ui/internal-ids.mjs eleicoes-2026
           python3 -m unittest public-ui/test_eleicoes_snapshot.py -v
       - name: Dados da v5 em sincronia com os dados públicos

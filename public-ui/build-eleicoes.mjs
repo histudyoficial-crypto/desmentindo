@@ -10,6 +10,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
+import { pages as qPages, cards as qCards } from "./eleicoes-questionamentos.mjs";
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const SITE = "https://desmentindo.com.br";
 const UFS = [["ac","Acre"],["al","Alagoas"],["ap","Amapá"],["am","Amazonas"],["ba","Bahia"],["ce","Ceará"],["df","Distrito Federal"],
@@ -21,6 +22,8 @@ const A = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "analytics.jso
 // locais = arquivo oficial "Eleitorado por local de votação" por município. Desligados: a interface esconde as partes.
 const FLAGS = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "eleicoes_flags.json"), "utf8"));
 const CORE = createRequire(import.meta.url)(path.join(ROOT, "eleicoes-2026", "eleicoes-core.js"));
+const QDATA = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "eleicoes_questionamentos.json"), "utf8"));
+const QHOME = ["Q1", "Q2", "Q3", "Q6", "Q7"].map(id => QDATA.questionamentos.find(q => q.id === id));
 const ESTADOS_HTML = Object.values(CORE.ESTADOS).map(e => `<div class="e-${e.classe}"><dt>${e.nome}</dt><dd>${e.texto}</dd></div>`).join("");
 const attr = s => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 const umami = A.provider === "umami" && /^[0-9a-f-]{36}$/.test(A.website_id || "")
@@ -61,7 +64,7 @@ ${umami}
 <a class="skip" href="#conteudo">Ir para o conteúdo</a>
 <header class="top"><div class="wrap topbar"><a class="brand" href="/" aria-label="Desmentindo — início"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span><b>DESMENTINDO</b></a>
 <nav class="crumbs" id="crumbs" aria-label="Você está em"><a href="/eleicoes-2026/">Brasil</a>${br ? "" : `<span aria-hidden="true">›</span><b>${attr(where)}</b>`}</nav>
-<div class="modes" role="group" aria-label="Modo de leitura"><button type="button" id="mRes" aria-pressed="true">Resultados</button><button type="button" id="mAud" aria-pressed="false">Auditoria</button></div></div></header>
+<div class="modes" role="group" aria-label="Modo de leitura"><button type="button" id="mRes" aria-pressed="true">Resultados</button><button type="button" id="mAud" aria-pressed="false">Verificação</button></div></div></header>
 <main class="wrap" id="conteudo">
 <div class="head">
 <p class="kick"><span class="tag res">Dado oficial · TSE</span>Eleições 2026 · Presidente · 1º turno</p>
@@ -83,9 +86,10 @@ ${br ? `<div class="maphead"><label for="layers">Mostrar no mapa</label><select 
 ${br ? `<h2 class="h2s" id="t-ext">Exterior</h2><div id="exterior"><p class="empty">Disponível depois das 17h.</p></div>` : ""}
 </aside>
 </div>
+${br ? `<section class="area-q" aria-labelledby="t-q"><h2 id="t-q">Questionamentos sobre a eleição</h2><p class="sub">Você viu isso circulando? Fomos aos dados para descobrir o que realmente aconteceu.</p>${qCards(QHOME)}<p class="more"><a href="/eleicoes-2026/questionamentos/">Ver todos os questionamentos →</a></p></section>` : ""}
 ${br ? `<section class="area-time" aria-labelledby="t-evo"><h2 id="t-evo">Linha do tempo</h2><p class="sub">Do início da apuração (17h) ao final: o que o TSE mostrava em cada registro. Escolha um instante para ver o resultado daquela hora.</p><div id="evolucao"><p class="empty">Disponível depois das 17h.</p></div></section>` : ""}
-<section class="area-aud" aria-labelledby="t-aud" id="auditoria"><h2 id="t-aud">Auditoria</h2>
-<p class="sub">O que cada número é, de onde vem e o que ainda falta. Use o modo Auditoria (no topo) para ver os detalhes técnicos abertos.</p>
+<section class="area-aud" aria-labelledby="t-aud" id="verificacao"><h2 id="t-aud">Verificação</h2>
+<p class="sub">O que cada número é, de onde vem e o que ainda falta. Use o modo Verificação (no topo) para ver os detalhes técnicos abertos. <a href="/eleicoes-2026/questionamentos/">Questionamentos sobre a eleição →</a></p>
 <div class="audgrid"><div><h3>Origem dos números</h3><ul class="rules"><li><span class="prov of">Dado oficial (TSE)</span> número publicado pela Justiça Eleitoral, lido direto dos arquivos públicos do TSE.</li>
 <li><span class="prov calc">Métrica calculada pelo Eleições 2026</span> conta feita por esta página a partir de arquivos oficiais (ex.: % de uma seção a partir do boletim). Não é número do TSE.</li></ul></div>
 <div><h3>Estado de cada seção</h3><dl class="estados">${ESTADOS_HTML}</dl></div></div>
@@ -105,7 +109,43 @@ ${br ? `<section class="area-time" aria-labelledby="t-evo"><h2 id="t-evo">Linha 
 `;
 }
 
+function qShell(o) {
+  const url = SITE + o.path;
+  return `<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>${attr(o.title)}</title>
+<meta name="description" content="${attr(o.desc)}">
+<link rel="canonical" href="${url}">
+<meta property="og:site_name" content="Desmentindo"><meta property="og:locale" content="pt_BR"><meta property="og:type" content="article">
+<meta property="og:title" content="${attr(o.title)}"><meta property="og:description" content="${attr(o.desc)}"><meta property="og:url" content="${url}">
+<meta property="og:image" content="${SITE}/img/og/eleicoes-2026.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${attr(o.title)}"><meta name="twitter:description" content="${attr(o.desc)}">
+<meta name="theme-color" content="#1D1B1A">
+<link rel="icon" href="data:,">
+<link rel="preload" href="/v5/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/v5/css/fonts.css">
+<link rel="stylesheet" href="/eleicoes-2026/eleicoes.css">
+${umami}
+</head>
+<body class="qpage">
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+<header class="top"><div class="wrap topbar"><a class="brand" href="/" aria-label="Desmentindo — início"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span><b>DESMENTINDO</b></a>
+<nav class="crumbs" aria-label="Você está em"><a href="/eleicoes-2026/">Eleições 2026</a><span aria-hidden="true">›</span><a href="/eleicoes-2026/questionamentos/">Questionamentos</a></nav></div></header>
+<main class="wrap qwrap" id="conteudo">
+${o.main}
+</main>
+<footer><div class="wrap">Fontes primárias: Tribunal Superior Eleitoral (resultados.tse.jus.br; Portal de Dados Abertos). Análise: Eleições 2026 · Desmentindo. <a href="/#/privacidade">Privacidade</a> · <a href="/eleicoes-2026/">Eleições 2026</a></div></footer>
+${o.q && o.q.contador ? '<script src="/eleicoes-2026/questionamentos.js" defer></script>' : ""}
+</body>
+</html>
+`;
+}
+
 const files = { "eleicoes-2026/index.html": page(null, null) };
+Object.assign(files, qPages(QDATA, qShell));
 for (const [c, n] of UFS) files[`eleicoes-2026/${c}/index.html`] = page(c, n);
 files["eleicoes-2026/zz/index.html"] = page("zz", "Exterior");
 const check = process.argv.includes("--check");
