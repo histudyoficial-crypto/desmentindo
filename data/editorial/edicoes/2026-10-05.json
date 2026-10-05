@@ -1,0 +1,44 @@
+{
+ "schema": "desmentindo.public.editorial_edition.v1",
+ "edition": "2026-10-05",
+ "label": "AGORA",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova; fonte primária indicada quando obtida.",
+ "items": [
+  {
+   "id": "2026-10-05-rio-tse-registra-2-turno-entre-douglas-ruas-e-eduardo-paes-registro",
+   "date": "2026-10-05",
+   "label": "AGORA",
+   "title": "Rio: TSE registra 2º turno entre Douglas Ruas e Eduardo Paes; registro de Garotinho ainda será julgado",
+   "text": "O que era: em 3/10, o Desmentindo registrou que os votos em Anthony Garotinho (Republicanos) para governador seriam considerados nulos. A decisão citada falava em votos “anulados sub judice”, que não é o mesmo que anulação definitiva. O que mudou: em 4/10, o presidente do TSE, Kassio Nunes Marques, decidiu que esses votos entram no cálculo dos percentuais até um julgamento colegiado do tribunal. Na mesma noite, o TSE concluiu a totalização do Rio, com 100% das seções. O que vale agora: o resultado oficial do TSE é 2º turno entre Douglas Ruas (PL), com 4.271.199 votos (49,27%), e Eduardo Paes (PSD), com 3.706.984 votos (42,76%). O 2º turno está marcado para 25/10. Os 274.411 votos de Garotinho aparecem como “anulado sub judice” e entram na base do cálculo. O que ainda está pendente: o plenário do TSE ainda vai julgar o registro de Garotinho, sem data marcada. Se os votos dele forem anulados de forma definitiva, o TSE refaz a totalização, e isso pode mudar o resultado oficial. Fonte oficial: arquivo de resultados do TSE para governador do Rio, gerado em 4/10 às 22h23.",
+   "sources": [
+    {
+     "name": "TSE (documento oficial)",
+     "title": "Resultado oficial do 1º turno — governador do Rio de Janeiro (arquivo de resultados do TSE)",
+     "url": "https://resultados.tse.jus.br/oficial/ele2026/6259/dados/rj/rj-c0003-e006259-u.json"
+    },
+    {
+     "name": "TSE (documento oficial)",
+     "title": "Calendário eleitoral",
+     "url": "https://www.tse.jus.br/eleicoes/calendario-eleitoral"
+    },
+    {
+     "name": "O Globo",
+     "title": "Votos de Garotinho entram no cálculo da eleição do Rio até decisão final do TSE, diz Nunes Marques",
+     "url": "https://oglobo.globo.com/politica/eleicoes-2026/noticia/2026/10/05/votos-de-garotinho-entram-no-calculo-da-eleicao-do-rio-ate-decisao-final-do-tse-diz-nunes-marques.ghtml"
+    },
+    {
+     "name": "Metrópoles",
+     "title": "Rio: 2º turno entre Ruas e Paes depende de decisão do TSE sobre Garotinho",
+     "url": "https://www.metropoles.com/brasil/rio-2o-turno-entre-ruas-e-paes-depende-de-decisao-do-tse-sobre-garotinho"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "PARTIAL",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas; parte das afirmações tem documento oficial vinculado"
+   }
+  }
+ ]
+}
