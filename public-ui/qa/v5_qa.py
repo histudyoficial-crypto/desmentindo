@@ -148,7 +148,7 @@ with sync_playwright() as pw:
         check("V5_HOME_QA", f"{vp_name}:home: mensagem na primeira dobra", in_first(".hero .motto"))
         check("V5_HOME_QA", f"{vp_name}:home: busca na primeira dobra", in_first("#q-home"))
         ph = page.get_attribute("#q-home", "placeholder")
-        check("V5_HOME_QA", f"{vp_name}:home: placeholder da busca", ph == "Pesquise uma pessoa, assunto ou acontecimento", ph)
+        check("V5_HOME_QA", f"{vp_name}:home: placeholder da busca", ph == "Digite uma pessoa, assunto ou acontecimento", ph)
         cue = page.inner_text(".hero .cue")
         five = in_first(".hero .cue") and "minuto do vídeo" in cue and "fonte" in cue
         check("V5_HOME_QA", f"{vp_name}:home: teste dos 5 segundos (marca + explicação + busca + pista de 'o que já foi dito com fonte verificável' na 1ª dobra)", five, cue)

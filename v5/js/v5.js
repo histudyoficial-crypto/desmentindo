@@ -313,7 +313,7 @@
 
   function searchForm(q, id, big) {
     return '<form class="qform" role="search" data-search><label class="sr" for="' + id + '">Pesquisar</label>' +
-      '<input id="' + id + '" name="q" type="search" value="' + e(q || "") + '" placeholder="Pesquise uma pessoa, assunto ou acontecimento" autocomplete="off"' + (big ? "" : "") + ">" +
+      '<input id="' + id + '" name="q" type="search" value="' + e(q || "") + '" placeholder="Digite uma pessoa, assunto ou acontecimento" autocomplete="off"' + (big ? "" : "") + ">" +
       '<button type="submit">Pesquisar</button></form>';
   }
   document.addEventListener("submit", function (ev) {
@@ -363,7 +363,16 @@
   // Dia operacional = data em America/Sao_Paulo (UTC−3 fixo; sem horário de verão desde 2019), nunca o fuso do aparelho.
   // AGORA de outro dia sai da Home (continua acessível em #/agora/<id> e no arquivo); nada é apagado, renomeado ou redatado.
   // FECHAMENTO não expira: o último publicado fica até o próximo. Arquivo, Já falaram e Pesquisa não têm expiração.
-  function opDay(ms) { return new Date((ms == null ? Date.now() : ms) - 3 * 3600e3).toISOString().slice(0, 10); }
+  // Fuso do Desmentindo = America/Sao_Paulo pelo Intl (nunca UTC−3 fixo, nunca o fuso do aparelho).
+  var TZ = "America/Sao_Paulo", ZF = null;
+  function zparts(ms) {
+    if (!ZF) try { ZF = new Intl.DateTimeFormat("en-CA", { timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }); } catch (x) { ZF = 0; }
+    if (!ZF) { var t = new Date(ms - 3 * 3600e3); return { y: t.getUTCFullYear(), m: t.getUTCMonth() + 1, d: t.getUTCDate(), hh: t.getUTCHours(), mm: t.getUTCMinutes() }; }
+    var o = {}; ZF.formatToParts(new Date(ms)).forEach(function (p) { o[p.type] = p.value; });
+    return { y: +o.year, m: +o.month, d: +o.day, hh: +o.hour % 24, mm: +o.minute };
+  }
+  function pad2(n) { return String(n).padStart(2, "0"); }
+  function opDay(ms) { var z = zparts(ms == null ? Date.now() : ms); return z.y + "-" + pad2(z.m) + "-" + pad2(z.d); }
   function agoraIsCurrent(EDN) { return !!(EDN && EDN.edition && EDN.edition === opDay()); }
   // Datas em caixa alta do design (A1/A4): "DOM · 4 OUT", "DOMINGO · 4 OUT 2026", "SÁB 3 OUT", "4 out".
   var WD3 = ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"], WDL = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"];
@@ -372,17 +381,56 @@
   function dLong(d) { var p = dParts(d); return WDL[p.wd] + " · " + p.day + " " + MES[p.mon] + " " + p.y; }
   function dMid(d) { var p = dParts(d); return WD3[p.wd] + " " + p.day + " " + MES[p.mon]; }
   function dDay(d) { var p = dParts(d); return p.day + " " + MES[p.mon]; }
+  // TEMPO COMO INTERFACE (Design Final P0): carimbo .tc — tc-now · tc-cut · tc-upd · tc-date · tc-ago · tc-ts.
+  // Data "5 OUT", hora "HH:MM" (America/Sao_Paulo). Distância por DATAS CIVIS (não ms/24h). Campo ausente → sem carimbo.
+  function isDay(d) { return /^\d{4}-\d{2}-\d{2}$/.test(d || "") && !isNaN(Date.parse(d + "T12:00:00Z")); }
+  function tcDate(d) { if (!isDay(d)) return ""; var p = dParts(d); return p.day + " " + MES[p.mon].toUpperCase(); }
+  function tcTime(iso) { return fhm(iso); }
+  function civilDays(a, b) { return isDay(a) && isDay(b) ? Math.round((Date.UTC(+b.slice(0, 4), +b.slice(5, 7) - 1, +b.slice(8, 10)) - Date.UTC(+a.slice(0, 4), +a.slice(5, 7) - 1, +a.slice(8, 10))) / 864e5) : NaN; }
+  function agoLabel(from, ref) {
+    var n = civilDays(from, ref);
+    if (isNaN(n) || n < 0) return "";
+    if (n === 0) return "HOJE";
+    if (n === 1) return "ONTEM";
+    if (n < 60) return n + " DIAS ANTES";
+    var fy = +from.slice(0, 4), fm = +from.slice(5, 7), fd = +from.slice(8, 10), ty = +ref.slice(0, 4), tm = +ref.slice(5, 7), td = +ref.slice(8, 10);
+    var mo = (ty * 12 + tm) - (fy * 12 + fm) - (td < fd ? 1 : 0);
+    if (n < 730) return mo <= 1 ? "1 MÊS ANTES" : mo + " MESES ANTES";
+    var yr = Math.floor(mo / 12);
+    return yr <= 1 ? "1 ANO ANTES" : yr + " ANOS ANTES";
+  }
+  function tc(kind, txt, dt) { return txt ? (dt ? '<time class="tc tc-' + kind + '" datetime="' + e(dt) + '">' : '<span class="tc tc-' + kind + '">') + e(txt) + (dt ? "</time>" : "</span>") : ""; }
   function initials(n) { return String(n || "").split(/\s+/).filter(Boolean).map(function (w) { return w[0]; }).join("").slice(0, 3).toUpperCase(); }
-  // Direção 1 · A1/A4. Ordem: faixa AGORA (só AGORA do dia e sem FECHAMENTO do dia) → FECHAMENTO (bloco escuro, maior
-  // peso) → Matérias + Já falaram sobre isso (com a busca). A lista completa do AGORA fica em #/agora.
-  function agoraStrip(A, shown) {
-    var n = A.items.length, rest = A.items.filter(function (it) { return !shown || shown.indexOf(it.id) < 0; });
-    return '<section class="ah' + (rest.length ? "" : " ah-only") + '" aria-label="Agora, hoje"><div class="ah-in">' +
-      '<p class="ah-k"><span class="ah-kk"><i class="ah-dot" aria-hidden="true"></i>Agora · <span class="ah-today">hoje</span><span class="ah-dd">' + e(dDay(A.edition)) + '</span></span>' +
-      '<span class="ah-d">' + e(dDay(A.edition)) + " · " + plural(n, "notícia", "notícias") + "</span></p>" +
-      (rest.length ? '<ul class="ah-list">' + rest.slice(0, 3).map(function (it) { return '<li><a href="#/agora/' + e(it.id) + '">' + e(it.title) + "</a></li>"; }).join("") + "</ul>" : "") +
-      '<p class="ah-go"><a href="#/agora">' + (n > 1 ? "Ver as " + nf(n) + " de hoje" : "Ver a de hoje") + ' <span aria-hidden="true">→</span></a></p>' +
-      '<p class="ah-note">O fechamento de hoje sai à noite.</p></div></section>';
+  // Design Final P0 — arquitetura da Home (Plano Diretor §32): AGORA → NEWS DO DIA → O QUE IMPORTA HOJE → FECHAMENTO →
+  // MATÉRIAS → JÁ FALARAM SOBRE ISSO → PESQUISE A MEMÓRIA. FECHAMENTO = produto diário principal; o resto o acompanha.
+  // AGORA: o que mudou por último (compacto, não domina). A "última" segue a ordem do dia (EVENING > AFTERNOON > MORNING);
+  // empate → a que aparece depois na edição aprovada. Nenhuma decisão editorial nova: só ordem e slot já aprovados.
+  var SLOT_RANK = { MORNING: 1, AFTERNOON: 2, EVENING: 3 };
+  function latestItem(items) {
+    var best = null, bi = -1;
+    items.forEach(function (it, i) { var r = SLOT_RANK[it.slot] || 1; if (!best || r >= (SLOT_RANK[best.slot] || 1)) { best = it; bi = i; } });
+    return best;
+  }
+  function agoraBar(A) {
+    var n = A.items.length, last = latestItem(A.items);
+    return '<section class="ah" aria-label="Agora, hoje"><div class="ah-in">' +
+      '<p class="ah-k"><span class="ah-kk"><i class="ah-dot" aria-hidden="true"></i>Agora · hoje</span><span class="ah-n">' + plural(n, "notícia", "notícias") + "</span></p>" +
+      (last ? '<p class="ah-t"><a href="#/agora/' + e(last.id) + '">' + e(last.title) + "</a></p>" : "") +
+      '<p class="ah-go"><a href="#/agora">' + (n > 1 ? "Ver as " + nf(n) + " de hoje" : "Ver a de hoje") + ' <span aria-hidden="true">→</span></a>' +
+      '<span class="ah-note">O fechamento de hoje sai à noite.</span></p></div></section>';
+  }
+  // NEWS DO DIA: radar/pulso das notícias aprovadas do dia, na ordem editorial; faixa amarela, compacta, sem animação.
+  // Deduplicação visual (sem mudar conteúdo): fica de fora o que já está no AGORA e no destaque do Morning; se nada sobrar,
+  // a faixa lista os itens do Morning (cada manchete aparece no máximo 2 vezes na Home, nunca 3).
+  function newsDay(A, agoraId, heroId) {
+    var rest = A.items.filter(function (it) { return it.id !== agoraId && it.id !== heroId; });
+    if (!rest.length) rest = A.items.filter(function (it) { return it.id !== agoraId; });
+    if (!rest.length) rest = A.items.slice();
+    if (!rest.length) return "";
+    return '<section class="nd" aria-labelledby="nd-h"><div class="nd-in"><h2 class="nd-k" id="nd-h">News do dia ' + tc("date", tcDate(A.edition), A.edition) + "</h2>" +
+      '<ol class="nd-list">' + rest.slice(0, 6).map(function (it) {
+        return '<li><a href="#/agora/' + e(it.id) + '">' + (it.category ? '<span class="nd-cat">' + e(it.category) + "</span>" : "") + '<span class="nd-t">' + e(it.title) + "</span></a></li>";
+      }).join("") + "</ol>" + (rest.length > 6 ? '<p class="nd-more"><a href="#/agora">Mais ' + nf(rest.length - 6) + ' <span aria-hidden="true">→</span></a></p>' : "") + "</div></section>";
   }
   // MORNING · O que importa hoje (05/10): abertura editorial do dia, entre a faixa AGORA e o FECHAMENTO, mais leve que ele.
   // Fonte: a edição AGORA do dia (seleção aprovada da manhã), na ordem aprovada: 1º item = destaque, até 3 secundárias.
@@ -393,19 +441,42 @@
     if (im) return '<figure class="mh-fig' + (it.variant === "EDITORIAL_ART" ? " mh-ed" : " mh-doc") + '"><img src="' + e(im.src) + '" alt="' + e(im.alt) + '" width="' + (+im.width) + '" height="' + (+im.height) + '"' +
       (hero ? ' fetchpriority="high" decoding="async"' : ' loading="lazy" decoding="async"') + ">" +
       (hero && im.credit ? '<figcaption class="mh-cr">' + e(im.credit) + "</figcaption>" : "") + "</figure>";
+    // EDITORIAL_ART = pôster tipográfico: data explícita em title/dek (DD/MM) ou a DATA DA EDIÇÃO + categoria aprovada.
+    var dd = mhDate(it);
     return '<div class="mh-art' + (hero ? "" : " mh-art-s") + '" aria-hidden="true"><i class="mh-a1"></i><i class="mh-a2"></i><i class="mh-a3"></i>' +
+      (dd ? '<span class="mh-ad"><b>' + e(dd[0]) + "</b>" + e(dd[1]) + "</span>" : "") +
+      (it.category ? '<span class="mh-ac">' + e(it.category) + "</span>" : "") +
       (hero ? '<span class="mh-aw">Desmentindo</span>' : "") + "</div>";
+  }
+  // DD/MM só de title ou dek aprovados (nunca do corpo, nunca inferido); senão a data da edição do item.
+  function ddmm(txt) {
+    var re = /(^|[^\d\/])(\d{1,2})\/(\d{1,2})(?![\d\/])/g, m;
+    while ((m = re.exec(txt || ""))) { var d = +m[2], mo = +m[3]; if (d >= 1 && d <= 31 && mo >= 1 && mo <= 12) return [String(d), MES[mo - 1].toUpperCase()]; }
+    return null;
+  }
+  function mhDate(it) {
+    var x = ddmm(it.title) || ddmm(it.dek);
+    if (x) return x;
+    if (!isDay(it.date)) return null;
+    var p = dParts(it.date); return [String(p.day), MES[p.mon].toUpperCase()];
+  }
+  // Fonte do Morning: só nomes que estão nas fontes aprovadas do item; normalização estrutural ("TSE (documento oficial)" → "TSE").
+  function mhSources(it) {
+    var seen = {}, out = [];
+    (it.sources || []).forEach(function (x) { var n = String((x && x.name) || "").replace(/\s*\([^)]*\)\s*$/, "").trim(); if (n && !seen[n]) { seen[n] = 1; out.push(n); } });
+    return out;
   }
   function mhCat(it) { return it.category ? '<span class="mh-cat' + (it.tone ? " t-" + it.tone : "") + '">' + e(it.category) + "</span>" : ""; }
   function morningBlock(edition, items) {
     if (!items.length) return "";
     var p = dParts(edition), hero = items[0], sec = items.slice(1, 4), u = function (it) { return "#/agora/" + e(it.id); };
-    var h = '<section class="mh" id="morning" aria-labelledby="mh-t"><div class="mh-head"><div><p class="mh-k"><i aria-hidden="true"></i>Morning · ' + p.day + " de " + MESL[p.mon] + "</p>" +
+    var h = '<section class="mh" id="morning" aria-labelledby="mh-t"><div class="mh-head"><div><p class="mh-k"><i aria-hidden="true"></i>Morning ' + tc("date", tcDate(edition), edition) + "</p>" +
       '<h2 class="mh-t" id="mh-t">O que importa hoje</h2><p class="mh-sub">As principais notícias do começo do dia, com contexto, fontes e o que ainda está em aberto.</p></div>' +
       (items.length > 4 ? '<a class="mh-all" href="#/agora">Ver todas as notícias do Morning <span aria-hidden="true">→</span></a>' : "") + "</div>";
     h += '<div class="mh-grid' + (sec.length ? "" : " mh-solo") + '"><article class="mh-hero"><a class="mh-vl" href="' + u(hero) + '" tabindex="-1" aria-hidden="true">' + mhVisual(hero, true) + "</a>" +
       '<div class="mh-hx">' + mhCat(hero) + '<h3 class="mh-ht"><a href="' + u(hero) + '">' + e(hero.title) + "</a></h3>" +
       (hero.dek ? '<p class="mh-dek">' + e(hero.dek) + "</p>" : "") +
+      (mhSources(hero).length ? '<p class="mh-src">Fontes: ' + e(mhSources(hero).slice(0, 3).join(" · ")) + "</p>" : "") +
       '<p class="mh-go"><a class="mh-read" href="' + u(hero) + '">Ler agora <span aria-hidden="true">→</span></a></p></div></article>';
     if (sec.length) h += '<ul class="mh-sec" aria-label="Outras notícias da manhã">' + sec.map(function (it) {
       return '<li><a href="' + u(it) + '">' + mhVisual(it, false) + '<span class="mh-sx">' + mhCat(it) + '<b class="mh-st">' + e(it.title) + "</b>" +
@@ -415,9 +486,10 @@
   }
   function fxHome(F) {
     var fu = "#/fechamento/" + F.edition_date, pts = (F.opening && F.opening.points) || [], cut = F.cutoff_at ? fhm(F.cutoff_at) : "";
-    var main = '<div class="fxh-main"><p class="fxh-k"><span class="fxh-tag">Fechamento</span><span>' + e(dMid(F.edition_date)) + (cut ? " · verificado até " + e(cut) : "") + "</span></p>" +
+    var main = '<div class="fxh-main"><p class="fxh-k"><span class="fxh-tag">Fechamento</span>' + tc("date", WD3[dParts(F.edition_date).wd].toUpperCase() + " " + tcDate(F.edition_date), F.edition_date) +
+      (cut ? tc("cut", "Verificado até " + cut, F.cutoff_at) : "") + "</p>" +
       '<h2 class="fxh-t" id="fx-home-t"><a href="' + e(fu) + '">' + e(F.public_title) + "</a></h2>" +
-      (F.opening && F.opening.title && pts.length ? '<p class="fxh-ot">' + e(F.opening.title) + "</p>" : "") +
+      (pts.length ? '<p class="fxh-ot">' + (em1(pts) ? "Em 1 minuto" : e((F.opening && F.opening.title) || "")) + "</p>" : "") +
       (pts.length ? '<ol class="fxh-pts">' + pts.map(function (p, i) {
         return '<li><b aria-hidden="true">' + (i + 1) + '</b><a href="' + e(fu + "#" + p.story) + '">' + e(p.text) + "</a></li>";
       }).join("") + "</ol>" : "") +
@@ -437,47 +509,83 @@
         '<span class="hm-mx"><span class="hm-mk">' + e(x.kicker || "Matéria") + " · " + e(dDay(x.date)) + '</span><b class="hm-mt">' + e(x.title) + "</b></span></a></li>";
     }).join("") + "</ul></section>";
   }
-  // Miniatura oficial do vídeo SÓ quando o build marcou o item com thumb === true, o que exige revisão SAFE para este vídeo
-  // neste contexto (data/corpus/thumb_review.json). Miniatura ≠ evidência do trecho: sem revisão → pôster editorial.
+  // Miniatura oficial do vídeo SÓ com revisão SAFE para ESTE vídeo NESTE contexto, lida da autoridade
+  // data/corpus/thumb_review.json (chave video_id@slug). home.json NÃO autoriza nada. UNSAFE, sem revisão ou chave
+  // diferente → pôster editorial. Miniatura ≠ evidência do trecho.
   var YT_ID = /^[\w-]{11}$/;
-  function thumbSrc(o) {
-    return o && o.thumb === true && YT_ID.test(o.video_id || "") ? "https://i.ytimg.com/vi/" + o.video_id + "/mqdefault.jpg" : "";
+  function thumbSrc(o, slug, R) {
+    var r = R && R.reviews && o && slug ? R.reviews[o.video_id + "@" + slug] : null;
+    return r && r.verdict === "SAFE" && YT_ID.test(o.video_id || "") ? "https://i.ytimg.com/vi/" + o.video_id + "/mqdefault.jpg" : "";
+  }
+  var thumbReview = null;
+  function loadThumbReview() {
+    if (!thumbReview) thumbReview = fetch("/data/corpus/thumb_review.json" + (DV ? "?v=" + DV : "")).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+    return thumbReview;
   }
   // Trecho compacto: imagem real (revisada) ou pôster editorial + FONTE · DATA + ▶ MINUTO; abaixo, fonte e trecho do corpus.
   // Toque → player oficial no próprio card, no minuto (a imagem nunca é link externo direto).
-  function miniSaid(o, story) {
-    var th = thumbSrc(o);
+  function miniSaid(o, story, R, ref) {
+    var th = thumbSrc(o, story && story.slug, R), ago = ref ? agoLabel(o.date, ref) : "";
     return '<li class="said said-c" data-src="' + e(o.source_name || "") + '" data-video="' + e(o.video_id) + '" data-t="' + o.t_seconds + '" data-date="' + e(o.date) + '">' +
       '<a class="vmini ' + (th ? "has-img" : "vm-ed") + '" data-play href="' + e(o.deep_link) + '" target="_blank" rel="noopener" aria-label="Ver trecho aqui, ' + e(o.source_name) + ", " + e(fdate(o.date)) + ", a partir de " + e(o.t_label) + '">' +
       (th ? '<img class="vm-img" src="' + e(th) + '" alt="Miniatura do vídeo de ' + e(o.source_name) + ", " + e(fdate(o.date)) + '" width="320" height="180" loading="lazy" decoding="async">'
           : '<i class="vm-a1" aria-hidden="true"></i><i class="vm-a2" aria-hidden="true"></i>') +
-      '<span class="vm-src">' + e(initials(o.source_name)) + " · " + e(dDay(o.date)) + '</span><b class="vm-min">▶ ' + e(o.t_label) + "</b></a>" +
-      '<div class="said-ct"><p class="said-who">' + e(o.source_name) + '</p><p class="said-x">' +
+      '<span class="vm-src">' + e(initials(o.source_name)) + " · " + e(tcDate(o.date)) + '</span><b class="vm-min">▶ ' + e(o.t_label) + "</b></a>" +
+      '<div class="said-ct">' + (ago ? tc("ago", ago) : "") + '<p class="said-who">' + e(o.source_name) + '</p><p class="said-x">' +
       (story ? '<a href="#/historia/' + e(story.slug) + '">' + e(story.title) + "</a>: " : "") + e(o.excerpt) + "</p></div>" +
       '<span class="said-when" hidden>' + e(fdate(o.date)) + " · " + e(o.t_label) + '</span><a class="said-yt" hidden href="' + e(o.deep_link) + '" target="_blank" rel="noopener">Assistir no YouTube</a>' +
       '<div class="said-foot"></div></li>';
   }
-  function saidBlock(H) {
-    var items = (H.said || []).slice(0, 3);
+  // RELEVANCE > SOURCE DIVERSITY: a ordem vem do dado (já por relevância/data); entre itens empatados na mesma data,
+  // prefere-se alternar fontes. Nunca entra item só para completar trio.
+  function diversify(list) {
+    return list.map(function (s, i) { return { s: s, i: i }; }).sort(function (a, b) {
+      if (a.s.item.date !== b.s.item.date) return a.i - b.i;
+      var seenA = list.slice(0, a.i).some(function (x) { return x.item.source_name === a.s.item.source_name && x.item.date === a.s.item.date; });
+      var seenB = list.slice(0, b.i).some(function (x) { return x.item.source_name === b.s.item.source_name && x.item.date === b.s.item.date; });
+      return (seenA ? 1 : 0) - (seenB ? 1 : 0) || a.i - b.i;
+    }).map(function (x) { return x.s; });
+  }
+  function saidBlock(H, R, ref) {
+    var items = diversify((H.said || []).filter(function (s) { return s && s.item && YT_ID.test(s.item.video_id || ""); })).slice(0, 3);
     return '<section class="hm-said" aria-labelledby="hm-said-h"><h2 class="hm-h" id="hm-said-h">Já falaram sobre isso</h2>' +
-      '<p class="hm-sub">O que já foi dito sobre os casos, com data e minuto do vídeo.</p>' +
-      (items.length ? '<ul class="said-mini" id="ja-falaram">' + items.map(function (s) { return miniSaid(s.item, s); }).join("") + "</ul>" : "") +
-      searchForm("", "q-home") + "</section>";
+      '<p class="hm-sub">Memória em vídeo: o que já foi dito sobre os casos, com data e minuto.</p>' +
+      (items.length ? '<ul class="said-mini" id="ja-falaram">' + items.map(function (s) { return miniSaid(s.item, s, R, ref); }).join("") + "</ul>"
+                    : '<p class="hm-none">Ainda não há trechos ligados aos casos de hoje. A memória continua disponível na busca.</p>') + "</section>";
+  }
+  // PESQUISE A MEMÓRIA: fecha a narrativa da Home. Cobertura lida do dado (archives); indisponível ≠ zero; parcial ≠ falha.
+  function covLine(a) {
+    if (!a || !a.name) return "";
+    var n = a.videos_indexed, t = a.videos_total, txt;
+    if (!a.available) txt = "pesquisa indisponível";
+    else if (typeof n === "number" && typeof t === "number" && t > 0) txt = n >= t ? nf(n) + " vídeos · pesquisa disponível" : nf(n) + " de " + nf(t) + " vídeos · cobertura parcial";
+    else if (typeof n === "number") txt = nf(n) + " vídeos · total desconhecido";
+    else txt = "cobertura desconhecida";
+    return '<li><b>' + e(a.name) + "</b><span>" + txt + "</span></li>";
+  }
+  function memorySearch(H) {
+    var arch = (H && H.archives) || [];
+    return '<section class="mem" id="pesquise" aria-labelledby="mem-h"><h2 class="mem-h" id="mem-h">Pesquise a memória</h2>' +
+      '<p class="mem-sub">O Desmentindo lembra. Digite uma pessoa, assunto ou acontecimento.</p>' + searchForm("", "q-home") +
+      (arch.length ? '<ul class="mem-cov" aria-label="O que está na memória">' + arch.map(covLine).join("") + "</ul>" : "") + "</section>";
   }
   P.home = function () {
     var ED = loadEdition();
-    return Promise.all([load("home.json"), ED, loadIdx("materias"), loadTyped("fechamentos")]).then(function (res) {
-      var H = res[0], EDN = res[1], MI = res[2], LF = res[3];
+    return Promise.all([load("home.json"), ED, loadIdx("materias"), loadTyped("fechamentos"), loadThumbReview()]).then(function (res) {
+      var H = res[0], EDN = res[1], MI = res[2], LF = res[3], TR = res[4];
       var A = agoraIsCurrent(EDN) && edItems(EDN).length ? { edition: EDN.edition, items: edItems(EDN) } : null;
       var od = opDay(), fxToday = !!(LF && LF.edition_date === od);
       var mats = (MI && MI.items || []).slice(0, 3);
       return Promise.all(mats.map(function (x) { return loadTyped("materias", x.slug); })).then(function (MD) {
         var h = '<div class="hm-sig" role="note"><span>Notícias passam. O que foi dito fica.</span><time datetime="' + od + '">' + e(dLong(od)) + "</time></div>";
-        var M = A ? morningItems(A.items) : [];
-        if (A && !fxToday) h += agoraStrip(A, M.slice(0, 4).map(function (it) { return it.id; }));   // estado B (FECHAMENTO do dia publicado): a faixa some
+        var M = A ? morningItems(A.items) : [], last = A ? latestItem(A.items) : null;
+        if (A && !fxToday) h += agoraBar(A);   // estado B (FECHAMENTO do dia publicado): o AGORA sai; o radar do dia fica
+        if (A) h += newsDay(A, !fxToday && last ? last.id : "", M.length ? M[0].id : "");
         if (A) h += morningBlock(A.edition, M);
         if (LF && LF.edition_date) h += fxHome(LF);
-        h += '<div class="hm-grid">' + matBlock(mats, MD) + saidBlock(H) + "</div>";
+        // referência temporal da memória: edição corrente quando houver; senão o último FECHAMENTO
+        var ref = A ? A.edition : (LF && LF.edition_date) || "";
+        h += '<div class="hm-grid">' + matBlock(mats, MD) + saidBlock(H, TR, ref) + "</div>" + memorySearch(H);
         return h + '<p class="hm-motto">Notícias passam. O que foi dito fica.</p>';
       });
     });
@@ -649,7 +757,7 @@
   P.busca = function () {
     var q = qparam("q");
     document.title = (q ? q + " · " : "") + "Pesquisa · Desmentindo";
-    var head = '<section class="page-head"><h1 class="kicker">Pesquise o arquivo</h1>' + searchForm(q, "q-busca") + "</section>";
+    var head = '<section class="page-head"><h1 class="kicker">Pesquise a memória</h1><p class="mem-sub">O Desmentindo lembra. Digite uma pessoa, assunto ou acontecimento.</p>' + searchForm(q, "q-busca") + "</section>";
     if (!q) return load("home.json").then(function (H) {
       return head + '<section class="sec"><p style="margin:0">Pesquise uma pessoa, empresa, órgão, assunto ou acontecimento. Mostramos as histórias, o que já foi dito nos vídeos (com data e minuto) e os documentos.</p>' + archList(H.archives) + "</section>";
     });
@@ -872,7 +980,8 @@
     }).catch(function () { return null; });
   }
   // horário de Brasília (UTC−3, sem horário de verão) a partir de ISO com fuso
-  function brt(iso) { var t = Date.parse(iso); return isNaN(t) ? null : new Date(t - 3 * 3600e3); }
+  // Relógio de parede em America/Sao_Paulo como Date "UTC" (getUTC* = hora local de SP), via zparts (Intl).
+  function brt(iso) { var t = Date.parse(iso); if (isNaN(t)) return null; var z = zparts(t); return new Date(Date.UTC(z.y, z.m - 1, z.d, z.hh, z.mm)); }
   function fhm(iso) { var d = brt(iso); return d ? String(d.getUTCHours()).padStart(2, "0") + ":" + String(d.getUTCMinutes()).padStart(2, "0") : ""; }
   function fts(iso) {
     if (!iso) return "";
@@ -908,6 +1017,18 @@
     return '<p class="fx-fix"><b>Correção — ' + e(c.date.split("-").reverse().join("/")) + ":</b> " + e(c.text) +
       (src.length ? " Fonte: " + src.map(function (x) { return '<a href="' + e(x.url) + '" target="_blank" rel="noopener">' + e(x.name) + "</a>"; }).join(" · ") + "." : "") + "</p>";
   }
+  // VEJA POR VOCÊ MESMO (Design Final P0): evidência logo depois de "O que dá para concluir". official[] é REGISTRO
+  // TEXTUAL (nunca vira link nem "documento aberto"); só coverage[].url https é clicável. Sem evidência → nada.
+  function evBlock(s) {
+    var off = (s.official || []).filter(function (o) { return typeof o === "string" && o.trim(); });
+    var seen = {}, cov = byTime(s.coverage || []).filter(function (c) { if (!c || !/^https:\/\//.test(c.url || "") || !c.outlet || seen[c.outlet]) return false; seen[c.outlet] = 1; return true; });
+    if (!off.length && !cov.length) return "";
+    return '<div class="fx-ev"><p class="fx-evk">Veja por você mesmo</p>' +
+      (off.length ? '<div class="fx-evg"><p class="fx-evl">Registro oficial</p><ul class="fx-evo">' + off.map(function (o) { return '<li><span aria-hidden="true">▤</span> ' + e(o) + "</li>"; }).join("") + "</ul></div>" : "") +
+      (cov.length ? '<div class="fx-evg"><p class="fx-evl">Cobertura</p><ul class="fx-evc">' + cov.map(function (c) {
+        return '<li><a href="' + e(c.url) + '" target="_blank" rel="noopener"><span aria-hidden="true">↗</span> ' + e(c.outlet) + '<span class="sr"> (abre em nova aba)</span></a></li>';
+      }).join("") + "</ul></div>" : "") + "</div>";
+  }
   function em1(pts) { var n = 0; pts.forEach(function (p) { n += String(p.text || "").length; }); return pts.length >= 1 && pts.length <= 5 && n <= 600; }
   var BASIS_TXT = { "manchete": "só a manchete", "manchete e resumo": "manchete e resumo", "texto da matéria": "texto da matéria" };
 
@@ -942,14 +1063,13 @@
             '<button type="button" class="fxs-tog" aria-expanded="' + open + '" aria-controls="' + bid + '"><span class="fxs-k"><span>' + (i + 1) + (s.lead ? " · Principal" : "") +
             '</span><span class="fxs-sign" aria-hidden="true">' + (open ? "−" : "+") + '</span></span><span class="fxs-h">' + e(s.headline) + "</span></button>" +
             '<div class="fxs-c"><p class="fxs-ck">O que dá para concluir' + (cut ? " até " + e(cut) : "") + "</p><p>" + e(s.conclusion) + "</p>" +
-            (s.open_questions ? '<p class="fx-open-q"><b>Em aberto:</b> ' + e(s.open_questions) + "</p>" : "") + fxCorrection(s.correction) + "</div>" +
+            (s.open_questions ? '<p class="fx-open-q"><b>Em aberto:</b> ' + e(s.open_questions) + "</p>" : "") + fxCorrection(s.correction) + evBlock(s) + "</div>" +
             '<div class="fxs-body" id="' + bid + '"' + (open ? "" : " hidden") + ">" + (s.dek ? '<p class="fx-dek">' + e(s.dek) + "</p>" : "");
           if (s.steps && s.steps.length) x += '<div class="fxs-sec"><p class="fxs-sk">Onde está a decisão</p><ol class="fxs-steps" style="--n:' + s.steps.length + '">' + s.steps.map(function (st) {
             return '<li class="' + (st.done ? "done" : "open") + '"><i aria-hidden="true"></i><b>' + e(st.label) + "</b><span>" + e(st.text) + "</span></li>";
           }).join("") + '</ol><p class="fxs-leg">Verde = existe e tem fonte. Tracejado = ainda não existe.</p></div>';
           x += blk("O que aconteceu", "<p>" + e(s.what_happened) + "</p>");
           if (s.what_changed) x += blk("O que há de novo", '<p class="fx-new">' + e(s.what_changed) + "</p>");
-          if (s.official) x += blk("Manifestações oficiais", '<ul class="fx-plain">' + s.official.map(function (o) { return "<li>" + e(o) + "</li>"; }).join("") + "</ul>");
           if (s.coverage && s.coverage.length) x += '<div class="fxs-sec"><p class="fxs-sk">Coberturas encontradas até o corte</p><ol class="fxs-cov">' + byTime(s.coverage).map(function (c) {
             var t = brt(c.published_at || ""), when = t ? WD3[t.getUTCDay()] + " " + fhm(c.published_at) : "";
             return "<li><i aria-hidden=\"true\"></i>" + (when ? '<b class="num">' + e(when) + "</b> · " : "") + '<a href="' + e(c.url) + '" target="_blank" rel="noopener"><b>' + e(c.outlet) + "</b></a>" +
@@ -1023,6 +1143,12 @@
           (C.status && C.status !== M.status ? '<p class="fx-cst">' + statusTag(C.status) + "</p>" : "") +
           (C.limits && C.limits.length ? '<p class="fx-lims">' + C.limits.map(function (l) { return "<span>" + e(l) + "</span>"; }).join("") + "</p>" : "") + "</section>";
       }
+      // Design Final P0: evidência logo depois da conclusão (era o fim da página).
+      if (M.see_for_yourself && M.see_for_yourself.length) {
+        h += '<section class="sec"><h2 class="h2">Veja por você mesmo</h2><ul class="srcs">' + M.see_for_yourself.map(function (s) {
+          return '<li><span class="k">' + (s.kind === "video" ? "Vídeo" : s.kind === "document" ? "Documento" : "Reportagem") + "</span>" + ext(s.url, e(s.label), "link") + "</li>";
+        }).join("") + "</ul>" + SRC_RULE + "</section>";
+      }
       if ((M.videos && M.videos.length) || M.partial_videos) {
         h += '<section class="sec" id="ja-falaram"><h2 class="h2">' + e(M.videos_title || "Já falaram sobre isso") + "</h2>" +
           (M.videos_note ? '<p class="quiet">' + e(M.videos_note) + "</p>" : "") +
@@ -1054,11 +1180,7 @@
             (d.note ? "<p>" + e(d.note) + "</p>" : "") + (d.url ? ext(d.url, "Ver documento ↗", "link") : "") + "</li>";
         }).join("") + "</ul></section>";
       }
-      if (M.see_for_yourself && M.see_for_yourself.length) {
-        h += '<section class="sec"><h2 class="h2">Veja por você mesmo</h2><ul class="srcs">' + M.see_for_yourself.map(function (s) {
-          return '<li><span class="k">' + (s.kind === "video" ? "Vídeo" : s.kind === "document" ? "Documento" : "Reportagem") + "</span>" + ext(s.url, e(s.label), "link") + "</li>";
-        }).join("") + "</ul>" + SRC_RULE + "</section>";
-      }
+
       if (M.people && M.people.length) {
         h += '<section class="sec" id="pessoas"><h2 class="h2">' + e(M.people_title || "Pessoas nesta história") + "</h2>" + (M.people_note ? '<p class="quiet">' + e(M.people_note) + "</p>" : "") +
           '<ul class="fx-people">' + M.people.map(function (p) {
