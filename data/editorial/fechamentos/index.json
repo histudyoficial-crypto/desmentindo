@@ -1,7 +1,13 @@
 {
  "schema": "desmentindo.public.fechamento_index.v1",
- "latest": "2026-10-04",
+ "latest": "2026-10-05",
  "items": [
+  {
+   "date": "2026-10-05",
+   "title": "FECHAMENTO — 5 de outubro de 2026",
+   "file": "data/editorial/fechamentos/2026-10-05.json",
+   "sha256": "57b0a0f08d3c8bf8e62f197214f839e1a861b2f8e195082c9cfa10e1726b7731"
+  },
   {
    "date": "2026-10-04",
    "title": "FECHAMENTO — 4 de outubro de 2026",
