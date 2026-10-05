@@ -837,6 +837,14 @@
   }
   // EM1_RULE (determinística, testada em public-ui/test-direcao1.mjs): de 1 a 5 pontos e no máximo 600 caracteres
   // somados (~100 palavras, menos de 1 minuto a 200 palavras/min). Fora disso o rótulo não aparece.
+  // Correção pública de uma história já publicada (05/10): o texto original fica como saiu; a linha de correção é
+  // acrescentada junto da conclusão, no mesmo estilo "Correção:" da MATÉRIA (fx-fix). Sem campo, nada muda.
+  function fxCorrection(c) {
+    if (!c || !c.text || !/^\d{4}-\d{2}-\d{2}$/.test(c.date || "")) return "";
+    var src = (c.source || []).filter(function (x) { return x && /^https:\/\//.test(x.url || ""); });
+    return '<p class="fx-fix"><b>Correção — ' + e(c.date.split("-").reverse().join("/")) + ":</b> " + e(c.text) +
+      (src.length ? " Fonte: " + src.map(function (x) { return '<a href="' + e(x.url) + '" target="_blank" rel="noopener">' + e(x.name) + "</a>"; }).join(" · ") + "." : "") + "</p>";
+  }
   function em1(pts) { var n = 0; pts.forEach(function (p) { n += String(p.text || "").length; }); return pts.length >= 1 && pts.length <= 5 && n <= 600; }
   var BASIS_TXT = { "manchete": "só a manchete", "manchete e resumo": "manchete e resumo", "texto da matéria": "texto da matéria" };
 
@@ -871,7 +879,7 @@
             '<button type="button" class="fxs-tog" aria-expanded="' + open + '" aria-controls="' + bid + '"><span class="fxs-k"><span>' + (i + 1) + (s.lead ? " · Principal" : "") +
             '</span><span class="fxs-sign" aria-hidden="true">' + (open ? "−" : "+") + '</span></span><span class="fxs-h">' + e(s.headline) + "</span></button>" +
             '<div class="fxs-c"><p class="fxs-ck">O que dá para concluir' + (cut ? " até " + e(cut) : "") + "</p><p>" + e(s.conclusion) + "</p>" +
-            (s.open_questions ? '<p class="fx-open-q"><b>Em aberto:</b> ' + e(s.open_questions) + "</p>" : "") + "</div>" +
+            (s.open_questions ? '<p class="fx-open-q"><b>Em aberto:</b> ' + e(s.open_questions) + "</p>" : "") + fxCorrection(s.correction) + "</div>" +
             '<div class="fxs-body" id="' + bid + '"' + (open ? "" : " hidden") + ">" + (s.dek ? '<p class="fx-dek">' + e(s.dek) + "</p>" : "");
           if (s.steps && s.steps.length) x += '<div class="fxs-sec"><p class="fxs-sk">Onde está a decisão</p><ol class="fxs-steps" style="--n:' + s.steps.length + '">' + s.steps.map(function (st) {
             return '<li class="' + (st.done ? "done" : "open") + '"><i aria-hidden="true"></i><b>' + e(st.label) + "</b><span>" + e(st.text) + "</span></li>";
