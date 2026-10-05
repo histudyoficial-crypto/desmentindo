@@ -32,11 +32,6 @@
   // Web Share nativo quando o aparelho oferece; sempre "Copiar link". URL canônica da página compartilhável
   // (/fechamento/<data>/, /materia/<slug>/), que preserva título e prévia (OG). Sem SDK, sem conta, sem evento novo.
   var SITE = "https://desmentindo.com.br";
-  function shareBar(url, title) {
-    return '<p class="share" data-url="' + e(url) + '" data-title="' + e(title || "") + '"><span class="share-k">Mandar <span aria-hidden="true">↗</span></span>' +
-      (navigator.share ? '<button type="button" class="share-b" data-share="native">Compartilhar…</button>' : "") +
-      '<button type="button" class="share-b" data-share="copy">Copiar link</button><span class="share-ok" role="status" aria-live="polite"></span></p>';
-  }
   function copyText(t) {
     if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t);
     return new Promise(function (ok, no) {
@@ -194,14 +189,14 @@
     });
   }
   function closeOthers(li) {
-    var ul = li.closest("ul.said-list");
+    var ul = li.closest("ul.said-list, ul.said-mini");
     if (!ul) return;
     [].forEach.call(ul.querySelectorAll("li.said .vplayer"), function (w) {
       var o = w.closest("li.said");
       if (o === li) return;
       w.remove();
       if (o.classList.contains("said-open")) o.insertBefore(posterFor(o), o.querySelector(".said-foot"));
-      else { var g = o.querySelector("a.go[data-play]"); if (g) g.hidden = false; }
+      else { var g = o.querySelector("a.go[data-play], a.vmini[data-play]"); if (g) g.hidden = false; }
     });
   }
   function play(li, deepLink) {
@@ -212,11 +207,11 @@
     if (poster) poster.replaceWith(p); else li.insertBefore(p, li.querySelector(".said-foot"));
     var pk = pageKind();
     anEvent("VIDEO_PLAY", { type: pk ? pk.type : (location.hash.split("/")[1] || "home").split("?")[0] });
-    var go = li.querySelector("a.go[data-play]");
+    var go = li.querySelector("a.go[data-play], a.vmini[data-play]");
     if (go) go.hidden = true;
   }
   document.addEventListener("click", function (ev) {
-    var t = ev.target.closest && ev.target.closest("a.go[data-play], button.vposter");
+    var t = ev.target.closest && ev.target.closest("a.go[data-play], a.vmini[data-play], button.vposter");
     if (!t || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button) return;
     var li = t.closest("li.said[data-video]");
     if (!li) return;
@@ -348,90 +343,116 @@
   // FECHAMENTO não expira: o último publicado fica até o próximo. Arquivo, Já falaram e Pesquisa não têm expiração.
   function opDay(ms) { return new Date((ms == null ? Date.now() : ms) - 3 * 3600e3).toISOString().slice(0, 10); }
   function agoraIsCurrent(EDN) { return !!(EDN && EDN.edition && EDN.edition === opDay()); }
+  // Datas em caixa alta do design (A1/A4): "DOM · 4 OUT", "DOMINGO · 4 OUT 2026", "SÁB 3 OUT", "4 out".
+  var WD3 = ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"], WDL = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"];
+  function dParts(d) { var t = new Date(d + "T12:00:00Z"); return { wd: t.getUTCDay(), day: t.getUTCDate(), mon: t.getUTCMonth(), y: t.getUTCFullYear() }; }
+  function dShort(d) { var p = dParts(d); return WD3[p.wd] + " · " + p.day + " " + MES[p.mon]; }
+  function dLong(d) { var p = dParts(d); return WDL[p.wd] + " · " + p.day + " " + MES[p.mon] + " " + p.y; }
+  function dMid(d) { var p = dParts(d); return WD3[p.wd] + " " + p.day + " " + MES[p.mon]; }
+  function dDay(d) { var p = dParts(d); return p.day + " " + MES[p.mon]; }
+  function initials(n) { return String(n || "").split(/\s+/).filter(Boolean).map(function (w) { return w[0]; }).join("").slice(0, 3).toUpperCase(); }
+  // Direção 1 · A1/A4. Ordem: faixa AGORA (só AGORA do dia e sem FECHAMENTO do dia) → FECHAMENTO (bloco escuro, maior
+  // peso) → Matérias + Já falaram sobre isso (com a busca). A lista completa do AGORA fica em #/agora.
+  function agoraStrip(A) {
+    var n = A.items.length;
+    return '<section class="ah" aria-label="Agora, hoje"><div class="ah-in">' +
+      '<p class="ah-k"><span class="ah-kk"><i class="ah-dot" aria-hidden="true"></i>Agora · <span class="ah-today">hoje</span><span class="ah-dd">' + e(dDay(A.edition)) + '</span></span>' +
+      '<span class="ah-d">' + e(dDay(A.edition)) + " · " + plural(n, "notícia", "notícias") + "</span></p>" +
+      '<ul class="ah-list">' + A.items.slice(0, 3).map(function (it) { return '<li><a href="#/agora/' + e(it.id) + '">' + e(it.title) + "</a></li>"; }).join("") + "</ul>" +
+      '<p class="ah-go"><a href="#/agora">' + (n > 1 ? "Ver as " + nf(n) + " de hoje" : "Ver a de hoje") + ' <span aria-hidden="true">→</span></a></p>' +
+      '<p class="ah-note">O fechamento de hoje sai à noite.</p></div></section>';
+  }
+  function fxHome(F) {
+    var fu = "#/fechamento/" + F.edition_date, pts = (F.opening && F.opening.points) || [], cut = F.cutoff_at ? fhm(F.cutoff_at) : "";
+    var main = '<div class="fxh-main"><p class="fxh-k"><span class="fxh-tag">Fechamento</span><span>' + e(dMid(F.edition_date)) + (cut ? " · verificado até " + e(cut) : "") + "</span></p>" +
+      '<h2 class="fxh-t" id="fx-home-t"><a href="' + e(fu) + '">' + e(F.public_title) + "</a></h2>" +
+      (F.opening && F.opening.title && pts.length ? '<p class="fxh-ot">' + e(F.opening.title) + "</p>" : "") +
+      (pts.length ? '<ol class="fxh-pts">' + pts.map(function (p, i) {
+        return '<li><b aria-hidden="true">' + (i + 1) + '</b><a href="' + e(fu + "#" + p.story) + '">' + e(p.text) + "</a></li>";
+      }).join("") + "</ol>" : "") +
+      '<div class="fxh-go"><a class="fxh-read" href="' + e(fu) + '">Ler o fechamento <span aria-hidden="true">→</span></a>' +
+      mandar(SITE + "/fechamento/" + F.edition_date + "/", F.public_title, "Mandar o fechamento de " + dDay(F.edition_date), "mandar-ink") + "</div></div>";
+    var st = (F.main_stories || []).filter(function (s) { return s.conclusion; });
+    var side = st.length ? '<div class="fxh-side"><p class="fxh-sk">O que dá para concluir' + (cut ? " até " + e(cut) : "") + "</p>" + st.map(function (s, i) {
+      return '<div class="fxh-c"><p class="fxh-cn">' + (i + 1) + '</p><p>' + e(s.conclusion) + "</p></div>";
+    }).join("") + "</div>" : "";
+    return '<section class="fxh" id="fechamento" aria-labelledby="fx-home-t">' + main + side + "</section>";
+  }
+  function matBlock(mats, MD) {
+    if (!mats.length) return "";
+    return '<section class="hm-mat" id="materias" aria-labelledby="hm-mat-h"><h2 class="hm-h" id="hm-mat-h">Matérias</h2><ul class="hm-ml">' + mats.map(function (x, i) {
+      var M = MD[i] || {}, art = M.art && M.art.mobile;
+      return "<li" + (art ? ' class="has-art"' : "") + '><a href="#/materia/' + e(x.slug) + '">' + (art ? '<img src="' + e(art) + '" alt="" loading="lazy" decoding="async">' : "") +
+        '<span class="hm-mx"><span class="hm-mk">' + e(x.kicker || "Matéria") + " · " + e(dDay(x.date)) + '</span><b class="hm-mt">' + e(x.title) + "</b></span></a></li>";
+    }).join("") + "</ul></section>";
+  }
+  // Trecho compacto (A1: pôster 92px + fonte · data + texto; A4: só o pôster). Toque → player oficial no próprio card.
+  function miniSaid(o, story) {
+    return '<li class="said said-c" data-src="' + e(o.source_name || "") + '" data-video="' + e(o.video_id) + '" data-t="' + o.t_seconds + '" data-date="' + e(o.date) + '">' +
+      '<a class="vmini" data-play href="' + e(o.deep_link) + '" target="_blank" rel="noopener" aria-label="Ver trecho aqui, ' + e(o.source_name) + ", " + e(fdate(o.date)) + ", a partir de " + e(o.t_label) + '">' +
+      '<span class="vm-src">' + e(initials(o.source_name)) + " · " + e(dDay(o.date)) + '</span><b class="vm-min">▶ ' + e(o.t_label) + "</b></a>" +
+      '<div class="said-ct"><p class="said-who">' + e(o.source_name) + " · " + e(dDay(o.date)) + '</p><p class="said-x">' +
+      (story ? '<a href="#/historia/' + e(story.slug) + '">' + e(story.title) + "</a>: " : "") + e(o.excerpt) + "</p></div>" +
+      '<span class="said-when" hidden>' + e(fdate(o.date)) + " · " + e(o.t_label) + '</span><a class="said-yt" hidden href="' + e(o.deep_link) + '" target="_blank" rel="noopener">Assistir no YouTube</a>' +
+      '<div class="said-foot"></div></li>';
+  }
+  function saidBlock(H) {
+    var items = (H.said || []).slice(0, 3);
+    return '<section class="hm-said" aria-labelledby="hm-said-h"><h2 class="hm-h" id="hm-said-h">Já falaram sobre isso</h2>' +
+      '<p class="hm-sub">O que já foi dito sobre os casos, com data e minuto do vídeo.</p>' +
+      (items.length ? '<ul class="said-mini" id="ja-falaram">' + items.map(function (s) { return miniSaid(s.item, s); }).join("") + "</ul>" : "") +
+      searchForm("", "q-home") + "</section>";
+  }
   P.home = function () {
     var ED = loadEdition();
-    return Promise.all([load("home.json"), ED, loadIdx("fechamentos"), loadIdx("materias"), loadTyped("fechamentos")]).then(function (res) {
-      var H = res[0], EDN = res[1], FI = res[2], MI = res[3], LF = res[4];
-      H.agora = agoraIsCurrent(EDN) && edItems(EDN).length ? { edition: EDN.edition, label: EDN.label, items: edItems(EDN) } : null;
-      var od = opDay(), today = new Date(od + "T12:00:00Z"), wd = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"][today.getUTCDay()];
-      var h = '<div class="sig" role="note"><div class="sig-in"><span>O que foi dito. Quando foi dito. E de onde veio.</span>' +
-        '<time datetime="' + od + '">' + wd + " · " + today.getUTCDate() + " " + MES[today.getUTCMonth()] + " " + today.getUTCFullYear() + "</time></div></div>";
-      // Direção 1 ("A edição do dia"): marca compacta; a primeira dobra responde que dia é, o que há hoje e qual é o
-      // último FECHAMENTO. A busca continua na porta "Pesquisar" e no fim da Home (não é mais a ação principal).
-      h += '<section class="hero hero-c"><h1 class="name">DESMENTINDO</h1><p class="motto">Notícias passam. O que foi dito fica.</p></section>';
-      var A = H.agora && H.agora.items && H.agora.items.length ? H.agora : null;
-      // Faixa AGORA · HOJE (compacta): só com AGORA do dia operacional corrente (regra de recência acima).
-      var strip = A ? '<section class="ah" aria-label="Agora, hoje"><p class="ah-k"><span class="ah-dot" aria-hidden="true"></span>Agora · hoje' +
-        ' <span class="ah-d">· ' + e(fdate(A.edition)) + " · " + plural(A.items.length, "notícia", "notícias") + "</span></p>" +
-        '<p class="ah-t"><a href="#/agora/' + e(A.items[0].id) + '">' + e(A.items[0].title) + "</a></p>" +
-        '<p class="ah-go"><a href="#agora" data-jump="agora">' + (A.items.length > 1 ? "Ver as " + nf(A.items.length) + " de hoje" : "Ver a de hoje") + ' <span aria-hidden="true">→</span></a></p></section>' : "";
-      var fxToday = LF && LF.edition_date === od;
-      if (!fxToday) h += strip;   // FECHAMENTO de hoje publicado: ele assume o topo e a faixa vem depois, sem competir
-      // FECHAMENTO = produto principal (decisão D-06, 04/10): o mais recente publicado vem antes do AGORA.
-      // Sem edição fixa: o índice publicado diz qual é a última; a Home muda sozinha quando entra uma nova.
-      if (LF && LF.edition_date) {
-        var fu = "#/fechamento/" + LF.edition_date, pts = (LF.opening && LF.opening.points) || [];
-        var lead = (LF.main_stories || []).filter(function (x) { return x.lead; })[0];
-        h += '<section class="sec fx-home" id="fechamento" aria-labelledby="fx-home-t"><p class="fx-home-k"><span class="tag tag-ink">Fechamento</span> ' +
-          e(fwd(LF.edition_date)) + (LF.cutoff_at ? " · verificado até " + e(fhm(LF.cutoff_at)) : "") + "</p>" +
-          '<h2 class="fx-home-t" id="fx-home-t"><a href="' + e(fu) + '">' + e(LF.public_title) + "</a></h2>" +
-          (pts.length ? '<ol class="fx-open">' + pts.map(function (p) {
-            return '<li><a href="' + e(fu + "#" + p.story) + '">' + e(p.text) + "</a></li>";
-          }).join("") + "</ol>" : "") +
-          (lead && lead.conclusion ? '<p class="fx-home-c"><b>O que dá para concluir:</b> ' + e(lead.conclusion) + "</p>" : "") +
-          '<div class="fx-home-go"><a class="btn-ink" href="' + e(fu) + '">Ler o fechamento <span aria-hidden="true">→</span></a>' +
-          shareBar(SITE + "/fechamento/" + LF.edition_date + "/", LF.public_title) + "</div></section>";
-      }
-      if (fxToday) h += strip;
-      var agoraList = "";
-      if (A) {
-        // Edição editorial (JSON próprio, aprovada no Human Gate): texto aprovado + fontes. Nada interno.
-        // AGORA não domina a Home: 3 itens com texto, o resto em linhas; cada item tem página própria (#/agora/<id>).
-        var full = A.items.slice(0, 3), rest = A.items.slice(3);
-        agoraList += '<section class="sec" id="agora"><h2 class="h2">' + e(A.label || "Agora") + ' <span class="meta" style="letter-spacing:0;text-transform:none;font-weight:400">· edição de ' + e(fdate(A.edition)) + "</span></h2>" +
-          '<ul class="ed-list">' + full.map(function (it) {
-            return '<li class="ed-item" id="' + e(it.id) + '"><h3 class="ed-t"><a href="#/agora/' + e(it.id) + '">' + e(it.title) + "</a></h3>" +
-              '<p class="meta">' + tdate(it.date) + "</p><p>" + e(it.text) + "</p>" +
-              '<p class="src">Fontes: ' + it.sources.map(function (s) {
-                return '<a href="' + e(s.url) + '" rel="noopener" target="_blank">' + e(s.name) + "</a>";
-              }).join(" · ") + ' · <a class="link" href="#/agora/' + e(it.id) + '">documentos e detalhes</a></p>' +
-              (EV_NOTE[it.evidence] ? '<p class="quiet ed-ev">' + EV_NOTE[it.evidence] + "</p>" : "") +
-              "</li>";
-          }).join("") + "</ul>" +
-          (rest.length ? '<ul class="ed-rows">' + rest.map(function (it) {
-            return '<li><a href="#/agora/' + e(it.id) + '"><span class="rt">' + e(it.title) + '</span><span class="rd">' + tdate(it.date) + "</span></a></li>";
-          }).join("") + "</ul>" : "") + "</section>";
-      }
-      // Fechamento e matérias aprovados: só um atalho para a página própria (Home não muda de desenho).
-      var fx = (LF ? [] : (FI && FI.items || []).slice(0, 1).map(function (x) { return { href: "#/fechamento/" + x.date, t: x.title, d: x.date }; }))
-        .concat((MI && MI.items || []).slice(0, 3).map(function (x) { return { href: "#/materia/" + x.slug, t: x.title, d: x.date }; }));
-      if (fx.length) h += '<section class="sec" id="' + (LF ? "materias" : "fechamento") + '"><h2 class="h2">' + (LF ? "Matérias" : "Fechamento e matérias") + '</h2><ul class="ed-rows">' + fx.map(function (x) {
-        return '<li><a href="' + e(x.href) + '"><span class="rt">' + e(x.t) + '</span><span class="rd">' + tdate(x.d) + "</span></a></li>";
-      }).join("") + "</ul></section>";
-      h += agoraList;   // as notícias do AGORA de hoje, com texto e fontes, depois das matérias (destino de "Ver as N de hoje")
-      if (H.hero) {
-        h += '<section class="sec" id="acompanhamento"><h2 class="h2">Em acompanhamento</h2>' +
-          '<article class="story-main"><a href="#/historia/' + e(H.hero.slug) + '"><span class="t">' + e(H.hero.title) + "</span></a>" +
-          (H.hero.text ? "<p>" + e(H.hero.text) + "</p>" : "") +
-          '<p class="meta" style="margin-top:8px">Último registro em ' + tdate(H.hero.lastD) + "</p>" +
-          (H.hero.said ? '<a class="said-cue" href="#/historia/' + e(H.hero.slug) + '#ja-falaram">Já falaram sobre isso · ' + plural(H.hero.said, "trecho", "trechos") + "</a>" : "") + "</article>" +
-          (H.more.length ? '<ul class="rows">' + H.more.map(function (s) {
-            return '<li><a href="#/historia/' + e(s.slug) + '"><span class="rt">' + e(s.title) + '</span><span class="rd">' + tdate(s.lastD) + "</span></a></li>";
-          }).join("") + "</ul>" : "") + "</section>";
-      }
-      if (H.said.length) {
-        h += '<section class="sec" id="ja-falaram"><h2 class="h2">Já falaram sobre isso</h2>' +
-          '<p style="margin:-6px 0 18px;color:var(--ink-2)">O que já foi dito sobre as histórias, com data e o minuto exato do vídeo.</p>' +
-          '<ul class="said-list">' + H.said.map(function (s) { return saidItem(s.item, s); }).join("") + "</ul>" + NOTE +
-          '<h3 class="h2" style="margin-top:34px">Nos arquivos</h3>' + archList(H.archives) +
-          '<p class="quiet"><a class="link" href="#/arquivos">Ver tudo o que já está nos arquivos</a></p></section>';
-      }
-      h += '<section class="sec" id="pesquisa"><h2 class="h2">Pesquise o arquivo</h2>' + searchForm("", "q-home", true) +
-        '<p class="cue">Veja o que já foi dito sobre uma notícia, com a data, o minuto do vídeo e a fonte original.</p>' +
-        '<p class="tries">Por exemplo: <a href="#/busca?q=Alexandre%20de%20Moraes">Alexandre de Moraes</a> · <a href="#/busca?q=INSS">INSS</a> · <a href="#/busca?q=Dark%20Horse">Dark Horse</a></p></section>';
-      return h;
+    return Promise.all([load("home.json"), ED, loadIdx("materias"), loadTyped("fechamentos")]).then(function (res) {
+      var H = res[0], EDN = res[1], MI = res[2], LF = res[3];
+      var A = agoraIsCurrent(EDN) && edItems(EDN).length ? { edition: EDN.edition, items: edItems(EDN) } : null;
+      var od = opDay(), fxToday = !!(LF && LF.edition_date === od);
+      var mats = (MI && MI.items || []).slice(0, 3);
+      return Promise.all(mats.map(function (x) { return loadTyped("materias", x.slug); })).then(function (MD) {
+        var h = '<div class="hm-sig" role="note"><span>Notícias passam. O que foi dito fica.</span><time datetime="' + od + '">' + e(dLong(od)) + "</time></div>";
+        if (A && !fxToday) h += agoraStrip(A);   // estado B (FECHAMENTO do dia publicado): a faixa some
+        if (LF && LF.edition_date) h += fxHome(LF);
+        h += '<div class="hm-grid">' + matBlock(mats, MD) + saidBlock(H) + "</div>";
+        return h + '<p class="hm-motto">Notícias passam. O que foi dito fica.</p>';
+      });
     });
   };
+
+  // ---------------------------------------------------------------- MANDAR (A6): botão → folha com a URL canônica,
+  // "Compartilhar…" (Web Share, quando o aparelho oferece) e "Copiar link". Sem SDK, sem conta, sem evento novo.
+  function mandar(url, title, heading, cls) {
+    return '<button type="button" class="mandar' + (cls ? " " + cls : "") + '" data-mandar data-url="' + e(url) + '" data-title="' + e(title || "") + '" data-head="' + e(heading || "Mandar") + '">Mandar <span aria-hidden="true">↗</span></button>';
+  }
+  var sheetBack = null;
+  function closeSheet() {
+    var s = document.getElementById("mandar-sheet");
+    if (!s) return;
+    s.remove(); document.removeEventListener("keydown", sheetKey);
+    if (sheetBack && sheetBack.isConnected) sheetBack.focus();
+  }
+  function sheetKey(ev) { if (ev.key === "Escape") closeSheet(); }
+  document.addEventListener("click", function (ev) {
+    var b = ev.target.closest && ev.target.closest("button[data-mandar]");
+    if (b) {
+      closeSheet(); sheetBack = b;
+      var url = b.getAttribute("data-url"), shown = url.replace(/^https?:\/\//, "");
+      var d = document.createElement("div");
+      d.id = "mandar-sheet"; d.className = "sheet";
+      d.innerHTML = '<div class="sheet-in share" role="dialog" aria-modal="true" aria-labelledby="sheet-h" data-url="' + e(url) + '" data-title="' + e(b.getAttribute("data-title")) + '">' +
+        '<div class="sheet-top"><b id="sheet-h">' + e(b.getAttribute("data-head")) + '</b><button type="button" class="sheet-x" data-sheet-close aria-label="Fechar">×</button></div>' +
+        '<p class="sheet-url">' + e(shown) + '</p><div class="sheet-bt">' +
+        (navigator.share ? '<button type="button" class="sheet-b sheet-b1" data-share="native">Compartilhar…</button>' : "") +
+        '<button type="button" class="sheet-b" data-share="copy">Copiar link</button></div><span class="share-ok" role="status" aria-live="polite"></span></div>';
+      document.body.appendChild(d);
+      document.addEventListener("keydown", sheetKey);
+      var first = d.querySelector(".sheet-b"); if (first) first.focus();
+      return;
+    }
+    if (ev.target.id === "mandar-sheet" || (ev.target.closest && ev.target.closest("[data-sheet-close]"))) closeSheet();
+  });
+  window.addEventListener("hashchange", closeSheet);
 
   // ---------------------------------------------------------------- HISTÓRIA
   P.historia = function (slug) {
@@ -692,9 +713,25 @@
   };
 
   // ---------------------------------------------------------------- AGORA: uma notícia = uma URL (#/agora/<id>)
+  // #/agora (F1, 05/10): a edição do AGORA inteira, com texto e fontes. É o destino de "Ver as N de hoje" da Home.
+  function agoraList(EDN, items) {
+    document.title = "Agora · Desmentindo";
+    if (!items.length) return '<section class="page-head"><p class="kicker">Agora</p><h1 class="h1">Agora</h1><p class="lead">Ainda não há uma edição do AGORA publicada.</p></section>';
+    var cur = agoraIsCurrent(EDN);
+    return '<section class="page-head"><p class="kicker"><span class="tag tag-ink">' + e(EDN.label || "Agora") + "</span> edição de " + e(fdate(EDN.edition)) + "</p>" +
+      '<h1 class="h1">' + (cur ? "Agora · hoje" : "Agora") + "</h1>" + (cur ? "" : '<p class="lead">Esta é a última edição publicada do AGORA. A de hoje ainda não saiu.</p>') + "</section>" +
+      '<section class="sec"><ul class="ed-list">' + items.map(function (it) {
+        return '<li class="ed-item" id="' + e(it.id) + '"><h2 class="ed-t"><a href="#/agora/' + e(it.id) + '">' + e(it.title) + "</a></h2>" +
+          '<p class="meta">' + tdate(it.date) + "</p><p>" + e(it.text) + "</p>" +
+          '<p class="src">Fontes: ' + it.sources.map(function (x) { return '<a href="' + e(x.url) + '" rel="noopener" target="_blank">' + e(x.name) + "</a>"; }).join(" · ") +
+          ' · <a class="link" href="#/agora/' + e(it.id) + '">documentos e detalhes</a></p>' + (EV_NOTE[it.evidence] ? '<p class="quiet ed-ev">' + EV_NOTE[it.evidence] + "</p>" : "") + "</li>";
+      }).join("") + "</ul></section>";
+  }
   P.agora = function (id) {
     return loadEdition().then(function (EDN) {
-      var items = edItems(EDN), it = items.filter(function (x) { return x.id === id; })[0];
+      var items = edItems(EDN);
+      if (!id) return agoraList(EDN, items);
+      var it = items.filter(function (x) { return x.id === id; })[0];
       if (!it) return notFound();
       document.title = it.title + " · Desmentindo";
       var h = '<section class="page-head"><p class="kicker"><span class="tag tag-ink">' + e(EDN.label || "Agora") + "</span> edição de " + e(fdate(EDN.edition)) + "</p>" +
@@ -803,7 +840,7 @@
         '<h1 class="h1">' + e(F.public_title) + "</h1>" +
         '<p class="fx-cut">Conteúdo verificado até <b>' + e(fhm(F.cutoff_at)) + "</b> de " + e(fdate(F.edition_date)) +
         (F.published_at ? ' · publicado em <time datetime="' + e(F.published_at) + '">' + e(fts(F.published_at)) + "</time>" : "") + "</p>" +
-        shareBar(SITE + "/fechamento/" + F.edition_date + "/", F.public_title);
+        mandar(SITE + "/fechamento/" + F.edition_date + "/", F.public_title, "Mandar o fechamento de " + dDay(F.edition_date));
       var pts = (F.opening && F.opening.points) || [];
       if (pts.length) {
         // "Em 1 minuto": só os pontos de abertura aprovados (cada um aponta para uma história principal). O rótulo
@@ -887,7 +924,7 @@
         (M.status ? " " + statusTag(M.status) : "") + "</p>" +
         '<h1 class="h1">' + e(M.public_title) + "</h1>" + (M.dek ? '<p class="fx-mdek">' + e(M.dek) + "</p>" : "") +
         '<p class="fx-pub">' + tdate(M.date) + (M.updated_at && M.updated_at !== M.published_at ? " · atualizado em " + e(fts(M.updated_at)) : "") + "</p>" +
-        shareBar(SITE + "/materia/" + M.slug + "/", M.public_title);
+        mandar(SITE + "/materia/" + M.slug + "/", M.public_title, "Mandar esta matéria");
       if (M.art) h += '<figure class="fx-art"><picture><source media="(min-width: 620px)" srcset="' + e(M.art.desktop) + '"><img src="' + e(M.art.mobile) + '" alt="" loading="lazy" decoding="async"></picture>' +
         (M.art.caption ? "<figcaption>" + e(M.art.caption) + "</figcaption>" : "") + "</figure>";
       h += "</section>";
@@ -1207,6 +1244,7 @@
     top.parentNode.insertBefore(bar, top);
   })();
 
+  (function topDate() { var t = document.getElementById("top-date"); if (t) t.textContent = dShort(opDay()); })();
   window.addEventListener("hashchange", route);
   route();
 })();
