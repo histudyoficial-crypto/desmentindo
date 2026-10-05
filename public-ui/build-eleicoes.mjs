@@ -22,6 +22,17 @@ const A = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "analytics.jso
 // locais = arquivo oficial "Eleitorado por local de votação" por município. Desligados: a interface esconde as partes.
 const FLAGS = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "eleicoes_flags.json"), "utf8"));
 const CORE = createRequire(import.meta.url)(path.join(ROOT, "eleicoes-2026", "eleicoes-core.js"));
+// Cartões de situação no estado inicial (antes da 1ª leitura do TSE), idênticos ao que eleicoes.js desenha em cards():
+// a primeira pintura já tem a altura final e a resposta do TSE só troca texto (sem deslocar o resto da página).
+const OFICIAL_TAG = '<span class="prov of" title="Número publicado pela Justiça Eleitoral">Dado oficial (TSE)</span>';
+const card0 = (k, v, s, cls, prov) => `<div class="card ${cls}"><p class="k">${k}</p><p class="v">${v}</p><p class="s">${s}</p>${prov ? `<p class="p">${prov}</p>` : ""}</div>`;
+const STATUS0 = card0("Situação", "—", "Aguardando o TSE", "parcial", OFICIAL_TAG) + card0("Seções totalizadas", "—", "—", "", OFICIAL_TAG) +
+  card0("Faltam totalizar", "—", "—", "", OFICIAL_TAG) + card0("Última atualização do TSE", "—", "Horário não informado", "", OFICIAL_TAG) +
+  card0("Leitura desta página", "—", "Ainda sem leitura", "", "");
+// Navegação do produto Eleições 2026: resultados, território, questionamentos e verificação no mesmo lugar.
+const pnav = cur => `<nav class="pnav" aria-label="Eleições 2026"><div class="wrap"><a class="pn-home" href="/eleicoes-2026/">Eleições 2026</a>` +
+  [["res", "/eleicoes-2026/#resultado", "Resultados"], ["exp", "/eleicoes-2026/#onde", "Explorar"], ["q", "/eleicoes-2026/questionamentos/", "Questionamentos"], ["ver", "/eleicoes-2026/#verificacao", "Verificação"]]
+    .map(([k, h, t]) => `<a href="${h}"${k === cur ? ' aria-current="page"' : ""}>${t}</a>`).join("") + `</div></nav>`;
 const QDATA = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "eleicoes_questionamentos.json"), "utf8"));
 const QHOME = ["Q1", "Q2", "Q3", "Q6", "Q7"].map(id => QDATA.questionamentos.find(q => q.id === id));
 const ESTADOS_HTML = Object.values(CORE.ESTADOS).map(e => `<div class="e-${e.classe}"><dt>${e.nome}</dt><dd>${e.texto}</dd></div>`).join("");
@@ -65,14 +76,15 @@ ${umami}
 <header class="top"><div class="wrap topbar"><a class="brand" href="/" aria-label="Desmentindo — início"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span><b>DESMENTINDO</b></a>
 <nav class="crumbs" id="crumbs" aria-label="Você está em"><a href="/eleicoes-2026/">Brasil</a>${br ? "" : `<span aria-hidden="true">›</span><b>${attr(where)}</b>`}</nav>
 <div class="modes" role="group" aria-label="Modo de leitura"><button type="button" id="mRes" aria-pressed="true">Resultados</button><button type="button" id="mAud" aria-pressed="false">Verificação</button></div></div></header>
+${pnav(br ? "res" : "exp")}
 <main class="wrap" id="conteudo">
 <div class="head">
 <p class="kick"><span class="tag res">Dado oficial · TSE</span>Eleições 2026 · Presidente · 1º turno</p>
 <h1>${attr(where)}</h1>
 </div>
-<section id="status" class="cards" aria-label="Situação da apuração"></section>
+<section id="status" class="cards" aria-label="Situação da apuração">${STATUS0}</section>
 <div class="layout">
-<section class="area-res" aria-labelledby="t-agora"><h2 id="t-agora">Resultado</h2><p class="stale" id="stale" hidden></p><p class="snapnote" id="snapnote" hidden></p><div id="placar"><p class="empty">Carregando…</p></div></section>
+<section class="area-res" aria-labelledby="t-agora" id="resultado"><h2 id="t-agora">Resultado</h2><p class="stale" id="stale" hidden></p><p class="snapnote" id="snapnote" hidden></p><div id="placar"><p class="empty">Carregando…</p></div></section>
 <section class="area-terr" aria-labelledby="t-terr" id="onde"><h2 id="t-terr">Explorar o território</h2>
 <div class="busca"><label for="busca">Buscar município</label><input id="busca" type="search" autocomplete="off" placeholder="${br ? "ex.: Campinas" : "nome do município"}" aria-describedby="buscaDica"><p id="buscaDica" class="sub">Depois: zona, local de votação e seção.</p><ul id="buscaRes" class="buscares" aria-live="polite"></ul></div>
 ${br ? `<div class="maphead"><label for="layers">Mostrar no mapa</label><select id="layers"><option value="lider">Quem está à frente</option><option value="tot">Quanto falta totalizar</option><option value="late">Ordem de chegada das seções</option></select></div>
@@ -134,6 +146,7 @@ ${umami}
 <a class="skip" href="#conteudo">Ir para o conteúdo</a>
 <header class="top"><div class="wrap topbar"><a class="brand" href="/" aria-label="Desmentindo — início"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span><b>DESMENTINDO</b></a>
 <nav class="crumbs" aria-label="Você está em"><a href="/eleicoes-2026/">Eleições 2026</a><span aria-hidden="true">›</span><a href="/eleicoes-2026/questionamentos/">Questionamentos</a></nav></div></header>
+${pnav("q")}
 <main class="wrap qwrap" id="conteudo">
 ${o.main}
 </main>

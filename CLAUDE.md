@@ -22,6 +22,7 @@ PRIVATE OPS → HUMAN GATE → APPROVED PUBLIC ARTIFACT → PUBLIC REPO (PR do P
 ## Invariantes públicas
 - Estados da afirmação: EM CHECAGEM · DOCUMENTADO · PARCIALMENTE DOCUMENTADO · AINDA NÃO DÁ PARA CONFIRMAR · NÃO ENCONTRAMOS REGISTRO, sempre com "CHECAMOS SE FOI DITO / SE ACONTECEU". Valor desconhecido = EM CHECAGEM, nunca estado conclusivo.
 - Fonte localizada ≠ fato confirmado. Documento localizado ≠ interpretação confirmada.
+- OBSERVAÇÃO VERDADEIRA ≠ EXPLICAÇÃO VERDADEIRA (Johnny, 05/10/2026): classificar separadamente a observação (ex.: "a curva ficou muito regular" — CONFIRMADA) e a explicação sugerida (ex.: "isso indica manipulação" — NÃO DEMONSTRADA). Nunca escrever como se o leitor tivesse visto errado quando a observação é real. Vale para todo questionamento novo.
 - Mudança temporal ≠ contradição. Verbos interpretativos ("se contradisse", "mudou de lado", "voltou atrás", "recuou") só com revisão humana.
 - VÍNCULO ≠ INFLUÊNCIA ≠ COORDENAÇÃO ≠ ILEGALIDADE. HIPÓTESE ≠ FATO. ALEGAÇÃO ≠ PROVA.
 - Objeto primário = EVENTO / HISTÓRIA / AFIRMAÇÃO / DOCUMENTO.
