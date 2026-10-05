@@ -1,0 +1,416 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-05",
+ "public_title": "FECHAMENTO — 5 de outubro de 2026",
+ "published_at": "2026-10-05T22:50:55Z",
+ "cutoff_at": "2026-10-05T18:52:34-03:00",
+ "context": "Dia seguinte ao 1º turno; totalização concluída; pendências de registro no TSE",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "Resultado final do TSE, com 100% das seções: Flávio Bolsonaro 47,03% e Lula 45,16%. 2º turno em 25 de outubro.",
+    "story": "1-turno-tse-conclui-a-totalizacao-e-flavio-e-lula-vao-ao-2-turno"
+   },
+   {
+    "text": "Garotinho, Deltan e Furlan: o resultado oficial vale hoje, mas o plenário do TSE ainda vai julgar os três registros.",
+    "story": "garotinho-deltan-e-furlan-o-que-o-plenario-do-tse-ainda-vai-julgar"
+   },
+   {
+    "text": "Abstenção de 21,08%: 33,5 milhões de eleitores não votaram, segundo o TSE.",
+    "story": "abstencao-de-21-08-mais-de-33-milhoes-de-eleitores-nao-votaram"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "1-turno-tse-conclui-a-totalizacao-e-flavio-e-lula-vao-ao-2-turno",
+   "headline": "1º turno: TSE conclui a totalização, e Flávio e Lula vão ao 2º turno",
+   "dek": "Com 100% das seções totalizadas, Flávio Bolsonaro teve 47,03% dos votos válidos e Lula, 45,16%. O 2º turno é em 25 de outubro.",
+   "lead": false,
+   "what_happened": "Ontem, o FECHAMENTO registrou o retrato parcial do TSE às 17h58, com 12,45% das seções: Flávio Bolsonaro (PL) tinha 51,09% dos válidos e Lula (PT), 40,71%. Era um retrato daquele horário, não o resultado.",
+   "what_changed": "O arquivo oficial do TSE gerado hoje às 12h51, com 100% das seções totalizadas, traz o resultado do 1º turno: Flávio Bolsonaro, 56.104.503 votos (47,03% dos válidos); Lula, 53.879.538 (45,16%). Os dois aparecem como “2º turno”. Em seguida vieram Augusto Cury (Avante), 2,89%; Renan Santos (Missão), 2,24%; e Ronaldo Caiado (PSD), 2,18%.",
+   "steps": [
+    {
+     "label": "Votação",
+     "text": "dom (4), 8h às 17h",
+     "done": true
+    },
+    {
+     "label": "Apuração",
+     "text": "100% · seg (5) 12h51",
+     "done": true
+    },
+    {
+     "label": "2º turno",
+     "text": "25 de outubro",
+     "done": false
+    }
+   ],
+   "official": [
+    "TSE, arquivo oficial de resultados para presidente (Brasil), gerado em 05/10/2026 às 12:51:47 (horário de Brasília): 499.248 seções totalizadas (100%); Flávio Bolsonaro 56.104.503 (47,03%) e Lula 53.879.538 (45,16%), ambos “2º turno”."
+   ],
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "Flávio Bolsonaro tem 56 milhões de votos, e Lula, 53 milhões; compare com eleições de 2022",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/05/numero-votos-flavio-bolsonaro-lula-2026-2022.ghtml",
+     "published_at": "2026-10-05T03:23:22Z",
+     "summary": "Comparou os 56 milhões de Flávio e os 53 milhões de Lula com 2022.",
+     "basis": "manchete"
+    },
+    {
+     "outlet": "Folha",
+     "title": "Flávio tem 2,2 milhões de votos a mais, e Rio Grande do Sul e Minas Gerais viram desafio para Lula",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/flavio-tem-22-milhoes-de-votos-a-mais-e-rio-grande-do-sul-e-minas-gerais-viram-desafio-para-petista.shtml",
+     "published_at": "2026-10-05T03:35:00Z",
+     "summary": "Destacou a diferença de 2,2 milhões de votos e os estados que viraram desafio para Lula.",
+     "basis": "manchete"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "Flávio supera o desempenho do pai em 2022 e vence em 14 estados e no Distrito Federal",
+     "url": "https://estadao.com.br/politica/eleicoes/flavio-repete-desempenho-do-pai-em-2022-e-vence-em-14-estados-politica",
+     "published_at": "2026-10-05T02:02:40Z",
+     "summary": "Comparou o desempenho de Flávio com o de Jair Bolsonaro em 2022.",
+     "basis": "manchete"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Só um de seis institutos de pesquisa apontava Flávio numericamente à frente de Lula",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/um-de-seis-institutos-de-pesquisa-apontava-flavio-numericamente-a-frente-de-lula",
+     "published_at": "2026-10-05T03:13:36Z",
+     "summary": "Comparou o resultado com as últimas pesquisas de seis institutos.",
+     "basis": "manchete"
+    },
+    {
+     "outlet": "TSE (notícia)",
+     "title": "Flávio Bolsonaro (PL) e Lula (PT) vão disputar o 2º turno para a Presidência da República",
+     "url": "https://tse.jus.br/comunicacao/noticias/2026/Outubro/flavio-bolsonaro-e-lula-vao-disputar-o-2o-turno-para-a-presidencia-da-republica",
+     "published_at": "2026-10-05T03:11:00Z",
+     "summary": "Comunicado do TSE com 99,99% das urnas apuradas às 0h11.",
+     "basis": "manchete"
+    }
+   ],
+   "conclusion": "O resultado parcial de ontem às 17h58 e o resultado final de hoje não se contradizem: um é o retrato de 12,45% das seções; o outro, de 100%. Vale o arquivo final do TSE: 2º turno entre Flávio e Lula.",
+   "open_questions": "Quem vence o 2º turno, em 25 de outubro."
+  },
+  {
+   "id": "garotinho-deltan-e-furlan-o-que-o-plenario-do-tse-ainda-vai-julgar",
+   "headline": "Garotinho, Deltan e Furlan: o que o plenário do TSE ainda vai julgar",
+   "dek": "Os três receberam votos no domingo com o registro em disputa. O resultado oficial vale hoje, mas pode mudar com a decisão do plenário.",
+   "lead": false,
+   "what_happened": "Os três casos chegaram à votação sem decisão definitiva do plenário do TSE. Garotinho (Republicanos, governo do Rio) teve o registro negado pelo TRE-RJ. Deltan Dallagnol (Novo, Senado pelo Paraná) teve o registro negado em decisão individual no sábado (3), suspensa no domingo (4) pelo presidente do TSE. O julgamento de Dr. Furlan (PSD, governo do Amapá) foi interrompido em 24 de setembro por um pedido de vista, segundo O Globo.",
+   "what_changed": "O que vale agora, pelos arquivos oficiais do TSE: no Rio, 2º turno entre Douglas Ruas (PL) e Eduardo Paes (PSD), com os 274.411 votos de Garotinho como “anulado sub judice”. No Paraná, Deltan foi eleito senador, em segundo lugar, com 2.904.594 votos (25,14%). No Amapá, Dr. Furlan foi eleito governador com 281.595 votos (62,75%). Segundo O Globo, o TSE tem sessão plenária marcada para terça (6) e prevê outras até 27 de outubro; até o corte, não encontramos confirmação de que esses casos estejam na pauta.",
+   "steps": [
+    {
+     "label": "Votação",
+     "text": "dom (4), com registros em disputa",
+     "done": true
+    },
+    {
+     "label": "Resultado oficial",
+     "text": "publicado pelo TSE",
+     "done": true
+    },
+    {
+     "label": "Plenário do TSE",
+     "text": "sem julgamento até o corte",
+     "done": false
+    }
+   ],
+   "official": [
+    "TSE, arquivo oficial de resultados para governador do Rio de Janeiro: 100% das seções; Douglas Ruas 49,27% e Eduardo Paes 42,76%; votos de Garotinho “anulado sub judice”.",
+    "TSE, arquivo oficial de resultados para senador no Paraná (gerado em 05/10 às 11:46:40): Deltan Dallagnol “Eleito”, 2.904.594 votos (25,14%).",
+    "TSE, arquivo oficial de resultados para governador do Amapá (gerado em 04/10 às 21:04:28): Dr. Furlan “Eleito”, 281.595 votos (62,75%)."
+   ],
+   "coverage": [
+    {
+     "outlet": "O Globo",
+     "title": "Garotinho, Deltan e Furlan: TSE terá que julgar candidaturas contestadas após primeiro turno",
+     "url": "https://oglobo.globo.com/politica/eleicoes-2026/noticia/2026/10/05/garotinho-deltan-e-furlan-tse-tera-que-julgar-candidaturas-contestadas-apos-primeiro-turno.ghtml",
+     "published_at": "2026-10-05T08:30:01Z",
+     "summary": "Explicou os três casos e citou a sessão plenária de terça (6).",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "InfoMoney",
+     "title": "Decisões do TSE podem alterar resultado para Garotinho, Dallagnol e Dr. Furlan",
+     "url": "https://infomoney.com.br/politica/decisoes-do-tse-podem-alterar-resultado-para-garotinho-dallagnol-e-dr-furlan",
+     "published_at": "2026-10-05T15:18:00Z",
+     "summary": "Com Estadão Conteúdo, relatou o voto do relator e o pedido de vista no caso Furlan.",
+     "basis": "manchete"
+    },
+    {
+     "outlet": "Poder360",
+     "title": "Ruas quer decisão rápida do TSE sobre votos de Garotinho no Rio",
+     "url": "https://poder360.com.br/poder-eleicoes-2026/ruas-quer-decisao-rapida-do-tse-sobre-votos-de-garotinho-no-rio",
+     "published_at": "2026-10-05T11:56:27Z",
+     "summary": "Relatou que Douglas Ruas pede decisão rápida do TSE sobre os votos de Garotinho.",
+     "basis": "manchete"
+    },
+    {
+     "outlet": "Exame",
+     "title": "O que vai acontecer com os votos do Deltan no Paraná após decisão do TSE?",
+     "url": "https://exame.com/brasil/o-que-vai-acontecer-com-os-votos-do-deltan-no-parana-apos-decisao-do-tse",
+     "published_at": "2026-10-05T10:30:00Z",
+     "summary": "Perguntas e respostas: registro deferido com recurso; o plenário ainda julga.",
+     "basis": "manchete"
+    }
+   ],
+   "conclusion": "Hoje, o resultado oficial do TSE dá Deltan e Furlan como eleitos e o Rio com 2º turno. Isso não encerra os casos: o plenário do TSE ainda vai julgar os três registros, e a decisão pode mudar esses resultados.",
+   "open_questions": "Quando o plenário do TSE julga cada caso e qual será a decisão."
+  },
+  {
+   "id": "abstencao-de-21-08-mais-de-33-milhoes-de-eleitores-nao-votaram",
+   "headline": "Abstenção de 21,08%: mais de 33 milhões de eleitores não votaram",
+   "dek": "É o dado oficial do TSE. Segundo Estadão, UOL e Gazeta do Povo, é a maior abstenção num 1º turno desde 1998.",
+   "lead": false,
+   "what_happened": "O 1º turno foi no domingo (4), com 158,7 milhões de eleitores aptos.",
+   "what_changed": "Pelo arquivo final do TSE, 125.275.835 eleitores votaram (78,92%) e 33.469.244 não compareceram (21,08%). Brancos foram 1,84% e nulos, 2,93% dos votos. Segundo o UOL, a abstenção no 1º turno de 2022 foi de 20,95%.",
+   "steps": [
+    {
+     "label": "Votação",
+     "text": "dom (4)",
+     "done": true
+    },
+    {
+     "label": "Apuração",
+     "text": "100% das seções",
+     "done": true
+    }
+   ],
+   "official": [
+    "TSE, arquivo oficial de resultados para presidente (Brasil), gerado em 05/10/2026 às 12:51:47: eleitorado 158.745.502; comparecimento 125.275.835 (78,92%); abstenção 33.469.244 (21,08%); brancos 1,84%; nulos 2,93%."
+   ],
+   "coverage": [
+    {
+     "outlet": "Estadão",
+     "title": "Eleições: Primeiro turno de 2026 tem maior abstenção desde 1998",
+     "url": "https://estadao.com.br/politica/eleicoes-primeiro-turno-de-2026-tem-maior-abstencao-desde-1998",
+     "published_at": "2026-10-05T01:23:56Z",
+     "summary": "Relatou a maior abstenção num 1º turno desde 1998.",
+     "basis": "manchete"
+    },
+    {
+     "outlet": "UOL",
+     "title": "Primeiro turno de 2026 tem maior abstenção desde 1998 com mais de 33 milhões ausentes",
+     "url": "https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2026/10/05/primeiro-turno-de-2026-tem-maior-abstencao-desde-1998-com-mais-de-33-milhoes-ausentes.htm",
+     "published_at": "2026-10-05T12:45:00Z",
+     "summary": "Comparou com os 20,95% de 2022.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Abstenção chega a 21,08% no 1º turno e bate recorde; compare com últimas quatro eleições",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/04/abstencao-chega-a-208percent-no-1o-turno-e-bate-recorde-compare-com-ultimas-quatro-eleicoes.ghtml",
+     "published_at": "2026-10-05T01:32:50Z",
+     "summary": "Comparou com as últimas quatro eleições.",
+     "basis": "manchete"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Abstenção chega a 21% no primeiro turno e é a maior desde 1998",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/abstencao-eleicoes-2026-primeiro-turno-historico",
+     "published_at": "2026-10-05T03:26:28Z",
+     "summary": "Mostrou a série histórica e o que costuma acontecer no 2º turno.",
+     "basis": "manchete"
+    }
+   ],
+   "conclusion": "O número de 21,08% é oficial do TSE. A comparação com eleições anteriores é dos veículos citados; o Desmentindo não recalculou a série histórica.",
+   "open_questions": "O que levou à alta: o dado oficial não traz motivo, e não o inferimos."
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "quem-declarou-o-que-para-o-2-turno",
+   "title": "Quem declarou o quê para o 2º turno",
+   "text": "Segundo a Folha, o Novo vai declarar apoio a Flávio Bolsonaro; o PSD decidiu manter neutralidade; e Augusto Cury, Renan Santos e Caiado não declararam voto. ACM Neto disse que o União Brasil vai discutir apoio a Flávio (Poder360). São declarações do dia, não acordos formalizados.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/colunas/painel/2026/10/novo-vai-declarar-apoio-a-flavio-bolsonaro-no-segundo-turno.shtml",
+     "published_at": "2026-10-05T02:04:00Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/psd-decide-manter-neutralidade-no-2o-turno-e-caiado-fala-que-caiu-de-pe.shtml",
+     "published_at": "2026-10-05T02:52:00Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/cury-renan-santos-e-caiado-nao-declaram-voto-no-2o-turno-e-criticam-polarizacao.shtml",
+     "published_at": "2026-10-05T02:27:00Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-eleicoes-2026/acm-neto-diz-que-uniao-brasil-vai-discutir-apoio-a-flavio",
+     "published_at": "2026-10-05T11:28:16Z"
+    }
+   ]
+  },
+  {
+   "id": "dolar-abaixo-de-r-5",
+   "title": "Dólar abaixo de R$ 5",
+   "text": "O dólar caiu mais de 4% e fechou abaixo de R$ 5 no primeiro pregão após o 1º turno, segundo CNN Brasil e Poder360. Os veículos associam o movimento ao resultado da eleição; isso é leitura de mercado, não fato eleitoral.",
+   "sources": [
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/economia/money/mercado/mercado-hoje-5-outubro-2026",
+     "published_at": "2026-10-05T12:14:09Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-economia/dolar-cai-mais-de-4-e-fica-abaixo-dos-r-5-apos-1o-turno",
+     "published_at": "2026-10-05T12:51:47Z"
+    }
+   ]
+  }
+ ],
+ "following": [
+  {
+   "id": "tse-sessao-plenaria-na-terca-6",
+   "title": "TSE: sessão plenária na terça (6)",
+   "text": "Segundo O Globo, há sessão marcada para terça (6) e outras previstas até 27/10. Sem confirmação de pauta para Garotinho, Deltan ou Furlan até o corte.",
+   "sources": []
+  },
+  {
+   "id": "2-turno-em-25-de-outubro",
+   "title": "2º turno em 25 de outubro",
+   "text": "Presidente e governadores em seis estados e no DF (TSE).",
+   "sources": []
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "g1",
+   "title": "Flávio Bolsonaro tem 56 milhões de votos, e Lula, 53 milhões; compare com eleições de 2022",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/05/numero-votos-flavio-bolsonaro-lula-2026-2022.ghtml",
+   "published_at": "2026-10-05T03:23:22Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Flávio tem 2,2 milhões de votos a mais, e Rio Grande do Sul e Minas Gerais viram desafio para Lula",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/flavio-tem-22-milhoes-de-votos-a-mais-e-rio-grande-do-sul-e-minas-gerais-viram-desafio-para-petista.shtml",
+   "published_at": "2026-10-05T03:35:00Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Flávio supera o desempenho do pai em 2022 e vence em 14 estados e no Distrito Federal",
+   "url": "https://estadao.com.br/politica/eleicoes/flavio-repete-desempenho-do-pai-em-2022-e-vence-em-14-estados-politica",
+   "published_at": "2026-10-05T02:02:40Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Só um de seis institutos de pesquisa apontava Flávio numericamente à frente de Lula",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/um-de-seis-institutos-de-pesquisa-apontava-flavio-numericamente-a-frente-de-lula",
+   "published_at": "2026-10-05T03:13:36Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "TSE (notícia)",
+   "title": "Flávio Bolsonaro (PL) e Lula (PT) vão disputar o 2º turno para a Presidência da República",
+   "url": "https://tse.jus.br/comunicacao/noticias/2026/Outubro/flavio-bolsonaro-e-lula-vao-disputar-o-2o-turno-para-a-presidencia-da-republica",
+   "published_at": "2026-10-05T03:11:00Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "O Globo",
+   "title": "Garotinho, Deltan e Furlan: TSE terá que julgar candidaturas contestadas após primeiro turno",
+   "url": "https://oglobo.globo.com/politica/eleicoes-2026/noticia/2026/10/05/garotinho-deltan-e-furlan-tse-tera-que-julgar-candidaturas-contestadas-apos-primeiro-turno.ghtml",
+   "published_at": "2026-10-05T08:30:01Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "InfoMoney",
+   "title": "Decisões do TSE podem alterar resultado para Garotinho, Dallagnol e Dr. Furlan",
+   "url": "https://infomoney.com.br/politica/decisoes-do-tse-podem-alterar-resultado-para-garotinho-dallagnol-e-dr-furlan",
+   "published_at": "2026-10-05T15:18:00Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Ruas quer decisão rápida do TSE sobre votos de Garotinho no Rio",
+   "url": "https://poder360.com.br/poder-eleicoes-2026/ruas-quer-decisao-rapida-do-tse-sobre-votos-de-garotinho-no-rio",
+   "published_at": "2026-10-05T11:56:27Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "Exame",
+   "title": "O que vai acontecer com os votos do Deltan no Paraná após decisão do TSE?",
+   "url": "https://exame.com/brasil/o-que-vai-acontecer-com-os-votos-do-deltan-no-parana-apos-decisao-do-tse",
+   "published_at": "2026-10-05T10:30:00Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Eleições: Primeiro turno de 2026 tem maior abstenção desde 1998",
+   "url": "https://estadao.com.br/politica/eleicoes-primeiro-turno-de-2026-tem-maior-abstencao-desde-1998",
+   "published_at": "2026-10-05T01:23:56Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "UOL",
+   "title": "Primeiro turno de 2026 tem maior abstenção desde 1998 com mais de 33 milhões ausentes",
+   "url": "https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2026/10/05/primeiro-turno-de-2026-tem-maior-abstencao-desde-1998-com-mais-de-33-milhoes-ausentes.htm",
+   "published_at": "2026-10-05T12:45:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Abstenção chega a 21,08% no 1º turno e bate recorde; compare com últimas quatro eleições",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/04/abstencao-chega-a-208percent-no-1o-turno-e-bate-recorde-compare-com-ultimas-quatro-eleicoes.ghtml",
+   "published_at": "2026-10-05T01:32:50Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Abstenção chega a 21% no primeiro turno e é a maior desde 1998",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/abstencao-eleicoes-2026-primeiro-turno-historico",
+   "published_at": "2026-10-05T03:26:28Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Novo vai declarar apoio a Flávio Bolsonaro no segundo turno",
+   "url": "https://www1.folha.uol.com.br/colunas/painel/2026/10/novo-vai-declarar-apoio-a-flavio-bolsonaro-no-segundo-turno.shtml",
+   "published_at": "2026-10-05T02:04:00Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "PSD decide manter neutralidade no 2º turno, e Caiado fala que 'caiu de pé'",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/psd-decide-manter-neutralidade-no-2o-turno-e-caiado-fala-que-caiu-de-pe.shtml",
+   "published_at": "2026-10-05T02:52:00Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Cury, Renan Santos e Caiado não declaram voto no 2º turno e criticam polarização",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/cury-renan-santos-e-caiado-nao-declaram-voto-no-2o-turno-e-criticam-polarizacao.shtml",
+   "published_at": "2026-10-05T02:27:00Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "ACM Neto diz que União Brasil vai discutir apoio a Flávio",
+   "url": "https://poder360.com.br/poder-eleicoes-2026/acm-neto-diz-que-uniao-brasil-vai-discutir-apoio-a-flavio",
+   "published_at": "2026-10-05T11:28:16Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Dólar despenca mais de 4% e fica abaixo de R$ 5 após 1º turno das eleições",
+   "url": "https://cnnbrasil.com.br/economia/money/mercado/mercado-hoje-5-outubro-2026",
+   "published_at": "2026-10-05T12:14:09Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Dólar cai mais de 4% e fica abaixo dos R$ 5 após 1º turno",
+   "url": "https://poder360.com.br/poder-economia/dolar-cai-mais-de-4-e-fica-abaixo-dos-r-5-apos-1o-turno",
+   "published_at": "2026-10-05T12:51:47Z"
+  }
+ ],
+ "note": "Vídeos do dia, ainda não indexados (sem minuto): Alexandre Garcia — “O primeiro turno facilita para Flavio e dificulta para Lula” · Te Atualizei — “O TSUNAMI DA DIREITA”. Caio Coppolla: nenhum vídeo novo até 18:52. A Revista Oeste não pôde ser consultada. Os resultados vêm dos arquivos oficiais do TSE; as demais manifestações aparecem como relatadas pelos veículos.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
