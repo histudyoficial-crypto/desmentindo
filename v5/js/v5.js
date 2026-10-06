@@ -474,10 +474,10 @@
     return out;
   }
   function mhCat(it) { return it.category ? '<span class="mh-cat' + (it.tone ? " t-" + it.tone : "") + '">' + e(it.category) + "</span>" : ""; }
-  function morningBlock(edition, items) {
+  function morningBlock(edition, items, compact) {
     if (!items.length) return "";
     var p = dParts(edition), hero = items[0], sec = items.slice(1, 4), u = function (it) { return "#/agora/" + e(it.id); };
-    var h = '<section class="mh" id="morning" aria-labelledby="mh-t"><div class="mh-head"><div><p class="mh-k"><i aria-hidden="true"></i>Morning ' + tc("date", tcDate(edition), edition) + "</p>" +
+    var h = '<section class="mh' + (compact ? " mh-compact" : " mh-lead") + '" id="morning" aria-labelledby="mh-t"><div class="mh-head"><div><p class="mh-k"><i aria-hidden="true"></i>Hoje ' + tc("date", tcDate(edition), edition) + "</p>" +
       '<h2 class="mh-t" id="mh-t">O que importa hoje</h2><p class="mh-sub">As principais notícias do começo do dia, com contexto, fontes e o que ainda está em aberto.</p></div>' +
       (items.length > 4 ? '<a class="mh-all" href="#/agora">Ver todas as notícias do Morning <span aria-hidden="true">→</span></a>' : "") + "</div>";
     h += '<div class="mh-grid' + (sec.length ? "" : " mh-solo") + '"><article class="mh-hero"><a class="mh-vl" href="' + u(hero) + '" tabindex="-1" aria-hidden="true">' + mhVisual(hero, true) + "</a>" +
@@ -493,7 +493,7 @@
   }
   // ref = dia operacional quando o FECHAMENTO pode não ser de hoje (estado C): ontem → "Fechamento de ontem";
   // mais antigo → carimbo de distância (agoLabel, §32.4). Sem ref, ou do próprio dia, nada muda.
-  function fxHome(F, ref) {
+  function fxHome(F, ref, prev) {
     var fu = "#/fechamento/" + F.edition_date, pts = (F.opening && F.opening.points) || [], cut = F.cutoff_at ? fhm(F.cutoff_at) : "";
     var ago = ref ? civilDays(F.edition_date, ref) : 0;
     var main = '<div class="fxh-main"><p class="fxh-k"><span class="fxh-tag">' + (ago === 1 ? "Fechamento de ontem" : "Fechamento") + "</span>" +
@@ -510,7 +510,7 @@
     var side = st.length ? '<div class="fxh-side"><p class="fxh-sk">O que dá para concluir' + (cut ? " até " + e(cut) : "") + "</p>" + st.map(function (s, i) {
       return '<div class="fxh-c"><p class="fxh-cn">' + (i + 1) + '</p><p>' + e(s.conclusion) + "</p></div>";
     }).join("") + "</div>" : "";
-    return '<section class="fxh" id="fechamento" aria-labelledby="fx-home-t">' + main + side + "</section>";
+    return '<section class="fxh' + (prev ? " fxh-prev" : "") + '" id="fechamento" aria-labelledby="fx-home-t">' + main + side + "</section>";
   }
   function matBlock(mats, MD) {
     if (!mats.length) return "";
@@ -600,8 +600,11 @@
     if (A && !fxToday) h += agoraBar(A);   // estado A: AGORA editorial (no B, com o FECHAMENTO do dia publicado, o AGORA sai; o radar do dia fica)
     if (!A) h += agoraIdle(od);
     if (A) h += newsDay(A, !fxToday && last ? last.id : "", M.length ? M[0].id : "");
-    if (A) h += morningBlock(A.edition, M);
-    if (LF && LF.edition_date) h += fxHome(LF, A ? "" : od);
+    // Hierarquia temporal (Human Gate 06/10): no A o Morning aprovado de hoje é a capa do dia e o FECHAMENTO anterior vem
+    // depois, rotulado pela distância ("Fechamento de ontem") e em escala de contexto; no B o FECHAMENTO de hoje é a capa e o
+    // Morning fica compacto; no C (nada aprovado hoje) o FECHAMENTO anterior continua sendo a capa.
+    if (A) h += morningBlock(A.edition, M, fxToday);
+    if (LF && LF.edition_date) h += fxHome(LF, fxToday ? "" : od, A && !fxToday);
     return h;
   }
   P.home = function () {

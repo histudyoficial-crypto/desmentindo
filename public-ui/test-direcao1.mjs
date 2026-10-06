@@ -70,7 +70,7 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
   eq("1 item: mh-solo", /mh-solo/.test(one), true);
   eq("1 item: sem secundárias", /mh-sec/.test(one), false);
   eq("1 item: sem 'ver todas'", /mh-all/.test(one), false);
-  eq("cabeçalho", /Morning <time class="tc tc-date" datetime="2026-10-05">5 OUT<\/time>/.test(one) && /O que importa hoje/.test(one), true);
+  eq("cabeçalho", /Hoje <time class="tc tc-date" datetime="2026-10-05">5 OUT<\/time>/.test(one) && /O que importa hoje/.test(one), true);
   eq("sem imagem → arte editorial decorativa", /class="mh-art" aria-hidden="true"/.test(one), true);
   const six = H.morningBlock("2026-10-05", [1, 2, 3, 4, 5, 6].map(n => it(n)));
   eq("6 itens: 3 secundárias", (six.match(/<li>/g) || []).length, 3);
@@ -237,11 +237,20 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
   // C → A: 1ª edição aprovada do dia → some o neutro, fica uma barra só; FECHAMENTO anterior como hoje (A não muda)
   const A6 = { edition: "2026-10-06", items: [{ id: "x", title: "Aprovada", slot: "MORNING", category: "", sources: [], date: "2026-10-06" }] };
   const a = K.homeTop(A6, F5, "2026-10-06");
-  eq("C → A", [idle(a), bars(a), /Agora · hoje/.test(a), /fxh-tag">Fechamento de ontem|tc-ago/.test(a)], [0, 1, true, false]);
+  eq("C → A", [idle(a), bars(a), /Agora · hoje/.test(a), /fxh-tag">Fechamento de ontem/.test(a)], [0, 1, true, true]);
+  // HIERARQUIA TEMPORAL (Human Gate 06/10): no A o Morning aprovado de hoje vem antes do FECHAMENTO de ontem, como capa
+  const A6m = { edition: "2026-10-06", items: [{ id: "x", title: "Aprovada", slot: "MORNING", category: "", sources: [], date: "2026-10-06" }] };
+  const am = K.homeTop(A6m, F5, "2026-10-06");
+  eq("A: Morning (capa) antes do FECHAMENTO de ontem", [am.indexOf('class="mh mh-lead"') > 0, am.indexOf('class="mh mh-lead"') < am.indexOf('class="fxh fxh-prev"')], [true, true]);
+  eq("A: Morning rotulado Hoje, sem nome interno", /mh-k"><i aria-hidden="true"><\/i>Hoje <time/.test(am) && !/>Morning </.test(am), true);
+
   // A → B: FECHAMENTO do dia publicado → sem AGORA, sem "ontem"
   const F6 = Object.assign({}, F5, { edition_date: "2026-10-06", public_title: "FECHAMENTO — 6 de outubro de 2026" });
   const bb = K.homeTop(A6, F6, "2026-10-06");
   eq("A → B", [idle(bb), bars(bb), /fxh-tag">Fechamento de ontem|tc-ago/.test(bb), /class="nd"/.test(bb)], [0, 0, false, true]);
+  eq("B: FECHAMENTO de hoje é a capa; Morning compacto; sem 'ontem'", [/class="fxh"/.test(bb), /fxh-prev/.test(bb), /class="mh mh-compact"/.test(bb)], [true, false, true]);
+  eq("C: FECHAMENTO anterior é a capa (sem escala de contexto)", [/class="fxh"/.test(c), /fxh-prev|class="mh/.test(c)], [true, false]);
+
   // fxHome sem ref (fora do estado C) é idêntico ao anterior
   eq("fxHome sem ref inalterado", /fxh-tag">Fechamento<\/span><time/.test(K.fxHome(F5)), true);
 }
