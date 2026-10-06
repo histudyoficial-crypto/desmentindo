@@ -1143,6 +1143,13 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
 .is-home .mh-compact .mh-solo .mh-hero { grid-template-columns: minmax(0, .38fr) minmax(0, 1fr); }
 .is-home .mh-compact .mh-ad b { font-size: 64px; } .is-home .mh-compact .mh-ad { font-size: 30px; } .is-home .mh-compact .mh-ac, .is-home .mh-compact .mh-aw { display: none; }
 .is-home .mh-compact .mh-ht { font-size: 28px; }
+/* Capa do dia sem foto (06/10): a arte tipográfica é apoio, não a capa. Ao lado da manchete (≥641) ou faixa baixa (≤640),
+   para que manchete, resumo e "Ler agora" da história principal fiquem no primeiro viewport. */
+.is-home .mh-lead .mh-hero.mh-noimg { display: grid; grid-template-columns: minmax(0, .4fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.is-home .mh-lead .mh-noimg .mh-art { aspect-ratio: 4 / 5; }
+.is-home .mh-lead .mh-noimg .mh-hx { margin-top: 0; }
+.is-home .mh-lead .mh-noimg .mh-ac { display: none; }
+.is-home .mh-lead .mh-noimg .mh-ht { font-size: 44px; line-height: .92; }
 .is-home .fxh.fxh-prev { border-top-width: 4px; }
 .is-home .fxh-prev .fxh-t { font-size: 54px; line-height: .9; }
 .is-home .fxh-prev .fxh-pts li { font-size: 17px; }
@@ -1164,6 +1171,11 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
   .is-home .fxh-prev .fxh-t { font-size: 32px; }
   .is-home .mh-lead .mh-t { font-size: 40px; }
   .is-home .mh-lead .mh-ht { font-size: 34px; }
+  .is-home .mh-lead .mh-hero.mh-noimg { display: block; }
+  .is-home .mh-lead .mh-noimg .mh-art { aspect-ratio: 16 / 7; }
+  .is-home .mh-lead .mh-noimg .mh-ac, .is-home .mh-lead .mh-noimg .mh-aw { display: none; }
+  .is-home .mh-lead .mh-noimg .mh-hx { margin-top: 14px; }
+  .is-home .mh-lead .mh-noimg .mh-ht { font-size: 32px; }
   .is-home .mh-compact .mh-t { font-size: 26px; }
   .is-home .mh-compact .mh-ht { font-size: 24px; }
   .is-home .mh-compact .mh-vl { display: none; }

@@ -76,6 +76,10 @@ jobs:
           node public-ui/internal-ids.mjs data/editorial v5 /tmp/root-ids.html /tmp/pages
       - name: Páginas compartilháveis (uma por FECHAMENTO/MATÉRIA, com prévia própria) e medição desligada sem id
         run: node public-ui/check-share-pages.mjs /tmp/pages /tmp/root-ids.html
+      - name: Favicon da marca em sincronia com o gerador e declarado nas páginas (sem ícone vazio data:,)
+        run: |
+          node public-ui/build-favicon.mjs --check
+          if grep -R -n -l 'rel="icon" href="data:,"' v5/index.html eleicoes-2026/; then echo 'Ícone vazio (data:,) encontrado.'; exit 1; fi
       - name: Direção 1 — regras determinísticas e limites da V1
         run: node public-ui/test-direcao1.mjs
       - name: Eleições 2026 — páginas geradas em sincronia, CSS/JS da mesma versão do HTML, sem marcador interno, e regras dos snapshots
