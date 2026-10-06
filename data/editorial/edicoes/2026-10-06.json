@@ -1,0 +1,100 @@
+{
+ "schema": "desmentindo.public.editorial_edition.v1",
+ "edition": "2026-10-06",
+ "label": "AGORA",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova; fonte primária indicada quando obtida.",
+ "items": [
+  {
+   "id": "2026-10-06-calculo-do-desmentindo-com-dados-do-tse-7-partidos-ficam-abaixo-da",
+   "date": "2026-10-06",
+   "label": "AGORA",
+   "title": "Cálculo do Desmentindo com dados do TSE: 7 partidos ficam abaixo da cláusula de barreira",
+   "text": "Resposta: pelo cálculo do Desmentindo sobre os resultados oficiais do TSE, sete partidos ficam abaixo da cláusula de barreira de 2026: PSOL e Rede (que concorreram em federação), PRD e Solidariedade (federação Renovação Solidária), PDT, Avante e Missão. Dez grupos, que somam 14 partidos, superam o critério. Não é uma lista divulgada pelo TSE. Dados oficiais: o Desmentindo usou os arquivos de resultado do TSE para deputado federal nas 27 unidades da federação, com 113.678.019 votos válidos no país. Em cada estado, a soma dos votos dos partidos confere com o total de votos válidos. Nosso cálculo: a regra da Constituição (Emenda 97, de 2017) exige 2,5% dos votos válidos para deputado federal no país, com pelo menos 1,5% em nove unidades da federação, ou 13 deputados eleitos em nove unidades. A federação PSOL/Rede teve 4,89% no país, mas chegou a 1,5% em só oito estados. No Espírito Santo, teve 31.839 votos e precisava de 32.025: faltaram 186. O Novo passou com 1,5% em exatamente nove unidades; a nona, o Distrito Federal, por 976 votos. Os números publicados pela Folha conferem com esse recálculo. O que ainda falta: o TSE ainda não publicou o ato formal que declara quais partidos cumpriram a cláusula; o Desmentindo não localizou esse documento. Consequência e limite: pela Constituição, só os partidos que cumprem a cláusula têm direito, na forma da lei, aos recursos do fundo partidário e ao acesso gratuito ao rádio e à televisão. Os efeitos concretos para cada partido dependem do ato do TSE.",
+   "sources": [
+    {
+     "name": "TSE (documento oficial)",
+     "title": "Resultado oficial do 1º turno — deputado federal, Espírito Santo (arquivo de resultados do TSE; mesmo formato nas 27 UFs)",
+     "url": "https://resultados.tse.jus.br/oficial/ele2026/6259/dados/es/es-c0006-e006259-u.json"
+    },
+    {
+     "name": "TSE (documento oficial)",
+     "title": "Resultado oficial do 1º turno — deputado federal, Distrito Federal (arquivo de resultados do TSE)",
+     "url": "https://resultados.tse.jus.br/oficial/ele2026/6259/dados/df/df-c0006-e006259-u.json"
+    },
+    {
+     "name": "Planalto (texto oficial)",
+     "title": "Emenda Constitucional nº 97, de 2017 (cláusula de desempenho)",
+     "url": "https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc97.htm"
+    },
+    {
+     "name": "Folha de S.Paulo",
+     "title": "PSOL, PDT e Missão não superam cláusula de barreira, e só 14 partidos terão propaganda na TV; veja lista",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/psol-missao-e-mais-tres-nao-devem-atingir-clausula-de-barreira-veja-lista-de-partidos-e-federacoes.shtml"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "PARTIAL",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas; parte das afirmações tem documento oficial vinculado"
+   },
+   "slot": "MORNING",
+   "category": "Eleições 2026",
+   "category_tone": "yellow",
+   "dek": "Recálculo com os arquivos oficiais das 27 UFs; o ato formal do TSE sobre a cláusula ainda não foi publicado.",
+   "visual_variant": "EDITORIAL_ART"
+  },
+  {
+   "id": "2026-10-06-rio-garotinho-desiste-de-recurso-no-tse-2-turno-segue-oficial-ate-o",
+   "date": "2026-10-06",
+   "label": "AGORA",
+   "title": "Rio: Garotinho desiste de recurso no TSE; 2º turno segue oficial até o tribunal decidir",
+   "text": "Fato verificável: o resultado oficial do TSE para governador do Rio, relido em 6/10, indica 2º turno entre Douglas Ruas (PL), com 4.271.199 votos (49,27%), e Eduardo Paes (PSD), com 3.706.984 votos (42,76%). Os 274.411 votos de Anthony Garotinho (Republicanos) aparecem como “anulado sub judice”. Garotinho teve o registro negado pela Justiça Eleitoral do Rio por condenação por improbidade administrativa e recorreu ao TSE. Situação processual: segundo a Agência Brasil (agência pública de notícias), a Folha e o Estadão, a defesa de Garotinho pediu ao TSE na segunda-feira (5/10) para desistir desse recurso, e o ministro Floriano de Azevedo Marques deu dois dias para a Procuradoria-Geral Eleitoral se manifestar antes de decidir. O Desmentindo não localizou o pedido nem o despacho no sistema do TSE. O que pode acontecer: se o TSE aceitar a desistência e os votos de Garotinho forem anulados de forma definitiva, haverá nova totalização. Sem esses votos, Ruas teria 50,88% dos votos válidos (cálculo do Desmentindo com os números do TSE), o que permitiria ao TRE-RJ proclamá-lo eleito no 1º turno. O ministro pode decidir sozinho ou levar o caso ao plenário, e advogados divergem sobre o efeito da desistência. Declaração política: Eduardo Paes chamou o movimento de “armação” entre Garotinho e Ruas para vencer “no tapetão”. É uma acusação de Paes, não um fato demonstrado. Procurado pela CNN, Ruas não quis se manifestar. Limites: até agora, nenhuma decisão do TSE sobre a desistência foi divulgada. Enquanto isso, vale o 2º turno, marcado para 25/10. Fonte oficial: arquivo de resultados do TSE para governador do Rio.",
+   "sources": [
+    {
+     "name": "TSE (documento oficial)",
+     "title": "Resultado oficial do 1º turno — governador do Rio de Janeiro (arquivo de resultados do TSE)",
+     "url": "https://resultados.tse.jus.br/oficial/ele2026/6259/dados/rj/rj-c0003-e006259-u.json"
+    },
+    {
+     "name": "Agência Brasil",
+     "title": "TSE quer parecer do MP antes de decisão sobre recurso de Garotinho",
+     "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tse-quer-parecer-do-mp-antes-de-decisao-sobre-recurso-de-garotinho"
+    },
+    {
+     "name": "Agência Brasil",
+     "title": "Garotinho desiste de recurso e eleição do RJ pode acabar em 1º turno",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/garotinho-desiste-de-recurso-e-eleicao-do-rj-pode-acabar-em-1o-turno"
+    },
+    {
+     "name": "Folha de S.Paulo",
+     "title": "Garotinho desiste de recurso ao TSE e abre brecha para eleição de Douglas Ruas no RJ",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/garotinho-desiste-de-recurso-ao-tse-e-abre-brecha-para-eleicao-de-douglas-ruas-no-rj.shtml"
+    },
+    {
+     "name": "Estadão",
+     "title": "TSE dá dois dias para MP opinar sobre desistência de Garotinho; Paes chama adversário de laranja",
+     "url": "https://estadao.com.br/politica/eleicoes/tse-da-dois-dias-para-mp-opinar-sobre-desistencia-de-garotinho-paes-chama-adversario-de-laranja"
+    },
+    {
+     "name": "CNN Brasil",
+     "title": "Paes acusa Ruas e Garotinho de “armação” em eleição no RJ",
+     "url": "https://cnnbrasil.com.br/eleicoes/paes-acusa-ruas-e-garotinho-de-armacao-em-eleicao-no-rj"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "PARTIAL",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas; parte das afirmações tem documento oficial vinculado"
+   },
+   "slot": "MORNING",
+   "category": "Eleições 2026",
+   "category_tone": "yellow",
+   "dek": "Se o TSE aceitar a desistência e anular os votos de Garotinho, Ruas pode ser eleito no 1º turno. Por ora, vale o 2º turno.",
+   "visual_variant": "EDITORIAL_ART"
+  }
+ ]
+}
