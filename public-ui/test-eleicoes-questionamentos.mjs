@@ -40,6 +40,40 @@ for (const q of D.questionamentos) {
 }
 const home = fs.readFileSync(path.join(ROOT, "eleicoes-2026", "index.html"), "utf8");
 if (!home.includes("Questionamentos sobre a eleição") || !home.includes("Ver todos os questionamentos")) bad("home sem seção de questionamentos");
+// LAYOUT (Human Gate 06/10): Brasil na ordem estado → questionamentos → noite de 4/10 → resultado oficial → explorador →
+// metodologia; linha dos líderes vazia no HTML (o número vem do TSE, nunca fixo).
+{
+  const ord = ['id="estado"', 'id="t-q"', 'id="t-evo"', 'id="resultado"', 'id="onde"', 'id="verificacao"'].map(x => home.indexOf(x));
+  if (ord.some(i => i < 0) || ord.some((v, i) => i && v < ord[i - 1])) bad("Brasil fora da ordem do layout aprovado: " + ord.join(","));
+  const ld = (home.match(/<div id="lideres"[^>]*>([\s\S]*?)<\/div>/) || [])[1] || "";
+  if (/\d+,\d+%/.test(ld)) bad("linha dos líderes com percentual fixo no HTML");
+  const uf = fs.readFileSync(path.join(ROOT, "eleicoes-2026", "sp", "index.html"), "utf8");
+  if (uf.includes('id="estado"') || uf.includes('id="t-q"')) bad("UF ganhou blocos exclusivos do Brasil");
+  // central: resumo contado do dado; Q pages: resposta antes da prova, atalhos para evidência/limites/fontes
+  const central = fs.readFileSync(path.join(ROOT, "eleicoes-2026", "questionamentos", "index.html"), "utf8");
+  const cnt = {}; for (const q of D.questionamentos) cnt[q.classificacao] = (cnt[q.classificacao] || 0) + 1;
+  for (const [c, n] of Object.entries(cnt)) if (!new RegExp(`<li><b>${n}</b><span class="qbadge[^"]*"[^>]*>${c}<`).test(central)) bad(`resumo da central sem ${n} × ${c}`);
+  if (!central.includes(`${D.questionamentos.length} dúvidas testadas nos dados oficiais`)) bad("resumo da central sem total");
+  for (const q of D.questionamentos) {
+    const h = fs.readFileSync(path.join(ROOT, "eleicoes-2026", "questionamentos", q.slug, "index.html"), "utf8");
+    const iS = h.indexOf('class="qsum"'), iP = h.indexOf('class="qpainel"');
+    if (iP >= 0 && iP < iS) bad(`${q.id} evidência antes da resposta`);
+    if (!/class="qjump"[\s\S]*href="#dados"[\s\S]*href="#limites"[\s\S]*href="#fontes"/.test(h)) bad(`${q.id} sem atalhos evidência/limites/fontes`);
+    for (const a of ['id="dados"', 'id="limites"', 'id="fontes"']) if (!h.includes(a)) bad(`${q.id} sem âncora ${a}`);
+  }
+  // Q7: contrato dinâmico completo depois do layout (o JS troca os valores; nada disso pode sumir)
+  const q7c = fs.readFileSync(path.join(ROOT, "eleicoes-2026", "questionamentos", "arquivos-ainda-nao-disponiveis", "index.html"), "utf8");
+  for (const [re, n] of [[/class="qcount"/, ".qcount"], [/ data-src="/, "data-src"], [/ data-live="/, "data-live"], [/ data-at="/, "data-at"], [/id="qcPend"/, "#qcPend"],
+    [/id="qcRec"/, "#qcRec"], [/id="qcUF"/, "#qcUF"], [/id="qcWhen"/, "#qcWhen"], [/class="qwhen/, ".qwhen"], [/data-qcex/, "a[data-qcex]"]])
+    if (!re.test(q7c)) bad("Q7 contrato: falta " + n);
+  const qjs = fs.readFileSync(path.join(ROOT, "eleicoes-2026", "questionamentos.js"), "utf8");
+  if (!/stale/.test(qjs)) bad("Q7: questionamentos.js sem estado stale");
+  // Q11: aviso de unidade antes dos gráficos; observação ≠ explicação preservadas
+  const q11 = fs.readFileSync(path.join(ROOT, "eleicoes-2026", "questionamentos", "presidente-governador-sao-paulo", "index.html"), "utf8");
+  const iU = q11.indexOf('class="qunit"'), iG = q11.search(/class="(qhists|qmap|qfig)/);
+  if (iU < 0 || (iG >= 0 && iG < iU)) bad("Q11: aviso de unidade não está antes dos gráficos");
+  if (!q11.includes("Observação verdadeira não significa explicação verdadeira.")) bad("Q11 sem distinção observação × explicação");
+}
 if (!fs.existsSync(path.join(ROOT, "eleicoes-2026", "questionamentos", "04-de-outubro", "index.html"))) bad("linha do tempo de 04/10 não gerada");
 // Última milha (05/10): Q7 com número renderizado e hora da última verificação (nunca "tempo real"); Q6 com a verificação
 // independente separada do arquivo oficial e o achado dos arquivos municipais rotulado; nav do produto em todas as páginas.
