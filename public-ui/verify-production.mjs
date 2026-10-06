@@ -12,6 +12,9 @@
  *   LEGACY_PUBLIC_APP_RETIRED /desmentindo_local.html = redirecionamento para a raiz (app anterior fora do ar)
  *   INTERNAL_IDENTIFIER_SCAN nenhum id interno (PS-*, RV-*, DS-*, EVC-*, source_id…) no que a produção serve
  *   CACHE_POLICY        HTML da raiz com Cache-Control no-cache (sem reuso heurístico da Home antiga)
+ *   ELEICOES_HTML_MATCH  cada página de /eleicoes-2026/ servida == bytes do commit (Brasil, UFs, central, Q1–Q11)
+ *   ELEICOES_ASSETS_COMPATIBLE cada CSS/JS local dessas páginas vem com ?v= e o arquivo servido nessa URL tem exatamente
+ *                       esse sha256 — pega HTML de uma versão com CSS/JS de outra (P0 06/10/2026), não só HTTP 200
  *   node public-ui/verify-production.mjs [--base https://desmentindo.com.br] [--retries 3]
  */
 import crypto from "node:crypto";
@@ -21,6 +24,7 @@ import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { findLeaks } from "./internal-ids.mjs";
+import { assetProblems } from "./asset-versions.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d; };
@@ -32,6 +36,14 @@ const local = p => fs.readFileSync(path.join(ROOT, p));
 async function get(p) {
   const r = await fetch(BASE + p + (p.includes("?") ? "&" : "?") + "cb=" + Date.now(), { headers: { "Cache-Control": "no-cache" } });
   return { status: r.status, body: Buffer.from(await r.arrayBuffer()), headers: Object.fromEntries(r.headers) };
+}
+
+function eleicoesPages(d = "eleicoes-2026", out = []) {
+  for (const f of fs.readdirSync(path.join(ROOT, d), { withFileTypes: true })) {
+    const r = d + "/" + f.name;
+    if (f.isDirectory()) eleicoesPages(r, out); else if (f.name === "index.html") out.push(r);
+  }
+  return out;
 }
 
 async function check() {
@@ -100,7 +112,18 @@ async function check() {
   g.LEGACY_V4_PUBLIC_PREVIEW_RETIRED = v4.status === 200 && /name="desmentindo-legacy" content="retired-v4"/.test(v4.body) && v4data.status === 404;
   g.LEGACY_PUBLIC_APP_RETIRED = legacyApp.status === 200 && /name="desmentindo-legacy" content="retired"/.test(legacyApp.body) && !/const D ?= ?\{/.test(legacyApp.body);
   g.CACHE_POLICY = /no-cache/i.test(root.headers["cache-control"] || "");
-  return { base: BASE, gates: g, internal_id_leaks: leaks, assets, served_build: m.slice(1), build_info: info, data: { ROOT_DATA_EDITION: served, LATEST_APPROVED_DATA_EDITION: approved, EDITORIAL_EDITION_SERVED: edServed, EDITORIAL_EDITION_APPROVED: editorial },
+  // Eleições 2026: HTML do commit + CSS/JS da MESMA versão (o navegador busca exatamente a URL ?v= que o HTML aponta)
+  const eleicoes = { pages: 0, html_mismatch: [], asset_problems: [] }, assetCache = {};
+  const servedAsset = async (p, v) => (assetCache[p + v] ??= get(p + "?v=" + v).then(r => r.status === 200 ? r.body : null));
+  for (const rel of eleicoesPages()) {
+    const r = await get("/" + rel.replace(/index\.html$/, ""));
+    eleicoes.pages++;
+    if (r.status !== 200 || sha(r.body) !== sha(local(rel))) { eleicoes.html_mismatch.push(rel); continue; }
+    for (const x of await assetProblems(r.body.toString("utf8"), servedAsset)) eleicoes.asset_problems.push(rel + ": " + x);
+  }
+  g.ELEICOES_HTML_MATCH = eleicoes.pages > 0 && eleicoes.html_mismatch.length === 0;
+  g.ELEICOES_ASSETS_COMPATIBLE = g.ELEICOES_HTML_MATCH && eleicoes.asset_problems.length === 0;
+  return { base: BASE, gates: g, internal_id_leaks: leaks, assets, eleicoes, served_build: m.slice(1), build_info: info, data: { ROOT_DATA_EDITION: served, LATEST_APPROVED_DATA_EDITION: approved, EDITORIAL_EDITION_SERVED: edServed, EDITORIAL_EDITION_APPROVED: editorial },
            root_headers: { "cache-control": root.headers["cache-control"] || null, "last-modified": root.headers["last-modified"] || null, etag: root.headers.etag || null },
            root_sha256: sha(root.body), expected_sha256: sha(expected) };
 }

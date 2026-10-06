@@ -78,9 +78,10 @@ jobs:
         run: node public-ui/check-share-pages.mjs /tmp/pages /tmp/root-ids.html
       - name: Direção 1 — regras determinísticas e limites da V1
         run: node public-ui/test-direcao1.mjs
-      - name: Eleições 2026 — páginas geradas em sincronia, sem marcador interno, e regras dos snapshots
+      - name: Eleições 2026 — páginas geradas em sincronia, CSS/JS da mesma versão do HTML, sem marcador interno, e regras dos snapshots
         run: |
           node public-ui/build-eleicoes.mjs --check
+          node public-ui/test-eleicoes-assets.mjs
           node public-ui/test-eleicoes-core.mjs
           node public-ui/test-eleicoes-questionamentos.mjs
           node public-ui/internal-ids.mjs eleicoes-2026
