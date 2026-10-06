@@ -1,122 +1,16 @@
 {
  "schema": "eleicoes2026.arquivos-ausentes.v2",
- "atualizado_em": "2026-10-06T11:53:07Z",
- "last_checked": "2026-10-06T11:53:07Z",
- "ultima_tentativa": "2026-10-06T11:53:07Z",
+ "atualizado_em": "2026-10-06T12:55:26Z",
+ "last_checked": "2026-10-06T12:55:26Z",
+ "ultima_tentativa": "2026-10-06T12:55:26Z",
  "verificacao_ok": true,
  "base_madrugada_05_10": 5254,
- "recuperadas": 5242,
- "pendentes": 12,
- "pendentes_sem_arquivo": 12,
+ "recuperadas": 5254,
+ "pendentes": 0,
+ "pendentes_sem_arquivo": 0,
  "pendentes_sem_boletim": 0,
- "pendentes_por_uf": {
-  "SP": 12
- },
- "exemplo": {
-  "uf": "sp",
-  "m": "63134",
-  "z": "0388",
-  "s": "0147",
-  "municipio": "Carapicuíba",
-  "estado": "ARQUIVO_NAO_DISPONIVEL"
- },
- "secoes": [
-  {
-   "uf": "sp",
-   "m": "63134",
-   "z": "0388",
-   "s": "0147",
-   "municipio": "Carapicuíba",
-   "estado": "ARQUIVO_NAO_DISPONIVEL"
-  },
-  {
-   "uf": "sp",
-   "m": "63134",
-   "z": "0388",
-   "s": "0148",
-   "municipio": "Carapicuíba",
-   "estado": "ARQUIVO_NAO_DISPONIVEL"
-  },
-  {
-   "uf": "sp",
-   "m": "63134",
-   "z": "0388",
-   "s": "0155",
-   "municipio": "Carapicuíba",
-   "estado": "ARQUIVO_NAO_DISPONIVEL"
-  },
-  {
-   "uf": "sp",
-   "m": "63134",
-   "z": "0388",
-   "s": "0181",
-   "municipio": "Carapicuíba",
-   "estado": "ARQUIVO_NAO_DISPONIVEL"
-  },
-  {
-   "uf": "sp",
-   "m": "63134",
-   "z": "0388",
-   "s": "0254",
-   "municipio": "Carapicuíba",
-   "estado": "ARQUIVO_NAO_DISPONIVEL"
-  },
-  {
-   "uf": "sp",
-   "m": "63134",
-   "z": "0388",
-   "s": "0299",
-   "municipio": "Carapicuíba",
-   "estado": "ARQUIVO_NAO_DISPONIVEL"
-  },
-  {
-   "uf": "sp",
-   "m": "63134",
-   "z": "0388",
-   "s": "0300",
-   "municipio": "Carapicuíba",
-   "estado": "ARQUIVO_NAO_DISPONIVEL"
-  },
-  {
-   "uf": "sp",
-   "m": "63134",
-   "z": "0388",
-   "s": "0360",
-   "municipio": "Carapicuíba",
-   "estado": "ARQUIVO_NAO_DISPONIVEL"
-  },
-  {
-   "uf": "sp",
-   "m": "63134",
-   "z": "0388",
-   "s": "0371",
-   "municipio": "Carapicuíba",
-   "estado": "ARQUIVO_NAO_DISPONIVEL"
-  },
-  {
-   "uf": "sp",
-   "m": "63134",
-   "z": "0388",
-   "s": "0413",
-   "municipio": "Carapicuíba",
-   "estado": "ARQUIVO_NAO_DISPONIVEL"
-  },
-  {
-   "uf": "sp",
-   "m": "63134",
-   "z": "0388",
-   "s": "0419",
-   "municipio": "Carapicuíba",
-   "estado": "ARQUIVO_NAO_DISPONIVEL"
-  },
-  {
-   "uf": "sp",
-   "m": "63134",
-   "z": "0388",
-   "s": "0554",
-   "municipio": "Carapicuíba",
-   "estado": "ARQUIVO_NAO_DISPONIVEL"
-  }
- ],
+ "pendentes_por_uf": {},
+ "exemplo": null,
+ "secoes": [],
  "nota": "Contagem do acompanhamento horário do Eleições 2026. Não é atualização em tempo real."
 }
