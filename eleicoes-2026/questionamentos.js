@@ -14,6 +14,7 @@
     var at = Date.parse(d.atualizado_em), h = (Date.now() - at) / 36e5, when = document.getElementById("qcWhen");
     if (Date.parse(box.getAttribute("data-at")) < at) {
       document.getElementById("qcPend").textContent = nf(d.pendentes);
+      var un = document.querySelector(".qbig span"); if (un) un.textContent = d.pendentes === 1 ? "seção" : "seções";
       document.getElementById("qcRec").textContent = nf(d.recuperadas);
       document.getElementById("qcUF").textContent = Object.keys(d.pendentes_por_uf || {}).map(function (u) { return (u === "ZZ" ? "exterior" : u) + " " + nf(d.pendentes_por_uf[u]); }).join(" · ") || "—";
       box.setAttribute("data-at", d.atualizado_em);

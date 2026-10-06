@@ -31,6 +31,12 @@ t("429 = consulta recusada", () => assert.equal(E(zona[2], { status: 429 }), "RE
 t("rede = consulta não concluída", () => assert.equal(E(zona[3], { status: null, erro: "TypeError" }), "NAO_CONCLUIDA"));
 t("5xx = consulta não concluída", () => assert.equal(E(zona[3], { status: 503 }), "NAO_CONCLUIDA"));
 t("200 ilegível", () => assert.equal(E(zona[3], { status: 200, json: {} }), "ILEGIVEL"));
+// design v3: cada classe de estado tem marca própria no CSS (glifo), e arquivo ilegível ≠ problema de consulta
+t("estados: classe com glifo próprio; ilegível separado da consulta", () => {
+  const css = fs.readFileSync(path.join(ROOT, "eleicoes-2026", "eleicoes.css"), "utf8");
+  for (const c of new Set(Object.values(C.ESTADOS).map(e => e.classe))) assert.ok(new RegExp("\\.e-" + c + " \\.enome::before").test(css), "sem glifo: " + c);
+  assert.notStrictEqual(C.ESTADOS.ILEGIVEL.classe, C.ESTADOS.RECUSADA.classe); assert.strictEqual(C.ESTADOS.RECUSADA.classe, C.ESTADOS.NAO_CONCLUIDA.classe);
+});
 t("todo estado tem nome curto, texto e classe", () => Object.values(C.ESTADOS).forEach(e => { assert.ok(e.nome.length < 40); assert.ok(e.texto.length > 30); assert.ok(e.classe); }));
 t("cadastro: agregada / gerado / pendente", () => {
   assert.equal(C.estadoCadastro(zona[1], zona).estado, "AGREGADA");

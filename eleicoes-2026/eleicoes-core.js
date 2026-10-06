@@ -21,7 +21,7 @@
     PENDENTE:       { nome: "Pendente",                     classe: "pendente", texto: "O TSE ainda não gerou os arquivos desta seção." },
     RECUSADA:       { nome: "Consulta recusada",            classe: "erro",    texto: "O servidor do TSE recusou a consulta agora (limite de acesso). Isso não diz nada sobre a seção. Tente mais tarde." },
     NAO_CONCLUIDA:  { nome: "Consulta não concluída",       classe: "erro",    texto: "Não conseguimos falar com o TSE agora (rede ou erro temporário do servidor). Isso não diz nada sobre a seção." },
-    ILEGIVEL:       { nome: "Arquivo ilegível",             classe: "erro",    texto: "O arquivo chegou, mas não pôde ser lido. Nada foi concluído a partir dele." }
+    ILEGIVEL:       { nome: "Arquivo ilegível",             classe: "ilegivel",    texto: "O arquivo chegou, mas não pôde ser lido. Nada foi concluído a partir dele." }
   };
 
   function principalDe(ns, zonaSecs) {

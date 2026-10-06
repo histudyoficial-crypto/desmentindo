@@ -81,6 +81,7 @@ ${pnav(br ? "res" : "exp")}
 <div class="head">
 <p class="kick"><span class="tag res">Dado oficial · TSE</span>Eleições 2026 · Presidente · 1º turno</p>
 <h1>${attr(where)}</h1>
+${br ? `<nav class="paths" aria-label="O que dá para fazer aqui"><a href="#resultado"><b>Explore os resultados</b><span>Placar oficial do TSE e o caminho até cada seção</span></a><a href="/eleicoes-2026/questionamentos/"><b>Investigue os questionamentos</b><span>${QDATA.questionamentos.length} dúvidas que circularam, testadas nos dados oficiais</span></a><a href="#verificacao"><b>Verificação</b><span>De onde vem cada número</span></a></nav>` : ""}
 </div>
 <section id="status" class="cards" aria-label="Situação da apuração">${STATUS0}</section>
 <div class="layout">

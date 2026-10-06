@@ -18,6 +18,15 @@
    "classificacao": "CONFIRMADO",
    "classificacao_nota": "A atualização pública parou por cerca de uma hora. A causa: INCONCLUSIVO.",
    "resposta": "Sim. A atualização pública do resultado presidencial ficou parada por cerca de uma hora: das 19:06:33 até por volta das 20:08, o resultado nacional de Presidente publicado pelo TSE não mudou, enquanto seções continuavam chegando. Os dados mostram ainda uma segunda pausa, em outra etapa (a recepção das seções), entre 19:31 e 19:59. A causa não pôde ser verificada de forma independente.",
+   "observacao": {
+    "obs_rotulo": "O que aconteceu",
+    "obs": "A atualização pública do resultado presidencial ficou parada por cerca de uma hora (19:06:33 → ~20:08).",
+    "obs_status": "CONFIRMADO",
+    "exp_rotulo": "Por que aconteceu",
+    "exp": "O TSE atribuiu a parada a um congestionamento no sistema de divulgação. É uma declaração oficial; a causa não pôde ser verificada de forma independente.",
+    "exp_status": "INCONCLUSIVO",
+    "exp_nota": "A parte da explicação oficial que pode ser conferida é compatível com os dados. A segunda pausa, na recepção (19:31:50 → 19:59:21), ela não cobre."
+   },
    "chamou_atencao": "Quem acompanhava a apuração viu o percentual de seções apuradas travar em 64,81% por mais de 50 minutos e, depois, saltar para quase 85% de uma vez.",
    "aconteceu": [
     "O arquivo nacional de Presidente que o TSE publica na internet continuou mostrando o resultado das 19:06:33 (64,81% das seções) até cerca de 20:08. Nosso coletor leu esse mesmo arquivo às 20:02:43 e ele ainda trazia 19:06:33.",
@@ -140,6 +149,7 @@
    "pergunta": "O sistema parou quando começaram a entrar os votos do Nordeste?",
    "card": "O apagão aconteceu quando chegaram votos do Nordeste?",
    "classificacao": "NÃO SUSTENTADO PELOS DADOS",
+   "classificacao_nota": "Antes de cada parada chegavam proporcionalmente menos seções do Nordeste; comparando momentos com o mesmo movimento de chegada, mais Nordeste não aumenta a chance de pausa.",
    "resposta": "Não é o que os dados mostram. Nos minutos antes de cada parada da noite, chegavam proporcionalmente MENOS seções do Nordeste do que na maior parte da noite. E, comparando momentos com o mesmo movimento de chegada, mais Nordeste não aumenta a chance de pausa.",
    "chamou_atencao": "Publicações no X e um blog afirmaram que “há apagão sempre que os votos do Nordeste são computados”.",
    "hipotese": "Se a afirmação estivesse certa, as seções do Nordeste deveriam aparecer acima do normal logo antes de cada parada — e as paradas deveriam ser mais frequentes quando muitas seções do Nordeste chegam.",
@@ -798,6 +808,7 @@
    "pergunta": "Se o Congresso ficou mais conservador, como o resultado presidencial pode ser diferente?",
    "card": "Congresso conservador e presidente diferente: faz sentido?",
    "classificacao": "EXPLICADO PELOS DADOS",
+   "classificacao_nota": "O eleitor vota de formas diferentes em cargos diferentes, e isso aparece seção por seção; “Congresso conservador” soma vários partidos.",
    "resposta": "Porque o eleitor vota em cargos diferentes de formas diferentes, e isso aparece seção por seção. Flávio teve 47,0% dos votos válidos para Presidente; o PL, partido dele, teve 22,7% na Câmara e 28,0% no Senado. “Congresso conservador” soma vários partidos.",
    "chamou_atencao": "O argumento de que seria “incoerente” eleger um Congresso conservador e não o Presidente circulou como indício de problema.",
    "aconteceu": [
@@ -1050,7 +1061,17 @@
     ]
    },
    "metodologia": "Uma seção entra na lista quando o cadastro oficial informa data de geração e o arquivo responde 404 (NoSuchKey). Cada checagem consulta primeiro seções de controle; se alguma falhar, nada é concluído naquela rodada.",
-   "gate": "READY TO PUBLISH"
+   "gate": "READY TO PUBLISH",
+   "arquivos": [
+    {
+     "nome": "Acompanhamento das seções sem arquivo (cópia do site, JSON)",
+     "url": "/eleicoes-2026/dados/arquivos-ausentes.json"
+    },
+    {
+     "nome": "Acompanhamento das seções sem arquivo (atualizado de hora em hora, JSON)",
+     "url": "https://raw.githubusercontent.com/histudyoficial-crypto/desmentindo/eleicoes-2026-dados/arquivos-ausentes.json"
+    }
+   ]
   },
   {
    "id": "Q8",
@@ -1059,6 +1080,7 @@
    "pergunta": "O que aconteceu com as mais de 17 mil seções agregadas?",
    "card": "E as 17 mil seções agregadas?",
    "classificacao": "EXPLICADO PELOS DADOS",
+   "classificacao_nota": "Elas votaram junto com outra seção: os votos das 17.931 seções agregadas estão no boletim de urna da seção principal.",
    "resposta": "Elas votaram junto com outra seção. No dia da eleição, 17.931 seções foram reunidas a outras (a “seção principal”), e os votos delas estão no boletim de urna da principal. Por isso não têm arquivo próprio — e por isso a soma dos boletins bate mesmo sem elas.",
    "chamou_atencao": "Ao abrir uma dessas seções, a versão anterior desta página dizia “o TSE ainda não publicou arquivos desta seção”. A frase estava errada: não há arquivo a publicar.",
    "aconteceu": [
@@ -1193,6 +1215,7 @@
    "pergunta": "Isso já aconteceu em eleições anteriores?",
    "card": "Isso já aconteceu em outras eleições?",
    "classificacao": "INCONCLUSIVO",
+   "classificacao_nota": "Só dá para comparar com 2022, e não há um padrão repetido; para 2014 e 2018, os dados públicos não trazem o horário de recepção de cada seção.",
    "resposta": "Só dá para comparar com 2022, e não há um padrão repetido. Em 2022 também houve pausas na recepção, mas a maior com a apuração em andamento durou 7 minutos; a de 2026 durou 27. Para 2014 e 2018, os dados públicos não trazem o horário de recepção de cada seção.",
    "chamou_atencao": "Um blog afirmou que “o padrão se repete desde 2014”.",
    "aconteceu": [
@@ -1347,6 +1370,7 @@
     "Classificamos cada seção pelos vencedores dos dois cargos, medimos a diferença entre cargos e calculamos os limites matemáticos das combinações possíveis.",
     "Repetimos a conta nos 645 municípios do estado."
    ],
+   "aviso_unidade": "Cada barra, linha de tabela ou ponto destes gráficos representa seções ou locais de votação — nunca uma pessoa. O voto é secreto; totais agregados não mostram como um indivíduo combinou seus votos.",
    "blocos": [
     {
      "titulo": "Por seção",
@@ -1431,7 +1455,10 @@
         "28": 1,
         "30": 0
        },
-       "cor": 2
+       "cor": 2,
+       "nota": "Cada barra conta seções, não eleitores. À direita do zero ficam as seções em que Tarcísio teve fatia maior que Flávio: 99,96% delas.",
+       "lado_neg": "Flávio com fatia maior",
+       "lado_pos": "Tarcísio com fatia maior"
       },
       {
        "titulo": "Lula menos Haddad, por seção (pontos percentuais)",
@@ -1458,9 +1485,13 @@
         "28": 0,
         "30": 0
        },
-       "cor": 1
+       "cor": 1,
+       "nota": "Cada barra conta seções, não eleitores. Em 80% das seções, Lula menos Haddad fica entre −2,3 e +3,0 pontos.",
+       "lado_neg": "Haddad com fatia maior",
+       "lado_pos": "Lula com fatia maior"
       }
-     ]
+     ],
+     "destaque_linha": "B"
     },
     {
      "titulo": "Por zona eleitoral",
@@ -11834,7 +11865,23 @@
      "B"
     ]
    ],
-   "gate": "READY TO PUBLISH"
+   "gate": "READY TO PUBLISH",
+   "arquivos": [
+    {
+     "nome": "TSE · resultado de Presidente, município de São Paulo",
+     "url": "https://resultados.tse.jus.br/oficial/ele2026/6257/dados/sp/sp71072-c0001-e006257-u.json",
+     "gerado": "05/10/2026, 11:45:09",
+     "coletado": "05/10/2026, 11:57",
+     "sha256": "f6a3511386d4e39955ccdb7c2c8d8b35d0227eaf82df783c048200a5b7236fe6"
+    },
+    {
+     "nome": "TSE · resultado de Governador, município de São Paulo",
+     "url": "https://resultados.tse.jus.br/oficial/ele2026/6259/dados/sp/sp71072-c0003-e006259-u.json",
+     "gerado": "05/10/2026, 11:44:49",
+     "coletado": "05/10/2026, 19:17",
+     "sha256": "94f1220fc7145c0dfef3cbf85db2574f091dffa7e5c26e5c1613d11d87f69799"
+    }
+   ]
   }
  ],
  "linha_do_tempo": {
