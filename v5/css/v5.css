@@ -1130,6 +1130,22 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
 .is-home .mh { margin: 30px 0 0; padding: 18px 0 30px; background: transparent; box-shadow: none; border-top: 8px solid var(--ink); border-bottom: 1px solid var(--ink); }
 /* AGORA neutro: a frase não corta em telas médias */
 .ah-idle .ah-t { white-space: normal; overflow: visible; text-overflow: clip; }
+/* Hierarquia temporal (06/10): estado A — o Morning aprovado de hoje é a capa do dia; o FECHAMENTO anterior vem depois,
+   rotulado "Fechamento de ontem", em escala de contexto. Estado B — o FECHAMENTO de hoje é a capa; o Morning fica compacto. */
+.is-home .mh-lead .mh-k { font-size: 12.5px; }
+.is-home .mh-lead .mh-t { font-size: 64px; line-height: .88; }
+.is-home .mh-lead .mh-ht { font-size: 54px; line-height: .9; }
+.is-home .mh-lead .mh-dek { font-size: 19px; }
+.is-home .mh-compact { border-top-width: 4px; padding-bottom: 22px; }
+.is-home .mh-compact .mh-t { font-size: 30px; }
+.is-home .mh-compact .mh-sub { display: none; }
+.is-home .mh-compact .mh-grid { margin-top: 12px; }
+.is-home .mh-compact .mh-solo .mh-hero { grid-template-columns: minmax(0, .38fr) minmax(0, 1fr); }
+.is-home .mh-compact .mh-ad b { font-size: 64px; } .is-home .mh-compact .mh-ad { font-size: 30px; } .is-home .mh-compact .mh-ac, .is-home .mh-compact .mh-aw { display: none; }
+.is-home .mh-compact .mh-ht { font-size: 28px; }
+.is-home .fxh.fxh-prev { border-top-width: 4px; }
+.is-home .fxh-prev .fxh-t { font-size: 54px; line-height: .9; }
+.is-home .fxh-prev .fxh-pts li { font-size: 17px; }
 /* tablet: o trilho desce para baixo da capa */
 @media (max-width: 1060px) and (min-width: 641px) {
   .is-home .fxh, .hm-inv, .is-home .hm-mat { grid-column: 1 / -1; grid-row: auto; }
@@ -1145,6 +1161,12 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
   .is-home .fxh { margin: 0; padding: 0 16px; border-top-width: 6px; }
   .is-home .fxh-main { padding: 16px 0 26px; }
   .is-home .fxh-t { font-size: 44px; line-height: .88; }
+  .is-home .fxh-prev .fxh-t { font-size: 32px; }
+  .is-home .mh-lead .mh-t { font-size: 40px; }
+  .is-home .mh-lead .mh-ht { font-size: 34px; }
+  .is-home .mh-compact .mh-t { font-size: 26px; }
+  .is-home .mh-compact .mh-ht { font-size: 24px; }
+  .is-home .mh-compact .mh-vl { display: none; }
   .is-home .fxh-pts li { font-size: 16px; }
   .is-home .fxh-side { display: none; }
   .is-home .mh { margin: 0; padding: 18px 16px 22px; border-top-width: 6px; border-bottom: 0; }
