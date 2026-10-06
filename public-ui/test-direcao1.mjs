@@ -202,8 +202,51 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
   eq("indisponível ≠ 0", /pesquisa indisponível/.test(C.covLine({ name: "Y", available: false, videos_indexed: 0, videos_total: 10 })), true);
   eq("linguagem pública", /Pesquise a memória/.test(src) && /O Desmentindo lembra/.test(src) && !/Pesquise o arquivo/.test(src), true);
 }
+// VIRADA DO DIA (estado C, 06/10/2026): sem edição aprovada de hoje → AGORA neutro + FECHAMENTO anterior com distância
+// temporal. Estados A e B não mudam. homeTop/agoraIdle/fxHome reais do v5.js; relógio pelo opDay real (America/Sao_Paulo).
+{
+  const dec = src.match(/var SLOTS = [^\n]*\n/), mesl = src.match(/var MESL = [^\n]*\n/), wd = src.match(/var WD3 = [^\n]*\n/);
+  const names = ["e", "nf", "plural", "dParts", "dLong", "dDay", "isDay", "tcDate", "tc", "civilDays", "agoLabel", "zparts", "pad2", "opDay", "brt", "fhm",
+    "em1", "mandar", "ddmm", "mhDate", "mhSources", "imgOk", "morningItems", "mhVisual", "mhCat", "morningBlock", "latestItem", "agoraBar", "agoraIdle",
+    "newsDay", "fxHome", "homeTop"];
+  const K = new Function(`${MES}\n${dec ? dec[0] : ""}\n${mesl ? mesl[0] : ""}\n${wd ? wd[0] : ""}\nvar SLOT_RANK = { MORNING: 1, AFTERNOON: 2, EVENING: 3 };\n` +
+    `var SITE = "https://desmentindo.com.br", TZ = "America/Sao_Paulo", ZF = null;\n${names.map(fn).join("\n")}\nreturn { homeTop, agoraIdle, fxHome, opDay };`)();
+  const ED = JSON.parse(fs.readFileSync(path.join(ROOT, "data/editorial/edicoes/2026-10-05.json"), "utf8"));
+  const F5 = JSON.parse(fs.readFileSync(path.join(ROOT, "data/editorial/fechamentos/2026-10-05.json"), "utf8"));
+  const A5 = { edition: ED.edition, items: ED.items.map(it => ({ id: it.id, title: it.title, slot: it.slot, category: it.category || "", sources: [], date: it.date })) };
+  // a Home só monta A quando a edição é do dia operacional (agoraIsCurrent); aqui o mesmo critério
+  const top = at => { const od = K.opDay(Date.parse(at)); return K.homeTop(A5.edition === od ? A5 : null, F5, od); };
+  const idle = h => (h.match(/class="ah ah-idle"/g) || []).length, bars = h => (h.match(/class="ah[ "]/g) || []).length;
+  // 23:59 BRT de 05/10: edição e FECHAMENTO de hoje → estado B, sem nada do C
+  const b = top("2026-10-06T02:59:59Z");
+  eq("23:59 = estado B", [idle(b), bars(b), /class="nd"/.test(b), /fxh-tag">Fechamento de ontem|tc-ago/.test(b)], [0, 0, true, false]);
+  // 00:00 BRT de 06/10: a edição de 05/10 não vira a de hoje → estado C
+  const c = top("2026-10-06T03:00:00Z");
+  eq("00:00 = estado C", [idle(c), bars(c), /class="nd"/.test(c), /class="mh"/.test(c)], [1, 1, false, false]);
+  eq("AGORA neutro: data do dia operacional", /Hoje · <time datetime="2026-10-06">6 out<\/time>/.test(c), true);
+  eq("AGORA neutro: frase aprovada", /Acompanhamento do dia em andamento\. O fechamento de hoje sai à noite\./.test(c), true);
+  eq("FECHAMENTO de ontem", /<span class="fxh-tag">Fechamento de ontem<\/span>/.test(c), true);
+  eq("data absoluta mantida", /SEG 5 OUT/.test(c), true);
+  // o AGORA neutro não carrega nada da edição: sem link, título, contagem nem horário
+  const ia = K.agoraIdle("2026-10-06");
+  eq("AGORA neutro sem conteúdo editorial", [/<a\b/.test(ia), /\d+ notícia/.test(ia), /\d{1,2}:\d{2}/.test(ia), ED.items.some(it => ia.includes(it.title))], [false, false, false, false]);
+  for (const t of ["aguardando", "aprovação", "revisão", "fila", "Human Gate", "pipeline", "processamento", "MORNING"]) eq("tom público: sem '" + t + "'", ia.toLowerCase().includes(t.toLowerCase()), false);
+  // mais antigo que ontem: carimbo de distância do §32.4
+  const o = K.homeTop(null, F5, "2026-10-08");
+  eq("3 dias antes", /<span class="fxh-tag">Fechamento<\/span><span class="tc tc-ago">3 DIAS ANTES<\/span>/.test(o), true);
+  // C → A: 1ª edição aprovada do dia → some o neutro, fica uma barra só; FECHAMENTO anterior como hoje (A não muda)
+  const A6 = { edition: "2026-10-06", items: [{ id: "x", title: "Aprovada", slot: "MORNING", category: "", sources: [], date: "2026-10-06" }] };
+  const a = K.homeTop(A6, F5, "2026-10-06");
+  eq("C → A", [idle(a), bars(a), /Agora · hoje/.test(a), /fxh-tag">Fechamento de ontem|tc-ago/.test(a)], [0, 1, true, false]);
+  // A → B: FECHAMENTO do dia publicado → sem AGORA, sem "ontem"
+  const F6 = Object.assign({}, F5, { edition_date: "2026-10-06", public_title: "FECHAMENTO — 6 de outubro de 2026" });
+  const bb = K.homeTop(A6, F6, "2026-10-06");
+  eq("A → B", [idle(bb), bars(bb), /fxh-tag">Fechamento de ontem|tc-ago/.test(bb), /class="nd"/.test(bb)], [0, 0, false, true]);
+  // fxHome sem ref (fora do estado C) é idêntico ao anterior
+  eq("fxHome sem ref inalterado", /fxh-tag">Fechamento<\/span><time/.test(K.fxHome(F5)), true);
+}
 // Sem evento novo de analytics (só os existentes)
 eq("sem evento novo de analytics", Array.from(new Set((src.match(/anEvent\("([A-Z_]+)"/g) || []))).sort(), ['anEvent("AUDIENCE_CAPTURE_CLICK"', 'anEvent("ENGAGED_READING"', 'anEvent("SOURCE_CLICK"', 'anEvent("VIDEO_PLAY"']);
 
 if (fail.length) { console.error("DIRECAO1_INVALID\n  " + fail.join("\n  ")); process.exit(1); }
-console.log("DIRECAO1_VALID (EM1_RULE, fwd, byTime, limites da V1, MORNING, memória audiovisual, tempo, AGORA/NEWS, evidência, Pesquise a memória)");
+console.log("DIRECAO1_VALID (EM1_RULE, fwd, byTime, limites da V1, MORNING, memória audiovisual, tempo, AGORA/NEWS, evidência, Pesquise a memória, virada do dia)");
