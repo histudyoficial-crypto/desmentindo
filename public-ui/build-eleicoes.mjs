@@ -31,11 +31,16 @@ const STATUS0 = card0("Situação", "—", "Aguardando o TSE", "parcial", OFICIA
   card0("Faltam totalizar", "—", "—", "", OFICIAL_TAG) + card0("Última atualização do TSE", "—", "Horário não informado", "", OFICIAL_TAG) +
   card0("Leitura desta página", "—", "Ainda sem leitura", "", "");
 // Navegação do produto Eleições 2026: resultados, território, questionamentos e verificação no mesmo lugar.
+// Brasil, na ordem do Human Gate (06/10): estado da eleição → questionamentos → a noite de 4/10 → resultado oficial →
+// explorador → metodologia. A linha dos líderes é desenhada pelo eleicoes.js a partir do mesmo arquivo do placar (nada fixo).
+const LIDERES0 = '<p class="ld-k">Resultado oficial · TSE</p><p class="ld-v">Aguardando a leitura do TSE.</p>';
 const pnav = cur => `<nav class="pnav" aria-label="Eleições 2026"><div class="wrap"><a class="pn-home" href="/eleicoes-2026/">Eleições 2026</a>` +
   [["res", "/eleicoes-2026/#resultado", "Resultados"], ["exp", "/eleicoes-2026/#onde", "Explorar"], ["q", "/eleicoes-2026/questionamentos/", "Questionamentos"], ["ver", "/eleicoes-2026/#verificacao", "Verificação"]]
     .map(([k, h, t]) => `<a href="${h}"${k === cur ? ' aria-current="page"' : ""}>${t}</a>`).join("") + `</div></nav>`;
 const QDATA = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "eleicoes_questionamentos.json"), "utf8"));
 const QHOME = ["Q1", "Q2", "Q3", "Q6", "Q7"].map(id => QDATA.questionamentos.find(q => q.id === id));
+const Q_BR = `<section class="area-q" aria-labelledby="t-q"><h2 id="t-q">Questionamentos sobre a eleição</h2><p class="sub">Você viu isso circulando? Fomos aos dados para descobrir o que realmente aconteceu.</p>${qCards(QHOME)}<p class="more"><a href="/eleicoes-2026/questionamentos/">Ver todos os questionamentos →</a></p></section>`;
+const NOITE_BR = `<section class="area-time" aria-labelledby="t-evo"><h2 id="t-evo">A noite de 4 de outubro</h2><p class="sub">Do início da apuração (17h) ao final: o que o TSE mostrava em cada registro. Escolha um instante para ver o resultado daquela hora. <a href="/eleicoes-2026/questionamentos/04-de-outubro/">A noite, passo a passo →</a></p><div id="evolucao"><p class="empty">Disponível depois das 17h.</p></div></section>`;
 const ESTADOS_HTML = Object.values(CORE.ESTADOS).map(e => `<div class="e-${e.classe}"><dt>${e.nome}</dt><dd>${e.texto}</dd></div>`).join("");
 // CSS/JS locais com ?v=<sha256 do arquivo, 12 hex> — a mesma convenção ?v= da raiz (build-root.mjs). Aqui a versão vem do
 // conteúdo, não do commit, porque estas páginas são versionadas no repositório: o HTML só aponta para o asset com que foi
@@ -86,13 +91,13 @@ ${umami}
 ${pnav(br ? "res" : "exp")}
 <main class="wrap" id="conteudo">
 <div class="head">
-<p class="kick"><span class="tag res">Dado oficial · TSE</span>Eleições 2026 · Presidente · 1º turno</p>
+<p class="kick"><span class="tag res">Dado oficial · TSE</span>Eleições 2026 · Presidente · 1º turno · 4 out</p>
 <h1>${attr(where)}</h1>
 ${br ? `<nav class="paths" aria-label="O que dá para fazer aqui"><a href="#resultado"><b>Explore os resultados</b><span>Placar oficial do TSE e o caminho até cada seção</span></a><a href="/eleicoes-2026/questionamentos/"><b>Investigue os questionamentos</b><span>${QDATA.questionamentos.length} dúvidas que circularam, testadas nos dados oficiais</span></a><a href="#verificacao"><b>Verificação</b><span>De onde vem cada número</span></a></nav>` : ""}
 </div>
-<section id="status" class="cards" aria-label="Situação da apuração">${STATUS0}</section>
+${br ? `<section class="estado-el" id="estado" aria-labelledby="t-estado"><h2 id="t-estado">Estado da eleição</h2><div id="lideres" class="lideres" aria-live="polite">${LIDERES0}</div>` : ""}<section id="status" class="cards" aria-label="Situação da apuração">${STATUS0}</section>${br ? "</section>\n" + Q_BR + "\n" + NOITE_BR : ""}
 <div class="layout">
-<section class="area-res" aria-labelledby="t-agora" id="resultado"><h2 id="t-agora">Resultado</h2><p class="stale" id="stale" hidden></p><p class="snapnote" id="snapnote" hidden></p><div id="placar"><p class="empty">Carregando…</p></div></section>
+<section class="area-res" aria-labelledby="t-agora" id="resultado"><h2 id="t-agora">${br ? "Resultado oficial" : "Resultado"}</h2><p class="stale" id="stale" hidden></p><p class="snapnote" id="snapnote" hidden></p><div id="placar"><p class="empty">Carregando…</p></div></section>
 <section class="area-terr" aria-labelledby="t-terr" id="onde"><h2 id="t-terr">Explorar o território</h2>
 <div class="busca"><label for="busca">Buscar município</label><input id="busca" type="search" autocomplete="off" placeholder="${br ? "ex.: Campinas" : "nome do município"}" aria-describedby="buscaDica"><p id="buscaDica" class="sub">Depois: zona, local de votação e seção.</p><ul id="buscaRes" class="buscares" aria-live="polite"></ul></div>
 ${br ? `<div class="maphead"><label for="layers">Mostrar no mapa</label><select id="layers"><option value="lider">Quem está à frente</option><option value="tot">Quanto falta totalizar</option><option value="late">Ordem de chegada das seções</option></select></div>
@@ -106,9 +111,7 @@ ${br ? `<div class="maphead"><label for="layers">Mostrar no mapa</label><select 
 ${br ? `<h2 class="h2s" id="t-ext">Exterior</h2><div id="exterior"><p class="empty">Disponível depois das 17h.</p></div>` : ""}
 </aside>
 </div>
-${br ? `<section class="area-q" aria-labelledby="t-q"><h2 id="t-q">Questionamentos sobre a eleição</h2><p class="sub">Você viu isso circulando? Fomos aos dados para descobrir o que realmente aconteceu.</p>${qCards(QHOME)}<p class="more"><a href="/eleicoes-2026/questionamentos/">Ver todos os questionamentos →</a></p></section>` : ""}
-${br ? `<section class="area-time" aria-labelledby="t-evo"><h2 id="t-evo">Linha do tempo</h2><p class="sub">Do início da apuração (17h) ao final: o que o TSE mostrava em cada registro. Escolha um instante para ver o resultado daquela hora.</p><div id="evolucao"><p class="empty">Disponível depois das 17h.</p></div></section>` : ""}
-<section class="area-aud" aria-labelledby="t-aud" id="verificacao"><h2 id="t-aud">Verificação</h2>
+<section class="area-aud" aria-labelledby="t-aud" id="verificacao"><h2 id="t-aud">${br ? "Metodologia e verificação" : "Verificação"}</h2>
 <p class="sub">O que cada número é, de onde vem e o que ainda falta. Use o modo Verificação (no topo) para ver os detalhes técnicos abertos. <a href="/eleicoes-2026/questionamentos/">Questionamentos sobre a eleição →</a></p>
 <div class="audgrid"><div><h3>Origem dos números</h3><ul class="rules"><li><span class="prov of">Dado oficial (TSE)</span> número publicado pela Justiça Eleitoral, lido direto dos arquivos públicos do TSE.</li>
 <li><span class="prov calc">Métrica calculada pelo Eleições 2026</span> conta feita por esta página a partir de arquivos oficiais (ex.: % de uma seção a partir do boletim). Não é número do TSE.</li></ul></div>

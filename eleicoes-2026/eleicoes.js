@@ -110,6 +110,16 @@
       card("Última atualização do TSE", R && R.when ? hhmm(R.when.ms) : "—", R && R.when ? R.when.txt : "Horário não informado", "", OFICIAL) +
       card(fresh ? "Leitura ao vivo" : "Leitura desta página", live.at ? hhmmss(live.at) : "—",
         live.at ? (fresh ? "Lida do TSE agora; nova leitura a cada 90 s" : "Dados locais atualizados até " + hhmmss(live.at)) : "Ainda sem leitura", fresh ? "vivo" : "", "");
+    leaders();
+  }
+  // Estado da eleição (Brasil): os dois primeiros do mesmo arquivo do placar, com a situação que o TSE informa. Sem número fixo.
+  function leaders() {
+    var el = $("lideres"), R = live.R; if (!el || !R || !R.cands || !R.cands.length) return;
+    el.innerHTML = '<p class="ld-k">Resultado oficial · TSE · ' + esc(R.final ? "totalização final" : "parcial, " + fPct(R.pst) + " das seções") + "</p>" +
+      '<ol class="ld-list">' + R.cands.slice(0, 2).map(function (c) {
+        return '<li><span class="ld-n">' + esc(c.name) + '</span><b class="ld-p">' + fPct(c.pct) + "</b>" + (R.final && c.st ? '<span class="ld-s">' + esc(c.st) + "</span>" : "") + "</li>";
+      }).join("") + "</ol>" +
+      '<p class="ld-go"><a href="#resultado">Placar completo</a> · <a href="' + esc(resultUrl(SCOPE)) + '" target="_blank" rel="noopener">arquivo oficial do TSE</a></p>';
   }
   function card(k, v, s, cls, prov) { return '<div class="card ' + (cls || "") + '"><p class="k">' + esc(k) + '</p><p class="v">' + esc(v) + '</p><p class="s">' + esc(s) + "</p>" + (prov ? '<p class="p">' + prov + "</p>" : "") + "</div>"; }
 

@@ -212,11 +212,12 @@ function body(q, all) {
   return `<article class="qart">
 <p class="kick"><a href="${BASE}">Questionamentos</a> · ${esc(q.tema)}</p>
 <h1>${esc(q.pergunta)}</h1>
-${q.painel_cargos ? painel(q.painel_cargos) : ""}
 <section class="qsum" aria-label="Resposta curta">
 <div class="qverdict">${badge(q.classificacao)}${q.classificacao_nota ? `<p>${esc(q.classificacao_nota)}</p>` : ""}</div>
 <p class="qlead">${esc(q.resposta)}</p>
+<nav class="qjump" aria-label="Ir para"><a href="#dados">A evidência</a><a href="#limites">Os limites</a><a href="#fontes">As fontes</a></nav>
 </section>
+${q.painel_cargos ? painel(q.painel_cargos) : ""}
 ${q.observacao ? observacao(q.observacao) : ""}
 ${q.destaque ? destaque(q.destaque) : ""}
 ${q.contador ? contador(q.contador) : ""}
@@ -252,6 +253,14 @@ const GRUPOS = [["A noite de 4 de outubro", "Parada, pausas e a curva da apuraç
   ["Boletins de urna e arquivos", "O que os arquivos oficiais permitem conferir.", ["Q6", "Q7", "Q8"]],
   ["Contexto e comparação", "Outros cargos, outras eleições.", ["Q5", "Q10", "Q11"]]];
 
+// Resumo da central: quantas dúvidas foram testadas e quantas caíram em cada classificação — contado do dado, na ordem da
+// legenda; classificação sem nenhuma pergunta não aparece. Selo = palavra + glifo + forma (nunca só cor).
+const ORDEM = ["CONFIRMADO", "PARCIALMENTE CONFIRMADO", "EXPLICADO PELOS DADOS", "NÃO SUSTENTADO PELOS DADOS", "INCONCLUSIVO", "AINDA NÃO TESTÁVEL"];
+function resumo(qs) {
+  const n = c => qs.filter(q => q.classificacao === c).length;
+  return `<section class="qresumo" aria-labelledby="qres-t"><h2 id="qres-t">${qs.length} dúvidas testadas nos dados oficiais</h2><ul>` +
+    ORDEM.filter(n).map(c => `<li><b>${n(c)}</b>${badge(c)}</li>`).join("") + "</ul></section>";
+}
 export function pages(data, shell) {
   const qs = data.questionamentos, out = {};
   out["eleicoes-2026/questionamentos/index.html"] = shell({
@@ -259,6 +268,7 @@ export function pages(data, shell) {
     desc: "Dúvidas que circularam sobre a apuração de 2026, investigadas nos dados: o que aconteceu, o que testamos, o que encontramos e o que ainda não dá para saber.",
     main: `<article class="qart"><p class="kick">Eleições 2026 · Questionamentos</p><h1>Você viu isso circulando? Fomos aos dados.</h1>
 <p class="qlead">Não começamos pela conclusão. Para cada dúvida, mostramos o que aconteceu, o que o TSE declara, o que outras fontes registraram, o que testamos nos dados oficiais e o que ainda não dá para saber.</p>
+${resumo(qs)}
 ${GRUPOS.map(([t, d, ids], i) => `<section class="qgroup" aria-labelledby="qg${i}"><h2 id="qg${i}">${t}</h2><p class="sub">${d}</p>${cards(ids.map(id => qs.find(q => q.id === id)).filter(Boolean), 0, "h3", true)}${i === 0 ? `<p class="more"><a href="${BASE}04-de-outubro/">A noite de 4 de outubro, passo a passo →</a></p>` : ""}</section>`).join("\n")}
 <section class="qsec"><h2>Como classificamos</h2><dl class="qtax">
 <div><dt>${badge("CONFIRMADO")}</dt><dd>Os dados mostram que aconteceu.</dd></div>
