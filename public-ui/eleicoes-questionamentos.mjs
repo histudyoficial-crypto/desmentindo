@@ -20,7 +20,7 @@ export function badge(c) { return `<span class="qbadge ${CLS[c] || ""}">${esc(c)
 const list = a => (a && a.length ? `<ul class="qlist">${a.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : "");
 const sec = (t, body, cls, step, id) => (body ? `<section class="qsec ${cls || ""}"${id ? ` id="${id}"` : ""}>${step ? `<p class="qstep">${esc(step)}</p>` : ""}<h2>${esc(t)}</h2>${body}</section>` : "");
 // tabela genérica: no celular (CSS) cada linha vira um bloco com o rótulo da coluna (data-l); a tabela semântica continua no HTML
-const table = (t, label) => `<div class="qtable stack" tabindex="0" role="region" aria-label="${esc(label)}"><table><thead><tr>${t[0].map(c => c === "" ? "<td></td>" : `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead><tbody>${t.slice(1).map(r => `<tr><th scope="row">${esc(r[0])}</th>${r.slice(1).map((c, i) => `<td data-l="${esc(t[0][i + 1])}">${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+const table = (t, label, hl) => `<div class="qtable stack" tabindex="0" role="region" aria-label="${esc(label)}"><table><thead><tr>${t[0].map(c => c === "" ? "<td></td>" : `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead><tbody>${t.slice(1).map(r => `<tr${hl && r[0] === hl ? ' class="hl"' : ""}><th scope="row">${esc(r[0])}</th>${r.slice(1).map((c, i) => `<td data-l="${esc(t[0][i + 1])}">${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
 const src = s => s.url ? `<a href="${esc(s.url)}" rel="noopener" target="_blank">${esc(s.nome)}</a>` : esc(s.nome);
 
 function chartBars(g) {
@@ -124,7 +124,7 @@ function hist(h) {
   const x0 = L + ks.indexOf(0) * bw;
   g += `<line x1="${x0}" x2="${x0}" y1="6" y2="${H - B}" class="ref"/><text x="${x0 + 4}" y="14" class="rl">zero</text>`;
   g += ks.filter(k => k % 10 === 0).map(k => `<text x="${L + ks.indexOf(k) * bw}" y="${H - 8}" class="ax" text-anchor="middle">${k > 0 ? "+" : ""}${k}</text>`).join("");
-  return `<figure class="qfig"><figcaption>${esc(h.titulo)}</figcaption><div class="qsvg"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(h.titulo)}: número de seções em cada faixa de 2 pontos">${g}</svg></div>${h.nota ? `<p class="qnote">${esc(h.nota)}</p>` : ""}</figure>`;
+  return `<figure class="qfig"><figcaption>${esc(h.titulo)}</figcaption><div class="qsvg"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(h.titulo)}: número de seções em cada faixa de 2 pontos">${g}</svg></div>${h.lado_neg ? `<p class="qdir"><span>← ${esc(h.lado_neg)}</span><span>${esc(h.lado_pos)} →</span></p>` : ""}${h.nota ? `<p class="qnote">${esc(h.nota)}</p>` : ""}</figure>`;
 }
 function mapa(pts) {
   const lon = pts.map(p => p[0]), lat = pts.map(p => p[1]), k = Math.cos(23.6 * Math.PI / 180);
@@ -135,7 +135,7 @@ function mapa(pts) {
   const dots = pts.slice().sort((a, b) => ord[a[2]] - ord[b[2]]).map(p => `<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="2.6" fill="${COL[p[2]]}"/>`).join("");
   const leg = [["A", "Lula e Haddad à frente"], ["B", "Lula e Tarcísio à frente"], ["C", "Flávio e Tarcísio à frente"], ["empate", "empate em algum cargo"]];
   return `<figure class="qfig"><figcaption>Locais de votação da capital, pelo resultado somado das suas seções</figcaption>
-<ul class="qleg">${leg.map(([q, t]) => `<li><i style="background:${COL[q]}"></i>${esc(t)} (${nf(cnt[q], 0)})</li>`).join("")}</ul>
+<ul class="qleg">${leg.map(([q, t]) => `<li${q === "B" ? ' class="qlegb"' : ""}><i style="background:${COL[q]}"></i>${esc(t)} (${nf(cnt[q], 0)})</li>`).join("")}</ul>
 <div class="qsvg qmap"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Mapa de ${nf(pts.length, 0)} locais de votação da cidade de São Paulo: ${nf(cnt.A, 0)} com Lula e Haddad à frente, ${nf(cnt.B, 0)} com Lula e Tarcísio à frente, ${nf(cnt.C, 0)} com Flávio e Tarcísio à frente">${dots}</svg></div>
 <p class="qnote">Cada ponto é um local de votação, na coordenada do cadastro oficial do TSE. Cor = quem ficou à frente em cada cargo, somando as seções do local. Não mostra o voto de ninguém.</p></figure>`;
 }
@@ -178,7 +178,7 @@ ${sha ? `<p class="qnote">O código SHA-256 identifica o arquivo exato que usamo
 }
 function blocos(q) {
   return (q.blocos || []).map(b => sec(b.titulo, list(b.itens) +
-    (b.tabela ? table(b.tabela, `${b.titulo} (tabela)`) : "") +
+    (b.tabela ? table(b.tabela, `${b.titulo} (tabela)`, b.destaque_linha) : "") +
     (b.histogramas ? `<div class="qhists">${b.histogramas.map(hist).join("")}</div>` : "") + (b.mapa && q.locais_mapa ? mapa(q.locais_mapa) : "") +
     (b.grafico_transicoes && q.grafico ? chartTransicoes(q.grafico) + (q.arredondamento ? chartArred(q.arredondamento) : "") : "") +
     (b.contrafactual ? chartContra(b.contrafactual) : "") + (b.contabilidade ? chartConta(b.contabilidade) : ""))).join("\n");

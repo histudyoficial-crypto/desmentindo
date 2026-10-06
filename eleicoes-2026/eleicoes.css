@@ -174,9 +174,9 @@ footer{border-top:3px solid var(--ink);margin-top:28px;padding:14px 0 40px;font-
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 .maiscands{margin-top:8px}.maiscands summary{cursor:pointer;font-weight:800;min-height:44px;display:flex;align-items:center;padding:0 12px;background:var(--white);border:1px solid var(--rule)}.maiscands .cands{margin-top:8px}
 /* espaço reservado enquanto o TSE responde (evita deslocamento de layout) */
-/* Reserva de altura (CLS): medida com o placar completo (5 candidatos + "ver todos"), igual em BR e UF; no município o
+/* Reserva de altura (CLS): medida com o placar completo (5 candidatos + "ver todos"), igual em BR e UF — v3: lista com réguas, 726 px (≥360 px) e até 822 px (320 px); no município o
    placar é compacto. Os cartões de situação reservam a altura do estado com dado, que quebra mais linhas que o "—". */
-#placar{min-height:810px}.deep-m #placar,.deep-z #placar,.deep-s #placar{min-height:456px}
+#placar{min-height:730px}@media(max-width:359px){#placar{min-height:830px}}.deep-m #placar,.deep-z #placar,.deep-s #placar{min-height:456px}
 #status .card{min-height:162px}@media(min-width:600px){#status .card{min-height:138px}}@media(max-width:759px){#status .card:nth-child(3),#status .card:nth-child(4){min-height:194px}#status .card:last-child{min-height:110px}}@media(min-width:760px){#status .card{min-height:194px}}@media(min-width:1100px){#status .card{min-height:158px}}
 #mapa{min-height:520px}#evolucao{min-height:560px}#munBoard{min-height:420px}#zonas{min-height:140px}#falta{min-height:120px}#exterior{min-height:150px}
 #secBody{min-height:60vh}
@@ -357,3 +357,21 @@ footer{border-top:3px solid var(--ink);margin-top:28px;padding:14px 0 40px;font-
 .qarq ul{list-style:none;margin:6px 0;padding:0}.qarq li{background:var(--surface);border:1px solid var(--rule);padding:8px 10px;margin:0 0 6px;font-size:13.5px}
 .qarq li a{font-weight:700}.qarq li span{display:block;color:var(--ink-2);font-size:12.5px;margin-top:2px}
 .qarq code{display:block;margin-top:4px;font-size:11.5px;word-break:break-all;color:var(--ink-2)}
+/* ===================== Candidato v3 (06/10): placar, estado "ilegível", leitura do Q11, densidade ===================== */
+/* placar: lista com réguas (não caixas soltas), números tabulares, barra fina em tinta — mesma cor para todos */
+.cands{gap:0;background:var(--surface);border:1px solid var(--rule);border-top:3px solid var(--ink)}
+.cands li{border:0;border-top:1px solid var(--rule);background:transparent;padding:10px 12px}.cands li:first-child{border-top:0}
+.cands .bar{height:4px;background:#ECEAE9}.cands .bar i{background:var(--ink-2)}
+.maiscands .cands{border-top-width:1px}
+.aux{gap:0;background:var(--surface);border:1px solid var(--rule)}.aux div{border:0;border-left:1px solid var(--rule);background:transparent}.aux div:nth-child(odd){border-left:0}.aux div:nth-child(n+3){border-top:1px solid var(--rule)}
+.mini{gap:0;background:var(--surface);border:1px solid var(--rule)}.mini li{border:0;border-top:1px solid var(--rule);background:transparent}.mini li:first-child{border-top:0}
+/* explorador: "arquivo ilegível" tem marca própria (não é problema de consulta) */
+.e-ilegivel .enome::before,.estados .e-ilegivel dt::before{content:"◌"/""}
+.estado.e-ilegivel,.estados .e-ilegivel{border-left:6px solid #A8A3A1}
+/* Q7 e arquivos: sem caixa dentro de caixa */
+.qcount .qnums div,.qcount .qbig{background:transparent;padding:4px 12px;border-left:1px solid var(--rule)}.qcount .qbig{border-left:0;padding-left:0}
+@media(max-width:619px){.qcount .qnums div{border-left:0;border-top:1px solid var(--rule);padding:8px 0}}
+.qarq ul{border:1px solid var(--rule);background:var(--surface)}.qarq li{border:0;border-top:1px solid var(--rule);margin:0;background:transparent}.qarq li:first-child{border-top:0}
+/* Q11: lados do zero nos histogramas e quadrante B destacado (tabela e legenda do mapa) */
+.qdir{display:flex;justify-content:space-between;gap:12px;margin:4px 0 0;font-size:12.5px;font-weight:700;color:var(--ink-2)}
+.qlegb{font-weight:800}.qlegb i{box-shadow:0 0 0 2px var(--surface),0 0 0 3px var(--ink)}

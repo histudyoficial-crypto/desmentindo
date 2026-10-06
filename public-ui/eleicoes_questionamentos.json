@@ -1456,7 +1456,9 @@
         "30": 0
        },
        "cor": 2,
-       "nota": "Cada barra conta seções, não eleitores. À direita do zero ficam as seções em que Tarcísio teve fatia maior que Flávio: 99,96% delas."
+       "nota": "Cada barra conta seções, não eleitores. À direita do zero ficam as seções em que Tarcísio teve fatia maior que Flávio: 99,96% delas.",
+       "lado_neg": "Flávio com fatia maior",
+       "lado_pos": "Tarcísio com fatia maior"
       },
       {
        "titulo": "Lula menos Haddad, por seção (pontos percentuais)",
@@ -1484,9 +1486,12 @@
         "30": 0
        },
        "cor": 1,
-       "nota": "Cada barra conta seções, não eleitores. Em 80% das seções, Lula menos Haddad fica entre −2,3 e +3,0 pontos."
+       "nota": "Cada barra conta seções, não eleitores. Em 80% das seções, Lula menos Haddad fica entre −2,3 e +3,0 pontos.",
+       "lado_neg": "Haddad com fatia maior",
+       "lado_pos": "Lula com fatia maior"
       }
-     ]
+     ],
+     "destaque_linha": "B"
     },
     {
      "titulo": "Por zona eleitoral",
