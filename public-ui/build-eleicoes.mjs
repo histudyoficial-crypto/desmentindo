@@ -7,6 +7,7 @@
  *   node public-ui/build-eleicoes.mjs          # escreve
  *   node public-ui/build-eleicoes.mjs --check  # CI: falha se o que está versionado difere do gerado
  */
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
@@ -36,6 +37,12 @@ const pnav = cur => `<nav class="pnav" aria-label="Eleições 2026"><div class="
 const QDATA = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "eleicoes_questionamentos.json"), "utf8"));
 const QHOME = ["Q1", "Q2", "Q3", "Q6", "Q7"].map(id => QDATA.questionamentos.find(q => q.id === id));
 const ESTADOS_HTML = Object.values(CORE.ESTADOS).map(e => `<div class="e-${e.classe}"><dt>${e.nome}</dt><dd>${e.texto}</dd></div>`).join("");
+// CSS/JS locais com ?v=<sha256 do arquivo, 12 hex> — a mesma convenção ?v= da raiz (build-root.mjs). Aqui a versão vem do
+// conteúdo, não do commit, porque estas páginas são versionadas no repositório: o HTML só aponta para o asset com que foi
+// gerado, e o navegador nunca junta HTML novo com CSS/JS antigo em cache (P0 06/10/2026). Mudou o asset sem regenerar as
+// páginas → `--check` falha no CI. Ninguém incrementa versão à mão.
+const ASSET_V = {};
+const asset = p => "/" + p + "?v=" + (ASSET_V[p] ??= crypto.createHash("sha256").update(fs.readFileSync(path.join(ROOT, p))).digest("hex").slice(0, 12));
 const attr = s => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 const umami = A.provider === "umami" && /^[0-9a-f-]{36}$/.test(A.website_id || "")
   ? `<script defer src="${A.script_src}" data-website-id="${A.website_id}"${A.respect_do_not_track ? ' data-do-not-track="true"' : ""}></script>` : "";
@@ -66,8 +73,8 @@ function page(uf, name) {
 <meta name="theme-color" content="#1D1B1A">
 <link rel="icon" href="data:,">
 <link rel="preload" href="/v5/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/v5/css/fonts.css">
-<link rel="stylesheet" href="/eleicoes-2026/eleicoes.css">
+<link rel="stylesheet" href="${asset("v5/css/fonts.css")}">
+<link rel="stylesheet" href="${asset("eleicoes-2026/eleicoes.css")}">
 <script>/* reserva espaço do recorte aberto por link antes do 1º desenho (menos deslocamento de layout) */(function(h,d){d.className+=/(^|[#&])s=/.test(h)?" deep-s":/(^|[#&])z=/.test(h)?" deep-z":/(^|[#&])m=/.test(h)?" deep-m":""})(location.hash,document.documentElement)</script>
 ${umami}
 </head>
@@ -115,8 +122,8 @@ ${br ? `<section class="area-time" aria-labelledby="t-evo"><h2 id="t-evo">Linha 
 <li>Não fazemos previsão de vencedor nem projeção.</li></ul></section>
 </main>
 <footer><div class="wrap">Fonte: Tribunal Superior Eleitoral (resultados.tse.jus.br). <a href="/#/privacidade">Privacidade</a> · <a href="/">Desmentindo</a></div></footer>
-<script src="/eleicoes-2026/eleicoes-core.js" defer></script>
-<script src="/eleicoes-2026/eleicoes.js" defer></script>
+<script src="${asset("eleicoes-2026/eleicoes-core.js")}" defer></script>
+<script src="${asset("eleicoes-2026/eleicoes.js")}" defer></script>
 </body>
 </html>
 `;
@@ -139,8 +146,8 @@ function qShell(o) {
 <meta name="theme-color" content="#1D1B1A">
 <link rel="icon" href="data:,">
 <link rel="preload" href="/v5/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/v5/css/fonts.css">
-<link rel="stylesheet" href="/eleicoes-2026/eleicoes.css">
+<link rel="stylesheet" href="${asset("v5/css/fonts.css")}">
+<link rel="stylesheet" href="${asset("eleicoes-2026/eleicoes.css")}">
 ${umami}
 </head>
 <body class="qpage">
@@ -152,7 +159,7 @@ ${pnav("q")}
 ${o.main}
 </main>
 <footer><div class="wrap">Fontes primárias: Tribunal Superior Eleitoral (resultados.tse.jus.br; Portal de Dados Abertos). Análise: Eleições 2026 · Desmentindo. <a href="/#/privacidade">Privacidade</a> · <a href="/eleicoes-2026/">Eleições 2026</a></div></footer>
-${o.q && o.q.contador ? '<script src="/eleicoes-2026/questionamentos.js" defer></script>' : ""}
+${o.q && o.q.contador ? '<script src="' + asset("eleicoes-2026/questionamentos.js") + '" defer></script>' : ""}
 </body>
 </html>
 `;
