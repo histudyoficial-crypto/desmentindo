@@ -612,7 +612,7 @@
       var od = opDay();
       var mats = (MI && MI.items || []).slice(0, 3);
       return Promise.all(mats.map(function (x) { return loadTyped("materias", x.slug); })).then(function (MD) {
-        var h = homeTop(A, LF, od) + invBlock();
+        var h = '<h1 class="sr">Desmentindo: notícias passam, o que foi dito fica</h1>' + homeTop(A, LF, od) + invBlock();
         // referência temporal da memória: edição corrente quando houver; senão o último FECHAMENTO
         var ref = A ? A.edition : (LF && LF.edition_date) || "";
         h += '<div class="hm-grid">' + matBlock(mats, MD) + saidBlock(H, TR, ref) + "</div>" + memorySearch(H);

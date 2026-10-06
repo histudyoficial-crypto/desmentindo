@@ -1088,3 +1088,5 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
   .hm-inv-go { white-space: normal; }
   .hm-inv-go a { min-height: 44px; }
 }
+/* foco visível nos campos de pesquisa (teclado; o contorno de 2→3 px sozinho não basta) */
+.top-q input:focus-visible, .qform input:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
