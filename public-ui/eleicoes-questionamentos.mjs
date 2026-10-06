@@ -95,7 +95,7 @@ function contador(c) {
   const e = c.estado;
   return `<div class="qcount" data-src="${esc(c.arquivo)}"${c.ao_vivo ? ` data-live="${esc(c.ao_vivo)}"` : ""} data-at="${esc(e.atualizado_em)}">
 <p class="k">Arquivos ainda não disponíveis</p>
-<div class="qcgrid"><p class="qbig"><b id="qcPend">${nf(e.pendentes, 0)}</b> <span>seções</span></p>
+<div class="qcgrid"><p class="qbig"><b id="qcPend">${nf(e.pendentes, 0)}</b> <span>${e.pendentes === 1 ? "seção" : "seções"}</span></p>
 <div class="qnums"><div><b id="qcRec">${nf(e.recuperadas, 0)}</b><span>recuperados desde o início do monitoramento (eram ${nf(e.base_madrugada_05_10, 0)} sem arquivo na madrugada de 05/10)</span></div>
 <div><b id="qcUF">${Object.entries(e.pendentes_por_uf).map(([u, n]) => `${ufNome(u)} ${nf(n, 0)}`).join(" · ")}</b><span>ainda pendentes, por estado</span></div></div></div>
 <p class="qwhen" id="qcWhen">Última verificação: <time datetime="${esc(e.atualizado_em)}">${brHora(e.atualizado_em)}</time> (Brasília)</p>
@@ -124,7 +124,7 @@ function hist(h) {
   const x0 = L + ks.indexOf(0) * bw;
   g += `<line x1="${x0}" x2="${x0}" y1="6" y2="${H - B}" class="ref"/><text x="${x0 + 4}" y="14" class="rl">zero</text>`;
   g += ks.filter(k => k % 10 === 0).map(k => `<text x="${L + ks.indexOf(k) * bw}" y="${H - 8}" class="ax" text-anchor="middle">${k > 0 ? "+" : ""}${k}</text>`).join("");
-  return `<figure class="qfig"><figcaption>${esc(h.titulo)}</figcaption><div class="qsvg"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(h.titulo)}: número de seções em cada faixa de 2 pontos">${g}</svg></div></figure>`;
+  return `<figure class="qfig"><figcaption>${esc(h.titulo)}</figcaption><div class="qsvg"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(h.titulo)}: número de seções em cada faixa de 2 pontos">${g}</svg></div>${h.nota ? `<p class="qnote">${esc(h.nota)}</p>` : ""}</figure>`;
 }
 function mapa(pts) {
   const lon = pts.map(p => p[0]), lat = pts.map(p => p[1]), k = Math.cos(23.6 * Math.PI / 180);
@@ -153,8 +153,9 @@ function chartContra(c) {
 }
 // Regra do projeto (05/10): OBSERVAÇÃO VERDADEIRA ≠ EXPLICAÇÃO VERDADEIRA — as duas são classificadas separadamente.
 function observacao(o) {
-  return `<section class="qobs" aria-label="Observação e explicação"><div><p class="k">A observação</p><p>${esc(o.obs)}</p><p class="qflag ok">${esc(o.obs_status)}</p></div>
-<div><p class="k">A explicação sugerida</p><p>${esc(o.exp)}</p><p class="qflag">${esc(o.exp_status)}</p>${o.exp_nota ? `<p class="qnote">${esc(o.exp_nota)}</p>` : ""}</div>
+  const st = (x, ok) => CLS[x] ? `<p class="qobst">${badge(x)}</p>` : `<p class="qflag${ok ? " ok" : ""}">${esc(x)}</p>`;
+  return `<section class="qobs" aria-label="${esc(o.obs_rotulo || "Observação")} e ${esc((o.exp_rotulo || "explicação").toLowerCase())}"><div><p class="k">${esc(o.obs_rotulo || "A observação")}</p><p>${esc(o.obs)}</p>${st(o.obs_status, true)}</div>
+<div><p class="k">${esc(o.exp_rotulo || "A explicação sugerida")}</p><p>${esc(o.exp)}</p>${st(o.exp_status)}${o.exp_nota ? `<p class="qnote">${esc(o.exp_nota)}</p>` : ""}</div>
 <p class="qobsrule">Observação verdadeira não significa explicação verdadeira.</p></section>`;
 }
 function chartConta(c) {
@@ -167,6 +168,13 @@ function chartConta(c) {
   return `<figure class="qfig"><figcaption>${esc(c.titulo)}</figcaption><ul class="qleg"><li><i style="background:${C1}"></i>soma à vantagem</li><li><i style="background:${C2}"></i>reduz a vantagem</li></ul>
 <ol class="qconta">${c.parcelas.map(r => li(r, false)).join("")}${li(c.total, true)}</ol>
 <p class="qnote">As parcelas somam exatamente a diferença. É contabilidade dos totais de cada cargo, não o voto de ninguém.</p></figure>`;
+}
+function arquivos(a) {
+  if (!a || !a.length) return "";
+  const sha = a.some(x => x.sha256);
+  return `<details class="qarq"><summary>${sha ? "Arquivos originais usados (com código SHA-256 para conferir)" : "Arquivos do acompanhamento"}</summary>
+<ul>${a.map(x => `<li><a href="${esc(x.url)}"${/^https?:/.test(x.url) ? ' rel="noopener" target="_blank"' : ""}>${esc(x.nome)}</a>${x.gerado ? `<span>Gerado pelo TSE em ${esc(x.gerado)} (Brasília) · guardado por nós em ${esc(x.coletado)} (Brasília)</span>` : ""}${x.sha256 ? `<code>SHA-256 ${esc(x.sha256)}</code>` : ""}</li>`).join("")}</ul>
+${sha ? `<p class="qnote">O código SHA-256 identifica o arquivo exato que usamos. Baixe o arquivo no endereço do TSE e calcule o código: se for igual, é o mesmo arquivo. Se o TSE publicar uma versão nova, o código muda.</p>` : ""}</details>`;
 }
 function blocos(q) {
   return (q.blocos || []).map(b => sec(b.titulo, list(b.itens) +
@@ -226,7 +234,7 @@ ${sec(q.painel_cargos ? "O que não podemos concluir" : T("nao_prova", "O que is
 ${q.nao_sabemos && q.nao_sabemos.length ? sec("O que ainda não sabemos", list(q.nao_sabemos), "limit") : ""}
 </div>
 ${sec("Confira você mesmo", `<ul class="qlinks">${q.confira.map(c => `<li><a href="${esc(c.href)}"${/^https?:/.test(c.href) ? ' rel="noopener" target="_blank"' : ""}${c.exemplo ? ' data-qcex="1"' : ""}>${esc(c.txt)} →</a></li>`).join("")}</ul>`, "conf", "Verifique", "confira")}
-${sec("Fontes", fontes, "", "", "fontes")}
+${sec("Fontes", fontes + arquivos(q.arquivos), "", "", "fontes")}
 <details class="qmet"><summary>Ver como verificamos</summary><p>${esc(q.metodologia)}</p><p class="qnote">Classificação usada pelo Eleições 2026: CONFIRMADO · PARCIALMENTE CONFIRMADO · EXPLICADO PELOS DADOS · NÃO SUSTENTADO PELOS DADOS · INCONCLUSIVO · AINDA NÃO TESTÁVEL. Cada uma aponta para os dados acima.</p></details>
 </div></div>
 <nav class="qmore" aria-label="Outros questionamentos"><h2>Outros questionamentos</h2><ul>${others.map(o => `<li><a href="${BASE}${o.slug}/">${esc(o.pergunta)}</a> ${badge(o.classificacao)}</li>`).join("")}</ul><p><a href="${BASE}">Ver todos os questionamentos →</a></p></nav>
