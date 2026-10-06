@@ -18,7 +18,9 @@ const CLS = { "CONFIRMADO": "c-conf", "PARCIALMENTE CONFIRMADO": "c-parc", "EXPL
 
 export function badge(c) { return `<span class="qbadge ${CLS[c] || ""}">${esc(c)}</span>`; }
 const list = a => (a && a.length ? `<ul class="qlist">${a.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : "");
-const sec = (t, body, cls) => (body ? `<section class="qsec ${cls || ""}"><h2>${esc(t)}</h2>${body}</section>` : "");
+const sec = (t, body, cls, step, id) => (body ? `<section class="qsec ${cls || ""}"${id ? ` id="${id}"` : ""}>${step ? `<p class="qstep">${esc(step)}</p>` : ""}<h2>${esc(t)}</h2>${body}</section>` : "");
+// tabela genérica: no celular (CSS) cada linha vira um bloco com o rótulo da coluna (data-l); a tabela semântica continua no HTML
+const table = (t, label) => `<div class="qtable stack" tabindex="0" role="region" aria-label="${esc(label)}"><table><thead><tr>${t[0].map(c => c === "" ? "<td></td>" : `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead><tbody>${t.slice(1).map(r => `<tr><th scope="row">${esc(r[0])}</th>${r.slice(1).map((c, i) => `<td data-l="${esc(t[0][i + 1])}">${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
 const src = s => s.url ? `<a href="${esc(s.url)}" rel="noopener" target="_blank">${esc(s.nome)}</a>` : esc(s.nome);
 
 function chartBars(g) {
@@ -93,10 +95,10 @@ function contador(c) {
   const e = c.estado;
   return `<div class="qcount" data-src="${esc(c.arquivo)}"${c.ao_vivo ? ` data-live="${esc(c.ao_vivo)}"` : ""} data-at="${esc(e.atualizado_em)}">
 <p class="k">Arquivos ainda não disponíveis</p>
-<p class="qbig"><b id="qcPend">${nf(e.pendentes, 0)}</b> <span>seções</span></p>
-<p class="qwhen" id="qcWhen">Última verificação: <time datetime="${esc(e.atualizado_em)}">${brHora(e.atualizado_em)}</time> (Brasília)</p>
+<div class="qcgrid"><p class="qbig"><b id="qcPend">${nf(e.pendentes, 0)}</b> <span>seções</span></p>
 <div class="qnums"><div><b id="qcRec">${nf(e.recuperadas, 0)}</b><span>recuperados desde o início do monitoramento (eram ${nf(e.base_madrugada_05_10, 0)} sem arquivo na madrugada de 05/10)</span></div>
-<div><b id="qcUF">${Object.entries(e.pendentes_por_uf).map(([u, n]) => `${ufNome(u)} ${nf(n, 0)}`).join(" · ")}</b><span>ainda pendentes, por estado</span></div></div>
+<div><b id="qcUF">${Object.entries(e.pendentes_por_uf).map(([u, n]) => `${ufNome(u)} ${nf(n, 0)}`).join(" · ")}</b><span>ainda pendentes, por estado</span></div></div></div>
+<p class="qwhen" id="qcWhen">Última verificação: <time datetime="${esc(e.atualizado_em)}">${brHora(e.atualizado_em)}</time> (Brasília)</p>
 <p class="qnote" id="qcNote">Contagem do acompanhamento de hora em hora do Eleições 2026 — não é atualização em tempo real. Erro 404 (“NoSuchKey”) quer dizer que o arquivo ainda não está publicado, não que ele nunca vá existir.</p></div>`;
 }
 function achado(a) {
@@ -168,7 +170,7 @@ function chartConta(c) {
 }
 function blocos(q) {
   return (q.blocos || []).map(b => sec(b.titulo, list(b.itens) +
-    (b.tabela ? `<div class="qtable" tabindex="0" role="region" aria-label="${esc(b.titulo)} (tabela; role para os lados)"><table><thead><tr>${b.tabela[0].map(c => `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead><tbody>${b.tabela.slice(1).map(r => `<tr><th scope="row">${esc(r[0])}</th>${r.slice(1).map(c => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>` : "") +
+    (b.tabela ? table(b.tabela, `${b.titulo} (tabela)`) : "") +
     (b.histogramas ? `<div class="qhists">${b.histogramas.map(hist).join("")}</div>` : "") + (b.mapa && q.locais_mapa ? mapa(q.locais_mapa) : "") +
     (b.grafico_transicoes && q.grafico ? chartTransicoes(q.grafico) + (q.arredondamento ? chartArred(q.arredondamento) : "") : "") +
     (b.contrafactual ? chartContra(b.contrafactual) : "") + (b.contabilidade ? chartConta(b.contabilidade) : ""))).join("\n");
@@ -181,7 +183,7 @@ function body(q, all) {
   const extras = (q.arredondamento && !q.grafico_no_bloco ? chartArred(q.arredondamento) : "") +
     (q.fluxo ? `<ol class="qflow">${q.fluxo.map(f => `<li>${esc(f)}</li>`).join("")}</ol>` : "") +
     (q.numeros ? `<div class="qnums">${q.numeros.map(n => `<div><b>${esc(n[0])}</b><span>${esc(n[1])}</span></div>`).join("")}</div>` : "") +
-    (q.tabela ? `<div class="qtable" tabindex="0" role="region" aria-label="Tabela (role para os lados)"><table><thead><tr>${q.tabela[0].map(c => `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead><tbody>${q.tabela.slice(1).map(r => `<tr><th scope="row">${esc(r[0])}</th>${r.slice(1).map(c => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>` : "") +
+    (q.tabela ? table(q.tabela, "Tabela") : "") +
     (q.linha_do_tempo ? `<ol class="qtl">${q.linha_do_tempo.map(e => `<li><b>${esc(e[0])}</b><span>${esc(e[1])}</span></li>`).join("")}</ol>` : "") +
     (q.achado ? achado(q.achado) : "");
   const F = q.fontes;
@@ -191,37 +193,56 @@ function body(q, all) {
     (F.imprensa && F.imprensa.length ? `<div><h3>Imprensa e registros independentes</h3><p class="qtag in">Outras fontes</p><ul>${F.imprensa.map(s => `<li>${src(s)}</li>`).join("")}</ul></div>` : "") +
     `<div><h3>Análise Eleições 2026</h3><p class="qtag an">Métrica calculada pelo Eleições 2026</p><ul>${F.analise.map(s => `<li>${esc(s)}</li>`).join("")}</ul></div></div>`;
   const others = all.filter(o => o.id !== q.id).slice(0, 4);
+  // Três camadas: ENTENDA (resposta curta) → VEJA A EVIDÊNCIA (observamos · testamos · os dados mostram · explica) →
+  // VERIFIQUE (limites · confira · fontes · metodologia). Só reorganiza e marca; o texto é o da fonte, na mesma ordem.
+  const obsBody = [sec(T("chamou_atencao", "Por que isso chamou atenção"), `<p>${esc(q.chamou_atencao)}</p>`, "", "Observamos", "observamos"),
+    sec(T("aconteceu", "O que aconteceu"), list(q.aconteceu)),
+    q.versao_oficial ? sec("Versão oficial", `<p class="qoff">${/^Não localizamos/.test(q.versao_oficial) ? "" : `<span class="qtag of">Declaração oficial</span> `}${esc(q.versao_oficial)}</p>` + (/^Não localizamos/.test(q.versao_oficial) ? "" : `<p class="qnote">O que o TSE declara não é tratado aqui como prova. Abaixo, o que conseguimos testar de forma independente.</p>`), "off") : "",
+    q.outras_fontes && q.outras_fontes.length ? sec("O que outras fontes registraram", list(q.outras_fontes)) : ""].join("\n");
+  const toc = [["observamos", "Observamos"], ["testamos", "Testamos"], ["dados", "Os dados mostram"], ["explica", "O que isso explica"],
+    ["limites", "Limites"], ["confira", "Confira você mesmo"], ["fontes", "Fontes"]];
   return `<article class="qart">
 <p class="kick"><a href="${BASE}">Questionamentos</a> · ${esc(q.tema)}</p>
 <h1>${esc(q.pergunta)}</h1>
 ${q.painel_cargos ? painel(q.painel_cargos) : ""}
+<section class="qsum" aria-label="Resposta curta">
 <div class="qverdict">${badge(q.classificacao)}${q.classificacao_nota ? `<p>${esc(q.classificacao_nota)}</p>` : ""}</div>
 <p class="qlead">${esc(q.resposta)}</p>
+</section>
 ${q.observacao ? observacao(q.observacao) : ""}
 ${q.destaque ? destaque(q.destaque) : ""}
 ${q.contador ? contador(q.contador) : ""}
+<div class="qbody"><nav class="qtoc" aria-label="Nesta investigação"><p class="k">Nesta investigação</p><ol>${toc.map(([h, t]) => `<li><a href="#${h}">${t}</a></li>`).join("")}</ol></nav><div class="qmain">
 ${q.hipotese ? sec(q.painel_cargos ? "Duas afirmações diferentes" : T("hipotese", "A hipótese"), `<p>${esc(q.hipotese)}</p>`, "hip") : ""}
-${sec(T("chamou_atencao", "Por que isso chamou atenção"), `<p>${esc(q.chamou_atencao)}</p>`)}
-${sec(T("aconteceu", "O que aconteceu"), list(q.aconteceu))}
-${q.versao_oficial ? sec("Versão oficial", `<p class="qoff">${esc(q.versao_oficial)}</p>` + (/^Não localizamos/.test(q.versao_oficial) ? "" : `<p class="qnote">O que o TSE declara não é tratado aqui como prova. Abaixo, o que conseguimos testar de forma independente.</p>`), "off") : ""}
-${q.outras_fontes && q.outras_fontes.length ? sec("O que outras fontes registraram", list(q.outras_fontes)) : ""}
+${obsBody}
 ${q.blocos_antes ? blocos(q) : ""}
-${sec(T("testamos", "O que testamos"), list(q.testamos))}
+${sec(T("testamos", "O que testamos"), list(q.testamos), "", "Testamos", "testamos")}
+${q.aviso_unidade ? `<p class="qunit" role="note"><b>Unidade de análise.</b> ${esc(q.aviso_unidade)}</p>` : ""}
 ${q.blocos_antes ? "" : blocos(q)}
-${sec(q.painel_cargos ? "O que podemos concluir" : T("encontramos", "O que encontramos"), list(q.encontramos) + chart + extras, "found")}
-${sec(T("explica", "O que isso explica"), `<p>${esc(q.explica)}</p>`)}
+${sec(q.painel_cargos ? "O que podemos concluir" : T("encontramos", "O que encontramos"), list(q.encontramos) + chart + extras, "found", "Os dados mostram", "dados")}
+${sec(T("explica", "O que isso explica"), `<p>${esc(q.explica)}</p>`, "", "Explica", "explica")}
+<div class="qlims" id="limites"><p class="qstep">Limites desta investigação</p>
 ${sec(q.painel_cargos ? "O que não podemos concluir" : T("nao_prova", "O que isso não prova"), `<p>${esc(q.nao_prova)}</p>`, "limit")}
 ${q.nao_sabemos && q.nao_sabemos.length ? sec("O que ainda não sabemos", list(q.nao_sabemos), "limit") : ""}
-${sec("Confira você mesmo", `<ul class="qlinks">${q.confira.map(c => `<li><a href="${esc(c.href)}"${/^https?:/.test(c.href) ? ' rel="noopener" target="_blank"' : ""}${c.exemplo ? ' data-qcex="1"' : ""}>${esc(c.txt)} →</a></li>`).join("")}</ul>`)}
-${sec("Fontes", fontes)}
+</div>
+${sec("Confira você mesmo", `<ul class="qlinks">${q.confira.map(c => `<li><a href="${esc(c.href)}"${/^https?:/.test(c.href) ? ' rel="noopener" target="_blank"' : ""}${c.exemplo ? ' data-qcex="1"' : ""}>${esc(c.txt)} →</a></li>`).join("")}</ul>`, "conf", "Verifique", "confira")}
+${sec("Fontes", fontes, "", "", "fontes")}
 <details class="qmet"><summary>Ver como verificamos</summary><p>${esc(q.metodologia)}</p><p class="qnote">Classificação usada pelo Eleições 2026: CONFIRMADO · PARCIALMENTE CONFIRMADO · EXPLICADO PELOS DADOS · NÃO SUSTENTADO PELOS DADOS · INCONCLUSIVO · AINDA NÃO TESTÁVEL. Cada uma aponta para os dados acima.</p></details>
+</div></div>
 <nav class="qmore" aria-label="Outros questionamentos"><h2>Outros questionamentos</h2><ul>${others.map(o => `<li><a href="${BASE}${o.slug}/">${esc(o.pergunta)}</a> ${badge(o.classificacao)}</li>`).join("")}</ul><p><a href="${BASE}">Ver todos os questionamentos →</a></p></nav>
 </article>`;
 }
 
-export function cards(qs, n) {
-  return `<ul class="qcards">${qs.slice(0, n || qs.length).map(q => `<li><a href="${BASE}${q.slug}/"><span class="q">${esc(q.card || q.pergunta)}</span>${badge(q.classificacao)}</a></li>`).join("")}</ul>`;
+// Cartão de investigação: tema, pergunta (link que cobre o cartão), selo e — só quando a fonte tem — a resposta curta
+// (classificacao_nota). Nunca truncamos a resposta longa para fazer resumo.
+export function cards(qs, n, hl, nota) {
+  const h = hl || "h3";
+  return `<ul class="qcards">${qs.slice(0, n || qs.length).map(q => `<li class="qcard"><p class="qk">${esc(q.tema)}</p><${h} class="q"><a href="${BASE}${q.slug}/">${esc(q.card || q.pergunta)}</a></${h}>${badge(q.classificacao)}${nota && q.classificacao_nota ? `<p class="qn">${esc(q.classificacao_nota)}</p>` : ""}</li>`).join("")}</ul>`;
 }
+// Central de questionamentos: grupos por assunto (só navegação; a classificação de cada pergunta não muda).
+const GRUPOS = [["A noite de 4 de outubro", "Parada, pausas e a curva da apuração.", ["Q1", "Q2", "Q3", "Q4", "Q9"]],
+  ["Boletins de urna e arquivos", "O que os arquivos oficiais permitem conferir.", ["Q6", "Q7", "Q8"]],
+  ["Contexto e comparação", "Outros cargos, outras eleições.", ["Q5", "Q10", "Q11"]]];
 
 export function pages(data, shell) {
   const qs = data.questionamentos, out = {};
@@ -230,7 +251,7 @@ export function pages(data, shell) {
     desc: "Dúvidas que circularam sobre a apuração de 2026, investigadas nos dados: o que aconteceu, o que testamos, o que encontramos e o que ainda não dá para saber.",
     main: `<article class="qart"><p class="kick">Eleições 2026 · Questionamentos</p><h1>Você viu isso circulando? Fomos aos dados.</h1>
 <p class="qlead">Não começamos pela conclusão. Para cada dúvida, mostramos o que aconteceu, o que o TSE declara, o que outras fontes registraram, o que testamos nos dados oficiais e o que ainda não dá para saber.</p>
-${cards(qs)}
+${GRUPOS.map(([t, d, ids], i) => `<section class="qgroup" aria-labelledby="qg${i}"><h2 id="qg${i}">${t}</h2><p class="sub">${d}</p>${cards(ids.map(id => qs.find(q => q.id === id)).filter(Boolean), 0, "h3", true)}${i === 0 ? `<p class="more"><a href="${BASE}04-de-outubro/">A noite de 4 de outubro, passo a passo →</a></p>` : ""}</section>`).join("\n")}
 <section class="qsec"><h2>Como classificamos</h2><dl class="qtax">
 <div><dt>${badge("CONFIRMADO")}</dt><dd>Os dados mostram que aconteceu.</dd></div>
 <div><dt>${badge("PARCIALMENTE CONFIRMADO")}</dt><dd>Parte acontece; parte não, ou não em todos os casos.</dd></div>
@@ -238,8 +259,7 @@ ${cards(qs)}
 <div><dt>${badge("NÃO SUSTENTADO PELOS DADOS")}</dt><dd>Os dados não mostram o que foi afirmado.</dd></div>
 <div><dt>${badge("INCONCLUSIVO")}</dt><dd>Os dados disponíveis não bastam para decidir.</dd></div>
 <div><dt>${badge("AINDA NÃO TESTÁVEL")}</dt><dd>Ainda não há dado público para testar.</dd></div></dl>
-<p class="qnote">Tratamos TSE, tribunais regionais, partidos, imprensa, institutos, publicações nas redes e o próprio Eleições 2026 com o mesmo padrão: vale o que os dados conseguem testar.</p></section>
-<p><a href="${BASE}04-de-outubro/">A noite de 4 de outubro, passo a passo →</a></p></article>`});
+<p class="qnote">Tratamos TSE, tribunais regionais, partidos, imprensa, institutos, publicações nas redes e o próprio Eleições 2026 com o mesmo padrão: vale o que os dados conseguem testar.</p></section></article>`});
   for (const q of qs) out[`eleicoes-2026/questionamentos/${q.slug}/index.html`] = shell({
     path: `${BASE}${q.slug}/`, title: `${q.pergunta} · Eleições 2026 | Desmentindo`, desc: q.resposta.slice(0, 200), main: body(q, qs), q });
   const t = data.linha_do_tempo;

@@ -1347,6 +1347,7 @@
     "Classificamos cada seção pelos vencedores dos dois cargos, medimos a diferença entre cargos e calculamos os limites matemáticos das combinações possíveis.",
     "Repetimos a conta nos 645 municípios do estado."
    ],
+   "aviso_unidade": "Cada barra, linha de tabela ou ponto destes gráficos representa seções ou locais de votação — nunca uma pessoa. O voto é secreto; totais agregados não mostram como um indivíduo combinou seus votos.",
    "blocos": [
     {
      "titulo": "Por seção",
