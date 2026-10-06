@@ -15,6 +15,7 @@
  *   ELEICOES_HTML_MATCH  cada página de /eleicoes-2026/ servida == bytes do commit (Brasil, UFs, central, Q1–Q11)
  *   ELEICOES_ASSETS_COMPATIBLE cada CSS/JS local dessas páginas vem com ?v= e o arquivo servido nessa URL tem exatamente
  *                       esse sha256 — pega HTML de uma versão com CSS/JS de outra (P0 06/10/2026), não só HTTP 200
+ *   FAVICON             /favicon.ico, /favicon.svg e /apple-touch-icon.png servidos == arquivos do commit, e a raiz os declara
  *   node public-ui/verify-production.mjs [--base https://desmentindo.com.br] [--retries 3]
  */
 import crypto from "node:crypto";
@@ -112,6 +113,10 @@ async function check() {
   g.LEGACY_V4_PUBLIC_PREVIEW_RETIRED = v4.status === 200 && /name="desmentindo-legacy" content="retired-v4"/.test(v4.body) && v4data.status === 404;
   g.LEGACY_PUBLIC_APP_RETIRED = legacyApp.status === 200 && /name="desmentindo-legacy" content="retired"/.test(legacyApp.body) && !/const D ?= ?\{/.test(legacyApp.body);
   g.CACHE_POLICY = /no-cache/i.test(root.headers["cache-control"] || "");
+  // FAVICON: ícone da marca (build-favicon.mjs) servido e declarado — sem ele o navegador mostra uma letra genérica
+  const fav = {};
+  for (const p of ["favicon.ico", "favicon.svg", "apple-touch-icon.png"]) { const r = await get("/" + p); fav[p] = r.status === 200 && sha(r.body) === sha(local(p)); }
+  g.FAVICON = Object.values(fav).every(Boolean) && /<link rel="icon" href="\/favicon\.ico"/.test(html) && !/rel="icon" href="data:,"/.test(html);
   // Eleições 2026: HTML do commit + CSS/JS da MESMA versão (o navegador busca exatamente a URL ?v= que o HTML aponta)
   const eleicoes = { pages: 0, html_mismatch: [], asset_problems: [] }, assetCache = {};
   const servedAsset = async (p, v) => (assetCache[p + v] ??= get(p + "?v=" + v).then(r => r.status === 200 ? r.body : null));

@@ -242,6 +242,11 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
   const A6m = { edition: "2026-10-06", items: [{ id: "x", title: "Aprovada", slot: "MORNING", category: "", sources: [], date: "2026-10-06" }] };
   const am = K.homeTop(A6m, F5, "2026-10-06");
   eq("A: Morning (capa) antes do FECHAMENTO de ontem", [am.indexOf('class="mh mh-lead"') > 0, am.indexOf('class="mh mh-lead"') < am.indexOf('class="fxh fxh-prev"')], [true, true]);
+  // capa do dia sem foto (06/10): a arte tipográfica não substitui a manchete — o hero leva mh-noimg (arte ao lado / faixa baixa)
+  const A6two = { edition: "2026-10-06", items: [{ id: "a", title: "Primeira", slot: "MORNING", category: "Eleições 2026", dek: "Resumo", sources: [], date: "2026-10-06" },
+    { id: "b", title: "Segunda", slot: "MORNING", category: "Eleições 2026", sources: [], date: "2026-10-06" }] };
+  const a2 = K.homeTop(A6two, F5, "2026-10-06");
+  eq("A: 2 histórias, a 1ª é a capa (ordem editorial)", [/class="mh-hero mh-noimg"/.test(a2), a2.slice(a2.indexOf('id="morning"')).indexOf(">Primeira<") < a2.slice(a2.indexOf('id="morning"')).indexOf(">Segunda<"), /mh-ht"><a href="#\/agora\/a">Primeira/.test(a2), /class="mh-read"/.test(a2)], [true, true, true, true]);
   eq("A: Morning rotulado Hoje, sem nome interno", /mh-k"><i aria-hidden="true"><\/i>Hoje <time/.test(am) && !/>Morning </.test(am), true);
 
   // A → B: FECHAMENTO do dia publicado → sem AGORA, sem "ontem"

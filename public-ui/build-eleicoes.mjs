@@ -76,7 +76,9 @@ function page(uf, name) {
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${attr(title)}"><meta name="twitter:description" content="${attr(desc)}">
 <meta name="twitter:image" content="${SITE}/img/og/eleicoes-2026.png">
 <meta name="theme-color" content="#1D1B1A">
-<link rel="icon" href="data:,">
+<link rel="icon" href="${asset("favicon.ico")}" sizes="32x32">
+<link rel="icon" href="${asset("favicon.svg")}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="${asset("apple-touch-icon.png")}">
 <link rel="preload" href="/v5/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${asset("v5/css/fonts.css")}">
 <link rel="stylesheet" href="${asset("eleicoes-2026/eleicoes.css")}">
@@ -147,7 +149,9 @@ function qShell(o) {
 <meta property="og:image" content="${SITE}/img/og/eleicoes-2026.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${attr(o.title)}"><meta name="twitter:description" content="${attr(o.desc)}">
 <meta name="theme-color" content="#1D1B1A">
-<link rel="icon" href="data:,">
+<link rel="icon" href="${asset("favicon.ico")}" sizes="32x32">
+<link rel="icon" href="${asset("favicon.svg")}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="${asset("apple-touch-icon.png")}">
 <link rel="preload" href="/v5/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${asset("v5/css/fonts.css")}">
 <link rel="stylesheet" href="${asset("eleicoes-2026/eleicoes.css")}">

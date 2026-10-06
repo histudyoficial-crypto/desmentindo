@@ -480,7 +480,7 @@
     var h = '<section class="mh' + (compact ? " mh-compact" : " mh-lead") + '" id="morning" aria-labelledby="mh-t"><div class="mh-head"><div><p class="mh-k"><i aria-hidden="true"></i>Hoje ' + tc("date", tcDate(edition), edition) + "</p>" +
       '<h2 class="mh-t" id="mh-t">O que importa hoje</h2><p class="mh-sub">As principais notícias do começo do dia, com contexto, fontes e o que ainda está em aberto.</p></div>' +
       (items.length > 4 ? '<a class="mh-all" href="#/agora">Ver todas as notícias do Morning <span aria-hidden="true">→</span></a>' : "") + "</div>";
-    h += '<div class="mh-grid' + (sec.length ? "" : " mh-solo") + '"><article class="mh-hero"><a class="mh-vl" href="' + u(hero) + '" tabindex="-1" aria-hidden="true">' + mhVisual(hero, true) + "</a>" +
+    h += '<div class="mh-grid' + (sec.length ? "" : " mh-solo") + '"><article class="mh-hero' + (hero.image ? "" : " mh-noimg") + '"><a class="mh-vl" href="' + u(hero) + '" tabindex="-1" aria-hidden="true">' + mhVisual(hero, true) + "</a>" +
       '<div class="mh-hx">' + mhCat(hero) + '<h3 class="mh-ht"><a href="' + u(hero) + '">' + e(hero.title) + "</a></h3>" +
       (hero.dek ? '<p class="mh-dek">' + e(hero.dek) + "</p>" : "") +
       (mhSources(hero).length ? '<p class="mh-src">Fontes: ' + e(mhSources(hero).slice(0, 3).join(" · ")) + "</p>" : "") +
