@@ -1,51 +1,26 @@
 {
  "schema": "eleicoes2026.arquivos-ausentes.v2",
- "atualizado_em": "2026-10-06T05:50:51Z",
- "last_checked": "2026-10-06T05:50:51Z",
- "ultima_tentativa": "2026-10-06T05:50:51Z",
+ "atualizado_em": "2026-10-06T06:56:23Z",
+ "last_checked": "2026-10-06T06:56:23Z",
+ "ultima_tentativa": "2026-10-06T06:56:23Z",
  "verificacao_ok": true,
  "base_madrugada_05_10": 5254,
- "recuperadas": 5239,
- "pendentes": 15,
- "pendentes_sem_arquivo": 15,
+ "recuperadas": 5242,
+ "pendentes": 12,
+ "pendentes_sem_arquivo": 12,
  "pendentes_sem_boletim": 0,
  "pendentes_por_uf": {
-  "MG": 3,
   "SP": 12
  },
  "exemplo": {
-  "uf": "mg",
-  "m": "41335",
-  "z": "0319",
-  "s": "0058",
-  "municipio": "Betim",
+  "uf": "sp",
+  "m": "63134",
+  "z": "0388",
+  "s": "0147",
+  "municipio": "Carapicuíba",
   "estado": "ARQUIVO_NAO_DISPONIVEL"
  },
  "secoes": [
-  {
-   "uf": "mg",
-   "m": "41335",
-   "z": "0319",
-   "s": "0058",
-   "municipio": "Betim",
-   "estado": "ARQUIVO_NAO_DISPONIVEL"
-  },
-  {
-   "uf": "mg",
-   "m": "41335",
-   "z": "0319",
-   "s": "0240",
-   "municipio": "Betim",
-   "estado": "ARQUIVO_NAO_DISPONIVEL"
-  },
-  {
-   "uf": "mg",
-   "m": "41335",
-   "z": "0319",
-   "s": "0397",
-   "municipio": "Betim",
-   "estado": "ARQUIVO_NAO_DISPONIVEL"
-  },
   {
    "uf": "sp",
    "m": "63134",
