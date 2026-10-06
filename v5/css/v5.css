@@ -1071,3 +1071,20 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
   .mem-cov { flex-direction: column; gap: 4px; }
   .said-mini .said-ct .tc-ago { font-size: 9.5px; }
 }
+
+/* ==== LAYOUT 06/10 (Human Gate): onde estão as investigações — depois do FECHAMENTO, antes de Matérias / Já falaram ==== */
+.hm-inv { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 32px; align-items: end; margin: 26px 0 0; padding: 18px 20px; background: var(--white); box-shadow: inset 0 4px 0 var(--ink), 0 0 0 1px var(--rule); }
+.hm-inv-q { margin: 8px 0 0; font-stretch: 72%; font-weight: 900; font-size: 30px; line-height: 1.02; text-transform: uppercase; }
+.hm-inv-q a { color: var(--ink); text-decoration: none; }
+.hm-inv-q a:hover, .hm-inv-q a:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
+.hm-inv-s { margin: 8px 0 0; max-width: 62ch; font-size: 15px; color: var(--ink-2); }
+.hm-inv-go { display: flex; flex-direction: column; gap: 6px; margin: 0; font-size: 14px; font-weight: 800; white-space: nowrap; }
+.hm-inv-go a { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 14px; color: var(--ink); text-decoration: none; box-shadow: inset 0 0 0 2px var(--ink); }
+.hm-inv-go a:first-child { background: var(--yellow); box-shadow: none; }
+.hm-inv-go a:hover, .hm-inv-go a:focus-visible { text-decoration: underline; }
+@media (max-width: 640px) {
+  .hm-inv { grid-template-columns: minmax(0, 1fr); margin: 0; padding: 18px 16px; }
+  .hm-inv-q { font-size: 26px; }
+  .hm-inv-go { white-space: normal; }
+  .hm-inv-go a { min-height: 44px; }
+}

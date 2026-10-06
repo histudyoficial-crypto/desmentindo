@@ -580,6 +580,16 @@
       '<p class="mem-sub">O Desmentindo lembra. Digite uma pessoa, assunto ou acontecimento.</p>' + searchForm("", "q-home") +
       (arch.length ? '<ul class="mem-cov" aria-label="O que está na memória">' + arch.map(covLine).join("") + "</ul>" : "") + "</section>";
   }
+  // INVESTIGAÇÕES (layout 06/10): a Home mostra onde estão as checagens publicadas — as dúvidas sobre a apuração de 2026,
+  // testadas nos dados oficiais. Só links para páginas públicas e o texto já publicado na central; nenhum número, selo ou
+  // conteúdo em revisão. Aparece nos três estados, depois do FECHAMENTO (que continua sendo o produto principal).
+  function invBlock() {
+    return '<section class="hm-inv" aria-labelledby="hm-inv-h"><div class="hm-inv-t"><h2 class="hm-h" id="hm-inv-h">Investigações · Eleições 2026</h2>' +
+      '<p class="hm-inv-q"><a href="/eleicoes-2026/questionamentos/">Você viu isso circulando? Fomos aos dados.</a></p>' +
+      '<p class="hm-inv-s">As dúvidas sobre a apuração, testadas nos dados oficiais do TSE: o que aconteceu, o que testamos e o que ainda não dá para saber.</p></div>' +
+      '<p class="hm-inv-go"><a href="/eleicoes-2026/questionamentos/">Ver as investigações <span aria-hidden="true">→</span></a>' +
+      '<a href="/eleicoes-2026/">Resultado oficial do TSE <span aria-hidden="true">→</span></a></p></section>';
+  }
   // Topo da Home nos três estados reais: A = edição de hoje aprovada, FECHAMENTO de hoje ainda não · B = edição e
   // FECHAMENTO de hoje · C = nenhuma edição de hoje aprovada (virada do dia até a 1ª publicação). Só o C muda (06/10):
   // AGORA neutro (data + frase fixa, nada da edição em revisão) e o FECHAMENTO anterior com a distância temporal (§32.4).
@@ -602,7 +612,7 @@
       var od = opDay();
       var mats = (MI && MI.items || []).slice(0, 3);
       return Promise.all(mats.map(function (x) { return loadTyped("materias", x.slug); })).then(function (MD) {
-        var h = homeTop(A, LF, od);
+        var h = homeTop(A, LF, od) + invBlock();
         // referência temporal da memória: edição corrente quando houver; senão o último FECHAMENTO
         var ref = A ? A.edition : (LF && LF.edition_date) || "";
         h += '<div class="hm-grid">' + matBlock(mats, MD) + saidBlock(H, TR, ref) + "</div>" + memorySearch(H);
