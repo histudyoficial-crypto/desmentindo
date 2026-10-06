@@ -982,9 +982,9 @@
     "ao_vivo": "https://raw.githubusercontent.com/histudyoficial-crypto/desmentindo/eleicoes-2026-dados/arquivos-ausentes.json",
     "estado": {
      "schema": "eleicoes2026.arquivos-ausentes.v2",
-     "atualizado_em": "2026-10-05T22:48:51Z",
-     "last_checked": "2026-10-05T22:48:51Z",
-     "ultima_tentativa": "2026-10-05T22:48:51Z",
+     "atualizado_em": "2026-10-06T00:11:41Z",
+     "last_checked": "2026-10-06T00:11:41Z",
+     "ultima_tentativa": "2026-10-06T00:11:41Z",
      "verificacao_ok": true,
      "base_madrugada_05_10": 5254,
      "recuperadas": 5239,
@@ -1018,11 +1018,10 @@
    ],
    "encontramos": [
     "Das 5.254 seções sem arquivo na madrugada de 05/10, 5.239 já apareceram: 4.921 na manhã de 05/10 e 318 depois, nas verificações seguintes.",
-    "Em todos os 319 boletins de urna obtidos desde então (1 dele de seção que já tinha outros arquivos publicados, mas ainda não o boletim), a seção do arquivo é a esperada e a soma dos votos é igual ao comparecimento.",
-    "Nos 7 municípios em que todas as seções já apareceram, a soma dos boletins é igual, número a número, ao resultado oficial do município — inclusive na cidade de São Paulo, agora com os boletins de todas as 26.683 seções.",
+    "Em todos os 319 boletins de urna obtidos desde então (um deles de uma seção que já tinha outros arquivos publicados, mas ainda não o boletim), a seção do arquivo é a esperada e a soma dos votos é igual ao comparecimento.",
+    "Nos 8 municípios em que todas as seções já apareceram, a soma dos boletins é igual, número a número, ao resultado oficial do município — inclusive na cidade de São Paulo, agora com os boletins de todas as 26.683 seções.",
     "Onde ainda faltam seções (Betim), nenhum número dos boletins passa do resultado oficial.",
-    "Em Uberlândia, todas as seções já apareceram; a conferência com o resultado oficial do município é feita na próxima verificação.",
-    "Na verificação de 05/10, 19:48 (Brasília), restavam 15 seções sem arquivo: 12 em Carapicuíba (SP) e 3 em Betim (MG). Ficam em 2 zonas eleitorais.",
+    "Na verificação de 05/10, 21:11 (Brasília), restavam 15 seções sem arquivo: 12 em Carapicuíba (SP) e 3 em Betim (MG). Ficam em 2 zonas eleitorais.",
     "Os dados não mostram por que esses arquivos não foram publicados."
    ],
    "explica": "Explica a mensagem de erro ao abrir essas seções: o arquivo não está publicado. Na verificação de cada seção, o site mostra isso como “Arquivo oficial ainda não disponível”.",
@@ -1032,7 +1031,7 @@
    ],
    "confira": [
     {
-     "txt": "Uma seção ainda sem arquivo na verificação de 05/10, 19:48 (Brasília): Betim, zona 319, seção 58",
+     "txt": "Uma seção ainda sem arquivo na verificação de 05/10, 21:11 (Brasília): Betim, zona 319, seção 58",
      "href": "/eleicoes-2026/mg/#m=41335&z=0319&s=0058",
      "exemplo": true
     }
