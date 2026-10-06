@@ -587,7 +587,7 @@
     var fxToday = !!(LF && LF.edition_date === od);
     var h = '<div class="hm-sig" role="note"><span>Notícias passam. O que foi dito fica.</span><time datetime="' + od + '">' + e(dLong(od)) + "</time></div>";
     var M = A ? morningItems(A.items) : [], last = A ? latestItem(A.items) : null;
-    if (A && !fxToday) h += agoraBar(A);   // estado B (FECHAMENTO do dia publicado): o AGORA sai; o radar do dia fica
+    if (A && !fxToday) h += agoraBar(A);   // estado A: AGORA editorial (no B, com o FECHAMENTO do dia publicado, o AGORA sai; o radar do dia fica)
     if (!A) h += agoraIdle(od);
     if (A) h += newsDay(A, !fxToday && last ? last.id : "", M.length ? M[0].id : "");
     if (A) h += morningBlock(A.edition, M);
