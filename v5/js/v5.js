@@ -419,6 +419,13 @@
       '<p class="ah-go"><a href="#/agora">' + (n > 1 ? "Ver as " + nf(n) + " de hoje" : "Ver a de hoje") + ' <span aria-hidden="true">→</span></a>' +
       '<span class="ah-note">O fechamento de hoje sai à noite.</span></p></div></section>';
   }
+  // AGORA neutro (estado C): a mesma barra, só com a data do dia operacional e uma frase fixa. Sem título, contagem,
+  // tema ou horário: nada do que ainda não foi aprovado pode aparecer, nem de forma indireta.
+  function agoraIdle(od) {
+    return '<section class="ah ah-idle" aria-label="Agora, hoje"><div class="ah-in">' +
+      '<p class="ah-k"><span class="ah-kk"><i class="ah-dot" aria-hidden="true"></i>Hoje · <time datetime="' + e(od) + '">' + e(dDay(od)) + "</time></span></p>" +
+      '<p class="ah-t">Acompanhamento do dia em andamento. O fechamento de hoje sai à noite.</p></div></section>';
+  }
   // NEWS DO DIA: radar/pulso das notícias aprovadas do dia, na ordem editorial; faixa amarela, compacta, sem animação.
   // Deduplicação visual (sem mudar conteúdo): fica de fora o que já está no AGORA e no destaque do Morning; se nada sobrar,
   // a faixa lista os itens do Morning (cada manchete aparece no máximo 2 vezes na Home, nunca 3).
@@ -484,9 +491,13 @@
     }).join("") + "</ul>";
     return h + "</div></section>";
   }
-  function fxHome(F) {
+  // ref = dia operacional quando o FECHAMENTO pode não ser de hoje (estado C): ontem → "Fechamento de ontem";
+  // mais antigo → carimbo de distância (agoLabel, §32.4). Sem ref, ou do próprio dia, nada muda.
+  function fxHome(F, ref) {
     var fu = "#/fechamento/" + F.edition_date, pts = (F.opening && F.opening.points) || [], cut = F.cutoff_at ? fhm(F.cutoff_at) : "";
-    var main = '<div class="fxh-main"><p class="fxh-k"><span class="fxh-tag">Fechamento</span>' + tc("date", WD3[dParts(F.edition_date).wd].toUpperCase() + " " + tcDate(F.edition_date), F.edition_date) +
+    var ago = ref ? civilDays(F.edition_date, ref) : 0;
+    var main = '<div class="fxh-main"><p class="fxh-k"><span class="fxh-tag">' + (ago === 1 ? "Fechamento de ontem" : "Fechamento") + "</span>" +
+      (ago > 1 ? tc("ago", agoLabel(F.edition_date, ref)) : "") + tc("date", WD3[dParts(F.edition_date).wd].toUpperCase() + " " + tcDate(F.edition_date), F.edition_date) +
       (cut ? tc("cut", "Verificado até " + cut, F.cutoff_at) : "") + "</p>" +
       '<h2 class="fxh-t" id="fx-home-t"><a href="' + e(fu) + '">' + e(F.public_title) + "</a></h2>" +
       (pts.length ? '<p class="fxh-ot">' + (em1(pts) ? "Em 1 minuto" : e((F.opening && F.opening.title) || "")) + "</p>" : "") +
@@ -569,20 +580,29 @@
       '<p class="mem-sub">O Desmentindo lembra. Digite uma pessoa, assunto ou acontecimento.</p>' + searchForm("", "q-home") +
       (arch.length ? '<ul class="mem-cov" aria-label="O que está na memória">' + arch.map(covLine).join("") + "</ul>" : "") + "</section>";
   }
+  // Topo da Home nos três estados reais: A = edição de hoje aprovada, FECHAMENTO de hoje ainda não · B = edição e
+  // FECHAMENTO de hoje · C = nenhuma edição de hoje aprovada (virada do dia até a 1ª publicação). Só o C muda (06/10):
+  // AGORA neutro (data + frase fixa, nada da edição em revisão) e o FECHAMENTO anterior com a distância temporal (§32.4).
+  function homeTop(A, LF, od) {
+    var fxToday = !!(LF && LF.edition_date === od);
+    var h = '<div class="hm-sig" role="note"><span>Notícias passam. O que foi dito fica.</span><time datetime="' + od + '">' + e(dLong(od)) + "</time></div>";
+    var M = A ? morningItems(A.items) : [], last = A ? latestItem(A.items) : null;
+    if (A && !fxToday) h += agoraBar(A);   // estado B (FECHAMENTO do dia publicado): o AGORA sai; o radar do dia fica
+    if (!A) h += agoraIdle(od);
+    if (A) h += newsDay(A, !fxToday && last ? last.id : "", M.length ? M[0].id : "");
+    if (A) h += morningBlock(A.edition, M);
+    if (LF && LF.edition_date) h += fxHome(LF, A ? "" : od);
+    return h;
+  }
   P.home = function () {
     var ED = loadEdition();
     return Promise.all([load("home.json"), ED, loadIdx("materias"), loadTyped("fechamentos"), loadThumbReview()]).then(function (res) {
       var H = res[0], EDN = res[1], MI = res[2], LF = res[3], TR = res[4];
       var A = agoraIsCurrent(EDN) && edItems(EDN).length ? { edition: EDN.edition, items: edItems(EDN) } : null;
-      var od = opDay(), fxToday = !!(LF && LF.edition_date === od);
+      var od = opDay();
       var mats = (MI && MI.items || []).slice(0, 3);
       return Promise.all(mats.map(function (x) { return loadTyped("materias", x.slug); })).then(function (MD) {
-        var h = '<div class="hm-sig" role="note"><span>Notícias passam. O que foi dito fica.</span><time datetime="' + od + '">' + e(dLong(od)) + "</time></div>";
-        var M = A ? morningItems(A.items) : [], last = A ? latestItem(A.items) : null;
-        if (A && !fxToday) h += agoraBar(A);   // estado B (FECHAMENTO do dia publicado): o AGORA sai; o radar do dia fica
-        if (A) h += newsDay(A, !fxToday && last ? last.id : "", M.length ? M[0].id : "");
-        if (A) h += morningBlock(A.edition, M);
-        if (LF && LF.edition_date) h += fxHome(LF);
+        var h = homeTop(A, LF, od);
         // referência temporal da memória: edição corrente quando houver; senão o último FECHAMENTO
         var ref = A ? A.edition : (LF && LF.edition_date) || "";
         h += '<div class="hm-grid">' + matBlock(mats, MD) + saidBlock(H, TR, ref) + "</div>" + memorySearch(H);
