@@ -212,7 +212,7 @@ ${sec(q.painel_cargos ? "O que podemos concluir" : T("encontramos", "O que encon
 ${sec(T("explica", "O que isso explica"), `<p>${esc(q.explica)}</p>`)}
 ${sec(q.painel_cargos ? "O que não podemos concluir" : T("nao_prova", "O que isso não prova"), `<p>${esc(q.nao_prova)}</p>`, "limit")}
 ${q.nao_sabemos && q.nao_sabemos.length ? sec("O que ainda não sabemos", list(q.nao_sabemos), "limit") : ""}
-${sec("Confira você mesmo", `<ul class="qlinks">${q.confira.map(c => `<li><a href="${esc(c.href)}"${/^https?:/.test(c.href) ? ' rel="noopener" target="_blank"' : ""}>${esc(c.txt)} →</a></li>`).join("")}</ul>`)}
+${sec("Confira você mesmo", `<ul class="qlinks">${q.confira.map(c => `<li><a href="${esc(c.href)}"${/^https?:/.test(c.href) ? ' rel="noopener" target="_blank"' : ""}${c.exemplo ? ' data-qcex="1"' : ""}>${esc(c.txt)} →</a></li>`).join("")}</ul>`)}
 ${sec("Fontes", fontes)}
 <details class="qmet"><summary>Ver como verificamos</summary><p>${esc(q.metodologia)}</p><p class="qnote">Classificação usada pelo Eleições 2026: CONFIRMADO · PARCIALMENTE CONFIRMADO · EXPLICADO PELOS DADOS · NÃO SUSTENTADO PELOS DADOS · INCONCLUSIVO · AINDA NÃO TESTÁVEL. Cada uma aponta para os dados acima.</p></details>
 <nav class="qmore" aria-label="Outros questionamentos"><h2>Outros questionamentos</h2><ul>${others.map(o => `<li><a href="${BASE}${o.slug}/">${esc(o.pergunta)}</a> ${badge(o.classificacao)}</li>`).join("")}</ul><p><a href="${BASE}">Ver todos os questionamentos →</a></p></nav>

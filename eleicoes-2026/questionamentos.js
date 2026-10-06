@@ -17,6 +17,14 @@
       document.getElementById("qcRec").textContent = nf(d.recuperadas);
       document.getElementById("qcUF").textContent = Object.keys(d.pendentes_por_uf || {}).map(function (u) { return (u === "ZZ" ? "exterior" : u) + " " + nf(d.pendentes_por_uf[u]); }).join(" · ") || "—";
       box.setAttribute("data-at", d.atualizado_em);
+      // exemplo do "Confira": sempre uma seção pendente DESTE snapshot; sem exemplo (nenhuma pendente ou snapshot antigo), some
+      Array.prototype.forEach.call(document.querySelectorAll("a[data-qcex]"), function (a) {
+        var x = d.exemplo, li = a.parentNode;
+        if (!x || !x.uf || !x.m || !x.z || !x.s) { li.hidden = true; return; }
+        a.href = "/eleicoes-2026/" + x.uf + "/#m=" + x.m + "&z=" + x.z + "&s=" + x.s;
+        a.textContent = "Uma seção ainda sem arquivo na verificação de " + br(d.atualizado_em) + " (Brasília): " + x.municipio + ", zona " + Number(x.z) + ", seção " + Number(x.s) + " →";
+        li.hidden = false;
+      });
     }
     var txt = "Última verificação: " + br(d.atualizado_em) + " (Brasília)";
     if (h >= 2) { txt += " — há " + (h < 48 ? Math.floor(h) + " horas" : Math.floor(h / 24) + " dias") + ". Este número pode ter mudado desde então."; when.className = "qwhen stale"; }
