@@ -1071,3 +1071,100 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
   .mem-cov { flex-direction: column; gap: 4px; }
   .said-mini .said-ct .tc-ago { font-size: 9.5px; }
 }
+
+/* foco visível nos campos de pesquisa (teclado; o contorno de 2→3 px sozinho não basta) */
+.top-q input:focus-visible, .qform input:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+
+/* ===================================================================================================== HOME PREMIUM (06/10/2026)
+   Human Gate 06/10 — direção C "editorial contemporânea" (escolhida entre A/B/C) + memória como frente única (de B).
+   Mesmos componentes, conteúdo e estados A/B/C; muda composição: capa do FECHAMENTO em papel (8 colunas) com trilho de
+   Investigações e Matérias na primeira dobra; Já falaram + Pesquise a memória numa faixa escura contínua. Menos caixa,
+   mais régua, escala e espaço. */
+.is-home main .wrap { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 36px; grid-auto-flow: row dense; }
+:where(.is-home main .wrap) > *, :where(.is-home .hm-grid) > * { grid-column: 1 / -1; }
+.is-home .hm-grid { display: contents; }
+.is-home .hm-h { font-size: 12px; letter-spacing: .14em; }
+/* capa: FECHAMENTO em papel, régua grossa, título em escala de manchete; conclusões em três colunas sob a ação */
+.is-home .fxh { grid-column: 1 / span 8; grid-row: span 2; display: block; margin: 30px 0 0; box-shadow: none; background: transparent; border-top: 8px solid var(--ink); }
+.is-home .fxh-main { padding: 18px 0 0; background: transparent; color: var(--ink); }
+.is-home .fxh-tag { background: var(--ink); color: var(--white); }
+.is-home .fxh-k .tc-date { color: var(--ink); }
+.is-home .fxh-t { margin-top: 14px; font-size: 84px; line-height: .86; letter-spacing: -.005em; }
+.is-home .fxh-ot { margin-top: 22px; color: var(--ink-2); }
+.is-home .fxh-pts { gap: 12px; }
+.is-home .fxh-pts li { font-size: 19px; }
+.is-home .fxh-pts b { background: var(--ink); color: var(--yellow); }
+.is-home .fxh-go { margin-top: 24px; }
+.is-home .fxh .mandar-ink { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+.is-home .fxh .mandar-ink:hover { background: var(--white); }
+.is-home .fxh-side { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 24px; margin-top: 28px; padding: 18px 0 30px; background: transparent; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.is-home .fxh-sk { grid-column: 1 / -1; margin-bottom: 8px; }
+.is-home .fxh-c { padding-top: 10px; }
+.is-home .fxh-c p:last-child { font-size: 15px; line-height: 1.45; }
+/* trilho: Investigações = frente editorial escura (unidade real); Matérias = lista com régua, sem caixa */
+.hm-inv { grid-column: 9 / -1; margin: 30px 0 0; padding: 22px 24px 26px; background: var(--ink); color: var(--white); }
+.hm-inv .hm-h { color: var(--yellow); }
+.hm-inv-q { margin: 12px 0 0; font-stretch: 72%; font-weight: 900; font-size: 40px; line-height: .9; text-transform: uppercase; }
+.hm-inv-q a { color: var(--white); text-decoration: none; }
+.hm-inv-q a:hover, .hm-inv-q a:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
+.hm-inv-s { margin: 12px 0 0; font-size: 14.5px; line-height: 1.45; color: var(--d1-cfc); }
+.hm-inv-go { display: flex; flex-direction: column; gap: 8px; margin: 18px 0 0; font-size: 14px; font-weight: 800; }
+.hm-inv-go a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 14px; color: var(--white); text-decoration: none; box-shadow: inset 0 0 0 2px var(--white); }
+.hm-inv-go a:first-child { background: var(--yellow); color: var(--ink); box-shadow: none; }
+.hm-inv-go a:hover, .hm-inv-go a:focus-visible { text-decoration: underline; }
+.hm-inv-go a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.is-home .hm-mat { grid-column: 9 / -1; margin: 28px 0 0; padding: 14px 0 0; background: transparent; box-shadow: none; border-top: 4px solid var(--ink); }
+.is-home .hm-mt { font-size: 17px; line-height: 1.25; font-weight: 800; }
+/* memória: Já falaram + Pesquise a memória como uma faixa escura contínua — "o que foi dito fica" */
+.is-home .hm-said { margin: 48px 0 0; padding: 30px 32px 26px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: 0 32px; background: var(--ink); }
+.is-home .hm-said .said-mini { margin: 0; grid-column: 2; grid-row: 1 / span 3; }
+.is-home .hm-sub { display: block; margin-top: 8px; color: var(--d1-cfc); }
+.is-home .mem { margin: 0 0 56px; padding: 26px 32px 30px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: 6px 32px; align-items: center; background: var(--ink); color: var(--white); border-top: 1px solid #4A4645; }
+.is-home .mem-h { font-size: 40px; color: var(--yellow); }
+.is-home .mem-sub { grid-column: 1; margin: 0; font-size: 14px; color: var(--d1-cfc); }
+.is-home .mem .qform { grid-column: 2; grid-row: 1 / span 2; box-shadow: none; }
+.is-home .mem .qform input { color: var(--ink); }
+.is-home .mem-cov { grid-column: 2; margin: 6px 0 0; }
+.is-home .mem-cov b { color: var(--white); } .is-home .mem-cov span { color: var(--d1-cfc); }
+/* Morning (estado A/B): mesma gramática da capa — régua e papel, sem caixa branca solta */
+.is-home .mh { margin: 30px 0 0; padding: 18px 0 30px; background: transparent; box-shadow: none; border-top: 8px solid var(--ink); border-bottom: 1px solid var(--ink); }
+/* AGORA neutro: a frase não corta em telas médias */
+.ah-idle .ah-t { white-space: normal; overflow: visible; text-overflow: clip; }
+/* tablet: o trilho desce para baixo da capa */
+@media (max-width: 1060px) and (min-width: 641px) {
+  .is-home .fxh, .hm-inv, .is-home .hm-mat { grid-column: 1 / -1; grid-row: auto; }
+  .is-home .fxh-t { font-size: 68px; }
+  .hm-inv { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 28px; align-items: end; }
+  .is-home .hm-said, .is-home .mem { grid-template-columns: minmax(0, 1fr); }
+  .is-home .hm-said .said-mini { grid-column: 1; grid-row: auto; margin-top: 14px; }
+  .is-home .mem .qform, .is-home .mem-cov { grid-column: 1; grid-row: auto; }
+}
+@media (max-width: 640px) {
+  .is-home main .wrap { display: block; }
+  .is-home .hm-grid { display: block; }
+  .is-home .fxh { margin: 0; padding: 0 16px; border-top-width: 6px; }
+  .is-home .fxh-main { padding: 16px 0 26px; }
+  .is-home .fxh-t { font-size: 44px; line-height: .88; }
+  .is-home .fxh-pts li { font-size: 16px; }
+  .is-home .fxh-side { display: none; }
+  .is-home .mh { margin: 0; padding: 18px 16px 22px; border-top-width: 6px; border-bottom: 0; }
+  .hm-inv { margin: 0; padding: 26px 16px 28px; }
+  .hm-inv-q { font-size: 34px; }
+  .hm-inv-go a { min-height: 48px; }
+  .is-home .hm-mat { margin: 28px 16px 0; }
+  .is-home .hm-mat .hm-h { padding-bottom: 0; border-bottom: 0; }
+  .is-home .hm-said { display: block; margin: 32px 0 0; padding: 24px 16px 18px; }
+  .is-home .hm-said .said-mini { margin-top: 14px; }
+  .is-home .mem { display: block; margin: 0; padding: 22px 16px 30px; }
+  .is-home .mem-h { font-size: 34px; }
+  .is-home .mem-sub { margin-top: 6px; }
+  .is-home .mem .qform { margin-top: 14px; }
+}
+/* cabeçalho com quatro portas: o campo de pesquisa encolhe em telas médias (sem rolagem lateral) */
+@media (max-width: 1000px) and (min-width: 641px) {
+  .top-in { gap: 10px; }
+  .doors a { padding-left: 6px; padding-right: 6px; font-size: 13.5px; }
+  .top-q { flex: 1 1 140px; min-width: 0; width: auto; max-width: 220px; }
+}
+/* CLS: a Home é desenhada depois da leitura dos dados; o rodapé começa fora da primeira dobra e não pula */
+.is-home main { min-height: 100vh; }
