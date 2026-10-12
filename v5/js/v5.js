@@ -494,11 +494,11 @@
   // ref = dia operacional quando o FECHAMENTO pode não ser de hoje (estado C): ontem → "Fechamento de ontem";
   // mais antigo → carimbo de distância (agoLabel, §32.4). Sem ref, ou do próprio dia, nada muda.
   function fxHome(F, ref, prev) {
-    var fu = "#/fechamento/" + F.edition_date, pts = (F.opening && F.opening.points) || [], cut = F.cutoff_at ? fhm(F.cutoff_at) : "";
+    var fu = "#/fechamento/" + F.edition_date, pts = (F.opening && F.opening.points) || [], cut = fxCut(F);
     var ago = ref ? civilDays(F.edition_date, ref) : 0;
     var main = '<div class="fxh-main"><p class="fxh-k"><span class="fxh-tag">' + (ago === 1 ? "Fechamento de ontem" : "Fechamento") + "</span>" +
       (ago > 1 ? tc("ago", agoLabel(F.edition_date, ref)) : "") + tc("date", WD3[dParts(F.edition_date).wd].toUpperCase() + " " + tcDate(F.edition_date), F.edition_date) +
-      (cut ? tc("cut", "Verificado até " + cut, F.cutoff_at) : "") + "</p>" +
+      (cut ? tc("cut", fxCutL(F) + " " + cut, F.cutoff_at) : "") + "</p>" +
       '<h2 class="fxh-t" id="fx-home-t"><a href="' + e(fu) + '">' + e(F.public_title) + "</a></h2>" +
       (pts.length ? '<p class="fxh-ot">' + (em1(pts) ? "Em 1 minuto" : e((F.opening && F.opening.title) || "")) + "</p>" : "") +
       (pts.length ? '<ol class="fxh-pts">' + pts.map(function (p, i) {
@@ -507,7 +507,7 @@
       '<div class="fxh-go"><a class="fxh-read" href="' + e(fu) + '">Ler o fechamento <span aria-hidden="true">→</span></a>' +
       mandar(SITE + "/fechamento/" + F.edition_date + "/", F.public_title, "Mandar o fechamento de " + dDay(F.edition_date), "mandar-ink") + "</div></div>";
     var st = (F.main_stories || []).filter(function (s) { return s.conclusion; });
-    var side = st.length ? '<div class="fxh-side"><p class="fxh-sk">O que dá para concluir' + (cut ? " até " + e(cut) : "") + "</p>" + st.map(function (s, i) {
+    var side = st.length ? '<div class="fxh-side"><p class="fxh-sk">O que dá para concluir' + (cut && !fxRetro(F) ? " até " + e(cut) : "") + "</p>" + st.map(function (s, i) {
       return '<div class="fxh-c"><p class="fxh-cn">' + (i + 1) + '</p><p>' + e(s.conclusion) + "</p></div>";
     }).join("") + "</div>" : "";
     return '<section class="fxh' + (prev ? " fxh-prev" : "") + '" id="fechamento" aria-labelledby="fx-home-t">' + main + side + "</section>";
@@ -1022,6 +1022,11 @@
     var d = brt(iso);
     return d ? d.getUTCDate() + " " + MES[d.getUTCMonth()] + ", " + fhm(iso) : "";
   }
+  // FECHAMENTO retrospectivo (reconstruído depois, Co-CEO 12/10/2026): o corte é de outro dia que a edição →
+  // mostra "Reconstruída em <data, hora>" em vez de "Verificado até <hora>" (que leria como o próprio dia).
+  function fxRetro(F) { var c = brt(F.cutoff_at || ""); return !!c && c.toISOString().slice(0, 10) !== F.edition_date; }
+  function fxCut(F) { return F.cutoff_at ? (fxRetro(F) ? fts(F.cutoff_at) : fhm(F.cutoff_at)) : ""; }
+  function fxCutL(F) { return fxRetro(F) ? "Reconstruída em" : "Verificado até"; }
   function setDesc(s) { var m = document.querySelector('meta[name="description"]'); if (m && s) m.setAttribute("content", s); }
   // Coberturas em ordem de horário de publicação (não é ranking): sem horário vai para o fim, na ordem do dado.
   function byTime(cov) {
@@ -1070,13 +1075,13 @@
       if (!F) return notFound();
       document.title = F.public_title + " · Desmentindo";
       setDesc((F.opening && F.opening.points || []).map(function (p) { return p.text; }).join(" "));
-      var cut = fhm(F.cutoff_at), pub = F.published_at ? (fdate((brt(F.published_at) || new Date(0)).toISOString().slice(0, 10)) === fdate(F.edition_date) ? "às " + fhm(F.published_at) : "em " + fts(F.published_at)) : "";
+      var cut = fxCut(F), pub = F.published_at ? (fdate((brt(F.published_at) || new Date(0)).toISOString().slice(0, 10)) === fdate(F.edition_date) ? "às " + fhm(F.published_at) : "em " + fts(F.published_at)) : "";
       // A2: cabeça escura com a LINHA DO CORTE (o que entrou ─ verificado até HH:MM ┄ próxima edição)
       var h = '<section class="fxp-head"><p class="fxp-brand"><span>Desmentindo | Fechamento</span><span>' + e(dMid(F.edition_date) + " " + dParts(F.edition_date).y) + "</span></p>" +
         '<h1 class="fxp-t">' + e(F.public_title) + "</h1>" + (F.context ? '<p class="fxp-ctx">' + e(F.context) + "</p>" : "") +
-        (cut ? '<div class="fxp-cut" role="img" aria-label="Conteúdo verificado até ' + e(cut) + '; o que saiu depois entra na próxima edição">' +
-          '<span class="c-in"><i></i>O que entrou</span><span class="c-at"><b>' + e(cut) + "</b>Verificado até</span><span class=\"c-next\"><i></i>Próxima edição</span></div>" : "") +
-        (pub || cut ? '<p class="fxp-pub">' + (pub ? "Publicado " + e(pub) + ". " : "") + (cut ? "O que saiu depois das " + e(cut) + " entra na próxima edição." : "") + "</p>" : "") + "</section>";
+        (cut ? '<div class="fxp-cut" role="img" aria-label="' + e(fxCutL(F)) + " " + e(cut) + (fxRetro(F) ? '; edição retrospectiva">' : '; o que saiu depois entra na próxima edição">') +
+          '<span class="c-in"><i></i>O que entrou</span><span class="c-at"><b>' + e(cut) + "</b>" + e(fxCutL(F)) + "</span><span class=\"c-next\"><i></i>Próxima edição</span></div>" : "") +
+        (pub || cut ? '<p class="fxp-pub">' + (pub ? "Publicado " + e(pub) + ". " : "") + (cut ? (fxRetro(F) ? "Edição retrospectiva: o texto traz o que as fontes registravam em " + e(fdate(F.edition_date)) + "." : "O que saiu depois das " + e(cut) + " entra na próxima edição.") : "") + "</p>" : "") + "</section>";
       var pts = (F.opening && F.opening.points) || [];
       if (pts.length) {
         // "Em 1 minuto": só os pontos de abertura aprovados; o rótulo segue a regra fixa EM1_RULE (senão, o título aprovado).
@@ -1095,7 +1100,7 @@
           var x = '<article class="fxs' + (i === 0 ? " fxs-1" : "") + (open ? " is-open" : "") + '" id="' + e(s.id) + '">' +
             '<button type="button" class="fxs-tog" aria-expanded="' + open + '" aria-controls="' + bid + '"><span class="fxs-k"><span>' + (i + 1) + (s.lead ? " · Principal" : "") +
             '</span><span class="fxs-sign" aria-hidden="true">' + (open ? "−" : "+") + '</span></span><span class="fxs-h">' + e(s.headline) + "</span></button>" +
-            '<div class="fxs-c"><p class="fxs-ck">O que dá para concluir' + (cut ? " até " + e(cut) : "") + "</p><p>" + e(s.conclusion) + "</p>" +
+            '<div class="fxs-c"><p class="fxs-ck">O que dá para concluir' + (cut && !fxRetro(F) ? " até " + e(cut) : "") + "</p><p>" + e(s.conclusion) + "</p>" +
             (s.open_questions ? '<p class="fx-open-q"><b>Em aberto:</b> ' + e(s.open_questions) + "</p>" : "") + fxCorrection(s.correction) + evBlock(s) + "</div>" +
             '<div class="fxs-body" id="' + bid + '"' + (open ? "" : " hidden") + ">" + (s.dek ? '<p class="fx-dek">' + e(s.dek) + "</p>" : "");
           if (s.steps && s.steps.length) x += '<div class="fxs-sec"><p class="fxs-sk">Onde está a decisão</p><ol class="fxs-steps" style="--n:' + s.steps.length + '">' + s.steps.map(function (st) {
@@ -1111,7 +1116,7 @@
           x += mandar(SITE + "/fechamento/" + F.edition_date + "/#" + s.id, s.headline, "Mandar esta história", "mandar-story", "Mandar esta história") + "</div>";
           return x + "</article>";
         }).join("") + "</section>";
-        if (cut) h += '<p class="fxp-foot num">Verificado até ' + e(cut) + (F.published_at ? " · publicado " + e(pub.replace(/^às /, "")) : "") + "</p>";
+        if (cut) h += '<p class="fxp-foot num">' + e(fxCutL(F)) + " " + e(cut) + (F.published_at ? " · publicado " + e(pub.replace(/^às /, "")) : "") + "</p>";
       }
       if (F.other_stories && F.other_stories.length) {
         h += '<section class="sec"><h2 class="h2">Outras que você precisa saber</h2><ul class="fx-list">' + F.other_stories.map(function (o) {
