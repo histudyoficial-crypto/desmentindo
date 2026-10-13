@@ -1,0 +1,361 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-11",
+ "public_title": "FECHAMENTO — 11 de outubro de 2026",
+ "published_at": "2026-10-13T14:20:30Z",
+ "cutoff_at": "2026-10-11T18:27:15-03:00",
+ "context": "Fechamento de 11 de outubro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "Douglas Ruas é confirmado como governador eleito do RJ, o mais jovem do estado em 5 décadas",
+    "story": "douglas-ruas-e-confirmado-como-governador-eleito-do-rj-o-mais-jovem-do-estado"
+   },
+   {
+    "text": "Campanha de Lula acusa dona do Instagram e Facebook de interferir em favor de Flávio Bolsonaro",
+    "story": "campanha-de-lula-acusa-dona-do-instagram-e-facebook-de-interferir-em-favor-de"
+   },
+   {
+    "text": "Emails indicam que Flávio Bolsonaro dividia conta com suspeito de lavar dinheiro do INSS",
+    "story": "emails-indicam-que-flavio-bolsonaro-dividia-conta-com-suspeito-de-lavar"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "douglas-ruas-e-confirmado-como-governador-eleito-do-rj-o-mais-jovem-do-estado",
+   "headline": "Douglas Ruas é confirmado como governador eleito do RJ, o mais jovem do estado em 5 décadas",
+   "lead": true,
+   "what_happened": "O TRE-RJ confirmou Douglas Ruas (PL) como governador eleito após retotalização, com 50,88% dos votos válidos e vitória no primeiro turno. A retotalização ocorreu após o TSE rejeitar a candidatura de Garotinho por 5 votos a 2 e anular seus votos.",
+   "what_changed": "O presidente do TRE-RJ disse que a proclamação será feita no dia 15. Segundo o TRE-RJ, não há voto novo; muda apenas a base de cálculo.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "Douglas Ruas é confirmado como governador eleito do RJ, o mais jovem do estado em 5 décadas",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/douglas-ruas-e-confirmado-governador-eleito-do-rj-apos-retotalizacao-de-votos.shtml",
+     "published_at": "2026-10-10T18:12:00Z",
+     "summary": "O TRE-RJ confirmou Douglas Ruas (PL) como governador eleito após retotalização, com 50,88% dos votos válidos e vitória no primeiro turno.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "Douglas Ruas é eleito governador do RJ, após retotalização de votos",
+     "url": "https://estadao.com.br/politica/eleicoes/douglas-ruas-e-eleito-governador-do-rj-apos-retotalizacao-de-votos",
+     "published_at": "2026-10-10T18:00:00Z",
+     "summary": "A retotalização ocorreu após o TSE rejeitar a candidatura de Garotinho por 5 votos a 2 e anular seus votos.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 18:27, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "campanha-de-lula-acusa-dona-do-instagram-e-facebook-de-interferir-em-favor-de",
+   "headline": "Campanha de Lula acusa dona do Instagram e Facebook de interferir em favor de Flávio Bolsonaro",
+   "lead": false,
+   "what_happened": "A Meta disse que as alegações são falsas e que cumpre as normas eleitorais. O TSE determinou que a Meta apresente esclarecimentos técnicos em até 48 horas.",
+   "what_changed": "O perfil de Lula ficou impedido de impulsionar conteúdos entre os dias 9 e 10. Alegação atribuída (Campanha de Lula, segundo a Folha), não comprovada: A campanha de Lula acusou a Meta de interferir na disputa eleitoral em favor de Flávio Bolsonaro e disse que acionará o TSE e a ANPD. Alegação atribuída (Campanha de Lula, citada pelo g1), não comprovada: A campanha de Lula afirma que a sucessão de problemas técnicos não explicados levanta forte suspeita de tentativa de interferência em benefício de Flávio Bolsonaro.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "Campanha de Lula acusa dona do Instagram e Facebook de interferir em favor de Flávio Bolsonaro",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/campanha-de-lula-acusa-dona-do-instagram-e-facebook-de-interferir-em-favor-de-flavio-bolsonaro.shtml",
+     "published_at": "2026-10-10T16:40:00Z",
+     "summary": "A campanha de Lula acusou a Meta de interferir na disputa eleitoral em favor de Flávio Bolsonaro e disse que acionará o TSE e a ANPD.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Campanha de Lula acusa Meta de tentar interferir nas eleições e diz que acionará TSE e ANPD",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/10/campanha-de-lula-acusa-meta-de-tentar-interferir-nas-eleicoes-e-diz-que-acionara-tse-e-anpd.ghtml",
+     "published_at": "2026-10-10T16:10:19Z",
+     "summary": "A campanha de Lula afirma que a sucessão de problemas técnicos não explicados levanta forte suspeita de tentativa de interferência em benefício de Flávio Bolsonaro.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 18:27, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "emails-indicam-que-flavio-bolsonaro-dividia-conta-com-suspeito-de-lavar",
+   "headline": "Emails indicam que Flávio Bolsonaro dividia conta com suspeito de lavar dinheiro do INSS",
+   "lead": false,
+   "what_happened": "A Folha relata que emails obtidos pela PF indicam que Flávio Bolsonaro compartilhava conta no Santander com Willer Tomaz, e que os dois negam. Em maio de 2025, segundo a Folha, uma funcionária de Willer solicitou ao banco que Flávio fosse desvinculado da conta relacionada à empresa do advogado.",
+   "what_changed": "A assessoria de Flávio disse que ele nunca manteve conta tendo Willer Tomaz ou suas empresas como usuário master. Duas fontes da PF e uma da PGR confirmaram ao Estadão a existência da correspondência, mas não disponibilizaram cópia.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "Emails indicam que Flávio Bolsonaro dividia conta com suspeito de lavar dinheiro do INSS",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/emails-indicam-que-flavio-bolsonaro-dividia-conta-com-suspeito-de-lavar-dinheiro-do-inss.shtml",
+     "published_at": "2026-10-10T21:53:00Z",
+     "summary": "A Folha relata que emails obtidos pela PF indicam que Flávio Bolsonaro compartilhava conta no Santander com Willer Tomaz, e que os dois negam.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "E-mails indicam que Flávio dividiu conta bancária com advogado investigado na fraude do INSS",
+     "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/e-mails-indicam-que-flavio-dividiu-conta-bancaria-com-advogado-investigado-na-fraude-do-inss",
+     "published_at": "2026-10-10T22:08:38Z",
+     "summary": "Duas fontes da PF e uma da PGR confirmaram ao Estadão a existência da correspondência, mas não disponibilizaram cópia.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 18:27, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "tse-da-48h-para-meta-explicar-se-trata-lula-e-flavio-da-mesma-forma",
+   "title": "TSE dá 48h para Meta explicar se trata Lula e Flávio da mesma forma",
+   "text": "O ministro do TSE Marco Aurélio Bellizze deu prazo de 48 horas para a Meta provar se as publicações de Lula e Flávio Bolsonaro são tratadas da mesma forma. Bellizze ressaltou que as provas iniciais são em grande parte indiretas e que o cenário exige instrução técnica prévia antes de qualquer decisão liminar.",
+   "sources": [
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/tse-da-48h-para-meta-explicar-se-trata-lula-e-flavio-da-mesma-forma",
+     "published_at": "2026-10-10T21:55:53Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/eleicoes/tse-da-48-horas-para-que-meta-esclareca-possivel-restricao-a-posts-da-campanha-de-lula",
+     "published_at": "2026-10-10T20:54:48Z"
+    }
+   ]
+  },
+  {
+   "id": "pf-desmente-veja-padilha-aciona-justica-sobre-fake-news-contra-lula",
+   "title": "PF desmente Veja; Padilha aciona Justiça sobre fake news contra Lula",
+   "text": "Padilha, representado pela AGU, notificou a revista Veja solicitando direito de resposta à matéria sobre suposto depoimento de Vorcaro citando Lula. A PF afirmou em nota que Vorcaro não prestou depoimento com o teor relatado na matéria, nem entregou anexos ou documentos com o conteúdo descrito.",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/pf-desmente-veja-e-padilha-aciona-justica-sobre-fake-news-contra-lul",
+     "published_at": "2026-10-10T18:06:00Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/flavio-reune-tarcisio-e-prefeitos-em-sp-e-diz-esperar-justica-eleitoral-mais-agil-contra-fake-news.shtml",
+     "published_at": "2026-10-11T18:18:00Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/campanha-de-flavio-ve-complacencia-com-fake-news-na-liberacao-de-canal-pro-lula",
+     "published_at": "2026-10-11T20:49:52Z"
+    }
+   ]
+  },
+  {
+   "id": "relator-no-tse-derruba-decisao-de-nunes-marques-e-mantem-no-ar-o-canal-exercito",
+   "title": "Relator no TSE derruba decisão de Nunes Marques e mantém no ar o canal 'Exército do Lula'; caso vai ao plenário",
+   "text": "O ministro Ricardo Villas Bôas Cueva (corregedor do TSE) derrubou em 11/10 a decisão do presidente do TSE, Kassio Nunes Marques, e manteve no ar o canal 'Exército do Lula', segundo O Globo. Mais cedo, Nunes Marques atendeu pedido da campanha de Flávio Bolsonaro e suspendeu o grupo no WhatsApp; Cueva também enviou o processo ao plenário do TSE.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/11/nunes-marques-manda-derrubar-canal-exercito-do-lula-nas-redes.ghtml",
+     "published_at": "2026-10-11T15:36:31Z"
+    }
+   ]
+  },
+  {
+   "id": "flavio-bolsonaro-pede-investigacao-do-diretor-geral-da-pf-por-suposto-uso",
+   "title": "Flávio Bolsonaro pede investigação do diretor-geral da PF por suposto uso eleitoral do anúncio de apuração sobre interferência dos EUA",
+   "text": "Segundo a representação, a apuração preliminar da PF foi arquivada em 7 de outubro. Em 4/10 Andrei Rodrigues disse: 'Não foi publicada a portaria do inquérito, mas já temos uma investigação em curso'.",
+   "sources": []
+  },
+  {
+   "id": "presidente-critica-decisao-de-nunes-marques-de-derrubar-canal-exercito-do-lula",
+   "title": "Presidente critica decisão de Nunes Marques de derrubar canal ‘Exército do Lula’ no WhatsApp",
+   "text": "O corregedor-geral da Justiça Eleitoral, Ricardo Villas Bôas Cueva, suspendeu a decisão de Nunes Marques e autorizou o funcionamento do canal \"Exército do Lula\" no WhatsApp. Cueva disse que 41 minutos após seu despacho a defesa de Flávio apresentou pedido administrativo ao presidente do TSE, que o acatou.",
+   "sources": [
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/corregedor-do-tse-derruba-decisao-de-nunes-marques-e-libera-canal-exercito-do-lula",
+     "published_at": "2026-10-11T20:13:06Z"
+    }
+   ]
+  },
+  {
+   "id": "pf-abre-inquerito-para-apurar-vazamento-de-foto-de-senador-em-piscina-com",
+   "title": "PF abre inquérito para apurar vazamento de foto de senador em piscina com políticos do Centrão",
+   "text": "A PF abriu inquérito para apurar o vazamento de foto extraída do celular do senador Weverton Rocha, em que aparece em piscina com políticos do Centrão na casa do advogado Willer Tomaz. O celular de Weverton foi apreendido depois de o senador ser alvo de busca e apreensão na investigação sobre suspeitas de desvios do INSS.",
+   "sources": [
+    {
+     "outlet": "Jovem Pan",
+     "url": "https://jovempan.com.br/politica/quem-e-senador-de-foto-vazada-com-politicos-do-centrao-em-piscina",
+     "published_at": "2026-10-11T19:24:33Z"
+    }
+   ]
+  },
+  {
+   "id": "flavio-bolsonaro-pede-que-diretor-geral-da-pf-seja-investigado-por-suposto",
+   "title": "Flávio Bolsonaro pede que diretor-geral da PF seja investigado por suposto benefício ao PT na eleição",
+   "text": "A PF informou que arquivou o pedido da AGU para investigar suspeita de interferência estrangeira nas eleições de 2026. Flávio Bolsonaro cobrou mais agilidade da Justiça Eleitoral em evento com prefeitos paulistas.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/flavio-bolsonaro-pede-que-diretor-geral-da-pf-seja-investigado-por-suposto-beneficio-ao-pt-na-eleicao.shtml",
+     "published_at": "2026-10-11T21:12:00Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/eleicoes/em-evento-com-tarcisio-flavio-pede-que-justica-eleitoral-seja-mais-agil",
+     "published_at": "2026-10-11T17:37:56Z"
+    },
+    {
+     "outlet": "Veja",
+     "url": "https://veja.abril.com.br/politica/flavio-bolsonaro-abre-denuncia-contra-diretor-da-pf-andrei-rodrigues",
+     "published_at": "2026-10-11T19:56:38Z"
+    }
+   ]
+  },
+  {
+   "id": "nunes-marques-atende-pedido-de-flavio-e-derruba-canal-exercito-do-lula-no",
+   "title": "Nunes Marques atende pedido de Flávio e derruba canal ‘Exército do Lula’ no WhatsApp",
+   "text": "Nunes Marques atendeu pedido da campanha de Flávio e determinou que o WhatsApp suspenda o canal em até três horas após a notificação. O Estadão acessou o canal e não localizou publicações com os conteúdos citados na ação.",
+   "sources": [
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/tse-derruba-canal-exercito-do-lula-no-whatsapp",
+     "published_at": "2026-10-11T15:39:40Z"
+    },
+    {
+     "outlet": "Veja",
+     "url": "https://veja.abril.com.br/politica/nunes-marques-atende-flavio-bolsonaro-e-tira-do-ar-exercito-do-lula",
+     "published_at": "2026-10-11T16:33:31Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "Folha",
+   "title": "Douglas Ruas é confirmado como governador eleito do RJ, o mais jovem do estado em 5 décadas",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/douglas-ruas-e-confirmado-governador-eleito-do-rj-apos-retotalizacao-de-votos.shtml",
+   "published_at": "2026-10-10T18:12:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Douglas Ruas é eleito governador do RJ, após retotalização de votos",
+   "url": "https://estadao.com.br/politica/eleicoes/douglas-ruas-e-eleito-governador-do-rj-apos-retotalizacao-de-votos",
+   "published_at": "2026-10-10T18:00:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Campanha de Lula acusa dona do Instagram e Facebook de interferir em favor de Flávio Bolsonaro",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/campanha-de-lula-acusa-dona-do-instagram-e-facebook-de-interferir-em-favor-de-flavio-bolsonaro.shtml",
+   "published_at": "2026-10-10T16:40:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Campanha de Lula acusa Meta de tentar interferir nas eleições e diz que acionará TSE e ANPD",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/10/campanha-de-lula-acusa-meta-de-tentar-interferir-nas-eleicoes-e-diz-que-acionara-tse-e-anpd.ghtml",
+   "published_at": "2026-10-10T16:10:19Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Emails indicam que Flávio Bolsonaro dividia conta com suspeito de lavar dinheiro do INSS",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/emails-indicam-que-flavio-bolsonaro-dividia-conta-com-suspeito-de-lavar-dinheiro-do-inss.shtml",
+   "published_at": "2026-10-10T21:53:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "E-mails indicam que Flávio dividiu conta bancária com advogado investigado na fraude do INSS",
+   "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/e-mails-indicam-que-flavio-dividiu-conta-bancaria-com-advogado-investigado-na-fraude-do-inss",
+   "published_at": "2026-10-10T22:08:38Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "TSE dá 48h para Meta explicar se trata Lula e Flávio da mesma forma",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/tse-da-48h-para-meta-explicar-se-trata-lula-e-flavio-da-mesma-forma",
+   "published_at": "2026-10-10T21:55:53Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "TSE dá 48 horas para que Meta esclareça possível restrição a posts da campanha de Lula",
+   "url": "https://estadao.com.br/politica/eleicoes/tse-da-48-horas-para-que-meta-esclareca-possivel-restricao-a-posts-da-campanha-de-lula",
+   "published_at": "2026-10-10T20:54:48Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "PF desmente Veja; Padilha aciona Justiça sobre fake news contra Lula",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/pf-desmente-veja-e-padilha-aciona-justica-sobre-fake-news-contra-lul",
+   "published_at": "2026-10-10T18:06:00Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Flávio reúne Tarcísio e prefeitos em SP e diz esperar Justiça Eleitoral mais ágil contra fake news",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/flavio-reune-tarcisio-e-prefeitos-em-sp-e-diz-esperar-justica-eleitoral-mais-agil-contra-fake-news.shtml",
+   "published_at": "2026-10-11T18:18:00Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Campanha de Flávio vê “complacência com fake news” na liberação de canal pró-Lula",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/campanha-de-flavio-ve-complacencia-com-fake-news-na-liberacao-de-canal-pro-lula",
+   "published_at": "2026-10-11T20:49:52Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Nunes Marques atende a pedido da campanha de Flávio e manda suspender canal 'Exército do Lula'",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/11/nunes-marques-manda-derrubar-canal-exercito-do-lula-nas-redes.ghtml",
+   "published_at": "2026-10-11T15:36:31Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Corregedor do TSE derruba decisão de Nunes Marques e libera canal “Exército do Lula”",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/corregedor-do-tse-derruba-decisao-de-nunes-marques-e-libera-canal-exercito-do-lula",
+   "published_at": "2026-10-11T20:13:06Z"
+  },
+  {
+   "outlet": "Jovem Pan",
+   "title": "Quem é senador de foto vazada com políticos do Centrão em piscina",
+   "url": "https://jovempan.com.br/politica/quem-e-senador-de-foto-vazada-com-politicos-do-centrao-em-piscina",
+   "published_at": "2026-10-11T19:24:33Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Flávio Bolsonaro pede que diretor-geral da PF seja investigado por suposto benefício ao PT na eleição",
+   "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/flavio-bolsonaro-pede-que-diretor-geral-da-pf-seja-investigado-por-suposto-beneficio-ao-pt-na-eleicao.shtml",
+   "published_at": "2026-10-11T21:12:00Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Em evento com Tarcísio, Flávio pede que Justiça Eleitoral seja mais ágil",
+   "url": "https://cnnbrasil.com.br/eleicoes/em-evento-com-tarcisio-flavio-pede-que-justica-eleitoral-seja-mais-agil",
+   "published_at": "2026-10-11T17:37:56Z"
+  },
+  {
+   "outlet": "Veja",
+   "title": "Flávio Bolsonaro abre denúncia contra diretor da PF por divulgar investigação contra a direita sem provas",
+   "url": "https://veja.abril.com.br/politica/flavio-bolsonaro-abre-denuncia-contra-diretor-da-pf-andrei-rodrigues",
+   "published_at": "2026-10-11T19:56:38Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Nunes Marques atende pedido de Flávio e derruba canal ‘Exército do Lula’ no WhatsApp",
+   "url": "https://estadao.com.br/politica/tse-derruba-canal-exercito-do-lula-no-whatsapp",
+   "published_at": "2026-10-11T15:39:40Z"
+  },
+  {
+   "outlet": "Veja",
+   "title": "Nunes Marques atende Flávio Bolsonaro e tira do ar ‘Exército do Lula’",
+   "url": "https://veja.abril.com.br/politica/nunes-marques-atende-flavio-bolsonaro-e-tira-do-ar-exercito-do-lula",
+   "published_at": "2026-10-11T16:33:31Z"
+  }
+ ],
+ "note": "Informações válidas até o corte das 18:27. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
