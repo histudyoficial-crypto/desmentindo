@@ -208,7 +208,7 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
   const dec = src.match(/var SLOTS = [^\n]*\n/), mesl = src.match(/var MESL = [^\n]*\n/), wd = src.match(/var WD3 = [^\n]*\n/);
   const names = ["e", "nf", "plural", "dParts", "dLong", "dDay", "isDay", "tcDate", "tc", "civilDays", "agoLabel", "zparts", "pad2", "opDay", "brt", "fhm",
     "em1", "mandar", "ddmm", "mhDate", "mhSources", "imgOk", "morningItems", "mhVisual", "mhCat", "morningBlock", "latestItem", "agoraBar", "agoraIdle",
-    "newsDay", "fxHome", "homeTop"];
+    "newsDay", "fts", "fxRetro", "fxCut", "fxCutL", "fxHome", "homeTop"];
   const K = new Function(`${MES}\n${dec ? dec[0] : ""}\n${mesl ? mesl[0] : ""}\n${wd ? wd[0] : ""}\nvar SLOT_RANK = { MORNING: 1, AFTERNOON: 2, EVENING: 3 };\n` +
     `var SITE = "https://desmentindo.com.br", TZ = "America/Sao_Paulo", ZF = null;\n${names.map(fn).join("\n")}\nreturn { homeTop, agoraIdle, fxHome, opDay };`)();
   const ED = JSON.parse(fs.readFileSync(path.join(ROOT, "data/editorial/edicoes/2026-10-05.json"), "utf8"));
