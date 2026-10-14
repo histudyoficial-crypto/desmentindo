@@ -1,0 +1,580 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-13",
+ "public_title": "FECHAMENTO — 13 de outubro de 2026",
+ "published_at": "2026-10-14T19:25:08Z",
+ "cutoff_at": "2026-10-13T21:25:35-03:00",
+ "context": "Fechamento de 13 de outubro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "TSE manda Flávio e aliados removerem vídeo falso sobre uso de cocaína por menina em ato pró-Lula",
+    "story": "tse-manda-flavio-e-aliados-removerem-video-falso-sobre-uso-de-cocaina-por"
+   },
+   {
+    "text": "Área técnica do TSE diz a Kassio não ter achado conteúdo citado por Flávio em canal de Janones",
+    "story": "area-tecnica-do-tse-diz-a-kassio-nao-ter-achado-conteudo-citado-por-flavio-em"
+   },
+   {
+    "text": "Nunes Marques proíbe circulação de jornal sindical que compara propostas de Lula e Flávio Bolsonaro",
+    "story": "nunes-marques-proibe-circulacao-de-jornal-sindical-que-compara-propostas-de"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "tse-manda-flavio-e-aliados-removerem-video-falso-sobre-uso-de-cocaina-por",
+   "headline": "TSE manda Flávio e aliados removerem vídeo falso sobre uso de cocaína por menina em ato pró-Lula",
+   "lead": true,
+   "what_happened": "A Folha relata que o TSE determinou que Flávio Bolsonaro e aliados removam em até 24 horas publicações que usaram imagens descontextualizadas para associar participantes de ato pró-Lula ao consumo de drogas. Segundo o g1, o vídeo já circulava na internet antes da manifestação e uma conta no X baseada na Argentina o publicou em 10 de outubro.",
+   "what_changed": "O ministro Bellizze afirmou que a medida não impede críticas, opiniões ou publicações sobre a manifestação que não apresentem o vídeo como registro do evento. O g1 relata que o ministro deu 24 horas para Flávio, Carlos Bolsonaro, Pablo Marçal e Rony Gabriel apagarem as publicações com imagens da jovem e determinou que a Meta tire do ar publicação similar do perfil Sociedade em Fatos. Alegação atribuída (petição judicial, segundo a Veja), não comprovada: De acordo com a petição judicial citada pela Veja, o vídeo foi feito no Chile um dia antes do ato em favor de Lula. Alegação atribuída (campanha de Lula, segundo a Agência Brasil), não comprovada: Segundo a campanha de Lula, a gravação foi feita no Chile, sem relação com o ato na Paulista.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "TSE manda Flávio e aliados removerem vídeo falso sobre uso de cocaína por menina em ato pró-Lula",
+     "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/tse-manda-flavio-e-aliados-removerem-video-falso-sobre-uso-de-cocaina-por-menina-em-ato-pro-lula.shtml",
+     "published_at": "2026-10-12T23:20:00Z",
+     "summary": "A Folha relata que o TSE determinou que Flávio Bolsonaro e aliados removam em até 24 horas publicações que usaram imagens descontextualizadas para associar participantes de ato pró-Lula ao consumo de drogas.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "TSE manda Flávio Bolsonaro apagar vídeo enganoso sobre ato pró-Lula na Paulista; ministro vê 'grave manipulação'",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/12/tse-manda-flavio-bolsonaro-apagar-video-enganoso-sobre-manifestacao-pro-lula-na-paulista.ghtml",
+     "published_at": "2026-10-12T23:39:06Z",
+     "summary": "Segundo o g1, o vídeo já circulava na internet antes da manifestação e uma conta no X baseada na Argentina o publicou em 10 de outubro.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Jovem Pan",
+     "title": "TSE manda Flávio Bolsonaro apagar vídeo falso sobre drogas em ato pró-Lula na Paulista",
+     "url": "https://jovempan.com.br/politica/tse-manda-flavio-bolsonaro-apagar-video-falso-sobre-drogas-em-ato-pro-lula-na-paulista",
+     "published_at": "2026-10-13T01:45:44Z",
+     "summary": "A Jovem Pan relata que o candidato do PL ainda não se manifestou sobre a decisão.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Veja",
+     "title": "TSE manda Flávio e apoiadores excluírem vídeos falsos de uso de drogas em ato pró-Lula",
+     "url": "https://veja.abril.com.br/politica/tse-manda-flavio-e-apoiadores-excluirem-videos-falsos-de-uso-de-drogas-em-ato-pro-lula",
+     "published_at": "2026-10-13T12:45:26Z",
+     "summary": "A Veja relata que o TSE determinou que Flávio Bolsonaro e apoiadores retirem das redes um vídeo falso sobre as manifestações pró-Lula, no qual uma mulher aparecia usando cocaína em via pública.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "title": "TSE ordena remoção de post falso sobre uso de droga em ato pró-Lula",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tse-ordena-remocao-de-post-falso-sobre-uso-de-droga-em-ato-pro-lula",
+     "published_at": "2026-10-13T13:29:00Z",
+     "summary": "A Agência Brasil relata que o ministro ordenou na segunda-feira (12) a remoção de publicações que associam um vídeo falso ao ato na Avenida Paulista, atendendo parcialmente ao pedido da campanha de Lula sem aplicar a multa pedida.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 21:25, é isto que as fontes citadas registram. Alegação atribuída não é prova."
+  },
+  {
+   "id": "area-tecnica-do-tse-diz-a-kassio-nao-ter-achado-conteudo-citado-por-flavio-em",
+   "headline": "Área técnica do TSE diz a Kassio não ter achado conteúdo citado por Flávio em canal de Janones",
+   "lead": false,
+   "what_happened": "O g1 relata que o relatório da área técnica do TSE não encontrou as publicações com informações falsas citadas pela campanha de Flávio no canal Exército do Lula. O relatório registra o emprego recorrente de linguagem polarizadora nas mensagens examinadas.",
+   "what_changed": "O g1 relata que parte das mensagens publicadas em setembro foi apagada a partir de 7 de outubro, o que dificulta a reconstrução do histórico do canal. A Veja relata que o corregedor Ricardo Villas Bôas Cueva suspendeu a decisão de Nunes Marques e pôs o canal de volta no ar, por ser de competência do corregedor a ação proposta. Alegação atribuída (Campanha de Flávio Bolsonaro, citada pelo g1), não comprovada: A campanha de Flávio afirma que o canal usa apagamento sistemático de mensagens e links para burlar o controle da Justiça Eleitoral.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "Área técnica do TSE diz que não encontrou notícias falsas citadas por Flávio no canal 'Exército do Lula', mas aponta riscos eleitorais",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/12/area-tenica-do-tse-nao-encontra-conteudos-falsos-investigados-pela-corte-no-canal-exercito-do-lula-mas-aponta-riscos-eleitorais.ghtml",
+     "published_at": "2026-10-12T14:29:42Z",
+     "summary": "O g1 relata que o relatório da área técnica do TSE não encontrou as publicações com informações falsas citadas pela campanha de Flávio no canal Exército do Lula.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Veja",
+     "title": "O que a área técnica do TSE disse sobre o canal ‘Exército do Lula’, que é questionado por Flávio",
+     "url": "https://veja.abril.com.br/politica/o-que-a-area-tecnica-do-tse-disse-sobre-o-canal-exercito-do-lula-que-e-questionado-por-flavio",
+     "published_at": "2026-10-12T17:18:37Z",
+     "summary": "A Veja relata que o corregedor Ricardo Villas Bôas Cueva suspendeu a decisão de Nunes Marques e pôs o canal de volta no ar, por ser de competência do corregedor a ação proposta.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 21:25, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "nunes-marques-proibe-circulacao-de-jornal-sindical-que-compara-propostas-de",
+   "headline": "Nunes Marques proíbe circulação de jornal sindical que compara propostas de Lula e Flávio Bolsonaro",
+   "lead": false,
+   "what_happened": "O g1 relata que Nunes Marques decidiu retirar de circulação jornal produzido por sindicato de petroleiros, em decisão preliminar a ser analisada pelo plenário. O ministro ordenou a interrupção da distribuição e circulação do jornal por qualquer meio, físico ou digital, sob multa de R$ 10 mil por ato.",
+   "what_changed": "Nunes Marques afirmou que a liberdade de expressão não é salvo-conduto para ilícitos eleitorais nem autoriza a quebra da paridade de armas. A Gazeta do Povo relata que o pedido partiu da campanha de Flávio Bolsonaro e que o ministro classificou o periódico como propaganda eleitoral. Alegação atribuída (Federação Única dos Petroleiros (FUP)), não comprovada: A FUP chamou a decisão de censura e de grave ataque à liberdade de expressão. Alegação atribuída (campanha de Flávio Bolsonaro), não comprovada: A campanha de Flávio argumenta que o material tem finalidade político-eleitoral inequívoca, com comparação favorável a Lula e desfavorável a Flávio.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "Nunes Marques proíbe circulação de jornal sindical que compara propostas de Lula e Flávio Bolsonaro",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/12/nunes-marques-proibe-circulacao-de-jornal-sindical-que-compara-propostas-de-lula-e-flavio-bolsonaro.ghtml",
+     "published_at": "2026-10-12T20:02:04Z",
+     "summary": "O g1 relata que Nunes Marques decidiu retirar de circulação jornal produzido por sindicato de petroleiros, em decisão preliminar a ser analisada pelo plenário.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Nunes Marques atende a Flávio e suspende circulação de jornal sindical",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/nunes-marques-atende-a-flavio-e-suspende-circulacao-de-jornal-sindical",
+     "published_at": "2026-10-13T10:17:56Z",
+     "summary": "A Gazeta do Povo relata que o pedido partiu da campanha de Flávio Bolsonaro e que o ministro classificou o periódico como propaganda eleitoral.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Folha",
+     "title": "Kassio proíbe distribuição de jornal de sindicato dos petroleiros a pedido de Flávio Bolsonaro",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/kassio-proibe-distribuicao-de-jornal-de-sindicato-dos-petroleiros-a-pedido-de-flavio-bolsonaro.shtml",
+     "published_at": "2026-10-13T13:08:00Z",
+     "summary": "A Folha relata que, a pedido de Flávio Bolsonaro, o presidente do TSE suspendeu a distribuição e circulação do jornal Petróleo dos Brasileiros, do Sindipetro Unificado.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 21:25, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "kassio-censurou-canal-de-whatsapp-de-janones-sem-documentos-que-mostrassem-fake",
+   "title": "Kassio censurou canal de WhatsApp de Janones sem documentos que mostrassem fake news",
+   "text": "A Folha relata que o jurídico de Flávio não anexou atas notariais ou registros digitais mostrando o conteúdo no canal. A Folha relata que 40 minutos após Cueva pedir esclarecimentos, a campanha de Flávio enviou pedido a Kassio e juntou alguns documentos.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/kassio-censurou-canal-de-whatsapp-de-janones-sem-documentos-que-mostrassem-fake-news.shtml",
+     "published_at": "2026-10-12T17:20:00Z"
+    },
+    {
+     "outlet": "Veja",
+     "url": "https://veja.abril.com.br/politica/campanha-de-lula-aciona-o-tse-e-aponta-fake-news-sobre-o-ato-na-paulista",
+     "published_at": "2026-10-12T19:45:58Z"
+    }
+   ]
+  },
+  {
+   "id": "moraes-autoriza-flavio-bolsonaro-a-retomar-visitas-ao-pai-e-mantem-veto-a",
+   "title": "Moraes autoriza Flávio Bolsonaro a retomar visitas ao pai e mantém veto a declarações políticas",
+   "text": "Moraes autorizou a retomada das visitas de Flávio Bolsonaro ao pai, Jair Bolsonaro, mas manteve a proibição de finalidade político-eleitoral e de divulgação de manifestos ou declarações do ex-presidente. A suspensão de 90 dias das visitas foi imposta em julho após Flávio divulgar nas redes sociais uma carta do pai, o que descumpriu medidas da prisão domiciliar.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/12/moraes-autoriza-retomada-de-visitas-de-flavio-ao-ex-presidente-jair-bolsonaro.ghtml",
+     "published_at": "2026-10-12T12:39:23Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/moraes-autoriza-flavio-bolsonaro-a-retomar-visitas-ao-pai-e-mantem-veto-a-declaracoes-politicas.shtml",
+     "published_at": "2026-10-12T13:08:00Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/aval-a-visita-a-bolsonaro-se-soma-a-3-decisoes-recentes-do-stf-pro-bolsonarismo-e-1-contra-lembre.shtml",
+     "published_at": "2026-10-12T14:07:00Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/13/flavio-bolsonaro-visita-jair-bolsonaro.ghtml",
+     "published_at": "2026-10-13T12:44:48Z"
+    }
+   ]
+  },
+  {
+   "id": "sbt-admite-erro-ao-atribuir-a-ebc-falha-em-propaganda-eleitoral",
+   "title": "SBT admite erro ao atribuir à EBC falha em propaganda eleitoral",
+   "text": "O SBT admitiu ter informado incorretamente que a EBC seria responsável pela falha de áudio na propaganda de Flávio Bolsonaro. O TSE disse que o problema ocorreu por falha técnica no pool de mídias, pois os áudios das duas propagandas de TV não foram carregados na finalização.",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/sbt-admite-erro-ao-atribuir-ebc-falha-em-propaganda-eleitoral",
+     "published_at": "2026-10-12T20:35:00Z"
+    }
+   ]
+  },
+  {
+   "id": "fachin-deve-receber-nesta-terca-relatorios-da-pf-com-mencoes-a-ministros-do-stf",
+   "title": "Fachin deve receber nesta terça relatórios da PF com menções a ministros do STF no caso Master",
+   "text": "Fachin se reúne nesta terça (13) com o diretor-geral da PF, Andrei Rodrigues, para tratar de menções a integrantes do STF no caso Master. Há citações, em graus diferentes, de pelo menos seis dos 10 ministros do STF ou de parentes.",
+   "sources": [
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/politica/pf-deve-entregar-hoje-a-fachin-material-do-caso-master-que-cita-ministros",
+     "published_at": "2026-10-13T07:15:43Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/13/fachin-deve-receber-nesta-terca-relatorios-da-pf-com-mencoes-a-ministros-do-stf-no-caso-master.ghtml",
+     "published_at": "2026-10-13T10:37:36Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/fachin-se-reune-com-diretor-da-pf-para-tratar-de-citacoes-a-ministros-do-stf-no-caso-master.shtml",
+     "published_at": "2026-10-13T19:38:00Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/fachin-e-diretor-geral-da-pf-se-reunem-no-stf-para-tratar-de-mencoes-a-ministros-no-caso-master",
+     "published_at": "2026-10-13T20:40:53Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/13/fachin-pf-andrei-reuniao-ministros-master.ghtml",
+     "published_at": "2026-10-13T21:55:31Z"
+    }
+   ]
+  },
+  {
+   "id": "campanha-do-pt-registra-exercito-do-lula-no-tse-e-kassio-libera-canal-apos",
+   "title": "Campanha do PT registra 'Exército do Lula' no TSE, e Kassio libera canal após prazo de 48 horas",
+   "text": "O g1 relata que a campanha de Lula oficializou em 13 de outubro o registro do canal de WhatsApp \"Exército do Lula\" no TSE. A defesa de Lula afirmou que o registro foi feito apenas para cumprir determinação de Nunes Marques e que não significa assumir a administração do canal.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/13/campanha-de-lula-registra-grupo-de-whatsapp-exercito-de-lula-no-tribunal-superior-eleitoral.ghtml",
+     "published_at": "2026-10-13T15:42:36Z"
+    },
+    {
+     "outlet": "Veja",
+     "url": "https://veja.abril.com.br/politica/campanha-atende-nunes-marques-e-registra-canal-exercito-do-lula-no-tse",
+     "published_at": "2026-10-13T16:20:08Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/13/nunes-marques-diz-que-apos-registro-canal-de-whatsapp-exercito-do-lula-pode-ser-retomado-apos-48-horas.ghtml",
+     "published_at": "2026-10-13T19:24:41Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/nunes-marques-autoriza-canal-janones-apos-registro-oficial-pt",
+     "published_at": "2026-10-13T19:55:20Z"
+    },
+    {
+     "outlet": "Veja",
+     "url": "https://veja.abril.com.br/politica/nunes-marques-diz-que-exercito-do-lula-pode-voltar-a-funcionar-em-48-horas",
+     "published_at": "2026-10-13T20:26:09Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/campanha-pl-registra-canal-tropa-do-flavio-apos-tse-restringir-lula",
+     "published_at": "2026-10-13T21:24:23Z"
+    }
+   ]
+  },
+  {
+   "id": "governo-estima-que-projeto-que-preve-perdao-a-dividas-de-meis-tera-impacto-de-r",
+   "title": "Governo estima que projeto que prevê perdão a dívidas de MEIs terá impacto de R$ 3 bilhões em três anos",
+   "text": "A equipe econômica estima que o PLP de perdão de dívidas de MEIs terá impacto de R$ 3 bilhões em três anos. A exposição de motivos do PLP 267/2026 estima renúncia de R$ 3,04 bilhões entre 2027 e 2029.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/economia/noticia/2026/10/13/governo-estima-que-projeto-que-preve-perdao-a-dividas-de-meis-tera-impacto-de-r-3-bilhoes-em-tres-anos.ghtml",
+     "published_at": "2026-10-13T22:35:56Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/economia/money/macroeconomia/perdao-de-dividas-de-meis-deve-custar-r-3-bilhoes-em-tres-anos",
+     "published_at": "2026-10-13T22:40:48Z"
+    }
+   ]
+  },
+  {
+   "id": "nunes-marques-suspende-liminar-de-cueva-e-determina-retirada-do-ar-do-canal",
+   "title": "Nunes Marques suspende liminar de Cueva e determina retirada do ar do canal 'Exército do Lula' até que seja registrado no TSE",
+   "text": "Nunes Marques suspendeu a liminar do corregedor Cueva que autorizava o canal \"Exército do Lula\". Nunes Marques determinou que a Meta faça acompanhamento proativo do canal e dê 24 horas para informar providências.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/blog/valdo-cruz/post/2026/10/13/para-encerrar-crise-nunes-marques-vai-tentar-acordo-com-campanhas-e-pedir-para-canais-serem-registrados-no-tse.ghtml",
+     "published_at": "2026-10-13T12:51:16Z"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/nunes-marques-suspende-novos-posts-e-seguidores-no-exercito-do-lula",
+     "published_at": "2026-10-13T14:15:00Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/corregedor-decidiu-a-favor-canal-janones-4-minutos-kassio",
+     "published_at": "2026-10-13T18:38:38Z"
+    }
+   ]
+  },
+  {
+   "id": "pgr-se-manifesta-contra-afastamento-de-diretor-geral-da-pf",
+   "title": "PGR se manifesta contra afastamento de diretor-geral da PF",
+   "text": "A PGR se manifestou contra o afastamento do diretor-geral da PF, Andrei Rodrigues, em parecer ao STF. Mendonça determinou o afastamento em 8 de setembro, após pedido do Partido Novo; Dino ordenou a reintegração e Fachin suspendeu ambas as decisões.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/13/pgr-se-manifesta-contra-afastamento-de-diretor-geral-da-pf.ghtml",
+     "published_at": "2026-10-13T22:46:24Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/politica/pgr-se-manifesta-contra-afastamento-de-diretor-geral-da-pf",
+     "published_at": "2026-10-13T23:18:56Z"
+    }
+   ]
+  },
+  {
+   "id": "meta-atribui-menor-alcance-de-lula-nas-redes-a-falhas-tecnicas",
+   "title": "Meta atribui menor alcance de Lula nas redes a falhas técnicas",
+   "text": "A Meta atribuiu a 'problemas técnicos' a queda no alcance de publicações ligadas à campanha de Lula e negou favorecer Flávio Bolsonaro. A Meta declarou que as alegações são falsas e que muitos problemas técnicos não afetaram exclusivamente o Brasil ou contas específicas.",
+   "sources": [
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/meta-atribui-menor-alcance-de-lula-nas-redes-a-falhas-tecnicas",
+     "published_at": "2026-10-13T12:01:09Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/eleicoes/meta-nega-favorecimento-a-campanha-de-flavio-em-resposta-ao-tse",
+     "published_at": "2026-10-13T23:00:33Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "Folha",
+   "title": "TSE manda Flávio e aliados removerem vídeo falso sobre uso de cocaína por menina em ato pró-Lula",
+   "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/tse-manda-flavio-e-aliados-removerem-video-falso-sobre-uso-de-cocaina-por-menina-em-ato-pro-lula.shtml",
+   "published_at": "2026-10-12T23:20:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "TSE manda Flávio Bolsonaro apagar vídeo enganoso sobre ato pró-Lula na Paulista; ministro vê 'grave manipulação'",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/12/tse-manda-flavio-bolsonaro-apagar-video-enganoso-sobre-manifestacao-pro-lula-na-paulista.ghtml",
+   "published_at": "2026-10-12T23:39:06Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Jovem Pan",
+   "title": "TSE manda Flávio Bolsonaro apagar vídeo falso sobre drogas em ato pró-Lula na Paulista",
+   "url": "https://jovempan.com.br/politica/tse-manda-flavio-bolsonaro-apagar-video-falso-sobre-drogas-em-ato-pro-lula-na-paulista",
+   "published_at": "2026-10-13T01:45:44Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Veja",
+   "title": "TSE manda Flávio e apoiadores excluírem vídeos falsos de uso de drogas em ato pró-Lula",
+   "url": "https://veja.abril.com.br/politica/tse-manda-flavio-e-apoiadores-excluirem-videos-falsos-de-uso-de-drogas-em-ato-pro-lula",
+   "published_at": "2026-10-13T12:45:26Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "TSE ordena remoção de post falso sobre uso de droga em ato pró-Lula",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tse-ordena-remocao-de-post-falso-sobre-uso-de-droga-em-ato-pro-lula",
+   "published_at": "2026-10-13T13:29:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Área técnica do TSE diz que não encontrou notícias falsas citadas por Flávio no canal 'Exército do Lula', mas aponta riscos eleitorais",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/12/area-tenica-do-tse-nao-encontra-conteudos-falsos-investigados-pela-corte-no-canal-exercito-do-lula-mas-aponta-riscos-eleitorais.ghtml",
+   "published_at": "2026-10-12T14:29:42Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Veja",
+   "title": "O que a área técnica do TSE disse sobre o canal ‘Exército do Lula’, que é questionado por Flávio",
+   "url": "https://veja.abril.com.br/politica/o-que-a-area-tecnica-do-tse-disse-sobre-o-canal-exercito-do-lula-que-e-questionado-por-flavio",
+   "published_at": "2026-10-12T17:18:37Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Nunes Marques proíbe circulação de jornal sindical que compara propostas de Lula e Flávio Bolsonaro",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/12/nunes-marques-proibe-circulacao-de-jornal-sindical-que-compara-propostas-de-lula-e-flavio-bolsonaro.ghtml",
+   "published_at": "2026-10-12T20:02:04Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Nunes Marques atende a Flávio e suspende circulação de jornal sindical",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/nunes-marques-atende-a-flavio-e-suspende-circulacao-de-jornal-sindical",
+   "published_at": "2026-10-13T10:17:56Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Kassio proíbe distribuição de jornal de sindicato dos petroleiros a pedido de Flávio Bolsonaro",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/kassio-proibe-distribuicao-de-jornal-de-sindicato-dos-petroleiros-a-pedido-de-flavio-bolsonaro.shtml",
+   "published_at": "2026-10-13T13:08:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Kassio censurou canal de WhatsApp de Janones sem documentos que mostrassem fake news",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/kassio-censurou-canal-de-whatsapp-de-janones-sem-documentos-que-mostrassem-fake-news.shtml",
+   "published_at": "2026-10-12T17:20:00Z"
+  },
+  {
+   "outlet": "Veja",
+   "title": "Campanha de Lula aciona o TSE e aponta fake news sobre o ato na Paulista",
+   "url": "https://veja.abril.com.br/politica/campanha-de-lula-aciona-o-tse-e-aponta-fake-news-sobre-o-ato-na-paulista",
+   "published_at": "2026-10-12T19:45:58Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Moraes autoriza retomada de visitas de Flávio ao ex-presidente Jair Bolsonaro",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/12/moraes-autoriza-retomada-de-visitas-de-flavio-ao-ex-presidente-jair-bolsonaro.ghtml",
+   "published_at": "2026-10-12T12:39:23Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Moraes autoriza Flávio Bolsonaro a retomar visitas ao pai e mantém veto a declarações políticas",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/moraes-autoriza-flavio-bolsonaro-a-retomar-visitas-ao-pai-e-mantem-veto-a-declaracoes-politicas.shtml",
+   "published_at": "2026-10-12T13:08:00Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Aval a visita a Bolsonaro se soma a 3 decisões recentes do STF pró-bolsonarismo e 1 contra; lembre",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/aval-a-visita-a-bolsonaro-se-soma-a-3-decisoes-recentes-do-stf-pro-bolsonarismo-e-1-contra-lembre.shtml",
+   "published_at": "2026-10-12T14:07:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Flávio Bolsonaro faz primeira visita ao ex-presidente Jair Bolsonaro após fim de restrições do STF",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/13/flavio-bolsonaro-visita-jair-bolsonaro.ghtml",
+   "published_at": "2026-10-13T12:44:48Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "SBT admite erro ao atribuir à EBC falha em propaganda eleitoral",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/sbt-admite-erro-ao-atribuir-ebc-falha-em-propaganda-eleitoral",
+   "published_at": "2026-10-12T20:35:00Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "PF deve entregar hoje a Fachin material do caso Master que cita ministros",
+   "url": "https://cnnbrasil.com.br/politica/pf-deve-entregar-hoje-a-fachin-material-do-caso-master-que-cita-ministros",
+   "published_at": "2026-10-13T07:15:43Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Fachin deve receber nesta terça relatórios da PF com menções a ministros do STF no caso Master",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/13/fachin-deve-receber-nesta-terca-relatorios-da-pf-com-mencoes-a-ministros-do-stf-no-caso-master.ghtml",
+   "published_at": "2026-10-13T10:37:36Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Fachin se reúne com diretor da PF e cobra envio ao STF de todas as menções a ministros no caso Master",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/fachin-se-reune-com-diretor-da-pf-para-tratar-de-citacoes-a-ministros-do-stf-no-caso-master.shtml",
+   "published_at": "2026-10-13T19:38:00Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "PF vai enviar ao STF relatório com menções a ministros no caso Master",
+   "url": "https://estadao.com.br/politica/fachin-e-diretor-geral-da-pf-se-reunem-no-stf-para-tratar-de-mencoes-a-ministros-no-caso-master",
+   "published_at": "2026-10-13T20:40:53Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Fachin diz a Andrei que PF deve enviar ao STF todas as menções a ministros no caso Master em 'caráter estritamente descritivo'",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/13/fachin-pf-andrei-reuniao-ministros-master.ghtml",
+   "published_at": "2026-10-13T21:55:31Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Após impasse judicial, campanha registra canal de WhatsApp 'Exército do Lula' no TSE",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/13/campanha-de-lula-registra-grupo-de-whatsapp-exercito-de-lula-no-tribunal-superior-eleitoral.ghtml",
+   "published_at": "2026-10-13T15:42:36Z"
+  },
+  {
+   "outlet": "Veja",
+   "title": "Campanha atende Nunes Marques e registra canal ‘Exército do Lula’ no TSE",
+   "url": "https://veja.abril.com.br/politica/campanha-atende-nunes-marques-e-registra-canal-exercito-do-lula-no-tse",
+   "published_at": "2026-10-13T16:20:08Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Nunes Marques diz que, com o registro, canal de WhatsApp 'Exército do Lula' pode ser retomado após prazo de 48 horas",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/13/nunes-marques-diz-que-apos-registro-canal-de-whatsapp-exercito-do-lula-pode-ser-retomado-apos-48-horas.ghtml",
+   "published_at": "2026-10-13T19:24:41Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Nunes Marques autoriza canal de Janones após registro oficial do PT",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/nunes-marques-autoriza-canal-janones-apos-registro-oficial-pt",
+   "published_at": "2026-10-13T19:55:20Z"
+  },
+  {
+   "outlet": "Veja",
+   "title": "Nunes Marques diz que ‘Exército do Lula’ pode voltar a funcionar em 48 horas",
+   "url": "https://veja.abril.com.br/politica/nunes-marques-diz-que-exercito-do-lula-pode-voltar-a-funcionar-em-48-horas",
+   "published_at": "2026-10-13T20:26:09Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Campanha do PL registra canal da “Tropa do Flávio” após TSE restringir o de Lula",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/campanha-pl-registra-canal-tropa-do-flavio-apos-tse-restringir-lula",
+   "published_at": "2026-10-13T21:24:23Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Governo estima que projeto que prevê perdão a dívidas de MEIs terá impacto de R$ 3 bilhões em três anos",
+   "url": "https://g1.globo.com/economia/noticia/2026/10/13/governo-estima-que-projeto-que-preve-perdao-a-dividas-de-meis-tera-impacto-de-r-3-bilhoes-em-tres-anos.ghtml",
+   "published_at": "2026-10-13T22:35:56Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Perdão de dívidas de MEIs deve custar R$ 3 bilhões em três anos",
+   "url": "https://cnnbrasil.com.br/economia/money/macroeconomia/perdao-de-dividas-de-meis-deve-custar-r-3-bilhoes-em-tres-anos",
+   "published_at": "2026-10-13T22:40:48Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Nunes Marques suspende liminar de Cueva e determina retirada do ar do canal 'Exército do Lula' até que seja registrado no TSE",
+   "url": "https://g1.globo.com/politica/blog/valdo-cruz/post/2026/10/13/para-encerrar-crise-nunes-marques-vai-tentar-acordo-com-campanhas-e-pedir-para-canais-serem-registrados-no-tse.ghtml",
+   "published_at": "2026-10-13T12:51:16Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Nunes Marques suspende novos posts e seguidores no Exército do Lula",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/nunes-marques-suspende-novos-posts-e-seguidores-no-exercito-do-lula",
+   "published_at": "2026-10-13T14:15:00Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Corregedor eleitoral decidiu a favor de canal de Janones em menos de 4 minutos, relata Kássio",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/corregedor-decidiu-a-favor-canal-janones-4-minutos-kassio",
+   "published_at": "2026-10-13T18:38:38Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "PGR se manifesta contra afastamento de diretor-geral da PF",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/13/pgr-se-manifesta-contra-afastamento-de-diretor-geral-da-pf.ghtml",
+   "published_at": "2026-10-13T22:46:24Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "PGR se manifesta contra afastamento de diretor-geral da PF",
+   "url": "https://cnnbrasil.com.br/politica/pgr-se-manifesta-contra-afastamento-de-diretor-geral-da-pf",
+   "published_at": "2026-10-13T23:18:56Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Meta atribui menor alcance de Lula nas redes a falhas técnicas",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/meta-atribui-menor-alcance-de-lula-nas-redes-a-falhas-tecnicas",
+   "published_at": "2026-10-13T12:01:09Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Meta nega favorecimento à campanha de Flávio em resposta ao TSE",
+   "url": "https://estadao.com.br/politica/eleicoes/meta-nega-favorecimento-a-campanha-de-flavio-em-resposta-ao-tse",
+   "published_at": "2026-10-13T23:00:33Z"
+  }
+ ],
+ "note": "Informações válidas até o corte das 21:25. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
