@@ -1,0 +1,222 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-07",
+ "public_title": "FECHAMENTO — 7 de outubro de 2026 · edição retrospectiva",
+ "published_at": "2026-10-14T19:25:08Z",
+ "cutoff_at": "2026-10-12T09:23:26-03:00",
+ "context": "Edição retrospectiva: reconstruída em 12/10/2026 com o que as fontes registravam em 7 de outubro. Desdobramentos posteriores não entram neste texto; estão nas edições seguintes",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "Gilmar arquiva pedido de investigação contra vice de Flávio Bolsonaro por suspeita de estupro",
+    "story": "gilmar-arquiva-pedido-de-investigacao-contra-vice-de-flavio-bolsonaro-por"
+   },
+   {
+    "text": "Proibição das bets: o que empresas argumentam e como o governo respondeu; veja ponto a ponto",
+    "story": "proibicao-das-bets-o-que-empresas-argumentam-e-como-o-governo-respondeu-veja"
+   },
+   {
+    "text": "TSE marca para quinta (8) julgamento sobre candidatura de Garotinho e que definirá eleição no RJ",
+    "story": "tse-marca-para-quinta-8-julgamento-sobre-candidatura-de-garotinho-e-que"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "gilmar-arquiva-pedido-de-investigacao-contra-vice-de-flavio-bolsonaro-por",
+   "headline": "Gilmar arquiva pedido de investigação contra vice de Flávio Bolsonaro por suspeita de estupro",
+   "lead": true,
+   "what_happened": "A Folha relata que Gilmar Mendes determinou o arquivamento do pedido de investigação sobre estupro de vulnerável contra Alfredo Gaspar, candidato a vice de Flávio Bolsonaro. Gilmar Mendes afirmou na decisão que não há base indiciária suficiente para instaurar o inquérito.",
+   "what_changed": "A Folha relata que a PGR se manifestou pelo indeferimento do pedido e pelo arquivamento do caso. A Gazeta do Povo relata que Gaspar sempre negou as acusações e fez exame de DNA. Alegação atribuída (g1), não comprovada: Segundo o g1, o pedido de abertura de inquérito por suspeita de estupro de vulnerável partiu da senadora Soraya Thronicke e do deputado Lindbergh Farias.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "Gilmar arquiva pedido de investigação contra vice de Flávio Bolsonaro por suspeita de estupro",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/gilmar-arquiva-pedido-de-investigacao-contra-vice-de-flavio-bolsonaro-por-suspeita-de-estupro.shtml",
+     "published_at": "2026-10-06T23:08:00Z",
+     "summary": "A Folha relata que Gilmar Mendes determinou o arquivamento do pedido de investigação sobre estupro de vulnerável contra Alfredo Gaspar, candidato a vice de Flávio Bolsonaro.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Gilmar Mendes arquiva investigação de estupro contra vice de Flávio Bolsonaro",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/06/gilmar-mendes-arquiva-investigacao-de-estupro-contra-vice-de-flavio-bolsonaro.ghtml",
+     "published_at": "2026-10-06T23:11:41Z",
+     "summary": "Gilmar Mendes afirmou na decisão que não há base indiciária suficiente para instaurar o inquérito.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Gilmar arquiva pedido de investigação contra vice de Flávio por suposto estupro",
+     "url": "https://gazetadopovo.com.br/republica/gilmar-arquiva-pedido-de-investigacao-contra-vice-de-flavio-por-suposto-estupro",
+     "published_at": "2026-10-06T23:20:52Z",
+     "summary": "A Gazeta do Povo relata que Gaspar sempre negou as acusações e fez exame de DNA.",
+     "basis": "manchete e resumo"
+    }
+   ],
+   "conclusion": "Em 7/10, é isto que as fontes citadas registravam. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "proibicao-das-bets-o-que-empresas-argumentam-e-como-o-governo-respondeu-veja",
+   "headline": "Proibição das bets: o que empresas argumentam e como o governo respondeu; veja ponto a ponto",
+   "lead": false,
+   "what_happened": "A AGU pediu ao STF que mantenha a proibição das bets e que a PGR seja ouvida em 72 horas antes da decisão do ministro Luiz Fux. A AGU citou o bloqueio de 10.435 sites ilegais entre setembro e outubro.",
+   "what_changed": "A Gazeta do Povo relata que a AGU afirmou que a redução da arrecadação foi considerada, de R$ 1,541 bilhão em 2026, R$ 5,150 bilhões em 2027 e R$ 5,330 bilhões em 2028. O g1 relata que a medida provisória precisa ser aprovada pelo Congresso até 5 de março de 2027, ou perderá a validade. Alegação atribuída (ANJL e IBJR, segundo o g1), não comprovada: A ANJL e o IBJR afirmam que a proibição gera insegurança jurídica, prejudica a arrecadação e pode estimular a migração de apostadores para sites clandestinos.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "AGU defende proibição das bets no STF e pede que Fux ouça PGR antes de decidir",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/06/agu-defende-proibicao-das-bets-no-stf-e-pede-que-fux-ouca-pgr-antes-de-decidir.ghtml",
+     "published_at": "2026-10-06T13:06:00Z",
+     "summary": "A AGU pediu ao STF que mantenha a proibição das bets e que a PGR seja ouvida em 72 horas antes da decisão do ministro Luiz Fux.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Proibição das bets: o que empresas argumentam e como o governo respondeu; veja ponto a ponto",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/06/proibicao-das-bets-o-que-empresas-argumentam-e-o-que-a-agu-respondeu-veja-ponto-a-ponto.ghtml",
+     "published_at": "2026-10-06T16:49:41Z",
+     "summary": "A ANJL e o IBJR afirmam que a proibição gera insegurança jurídica, prejudica a arrecadação e pode estimular a migração de apostadores para sites clandestinos.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "AGU pede ao STF que bets sigam proibidas no Brasil e que Fux ouça PGR",
+     "url": "https://gazetadopovo.com.br/economia/agu-pede-stf-bets-sigam-proibidas-no-brasil-fux-ouca-pgr",
+     "published_at": "2026-10-06T14:11:10Z",
+     "summary": "A Gazeta do Povo relata que a AGU afirmou que a redução da arrecadação foi considerada, de R$ 1,541 bilhão em 2026, R$ 5,150 bilhões em 2027 e R$ 5,330 bilhões em 2028.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Em 7/10, é isto que as fontes citadas registravam. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "tse-marca-para-quinta-8-julgamento-sobre-candidatura-de-garotinho-e-que",
+   "headline": "TSE marca para quinta (8) julgamento sobre candidatura de Garotinho e que definirá eleição no RJ",
+   "lead": false,
+   "what_happened": "O TSE marcou para quinta-feira (8) o julgamento que resolverá a situação da candidatura de Garotinho. A Procuradoria Eleitoral enviou parecer defendendo que os votos de Garotinho sejam considerados nulos.",
+   "what_changed": "A defesa de Garotinho apresentou pedido de desistência do recurso, descrevendo a decisão como livre, expressa, consciente e irretratável. Se o TSE invalidar os votos de Garotinho, Ruas vencerá no 1º turno. Alegação atribuída (Eduardo Paes (coligação), segundo g1), não comprovada: A coligação de Paes afirma que Garotinho abriu mão da candidatura quando seus votos passaram a impedir a vitória em primeiro turno da candidatura apoiada por seu filho.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "TSE marca para quinta (8) julgamento sobre candidatura de Garotinho e que definirá eleição no RJ",
+     "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/tse-marca-para-quinta-8-julgamento-sobre-candidatura-de-garotinho-e-que-definira-eleicao-no-rj.shtml",
+     "published_at": "2026-10-07T00:12:00Z",
+     "summary": "O TSE marcou para quinta-feira (8) o julgamento que resolverá a situação da candidatura de Garotinho.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Plenário do TSE vai analisar caso Garotinho nesta quinta e pode definir rumo das eleições no Rio",
+     "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/10/06/plenario-do-tse-vai-analisar-caso-garotinho-nesta-quinta-e-pode-definir-rumo-das-eleicoes-no-rio.ghtml",
+     "published_at": "2026-10-07T00:06:16Z",
+     "summary": "A defesa de Garotinho apresentou pedido de desistência do recurso, descrevendo a decisão como livre, expressa, consciente e irretratável.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Em 7/10, é isto que as fontes citadas registravam. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "paes-pede-que-tse-garanta-segundo-turno-nas-eleicoes-do-rj-mesmo-apos",
+   "title": "Paes pede que TSE garanta segundo turno nas eleições do RJ mesmo após desistência de Garotinho",
+   "text": "A coligação de Paes pediu ao TSE que o segundo turno seja confirmado mesmo após a desistência de Garotinho. O Ministério Público Eleitoral se manifestou a favor do pedido de desistência do recurso de Garotinho.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/10/06/paes-pede-tse-garotinho.ghtml",
+     "published_at": "2026-10-06T23:21:33Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/rio-de-janeiro/paes-aciona-tse-para-barrar-desistencia-de-garotinho-e-assegurar-2o-turno-no-rj",
+     "published_at": "2026-10-07T00:28:26Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "Folha",
+   "title": "Gilmar arquiva pedido de investigação contra vice de Flávio Bolsonaro por suspeita de estupro",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/gilmar-arquiva-pedido-de-investigacao-contra-vice-de-flavio-bolsonaro-por-suspeita-de-estupro.shtml",
+   "published_at": "2026-10-06T23:08:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Gilmar Mendes arquiva investigação de estupro contra vice de Flávio Bolsonaro",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/06/gilmar-mendes-arquiva-investigacao-de-estupro-contra-vice-de-flavio-bolsonaro.ghtml",
+   "published_at": "2026-10-06T23:11:41Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Gilmar arquiva pedido de investigação contra vice de Flávio por suposto estupro",
+   "url": "https://gazetadopovo.com.br/republica/gilmar-arquiva-pedido-de-investigacao-contra-vice-de-flavio-por-suposto-estupro",
+   "published_at": "2026-10-06T23:20:52Z",
+   "basis": "manchete e resumo"
+  },
+  {
+   "outlet": "g1",
+   "title": "AGU defende proibição das bets no STF e pede que Fux ouça PGR antes de decidir",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/06/agu-defende-proibicao-das-bets-no-stf-e-pede-que-fux-ouca-pgr-antes-de-decidir.ghtml",
+   "published_at": "2026-10-06T13:06:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Proibição das bets: o que empresas argumentam e como o governo respondeu; veja ponto a ponto",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/06/proibicao-das-bets-o-que-empresas-argumentam-e-o-que-a-agu-respondeu-veja-ponto-a-ponto.ghtml",
+   "published_at": "2026-10-06T16:49:41Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "AGU pede ao STF que bets sigam proibidas no Brasil e que Fux ouça PGR",
+   "url": "https://gazetadopovo.com.br/economia/agu-pede-stf-bets-sigam-proibidas-no-brasil-fux-ouca-pgr",
+   "published_at": "2026-10-06T14:11:10Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "TSE marca para quinta (8) julgamento sobre candidatura de Garotinho e que definirá eleição no RJ",
+   "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/tse-marca-para-quinta-8-julgamento-sobre-candidatura-de-garotinho-e-que-definira-eleicao-no-rj.shtml",
+   "published_at": "2026-10-07T00:12:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Plenário do TSE vai analisar caso Garotinho nesta quinta e pode definir rumo das eleições no Rio",
+   "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/10/06/plenario-do-tse-vai-analisar-caso-garotinho-nesta-quinta-e-pode-definir-rumo-das-eleicoes-no-rio.ghtml",
+   "published_at": "2026-10-07T00:06:16Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Paes pede que TSE garanta segundo turno nas eleições do RJ mesmo após desistência de Garotinho",
+   "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/10/06/paes-pede-tse-garotinho.ghtml",
+   "published_at": "2026-10-06T23:21:33Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Paes aciona TSE para barrar desistência de Garotinho e assegurar 2º turno no RJ",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/rio-de-janeiro/paes-aciona-tse-para-barrar-desistencia-de-garotinho-e-assegurar-2o-turno-no-rj",
+   "published_at": "2026-10-07T00:28:26Z"
+  }
+ ],
+ "note": "Edição retrospectiva: reconstruída em 12/10/2026 com o que as fontes registravam em 7 de outubro. Desdobramentos posteriores não entram neste texto; estão nas edições seguintes. Alegação não é prova.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
