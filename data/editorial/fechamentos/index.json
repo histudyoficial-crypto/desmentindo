@@ -21,6 +21,18 @@
    "sha256": "ff53c21075878c536c951ec54b41cb990d80383527a651fe257cbfbe56116f4b"
   },
   {
+   "date": "2026-10-07",
+   "title": "FECHAMENTO — 7 de outubro de 2026 · edição retrospectiva",
+   "file": "data/editorial/fechamentos/2026-10-07.json",
+   "sha256": "2914f9088cb2216959ae7e18930017d7920d8ad23e4d9c29e5a3bc8c1d766e04"
+  },
+  {
+   "date": "2026-10-06",
+   "title": "FECHAMENTO — 6 de outubro de 2026 · edição retrospectiva",
+   "file": "data/editorial/fechamentos/2026-10-06.json",
+   "sha256": "7e7eb4afa791fbb314170455b371463164eb651712c9a8ebddc75d6768034354"
+  },
+  {
    "date": "2026-10-05",
    "title": "FECHAMENTO — 5 de outubro de 2026",
    "file": "data/editorial/fechamentos/2026-10-05.json",

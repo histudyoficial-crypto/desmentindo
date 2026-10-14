@@ -1,0 +1,375 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-06",
+ "public_title": "FECHAMENTO — 6 de outubro de 2026 · edição retrospectiva",
+ "published_at": "2026-10-14T19:25:08Z",
+ "cutoff_at": "2026-10-12T18:38:30-03:00",
+ "context": "Edição retrospectiva: reconstruída em 12/10/2026 com o que as fontes registravam em 6 de outubro. Desdobramentos posteriores não entram neste texto; estão nas edições seguintes",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "PSOL, PDT e Missão não superam cláusula de barreira, e só 14 partidos terão propaganda na TV; veja lista",
+    "story": "psol-pdt-e-missao-nao-superam-clausula-de-barreira-e-so-14-partidos-terao"
+   },
+   {
+    "text": "Paes acusa Ruas e Garotinho de “armação” em eleição no RJ",
+    "story": "paes-acusa-ruas-e-garotinho-de-armacao-em-eleicao-no-rj"
+   },
+   {
+    "text": "TSE dá dois dias para MP se manifestar sobre Garotinho desistir de manter candidatura",
+    "story": "tse-da-dois-dias-para-mp-se-manifestar-sobre-garotinho-desistir-de-manter"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "psol-pdt-e-missao-nao-superam-clausula-de-barreira-e-so-14-partidos-terao",
+   "headline": "PSOL, PDT e Missão não superam cláusula de barreira, e só 14 partidos terão propaganda na TV; veja lista",
+   "lead": true,
+   "what_happened": "Sete partidos não atingiram a cláusula de barreira e ficarão sem tempo de TV e rádio e sem fundo partidário. Segundo análise de Lara Mesquita, PSOL/Rede, PRD/Solidariedade, PDT, Avante e Missão não atingiram o mínimo exigido.",
+   "what_changed": "Faltaram 186 votos ao PSOL no Espírito Santo para atingir o critério. O Novo superou a cláusula de barreira e elegeu dez deputados federais e três senadores.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "PSOL, PDT e Missão não superam cláusula de barreira, e só 14 partidos terão propaganda na TV; veja lista",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/psol-missao-e-mais-tres-nao-devem-atingir-clausula-de-barreira-veja-lista-de-partidos-e-federacoes.shtml",
+     "published_at": "2026-10-05T14:29:00Z",
+     "summary": "Sete partidos não atingiram a cláusula de barreira e ficarão sem tempo de TV e rádio e sem fundo partidário.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Novo supera cláusula de barreira e terá acesso ao fundo partidário e à propaganda eleitoral",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/novo-supera-clausula-de-barreira-e-tera-acesso-ao-fundo-partidario-e-a-propaganda-eleitoral",
+     "published_at": "2026-10-05T21:21:21Z",
+     "summary": "O Novo superou a cláusula de barreira e elegeu dez deputados federais e três senadores.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Três partidos de esquerda não atingem cláusula de barreira e ficam sem Fundo Partidário",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/tres-partidos-de-esquerda-nao-atingem-clausula-de-barreira-e-podem-ficar-sem-fundo-partidario",
+     "published_at": "2026-10-05T13:57:10Z",
+     "summary": "A federação PSOL/Rede elegeu 15 deputados federais, mas concentrados em apenas seis unidades da federação.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Em 6/10, é isto que as fontes citadas registravam. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "paes-acusa-ruas-e-garotinho-de-armacao-em-eleicao-no-rj",
+   "headline": "Paes acusa Ruas e Garotinho de “armação” em eleição no RJ",
+   "lead": false,
+   "what_happened": "A CNN relata que Ruas não quis se manifestar e que Garotinho não retornou até a publicação. Segundo a CNN, retirar os votos de Garotinho do cálculo elevaria a votação proporcional de Ruas para 50,89%, acima da maioria necessária para vitória no primeiro turno.",
+   "what_changed": "Garotinho teve a candidatura indeferida por condenação por improbidade administrativa, recorreu ao TSE e seus votos ficaram sub judice. A Veja relata que a desistência não significa automaticamente que os votos serão retirados da contagem; cabe à Justiça Eleitoral definir os efeitos. Alegação atribuída (Eduardo Paes, segundo a CNN), não comprovada: Eduardo Paes acusou Garotinho e Douglas Ruas de articularem uma \"armação\" para impedir o segundo turno da eleição para o governo do Rio.",
+   "coverage": [
+    {
+     "outlet": "CNN Brasil",
+     "title": "Paes acusa Ruas e Garotinho de “armação” em eleição no RJ",
+     "url": "https://cnnbrasil.com.br/eleicoes/paes-acusa-ruas-e-garotinho-de-armacao-em-eleicao-no-rj",
+     "published_at": "2026-10-06T01:00:34Z",
+     "summary": "Eduardo Paes acusou Garotinho e Douglas Ruas de articularem uma \"armação\" para impedir o segundo turno da eleição para o governo do Rio.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Veja",
+     "title": "‘Armação do Garotinho com o Douglas Ruas’, diz Paes sobre imbróglio na disputa pelo governo do RJ",
+     "url": "https://veja.abril.com.br/politica/armacao-do-garotinho-com-o-douglas-ruas-diz-paes-sobre-imbroglio-na-disputa-pelo-governo-do-rj",
+     "published_at": "2026-10-06T00:12:40Z",
+     "summary": "Garotinho teve a candidatura indeferida por condenação por improbidade administrativa, recorreu ao TSE e seus votos ficaram sub judice.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Em 6/10, é isto que as fontes citadas registravam. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "tse-da-dois-dias-para-mp-se-manifestar-sobre-garotinho-desistir-de-manter",
+   "headline": "TSE dá dois dias para MP se manifestar sobre Garotinho desistir de manter candidatura",
+   "lead": false,
+   "what_happened": "O ministro do TSE deu dois dias para o Ministério Público se manifestar sobre o pedido de Garotinho de encerrar o processo. Se o TSE aceitar a desistência, os 274 mil votos serão nulos e Ruas será declarado eleito no primeiro turno.",
+   "what_changed": "O advogado Alberto Rollo disse que a desistência é ato unilateral e não depende da concordância do Ministério Público ou das demais partes. Advogados ligados ao PL admitem que o TSE pode se recusar a homologar a desistência. Alegação atribuída (Eduardo Paes), não comprovada: Paes chamou Garotinho de \"candidato laranja\" e falou em \"armação\" com Ruas para o candidato do PL vencer \"no tapetão\". Alegação atribuída (Coligação de Eduardo Paes, segundo o g1), não comprovada: A coligação de Paes denunciou panfletos que vinculam incorretamente a foto de Paes aos números 13 e 22 e pediu busca e apreensão em gráfica.",
+   "coverage": [
+    {
+     "outlet": "Estadão",
+     "title": "TSE dá dois dias para MP opinar sobre desistência de Garotinho; Paes chama adversário de ‘laranja’",
+     "url": "https://estadao.com.br/politica/eleicoes/tse-da-dois-dias-para-mp-opinar-sobre-desistencia-de-garotinho-paes-chama-adversario-de-laranja",
+     "published_at": "2026-10-05T23:34:59Z",
+     "summary": "O ministro do TSE deu dois dias para o Ministério Público se manifestar sobre o pedido de Garotinho de encerrar o processo.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Jovem Pan",
+     "title": "TSE dá dois dias para MP se manifestar sobre Garotinho desistir de manter candidatura",
+     "url": "https://jovempan.com.br/politica/tse-da-dois-dias-para-mp-se-manifestar-sobre-garotinho-desistir-de-manter-candidatura",
+     "published_at": "2026-10-06T01:01:15Z",
+     "summary": "Se o TSE aceitar a desistência, os 274 mil votos serão nulos e Ruas será declarado eleito no primeiro turno.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Veja",
+     "title": "Ministro do TSE pede opinião do MP antes de decidir sobre Garotinho",
+     "url": "https://veja.abril.com.br/politica/ministro-do-tse-pede-opiniao-do-ministerio-publico-antes-de-decidir-sobre-garotinho",
+     "published_at": "2026-10-05T21:56:05Z",
+     "summary": "Advogados ligados ao PL admitem que o TSE pode se recusar a homologar a desistência.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Coligação de Paes pede busca e apreensão em gráfica que imprimiu panfletos com fotos de candidato e números 22 e 13",
+     "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/10/06/coligacao-paes-denuncia-panfletos.ghtml",
+     "published_at": "2026-10-06T16:59:20Z",
+     "summary": "A coligação de Paes denunciou panfletos que vinculam incorretamente a foto de Paes aos números 13 e 22 e pediu busca e apreensão em gráfica.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Em 6/10, é isto que as fontes citadas registravam. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "procuradoria-eleitoral-defende-anular-votos-de-garotinho-e-reforca-caminho-para",
+   "title": "Procuradoria Eleitoral defende anular votos de Garotinho e reforça caminho para eleição de Ruas",
+   "text": "A Procuradoria-Geral Eleitoral afirmou em parecer enviado ao TSE que os votos conferidos a Anthony Garotinho na disputa pelo Governo do Rio devem ser considerados nulos.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/procuradoria-eleitoral-afirma-que-votos-de-garotinho-devem-ser-anulados.shtml",
+     "published_at": "2026-10-06T17:52:00Z"
+    },
+    {
+     "outlet": "Veja",
+     "url": "https://veja.abril.com.br/politica/procuradoria-eleitoral-defende-que-votos-de-garotinho-sejam-anulados",
+     "published_at": "2026-10-06T17:56:49Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/eleicoes/rj-204-mil-eleitores-votaram-13-para-governador-e-anularam-seus-votos",
+     "published_at": "2026-10-06T19:18:39Z"
+    }
+   ]
+  },
+  {
+   "id": "conselho-amplia-controle-sobre-expedicao-e-negociacao-de-precatorios-federais",
+   "title": "Conselho amplia controle sobre expedição e negociação de precatórios federais",
+   "text": "O presidente do CJF, ministro Luis Felipe Salomão, determinou o cumprimento imediato de medidas para ampliar o controle sobre a emissão de precatórios e RPVs.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/06/apos-suspeitas-do-caso-master-conselho-da-justica-proibe-pagamento-de-precatorios-em-processos-que-ainda-estejam-em-andamento.ghtml",
+     "published_at": "2026-10-06T15:28:36Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/conselho-amplia-controle-sobre-expedicao-e-negociacao-de-precatorios-federais",
+     "published_at": "2026-10-06T18:59:42Z"
+    }
+   ]
+  },
+  {
+   "id": "mendonca-multa-flavio-por-impulsionar-post-negativo-contra-lula",
+   "title": "Mendonça multa Flávio por impulsionar post negativo contra Lula",
+   "text": "O ministro André Mendonça multou Flávio Bolsonaro em R$ 5 mil por impulsionamento irregular de propaganda negativa contra Lula.",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/mendonca-multa-flavio-por-impulsionar-post-negativo-contra-lula",
+     "published_at": "2026-10-06T15:39:00Z"
+    }
+   ]
+  },
+  {
+   "id": "debora-rodrigues-relembre-os-crimes-e-o-calculo-da-pena-de-14-anos",
+   "title": "Débora Rodrigues: relembre os crimes e o cálculo da pena de 14 anos",
+   "text": "Alexandre de Moraes autorizou a progressão de Débora Rodrigues dos Santos ao regime semiaberto, mantendo a prisão domiciliar.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/06/moraes-autoriza-progressao-de-debora-rodrigues-condenada-pelo-81-para-regime-semiaberto.ghtml",
+     "published_at": "2026-10-06T12:31:53Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/vida-e-cidadania/moraes-autoriza-semiaberto-debora-batom",
+     "published_at": "2026-10-06T14:15:42Z"
+    }
+   ]
+  },
+  {
+   "id": "garotinho-desiste-de-recurso-ao-tse-e-amplia-brecha-para-eleicao-de-douglas",
+   "title": "Garotinho desiste de recurso ao TSE e amplia brecha para eleição de Douglas Ruas no RJ",
+   "text": "A defesa de Garotinho protocolou no TSE pedido de desistência do recurso para validar seu registro de candidatura.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/garotinho-desiste-de-recurso-ao-tse-e-abre-brecha-para-eleicao-de-douglas-ruas-no-rj.shtml",
+     "published_at": "2026-10-05T17:57:00Z"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/garotinho-desiste-de-recurso-e-eleicao-do-rj-pode-acabar-em-1o-turno",
+     "published_at": "2026-10-05T19:11:00Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/eleicoes/rj-mpe-se-manifesta-a-favor-da-desistencia-de-recurso-de-garotinho-ruas-pode-ser-declarado-eleito",
+     "published_at": "2026-10-06T18:20:05Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-eleicoes-2026/mpe-e-favoravel-a-desistencia-de-recurso-de-garotinho-no-tse",
+     "published_at": "2026-10-06T20:37:16Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "Folha",
+   "title": "PSOL, PDT e Missão não superam cláusula de barreira, e só 14 partidos terão propaganda na TV; veja lista",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/psol-missao-e-mais-tres-nao-devem-atingir-clausula-de-barreira-veja-lista-de-partidos-e-federacoes.shtml",
+   "published_at": "2026-10-05T14:29:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Novo supera cláusula de barreira e terá acesso ao fundo partidário e à propaganda eleitoral",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/novo-supera-clausula-de-barreira-e-tera-acesso-ao-fundo-partidario-e-a-propaganda-eleitoral",
+   "published_at": "2026-10-05T21:21:21Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Três partidos de esquerda não atingem cláusula de barreira e ficam sem Fundo Partidário",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/tres-partidos-de-esquerda-nao-atingem-clausula-de-barreira-e-podem-ficar-sem-fundo-partidario",
+   "published_at": "2026-10-05T13:57:10Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Paes acusa Ruas e Garotinho de “armação” em eleição no RJ",
+   "url": "https://cnnbrasil.com.br/eleicoes/paes-acusa-ruas-e-garotinho-de-armacao-em-eleicao-no-rj",
+   "published_at": "2026-10-06T01:00:34Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Veja",
+   "title": "‘Armação do Garotinho com o Douglas Ruas’, diz Paes sobre imbróglio na disputa pelo governo do RJ",
+   "url": "https://veja.abril.com.br/politica/armacao-do-garotinho-com-o-douglas-ruas-diz-paes-sobre-imbroglio-na-disputa-pelo-governo-do-rj",
+   "published_at": "2026-10-06T00:12:40Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "TSE dá dois dias para MP opinar sobre desistência de Garotinho; Paes chama adversário de ‘laranja’",
+   "url": "https://estadao.com.br/politica/eleicoes/tse-da-dois-dias-para-mp-opinar-sobre-desistencia-de-garotinho-paes-chama-adversario-de-laranja",
+   "published_at": "2026-10-05T23:34:59Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Jovem Pan",
+   "title": "TSE dá dois dias para MP se manifestar sobre Garotinho desistir de manter candidatura",
+   "url": "https://jovempan.com.br/politica/tse-da-dois-dias-para-mp-se-manifestar-sobre-garotinho-desistir-de-manter-candidatura",
+   "published_at": "2026-10-06T01:01:15Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Veja",
+   "title": "Ministro do TSE pede opinião do MP antes de decidir sobre Garotinho",
+   "url": "https://veja.abril.com.br/politica/ministro-do-tse-pede-opiniao-do-ministerio-publico-antes-de-decidir-sobre-garotinho",
+   "published_at": "2026-10-05T21:56:05Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Coligação de Paes pede busca e apreensão em gráfica que imprimiu panfletos com fotos de candidato e números 22 e 13",
+   "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/10/06/coligacao-paes-denuncia-panfletos.ghtml",
+   "published_at": "2026-10-06T16:59:20Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Procuradoria Eleitoral defende anular votos de Garotinho e reforça caminho para eleição de Ruas",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/procuradoria-eleitoral-afirma-que-votos-de-garotinho-devem-ser-anulados.shtml",
+   "published_at": "2026-10-06T17:52:00Z"
+  },
+  {
+   "outlet": "Veja",
+   "title": "Procuradoria Eleitoral defende que votos de Garotinho sejam anulados",
+   "url": "https://veja.abril.com.br/politica/procuradoria-eleitoral-defende-que-votos-de-garotinho-sejam-anulados",
+   "published_at": "2026-10-06T17:56:49Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "RJ: 204 mil eleitores votaram “13” para governador e anularam seus votos",
+   "url": "https://cnnbrasil.com.br/eleicoes/rj-204-mil-eleitores-votaram-13-para-governador-e-anularam-seus-votos",
+   "published_at": "2026-10-06T19:18:39Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Após suspeitas no caso Master, Conselho da Justiça proíbe emissão de precatórios em processos que ainda estejam em andamento",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/06/apos-suspeitas-do-caso-master-conselho-da-justica-proibe-pagamento-de-precatorios-em-processos-que-ainda-estejam-em-andamento.ghtml",
+   "published_at": "2026-10-06T15:28:36Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Conselho amplia controle sobre expedição e negociação de precatórios federais",
+   "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/conselho-amplia-controle-sobre-expedicao-e-negociacao-de-precatorios-federais",
+   "published_at": "2026-10-06T18:59:42Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Mendonça multa Flávio por impulsionar post negativo contra Lula",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/mendonca-multa-flavio-por-impulsionar-post-negativo-contra-lula",
+   "published_at": "2026-10-06T15:39:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Moraes autoriza regime semiaberto para Débora Rodrigues, condenada pelo 8 de Janeiro",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/06/moraes-autoriza-progressao-de-debora-rodrigues-condenada-pelo-81-para-regime-semiaberto.ghtml",
+   "published_at": "2026-10-06T12:31:53Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Moraes autoriza semiaberto para “Débora do Batom”",
+   "url": "https://gazetadopovo.com.br/vida-e-cidadania/moraes-autoriza-semiaberto-debora-batom",
+   "published_at": "2026-10-06T14:15:42Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Garotinho desiste de recurso ao TSE e amplia brecha para eleição de Douglas Ruas no RJ",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/garotinho-desiste-de-recurso-ao-tse-e-abre-brecha-para-eleicao-de-douglas-ruas-no-rj.shtml",
+   "published_at": "2026-10-05T17:57:00Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Garotinho desiste de recurso e eleição do RJ pode acabar em 1º turno",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/garotinho-desiste-de-recurso-e-eleicao-do-rj-pode-acabar-em-1o-turno",
+   "published_at": "2026-10-05T19:11:00Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "RJ: MPE se manifesta a favor da desistência de recurso de Garotinho; Ruas pode ser declarado eleito",
+   "url": "https://estadao.com.br/politica/eleicoes/rj-mpe-se-manifesta-a-favor-da-desistencia-de-recurso-de-garotinho-ruas-pode-ser-declarado-eleito",
+   "published_at": "2026-10-06T18:20:05Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "MPE é favorável à desistência de recurso de Garotinho no TSE",
+   "url": "https://poder360.com.br/poder-eleicoes-2026/mpe-e-favoravel-a-desistencia-de-recurso-de-garotinho-no-tse",
+   "published_at": "2026-10-06T20:37:16Z"
+  }
+ ],
+ "note": "Edição retrospectiva: reconstruída em 12/10/2026 com o que as fontes registravam em 6 de outubro. Desdobramentos posteriores não entram neste texto; estão nas edições seguintes. Alegação não é prova.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
