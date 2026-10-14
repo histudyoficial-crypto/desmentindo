@@ -1,0 +1,324 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-12",
+ "public_title": "FECHAMENTO — 12 de outubro de 2026",
+ "published_at": "2026-10-14T18:27:23Z",
+ "cutoff_at": "2026-10-12T18:27:39-03:00",
+ "context": "Fechamento de 12 de outubro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "Relator no TSE derruba decisão de Nunes Marques e mantém canal ‘Exército do Lula’ no WhatsApp",
+    "story": "relator-no-tse-derruba-decisao-de-nunes-marques-e-mantem-canal-exercito-do-lula"
+   },
+   {
+    "text": "Kassio atende a pedido de Flávio Bolsonaro e manda censurar canal pró-Lula criado por Janones",
+    "story": "kassio-atende-a-pedido-de-flavio-bolsonaro-e-manda-censurar-canal-pro-lula"
+   },
+   {
+    "text": "Mendonça manda CUT apagar posts que ligavam Flávio a milícias, aposentadoria congelada e fim do Pix",
+    "story": "mendonca-manda-cut-apagar-posts-que-ligavam-flavio-a-milicias-aposentadoria"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "relator-no-tse-derruba-decisao-de-nunes-marques-e-mantem-canal-exercito-do-lula",
+   "headline": "Relator no TSE derruba decisão de Nunes Marques e mantém canal ‘Exército do Lula’ no WhatsApp",
+   "lead": true,
+   "what_happened": "O Estadão relata que o corregedor-geral eleitoral Ricardo Villas Bôas Cueva reverteu a decisão de Nunes Marques e manteve no ar o canal 'Exército do Lula' no WhatsApp, enviando o caso ao plenário do TSE. Segundo o Estadão, Cueva considerou insuficientes as provas apresentadas pela campanha de Flávio para justificar a suspensão integral do canal e apontou o uso de mais de uma via processual para obter o mesmo resultado.",
+   "what_changed": "Segundo Cueva, 41 minutos depois de seu despacho a defesa de Flávio apresentou pedido administrativo diretamente ao presidente do TSE, que o acatou. Lula chamou de 'absurda' a decisão do TSE de suspender o canal e disse que a campanha vai pedir explicações. Alegação atribuída (Gazeta do Povo), não comprovada: A equipe jurídica de Flávio Bolsonaro acusou o canal de funcionar como central de comando para a difusão coordenada de conteúdos inverídicos. Alegação atribuída (g1 / campanha de Flávio Bolsonaro), não comprovada: A campanha de Flávio Bolsonaro acusou o canal de disseminar notícias falsas contra o candidato.",
+   "coverage": [
+    {
+     "outlet": "Estadão",
+     "title": "Relator no TSE derruba decisão de Nunes Marques e mantém canal ‘Exército do Lula’ no WhatsApp",
+     "url": "https://estadao.com.br/politica/eleicoes/relator-no-tse-derruba-decisao-de-nunes-marques-e-mantem-canal-exercito-do-lula-no-whatsapp",
+     "published_at": "2026-10-11T19:07:33Z",
+     "summary": "O Estadão relata que o corregedor-geral eleitoral Ricardo Villas Bôas Cueva reverteu a decisão de Nunes Marques e manteve no ar o canal 'Exército do Lula' no WhatsApp, enviando o caso ao plenário do TSE.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Corregedor do TSE derruba decisão de Nunes Marques e libera canal “Exército do Lula”",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/corregedor-do-tse-derruba-decisao-de-nunes-marques-e-libera-canal-exercito-do-lula",
+     "published_at": "2026-10-11T20:13:06Z",
+     "summary": "A equipe jurídica de Flávio Bolsonaro acusou o canal de funcionar como central de comando para a difusão coordenada de conteúdos inverídicos.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Lula reclama de 'decisões tendenciosas' do TSE após Nunes Marques mandar derrubar canal 'Exército de Lula' no WhatsApp",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/11/lula-reclama-de-decisoes-tendenciosas-do-tse-apos-decisao-para-derrubar-canal-nas-redes.ghtml",
+     "published_at": "2026-10-11T15:44:05Z",
+     "summary": "Lula chamou de 'absurda' a decisão do TSE de suspender o canal e disse que a campanha vai pedir explicações.",
+     "basis": "manchete e resumo"
+    },
+    {
+     "outlet": "g1",
+     "title": "Nova crise no TSE gera insatisfação, opõe Lula e Flávio Bolsonaro e será discutida no lugar certo, o plenário",
+     "url": "https://g1.globo.com/politica/blog/valdo-cruz/post/2026/10/12/nova-crise-no-tse-gera-insatisfacao-opoe-lula-e-flavio-bolsonaro-e-sera-discutida-no-lugar-certo-o-plenario.ghtml",
+     "published_at": "2026-10-12T13:55:42Z",
+     "summary": "A expectativa é que o presidente do TSE, Kassio Nunes Marques, leve ao plenário ainda nesta semana o pedido da campanha de Flávio Bolsonaro para derrubar o canal Exército do Lula.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 18:27, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "kassio-atende-a-pedido-de-flavio-bolsonaro-e-manda-censurar-canal-pro-lula",
+   "headline": "Kassio atende a pedido de Flávio Bolsonaro e manda censurar canal pró-Lula criado por Janones",
+   "lead": false,
+   "what_happened": "Nunes Marques determinou que o WhatsApp suspenda o canal 'Exército do Lula' em três horas após a notificação, atendendo pedido de Flávio Bolsonaro. Segundo a decisão, o canal deve ser suspenso por utilizar estrutura de transmissão a milhões de pessoas, sob comando único, para replicar conteúdos que o TSE já reconheceu como inverídicos.",
+   "what_changed": "A decisão de Nunes Marques foi alvo de críticas de uma ala da Corte, segundo informações obtidas pela TV Globo, por ter atropelado o corregedor-geral. Lula classificou a decisão como 'absurda' e disse estar 'desconfiado do comportamento da corte eleitoral'. Alegação atribuída (Flávio Bolsonaro, segundo a Folha), não comprovada: Flávio Bolsonaro acusa Janones de usar o canal para disseminar informações falsas e coordenar ataques contra sua candidatura.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "Kassio atende a pedido de Flávio Bolsonaro e manda censurar canal pró-Lula criado por Janones",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/kassio-atende-pedido-de-flavio-bolsonaro-e-manda-suspender-canal-pro-lula-criado-por-janones.shtml",
+     "published_at": "2026-10-11T14:59:00Z",
+     "summary": "Nunes Marques determinou que o WhatsApp suspenda o canal 'Exército do Lula' em três horas após a notificação, atendendo pedido de Flávio Bolsonaro.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Nunes Marques atende a pedido da campanha de Flávio e manda suspender canal 'Exército do Lula'",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/11/nunes-marques-manda-derrubar-canal-exercito-do-lula-nas-redes.ghtml",
+     "published_at": "2026-10-11T15:36:31Z",
+     "summary": "Segundo a decisão, o canal deve ser suspenso por utilizar estrutura de transmissão a milhões de pessoas, sob comando único, para replicar conteúdos que o TSE já reconheceu como inverídicos.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "Nunes Marques proíbe distribuição de jornal ‘Petróleo dos Brasileiros’ a pedido de Flávio Bolsonaro",
+     "url": "https://estadao.com.br/politica/eleicoes/nunes-marques-proibe-distribuicao-de-jornal-petroleo-dos-brasileiros-a-pedido-de-flavio-bolsonaro",
+     "published_at": "2026-10-12T14:39:33Z",
+     "summary": "O ministro Kassio Nunes Marques proibiu na sexta-feira, 9, a distribuição do jornal \"Petróleo dos Brasileiros\", segundo informou a Fup.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 18:27, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "mendonca-manda-cut-apagar-posts-que-ligavam-flavio-a-milicias-aposentadoria",
+   "headline": "Mendonça manda CUT apagar posts que ligavam Flávio a milícias, aposentadoria congelada e fim do Pix",
+   "lead": false,
+   "what_happened": "O ministro André Mendonça mandou a CUT apagar publicações sobre Flávio Bolsonaro no Instagram, a pedido do candidato. Mendonça apontou 'aparente ilicitude da veiculação de propaganda eleitoral no perfil institucional de pessoa jurídica'.",
+   "what_changed": "Mendonça proibiu a campanha de Lula de impulsionar anúncios acusando Flávio de ser contra o fim da escala 6x1. Em caso de descumprimento, Mendonça determinou multa diária de R$ 5 mil à CUT; o mérito será examinado após defesa e manifestação da PGE.",
+   "coverage": [
+    {
+     "outlet": "Estadão",
+     "title": "Mendonça manda CUT apagar posts que ligavam Flávio a milícias, aposentadoria congelada e fim do Pix",
+     "url": "https://estadao.com.br/politica/eleicoes/mendonca-manda-cut-apagar-posts-que-ligavam-flavio-a-milicias-aposentadoria-congelada-e-fim-do-pix",
+     "published_at": "2026-10-11T23:55:31Z",
+     "summary": "O ministro André Mendonça mandou a CUT apagar publicações sobre Flávio Bolsonaro no Instagram, a pedido do candidato.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Mendonça manda PT retirar anúncios e CUT apagar posts contra Flávio",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/mendonca-manda-pt-retirar-anuncios-e-cut-apagar-posts-contra-flavio",
+     "published_at": "2026-10-12T01:02:05Z",
+     "summary": "Mendonça proibiu a campanha de Lula de impulsionar anúncios acusando Flávio de ser contra o fim da escala 6x1.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 18:27, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "mendonca-proibe-pt-de-impulsionar-video-que-diz-que-flavio-bolsonaro-e-contra-a",
+   "title": "Mendonça proíbe PT de impulsionar vídeo que diz que Flávio Bolsonaro é contra a escala 6x1",
+   "text": "O vice-presidente do TSE, André Mendonça, proibiu a campanha de Lula de impulsionar vídeo que afirma que Flávio é contra a escala 6x1. A decisão é preliminar e ainda precisa ser referendada pelo plenário do TSE.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/11/mendonca-proibe-pt-de-impulsionar-videos-que-dizem-que-flavio-bolsonaro-e-contra-a-escala-6x1.ghtml",
+     "published_at": "2026-10-11T20:52:09Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/rio-tem-ato-de-apoiadores-de-lula-em-copacabana-durante-feriado-nacional.shtml",
+     "published_at": "2026-10-12T17:48:00Z"
+    }
+   ]
+  },
+  {
+   "id": "meta-alega-problemas-tecnicos-para-menor-alcance-de-lula-nas-redes",
+   "title": "Meta alega \"problemas técnicos\" para menor alcance de Lula nas redes",
+   "text": "A Meta alegou que \"problemas técnicos\" foram responsáveis pela redução do alcance de postagens ligadas à campanha de Lula. A Meta afirma, em nota, que as alegações são falsas e que cumpre as normas eleitorais.",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/meta-alega-problemas-tecnicos-para-menor-alcance-de-lula-nas-redes",
+     "published_at": "2026-10-11T15:13:00Z"
+    }
+   ]
+  },
+  {
+   "id": "moraes-autoriza-flavio-bolsonaro-a-retomar-visitas-ao-pai-e-mantem-veto-a",
+   "title": "Moraes autoriza Flávio Bolsonaro a retomar visitas ao pai e mantém veto a declarações políticas",
+   "text": "O g1 relata que Moraes autorizou a retomada das visitas de Flávio Bolsonaro ao pai, Jair Bolsonaro, após o fim da suspensão de 90 dias imposta em julho. Segundo o g1, Moraes manteve a proibição de manifestações político-eleitorais e de divulgação de declarações do ex-presidente.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/12/moraes-autoriza-retomada-de-visitas-de-flavio-ao-ex-presidente-jair-bolsonaro.ghtml",
+     "published_at": "2026-10-12T12:39:23Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/aval-a-visita-a-bolsonaro-se-soma-a-3-decisoes-recentes-do-stf-pro-bolsonarismo-e-1-contra-lembre.shtml",
+     "published_at": "2026-10-12T14:07:00Z"
+    }
+   ]
+  },
+  {
+   "id": "area-tecnica-do-tse-diz-a-kassio-nao-ter-achado-conteudo-citado-por-flavio-em",
+   "title": "Área técnica do TSE diz a Kassio não ter achado conteúdo citado por Flávio em canal de Janones",
+   "text": "Segundo o g1, o relatório da equipe técnica do TSE aponta que não foram encontradas publicações com informações falsas no canal \"Exército do Lula\". A área técnica do TSE afirmou que não localizou, entre as publicações de 2 a 11 de outubro de 2026, reproduções das afirmações examinadas nos autos.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/12/area-tenica-do-tse-nao-encontra-conteudos-falsos-investigados-pela-corte-no-canal-exercito-do-lula-mas-aponta-riscos-eleitorais.ghtml",
+     "published_at": "2026-10-12T14:29:42Z"
+    },
+    {
+     "outlet": "Veja",
+     "url": "https://veja.abril.com.br/politica/o-que-a-area-tecnica-do-tse-disse-sobre-o-canal-exercito-do-lula-que-e-questionado-por-flavio",
+     "published_at": "2026-10-12T17:18:37Z"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tecnicos-do-tse-nao-encontram-conteudo-falso-no-canal-exercito-do-lula",
+     "published_at": "2026-10-12T16:57:00Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "Estadão",
+   "title": "Relator no TSE derruba decisão de Nunes Marques e mantém canal ‘Exército do Lula’ no WhatsApp",
+   "url": "https://estadao.com.br/politica/eleicoes/relator-no-tse-derruba-decisao-de-nunes-marques-e-mantem-canal-exercito-do-lula-no-whatsapp",
+   "published_at": "2026-10-11T19:07:33Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Corregedor do TSE derruba decisão de Nunes Marques e libera canal “Exército do Lula”",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/corregedor-do-tse-derruba-decisao-de-nunes-marques-e-libera-canal-exercito-do-lula",
+   "published_at": "2026-10-11T20:13:06Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Lula reclama de 'decisões tendenciosas' do TSE após Nunes Marques mandar derrubar canal 'Exército de Lula' no WhatsApp",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/11/lula-reclama-de-decisoes-tendenciosas-do-tse-apos-decisao-para-derrubar-canal-nas-redes.ghtml",
+   "published_at": "2026-10-11T15:44:05Z",
+   "basis": "manchete e resumo"
+  },
+  {
+   "outlet": "g1",
+   "title": "Nova crise no TSE gera insatisfação, opõe Lula e Flávio Bolsonaro e será discutida no lugar certo, o plenário",
+   "url": "https://g1.globo.com/politica/blog/valdo-cruz/post/2026/10/12/nova-crise-no-tse-gera-insatisfacao-opoe-lula-e-flavio-bolsonaro-e-sera-discutida-no-lugar-certo-o-plenario.ghtml",
+   "published_at": "2026-10-12T13:55:42Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Kassio atende a pedido de Flávio Bolsonaro e manda censurar canal pró-Lula criado por Janones",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/kassio-atende-pedido-de-flavio-bolsonaro-e-manda-suspender-canal-pro-lula-criado-por-janones.shtml",
+   "published_at": "2026-10-11T14:59:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Nunes Marques atende a pedido da campanha de Flávio e manda suspender canal 'Exército do Lula'",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/11/nunes-marques-manda-derrubar-canal-exercito-do-lula-nas-redes.ghtml",
+   "published_at": "2026-10-11T15:36:31Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Nunes Marques proíbe distribuição de jornal ‘Petróleo dos Brasileiros’ a pedido de Flávio Bolsonaro",
+   "url": "https://estadao.com.br/politica/eleicoes/nunes-marques-proibe-distribuicao-de-jornal-petroleo-dos-brasileiros-a-pedido-de-flavio-bolsonaro",
+   "published_at": "2026-10-12T14:39:33Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Mendonça manda CUT apagar posts que ligavam Flávio a milícias, aposentadoria congelada e fim do Pix",
+   "url": "https://estadao.com.br/politica/eleicoes/mendonca-manda-cut-apagar-posts-que-ligavam-flavio-a-milicias-aposentadoria-congelada-e-fim-do-pix",
+   "published_at": "2026-10-11T23:55:31Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Mendonça manda PT retirar anúncios e CUT apagar posts contra Flávio",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/mendonca-manda-pt-retirar-anuncios-e-cut-apagar-posts-contra-flavio",
+   "published_at": "2026-10-12T01:02:05Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Mendonça proíbe PT de impulsionar vídeo que diz que Flávio Bolsonaro é contra a escala 6x1",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/11/mendonca-proibe-pt-de-impulsionar-videos-que-dizem-que-flavio-bolsonaro-e-contra-a-escala-6x1.ghtml",
+   "published_at": "2026-10-11T20:52:09Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Apoiadores de Lula fazem ato em Copacabana com críticas a Flávio e defesa do fim da escala 6x1",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/rio-tem-ato-de-apoiadores-de-lula-em-copacabana-durante-feriado-nacional.shtml",
+   "published_at": "2026-10-12T17:48:00Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Meta alega \"problemas técnicos\" para menor alcance de Lula nas redes",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/meta-alega-problemas-tecnicos-para-menor-alcance-de-lula-nas-redes",
+   "published_at": "2026-10-11T15:13:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Moraes autoriza retomada de visitas de Flávio ao ex-presidente Jair Bolsonaro",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/12/moraes-autoriza-retomada-de-visitas-de-flavio-ao-ex-presidente-jair-bolsonaro.ghtml",
+   "published_at": "2026-10-12T12:39:23Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Aval a visita a Bolsonaro se soma a 3 decisões recentes do STF pró-bolsonarismo e 1 contra; lembre",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/aval-a-visita-a-bolsonaro-se-soma-a-3-decisoes-recentes-do-stf-pro-bolsonarismo-e-1-contra-lembre.shtml",
+   "published_at": "2026-10-12T14:07:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Área técnica do TSE diz que não encontrou notícias falsas citadas por Flávio no canal 'Exército do Lula', mas aponta riscos eleitorais",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/12/area-tenica-do-tse-nao-encontra-conteudos-falsos-investigados-pela-corte-no-canal-exercito-do-lula-mas-aponta-riscos-eleitorais.ghtml",
+   "published_at": "2026-10-12T14:29:42Z"
+  },
+  {
+   "outlet": "Veja",
+   "title": "O que a área técnica do TSE disse sobre o canal ‘Exército do Lula’, que é questionado por Flávio",
+   "url": "https://veja.abril.com.br/politica/o-que-a-area-tecnica-do-tse-disse-sobre-o-canal-exercito-do-lula-que-e-questionado-por-flavio",
+   "published_at": "2026-10-12T17:18:37Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Técnicos do TSE não encontram conteúdo falso no canal Exército do Lula",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tecnicos-do-tse-nao-encontram-conteudo-falso-no-canal-exercito-do-lula",
+   "published_at": "2026-10-12T16:57:00Z"
+  }
+ ],
+ "note": "Informações válidas até o corte das 18:27. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
