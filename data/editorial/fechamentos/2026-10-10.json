@@ -1,0 +1,237 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-10",
+ "public_title": "FECHAMENTO — 10 de outubro de 2026 · edição retrospectiva",
+ "published_at": "2026-10-14T19:25:08Z",
+ "cutoff_at": "2026-10-12T09:23:26-03:00",
+ "context": "Edição retrospectiva: reconstruída em 12/10/2026 com o que as fontes registravam em 10 de outubro. Desdobramentos posteriores não entram neste texto; estão nas edições seguintes",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "PF e PGR negam que Vorcaro tenha afirmado em delação que financiou documentário sobre Lula",
+    "story": "pf-e-pgr-negam-que-vorcaro-tenha-afirmado-em-delacao-que-financiou-documentario"
+   },
+   {
+    "text": "Mendonça manda campanha de Lula retirar vídeo que atribui a Flávio cortes em programas sociais",
+    "story": "mendonca-manda-campanha-de-lula-retirar-video-que-atribui-a-flavio-cortes-em"
+   },
+   {
+    "text": "TSE suspende site que oferecia criptomoeda a quem divulgasse apoio a Flávio Bolsonaro",
+    "story": "tse-suspende-site-que-oferecia-criptomoeda-a-quem-divulgasse-apoio-a-flavio"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "pf-e-pgr-negam-que-vorcaro-tenha-afirmado-em-delacao-que-financiou-documentario",
+   "headline": "PF e PGR negam que Vorcaro tenha afirmado em delação que financiou documentário sobre Lula",
+   "lead": true,
+   "what_happened": "A PF afirmou que Vorcaro não prestou depoimento com o teor relatado pela Veja nem entregou anexos, documentos ou informações com esse conteúdo. A PGR afirmou que não houve depoimento oral de Vorcaro porque a proposta de colaboração foi rejeitada.",
+   "what_changed": "A defesa de Vorcaro diz não confirmar o conteúdo de qualquer material divulgado. A PF informou ter recebido notícia-crime pedindo apuração dos fatos relacionados à publicação. Alegação atribuída (Veja (segundo o g1)), não comprovada: Reportagem da revista Veja afirma que Vorcaro teria dito, em áudio, que financiou o documentário sobre a vida de Lula. Alegação atribuída (VEJA (reportagem de capa)), não comprovada: Segundo a reportagem de capa da VEJA, um áudio atribuído a Vorcaro relataria pagamentos de propina ao Instituto Lula e repasses \"por fora\" para o documentário de Oliver Stone. Alegação atribuída, não comprovada.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "PF e PGR negam que Vorcaro tenha afirmado que financiou documentário sobre Lula",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/09/pf-e-pgr-negam-que-vorcaro-tenha-afirmado-em-delacao-que-financiou-documentario-sobre-lula.ghtml",
+     "published_at": "2026-10-09T23:56:17Z",
+     "summary": "Reportagem da revista Veja afirma que Vorcaro teria dito, em áudio, que financiou o documentário sobre a vida de Lula.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Poder360",
+     "title": "Voz em áudio de “Veja” é de Vorcaro, diz advogado de fundador do Master",
+     "url": "https://poder360.com.br/poder-justica/voz-em-audio-de-veja-e-de-vorcaro-diz-advogado-de-fundador-do-master",
+     "published_at": "2026-10-10T16:44:53Z",
+     "summary": "A PF afirmou que Vorcaro não prestou depoimento com o teor relatado pela Veja nem entregou anexos, documentos ou informações com esse conteúdo.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Veja",
+     "title": "Entenda ponto a ponto a gravidade da reportagem de VEJA com áudio e documentos de Vorcaro",
+     "url": "https://veja.abril.com.br/politica/entenda-ponto-a-ponto-a-gravidade-da-reportagem-de-veja-com-audio-e-documentos-de-vorcaro",
+     "published_at": "2026-10-10T15:11:40Z",
+     "summary": "Segundo a reportagem de capa da VEJA, um áudio atribuído a Vorcaro relataria pagamentos de propina ao Instituto Lula e repasses \"por fora\" para o documentário de Oliver Stone. Alegação atribuída, não comprovada.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Em 10/10, é isto que as fontes citadas registravam. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "mendonca-manda-campanha-de-lula-retirar-video-que-atribui-a-flavio-cortes-em",
+   "headline": "Mendonça manda campanha de Lula retirar vídeo que atribui a Flávio cortes em programas sociais",
+   "lead": false,
+   "what_happened": "Em decisão liminar de 8/10, o ministro do TSE André Mendonça mandou retirar o vídeo e vedou sua republicação, com multa de R$ 10 mil por nova postagem. Segundo a decisão, o plano de governo registrado no TSE contém compromisso expresso de manutenção dos programas sociais existentes.",
+   "what_changed": "O ministro observou que a reportagem exibida no vídeo tratava de estudos de ajuste de até R$ 250 bilhões e não mencionava os programas citados por Lula. Flávio tem negado que fará cortes em programas sociais e diz que o \"tesouraço\" será realizado com reforma administrativa, enxugamento da máquina pública e redução de cargos comissionados. Alegação atribuída (Luiz Inácio Lula da Silva (vídeo)), não comprovada: No vídeo, Lula afirma que o adversário cortaria Pé-de-Meia, Farmácia Popular, Minha Casa Minha Vida, merenda escolar e gás do povo. Alegação atribuída (g1 (Lula)), não comprovada: Lula afirmou que o \"tesouraço\" prometido por Flávio Bolsonaro será feito em cima de programas sociais como Bolsa Família, Farmácia Popular, Pé-de-Meia e Minha Casa, Minha Vida.",
+   "coverage": [
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Mendonça manda Lula excluir vídeo que atribui a Flávio cortes em programas sociais",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/mendonca-manda-lula-excluir-video-que-atribui-a-flavio-cortes-em-programas-sociais",
+     "published_at": "2026-10-09T13:26:04Z",
+     "summary": "Em decisão liminar de 8/10, o ministro do TSE André Mendonça mandou retirar o vídeo e vedou sua republicação, com multa de R$ 10 mil por nova postagem.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "No RN, Lula diz que 'tesouraço' de Flávio será feito em cima de programas sociais e apela por mobilização de quem não votou no 1º turno",
+     "url": "https://g1.globo.com/rn/rio-grande-do-norte/eleicoes/2026/noticia/2026/10/10/no-rn-lula-diz-que-tesouraco-de-flavio-sera-feito-em-cima-de-programas-sociais-e-que-candidato-do-pl-beija-a-bandeira-dos-eua.ghtml",
+     "published_at": "2026-10-10T14:55:26Z",
+     "summary": "Lula afirmou que o \"tesouraço\" prometido por Flávio Bolsonaro será feito em cima de programas sociais como Bolsa Família, Farmácia Popular, Pé-de-Meia e Minha Casa, Minha Vida.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Lula cobra detalhes do ajuste fiscal de Flávio, que nega cortes em programas sociais",
+     "url": "https://gazetadopovo.com.br/republica/lula-cobra-detalhes-do-ajuste-fiscal-de-flavio-que-nega-cortes-em-programas-sociais",
+     "published_at": "2026-10-10T16:59:07Z",
+     "summary": "O ministro André Mendonça, do TSE, determinou a retirada do vídeo em que Lula associava o ajuste a perdas em programas específicos, por falta de respaldo objetivo para atribuir essas propostas ao adversário.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Jovem Pan",
+     "title": "Lula questiona cortes prometidos por Flávio: ‘Eu e o povo queremos saber’",
+     "url": "https://jovempan.com.br/politica/lula-questiona-cortes-prometidos-por-flavio-eu-e-o-povo-queremos-saber",
+     "published_at": "2026-10-10T17:37:34Z",
+     "summary": "Segundo a Jovem Pan, o plano de governo de Flávio não deixa claro onde serão feitos os cortes, mas ele tem dito que não pretende acabar com benefícios como Bolsa Família ou Farmácia Popular.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Veja",
+     "title": "Lula critica ‘tesouraço’ de Flávio e questiona de onde virão os cortes",
+     "url": "https://veja.abril.com.br/politica/lula-critica-tesouraco-de-flavio-e-questiona-de-onde-virao-os-cortes",
+     "published_at": "2026-10-10T19:34:19Z",
+     "summary": "Lula questionou de onde Flávio Bolsonaro tirará o dinheiro para o corte de gastos apelidado de \"tesouraço\".",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Em 10/10, é isto que as fontes citadas registravam. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "tse-suspende-site-que-oferecia-criptomoeda-a-quem-divulgasse-apoio-a-flavio",
+   "headline": "TSE suspende site que oferecia criptomoeda a quem divulgasse apoio a Flávio Bolsonaro",
+   "lead": false,
+   "what_happened": "O TSE determinou a suspensão do site 'Brasil 22 Token', que oferecia tokens a quem divulgasse uma comunidade de apoio ao voto em Flávio Bolsonaro. Para a ministra Estela Aranha, o programa constitui, em tese, mecanismo de vantagem econômica vinculada à divulgação de conteúdo eleitoral.",
+   "what_changed": "A decisão incluiu a quebra do sigilo dos dados cadastrais das contas de onde partiram as criptomoedas. O g1 procurou a campanha de Flávio Bolsonaro, que não respondeu.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "TSE suspende site que oferece criptomoeda a quem divulgar conteúdo que defende voto em Flávio Bolsonaro",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/09/tse-suspende-site-que-oferece-criptomoeda-a-quem-divulgar-conteudo-que-defende-voto-em-flavio-bolsonaro.ghtml",
+     "published_at": "2026-10-09T23:48:38Z",
+     "summary": "O TSE determinou a suspensão do site 'Brasil 22 Token', que oferecia tokens a quem divulgasse uma comunidade de apoio ao voto em Flávio Bolsonaro.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Em 10/10, é isto que as fontes citadas registravam. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "douglas-ruas-comemora-eleicao-no-rj-e-cita-renovacao-e-mudanca",
+   "title": "Douglas Ruas comemora eleição no RJ e cita “renovação” e “mudança”",
+   "text": "Douglas Ruas (PL) comemorou a vitória no 1º turno das eleições estaduais do Rio de Janeiro. Com a exclusão dos 274.411 votos de Garotinho, Ruas passou de 49,27% para 50,88% dos votos válidos.",
+   "sources": [
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-eleicoes-2026/douglas-ruas-comemora-eleicao-no-rj-e-cita-renovacao-e-mudanca",
+     "published_at": "2026-10-10T21:01:17Z"
+    },
+    {
+     "outlet": "Jovem Pan",
+     "url": "https://jovempan.com.br/politica/o-povo-escolheu-a-renovacao-diz-ruas-apos-ter-eleicao-no-1o-turno-oficializada",
+     "published_at": "2026-10-10T19:42:31Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "g1",
+   "title": "PF e PGR negam que Vorcaro tenha afirmado que financiou documentário sobre Lula",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/09/pf-e-pgr-negam-que-vorcaro-tenha-afirmado-em-delacao-que-financiou-documentario-sobre-lula.ghtml",
+   "published_at": "2026-10-09T23:56:17Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Voz em áudio de “Veja” é de Vorcaro, diz advogado de fundador do Master",
+   "url": "https://poder360.com.br/poder-justica/voz-em-audio-de-veja-e-de-vorcaro-diz-advogado-de-fundador-do-master",
+   "published_at": "2026-10-10T16:44:53Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Veja",
+   "title": "Entenda ponto a ponto a gravidade da reportagem de VEJA com áudio e documentos de Vorcaro",
+   "url": "https://veja.abril.com.br/politica/entenda-ponto-a-ponto-a-gravidade-da-reportagem-de-veja-com-audio-e-documentos-de-vorcaro",
+   "published_at": "2026-10-10T15:11:40Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Mendonça manda Lula excluir vídeo que atribui a Flávio cortes em programas sociais",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/mendonca-manda-lula-excluir-video-que-atribui-a-flavio-cortes-em-programas-sociais",
+   "published_at": "2026-10-09T13:26:04Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "No RN, Lula diz que 'tesouraço' de Flávio será feito em cima de programas sociais e apela por mobilização de quem não votou no 1º turno",
+   "url": "https://g1.globo.com/rn/rio-grande-do-norte/eleicoes/2026/noticia/2026/10/10/no-rn-lula-diz-que-tesouraco-de-flavio-sera-feito-em-cima-de-programas-sociais-e-que-candidato-do-pl-beija-a-bandeira-dos-eua.ghtml",
+   "published_at": "2026-10-10T14:55:26Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Lula cobra detalhes do ajuste fiscal de Flávio, que nega cortes em programas sociais",
+   "url": "https://gazetadopovo.com.br/republica/lula-cobra-detalhes-do-ajuste-fiscal-de-flavio-que-nega-cortes-em-programas-sociais",
+   "published_at": "2026-10-10T16:59:07Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Jovem Pan",
+   "title": "Lula questiona cortes prometidos por Flávio: ‘Eu e o povo queremos saber’",
+   "url": "https://jovempan.com.br/politica/lula-questiona-cortes-prometidos-por-flavio-eu-e-o-povo-queremos-saber",
+   "published_at": "2026-10-10T17:37:34Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Veja",
+   "title": "Lula critica ‘tesouraço’ de Flávio e questiona de onde virão os cortes",
+   "url": "https://veja.abril.com.br/politica/lula-critica-tesouraco-de-flavio-e-questiona-de-onde-virao-os-cortes",
+   "published_at": "2026-10-10T19:34:19Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "TSE suspende site que oferece criptomoeda a quem divulgar conteúdo que defende voto em Flávio Bolsonaro",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/09/tse-suspende-site-que-oferece-criptomoeda-a-quem-divulgar-conteudo-que-defende-voto-em-flavio-bolsonaro.ghtml",
+   "published_at": "2026-10-09T23:48:38Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Douglas Ruas comemora eleição no RJ e cita “renovação” e “mudança”",
+   "url": "https://poder360.com.br/poder-eleicoes-2026/douglas-ruas-comemora-eleicao-no-rj-e-cita-renovacao-e-mudanca",
+   "published_at": "2026-10-10T21:01:17Z"
+  },
+  {
+   "outlet": "Jovem Pan",
+   "title": "‘O povo escolheu a renovação’, diz Ruas após ter eleição no 1º turno oficializada",
+   "url": "https://jovempan.com.br/politica/o-povo-escolheu-a-renovacao-diz-ruas-apos-ter-eleicao-no-1o-turno-oficializada",
+   "published_at": "2026-10-10T19:42:31Z"
+  }
+ ],
+ "note": "Edição retrospectiva: reconstruída em 12/10/2026 com o que as fontes registravam em 10 de outubro. Desdobramentos posteriores não entram neste texto; estão nas edições seguintes. Alegação não é prova.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
