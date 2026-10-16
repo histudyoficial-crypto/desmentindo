@@ -493,22 +493,36 @@
   }
   // ref = dia operacional quando o FECHAMENTO pode não ser de hoje (estado C): ontem → "Fechamento de ontem";
   // mais antigo → carimbo de distância (agoLabel, §32.4). Sem ref, ou do próprio dia, nada muda.
+  // CONCLUSÕES (16/10): só o que é conclusão própria de cada história entra como bloco numerado. A ressalva padrão do
+  // FECHAMENTO ("Até HH:MM, é isto que as fontes citadas registram…") não é conclusão: aparece uma vez, como nota.
+  // Texto repetido não vira dois blocos. Nada é escrito aqui: só o que está no FECHAMENTO aprovado, sem repetição.
+  var GENERIC_CONC = /é isto que as fontes citadas registra(?:m|vam)\./;
+  function fxConclusions(F) {
+    var seen = {}, items = [], note = "";
+    (F.main_stories || []).forEach(function (s) {
+      var c = String((s && s.conclusion) || "").trim();
+      if (!c) return;
+      if (GENERIC_CONC.test(c)) { if (!note) note = c; return; }
+      if (!seen[c]) { seen[c] = 1; items.push(c); }
+    });
+    return { items: items, note: note };
+  }
   function fxHome(F, ref, prev) {
     var fu = "#/fechamento/" + F.edition_date, pts = (F.opening && F.opening.points) || [], cut = fxCut(F);
     var ago = ref ? civilDays(F.edition_date, ref) : 0;
-    var main = '<div class="fxh-main"><p class="fxh-k"><span class="fxh-tag">' + (ago === 1 ? "Fechamento de ontem" : "Fechamento") + "</span>" +
+    var cc = fxConclusions(F);
+    var main = '<div class="fxh-main"><p class="fxh-k"><span class="fxh-tag">' + (ago === 1 ? "Fechamento de ontem" : ago > 1 ? "Último fechamento" : "Fechamento") + "</span>" +
       (ago > 1 ? tc("ago", agoLabel(F.edition_date, ref)) : "") + tc("date", WD3[dParts(F.edition_date).wd].toUpperCase() + " " + tcDate(F.edition_date), F.edition_date) +
       (cut ? tc("cut", fxCutL(F) + " " + cut, F.cutoff_at) : "") + "</p>" +
       '<h2 class="fxh-t" id="fx-home-t"><a href="' + e(fu) + '">' + e(F.public_title) + "</a></h2>" +
       (pts.length ? '<p class="fxh-ot">' + (em1(pts) ? "Em 1 minuto" : e((F.opening && F.opening.title) || "")) + "</p>" : "") +
       (pts.length ? '<ol class="fxh-pts">' + pts.map(function (p, i) {
         return '<li><b aria-hidden="true">' + (i + 1) + '</b><a href="' + e(fu + "#" + p.story) + '">' + e(p.text) + "</a></li>";
-      }).join("") + "</ol>" : "") +
+      }).join("") + "</ol>" : "") + (cc.note ? '<p class="fxh-note">' + e(cc.note) + "</p>" : "") +
       '<div class="fxh-go"><a class="fxh-read" href="' + e(fu) + '">Ler o fechamento <span aria-hidden="true">→</span></a>' +
       mandar(SITE + "/fechamento/" + F.edition_date + "/", F.public_title, "Mandar o fechamento de " + dDay(F.edition_date), "mandar-ink") + "</div></div>";
-    var st = (F.main_stories || []).filter(function (s) { return s.conclusion; });
-    var side = st.length ? '<div class="fxh-side"><p class="fxh-sk">O que dá para concluir' + (cut && !fxRetro(F) ? " até " + e(cut) : "") + "</p>" + st.map(function (s, i) {
-      return '<div class="fxh-c"><p class="fxh-cn">' + (i + 1) + '</p><p>' + e(s.conclusion) + "</p></div>";
+    var side = cc.items.length ? '<div class="fxh-side"><p class="fxh-sk">O que dá para concluir' + (cut && !fxRetro(F) ? " até " + e(cut) : "") + "</p>" + cc.items.map(function (c, i) {
+      return '<div class="fxh-c"><p class="fxh-cn">' + (i + 1) + '</p><p>' + e(c) + "</p></div>";
     }).join("") + "</div>" : "";
     return '<section class="fxh' + (prev ? " fxh-prev" : "") + '" id="fechamento" aria-labelledby="fx-home-t">' + main + side + "</section>";
   }
@@ -560,7 +574,7 @@
   function saidBlock(H, R, ref) {
     var items = diversify((H.said || []).filter(function (s) { return s && s.item && YT_ID.test(s.item.video_id || ""); })).slice(0, 3);
     return '<section class="hm-said" aria-labelledby="hm-said-h"><h2 class="hm-h" id="hm-said-h">Já falaram sobre isso</h2>' +
-      '<p class="hm-sub">Memória em vídeo: o que já foi dito sobre os casos, com data e minuto.</p>' +
+      '<p class="hm-sub">Memória em vídeo dos casos do arquivo: o que já foi dito, com data e minuto.</p>' +
       (items.length ? '<ul class="said-mini" id="ja-falaram">' + items.map(function (s) { return miniSaid(s.item, s, R, ref); }).join("") + "</ul>"
                     : '<p class="hm-none">Ainda não há trechos ligados aos casos de hoje. A memória continua disponível na busca.</p>') + "</section>";
   }
@@ -604,7 +618,9 @@
     // depois, rotulado pela distância ("Fechamento de ontem") e em escala de contexto; no B o FECHAMENTO de hoje é a capa e o
     // Morning fica compacto; no C (nada aprovado hoje) o FECHAMENTO anterior continua sendo a capa.
     if (A) h += morningBlock(A.edition, M, fxToday);
-    if (LF && LF.edition_date) h += fxHome(LF, fxToday ? "" : od, A && !fxToday);
+    // Mais antigo que ontem (16/10): continua no topo, rotulado "Último fechamento" com a distância, mas em escala de
+    // contexto, para não parecer o acontecimento do dia. Ontem e hoje não mudam.
+    if (LF && LF.edition_date) h += fxHome(LF, fxToday ? "" : od, (A && !fxToday) || (!A && civilDays(LF.edition_date, od) > 1));
     return h;
   }
   P.home = function () {
@@ -617,7 +633,8 @@
       return Promise.all(mats.map(function (x) { return loadTyped("materias", x.slug); })).then(function (MD) {
         var h = '<h1 class="sr">Desmentindo: notícias passam, o que foi dito fica</h1>' + homeTop(A, LF, od) + invBlock();
         // referência temporal da memória: edição corrente quando houver; senão o último FECHAMENTO
-        var ref = A ? A.edition : (LF && LF.edition_date) || "";
+        // (16/10) sem edição de hoje, sem "N dias antes": a distância contra um FECHAMENTO antigo não diz nada ao leitor
+        var ref = A ? A.edition : "";
         h += '<div class="hm-grid">' + matBlock(mats, MD) + saidBlock(H, TR, ref) + "</div>" + memorySearch(H);
         return h + '<p class="hm-motto">Notícias passam. O que foi dito fica.</p>';
       });
