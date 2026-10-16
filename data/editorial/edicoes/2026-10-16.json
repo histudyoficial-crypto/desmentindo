@@ -1,0 +1,252 @@
+{
+ "schema": "desmentindo.public.editorial_edition.v1",
+ "edition": "2026-10-16",
+ "label": "AGORA",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova; fonte primária indicada quando obtida.",
+ "items": [
+  {
+   "id": "2026-10-16-congresso-promulga-fim-da-escala-6x1-em-primeira-mudanca-da-jornada",
+   "date": "2026-10-16",
+   "label": "AGORA",
+   "title": "Congresso promulga fim da escala 6x1 em primeira mudança da jornada de trabalho desde 1988",
+   "text": "O g1 relata que o Congresso promulga a emenda que acaba com a escala 6x1 e garante dois dias de repouso remunerado por semana, sem redução salarial. A Folha relata que a PEC foi aprovada no Senado com 75 votos favoráveis e que apenas Hamilton Mourão votou contra. A Folha relata que a carga semanal cai de 44 para 42 horas em um primeiro momento e para 40 horas após 12 meses. A Gazeta do Povo relata que Alcolumbre também promulgou a PEC da aposentadoria diferenciada para agentes comunitários de saúde e de combate às endemias. O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "g1",
+     "title": "Congresso promulga fim da escala 6x1 em primeira mudança da jornada de trabalho desde 1988",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/16/6x1-promulgacao.ghtml"
+    },
+    {
+     "name": "Folha",
+     "title": "Congresso promulga fim da escala 6x1 em primeira mudança da jornada de trabalho desde 1988",
+     "url": "https://www1.folha.uol.com.br/mercado/2026/10/calculadora-do-fim-da-escala-6x1-mostra-como-fica-jornada-simule.shtml"
+    },
+    {
+     "name": "Gazeta do Povo",
+     "title": "Congresso promulga fim da escala 6x1 em primeira mudança da jornada de trabalho desde 1988",
+     "url": "https://gazetadopovo.com.br/republica/congresso-promulga-fim-escala-6x1-ato-com-lula"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-16-senado-aprova-projeto-que-amplia-limite-do-mei-e-perdoa-dividas-de",
+   "date": "2026-10-16",
+   "label": "AGORA",
+   "title": "Senado aprova projeto que amplia limite do MEI e perdoa dívidas de inadimplentes",
+   "text": "O Senado aprovou, por 78 votos a favor e nenhum contra, o projeto que amplia o limite do MEI e perdoa dívidas. O limite de faturamento do MEI será de R$ 110 mil em 2027 e R$ 140 mil a partir de 2028. O g1 relata que a oposição criticou a votação da medida às vésperas do segundo turno. A fonte oficial relata que o impacto orçamentário da expansão do teto será de R$ 1,57 bilhão em 2027, R$ 3,15 bilhões em 2028 e R$ 3,38 bilhões em 2029.",
+   "sources": [
+    {
+     "name": "g1",
+     "title": "Senado aprova projeto que amplia limite do MEI e perdoa dívidas de inadimplentes",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/15/senado-aprova-projeto-que-amplia-limite-do-mei-e-perdoa-dividas-de-inadimplentes.ghtml"
+    },
+    {
+     "name": "Fonte oficial",
+     "title": "Senado aprova projeto que amplia limite do MEI e perdoa dívidas de inadimplentes",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/senado-aprova-aumento-de-limite-e-perdao-de-divida-para-meis"
+    },
+    {
+     "name": "Gazeta do Povo",
+     "title": "Senado aprova projeto que amplia limite do MEI e perdoa dívidas de inadimplentes",
+     "url": "https://gazetadopovo.com.br/economia/senado-aprova-urgencia-perdao-dividas-meis-aumento-teto"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "PARTIAL",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas; parte das afirmações tem documento oficial vinculado"
+   }
+  },
+  {
+   "id": "2026-10-16-tse-derruba-espera-de-48-horas-para-reativar-canais-de-whatsapp-como",
+   "date": "2026-10-16",
+   "label": "AGORA",
+   "title": "TSE derruba espera de 48 horas para reativar canais de WhatsApp como 'Exército do Lula'",
+   "text": "A Folha relata que o TSE derrubou a regra de espera de 48 horas para reativar canais de WhatsApp após registro pelas campanhas. O g1 relata que a decisão do TSE foi unânime. A Folha relata que o presidente do TSE viu \"traços incontroversos\" de atuação coordenada do Exército do Lula com a campanha de Lula, e que o PT nega vínculo. Alegação atribuída (g1), não comprovada: A campanha de Flávio disse que o canal Exército do Lula disseminava desinformação, o que Janones nega. O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "Folha",
+     "title": "TSE derruba espera de 48 horas para reativar canais de WhatsApp como 'Exército do Lula'",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-derruba-regra-que-exigia-espera-de-48-horas-para-reativar-canais-de-whatsapp-como-o-exercito-do-lula.shtml"
+    },
+    {
+     "name": "g1",
+     "title": "TSE derruba espera de 48 horas para reativar canais de WhatsApp como 'Exército do Lula'",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/15/por-unanimidade-tse-derruba-prazo-de-48-horas-para-uso-de-canais-registrados-de-forma-tardia-por-campanhas.ghtml"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-16-justica-eleitoral-determina-investigacao-de-ana-elisa-pela-pf-apos",
+   "date": "2026-10-16",
+   "label": "AGORA",
+   "title": "Justiça Eleitoral determina investigação de Ana Elisa pela PF após pedido de Flávio Bolsonaro",
+   "text": "A 103ª Zona Eleitoral de Divinópolis determinou que a Polícia Federal abra inquérito para investigar a deputada federal eleita Ana Elisa Santos Silva (PT). O MPE se opôs ao pedido de Flávio para proibir Ana Elisa de se manifestar nas redes sobre as eleições presidenciais, por considerá-lo genérico e de limites indeterminados. O promotor Fábio Barbieri Caetano entendeu que as publicações não parecem ser opiniões ou críticas políticas protegidas, mas afirmação sobre acontecimento objetivamente verificável. Alegação atribuída (Flávio Bolsonaro (via Estadão)), não comprovada: Flávio Bolsonaro apresentou notícia-crime acusando Ana Elisa de divulgar fatos sabidamente inverídicos na campanha eleitoral. Alegação atribuída (Flávio Bolsonaro (via Gazeta do Povo)), não comprovada: Flávio acusa a petista de propagar a fake news de que teria como plano retirar de Nossa Senhora Aparecida o título de padroeira do Brasil. O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "Estadão",
+     "title": "Justiça Eleitoral determina investigação de Ana Elisa pela PF após pedido de Flávio Bolsonaro",
+     "url": "https://estadao.com.br/politica/eleicoes/justica-eleitoral-determina-investigacao-de-ana-elisa-pela-pf-nprp"
+    },
+    {
+     "name": "Gazeta do Povo",
+     "title": "Justiça Eleitoral determina investigação de Ana Elisa pela PF após pedido de Flávio Bolsonaro",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/justica-manda-pf-investigar-ana-elisa-por-fake-news-contra-flavio"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-16-vorcaro-editava-textos-do-site-metropoles-antes-de-irem-ao-ar",
+   "date": "2026-10-16",
+   "label": "AGORA",
+   "title": "Vorcaro editava textos do site Metrópoles antes de irem ao ar",
+   "text": "Mensagens extraídas pela PF do celular de Vorcaro mostram que a direção do Metrópoles submetia reportagens a ele antes da publicação e atendia a pedidos de edição. Pelo menos 14 textos do site foram enviados previamente a Vorcaro e 11 foram alterados após pedidos dele, segundo levantamento do UOL. Lilian Tahan afirmou que checar com a fonte se a matéria reflete o contexto é prática que adota com personalidades empresariais, da política e do Judiciário. Segundo o Estadão, Vorcaro chegou a derrubar a publicação de um texto, e Tahan, procurada, não se manifestou. O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "Folha",
+     "title": "Vorcaro editava textos do site Metrópoles antes de irem ao ar",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/vorcaro-editava-textos-do-site-metropoles-antes-de-irem-ao-ar.shtml"
+    },
+    {
+     "name": "Estadão",
+     "title": "Vorcaro editava textos do site Metrópoles antes de irem ao ar",
+     "url": "https://estadao.com.br/politica/vorcaro-editava-reportagens-derrubava-textos-e-sugeria-pautas-ao-portal-metropoles"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-16-alcolumbre-diz-que-vai-promulgar-fim-da-6x1-e-aposentadoria-especial",
+   "date": "2026-10-16",
+   "label": "AGORA",
+   "title": "Alcolumbre diz que vai promulgar fim da 6x1 e aposentadoria especial para agentes de saúde na sexta",
+   "text": "Alcolumbre afirmou que vai promulgar na sexta-feira (16) a PEC do fim da 6x1 e a PEC da aposentadoria especial para agentes comunitários de saúde. O Senado aprovou a PEC em dois turnos com 75 votos favoráveis e um contrário, de Hamilton Mourão. A PEC prevê transição: dois meses após a promulgação a jornada cai de 44 para 42 horas, e um ano depois para 40 horas semanais. O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "g1",
+     "title": "Alcolumbre diz que vai promulgar fim da 6x1 e aposentadoria especial para agentes de saúde na sexta",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/15/alcolumbre-diz-que-vai-promulgar-fim-da-6x1-e-aposentadoria-especial-para-agentes-comunitarios-de-saude.ghtml"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-16-tse-atende-a-lula-e-determina-que-meta-nao-interfira-em-distribuicao",
+   "date": "2026-10-16",
+   "label": "AGORA",
+   "title": "TSE atende a Lula e determina que Meta não interfira em distribuição de conteúdo político-eleitoral",
+   "text": "O ministro Marco Aurélio Bellizze determinou que a Meta não interfira na distribuição de conteúdo político-eleitoral de Lula nem de Flávio Bolsonaro, sob multa diária de R$ 500 mil. A Meta argumentou que as instabilidades decorreram de incidentes técnicos globais e pontuais. Segundo a Meta, o bloqueio da conta de anúncios foi um erro automatizado corrigido em pouco mais de uma hora. A liminar foi submetida ao referendo do plenário do TSE. Alegação atribuída (Campanha de Lula (via g1)), não comprovada: A campanha de Lula disse que a Meta tem falhado de forma reiterada e sistemática na entrega de postagens da coligação. O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "g1",
+     "title": "TSE atende a Lula e determina que Meta não interfira em distribuição de conteúdo político-eleitoral",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/15/tse-determina-que-meta-nao-interfira-em-distribuicao-de-conteudo-politico-eleitoral-sobre-qualquer-candidato.ghtml"
+    },
+    {
+     "name": "Gazeta do Povo",
+     "title": "TSE atende a Lula e determina que Meta não interfira em distribuição de conteúdo político-eleitoral",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/tse-atende-campanha-petista-e-impoe-regras-a-meta-para-garantir-isonomia-entre-lula-e-flavio"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-16-tse-derruba-decisao-de-mendonca-e-barra-posts-em-que-flavio-associa",
+   "date": "2026-10-16",
+   "label": "AGORA",
+   "title": "TSE derruba decisão de Mendonça e barra posts em que Flávio associa Lula a escândalo do INSS",
+   "text": "O plenário do TSE determinou a remoção de conteúdos de Flávio Bolsonaro sobre fala de Lula sobre garis, nos quais ele associava o presidente ao escândalo do INSS. Segundo a CNN, Mendonça afirmou que propagandas dizendo que Flávio é contra o fim da 6x1 ocorrem em \"grave descontextualização\", pois ele votou a favor da proposta. A propaganda de Lula afirmou que Flávio teria mudado de posição sobre o tema após pressão do presidente e das manifestações populares. A criação do Ministério da Prosperidade, apresentada por Flávio, não está prevista no plano de governo registrado na Justiça Eleitoral. O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "Folha",
+     "title": "TSE derruba decisão de Mendonça e barra posts em que Flávio associa Lula a escândalo do INSS",
+     "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/tse-derruba-decisao-de-mendonca-e-barra-posts-em-que-flavio-acusa-lula-de-menosprezar-garis.shtml"
+    },
+    {
+     "name": "CNN Brasil",
+     "title": "TSE derruba decisão de Mendonça e barra posts em que Flávio associa Lula a escândalo do INSS",
+     "url": "https://cnnbrasil.com.br/eleicoes/mendonca-barra-campanhas-de-lula-que-dizem-que-flavio-e-contra-o-fim-da-6x1"
+    },
+    {
+     "name": "g1",
+     "title": "TSE derruba decisão de Mendonça e barra posts em que Flávio associa Lula a escândalo do INSS",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/15/horario-eleitoral-14-outubro-presidente.ghtml"
+    },
+    {
+     "name": "Folha",
+     "title": "TSE derruba decisão de Mendonça e barra posts em que Flávio associa Lula a escândalo do INSS",
+     "url": "https://www1.folha.uol.com.br/colunas/painel/2026/10/fim-da-escala-6x1-da-no-tatico-em-flavio-que-aposta-na-seguranca-para-contra-atacar-veja-video.shtml"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-16-tre-rj-decide-pedir-apoio-de-tropas-federais-para-o-segundo-turno",
+   "date": "2026-10-16",
+   "label": "AGORA",
+   "title": "TRE-RJ decide pedir apoio de tropas federais para o segundo turno",
+   "text": "O TRE-RJ decidiu em sessão plenária pedir auxílio de tropas federais para o segundo turno, em 25 de outubro. O pedido será encaminhado ao TSE, que, se aprovar, fará requisição formal ao Ministério da Defesa. O presidente do TRE-RJ, Claudio de Mello Tavares, afirmou que o cenário de segurança pública permanece inalterado. A força federal atuará no patrulhamento de 15 cidades e no apoio logístico para distribuição de urnas.",
+   "sources": [
+    {
+     "name": "Fonte oficial",
+     "title": "TRE-RJ decide pedir apoio de tropas federais para o segundo turno",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tre-rj-decide-pedir-apoio-de-tropas-federais-para-o-segundo-turno"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "PARTIAL",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas; parte das afirmações tem documento oficial vinculado"
+   }
+  }
+ ]
+}
