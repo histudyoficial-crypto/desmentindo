@@ -1,0 +1,648 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-14",
+ "public_title": "FECHAMENTO — 14 de outubro de 2026",
+ "published_at": "2026-10-15T21:52:35Z",
+ "cutoff_at": "2026-10-14T21:01:29-03:00",
+ "context": "Fechamento de 14 de outubro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "Mendonça muda voto e TSE manda remover postagem de Flávio que liga Lula a crime organizado",
+    "story": "mendonca-muda-voto-e-tse-manda-remover-postagem-de-flavio-que-liga-lula-a-crime"
+   },
+   {
+    "text": "Canal 'Exército do Lula' sai do ar; Kassio libera grupo, mas só 48 h após registro por campanha",
+    "story": "canal-exercito-do-lula-sai-do-ar-kassio-libera-grupo-mas-so-48-h-apos-registro"
+   },
+   {
+    "text": "Mendonça determina a exclusão de propaganda de Lula que aponta cortes em programas sociais em caso de vitória de Flávio Bolsonaro",
+    "story": "mendonca-determina-a-exclusao-de-propaganda-de-lula-que-aponta-cortes-em"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "mendonca-muda-voto-e-tse-manda-remover-postagem-de-flavio-que-liga-lula-a-crime",
+   "headline": "Mendonça muda voto e TSE manda remover postagem de Flávio que liga Lula a crime organizado",
+   "lead": true,
+   "what_happened": "O TSE determinou a exclusão de conteúdos que associam Lula ao crime organizado, com André Mendonça ajustando seus votos em dois casos. Mendonça disse que as falas usam imagens e referências a PCC e CV sem contexto fático.",
+   "what_changed": "O ministro Marco Aurélio Bellizze, em decisão liminar, determinou a remoção de vídeo publicado por Nikolas Ferreira e replicado por Flávio Bolsonaro em que crianças criticam Lula. Nikolas e Flávio têm 24 horas após a intimação para remover as publicações, e a decisão ainda será submetida ao plenário do TSE. Alegação atribuída (PT, segundo o g1), não comprovada: O PT afirmou que a peça leva eleitores à desinformação ao apresentar informações verdadeiras de forma fragmentada ou fora de contexto.",
+   "coverage": [
+    {
+     "outlet": "Estadão",
+     "title": "Mendonça muda voto e TSE manda remover postagem de Flávio que liga Lula a crime organizado",
+     "url": "https://estadao.com.br/politica/eleicoes/mendonca-muda-voto-e-tse-manda-remover-postagens-que-ligam-lula-a-crime-organizado",
+     "published_at": "2026-10-14T01:28:41Z",
+     "summary": "O TSE determinou a exclusão de conteúdos que associam Lula ao crime organizado, com André Mendonça ajustando seus votos em dois casos.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "TSE manda tirar do ar vídeo divulgado por Nikolas e Flávio Bolsonaro em que crianças criticam Lula",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/14/tse-remove-video-nikolas-criancas-pt.ghtml",
+     "published_at": "2026-10-14T12:10:19Z",
+     "summary": "O ministro Marco Aurélio Bellizze, em decisão liminar, determinou a remoção de vídeo publicado por Nikolas Ferreira e replicado por Flávio Bolsonaro em que crianças criticam Lula.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Jovem Pan",
+     "title": "TSE manda remover vídeo divulgado por Nikolas e Flávio em que crianças criticam Lula",
+     "url": "https://jovempan.com.br/politica/tse-manda-remover-video-divulgado-por-nikolas-e-flavio-em-que-criancas-criticam-lula",
+     "published_at": "2026-10-14T13:05:48Z",
+     "summary": "Nikolas e Flávio têm 24 horas após a intimação para remover as publicações, e a decisão ainda será submetida ao plenário do TSE.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 21:01, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "canal-exercito-do-lula-sai-do-ar-kassio-libera-grupo-mas-so-48-h-apos-registro",
+   "headline": "Canal 'Exército do Lula' sai do ar; Kassio libera grupo, mas só 48 h após registro por campanha",
+   "lead": false,
+   "what_happened": "A campanha de Lula registrou no TSE o endereço do canal de WhatsApp \"Exército do Lula\", que tem mais de 4 milhões de inscritos. A defesa de Lula afirmou que o registro apenas cumpre determinação de Nunes Marques e não significa assumir a administração do canal.",
+   "what_changed": "Nunes Marques determinou que, mesmo com o registro, o canal só volte a publicar após 48 horas. Relatório da área técnica do TSE não encontrou conteúdos de desinformação no canal.",
+   "coverage": [
+    {
+     "outlet": "Agência Brasil",
+     "title": "Campanha registra canal Exército do Lula na Justiça Eleitoral",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/campanha-registra-canal-exercito-do-lula-na-justica-eleitoral",
+     "published_at": "2026-10-13T17:59:00Z",
+     "summary": "A campanha de Lula registrou no TSE o endereço do canal de WhatsApp \"Exército do Lula\", que tem mais de 4 milhões de inscritos.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Após impasse judicial, campanha registra canal de WhatsApp 'Exército do Lula' no TSE",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/13/campanha-de-lula-registra-grupo-de-whatsapp-exercito-de-lula-no-tribunal-superior-eleitoral.ghtml",
+     "published_at": "2026-10-13T15:42:36Z",
+     "summary": "A defesa de Lula afirmou que o registro apenas cumpre determinação de Nunes Marques e não significa assumir a administração do canal.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Campanha do PL registra canal da “Tropa do Flávio” após TSE restringir o de Lula",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/campanha-pl-registra-canal-tropa-do-flavio-apos-tse-restringir-lula",
+     "published_at": "2026-10-13T21:24:23Z",
+     "summary": "A campanha de Flávio Bolsonaro informou que complementará o registro de canais no TSE incluindo o WhatsApp \"Tropa do Flávio\".",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 21:01, é isto que as fontes citadas registram. Alegação atribuída não é prova."
+  },
+  {
+   "id": "mendonca-determina-a-exclusao-de-propaganda-de-lula-que-aponta-cortes-em",
+   "headline": "Mendonça determina a exclusão de propaganda de Lula que aponta cortes em programas sociais em caso de vitória de Flávio Bolsonaro",
+   "lead": false,
+   "what_happened": "André Mendonça determinou a suspensão de propaganda de Lula que associa a política fiscal de um eventual governo de Flávio Bolsonaro a cortes em programas sociais. Mendonça deu prazo de três horas para remoção e fixou multa de R$ 10 mil por dia ou por nova publicação em caso de descumprimento.",
+   "what_changed": "Mendonça afirmou que \"tesouraço\" se refere exclusivamente à redução da estrutura administrativa estatal, sem previsão de supressão de programas sociais. As publicações, de 6 de outubro, relacionaram a política fiscal a cortes em programas como Farmácia Popular, Minha Casa, Minha Vida e Mais Médicos.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "Mendonça determina a exclusão de propaganda de Lula que aponta cortes em programas sociais em caso de vitória de Flávio Bolsonaro",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/13/mendonca-determina-a-exclusao-de-propaganda-de-lula-que-aponta-cortes-em-programas-sociais-em-caso-de-vitoria-de-flavio-bolsonaro.ghtml",
+     "published_at": "2026-10-13T21:56:35Z",
+     "summary": "André Mendonça determinou a suspensão de propaganda de Lula que associa a política fiscal de um eventual governo de Flávio Bolsonaro a cortes em programas sociais.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Mendonça manda Lula excluir posts que associam “tesouraço” de Flávio a cortes sociais",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/mendonca-manda-lula-excluir-posts-que-associam-tesouraco-de-flavio-a-cortes-sociais",
+     "published_at": "2026-10-13T23:29:52Z",
+     "summary": "Mendonça deu prazo de três horas para remoção e fixou multa de R$ 10 mil por dia ou por nova publicação em caso de descumprimento.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "No horário eleitoral, Lula aborda segurança pública e menciona atos pelo Brasil; Flávio detalha 'Smart Brasil' e programas sociais",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/13/horario-eleitoral-13-outubro-flavio-lula.ghtml",
+     "published_at": "2026-10-13T17:54:57Z",
+     "summary": "A campanha de Flávio negou que ele vá acabar com programas sociais como Bolsa Família, Minha Casa Minha Vida e Farmácia Popular.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 21:01, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "janones-pede-a-nunes-marques-que-reconsidere-decisao-e-restabeleca",
+   "title": "Janones pede a Nunes Marques que reconsidere decisão e restabeleça funcionamento do canal 'Exército do Lula'",
+   "text": "A defesa de André Janones apresentou ao presidente do TSE, Nunes Marques, pedido de reconsideração da decisão que manteve a suspensão temporária do canal \"Exército do Lula\" no WhatsApp. O canal \"Exército do Lula\" ficou fora do ar no Brasil após a Meta cumprir determinação de Nunes Marques de indisponibilidade até a regularização perante a Justiça Eleitoral.",
+   "sources": [
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/nunes-marques-volta-a-restringir-canal-exercito-do-lula-e-cita-responsabilizacao-do-presidente",
+     "published_at": "2026-10-13T17:09:48Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/13/nunes-marques-diz-que-apos-registro-canal-de-whatsapp-exercito-do-lula-pode-ser-retomado-apos-48-horas.ghtml",
+     "published_at": "2026-10-13T19:24:41Z"
+    },
+    {
+     "outlet": "Veja",
+     "url": "https://veja.abril.com.br/politica/nunes-marques-diz-que-exercito-do-lula-pode-voltar-a-funcionar-em-48-horas",
+     "published_at": "2026-10-13T20:26:09Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/13/apos-decisao-de-nunes-marques-canal-exercito-de-lula-sai-do-ar-canal-pode-ser-retomado-apos-prazo-de-48-horas.ghtml",
+     "published_at": "2026-10-14T02:38:17Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/canal-exercito-do-lula-sai-do-ar-apos-determinacao-de-nunes-marques",
+     "published_at": "2026-10-14T11:43:51Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/14/janones-pede-a-nunes-marques-que-reconsidere-decisao-e-restabeleca-funcionamento-do-canal-exercito-do-lula.ghtml",
+     "published_at": "2026-10-14T15:27:44Z"
+    }
+   ]
+  },
+  {
+   "id": "pgr-se-manifesta-contra-afastamento-de-diretor-geral-da-pf",
+   "title": "PGR se manifesta contra afastamento de diretor-geral da PF",
+   "text": "A PGR se manifestou, em parecer ao STF, contra o afastamento do diretor-geral da PF, Andrei Rodrigues, e do diretor de Inteligência Policial, afirmando não haver elementos concretos que justifiquem a medida. O parecer diz que a qualificação negativa do comportamento das autoridades policiais precisaria estar acompanhada de evidências de participação imprópria em atos ilícitos.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/13/pgr-se-manifesta-contra-afastamento-de-diretor-geral-da-pf.ghtml",
+     "published_at": "2026-10-13T22:46:24Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/pgr-diz-que-nao-ha-evidencias-de-que-mendonca-foi-alvo-de-arapongagem-por-cupula-da-pf.shtml",
+     "published_at": "2026-10-14T01:40:00Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-justica/pgr-se-manifesta-contra-o-afastamento-de-andrei-rodrigues",
+     "published_at": "2026-10-14T15:02:21Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/pgr-pede-pela-anulacao-do-afastamento-liminar-de-andrei-rodrigues-diretor-geral-da-pf-nprp",
+     "published_at": "2026-10-14T19:57:15Z"
+    }
+   ]
+  },
+  {
+   "id": "corregedor-eleitoral-insiste-que-discussao-sobre-exercito-do-lula-ocorra-no",
+   "title": "Corregedor eleitoral insiste que discussão sobre 'Exército do Lula' ocorra no plenário do TSE",
+   "text": "O corregedor-geral Villas Bôas Cueva defendeu que a discussão sobre o canal \"Exército do Lula\" seja feita pelo plenário do TSE, em sessão presencial ou virtual. Cueva disse que a urgência decorre da proximidade do segundo turno e da necessidade de uma solução colegiada.",
+   "sources": [
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/corregedor-decidiu-a-favor-canal-janones-4-minutos-kassio",
+     "published_at": "2026-10-13T18:38:38Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/13/corregedor-eleitoral-insiste-que-discussao-sobre-exercito-do-lula-ocorra-no-plenario-do-tse.ghtml",
+     "published_at": "2026-10-13T22:59:20Z"
+    }
+   ]
+  },
+  {
+   "id": "ministro-do-tse-determina-que-jorge-messias-remova-video-em-apoio-a-lula-feito",
+   "title": "Ministro do TSE determina que Jorge Messias remova vídeo em apoio a Lula feito com IA",
+   "text": "O ministro do TSE Marco Aurélio Bellizze determinou que o advogado-geral da União, Jorge Messias, remova em 24 horas um vídeo feito com IA favorável a Lula. Segundo a decisão, o vídeo é propaganda irregular por não haver sinalização de que o conteúdo foi fabricado.",
+   "sources": [
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/eleicoes/ministro-do-tse-determina-que-jorge-messias-remova-video-em-apoio-a-lula-feito-com-ia-nprp",
+     "published_at": "2026-10-14T00:43:29Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/eleicoes/tse-determina-que-pl-remova-video-de-ia-que-associa-lula-a-crime-organizado",
+     "published_at": "2026-10-14T13:30:32Z"
+    }
+   ]
+  },
+  {
+   "id": "fachin-se-reune-com-diretor-da-pf-e-cobra-envio-ao-stf-de-todas-as-mencoes-a",
+   "title": "Fachin se reúne com diretor da PF e cobra envio ao STF de todas as menções a ministros no caso Master",
+   "text": "Fachin cobrou do diretor-geral da PF, Andrei Rodrigues, o envio ao Supremo de todas as menções a integrantes da corte no caso do Banco Master. Segundo a Folha, a PF irá produzir os relatórios que mencionam os ministros e encaminhá-los à corte, sem prazo definido.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/fachin-se-reune-com-diretor-da-pf-para-tratar-de-citacoes-a-ministros-do-stf-no-caso-master.shtml",
+     "published_at": "2026-10-13T19:38:00Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/13/fachin-pf-andrei-reuniao-ministros-master.ghtml",
+     "published_at": "2026-10-13T21:55:31Z"
+    }
+   ]
+  },
+  {
+   "id": "sus-da-seguranca-e-fim-da-saidinha-para-integrantes-de-faccoes-o-que-preve-a",
+   "title": "'SUS da Segurança' e fim da 'saidinha' para integrantes de facções: o que prevê a PEC da Segurança",
+   "text": "A CCJ do Senado concluiu a votação da PEC da Segurança Pública e o texto está pronto para o plenário. A PEC estabelece na Constituição o Sistema Único de Segurança Pública (SUSP).",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/14/sus-da-seguranca-e-fim-da-saidinha-para-integrantes-de-faccoes-o-que-preve-a-pec-da-seguranca-que-avancou-no-senado.ghtml",
+     "published_at": "2026-10-14T12:54:20Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/economia/money/macroeconomia/fim-da-6x1-o-que-preve-a-pec-que-sera-votada-veja-perguntas-e-respostas",
+     "published_at": "2026-10-14T14:12:22Z"
+    }
+   ]
+  },
+  {
+   "id": "camara-aprova-projeto-que-amplia-limite-do-mei-e-perdoa-dividas-de-inadimplentes",
+   "title": "Câmara aprova projeto que amplia limite do MEI e perdoa dívidas de inadimplentes",
+   "text": "A Câmara aprovou o projeto que amplia o limite de faturamento do MEI e perdoa dívidas de inadimplentes, por 461 votos a 4. O teto do MEI sobe para R$ 110 mil em 2027 e R$ 140 mil em 2028, e o texto segue para o Senado.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/14/camara-aprova-projeto-que-amplia-limite-do-mei-e-perdoa-dividas-de-inadimplentes.ghtml",
+     "published_at": "2026-10-14T22:43:05Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/politica/camara-aprova-aumento-do-teto-do-mei-para-r-140-mil-texto-vai-ao-senado",
+     "published_at": "2026-10-14T22:44:17Z"
+    }
+   ]
+  },
+  {
+   "id": "partido-de-paes-tenta-derrubar-vitoria-de-ruas-no-stf-e-restabelecer-2-turno-no",
+   "title": "Partido de Paes tenta derrubar vitória de Ruas no STF e restabelecer 2º turno no Rio",
+   "text": "O PSD apresentou novo pedido ao STF para anular a vitória de Douglas Ruas e garantir segundo turno no Rio. Com a exclusão dos votos de Garotinho, Ruas passou de 49,27% para 50,88% dos votos válidos.",
+   "sources": [
+    {
+     "outlet": "Veja",
+     "url": "https://veja.abril.com.br/politica/psd-volta-a-pedir-ao-supremo-segundo-turno-no-rio",
+     "published_at": "2026-10-14T21:49:49Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/eleicoes/psd-entra-no-stf-para-que-segundo-turno-entre-ruas-e-paes-aconteca-no-rj",
+     "published_at": "2026-10-14T22:24:44Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/rio-de-janeiro/partido-de-paes-tenta-derrubar-vitoria-de-ruas-no-stf-e-restabelecer-2o-turno-no-rio",
+     "published_at": "2026-10-14T22:43:55Z"
+    }
+   ]
+  },
+  {
+   "id": "senado-inicia-votacao-do-fim-da-escala-6x1-e-governo-articula-para-aprovacao-em",
+   "title": "Senado inicia votação do fim da escala 6x1, e governo articula para aprovação em dois turnos nesta quarta",
+   "text": "O Senado iniciou a votação da PEC que acaba com a escala 6x1. A líder do governo apresentou requerimento para votar os dois turnos na quarta, com assinaturas de bancadas que somam 56 parlamentares.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/14/fim-da-6x1-alcolumbre-diz-que-senado-deve-votar-dois-turnos-nesta-quarta-mas-evita-palpite-sobre-placar-ultima-vez-deu-problema.ghtml",
+     "published_at": "2026-10-14T19:24:05Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/mercado/2026/10/senado-inicia-votacao-da-pec-do-fim-da-escala-6x1.shtml",
+     "published_at": "2026-10-14T19:29:00Z"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/senado-vota-pec-pelo-fim-da-escala-6x1",
+     "published_at": "2026-10-14T23:02:00Z"
+    }
+   ]
+  },
+  {
+   "id": "ciro-gomes-pede-cassacao-da-chapa-de-elmano-e-nova-eleicao-no-ceara",
+   "title": "Ciro Gomes pede cassação da chapa de Elmano e nova eleição no Ceará",
+   "text": "A coligação de Ciro Gomes acionou o TRE-CE pedindo a cassação da chapa de Elmano de Freitas e nova eleição. A campanha de Elmano disse lamentar que Ciro continue desrespeitando a democracia e questionando o resultado das urnas.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/ciro-gomes-pede-cassacao-da-chapa-de-elmano-e-nova-eleicao-no-ceara.shtml",
+     "published_at": "2026-10-14T18:56:00Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/eleicoes/ciro-gomes-pede-cassacao-de-elmano-anulacao-de-votos-e-nova-eleicao-para-governo-do-ceara-nprp",
+     "published_at": "2026-10-14T19:07:13Z"
+    }
+   ]
+  },
+  {
+   "id": "campanha-de-lula-aciona-tse-contra-meta-e-questiona-alcance-de-videos-de",
+   "title": "Campanha de Lula aciona TSE contra Meta e questiona alcance de vídeos de Nikolas Ferreira e ferramenta de IA",
+   "text": "A Veja relata que a IA da Meta atendeu pedidos de artes de campanha para Flávio Bolsonaro e negou para Lula, o que diz ter comprovado em testes. A Meta disse que proíbe temporariamente a recomendação de candidatos ou a geração de imagens deles.",
+   "sources": [
+    {
+     "outlet": "Veja",
+     "url": "https://veja.abril.com.br/politica/ia-da-meta-favorece-campanha-de-flavio-bolsonaro-e-lula-aciona-o-tse",
+     "published_at": "2026-10-14T16:28:46Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/14/campanha-de-lula-aciona-tse-contra-meta-e-questiona-alcance-de-videos-de-nikolas-e-ferramenta-de-ia.ghtml",
+     "published_at": "2026-10-14T21:31:38Z"
+    }
+   ]
+  },
+  {
+   "id": "stf-cobra-cumprimento-de-acesso-gratuito-a-sites-da-justica-eleitoral",
+   "title": "STF cobra cumprimento de acesso gratuito a sites da Justiça Eleitoral",
+   "text": "Zanin determinou que a Anatel envie ao STF informações sobre falhas das operadoras no acesso gratuito aos sites da Justiça Eleitoral no primeiro turno. Zanin deu prazo de 48 horas para a Anatel esclarecer as falhas apontadas.",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/stf-cobra-cumprimento-de-acesso-gratuito-sites-da-justica-eleitoral",
+     "published_at": "2026-10-14T21:29:00Z"
+    }
+   ]
+  },
+  {
+   "id": "tcu-suspende-julgamento-de-contas-do-bc-ate-apuracao-sobre-master",
+   "title": "TCU suspende julgamento de contas do BC até apuração sobre Master",
+   "text": "O TCU decidiu suspender o julgamento das contas do BC referentes a 2025 até a conclusão definitiva de investigação sobre a atuação da autoridade monetária no caso Banco Master. A decisão foi tomada pela Segunda Câmara, sob relatoria do ministro Jorge Oliveira, que acolheu pedido do MPTCU.",
+   "sources": [
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-justica/tcu-suspende-julgamento-de-contas-do-bc-ate-apuracao-sobre-master",
+     "published_at": "2026-10-14T22:57:47Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "Estadão",
+   "title": "Mendonça muda voto e TSE manda remover postagem de Flávio que liga Lula a crime organizado",
+   "url": "https://estadao.com.br/politica/eleicoes/mendonca-muda-voto-e-tse-manda-remover-postagens-que-ligam-lula-a-crime-organizado",
+   "published_at": "2026-10-14T01:28:41Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "TSE manda tirar do ar vídeo divulgado por Nikolas e Flávio Bolsonaro em que crianças criticam Lula",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/14/tse-remove-video-nikolas-criancas-pt.ghtml",
+   "published_at": "2026-10-14T12:10:19Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Jovem Pan",
+   "title": "TSE manda remover vídeo divulgado por Nikolas e Flávio em que crianças criticam Lula",
+   "url": "https://jovempan.com.br/politica/tse-manda-remover-video-divulgado-por-nikolas-e-flavio-em-que-criancas-criticam-lula",
+   "published_at": "2026-10-14T13:05:48Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Campanha registra canal Exército do Lula na Justiça Eleitoral",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/campanha-registra-canal-exercito-do-lula-na-justica-eleitoral",
+   "published_at": "2026-10-13T17:59:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Após impasse judicial, campanha registra canal de WhatsApp 'Exército do Lula' no TSE",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/13/campanha-de-lula-registra-grupo-de-whatsapp-exercito-de-lula-no-tribunal-superior-eleitoral.ghtml",
+   "published_at": "2026-10-13T15:42:36Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Campanha do PL registra canal da “Tropa do Flávio” após TSE restringir o de Lula",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/campanha-pl-registra-canal-tropa-do-flavio-apos-tse-restringir-lula",
+   "published_at": "2026-10-13T21:24:23Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Mendonça determina a exclusão de propaganda de Lula que aponta cortes em programas sociais em caso de vitória de Flávio Bolsonaro",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/13/mendonca-determina-a-exclusao-de-propaganda-de-lula-que-aponta-cortes-em-programas-sociais-em-caso-de-vitoria-de-flavio-bolsonaro.ghtml",
+   "published_at": "2026-10-13T21:56:35Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Mendonça manda Lula excluir posts que associam “tesouraço” de Flávio a cortes sociais",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/mendonca-manda-lula-excluir-posts-que-associam-tesouraco-de-flavio-a-cortes-sociais",
+   "published_at": "2026-10-13T23:29:52Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "No horário eleitoral, Lula aborda segurança pública e menciona atos pelo Brasil; Flávio detalha 'Smart Brasil' e programas sociais",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/13/horario-eleitoral-13-outubro-flavio-lula.ghtml",
+   "published_at": "2026-10-13T17:54:57Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Nunes Marques volta a restringir canal “Exército do Lula”",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/nunes-marques-volta-a-restringir-canal-exercito-do-lula-e-cita-responsabilizacao-do-presidente",
+   "published_at": "2026-10-13T17:09:48Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Nunes Marques diz que, com o registro, canal de WhatsApp 'Exército do Lula' pode ser retomado após prazo de 48 horas",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/13/nunes-marques-diz-que-apos-registro-canal-de-whatsapp-exercito-do-lula-pode-ser-retomado-apos-48-horas.ghtml",
+   "published_at": "2026-10-13T19:24:41Z"
+  },
+  {
+   "outlet": "Veja",
+   "title": "Nunes Marques diz que ‘Exército do Lula’ pode voltar a funcionar em 48 horas",
+   "url": "https://veja.abril.com.br/politica/nunes-marques-diz-que-exercito-do-lula-pode-voltar-a-funcionar-em-48-horas",
+   "published_at": "2026-10-13T20:26:09Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Após decisão de Nunes Marques, canal 'Exército de Lula' sai do ar e poderá ser retomado após 48 horas",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/13/apos-decisao-de-nunes-marques-canal-exercito-de-lula-sai-do-ar-canal-pode-ser-retomado-apos-prazo-de-48-horas.ghtml",
+   "published_at": "2026-10-14T02:38:17Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Canal “Exército do Lula” sai do ar após determinação de Nunes Marques",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/canal-exercito-do-lula-sai-do-ar-apos-determinacao-de-nunes-marques",
+   "published_at": "2026-10-14T11:43:51Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Janones pede a Nunes Marques que reconsidere decisão e restabeleça funcionamento do canal 'Exército do Lula'",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/14/janones-pede-a-nunes-marques-que-reconsidere-decisao-e-restabeleca-funcionamento-do-canal-exercito-do-lula.ghtml",
+   "published_at": "2026-10-14T15:27:44Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "PGR se manifesta contra afastamento de diretor-geral da PF",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/13/pgr-se-manifesta-contra-afastamento-de-diretor-geral-da-pf.ghtml",
+   "published_at": "2026-10-13T22:46:24Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "PGR diz que não há evidências de que Mendonça foi alvo de arapongagem por cúpula da PF",
+   "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/pgr-diz-que-nao-ha-evidencias-de-que-mendonca-foi-alvo-de-arapongagem-por-cupula-da-pf.shtml",
+   "published_at": "2026-10-14T01:40:00Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "PGR se manifesta contra o afastamento de Andrei Rodrigues",
+   "url": "https://poder360.com.br/poder-justica/pgr-se-manifesta-contra-o-afastamento-de-andrei-rodrigues",
+   "published_at": "2026-10-14T15:02:21Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "PGR pede pela anulação do afastamento liminar de Andrei Rodrigues, diretor-geral da PF",
+   "url": "https://estadao.com.br/politica/pgr-pede-pela-anulacao-do-afastamento-liminar-de-andrei-rodrigues-diretor-geral-da-pf-nprp",
+   "published_at": "2026-10-14T19:57:15Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Corregedor eleitoral decidiu a favor de canal de Janones em menos de 4 minutos, relata Kássio",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/corregedor-decidiu-a-favor-canal-janones-4-minutos-kassio",
+   "published_at": "2026-10-13T18:38:38Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Corregedor eleitoral insiste que discussão sobre 'Exército do Lula' ocorra no plenário do TSE",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/13/corregedor-eleitoral-insiste-que-discussao-sobre-exercito-do-lula-ocorra-no-plenario-do-tse.ghtml",
+   "published_at": "2026-10-13T22:59:20Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Ministro do TSE determina que Jorge Messias remova vídeo em apoio a Lula feito com IA",
+   "url": "https://estadao.com.br/politica/eleicoes/ministro-do-tse-determina-que-jorge-messias-remova-video-em-apoio-a-lula-feito-com-ia-nprp",
+   "published_at": "2026-10-14T00:43:29Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "TSE determina que PL remova vídeo de IA que associa Lula a crime organizado",
+   "url": "https://cnnbrasil.com.br/eleicoes/tse-determina-que-pl-remova-video-de-ia-que-associa-lula-a-crime-organizado",
+   "published_at": "2026-10-14T13:30:32Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Fachin se reúne com diretor da PF e cobra envio ao STF de todas as menções a ministros no caso Master",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/fachin-se-reune-com-diretor-da-pf-para-tratar-de-citacoes-a-ministros-do-stf-no-caso-master.shtml",
+   "published_at": "2026-10-13T19:38:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Fachin diz a Andrei que PF deve enviar ao STF todas as menções a ministros no caso Master em 'caráter estritamente descritivo'",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/13/fachin-pf-andrei-reuniao-ministros-master.ghtml",
+   "published_at": "2026-10-13T21:55:31Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "'SUS da Segurança' e fim da 'saidinha' para integrantes de facções: o que prevê a PEC da Segurança",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/14/sus-da-seguranca-e-fim-da-saidinha-para-integrantes-de-faccoes-o-que-preve-a-pec-da-seguranca-que-avancou-no-senado.ghtml",
+   "published_at": "2026-10-14T12:54:20Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Fim da 6×1: O que prevê a PEC que será votada? Veja perguntas e respostas",
+   "url": "https://cnnbrasil.com.br/economia/money/macroeconomia/fim-da-6x1-o-que-preve-a-pec-que-sera-votada-veja-perguntas-e-respostas",
+   "published_at": "2026-10-14T14:12:22Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Câmara aprova projeto que amplia limite do MEI e perdoa dívidas de inadimplentes",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/14/camara-aprova-projeto-que-amplia-limite-do-mei-e-perdoa-dividas-de-inadimplentes.ghtml",
+   "published_at": "2026-10-14T22:43:05Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Câmara aprova aumento do teto do MEI para R$ 140 mil; texto vai ao Senado",
+   "url": "https://cnnbrasil.com.br/politica/camara-aprova-aumento-do-teto-do-mei-para-r-140-mil-texto-vai-ao-senado",
+   "published_at": "2026-10-14T22:44:17Z"
+  },
+  {
+   "outlet": "Veja",
+   "title": "PSD volta a pedir ao Supremo segundo turno no Rio",
+   "url": "https://veja.abril.com.br/politica/psd-volta-a-pedir-ao-supremo-segundo-turno-no-rio",
+   "published_at": "2026-10-14T21:49:49Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "PSD entra no STF para que segundo turno entre Ruas e Paes aconteça no RJ",
+   "url": "https://cnnbrasil.com.br/eleicoes/psd-entra-no-stf-para-que-segundo-turno-entre-ruas-e-paes-aconteca-no-rj",
+   "published_at": "2026-10-14T22:24:44Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Partido de Paes tenta derrubar vitória de Ruas no STF e restabelecer 2º turno no Rio",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/rio-de-janeiro/partido-de-paes-tenta-derrubar-vitoria-de-ruas-no-stf-e-restabelecer-2o-turno-no-rio",
+   "published_at": "2026-10-14T22:43:55Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Fim da 6x1: Alcolumbre diz que Senado deve votar dois turnos de PEC nesta 4ª, mas evita palpitar placar: 'Última vez deu problema'",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/14/fim-da-6x1-alcolumbre-diz-que-senado-deve-votar-dois-turnos-nesta-quarta-mas-evita-palpite-sobre-placar-ultima-vez-deu-problema.ghtml",
+   "published_at": "2026-10-14T19:24:05Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Senado inicia votação do fim da escala 6x1, e governo articula para aprovação em dois turnos nesta quarta",
+   "url": "https://www1.folha.uol.com.br/mercado/2026/10/senado-inicia-votacao-da-pec-do-fim-da-escala-6x1.shtml",
+   "published_at": "2026-10-14T19:29:00Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Senado vota PEC pelo fim da escala 6x1",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/senado-vota-pec-pelo-fim-da-escala-6x1",
+   "published_at": "2026-10-14T23:02:00Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Ciro Gomes pede cassação da chapa de Elmano e nova eleição no Ceará",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/ciro-gomes-pede-cassacao-da-chapa-de-elmano-e-nova-eleicao-no-ceara.shtml",
+   "published_at": "2026-10-14T18:56:00Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Ciro Gomes pede cassação de Elmano, anulação de votos e nova eleição para governo do Ceará",
+   "url": "https://estadao.com.br/politica/eleicoes/ciro-gomes-pede-cassacao-de-elmano-anulacao-de-votos-e-nova-eleicao-para-governo-do-ceara-nprp",
+   "published_at": "2026-10-14T19:07:13Z"
+  },
+  {
+   "outlet": "Veja",
+   "title": "IA da Meta favorece campanha de Flávio Bolsonaro, e Lula aciona o TSE",
+   "url": "https://veja.abril.com.br/politica/ia-da-meta-favorece-campanha-de-flavio-bolsonaro-e-lula-aciona-o-tse",
+   "published_at": "2026-10-14T16:28:46Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Campanha de Lula aciona TSE contra Meta e questiona alcance de vídeos de Nikolas Ferreira e ferramenta de IA",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/14/campanha-de-lula-aciona-tse-contra-meta-e-questiona-alcance-de-videos-de-nikolas-e-ferramenta-de-ia.ghtml",
+   "published_at": "2026-10-14T21:31:38Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "STF cobra cumprimento de acesso gratuito a sites da Justiça Eleitoral",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/stf-cobra-cumprimento-de-acesso-gratuito-sites-da-justica-eleitoral",
+   "published_at": "2026-10-14T21:29:00Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "TCU suspende julgamento de contas do BC até apuração sobre Master",
+   "url": "https://poder360.com.br/poder-justica/tcu-suspende-julgamento-de-contas-do-bc-ate-apuracao-sobre-master",
+   "published_at": "2026-10-14T22:57:47Z"
+  }
+ ],
+ "note": "Informações válidas até o corte das 21:01. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
