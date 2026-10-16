@@ -358,7 +358,8 @@ function loadTyped(dir, idxSchema, docSchema, fileRe, key) {
     const leak = INTERNAL_IDS.exec(txt) || /\b(CONTEXT_MATCH|PARTIAL_CONTEXT_MATCH|QUERY_UNAVAILABLE|EVALUATION_FAILED|NOT_EXECUTED)\b/.exec(txt);
     if (leak) throw new Error("INTERNAL_IDENTIFIER_PUBLIC_LEAK em " + x.file + ": " + leak[0]);
     for (const m of txt.matchAll(/"(?:url|deep_link)":"([^"]*)"/g)) if (!/^https:\/\//.test(m[1])) throw new Error("link não https em " + x.file);
-    for (const v of [...(doc.videos || []), ...((doc.partial_videos || {}).items || [])])
+    const storyVideos = [...(doc.main_stories || []), ...(doc.other_stories || []), ...(doc.following || [])].flatMap(s => s.videos || []);
+    for (const v of [...(doc.videos || []), ...((doc.partial_videos || {}).items || []), ...storyVideos])
       if (!/^[\w-]{11}$/.test(v.video_id) || !(v.t_seconds >= 0) || v.deep_link !== `https://www.youtube.com/watch?v=${v.video_id}&t=${v.t_seconds}s`)
         throw new Error("vídeo fora do contrato em " + x.file);
     if (doc.art) for (const a of [doc.art.mobile, doc.art.desktop])

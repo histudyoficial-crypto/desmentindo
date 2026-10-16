@@ -280,6 +280,21 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
   // fxHome sem ref (fora do estado C) é idêntico ao anterior
   eq("fxHome sem ref inalterado", /fxh-tag">Fechamento<\/span><time/.test(K.fxHome(F5)), true);
 }
+// §37 (16/10/2026): referência audiovisual aprovada no FECHAMENTO — mesmo componente da MATÉRIA, nada sem dado
+{
+  const noteDecl = src.match(/var NOTE = [^\n]*\n/)[0];
+  const S = new Function(`${MES}\n${fn("e")}\n${fn("fdate")}\n${fn("tdate")}\n${noteDecl}\n${fn("saidItem")}\n${fn("videoItem")}\n${fn("fxSaid")}\nreturn { fxSaid };`)();
+  const v = { channel: "Alexandre Garcia", video_id: "G8hZFued_gI", t_seconds: 484, t_label: "8:04", date: "2026-01-11",
+    video_title: "Quem advoga pelo Master nos Três Poderes?", said: "Autor cita o caso.", context: "Na data da fala já era público.",
+    deep_link: "https://www.youtube.com/watch?v=G8hZFued_gI&t=484s" };
+  const h = S.fxSaid([v]);
+  eq("fxSaid vazio", [S.fxSaid(undefined), S.fxSaid([])], ["", ""]);
+  eq("fxSaid componente said", [/<ul class="said-list"><li class="said" data-src="Alexandre Garcia" data-video="G8hZFued_gI" data-t="484"/.test(h),
+    h.includes('href="https://www.youtube.com/watch?v=G8hZFued_gI&amp;t=484s"'), h.includes("Já falaram sobre isso"),
+    h.includes("Aparecer antes não prova o fato de hoje."), h.includes("Na data da fala já era público.")], [true, true, true, true, true]);
+  const fx = src.slice(src.indexOf("P.fechamento = function"), src.indexOf("function fxSaid("));
+  eq("FECHAMENTO renderiza videos por história", ["x += fxSaid(s.videos)", "srcLinks(o.sources) + fxSaid(o.videos)"].map(t => fx.split(t).length - 1), [1, 2]);
+}
 // Sem evento novo de analytics (só os existentes)
 eq("sem evento novo de analytics", Array.from(new Set((src.match(/anEvent\("([A-Z_]+)"/g) || []))).sort(), ['anEvent("AUDIENCE_CAPTURE_CLICK"', 'anEvent("ENGAGED_READING"', 'anEvent("SOURCE_CLICK"', 'anEvent("VIDEO_PLAY"']);
 
