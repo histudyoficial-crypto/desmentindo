@@ -18,9 +18,15 @@
     "sha256": "2a493d96097daef391cb000a50a4d1819ff7a287da8434e944dc001810eb3b0d"
   },
   "dataset": {
-    "url": "data/corpus/links.1ee90c969ce0.json",
-    "bytes": 1118898,
-    "sha256": "1ee90c969ce0586ef77ed63e5e7dba951f59125b7d49433b1b8f274d576d8bee"
+    "url": "data/corpus/links.15b558384884.json",
+    "bytes": 1118896,
+    "sha256": "15b5583848843d8215c09cd9b2ffff8bb355565d5929afea11e833e6425c0934"
   },
-  "ui_enabled": true
+  "ui_enabled": true,
+  "encoding_repair": {
+    "date": "2026-10-16",
+    "dataset_derived_from_sha256": "1ee90c969ce0586ef77ed63e5e7dba951f59125b7d49433b1b8f274d576d8bee",
+    "texts": 1,
+    "method": "texto UTF-8 lido como Latin-1 (mojibake) decodificado de volta; occurrence_id preservado"
+  }
 }
