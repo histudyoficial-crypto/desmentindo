@@ -1,0 +1,885 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-15",
+ "public_title": "FECHAMENTO — 15 de outubro de 2026",
+ "published_at": "2026-10-15T21:52:35Z",
+ "cutoff_at": "2026-10-15T20:34:51-03:00",
+ "context": "Fechamento de 15 de outubro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "Flávio Bolsonaro faz agenda no RS em dia de votação sobre escala 6x1 e ignora assunto em comício",
+    "story": "flavio-bolsonaro-faz-agenda-no-rs-em-dia-de-votacao-sobre-escala-6x1-e-ignora"
+   },
+   {
+    "text": "Câmara aprova pacote eleitoral de Lula que perdoa dívidas e aumenta teto do MEI",
+    "story": "camara-aprova-pacote-eleitoral-de-lula-que-perdoa-dividas-e-aumenta-teto-do-mei"
+   },
+   {
+    "text": "PF acha dinheiro dentro de adega de policial preso em operação que prendeu deputado e ex-chefe da Polícia Civil do RJ",
+    "story": "pf-acha-dinheiro-dentro-de-adega-de-policial-preso-em-operacao-que-prendeu"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "flavio-bolsonaro-faz-agenda-no-rs-em-dia-de-votacao-sobre-escala-6x1-e-ignora",
+   "headline": "Flávio Bolsonaro faz agenda no RS em dia de votação sobre escala 6x1 e ignora assunto em comício",
+   "lead": true,
+   "what_happened": "A Folha relata que Flávio Bolsonaro cumpriu agenda no Rio Grande do Sul sem falar publicamente sobre a PEC do fim da escala 6x1, que começou a ser votada no Senado no final da tarde. A Folha relata que a PEC em votação reduz a jornada semanal de 44 para 40 horas, 14 meses após a promulgação.",
+   "what_changed": "A Folha relata que o Senado aprovou, em dois turnos, a PEC que acaba com a escala 6x1. O g1 relata que a PEC recebeu 75 votos favoráveis e um contrário nos dois turnos, sendo Hamilton Mourão o único voto contrário.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "Flávio Bolsonaro faz agenda no RS em dia de votação sobre escala 6x1 e ignora assunto em comício",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/flavio-bolsonaro-faz-agenda-no-rs-em-dia-de-votacao-sobre-escala-6x1e-ignora-assunto-em-comicio.shtml",
+     "published_at": "2026-10-14T23:27:00Z",
+     "summary": "A Folha relata que Flávio Bolsonaro cumpriu agenda no Rio Grande do Sul sem falar publicamente sobre a PEC do fim da escala 6x1, que começou a ser votada no Senado no final da tarde.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Folha",
+     "title": "Senado aprova PEC do fim da escala 6x1, em trunfo para Lula a 11 dias da eleição",
+     "url": "https://www1.folha.uol.com.br/mercado/2026/10/senado-inicia-votacao-da-pec-do-fim-da-escala-6x1.shtml",
+     "published_at": "2026-10-14T19:29:00Z",
+     "summary": "A Folha relata que o Senado aprovou, em dois turnos, a PEC que acaba com a escala 6x1.",
+     "basis": "manchete e resumo"
+    },
+    {
+     "outlet": "g1",
+     "title": "Fim da escala 6x1 também afeta quem trabalha de segunda a sexta; veja o que muda",
+     "url": "https://g1.globo.com/trabalho-e-carreira/noticia/2026/10/15/fim-da-escala-6x1-tambem-afeta-quem-trabalha-de-segunda-a-sexta-veja-o-que-muda.ghtml",
+     "published_at": "2026-10-15T11:08:23Z",
+     "summary": "O g1 relata que a PEC recebeu 75 votos favoráveis e um contrário nos dois turnos, sendo Hamilton Mourão o único voto contrário.",
+     "basis": "manchete e resumo"
+    },
+    {
+     "outlet": "g1",
+     "title": "Lula comemora aprovação da PEC do fim da escala 6x1: 'vitória dos trabalhadores'",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/14/lula-comemora-aprovacao-da-pec-do-fim-da-escala-6x1.ghtml",
+     "published_at": "2026-10-15T01:07:06Z",
+     "summary": "O g1 relata que Lula comemorou a aprovação da PEC nas redes sociais.",
+     "basis": "manchete e resumo"
+    },
+    {
+     "outlet": "Veja",
+     "title": "Os seis senadores que se ausentaram ou não votaram a favor do fim da escala 6×1",
+     "url": "https://veja.abril.com.br/politica/os-seis-senadores-que-se-ausentaram-ou-nao-votaram-a-favor-do-fim-da-escala-6x1",
+     "published_at": "2026-10-15T15:06:38Z",
+     "summary": "A Veja relata que a PEC do fim da escala 6x1 foi aprovada no Senado com 75 votos a favor, inclusive o de Flávio Bolsonaro.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:34, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "camara-aprova-pacote-eleitoral-de-lula-que-perdoa-dividas-e-aumenta-teto-do-mei",
+   "headline": "Câmara aprova pacote eleitoral de Lula que perdoa dívidas e aumenta teto do MEI",
+   "lead": false,
+   "what_happened": "O Estadão relata que a Câmara aprovou, por 461 votos a 4, parte do pacote de Lula para MEIs, aumentando o teto de faturamento e perdoando ao menos R$ 12,86 bilhões em dívidas; o texto vai ao Senado. O Estadão relata que o Ministério da Fazenda disse que só poderá avaliar o impacto quando for informado sobre a versão final do texto.",
+   "what_changed": "A Gazeta do Povo relata que o PLP 186/2026 eleva o limite anual do MEI de R$ 81 mil para R$ 140 mil e autoriza a contratação de até dois empregados. A Agência oficial relata que a Câmara aprovou o aumento do teto do MEI e o perdão de dívidas inscritas na dívida ativa da União até 13 de outubro de 2026. Alegação atribuída (Hugo Motta (Gazeta do Povo)), não comprovada: Hugo Motta, segundo a Gazeta do Povo, afirmou que se comprometeu a tratar até o fim do ano do reajuste do Simples Nacional.",
+   "coverage": [
+    {
+     "outlet": "Estadão",
+     "title": "Câmara aprova pacote eleitoral de Lula que perdoa dívidas e aumenta teto do MEI",
+     "url": "https://estadao.com.br/politica/camara-aprova-pacote-eleitoral-de-lula-que-perdoa-dividas-e-aumenta-teto-do-mei",
+     "published_at": "2026-10-14T22:46:26Z",
+     "summary": "O Estadão relata que a Câmara aprovou, por 461 votos a 4, parte do pacote de Lula para MEIs, aumentando o teto de faturamento e perdoando ao menos R$ 12,86 bilhões em dívidas; o texto vai ao Senado.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Câmara aprova perdão de dívidas do MEI e aumento do teto",
+     "url": "https://gazetadopovo.com.br/economia/camara-aprova-perdao-de-dividas-do-mei-e-aumento-do-teto",
+     "published_at": "2026-10-14T23:12:31Z",
+     "summary": "A Gazeta do Povo relata que o PLP 186/2026 eleva o limite anual do MEI de R$ 81 mil para R$ 140 mil e autoriza a contratação de até dois empregados.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "title": "Câmara aprova aumento no limite de receita bruta do MEI",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/camara-aprova-aumento-no-limite-de-receita-bruta-do-mei",
+     "published_at": "2026-10-14T23:09:00Z",
+     "summary": "A Agência oficial relata que a Câmara aprovou o aumento do teto do MEI e o perdão de dívidas inscritas na dívida ativa da União até 13 de outubro de 2026.",
+     "basis": "manchete e resumo"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "title": "Senado aprova aumento de limite e perdão de dívida para MEIs",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/senado-aprova-aumento-de-limite-e-perdao-de-divida-para-meis",
+     "published_at": "2026-10-15T22:52:00Z",
+     "summary": "O Senado aprovou o projeto que amplia o teto do MEI e perdoa dívidas, por 78 votos favoráveis e nenhum contrário.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Senado aprova projeto que amplia limite do MEI e perdoa dívidas de inadimplentes",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/15/senado-aprova-projeto-que-amplia-limite-do-mei-e-perdoa-dividas-de-inadimplentes.ghtml",
+     "published_at": "2026-10-15T21:51:06Z",
+     "summary": "O g1 relata que a oposição criticou a votação da medida às vésperas do segundo turno.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "'OAB da Medicina': Câmara aprova medida que prevê obrigatoriedade de três provas durante o curso",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/15/oab-da-medicina-camara-aprova-medida-que-preve-obrigatoriedade-de-tres-provas-durante-o-curso.ghtml",
+     "published_at": "2026-10-15T18:34:04Z",
+     "summary": "O g1 relata que a Câmara aprovou proposta que exige nota mínima e três provas do Enamed durante o curso de medicina, e que o texto segue para o Senado.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:34, é isto que as fontes citadas registram. Alegação atribuída não é prova."
+  },
+  {
+   "id": "pf-acha-dinheiro-dentro-de-adega-de-policial-preso-em-operacao-que-prendeu",
+   "headline": "PF acha dinheiro dentro de adega de policial preso em operação que prendeu deputado e ex-chefe da Polícia Civil do RJ",
+   "lead": false,
+   "what_happened": "A CNN relata que a PF prendeu o delegado e ex-secretário de Polícia Civil Marcus Vinicius Amim Fernandes na oitava fase da Operação Unha e Carne, por suspeita de lavagem de dinheiro por rede de postos de combustíveis. A CNN relata que a operação cumpriu seis mandados de prisão preventiva e 16 de busca e apreensão.",
+   "what_changed": "O g1 relata que a PF encontrou dinheiro dentro de uma adega do inspetor da Polícia Civil José Carlos Alves de Souza Júnior. O UOL relata que Márcio Canella recebeu 83% dos votos em áreas controladas por grupos criminosos armados. Alegação atribuída (PF (via CNN)), não comprovada: Segundo a PF, citada pela CNN, Amim recebia recursos por empresas ligadas a familiares em troca de proteção. Alegação atribuída (Polícia Federal, segundo a Veja), não comprovada: A PF aponta o delegado Marcus Vinícius Amim Fernandes, preso em 15/10, como responsável por garantir proteção institucional a esquema que teria movimentado 7,6 bilhões de reais por rede de postos de combustíveis irregulares.",
+   "coverage": [
+    {
+     "outlet": "CNN Brasil",
+     "title": "Quem é Marcus Amim, delegado preso em operação da PF no Rio",
+     "url": "https://cnnbrasil.com.br/nacional/sudeste/rj/quem-e-marcus-amim-delegado-preso-em-operacao-da-pf-no-rio",
+     "published_at": "2026-10-15T14:00:13Z",
+     "summary": "A CNN relata que a PF prendeu o delegado e ex-secretário de Polícia Civil Marcus Vinicius Amim Fernandes na oitava fase da Operação Unha e Carne, por suspeita de lavagem de dinheiro por rede de postos de combustíveis.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "PF acha dinheiro dentro de adega de policial preso em operação que prendeu deputado e ex-chefe da Polícia Civil do RJ",
+     "url": "https://g1.globo.com/rj/rio-de-janeiro/noticia/2026/10/15/pf-acha-dinheiro-dentro-de-adega-de-policial-preso-em-operacao-que-prendeu-deputado-e-ex-chefe-da-policia-civil-do-rj.ghtml",
+     "published_at": "2026-10-15T14:00:10Z",
+     "summary": "O g1 relata que a PF encontrou dinheiro dentro de uma adega do inspetor da Polícia Civil José Carlos Alves de Souza Júnior.",
+     "basis": "manchete e resumo"
+    },
+    {
+     "outlet": "UOL",
+     "title": "Preso pela PF, Canella recebeu 83% dos votos em áreas de facção ou milícia",
+     "url": "https://noticias.uol.com.br/eleicoes/2026/10/15/preso-pela-pf-canella-recebeu-83-dos-votos-em-areas-de-faccao-ou-milicia.htm",
+     "published_at": "2026-10-15T14:00:33Z",
+     "summary": "O UOL relata que Márcio Canella recebeu 83% dos votos em áreas controladas por grupos criminosos armados.",
+     "basis": "manchete e resumo"
+    },
+    {
+     "outlet": "Veja",
+     "title": "Ex-chefe da Polícia do Rio ganhou mansão para blindar esquema de lavagem com postos, diz PF",
+     "url": "https://veja.abril.com.br/politica/ex-chefe-da-policia-do-rio-ganhou-mansao-para-blindar-esquema-de-lavagem-com-postos-diz-pf",
+     "published_at": "2026-10-15T18:04:41Z",
+     "summary": "A PF aponta o delegado Marcus Vinícius Amim Fernandes, preso em 15/10, como responsável por garantir proteção institucional a esquema que teria movimentado 7,6 bilhões de reais por rede de postos de combustíveis irregulares.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:34, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "lula-e-flavio-bolsonaro-divergem-sobre-clt-sindicatos-e-jornada-de-trabalho",
+   "title": "Lula e Flávio Bolsonaro divergem sobre CLT, sindicatos e jornada de trabalho",
+   "text": "O Estadão relata que Flávio Bolsonaro pediu ao TSE investigação de suposto financiamento de sindicatos à campanha de Lula e a cassação da chapa por abuso de poder econômico. A Jovem Pan relata que as acusações ainda serão analisadas pela Justiça Eleitoral e não representam conclusão de que houve irregularidades.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/mercado/2026/10/lula-e-flavio-bolsonaro-divergem-sobre-clt-sindicatos-e-jornada-de-trabalho.shtml",
+     "published_at": "2026-10-14T15:00:00Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/flavio-acusa-sindicatos-de-custearem-campanha-de-lula-e-pede-ao-tse-para-cassar-chapa-do-petista",
+     "published_at": "2026-10-15T00:08:48Z"
+    },
+    {
+     "outlet": "Revista Oeste",
+     "url": "https://revistaoeste.com/politica/flavio-pede-cassacao-da-candidatura-de-lula-por-uso-de-recursos-de-sindicatos-em-campanha",
+     "published_at": "2026-10-15T08:05:38-03:00"
+    },
+    {
+     "outlet": "Jovem Pan",
+     "url": "https://jovempan.com.br/politica/flavio-bolsonaro-aciona-tse-contra-sindicatos-e-pede-cassacao-da-chapa-de-lula",
+     "published_at": "2026-10-15T13:26:57Z"
+    }
+   ]
+  },
+  {
+   "id": "nunes-marques-determina-reativacao-do-canal-exercito-do-lula",
+   "title": "Nunes Marques determina reativação do canal ‘Exército do Lula’",
+   "text": "O presidente do TSE, Nunes Marques, determinou ao Facebook o restabelecimento integral do funcionamento do canal 'Exército do Lula', inclusive novas publicações e ingresso de seguidores. A coligação de Lula pediu ao TSE que o canal 'Tropa do Flávio' fosse suspenso por 48 horas, alegando necessidade de isonomia.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/kassio-antecipa-liberacao-de-canal-exercito-do-lula-apos-pt-pedir-suspensao-de-tropa-do-flavio.shtml",
+     "published_at": "2026-10-15T00:51:00Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/eleicoes/nunes-marques-determina-reativacao-do-canal-exercito-do-lula",
+     "published_at": "2026-10-15T01:37:22Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/nunes-marques-autoriza-reativacao-imediata-do-canal-exercito-do-lula-no-whatsapp",
+     "published_at": "2026-10-15T02:55:09Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-eleicoes-2026/canal-exercito-do-lula-volta-ao-ar-apos-decisao-de-nunes-marques",
+     "published_at": "2026-10-15T05:28:33-03:00"
+    }
+   ]
+  },
+  {
+   "id": "kassio-tira-restricoes-de-perfis-de-politicos-eleitos-no-1-turno-e-beneficia",
+   "title": "Kassio tira restrições de perfis de políticos eleitos no 1º turno e beneficia Flávio Bolsonaro nas redes",
+   "text": "Em ofício às plataformas na sexta-feira (9), Kassio Nunes Marques liberou a recomendação algorítmica de perfis e posts de candidatos já eleitos no primeiro turno. Segundo a Folha, políticos bolsonaristas, entre eles Gustavo Gayer, procuraram Kassio pedindo que a regra fosse interpretada para permitir a recomendação a candidatos já eleitos.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/15/campanha-de-lula-pede-ao-tse-retirada-de-255-perfis-e-compensacao-por-alcance-perdido-na-meta.ghtml",
+     "published_at": "2026-10-15T11:02:56Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/kassio-tira-restricoes-de-perfis-de-politicos-eleitos-no-1o-turno-e-beneficia-flavio-bolsonaro-nas-redes.shtml",
+     "published_at": "2026-10-15T13:21:00Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/eleicoes/campanha-de-lula-pede-ao-tse-retirada-de-255-perfis-e-cobra-meta-por-alcance-de-posts-nprp",
+     "published_at": "2026-10-15T13:23:48Z"
+    }
+   ]
+  },
+  {
+   "id": "tse-manda-retirar-posts-com-fake-news-que-associa-lula-a-ritual-satanico-na",
+   "title": "TSE manda retirar posts com fake news que associa Lula a ritual satânico na Avenida Paulista",
+   "text": "A ministra Estela Aranha determinou a retirada de publicações com fake news que associam Lula a um suposto ritual satânico na Avenida Paulista, com prazo de três horas. Segundo o g1, as imagens do vídeo foram gravadas durante a 4ª Marcha para Exu, em 16 de agosto de 2026.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/blog/andreia-sadi/post/2026/10/14/advogada-flavio-bolsonaro-exercito-do-lula-janones.ghtml",
+     "published_at": "2026-10-14T17:21:33Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/14/tse-manda-retirar-posts-que-associam-falsamente-lula-a-ritual-satanico-na-paulista.ghtml",
+     "published_at": "2026-10-14T22:26:17Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/eleicoes/tse-manda-remover-posts-que-associavam-falsamente-campanha-de-lula-a-ritual-satanico-na-av-paulista-nprp",
+     "published_at": "2026-10-15T21:04:48Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-eleicoes-2026/tse-manda-retirar-postagem-de-flavio-sobre-possivel-mesada-a-lulinha",
+     "published_at": "2026-10-15T23:12:24Z"
+    }
+   ]
+  },
+  {
+   "id": "tesouraco-de-flavio-mendonca-paralisa-julgamento-apos-tse-formar-maioria-para",
+   "title": "'Tesouraço de Flávio': Mendonça paralisa julgamento após TSE formar maioria para derrubar sua decisão contra vídeo de Lula",
+   "text": "André Mendonça pediu destaque e interrompeu julgamento no TSE que tinha maioria de 4 a 3 para derrubar sua decisão contra vídeo da campanha de Lula. Estela Aranha abriu divergência, acompanhada por Cueva, Sebastião Reis Júnior e Floriano de Azevedo Marques; Nunes Marques e Toffoli acompanharam o relator.",
+   "sources": [
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-eleicoes-2026/mendonca-interrompe-julgamento-que-tem-maioria-para-derrubar-sua-decisao",
+     "published_at": "2026-10-15T12:20:04Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/15/tesouraco-de-flavio-mendonca-paralisa-julgamento-apos-tse-formar-maioria-para-derrubar-sua-decisao-contra-video-de-lula.ghtml",
+     "published_at": "2026-10-15T13:56:25Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/tse-derruba-decisao-de-mendonca-e-barra-posts-em-que-flavio-acusa-lula-de-menosprezar-garis.shtml",
+     "published_at": "2026-10-15T17:48:00Z"
+    }
+   ]
+  },
+  {
+   "id": "ciro-gomes-pede-cassacao-da-chapa-de-elmano-e-nova-eleicao-no-ceara",
+   "title": "Ciro Gomes pede cassação da chapa de Elmano e nova eleição no Ceará",
+   "text": "A coligação Unir para Mudar, de Ciro Gomes, pediu ao TRE-CE a cassação da chapa de Elmano de Freitas e a realização de nova eleição. A campanha de Elmano disse lamentar que Ciro continue 'desrespeitando a democracia e questionando o resultado legítimo das urnas'.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/ciro-gomes-pede-cassacao-da-chapa-de-elmano-e-nova-eleicao-no-ceara.shtml",
+     "published_at": "2026-10-14T18:56:00Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-eleicoes-2026/campanha-de-ciro-gomes-pede-cassacao-da-chapa-de-elmano-no-ceara",
+     "published_at": "2026-10-15T12:47:08Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/ceara/coligacao-de-ciro-gomes-pede-cassacao-de-elmano-e-novas-eleicoes-no-ceara",
+     "published_at": "2026-10-15T14:27:33Z"
+    }
+   ]
+  },
+  {
+   "id": "alcolumbre-preve-votacao-da-pec-da-seguranca-para-esta-quinta-apos-rito",
+   "title": "Alcolumbre prevê votação da PEC da Segurança para esta quinta após rito acelerado",
+   "text": "Alcolumbre anunciou a previsão de votar a PEC 18/2025 (PEC da Segurança Pública) na quinta-feira (15), em dois turnos. Os senadores aprovaram o Requerimento 713/2026, que estabelece calendário especial e dispensa o intervalo mínimo de cinco dias úteis entre as duas votações.",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/senadores-aprovam-pedido-para-acelerar-votacao-da-pec-da-seguranca",
+     "published_at": "2026-10-15T01:41:00Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/alcolumbre-preve-votacao-da-pec-da-seguranca-para-esta-quinta-apos-rito-acelerado",
+     "published_at": "2026-10-15T02:31:09Z"
+    }
+   ]
+  },
+  {
+   "id": "deputado-do-pt-pede-ao-stf-investigacao-e-afastamento-de-nunes-marques-do",
+   "title": "Deputado do PT pede ao STF investigação e afastamento de Nunes Marques do comando do TSE",
+   "text": "O deputado pede que Nunes Marques seja afastado temporariamente do TSE enquanto o caso é analisado, sem envolver o afastamento do cargo de ministro do STF. O documento foi enviado ao site DCM, mas ainda não aparece nos sistemas do Supremo.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/14/deputado-do-pt-pede-ao-stf-investigacao-e-afastamento-de-nunes-marques-do-comando-do-tse.ghtml",
+     "published_at": "2026-10-14T14:48:19Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/deputado-petista-pede-que-stf-afaste-nunes-marques-do-tse",
+     "published_at": "2026-10-14T18:14:20Z"
+    }
+   ]
+  },
+  {
+   "id": "flavio-bolsonaro-votou-a-favor-do-fim-da-6x1-em-manobra-eleitoreira-diz-erika",
+   "title": "Flávio Bolsonaro votou a favor do fim da 6x1 em 'manobra eleitoreira', diz Erika Hilton",
+   "text": "Flávio Bolsonaro votou de forma remota a favor da PEC, estando em agenda de campanha em Porto Alegre. A proposta foi aprovada em dois turnos por 75 votos a favor e um contra, sendo Hamilton Mourão o único contrário.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/14/ausente-nas-discussoes-flavio-bolsonaro-cede-a-pressao-e-vota-a-favor-da-pec-do-fim-do-6x1.ghtml",
+     "published_at": "2026-10-15T00:51:01Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/flavio-bolsonaro-votou-a-favor-do-fim-da-6x1-em-manobra-eleitoreira-diz-erika-hilton.shtml",
+     "published_at": "2026-10-15T02:39:00Z"
+    }
+   ]
+  },
+  {
+   "id": "psd-volta-a-pedir-ao-supremo-segundo-turno-no-rio",
+   "title": "PSD volta a pedir ao Supremo segundo turno no Rio",
+   "text": "O PSD acionou o STF em 14 de outubro para pedir novamente a convocação de segundo turno na eleição para governador do Rio. A ação anterior da coligação de Paes foi rejeitada pelo ministro Cristiano Zanin.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/eduardo-paes-abre-nova-frente-no-stf-para-tentar-realizacao-de-2o-turno-no-rj.shtml",
+     "published_at": "2026-10-14T21:12:00Z"
+    },
+    {
+     "outlet": "Veja",
+     "url": "https://veja.abril.com.br/politica/psd-volta-a-pedir-ao-supremo-segundo-turno-no-rio",
+     "published_at": "2026-10-14T21:49:49Z"
+    }
+   ]
+  },
+  {
+   "id": "canella-exercia-funcao-estrategica-em-esquema-de-r-7-6-bi-diz-pf",
+   "title": "Canella exercia “função estratégica” em esquema de R$ 7,6 bi, diz PF",
+   "text": "A operação, autorizada por Alexandre de Moraes, cumpriu outros 5 mandados de prisão preventiva e 16 de busca e apreensão. Moraes determinou o sequestro de bens e a suspensão das atividades de 112 empresas, das quais 96 são postos de combustíveis.",
+   "sources": [
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-justica/canella-exercia-funcao-estrategica-em-esquema-de-r-76-bi-diz-pf",
+     "published_at": "2026-10-15T14:15:28Z"
+    }
+   ]
+  },
+  {
+   "id": "senado-tira-da-pauta-discussao-de-pec-da-seguranca-publica",
+   "title": "Senado tira da pauta discussão de PEC da Segurança Pública",
+   "text": "A CNN relata que Alcolumbre retirou a PEC da Segurança Pública da pauta do plenário do Senado desta quinta-feira (15) e que a avaliação é de que a proposta fique para depois das eleições. Alcolumbre disse que aguardará os entendimentos dos senadores sobre o texto e que não pode haver decisão açodada.",
+   "sources": [
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/politica/alcolumbre-retira-pec-da-seguranca-publica-da-pauta-do-senado",
+     "published_at": "2026-10-15T21:32:16Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-congresso/alcolumbre-protege-lula-ao-tirar-pec-da-seguranca-da-pauta-diz-marinho",
+     "published_at": "2026-10-15T23:08:09Z"
+    }
+   ]
+  },
+  {
+   "id": "vorcaro-promoveu-festa-com-garotas-de-programa-para-kassio-diz-revista",
+   "title": "Vorcaro promoveu festa com garotas de programa para Kassio, diz revista",
+   "text": "Segundo a Folha, as mensagens não deixam claro se o dono do Banco Master participou do evento. Kassio Nunes Marques enviou nota à Folha dizendo que nunca autorizou ninguém a falar em nome dele e não pode se responsabilizar por conversas ou ações de terceiros.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/vorcaro-promoveu-festa-com-garotas-de-programa-para-kassio-diz-revista.shtml",
+     "published_at": "2026-10-15T19:39:00Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/vorcaro-coordenou-noitada-em-triplex-para-ministro-do-stf-kassio-nunes-marques-diz-revista",
+     "published_at": "2026-10-15T21:25:58Z"
+    }
+   ]
+  },
+  {
+   "id": "alcolumbre-diz-que-vai-promulgar-fim-da-6x1-e-aposentadoria-especial-para",
+   "title": "Alcolumbre diz que vai promulgar fim da 6x1 e aposentadoria especial para agentes de saúde na sexta",
+   "text": "Davi Alcolumbre afirmou que vai promulgar na sexta-feira (16) a PEC do fim da 6x1 e a PEC da aposentadoria especial para agentes comunitários de saúde. O Senado aprovou na quarta-feira (14), em dois turnos, a PEC que acaba com a escala 6x1 e reduz a jornada máxima de 44 para 40 horas semanais, sem redução de salário.",
+   "sources": [
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/politica/alcolumbre-diz-que-pec-sobre-fim-da-6x1-sera-promulgada-nesta-sexta-16",
+     "published_at": "2026-10-15T21:28:56Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/15/alcolumbre-diz-que-vai-promulgar-fim-da-6x1-e-aposentadoria-especial-para-agentes-comunitarios-de-saude.ghtml",
+     "published_at": "2026-10-15T21:29:01Z"
+    }
+   ]
+  },
+  {
+   "id": "flavio-bolsonaro-faz-agenda-no-rs-em-dia-de-votacao-sobre-escala-6x1-e-ignora",
+   "title": "Flávio Bolsonaro faz agenda no RS em dia de votação sobre escala 6x1 e ignora assunto em comício",
+   "text": "A Folha relata que Flávio Bolsonaro cumpriu agenda no Rio Grande do Sul sem falar publicamente sobre a PEC do fim da escala 6x1, que começou a ser votada no Senado no final da tarde. A Folha relata que a PEC em votação reduz a jornada semanal de 44 para 40 horas, 14 meses após a promulgação.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/mercado/2026/10/senado-inicia-votacao-da-pec-do-fim-da-escala-6x1.shtml",
+     "published_at": "2026-10-14T19:29:00Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/flavio-bolsonaro-faz-agenda-no-rs-em-dia-de-votacao-sobre-escala-6x1e-ignora-assunto-em-comicio.shtml",
+     "published_at": "2026-10-14T23:27:00Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/14/lula-comemora-aprovacao-da-pec-do-fim-da-escala-6x1.ghtml",
+     "published_at": "2026-10-15T01:07:06Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/trabalho-e-carreira/noticia/2026/10/15/fim-da-escala-6x1-tambem-afeta-quem-trabalha-de-segunda-a-sexta-veja-o-que-muda.ghtml",
+     "published_at": "2026-10-15T11:08:23Z"
+    },
+    {
+     "outlet": "Veja",
+     "url": "https://veja.abril.com.br/politica/os-seis-senadores-que-se-ausentaram-ou-nao-votaram-a-favor-do-fim-da-escala-6x1",
+     "published_at": "2026-10-15T15:06:38Z"
+    }
+   ]
+  },
+  {
+   "id": "camara-aprova-pacote-eleitoral-de-lula-que-perdoa-dividas-e-aumenta-teto-do-mei",
+   "title": "Câmara aprova pacote eleitoral de Lula que perdoa dívidas e aumenta teto do MEI",
+   "text": "O Estadão relata que a Câmara aprovou, por 461 votos a 4, parte do pacote de Lula para MEIs, aumentando o teto de faturamento e perdoando ao menos R$ 12,86 bilhões em dívidas; o texto vai ao Senado. O Estadão relata que o Ministério da Fazenda disse que só poderá avaliar o impacto quando for informado sobre a versão final do texto.",
+   "sources": [
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/camara-aprova-pacote-eleitoral-de-lula-que-perdoa-dividas-e-aumenta-teto-do-mei",
+     "published_at": "2026-10-14T22:46:26Z"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/camara-aprova-aumento-no-limite-de-receita-bruta-do-mei",
+     "published_at": "2026-10-14T23:09:00Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/economia/camara-aprova-perdao-de-dividas-do-mei-e-aumento-do-teto",
+     "published_at": "2026-10-14T23:12:31Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/15/oab-da-medicina-camara-aprova-medida-que-preve-obrigatoriedade-de-tres-provas-durante-o-curso.ghtml",
+     "published_at": "2026-10-15T18:34:04Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/15/senado-aprova-projeto-que-amplia-limite-do-mei-e-perdoa-dividas-de-inadimplentes.ghtml",
+     "published_at": "2026-10-15T21:51:06Z"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/senado-aprova-aumento-de-limite-e-perdao-de-divida-para-meis",
+     "published_at": "2026-10-15T22:52:00Z"
+    }
+   ]
+  },
+  {
+   "id": "pf-acha-dinheiro-dentro-de-adega-de-policial-preso-em-operacao-que-prendeu",
+   "title": "PF acha dinheiro dentro de adega de policial preso em operação que prendeu deputado e ex-chefe da Polícia Civil do RJ",
+   "text": "A CNN relata que a PF prendeu o delegado e ex-secretário de Polícia Civil Marcus Vinicius Amim Fernandes na oitava fase da Operação Unha e Carne, por suspeita de lavagem de dinheiro por rede de postos de combustíveis. A CNN relata que a operação cumpriu seis mandados de prisão preventiva e 16 de busca e apreensão.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/rj/rio-de-janeiro/noticia/2026/10/15/pf-acha-dinheiro-dentro-de-adega-de-policial-preso-em-operacao-que-prendeu-deputado-e-ex-chefe-da-policia-civil-do-rj.ghtml",
+     "published_at": "2026-10-15T14:00:10Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/nacional/sudeste/rj/quem-e-marcus-amim-delegado-preso-em-operacao-da-pf-no-rio",
+     "published_at": "2026-10-15T14:00:13Z"
+    },
+    {
+     "outlet": "UOL",
+     "url": "https://noticias.uol.com.br/eleicoes/2026/10/15/preso-pela-pf-canella-recebeu-83-dos-votos-em-areas-de-faccao-ou-milicia.htm",
+     "published_at": "2026-10-15T14:00:33Z"
+    },
+    {
+     "outlet": "Veja",
+     "url": "https://veja.abril.com.br/politica/ex-chefe-da-policia-do-rio-ganhou-mansao-para-blindar-esquema-de-lavagem-com-postos-diz-pf",
+     "published_at": "2026-10-15T18:04:41Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "Folha",
+   "title": "Flávio Bolsonaro faz agenda no RS em dia de votação sobre escala 6x1 e ignora assunto em comício",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/flavio-bolsonaro-faz-agenda-no-rs-em-dia-de-votacao-sobre-escala-6x1e-ignora-assunto-em-comicio.shtml",
+   "published_at": "2026-10-14T23:27:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Senado aprova PEC do fim da escala 6x1, em trunfo para Lula a 11 dias da eleição",
+   "url": "https://www1.folha.uol.com.br/mercado/2026/10/senado-inicia-votacao-da-pec-do-fim-da-escala-6x1.shtml",
+   "published_at": "2026-10-14T19:29:00Z",
+   "basis": "manchete e resumo"
+  },
+  {
+   "outlet": "g1",
+   "title": "Fim da escala 6x1 também afeta quem trabalha de segunda a sexta; veja o que muda",
+   "url": "https://g1.globo.com/trabalho-e-carreira/noticia/2026/10/15/fim-da-escala-6x1-tambem-afeta-quem-trabalha-de-segunda-a-sexta-veja-o-que-muda.ghtml",
+   "published_at": "2026-10-15T11:08:23Z",
+   "basis": "manchete e resumo"
+  },
+  {
+   "outlet": "g1",
+   "title": "Lula comemora aprovação da PEC do fim da escala 6x1: 'vitória dos trabalhadores'",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/14/lula-comemora-aprovacao-da-pec-do-fim-da-escala-6x1.ghtml",
+   "published_at": "2026-10-15T01:07:06Z",
+   "basis": "manchete e resumo"
+  },
+  {
+   "outlet": "Veja",
+   "title": "Os seis senadores que se ausentaram ou não votaram a favor do fim da escala 6×1",
+   "url": "https://veja.abril.com.br/politica/os-seis-senadores-que-se-ausentaram-ou-nao-votaram-a-favor-do-fim-da-escala-6x1",
+   "published_at": "2026-10-15T15:06:38Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Câmara aprova pacote eleitoral de Lula que perdoa dívidas e aumenta teto do MEI",
+   "url": "https://estadao.com.br/politica/camara-aprova-pacote-eleitoral-de-lula-que-perdoa-dividas-e-aumenta-teto-do-mei",
+   "published_at": "2026-10-14T22:46:26Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Câmara aprova perdão de dívidas do MEI e aumento do teto",
+   "url": "https://gazetadopovo.com.br/economia/camara-aprova-perdao-de-dividas-do-mei-e-aumento-do-teto",
+   "published_at": "2026-10-14T23:12:31Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Câmara aprova aumento no limite de receita bruta do MEI",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/camara-aprova-aumento-no-limite-de-receita-bruta-do-mei",
+   "published_at": "2026-10-14T23:09:00Z",
+   "basis": "manchete e resumo"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Senado aprova aumento de limite e perdão de dívida para MEIs",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/senado-aprova-aumento-de-limite-e-perdao-de-divida-para-meis",
+   "published_at": "2026-10-15T22:52:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Senado aprova projeto que amplia limite do MEI e perdoa dívidas de inadimplentes",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/15/senado-aprova-projeto-que-amplia-limite-do-mei-e-perdoa-dividas-de-inadimplentes.ghtml",
+   "published_at": "2026-10-15T21:51:06Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "'OAB da Medicina': Câmara aprova medida que prevê obrigatoriedade de três provas durante o curso",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/15/oab-da-medicina-camara-aprova-medida-que-preve-obrigatoriedade-de-tres-provas-durante-o-curso.ghtml",
+   "published_at": "2026-10-15T18:34:04Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Quem é Marcus Amim, delegado preso em operação da PF no Rio",
+   "url": "https://cnnbrasil.com.br/nacional/sudeste/rj/quem-e-marcus-amim-delegado-preso-em-operacao-da-pf-no-rio",
+   "published_at": "2026-10-15T14:00:13Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "PF acha dinheiro dentro de adega de policial preso em operação que prendeu deputado e ex-chefe da Polícia Civil do RJ",
+   "url": "https://g1.globo.com/rj/rio-de-janeiro/noticia/2026/10/15/pf-acha-dinheiro-dentro-de-adega-de-policial-preso-em-operacao-que-prendeu-deputado-e-ex-chefe-da-policia-civil-do-rj.ghtml",
+   "published_at": "2026-10-15T14:00:10Z",
+   "basis": "manchete e resumo"
+  },
+  {
+   "outlet": "UOL",
+   "title": "Preso pela PF, Canella recebeu 83% dos votos em áreas de facção ou milícia",
+   "url": "https://noticias.uol.com.br/eleicoes/2026/10/15/preso-pela-pf-canella-recebeu-83-dos-votos-em-areas-de-faccao-ou-milicia.htm",
+   "published_at": "2026-10-15T14:00:33Z",
+   "basis": "manchete e resumo"
+  },
+  {
+   "outlet": "Veja",
+   "title": "Ex-chefe da Polícia do Rio ganhou mansão para blindar esquema de lavagem com postos, diz PF",
+   "url": "https://veja.abril.com.br/politica/ex-chefe-da-policia-do-rio-ganhou-mansao-para-blindar-esquema-de-lavagem-com-postos-diz-pf",
+   "published_at": "2026-10-15T18:04:41Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Lula e Flávio Bolsonaro divergem sobre CLT, sindicatos e jornada de trabalho",
+   "url": "https://www1.folha.uol.com.br/mercado/2026/10/lula-e-flavio-bolsonaro-divergem-sobre-clt-sindicatos-e-jornada-de-trabalho.shtml",
+   "published_at": "2026-10-14T15:00:00Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Flávio acusa sindicatos de custearem campanha de Lula e pede ao TSE para cassar chapa do petista",
+   "url": "https://estadao.com.br/politica/flavio-acusa-sindicatos-de-custearem-campanha-de-lula-e-pede-ao-tse-para-cassar-chapa-do-petista",
+   "published_at": "2026-10-15T00:08:48Z"
+  },
+  {
+   "outlet": "Revista Oeste",
+   "title": "Flávio pede cassação da candidatura de Lula por uso de recursos de sindicatos em campanha",
+   "url": "https://revistaoeste.com/politica/flavio-pede-cassacao-da-candidatura-de-lula-por-uso-de-recursos-de-sindicatos-em-campanha",
+   "published_at": "2026-10-15T08:05:38-03:00"
+  },
+  {
+   "outlet": "Jovem Pan",
+   "title": "Flávio Bolsonaro aciona TSE contra sindicatos e pede cassação da chapa de Lula",
+   "url": "https://jovempan.com.br/politica/flavio-bolsonaro-aciona-tse-contra-sindicatos-e-pede-cassacao-da-chapa-de-lula",
+   "published_at": "2026-10-15T13:26:57Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Kassio antecipa liberação de canal 'Exército do Lula' após PT pedir suspensão de 'Tropa do Flávio'",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/kassio-antecipa-liberacao-de-canal-exercito-do-lula-apos-pt-pedir-suspensao-de-tropa-do-flavio.shtml",
+   "published_at": "2026-10-15T00:51:00Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Nunes Marques determina reativação do canal ‘Exército do Lula’",
+   "url": "https://estadao.com.br/politica/eleicoes/nunes-marques-determina-reativacao-do-canal-exercito-do-lula",
+   "published_at": "2026-10-15T01:37:22Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Nunes Marques autoriza reativação imediata do canal “Exército do Lula” no WhatsApp",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/nunes-marques-autoriza-reativacao-imediata-do-canal-exercito-do-lula-no-whatsapp",
+   "published_at": "2026-10-15T02:55:09Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Canal \"Exército do Lula\" volta ao ar após decisão de Nunes Marques",
+   "url": "https://poder360.com.br/poder-eleicoes-2026/canal-exercito-do-lula-volta-ao-ar-apos-decisao-de-nunes-marques",
+   "published_at": "2026-10-15T05:28:33-03:00"
+  },
+  {
+   "outlet": "g1",
+   "title": "Campanha de Lula pede ao TSE retirada de 255 perfis e compensação por alcance perdido na Meta",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/15/campanha-de-lula-pede-ao-tse-retirada-de-255-perfis-e-compensacao-por-alcance-perdido-na-meta.ghtml",
+   "published_at": "2026-10-15T11:02:56Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Kassio tira restrições de perfis de políticos eleitos no 1º turno e beneficia Flávio Bolsonaro nas redes",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/kassio-tira-restricoes-de-perfis-de-politicos-eleitos-no-1o-turno-e-beneficia-flavio-bolsonaro-nas-redes.shtml",
+   "published_at": "2026-10-15T13:21:00Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Campanha de Lula pede ao TSE retirada de 255 perfis e cobra Meta por alcance de posts",
+   "url": "https://estadao.com.br/politica/eleicoes/campanha-de-lula-pede-ao-tse-retirada-de-255-perfis-e-cobra-meta-por-alcance-de-posts-nprp",
+   "published_at": "2026-10-15T13:23:48Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Advogada de Flávio Bolsonaro diz que TSE não identificou fake news no 'Exército do Lula' porque Janones apagou mensagens",
+   "url": "https://g1.globo.com/politica/blog/andreia-sadi/post/2026/10/14/advogada-flavio-bolsonaro-exercito-do-lula-janones.ghtml",
+   "published_at": "2026-10-14T17:21:33Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "TSE manda retirar posts com fake news que associa Lula a ritual satânico na Avenida Paulista",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/14/tse-manda-retirar-posts-que-associam-falsamente-lula-a-ritual-satanico-na-paulista.ghtml",
+   "published_at": "2026-10-14T22:26:17Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "TSE manda remover posts que associavam falsamente campanha de Lula a ritual satânico na Paulista",
+   "url": "https://estadao.com.br/politica/eleicoes/tse-manda-remover-posts-que-associavam-falsamente-campanha-de-lula-a-ritual-satanico-na-av-paulista-nprp",
+   "published_at": "2026-10-15T21:04:48Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "TSE manda retirar postagem de Flávio sobre possível mesada a Lulinha",
+   "url": "https://poder360.com.br/poder-eleicoes-2026/tse-manda-retirar-postagem-de-flavio-sobre-possivel-mesada-a-lulinha",
+   "published_at": "2026-10-15T23:12:24Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Mendonça interrompe julgamento que tem maioria para derrubar sua decisão",
+   "url": "https://poder360.com.br/poder-eleicoes-2026/mendonca-interrompe-julgamento-que-tem-maioria-para-derrubar-sua-decisao",
+   "published_at": "2026-10-15T12:20:04Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "'Tesouraço de Flávio': Mendonça paralisa julgamento após TSE formar maioria para derrubar sua decisão contra vídeo de Lula",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/15/tesouraco-de-flavio-mendonca-paralisa-julgamento-apos-tse-formar-maioria-para-derrubar-sua-decisao-contra-video-de-lula.ghtml",
+   "published_at": "2026-10-15T13:56:25Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "TSE derruba decisão de Mendonça e barra posts em que Flávio associa Lula a escândalo do INSS",
+   "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/tse-derruba-decisao-de-mendonca-e-barra-posts-em-que-flavio-acusa-lula-de-menosprezar-garis.shtml",
+   "published_at": "2026-10-15T17:48:00Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Ciro Gomes pede cassação da chapa de Elmano e nova eleição no Ceará",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/ciro-gomes-pede-cassacao-da-chapa-de-elmano-e-nova-eleicao-no-ceara.shtml",
+   "published_at": "2026-10-14T18:56:00Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Campanha de Ciro Gomes pede cassação da chapa de Elmano no Ceará",
+   "url": "https://poder360.com.br/poder-eleicoes-2026/campanha-de-ciro-gomes-pede-cassacao-da-chapa-de-elmano-no-ceara",
+   "published_at": "2026-10-15T12:47:08Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Coligação de Ciro Gomes pede cassação da chapa de Elmano e novas eleições no Ceará",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/ceara/coligacao-de-ciro-gomes-pede-cassacao-de-elmano-e-novas-eleicoes-no-ceara",
+   "published_at": "2026-10-15T14:27:33Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Senadores aprovam pedido para acelerar votação da PEC da Segurança",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/senadores-aprovam-pedido-para-acelerar-votacao-da-pec-da-seguranca",
+   "published_at": "2026-10-15T01:41:00Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Alcolumbre prevê votação da PEC da Segurança para esta quinta após rito acelerado",
+   "url": "https://gazetadopovo.com.br/republica/alcolumbre-preve-votacao-da-pec-da-seguranca-para-esta-quinta-apos-rito-acelerado",
+   "published_at": "2026-10-15T02:31:09Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Deputado do PT pede ao STF investigação e afastamento de Nunes Marques do comando do TSE",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/14/deputado-do-pt-pede-ao-stf-investigacao-e-afastamento-de-nunes-marques-do-comando-do-tse.ghtml",
+   "published_at": "2026-10-14T14:48:19Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Deputado petista pede que STF afaste Nunes Marques do TSE",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/deputado-petista-pede-que-stf-afaste-nunes-marques-do-tse",
+   "published_at": "2026-10-14T18:14:20Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Ausente nas discussões, Flávio Bolsonaro cede a pressão e vota a favor da PEC do fim do 6x1",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/14/ausente-nas-discussoes-flavio-bolsonaro-cede-a-pressao-e-vota-a-favor-da-pec-do-fim-do-6x1.ghtml",
+   "published_at": "2026-10-15T00:51:01Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Flávio Bolsonaro votou a favor do fim da 6x1 em 'manobra eleitoreira', diz Erika Hilton",
+   "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/flavio-bolsonaro-votou-a-favor-do-fim-da-6x1-em-manobra-eleitoreira-diz-erika-hilton.shtml",
+   "published_at": "2026-10-15T02:39:00Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Eduardo Paes abre nova frente no STF para tentar realização de 2º turno no RJ",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/eduardo-paes-abre-nova-frente-no-stf-para-tentar-realizacao-de-2o-turno-no-rj.shtml",
+   "published_at": "2026-10-14T21:12:00Z"
+  },
+  {
+   "outlet": "Veja",
+   "title": "PSD volta a pedir ao Supremo segundo turno no Rio",
+   "url": "https://veja.abril.com.br/politica/psd-volta-a-pedir-ao-supremo-segundo-turno-no-rio",
+   "published_at": "2026-10-14T21:49:49Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Canella exercia “função estratégica” em esquema de R$ 7,6 bi, diz PF",
+   "url": "https://poder360.com.br/poder-justica/canella-exercia-funcao-estrategica-em-esquema-de-r-76-bi-diz-pf",
+   "published_at": "2026-10-15T14:15:28Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Alcolumbre retira PEC da Segurança Pública da pauta do Senado",
+   "url": "https://cnnbrasil.com.br/politica/alcolumbre-retira-pec-da-seguranca-publica-da-pauta-do-senado",
+   "published_at": "2026-10-15T21:32:16Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Alcolumbre protege Lula ao tirar PEC da Segurança da pauta, diz Marinho",
+   "url": "https://poder360.com.br/poder-congresso/alcolumbre-protege-lula-ao-tirar-pec-da-seguranca-da-pauta-diz-marinho",
+   "published_at": "2026-10-15T23:08:09Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Vorcaro promoveu festa com garotas de programa para Kassio, diz revista",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/vorcaro-promoveu-festa-com-garotas-de-programa-para-kassio-diz-revista.shtml",
+   "published_at": "2026-10-15T19:39:00Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Vorcaro coordenou ‘noitada’ em triplex para ministro do STF Kassio Nunes Marques, diz revista",
+   "url": "https://estadao.com.br/politica/vorcaro-coordenou-noitada-em-triplex-para-ministro-do-stf-kassio-nunes-marques-diz-revista",
+   "published_at": "2026-10-15T21:25:58Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Alcolumbre diz que PEC sobre fim da 6×1 será promulgada nesta sexta (16)",
+   "url": "https://cnnbrasil.com.br/politica/alcolumbre-diz-que-pec-sobre-fim-da-6x1-sera-promulgada-nesta-sexta-16",
+   "published_at": "2026-10-15T21:28:56Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Alcolumbre diz que vai promulgar fim da 6x1 e aposentadoria especial para agentes de saúde na sexta",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/15/alcolumbre-diz-que-vai-promulgar-fim-da-6x1-e-aposentadoria-especial-para-agentes-comunitarios-de-saude.ghtml",
+   "published_at": "2026-10-15T21:29:01Z"
+  }
+ ],
+ "note": "Informações válidas até o corte das 20:34. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
