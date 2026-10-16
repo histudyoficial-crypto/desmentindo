@@ -1203,3 +1203,27 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
 }
 /* CLS: a Home é desenhada depois da leitura dos dados; o rodapé começa fora da primeira dobra e não pula */
 .is-home main { min-height: 100vh; }
+
+/* VÍDEOS RECENTES DOS CANAIS (16/10): publicação original dos canais, não checada — faixa clara, separada da memória */
+.hm-vr { margin: 40px 0 0; padding: 16px 0 0; border-top: 4px solid var(--ink); }
+.hm-vr-hd { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.vr-tag { display: inline-block; padding: 3px 8px; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; background: var(--white); color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+.vr-note { margin: 8px 0 0; max-width: 72ch; font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
+.vr-list { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 24px; }
+.vr { display: flex; flex-direction: column; gap: 8px; padding-top: 10px; border-top: 1px solid var(--rule); }
+.vr-th { display: block; aspect-ratio: 16 / 9; overflow: hidden; background: #000; }
+.vr-th img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.vr-k { margin: 0; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.vr-k b { color: var(--ink); }
+.vr-t { margin: 0; font-size: 16px; line-height: 1.3; font-weight: 700; }
+.vr-t a { color: var(--ink); text-decoration: none; }
+.vr-t a:hover, .vr-t a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+.vr-o { margin: 0; font-size: 12px; color: var(--ink-2); }
+.vr-id { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; }
+@media (max-width: 1060px) { .vr-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .hm-vr { margin: 0; padding: 22px 16px 6px; border-top-width: 6px; }
+  .vr-list { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .vr.vr-img { display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 12px; align-items: start; }
+  .vr-t { font-size: 15px; }
+}

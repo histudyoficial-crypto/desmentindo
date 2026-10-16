@@ -99,7 +99,8 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
 // data/corpus/thumb_review.json (home.json NÃO autoriza). Miniatura automática continua proibida: i.ytimg.com só em thumbSrc.
 {
   const yt = src.match(/i\.ytimg\.com/g) || [];
-  eq("ytimg só em thumbSrc", yt.length === 1 && fn("thumbSrc").includes("i.ytimg.com"), true);
+  // (16/10) única outra exceção: vidCard dos Vídeos recentes, cuja miniatura é vista e aprovada por Johnny na prévia do lote
+  eq("ytimg só em thumbSrc (e vidCard, lote aprovado)", yt.length === 2 && fn("thumbSrc").includes("i.ytimg.com") && fn("vidCard").includes("i.ytimg.com"), true);
   const yid = (src.match(/var YT_ID = [^;]+;/) || [""])[0];
   const T = new Function(`${MES}\n${yid}\n${fn("e")}\n${fn("dParts")}\n${fn("fdate")}\n${fn("dDay")}\n${fn("initials")}\n${fn("isDay")}\n${fn("tcDate")}\n${fn("tc")}\n${fn("civilDays")}\n${fn("agoLabel")}\n${fn("thumbSrc")}\n${fn("miniSaid")}\nreturn { thumbSrc, miniSaid, agoLabel, civilDays, tcDate };`)();
   const o = (x = {}) => Object.assign({ source_name: "Alexandre Garcia", video_id: "GZ8jWAg9pAA", date: "2026-09-14", excerpt: "Trecho do corpus", t_seconds: 302, t_label: "5:02", deep_link: "https://www.youtube.com/watch?v=GZ8jWAg9pAA&t=302s" }, x);

@@ -82,6 +82,8 @@ jobs:
           if grep -R -n -l 'rel="icon" href="data:,"' v5/index.html eleicoes-2026/; then echo 'Ícone vazio (data:,) encontrado.'; exit 1; fi
       - name: Direção 1 — regras determinísticas e limites da V1
         run: node public-ui/test-direcao1.mjs
+      - name: Vídeos recentes dos canais (contrato da seção e dos dados publicados)
+        run: node public-ui/test-videos-recentes.mjs
       - name: Eleições 2026 — páginas geradas em sincronia, CSS/JS da mesma versão do HTML, sem marcador interno, e regras dos snapshots
         run: |
           node public-ui/build-eleicoes.mjs --check
