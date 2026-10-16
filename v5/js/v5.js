@@ -1180,6 +1180,7 @@
             return "<li><i aria-hidden=\"true\"></i>" + (when ? '<b class="num">' + e(when) + "</b> · " : "") + '<a href="' + e(c.url) + '" target="_blank" rel="noopener"><b>' + e(c.outlet) + "</b></a>" +
               (c.summary || c.headline ? "<span>" + e(c.summary || c.headline) + "</span>" : "") + "</li>";
           }).join("") + '</ol><p class="fxs-leg">' + COV_NOTE + "</p></div>";
+          x += fxSaid(s.videos);
           x += mandar(SITE + "/fechamento/" + F.edition_date + "/#" + s.id, s.headline, "Mandar esta história", "mandar-story", "Mandar esta história") + "</div>";
           return x + "</article>";
         }).join("") + "</section>";
@@ -1187,12 +1188,12 @@
       }
       if (F.other_stories && F.other_stories.length) {
         h += '<section class="sec"><h2 class="h2">Outras que você precisa saber</h2><ul class="fx-list">' + F.other_stories.map(function (o) {
-          return '<li id="' + e(o.id) + '"><h3>' + e(o.title) + "</h3><p>" + e(o.text) + "</p>" + srcLinks(o.sources) + "</li>";
+          return '<li id="' + e(o.id) + '"><h3>' + e(o.title) + "</h3><p>" + e(o.text) + "</p>" + srcLinks(o.sources) + fxSaid(o.videos) + "</li>";
         }).join("") + "</ul></section>";
       }
       if (F.following && F.following.length) {
         h += '<section class="sec"><h2 class="h2">Acompanhando</h2><ul class="fx-list fx-fol">' + F.following.map(function (o) {
-          return '<li id="' + e(o.id) + '"><h3>' + e(o.title) + "</h3><p>" + e(o.text) + "</p>" + srcLinks(o.sources) +
+          return '<li id="' + e(o.id) + '"><h3>' + e(o.title) + "</h3><p>" + e(o.text) + "</p>" + srcLinks(o.sources) + fxSaid(o.videos) +
             (o.voice ? '<p class="fx-voice"><span class="tag tag-ring">' + e(o.voice.kind) + "</span> " + e(o.voice.who) + ": " + e(o.voice.summary) +
               ' <a class="link" href="' + e(o.voice.url) + '" target="_blank" rel="noopener">Ler</a></p>' : "") + "</li>";
         }).join("") + "</ul></section>";
@@ -1214,6 +1215,12 @@
     });
   };
 
+  // §37 (16/10/2026): referência audiovisual aprovada no Human Gate para a história do FECHAMENTO — mesmo componente
+  // "Já falaram sobre isso" da MATÉRIA (videoItem → saidItem), sem texto novo; sem dado aprovado, nada aparece.
+  function fxSaid(list) {
+    return list && list.length ? '<div class="fxs-sec fx-said"><p class="fxs-sk">Já falaram sobre isso</p><ul class="said-list">' +
+      list.map(videoItem).join("") + "</ul>" + NOTE + '<p class="rule-note">Aparecer antes não prova o fato de hoje.</p></div>' : "";
+  }
   function videoItem(v) {
     var li = saidItem({ source_name: v.channel, video_id: v.video_id, t_seconds: v.t_seconds, date: v.date, excerpt: v.said, t_label: v.t_label, deep_link: v.deep_link });
     li = li.replace('<p class="said-x">', (v.video_title ? '<p class="fx-vt">' + e(v.video_title) + "</p>" : "") + '<p class="said-x">');
