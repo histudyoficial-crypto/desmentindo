@@ -1,0 +1,66 @@
+{
+ "schema": "desmentindo.public.recent_videos.v1",
+ "date": "2026-10-15",
+ "published_at": "2026-10-15T21:52:35Z",
+ "title": "Vídeos recentes dos canais",
+ "notice": "Publicado pelos canais acompanhados. Ainda não checado pelo Desmentindo: título e conteúdo são dos autores. Aparecer aqui não é confirmação nem ligação com as notícias do dia.",
+ "window": {
+  "days": 3,
+  "from": "2026-10-13",
+  "to": "2026-10-15"
+ },
+ "items": [
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "0ZjuYFueopc",
+   "title": "2º turno: Como Posicionar seus Investimentos",
+   "published_at": "2026-10-15T22:34:07Z",
+   "url": "https://www.youtube.com/watch?v=0ZjuYFueopc",
+   "thumbnail": "https://i.ytimg.com/vi/0ZjuYFueopc/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-15T23:55:32Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "NYZv34QS_UY",
+   "title": "Festa de luxo paga por fundos de previdência - Alexandre Garcia",
+   "published_at": "2026-10-15T18:11:05Z",
+   "url": "https://www.youtube.com/watch?v=NYZv34QS_UY",
+   "thumbnail": "https://i.ytimg.com/vi/NYZv34QS_UY/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-15T23:55:32Z"
+  },
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "_d7UHFiS7HU",
+   "title": "O que Coppolla perguntaria a Lula em um debate",
+   "published_at": "2026-10-14T23:57:50Z",
+   "url": "https://www.youtube.com/watch?v=_d7UHFiS7HU",
+   "thumbnail": "https://i.ytimg.com/vi/_d7UHFiS7HU/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-15T23:55:33Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "yQx5TQIrQ9k",
+   "title": "Vorcaro usava o canal Metrópoles para atacar Banco Central - Alexandre Garcia",
+   "published_at": "2026-10-15T22:52:08Z",
+   "url": "https://www.youtube.com/watch?v=yQx5TQIrQ9k",
+   "thumbnail": null,
+   "highlight": false,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-15T23:55:32Z"
+  }
+ ]
+}
