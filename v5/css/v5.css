@@ -1101,6 +1101,7 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
 .is-home .fxh-sk { grid-column: 1 / -1; margin-bottom: 8px; }
 .is-home .fxh-c { padding-top: 10px; }
 .is-home .fxh-c p:last-child { font-size: 15px; line-height: 1.45; }
+.fxh-note { margin: 16px 0 0; font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
 /* trilho: Investigações = frente editorial escura (unidade real); Matérias = lista com régua, sem caixa */
 .hm-inv { grid-column: 9 / -1; margin: 30px 0 0; padding: 22px 24px 26px; background: var(--ink); color: var(--white); }
 .hm-inv .hm-h { color: var(--yellow); }

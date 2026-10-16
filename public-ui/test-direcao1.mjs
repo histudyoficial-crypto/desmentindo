@@ -208,9 +208,10 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
   const dec = src.match(/var SLOTS = [^\n]*\n/), mesl = src.match(/var MESL = [^\n]*\n/), wd = src.match(/var WD3 = [^\n]*\n/);
   const names = ["e", "nf", "plural", "dParts", "dLong", "dDay", "isDay", "tcDate", "tc", "civilDays", "agoLabel", "zparts", "pad2", "opDay", "brt", "fhm",
     "em1", "mandar", "ddmm", "mhDate", "mhSources", "imgOk", "morningItems", "mhVisual", "mhCat", "morningBlock", "latestItem", "agoraBar", "agoraIdle",
-    "newsDay", "fts", "fxRetro", "fxCut", "fxCutL", "fxHome", "homeTop"];
-  const K = new Function(`${MES}\n${dec ? dec[0] : ""}\n${mesl ? mesl[0] : ""}\n${wd ? wd[0] : ""}\nvar SLOT_RANK = { MORNING: 1, AFTERNOON: 2, EVENING: 3 };\n` +
-    `var SITE = "https://desmentindo.com.br", TZ = "America/Sao_Paulo", ZF = null;\n${names.map(fn).join("\n")}\nreturn { homeTop, agoraIdle, fxHome, opDay };`)();
+    "newsDay", "fts", "fxRetro", "fxCut", "fxCutL", "fxConclusions", "fxHome", "homeTop"];
+  const gc = src.match(/var GENERIC_CONC = [^\n]*\n/);
+  const K = new Function(`${MES}\n${dec ? dec[0] : ""}\n${mesl ? mesl[0] : ""}\n${wd ? wd[0] : ""}\n${gc ? gc[0] : ""}\nvar SLOT_RANK = { MORNING: 1, AFTERNOON: 2, EVENING: 3 };\n` +
+    `var SITE = "https://desmentindo.com.br", TZ = "America/Sao_Paulo", ZF = null;\n${names.map(fn).join("\n")}\nreturn { homeTop, agoraIdle, fxHome, opDay, fxConclusions };`)();
   const ED = JSON.parse(fs.readFileSync(path.join(ROOT, "data/editorial/edicoes/2026-10-05.json"), "utf8"));
   const F5 = JSON.parse(fs.readFileSync(path.join(ROOT, "data/editorial/fechamentos/2026-10-05.json"), "utf8"));
   const A5 = { edition: ED.edition, items: ED.items.map(it => ({ id: it.id, title: it.title, slot: it.slot, category: it.category || "", sources: [], date: it.date })) };
@@ -233,7 +234,9 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
   for (const t of ["aguardando", "aprovação", "revisão", "fila", "Human Gate", "pipeline", "processamento", "MORNING"]) eq("tom público: sem '" + t + "'", ia.toLowerCase().includes(t.toLowerCase()), false);
   // mais antigo que ontem: carimbo de distância do §32.4
   const o = K.homeTop(null, F5, "2026-10-08");
-  eq("3 dias antes", /<span class="fxh-tag">Fechamento<\/span><span class="tc tc-ago">3 DIAS ANTES<\/span>/.test(o), true);
+  eq("3 dias antes", /<span class="fxh-tag">Último fechamento<\/span><span class="tc tc-ago">3 DIAS ANTES<\/span>/.test(o), true);
+  // RECÊNCIA (16/10): FECHAMENTO mais antigo que ontem fica em escala de contexto (não parece o acontecimento do dia)
+  eq("C antigo: escala de contexto", /class="fxh fxh-prev"/.test(o), true);
   // C → A: 1ª edição aprovada do dia → some o neutro, fica uma barra só; FECHAMENTO anterior como hoje (A não muda)
   const A6 = { edition: "2026-10-06", items: [{ id: "x", title: "Aprovada", slot: "MORNING", category: "", sources: [], date: "2026-10-06" }] };
   const a = K.homeTop(A6, F5, "2026-10-06");
@@ -255,6 +258,23 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
   eq("A → B", [idle(bb), bars(bb), /fxh-tag">Fechamento de ontem|tc-ago/.test(bb), /class="nd"/.test(bb)], [0, 0, false, true]);
   eq("B: FECHAMENTO de hoje é a capa; Morning compacto; sem 'ontem'", [/class="fxh"/.test(bb), /fxh-prev/.test(bb), /class="mh mh-compact"/.test(bb)], [true, false, true]);
   eq("C: FECHAMENTO anterior é a capa (sem escala de contexto)", [/class="fxh"/.test(c), /fxh-prev|class="mh/.test(c)], [true, false]);
+
+  // CONCLUSÕES (16/10): ressalva padrão não vira 3 blocos; conclusões próprias continuam numeradas; nada inventado
+  const F13 = JSON.parse(fs.readFileSync(path.join(ROOT, "data/editorial/fechamentos/2026-10-13.json"), "utf8"));
+  const c13 = K.fxConclusions(F13), h13 = K.fxHome(F13, "2026-10-16");
+  eq("13/10: ressalva uma vez, sem blocos", [c13.items.length, c13.note, (h13.match(/é isto que as fontes citadas registram/g) || []).length, /fxh-side/.test(h13)],
+    [0, F13.main_stories[0].conclusion, 1, false]);
+  const F3 = JSON.parse(fs.readFileSync(path.join(ROOT, "data/editorial/fechamentos/2026-10-03.json"), "utf8"));
+  const c3 = K.fxConclusions(F3);
+  eq("03/10: conclusões próprias preservadas", [c3.items, c3.note], [F3.main_stories.map(s => s.conclusion), ""]);
+  const dup = K.fxConclusions({ main_stories: [{ conclusion: "A" }, { conclusion: "A" }, { conclusion: "B" }, {}] });
+  eq("repetida não vira dois blocos", dup.items, ["A", "B"]);
+  const all = new Set(); fs.readdirSync(path.join(ROOT, "data/editorial/fechamentos")).filter(f => /^\d{4}-\d{2}-\d{2}\.json$/.test(f)).forEach(f => {
+    const X = JSON.parse(fs.readFileSync(path.join(ROOT, "data/editorial/fechamentos", f), "utf8")), r = K.fxConclusions(X);
+    const src2 = (X.main_stories || []).map(s => s.conclusion).filter(Boolean);
+    if (![...r.items, ...(r.note ? [r.note] : [])].every(t => src2.includes(t))) all.add(f);
+  });
+  eq("nenhum texto fora do FECHAMENTO aprovado", [...all], []);
 
   // fxHome sem ref (fora do estado C) é idêntico ao anterior
   eq("fxHome sem ref inalterado", /fxh-tag">Fechamento<\/span><time/.test(K.fxHome(F5)), true);
