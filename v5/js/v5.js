@@ -153,6 +153,10 @@
   }
   document.addEventListener("error", function (ev) {
     var im = ev.target;
+    // Vídeos recentes: miniatura que não carrega → cartão só com texto (nada de ícone quebrado)
+    if (im && im.tagName === "IMG" && im.parentNode && im.parentNode.classList && im.parentNode.classList.contains("vr-th")) {
+      var li = im.parentNode.parentNode; im.parentNode.remove(); if (li && li.classList) li.classList.remove("vr-img"); return;
+    }
     if (!im || im.tagName !== "IMG" || !im.classList.contains("vm-img")) return;
     var a = im.parentNode;
     a.classList.remove("has-img"); a.classList.add("vm-ed");
@@ -578,6 +582,52 @@
       (items.length ? '<ul class="said-mini" id="ja-falaram">' + items.map(function (s) { return miniSaid(s.item, s, R, ref); }).join("") + "</ul>"
                     : '<p class="hm-none">Ainda não há trechos ligados aos casos de hoje. A memória continua disponível na busca.</p>') + "</section>";
   }
+  // VÍDEOS RECENTES DOS CANAIS (Johnny 16/10): vídeos recém-publicados pelos canais acompanhados, como publicação original
+  // dos autores. Lote aprovado no Human Gate e publicado pelo Publisher (data/editorial/videos). Nunca é checagem: sem
+  // trecho, minuto, vínculo com notícia, selo ou conclusão. Separado de "Já falaram sobre isso" (memória checada).
+  // Contrato validado aqui (fail-closed por item): id do YouTube, link oficial exato, status NAO_VERIFICADO. Miniatura
+  // oficial só em item com destaque; item sinalizado (acusação/ataque no título) aparece sem imagem e depois dos outros.
+  // Lote com mais de VID_MAX_AGE dias (civil, BRT) não aparece: a seção some em vez de mostrar coisa velha.
+  var VID_MAX_AGE = 3;
+  var videosIdx = null;
+  function loadVideos() {
+    if (!videosIdx) videosIdx = fetch("/data/editorial/videos/index.json" + (DV ? "?v=" + DV : "")).then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (idx) {
+        var x = idx && idx.items && idx.items.filter(function (i) { return i.date === idx.latest; })[0];
+        if (!x || !/^data\/editorial\/videos\/\d{4}-\d{2}-\d{2}\.json$/.test(x.file || "")) return null;
+        return fetch("/" + x.file + "?v=" + String(x.sha256 || "").slice(0, 12)).then(function (r) { return r.ok ? r.json() : null; });
+      }).catch(function () { return null; });
+    return videosIdx;
+  }
+  function vidOk(v) {
+    return !!(v && YT_ID.test(v.video_id || "") && v.url === "https://www.youtube.com/watch?v=" + v.video_id && v.status === "NAO_VERIFICADO" &&
+      v.title && v.channel && !isNaN(Date.parse(v.published_at || "")));
+  }
+  function vidItems(V, od) {
+    if (!V || V.schema !== "desmentindo.public.recent_videos.v1" || !isDay(V.date)) return [];
+    var age = civilDays(V.date, od);
+    if (!(age >= 0 && age <= VID_MAX_AGE)) return [];
+    var ok = (V.items || []).filter(vidOk);
+    return ok.filter(function (v) { return v.highlight === true; }).concat(ok.filter(function (v) { return v.highlight !== true; }));
+  }
+  function vidCard(v) {
+    var th = v.highlight === true && v.thumbnail === "https://i.ytimg.com/vi/" + v.video_id + "/mqdefault.jpg";
+    var day = opDay(Date.parse(v.published_at));
+    return '<li class="vr' + (th ? " vr-img" : "") + '" data-video="' + e(v.video_id) + '">' +
+      (th ? '<a class="vr-th" href="' + e(v.url) + '" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="' + e(v.thumbnail) +
+            '" alt="" width="320" height="180" loading="lazy" decoding="async"></a>' : "") +
+      '<div class="vr-x"><p class="vr-k"><b>' + e(v.channel) + "</b> · " + tc("date", tcDate(day), day) + "</p>" +
+      '<p class="vr-t"><a href="' + e(v.url) + '" target="_blank" rel="noopener">' + e(v.title) + ' <span class="vr-ext" aria-hidden="true">↗</span></a></p>' +
+      '<p class="vr-o">Título original do canal · YouTube <span class="vr-id">' + e(v.video_id) + "</span></p></div></li>";
+  }
+  function videosBlock(V, od) {
+    var it = vidItems(V, od);
+    if (!it.length) return "";
+    return '<section class="hm-vr" id="videos-recentes" aria-labelledby="hm-vr-h"><div class="hm-vr-hd"><h2 class="hm-h" id="hm-vr-h">Vídeos recentes dos canais</h2>' +
+      '<span class="vr-tag">Ainda não checado</span></div>' +
+      '<p class="vr-note">' + e(V.notice || "Publicado pelos canais acompanhados. Ainda não checado pelo Desmentindo.") + "</p>" +
+      '<ul class="vr-list">' + it.map(vidCard).join("") + "</ul></section>";
+  }
   // PESQUISE A MEMÓRIA: fecha a narrativa da Home. Cobertura lida do dado (archives); indisponível ≠ zero; parcial ≠ falha.
   function covLine(a) {
     if (!a || !a.name) return "";
@@ -625,8 +675,8 @@
   }
   P.home = function () {
     var ED = loadEdition();
-    return Promise.all([load("home.json"), ED, loadIdx("materias"), loadTyped("fechamentos"), loadThumbReview()]).then(function (res) {
-      var H = res[0], EDN = res[1], MI = res[2], LF = res[3], TR = res[4];
+    return Promise.all([load("home.json"), ED, loadIdx("materias"), loadTyped("fechamentos"), loadThumbReview(), loadVideos()]).then(function (res) {
+      var H = res[0], EDN = res[1], MI = res[2], LF = res[3], TR = res[4], VR = res[5];
       var A = agoraIsCurrent(EDN) && edItems(EDN).length ? { edition: EDN.edition, items: edItems(EDN) } : null;
       var od = opDay();
       var mats = (MI && MI.items || []).slice(0, 3);
@@ -635,7 +685,7 @@
         // referência temporal da memória: edição corrente quando houver; senão o último FECHAMENTO
         // (16/10) sem edição de hoje, sem "N dias antes": a distância contra um FECHAMENTO antigo não diz nada ao leitor
         var ref = A ? A.edition : "";
-        h += '<div class="hm-grid">' + matBlock(mats, MD) + saidBlock(H, TR, ref) + "</div>" + memorySearch(H);
+        h += '<div class="hm-grid">' + matBlock(mats, MD) + videosBlock(VR, od) + saidBlock(H, TR, ref) + "</div>" + memorySearch(H);
         return h + '<p class="hm-motto">Notícias passam. O que foi dito fica.</p>';
       });
     });
