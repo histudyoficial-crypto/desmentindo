@@ -135,6 +135,25 @@ export function editionPages() {
   return pages.map(o => ({ path: o.path, html: editionPage(o), url: o.url }));
 }
 
+// sitemap: raiz, páginas próprias das edições (FECHAMENTO/MATÉRIA) e as páginas indexáveis de Eleições 2026.
+// Sem <lastmod>: a data de publicação ainda não é confiável em todas as edições.
+export const ROBOTS = `User-agent: *\nAllow: /\nDisallow: /v4/\nDisallow: /desmentindo_local.html\n\nSitemap: ${SITE}/sitemap.xml\n`;
+export function sitemapUrls(pages) {
+  const urls = [`${SITE}/`];
+  const walk = d => fs.existsSync(d) ? fs.readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]) : [];
+  for (const f of walk(path.join(ROOT, "eleicoes-2026")).filter(f => f.endsWith("index.html")).sort()) {
+    if (/<meta name="robots" content="noindex/.test(fs.readFileSync(f, "utf8"))) continue;
+    urls.push(`${SITE}/${path.relative(ROOT, path.dirname(f)).split(path.sep).join("/")}/`);
+  }
+  for (const p of pages) urls.push(p.url);
+  return [...new Set(urls)];
+}
+export function sitemapXml(pages) {
+  const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+    sitemapUrls(pages).map(u => `  <url><loc>${esc(u)}</loc></url>`).join("\n") + "\n</urlset>\n";
+}
+
 // LEGACY_PUBLIC_APP = RETIRED (decisão de Johnny, 02/10/2026): um só Desmentindo público. O app anterior continua no
 // Git (index.html/desmentindo_local.html do repositório = histórico técnico e fonte de dados do Publisher), mas a URL
 // pública /desmentindo_local.html passa a servir só um redirecionamento para a raiz, preservando o #/rota — o
@@ -157,6 +176,10 @@ if (pagesDir) {
     fs.writeFileSync(f, pg.html);
   }
   console.log(`páginas compartilháveis: ${pages.length} → ${path.relative(ROOT, pagesDir) || "."}`);
+  // SEO (19/10): robots.txt e sitemap.xml davam 404 em produção. Gerados aqui, ao lado das páginas por edição.
+  fs.writeFileSync(path.join(pagesDir, "sitemap.xml"), sitemapXml(pages));
+  fs.writeFileSync(path.join(pagesDir, "robots.txt"), ROBOTS);
+  console.log(`sitemap.xml: ${sitemapUrls(pages).length} URLs; robots.txt`);
 }
 const li = process.argv.indexOf("--legacy-out");
 // Só o workspace do deploy (GitHub Actions) troca arquivos do repositório; localmente nada é apagado/sobrescrito.
