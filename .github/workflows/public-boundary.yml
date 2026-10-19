@@ -84,6 +84,8 @@ jobs:
         run: node public-ui/test-direcao1.mjs
       - name: Vídeos recentes dos canais (contrato da seção e dos dados publicados)
         run: node public-ui/test-videos-recentes.mjs
+      - name: Publisher — um PR aberto por índice público (serialização; filas independentes seguem)
+        run: python3 -m unittest discover -s automation/tests -v
       - name: Eleições 2026 — páginas geradas em sincronia, CSS/JS da mesma versão do HTML, sem marcador interno, e regras dos snapshots
         run: |
           node public-ui/build-eleicoes.mjs --check
