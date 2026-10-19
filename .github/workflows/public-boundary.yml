@@ -76,6 +76,8 @@ jobs:
           node public-ui/internal-ids.mjs data/editorial v5 /tmp/root-ids.html /tmp/pages
       - name: Páginas compartilháveis (uma por FECHAMENTO/MATÉRIA, com prévia própria) e medição desligada sem id
         run: node public-ui/check-share-pages.mjs /tmp/pages /tmp/root-ids.html
+      - name: SEO — robots.txt e sitemap.xml (raiz, todas as edições, só páginas indexáveis)
+        run: node public-ui/test-seo.mjs
       - name: Favicon da marca em sincronia com o gerador e declarado nas páginas (sem ícone vazio data:,)
         run: |
           node public-ui/build-favicon.mjs --check
