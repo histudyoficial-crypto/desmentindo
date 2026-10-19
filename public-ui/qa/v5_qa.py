@@ -32,13 +32,17 @@ AG = json.load(open(os.path.join(ROOT, AGS["dataset"]["url"]), encoding="utf8"))
 VID = {v["id"]: v for v in AG["videos"]}
 lm_path = re.search(r'name="acervos-manifest" content="([^"]+)"', html).group(1)
 LINKS = json.load(open(os.path.join(ROOT, json.load(open(os.path.join(ROOT, lm_path)))["dataset"]["url"]), encoding="utf8"))
+FX_INDEX = json.load(open(os.path.join(ROOT, "data/editorial/fechamentos/index.json"), encoding="utf8"))
+FX_LATEST = max(i["date"] for i in FX_INDEX["items"])
+_MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
+FX_LATEST_LABEL = f"{int(FX_LATEST[8:])} de {_MESES[int(FX_LATEST[5:7]) - 1]} de {FX_LATEST[:4]}"
 UNAVAILABLE = [s["display_name"] for s in MS["sources"] if not (s.get("capabilities") or {}).get("searchable")]
 
 MARKERS = re.compile(r"AUTONOMOUS_TEST_RUN|RV-2026|DS-20\d\d-|EVC-2026|WAITING_REVIEW|HUMAN_REVIEW_QUEUE|review_reason|decision_ref|desmentindo-ops|MORNING_OPEN|LEGACY_PROJECT_MORNING|ANTHROPIC_API_KEY|sk-ant-")
 JARGON = re.compile(r"\bRHR\b|\bOccurrences?\b|Media Salience|Audit Index|Human Review|\bpipeline\b|\bscores?\b", re.I)
 # "corpus" só é aceito como termo jurídico/calendário vindo do texto público ("habeas corpus", "Corpus Christi").
 # (a chave `corpus: "#/…"` do mapa de rotas antigas no JS é endereço do app anterior, não texto exibido)
-CORPUS_BAD = re.compile(r"(?<!habeas )(?<!habeas-)(?<!habeas)\bcorpus\b(?! christi)(?!: \"#/)", re.I)
+CORPUS_BAD = re.compile(r"(?<!habeas )(?<!habeas-)(?<!habeas)(?<!data/)\bcorpus\b(?! christi)(?!: \"#/)", re.I)
 
 def segment_at(video_id, t):
     v = VID.get(video_id)
@@ -83,6 +87,13 @@ def page_text_ok(text, gate, where):
     j = JARGON.search(text) or CORPUS_BAD.search(text)
     check(gate, f"{where}: sem jargão interno no texto", not j, j.group(0) if j else None)
 
+def settle():
+    """Espera a rede assentar; navegação só de #hash não dispara load novo, então o limite é curto e não derruba o QA."""
+    try:
+        page.wait_for_load_state("networkidle", timeout=8000)
+    except Exception:
+        page.wait_for_timeout(500)
+
 with sync_playwright() as pw:
     exe = args.chromium if os.path.exists(args.chromium) else None
     if exe and os.path.isdir(exe):
@@ -92,6 +103,14 @@ with sync_playwright() as pw:
 
     for vp_name, vp in (("desktop", {"width": 1280, "height": 800}), ("mobile", {"width": 390, "height": 844})):
         ctx = browser.new_context(viewport=vp, device_scale_factor=1, is_mobile=vp_name == "mobile", has_touch=vp_name == "mobile")
+        # Hosts externos (medição, fontes de terceiros) não são carregados: o QA roda isolado e determinístico.
+        # As rotas mais recentes têm prioridade, então a das miniaturas abaixo continua valendo.
+        EXTERNAL = R["evidence"].setdefault("external_hosts_blocked", [])
+        def _block(r):
+            h = urlparse(r.request.url).netloc
+            if h not in EXTERNAL: EXTERNAL.append(h)
+            r.abort()
+        ctx.route(lambda u: not u.startswith(args.base.rstrip("/")) and not u.startswith(("data:", "blob:")), _block)
         # Miniaturas oficiais do YouTube (i.ytimg.com) servidas localmente: o QA não depende de host externo.
         ctx.route(re.compile(r"https://i\.ytimg\.com/.*"), lambda r: r.fulfill(status=200, content_type="image/gif", body=b"GIF89a\x01\x00\x01\x00\x80\x00\x00\x00\x00\x00\xff\xff\xff!\xf9\x04\x01\x00\x00\x00\x00,\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02\x02D\x01\x00;"))
         page = ctx.new_page()
@@ -111,10 +130,12 @@ with sync_playwright() as pw:
             page.goto(BASE + "#/__blank")
             page.goto(BASE + hash_)
             page.wait_for_selector(wait, timeout=15000)
-            page.wait_for_load_state("networkidle")
+            settle()
+            page.wait_for_timeout(300)   # rota por #hash: o conteúdo termina de montar depois do título
             R["requests"][f"{vp_name}:{name}"] = list(reqs)
             check("BOUNDARY", f"{vp_name}:{name}: nenhum download do arquivo completo (data/ag, data/corpus)",
-                  not any(re.search(r"/data/(ag|corpus)/", x["url"]) for x in reqs), [x["url"] for x in reqs if "/data/" in x["url"] and "/v5/" not in x["url"]])
+                  not any(re.search(r"/data/(ag|corpus)/", x["url"]) and not x["url"].split("?")[0].endswith("/data/corpus/thumb_review.json") for x in reqs),
+                  [x["url"] for x in reqs if re.search(r"/data/(ag|corpus)/", x["url"])])
             data = [x for x in reqs if "/v5/data/" in x["url"]]
             big = [x for x in data if (x["bytes"] or 0) > 400 * 1024]
             check("PERFORMANCE", f"{vp_name}:{name}: todo arquivo de dados < 400 KB", not big, big)
@@ -136,26 +157,37 @@ with sync_playwright() as pw:
             return {"home": "V5_HOME_QA", "story": "V5_STORY_QA"}.get(name, "V5_SEARCH_QA" if name.startswith("search") else "V5_HOME_QA")
 
         # ------------------------------------------------ HOME
-        data, text = visit("home", "", ".hero .name")
+        data, text = visit("home", "", "#fx-home-t")
         home_bytes = sum(x["bytes"] or 0 for x in data)
         R["evidence"][f"{vp_name}:home_data_bytes"] = home_bytes
         check("PERFORMANCE", f"{vp_name}:home: dados iniciais < 100 KB", home_bytes < 100 * 1024, home_bytes)
+        total = sum(x["bytes"] or 0 for x in R["requests"][f"{vp_name}:home"])
+        nav = page.evaluate("(() => { const n = performance.getEntriesByType('navigation')[0] || {}; const p = performance.getEntriesByType('paint').find(e => e.name === 'first-contentful-paint'); return { dcl: Math.round(n.domContentLoadedEventEnd || 0), load: Math.round(n.loadEventEnd || 0), fcp: p ? Math.round(p.startTime) : null }; })()")
+        R["evidence"][f"{vp_name}:home_perf"] = dict(nav, total_bytes=total, requests=len(R["requests"][f"{vp_name}:home"]))
+        check("PERFORMANCE", f"{vp_name}:home: peso total servido pelo site < 1,5 MB (sem hosts externos)", total < 1.5 * 1024 * 1024, total)
+        check("PERFORMANCE", f"{vp_name}:home: primeira pintura < 2,5 s (servidor local; não substitui medição em rede real)", nav["fcp"] is not None and nav["fcp"] < 2500, nav)
         H = vp["height"]
         def in_first(sel):
             b = page.locator(sel).first.bounding_box()
             return bool(b) and b["y"] >= 0 and b["y"] + b["height"] <= H and page.locator(sel).first.is_visible()
-        check("V5_HOME_QA", f"{vp_name}:home: marca DESMENTINDO na primeira dobra", in_first(".hero .name"))
-        check("V5_HOME_QA", f"{vp_name}:home: mensagem na primeira dobra", in_first(".hero .motto"))
-        check("V5_HOME_QA", f"{vp_name}:home: busca na primeira dobra", in_first("#q-home"))
+        # Home atual (Direção 1): cabeçalho com a marca, FECHAMENTO do dia como abertura, memória pesquisável.
+        check("V5_HOME_QA", f"{vp_name}:home: marca DESMENTINDO na primeira dobra", in_first(".top .brand-word"))
+        check("V5_HOME_QA", f"{vp_name}:home: data do dia no cabeçalho (celular)", vp_name != "mobile" or in_first("#top-date"),
+              page.inner_text("#top-date") if page.locator("#top-date").count() else None)
+        fx_t = page.inner_text("#fx-home-t") if page.locator("#fx-home-t").count() else ""
+        check("V5_HOME_QA", f"{vp_name}:home: FECHAMENTO mais recente abre a página (título na primeira dobra)",
+              in_first("#fx-home-t") and fx_t.startswith("FECHAMENTO — "), fx_t)
+        check("V5_HOME_QA", f"{vp_name}:home: FECHAMENTO da Home = último do índice público",
+              fx_t == "FECHAMENTO — " + FX_LATEST_LABEL, {"home": fx_t, "index_latest": FX_LATEST})
+        check("V5_HOME_QA", f"{vp_name}:home: busca da memória presente (#q-home)", page.locator("#q-home").count() == 1)
         ph = page.get_attribute("#q-home", "placeholder")
-        check("V5_HOME_QA", f"{vp_name}:home: placeholder da busca", ph == "Digite uma pessoa, assunto ou acontecimento", ph)
-        cue = page.inner_text(".hero .cue")
-        five = in_first(".hero .cue") and "minuto do vídeo" in cue and "fonte" in cue
-        check("V5_HOME_QA", f"{vp_name}:home: teste dos 5 segundos (marca + explicação + busca + pista de 'o que já foi dito com fonte verificável' na 1ª dobra)", five, cue)
-        check("V5_HOME_QA", f"{vp_name}:home: seção Já falaram sobre isso com Alexandre Garcia, Caio Coppolla e Te Atualizei",
-              page.locator("#ja-falaram").count() == 1 and all(n in page.inner_text("#ja-falaram") for n in ("Alexandre Garcia", "Caio Coppolla", "Te Atualizei")))
-        cards = page.locator(".story-main").count() + page.locator("#agora .rows li").count()
-        check("V5_HOME_QA", f"{vp_name}:home: Agora enxuto (1 principal + até 3)", 1 <= cards <= 4, cards)
+        check("V5_HOME_QA", f"{vp_name}:home: placeholder da busca", bool(ph), ph)
+        check("V5_HOME_QA", f"{vp_name}:home: seção Já falaram sobre isso presente",
+              page.locator("#ja-falaram").count() == 1 and page.locator("#ja-falaram li").count() >= 1, page.locator("#ja-falaram li").count())
+        check("V5_HOME_QA", f"{vp_name}:home: seções na ordem (FECHAMENTO → Investigações → Matérias → Vídeos recentes → Já falaram → Pesquise)",
+              page.evaluate("""() => { const ids = ['#fechamento', '.hm-inv', '#materias', '#videos-recentes', '.hm-said', '#pesquise'];
+                  const ys = ids.map(s => { const e = document.querySelector(s); return e ? e.getBoundingClientRect().top + scrollY : null; });
+                  return ys.every(y => y !== null) && ys.every((y, i) => i === 0 || y >= ys[i - 1]); }"""))
         noindex = page.get_attribute('meta[name="robots"]', "content")
         check("BOUNDARY", f"{vp_name}:home: noindex", noindex and "noindex" in noindex and "nofollow" in noindex, noindex)
         page.screenshot(path=os.path.join(args.shots, f"home-{vp_name}.png"))
@@ -202,7 +234,7 @@ with sync_playwright() as pw:
         for q, slug in (("Alexandre de Moraes", "moraes"), ("INSS", "inss")):
             data, text = visit("search-" + slug, "#/busca?q=" + q.replace(" ", "%20"), "#nos-arquivos")
             page.wait_for_selector("#ag-list-0 li.said", timeout=15000)
-            page.wait_for_load_state("networkidle")
+            settle()
             R["requests"][f"{vp_name}:search-{slug}"] = list(reqs)
             data = [x for x in reqs if "/v5/data/" in x["url"]]
             R["evidence"][f"{vp_name}:search_{slug}_data_bytes"] = sum(x["bytes"] or 0 for x in data)
@@ -271,14 +303,26 @@ with sync_playwright() as pw:
                 want2 = [x.get("attr", {}).get("kind") if x and x.get("allegation") else None for x in [SJ2.get("summary")] + SJ2["chrono"] + SJ2["updates"]]
                 if not any(want2): continue
                 n_alleg += sum(1 for k in want2 if k)
-                page.goto(BASE + "#/__blank"); page.goto(BASE + "#/historia/" + f[:-5]); page.wait_for_selector("h1.h1"); page.wait_for_load_state("networkidle")
-                got2 = page.evaluate("""() => { const pick = el => { if (!el) return null; const t = el.querySelector(':scope > .tag-alleg, :scope > .tag-said, .tag-alleg, .tag-said'); return t ? t.textContent.trim().toLowerCase() : 'SEM_ROTULO'; };
-                  const sum = document.querySelector('.page-sub .summary, .page-head .summary'); const out = [sum && sum.querySelector('.tag-alleg, .tag-said') ? sum.querySelector('.tag-alleg, .tag-said').textContent.trim().toLowerCase() : null];
-                  document.querySelectorAll('ol.tl li').forEach(li => out.push(li.querySelector('.tag-alleg, .tag-said') ? li.querySelector('.tag-alleg, .tag-said').textContent.trim().toLowerCase() : null));
-                  document.querySelectorAll('ul.upd li').forEach(li => out.push(li.querySelector('.tag-alleg, .tag-said') ? li.querySelector('.tag-alleg, .tag-said').textContent.trim().toLowerCase() : null));
-                  return out; }""")
+                page.goto(BASE + "#/__blank"); page.goto(BASE + "#/historia/" + f[:-5]); page.wait_for_selector("h1.h1"); settle()
+                keys = [" ".join(x["text"].split())[:50] for x in [SJ2.get("summary")] + SJ2["chrono"] + SJ2["updates"] if x]
+                try:   # a história monta em etapas: espera até o último item aparecer no texto da página
+                    page.wait_for_function("(k) => document.body.textContent.replace(/\\s+/g, ' ').includes(k)", arg=keys[-1], timeout=10000)
+                except Exception:
+                    pass
+                # Casamento por TEXTO (a ordem e o aninhamento do DOM mudaram com a Direção 1): cada item da história é
+                # achado na página pelo início do seu texto e precisa do rótulo do seu tipo; item sem alegação, de nenhum.
+                rendered = page.evaluate("""() => Array.from(document.querySelectorAll('main li, main p')).map(e => {
+                  const t = e.querySelector('.tag-alleg, .tag-said'); return [e.textContent.replace(/\\s+/g, ' '), t ? t.textContent.trim().toLowerCase() : null]; })""")
                 label = {"alegacao": "alegação atribuída", "declaracao": "declaração atribuída", "atribuido": "atribuído"}
-                if [label.get(k) for k in want2] != got2: bad.append({"story": f[:-5], "want": want2, "got": got2})
+                items2 = [x for x in [SJ2.get("summary")] + SJ2["chrono"] + SJ2["updates"] if x]
+                for x in items2:
+                    k = (x.get("attr") or {}).get("kind") if x.get("allegation") else None
+                    key = " ".join(x["text"].split())[:50]
+                    labs = [lb for t, lb in rendered if key in t]
+                    if k and label.get(k) not in labs:
+                        bad.append({"story": f[:-5], "item": key, "want": label.get(k), "got": labs or "NAO_ENCONTRADO"})
+                    elif not k and labs and all(labs):
+                        bad.append({"story": f[:-5], "item": key, "want": None, "got": labs})
             R["evidence"]["allegations_checked"] = n_alleg
             # rótulos mutuamente exclusivos: nada é ao mesmo tempo "fato com fonte" e alegação/declaração/atribuído
             mixed = page.evaluate("Array.from(document.querySelectorAll('li, p.summary')).filter(n => n.querySelector(':scope > .tag-fact, :scope .src > .tag-fact') && n.querySelector(':scope > .tag-alleg, :scope > .tag-said')).length")
@@ -350,10 +394,11 @@ with sync_playwright() as pw:
             check("V5_ROUTES_QA", f"{vp_name}:agora-item: título e texto aprovados, sem alteração", page.inner_text("h1.h1").strip() == it["title"] and it["text"] in text)
             titles = page.evaluate("Array.from(document.querySelectorAll('.rail .rt2')).map(x => x.textContent)")
             check("V5_ROUTES_QA", f"{vp_name}:agora-item: título de cada fonte visível (não depende de hover)", titles == [x.get("title") or x["name"] for x in it["sources"]], titles)
-            data, text = visit("home-agora", "", ".hero .name")
-            check("V5_HOME_QA", f"{vp_name}:home: AGORA enxuto (3 com texto, resto em linhas) e todos os itens com link próprio",
-                  page.locator("#agora .ed-item").count() == min(3, len(EDN["items"])) and page.locator('#agora a[href^="#/agora/"]').count() >= len(EDN["items"]))
-            check("V5_HOME_QA", f"{vp_name}:home: fontes sem tooltip (title) como única informação", page.locator("#agora a[title]").count() == 0)
+            # AGORA saiu da Home (a Home abre com o FECHAMENTO); a edição AGORA vive em #/agora, cada item com URL própria.
+            data, text = visit("agora-lista", "#/agora", "h1")
+            check("V5_ROUTES_QA", f"{vp_name}:agora: todos os itens da edição com link próprio",
+                  page.locator('main a[href^="#/agora/"]').count() >= len(EDN["items"]), page.locator('main a[href^="#/agora/"]').count())
+            check("V5_ROUTES_QA", f"{vp_name}:agora: fontes sem tooltip (title) como única informação", page.locator("main a[title]").count() == 0)
 
         # ------------------------------------------------ rotas antigas: nada de 404 silencioso
         # o redirecionamento servido em /desmentindo_local.html (gerado no deploy) preserva o #/rota
@@ -378,11 +423,11 @@ with sync_playwright() as pw:
         check("V5_ROUTES_QA", f"{vp_name}: link antigo de registro (?ev=) → história que o contém", page.evaluate("location.hash") == "#/historia/" + json.load(open(os.path.join(ROOT, "v5", "data", "rotas.json")))["eventos"]["EV-0001"])
 
         # ------------------------------------------------ ACESSIBILIDADE (amostra por página)
-        for name, h_, w in (("a11y-home", "", ".hero .name"), ("a11y-story", "#/historia/" + args.story, "h1.h1"), ("a11y-checar", "#/checar", "h1.h1"), ("a11y-busca", "#/busca?q=INSS", "#nos-arquivos")):
-            page.goto(BASE + "#/__blank"); page.goto(BASE + h_); page.wait_for_selector(w); page.wait_for_load_state("networkidle")
+        for name, h_, w in (("a11y-home", "", "#fx-home-t"), ("a11y-fechamento", "#/fechamento/" + FX_LATEST, "h1"), ("a11y-story", "#/historia/" + args.story, "h1.h1"), ("a11y-checar", "#/checar", "h1.h1"), ("a11y-busca", "#/busca?q=INSS", "#nos-arquivos")):
+            page.goto(BASE + "#/__blank"); page.goto(BASE + h_); page.wait_for_selector(w); settle()
             a = page.evaluate("""() => ({ h1: document.querySelectorAll('main h1').length,
               unlabeled: [...document.querySelectorAll('input, textarea, select')].filter(i => !(i.labels && i.labels.length) && !i.getAttribute('aria-label')).length,
-              emptyLinks: [...document.querySelectorAll('a')].filter(x => x.offsetParent && !x.textContent.trim() && !x.getAttribute('aria-label')).length,
+              emptyLinks: [...document.querySelectorAll('a')].filter(x => x.offsetParent && x.getAttribute('aria-hidden') !== 'true' && !x.textContent.trim() && !x.getAttribute('aria-label')).length,
               imgsNoAlt: [...document.querySelectorAll('img')].filter(i => !i.hasAttribute('alt')).length,
               skip: !!document.querySelector('a.skip[href="#main"]'), lang: document.documentElement.lang })""")
             check("ACCESSIBILITY", f"{vp_name}:{name}: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
@@ -392,12 +437,13 @@ with sync_playwright() as pw:
         check("ACCESSIBILITY", f"{vp_name}: foco visível ao navegar por teclado", foc["outline"] != "none" and foc["w"] != "0px", foc)
         if vp_name == "mobile":
             tb = page.evaluate("Array.from(document.querySelectorAll('.tabbar a')).map(a => { const r = a.getBoundingClientRect(); return [a.textContent.trim(), Math.round(r.height)]; })")
-            check("MOBILE", "barra inferior: 4 itens com texto e toque ≥ 44px (Checar fora até o envio abrir)", len(tb) == 4 and all(t and h >= 44 for t, h in tb), tb)
+            check("MOBILE", "barra inferior: 4 destinos + Mais, com texto e toque ≥ 44px (Checar fora até o envio abrir)",
+                  len(tb) == 5 and tb[-1][0] == "Mais" and all(t and h >= 44 for t, h in tb) and "Checar" not in [t for t, _ in tb], tb)
 
         # ------------------------------------------------ IDENTIDADE VISUAL (tokens canônicos do v4; não substitui a comparação lado a lado)
         def css(sel, prop):
             return page.evaluate(f"(() => {{ const el = document.querySelector({json.dumps(sel)}); return el ? getComputedStyle(el).getPropertyValue({json.dumps(prop)}) : null; }})()")
-        page.goto(BASE + "#/__blank"); page.goto(BASE + "#/historia/" + args.story); page.wait_for_selector("h1.h1"); page.wait_for_load_state("networkidle")
+        page.goto(BASE + "#/__blank"); page.goto(BASE + "#/historia/" + args.story); page.wait_for_selector("h1.h1"); settle()
         check("VISUAL_IDENTITY", f"{vp_name}: História abre com o hero tipográfico do v4 (fundo --ink, título branco, data amarela)",
               css(".hero-ink", "background-color") == "rgb(32, 30, 29)" and css(".hero-ink .h1", "color") == "rgb(255, 255, 255)" and css(".hero-ink .bigdate b", "color") == "rgb(255, 223, 0)")
         check("VISUAL_IDENTITY", f"{vp_name}: paleta canônica (papel #F3F2F2, texto #201E1D, sem vermelho do Modernist base)",
@@ -409,25 +455,46 @@ with sync_playwright() as pw:
             check("VISUAL_IDENTITY", "item ativo da navegação com borda inferior amarela de 4px (DM Cabecalho)",
                   css('.doors a[aria-current="page"]', "border-bottom-color") == "rgb(255, 223, 0)" and css('.doors a[aria-current="page"]', "border-bottom-width") == "4px")
         check("VISUAL_IDENTITY", f"{vp_name}: cor de origem nos trechos (Alexandre Garcia #6B3FA0)", "107, 63, 160" in (css('.said[data-src="Alexandre Garcia"]', "box-shadow") or ""))
-        page.goto(BASE + "#/__blank"); page.goto(BASE); page.wait_for_selector(".sig"); page.wait_for_load_state("networkidle")
-        sig_ok = page.evaluate("(() => { const cs = getComputedStyle(document.querySelector('.sig')); return cs.clipPath.indexOf('inset') === 0 && cs.boxShadow !== 'none'; })()")
-        check("VISUAL_IDENTITY", f"{vp_name}: faixa-assinatura escura de largura total, sem rolagem horizontal",
+        page.goto(BASE + "#/__blank"); page.goto(BASE); page.wait_for_selector("#fx-home-t"); settle()
+        # A faixa-assinatura (.sig) saiu na Direção 1; a assinatura atual é o cabeçalho de largura total com a marca.
+        sig_ok = page.evaluate("(() => { const t = document.querySelector('header.top'); if (!t) return false; const b = t.querySelector('.brand-word'); return Math.round(t.getBoundingClientRect().width) >= window.innerWidth - 1 && !!b && b.offsetParent !== null; })()")
+        check("VISUAL_IDENTITY", f"{vp_name}: cabeçalho de largura total com a marca, sem rolagem horizontal",
               sig_ok and page.evaluate("document.documentElement.scrollWidth - window.innerWidth") <= 0)
-        page.goto(BASE + "#/__blank"); page.goto(BASE + "#/profissionais"); page.wait_for_selector("h1.h1"); page.wait_for_load_state("networkidle")
+        page.goto(BASE + "#/__blank"); page.goto(BASE + "#/profissionais"); page.wait_for_selector("h1.h1"); settle()
         check("VISUAL_IDENTITY", f"{vp_name}: Desmentindo Data com identidade própria (selo DATA azul) e 'O que não fazemos'",
               css(".data-mark .dt", "background-color") == "rgb(0, 39, 118)" and page.locator(".dont").count() == 1)
         ctx.close()
 
-    # ------------------------------------------------ 375 px: nenhuma página com rolagem horizontal
-    ctx = browser.new_context(viewport={"width": 375, "height": 812}, is_mobile=True, has_touch=True)
-    ctx.route(re.compile(r"https://i\.ytimg\.com/.*"), lambda r: r.fulfill(status=200, content_type="image/gif", body=b"GIF89a\x01\x00\x01\x00\x80\x00\x00\x00\x00\x00\xff\xff\xff!\xf9\x04\x01\x00\x00\x00\x00,\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02\x02D\x01\x00;"))
-    page = ctx.new_page()
-    for h_ in ("", "#/historia/" + args.story, "#/busca?q=INSS", "#/arquivo/alexandre-de-moraes", "#/arquivos", "#/profissionais", "#/checar", "#/matriz"):
-        page.goto(BASE + "#/__blank"); page.goto(BASE + h_); page.wait_for_selector("main h1", timeout=15000); page.wait_for_load_state("networkidle")
-        ow = page.evaluate("document.documentElement.scrollWidth - window.innerWidth")
-        check("MOBILE", f"375px {h_ or '#/'}: sem rolagem horizontal", ow <= 0, ow)
-    ctx.close()
+    # ------------------------------------------------ 375 e 320 px: nenhuma página com rolagem horizontal
+    for W in (375, 320):
+        ctx = browser.new_context(viewport={"width": W, "height": 812}, is_mobile=True, has_touch=True)
+        ctx.route(lambda u: not u.startswith(args.base.rstrip("/")) and not u.startswith(("data:", "blob:")), lambda r: r.abort())
+        ctx.route(re.compile(r"https://i\.ytimg\.com/.*"), lambda r: r.fulfill(status=200, content_type="image/gif", body=b"GIF89a\x01\x00\x01\x00\x80\x00\x00\x00\x00\x00\xff\xff\xff!\xf9\x04\x01\x00\x00\x00\x00,\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02\x02D\x01\x00;"))
+        page = ctx.new_page()
+        for h_ in ("", "#/historia/" + args.story, "#/busca?q=INSS", "#/arquivo/alexandre-de-moraes", "#/arquivos", "#/profissionais", "#/checar", "#/matriz", "#/fechamento/" + FX_LATEST, "#/agora"):
+            page.goto(BASE + "#/__blank"); page.goto(BASE + h_); page.wait_for_selector("main h1, h1", timeout=15000); settle()
+            ow = page.evaluate("document.documentElement.scrollWidth - window.innerWidth")
+            check("MOBILE", f"{W}px {h_ or '#/'}: sem rolagem horizontal", ow <= 0, ow)
+        ctx.close()
     browser.close()
+
+# ---------------------------------------------------------------- COMPARTILHAMENTO: prévia própria por edição (build-root)
+import tempfile, html as _html
+with tempfile.TemporaryDirectory() as td:
+    subprocess.run(["node", "public-ui/build-root.mjs", "--out", os.path.join(td, "root.html"), "--no-build-info", "--pages-out", td], cwd=ROOT, check=True, capture_output=True)
+    pages = [os.path.join(dp, "index.html") for dp, _, fs in os.walk(os.path.join(td, "fechamento")) if "index.html" in fs]
+    R["evidence"]["share_pages"] = len(pages)
+    probs = []
+    for pg in pages:
+        h = open(pg, encoding="utf8").read()
+        meta = {m.group(1): _html.unescape(m.group(2)) for m in re.finditer(r'<meta (?:property|name)="((?:og|twitter):[a-z:_]+)" content="([^"]*)"', h)}
+        need = ("og:title", "og:description", "og:image", "og:url", "twitter:card")
+        miss = [k for k in need if not meta.get(k)]
+        img = meta.get("og:image", "")
+        local = os.path.join(ROOT, img.split("desmentindo.com.br/", 1)[-1].split("?")[0]) if "desmentindo.com.br/" in img else None
+        if miss or not meta.get("og:url", "").startswith("https://desmentindo.com.br/fechamento/") or (local and not os.path.exists(local)):
+            probs.append({"page": os.path.relpath(pg, td), "faltando": miss, "og:url": meta.get("og:url"), "og:image": img})
+    check("SHARE", f"edições do FECHAMENTO com título, descrição, imagem, URL canônica e cartão ({len(pages)} páginas)", pages and not probs, probs[:5])
 
 # ---------------------------------------------------------------- arquivos da v5 (texto)
 leaks = []

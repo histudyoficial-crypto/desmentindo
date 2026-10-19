@@ -551,7 +551,7 @@
     if (!thumbReview) thumbReview = fetch("/data/corpus/thumb_review.json" + (DV ? "?v=" + DV : "")).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
     return thumbReview;
   }
-  // Trecho compacto: imagem real (revisada) ou pôster editorial + FONTE · DATA + ▶ MINUTO; abaixo, fonte e trecho do corpus.
+  // Trecho compacto: imagem real (revisada) ou pôster editorial + FONTE · DATA + ▶ MINUTO; abaixo, fonte e trecho do arquivo.
   // Toque → player oficial no próprio card, no minuto (a imagem nunca é link externo direto).
   function miniSaid(o, story, R, ref) {
     var th = thumbSrc(o, story && story.slug, R), ago = ref ? agoLabel(o.date, ref) : "";
