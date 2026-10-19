@@ -1,0 +1,138 @@
+{
+ "schema": "desmentindo.public.editorial_edition.v1",
+ "edition": "2026-10-18",
+ "label": "AGORA",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova; fonte primária indicada quando obtida.",
+ "items": [
+  {
+   "id": "2026-10-18-tse-libera-atos-com-mote-de-democracia-no-rio-convocado-por-caetano",
+   "date": "2026-10-18",
+   "label": "AGORA",
+   "title": "TSE libera atos com mote de democracia no Rio, convocado por Caetano, Salvador e Porto Alegre, e rejeita vetar shows",
+   "text": "O corregedor-geral eleitoral do TSE, Ricardo Villas Bôas Cueva, liberou os atos previstos para domingo (18) com mote de defesa da democracia. Na mesma decisão, o relator negou proibir preventivamente apresentações artísticas ou o uso de trios elétricos em atos organizados por entidades civis e estudantis. Segundo o corregedor, não se verifica, neste momento processual, demonstração suficiente de que os eventos sejam comícios ou reuniões eleitorais que justifiquem a suspensão preventiva. O ministro também indeferiu os pedidos de produção antecipada de provas, que incluíam a obrigação de os organizadores apresentarem documentos financeiros e preservarem comunicações. Alegação atribuída (Partido Novo, segundo a Folha), não comprovada: O Partido Novo sustentava que as mobilizações seriam comícios e showmícios disfarçados para promover as candidaturas de Lula e Geraldo Alckmin, com suposto financiamento irregular por pessoas jurídicas. O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "Folha",
+     "title": "TSE libera atos com mote de democracia no Rio, convocado por Caetano, Salvador e Porto Alegre, e rejeita vetar shows",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-libera-atos-com-mote-de-democracia-no-rio-convocado-por-caetano-salvador-e-porto-alegre-e-rejeita-vetar-shows.shtml"
+    },
+    {
+     "name": "Jovem Pan",
+     "title": "TSE libera atos com mote de democracia no Rio, convocado por Caetano, Salvador e Porto Alegre, e rejeita vetar shows",
+     "url": "https://jovempan.com.br/politica/tse-nega-pedido-do-novo-e-libera-atos-brasil-nas-ruas-com-artistas-pro-lula"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-18-advogado-amigo-de-flavio-recebeu-documentos-vazados-do-stj-e-mpf-diz",
+   "date": "2026-10-18",
+   "label": "AGORA",
+   "title": "Advogado amigo de Flávio recebeu documentos vazados do STJ e MPF, diz site",
+   "text": "Willer Tomaz negou categoricamente ter tido acesso irregular ou não autorizado a decisões judiciais ou pareceres do MPF. O STJ abriu investigação e exonerou, na sexta-feira (16), um servidor da área de tecnologia suspeito de vazar minutas de decisões ao advogado Willer Tomaz. As trocas de mensagens constam em um relatório da Polícia Federal encaminhado à Procuradoria-Geral da República. O STJ afirmou que as medidas criminais estão em andamento e são sigilosas. Alegação atribuída (UOL, segundo a Folha), não comprovada: Segundo reportagem do UOL, investigação da PF aponta que o advogado Willer Tomaz recebia minutas de decisões do STJ e manifestações do MPF antes da publicação. O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "Folha",
+     "title": "Advogado amigo de Flávio recebeu documentos vazados do STJ e MPF, diz site",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/advogado-amigo-de-flavio-recebeu-documentos-vazados-do-stj-e-mpf-diz-site.shtml"
+    },
+    {
+     "name": "g1",
+     "title": "Advogado amigo de Flávio recebeu documentos vazados do STJ e MPF, diz site",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/17/stj-abre-investigacao-e-exonera-servidor-suspeito-de-vazar-minutas-a-advogado-amigo-de-flavio.ghtml"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-18-richarlison-pede-que-pf-investigue-flavio-bolsonaro-por-posse-de",
+   "date": "2026-10-18",
+   "label": "AGORA",
+   "title": "Richarlison pede que PF investigue Flávio Bolsonaro por posse de imóvel de luxo",
+   "text": "De acordo com a Justiça do Rio de Janeiro, uma sentença extinguiu o processo em outubro de 2025, sem julgamento do mérito, por renúncia de uma das partes. O Ministério da Justiça pediu que a ANPD investigue se a Meta está descumprindo o Marco Civil da Internet. A CTRL+Z contabilizou 1.121 relatos entre 25 de setembro e 13 de outubro, envolvendo supressão de alcance e restrições de funcionalidades. Alegação atribuída (Richarlison, segundo a Folha), não comprovada: Richarlison pediu que a PF investigue o envolvimento de Flávio Bolsonaro na disputa pela posse de uma propriedade de luxo em Angra dos Reis, que segundo ele foi tomada \"na mão grande\" por manobras judiciais. O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "Folha",
+     "title": "Richarlison pede que PF investigue Flávio Bolsonaro por posse de imóvel de luxo",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/richarlison-pede-que-pf-investigue-flavio-bolsonaro-por-posse-de-imovel-de-luxo.shtml"
+    },
+    {
+     "name": "g1",
+     "title": "Richarlison pede que PF investigue Flávio Bolsonaro por posse de imóvel de luxo",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/17/ministerio-da-justica-pede-que-anpd-investigue-se-meta-descumpriu-marco-civil-da-internet.ghtml"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-18-flavio-bolsonaro-e-investigado-no-stf-por-suspeita-de-lavagem-com",
+   "date": "2026-10-18",
+   "label": "AGORA",
+   "title": "Flávio Bolsonaro é investigado no STF por suspeita de lavagem com advogado do caso INSS",
+   "text": "A Polícia Federal enviou ao STF um novo inquérito contra Flávio Bolsonaro para apurar suspeitas de lavagem de dinheiro envolvendo sua relação com o advogado Willer Tomaz. O inquérito chegou ao STF em 8 de outubro e o relator sorteado foi o ministro Alexandre de Moraes. A assessoria da campanha de Flávio afirmou que ele ainda não se tornou investigado, mas fontes com acesso à investigação confirmaram ao Estadão que ele já é investigado. Segundo a Gazeta, uma conta bancária vinculada ao advogado teria movimentado cerca de R$ 130 milhões de março a maio de 2025. Alegação atribuída (Defesa de Willer Tomaz), não comprovada: A defesa de Willer Tomaz diz que se trata de uma \"pescaria probatória\" para \"fabricar falsos escândalos com fins político-eleitorais\". O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "Estadão",
+     "title": "Flávio Bolsonaro é investigado no STF por suspeita de lavagem com advogado do caso INSS",
+     "url": "https://estadao.com.br/politica/flavio-bolsonaro-e-investigado-em-2-inquerito-no-stf-para-apurar-suspeitas-de-lavagem-com-advogado"
+    },
+    {
+     "name": "Gazeta do Povo",
+     "title": "Flávio Bolsonaro é investigado no STF por suspeita de lavagem com advogado do caso INSS",
+     "url": "https://gazetadopovo.com.br/republica/moraes-sera-relator-de-novo-inquerito-contra-flavio-bolsonaro-no-stf"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-18-ministra-do-tse-determina-que-vice-de-flavio-apague-video-que-associa",
+   "date": "2026-10-18",
+   "label": "AGORA",
+   "title": "Ministra do TSE determina que vice de Flávio apague vídeo que associa Lula ao crime organizado",
+   "text": "O TSE determinou que o candidato a vice Alfredo Gaspar remova em 24 horas publicações que associavam Lula ao crime organizado e a um homicídio em Pernambuco. A ordem liminar foi proferida pela ministra Estela Aranha em representação ajuizada por Lula e pela Coligação Brasil Pronto Pra Mais. Gaspar legendou o vídeo com: \"Gravíssimo! O crime organizado tem lado na eleição presidencial, apoia Lula. Chega de impunidade!\". Segundo a ministra, a legenda transmite conclusão que não decorre das informações jornalísticas utilizadas. O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "Gazeta do Povo",
+     "title": "Ministra do TSE determina que vice de Flávio apague vídeo que associa Lula ao crime organizado",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/ministra-do-tse-determina-que-vice-de-flavio-apague-video-que-associa-lula-ao-crime-organizado"
+    },
+    {
+     "name": "Veja",
+     "title": "Ministra do TSE determina que vice de Flávio apague vídeo que associa Lula ao crime organizado",
+     "url": "https://veja.abril.com.br/politica/candidato-a-vice-de-flavio-bolsonaro-aciona-justica-contra-manuela-davila"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  }
+ ]
+}
