@@ -1,0 +1,635 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-16",
+ "public_title": "FECHAMENTO — 16 de outubro de 2026",
+ "published_at": "2026-10-15T21:52:35Z",
+ "cutoff_at": "2026-10-16T20:34:45-03:00",
+ "context": "Fechamento de 16 de outubro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "Congresso promulga fim da escala 6x1 em primeira mudança da jornada de trabalho desde 1988",
+    "story": "congresso-promulga-fim-da-escala-6x1-em-primeira-mudanca-da-jornada-de-trabalho"
+   },
+   {
+    "text": "Senado aprova projeto que amplia limite do MEI e perdoa dívidas de inadimplentes",
+    "story": "senado-aprova-projeto-que-amplia-limite-do-mei-e-perdoa-dividas-de-inadimplentes"
+   },
+   {
+    "text": "TSE derruba espera de 48 horas para reativar canais de WhatsApp como 'Exército do Lula'",
+    "story": "tse-derruba-espera-de-48-horas-para-reativar-canais-de-whatsapp-como-exercito"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "congresso-promulga-fim-da-escala-6x1-em-primeira-mudanca-da-jornada-de-trabalho",
+   "headline": "Congresso promulga fim da escala 6x1 em primeira mudança da jornada de trabalho desde 1988",
+   "lead": true,
+   "what_happened": "O g1 relata que o Congresso promulga a emenda que acaba com a escala 6x1 e garante dois dias de repouso remunerado por semana, sem redução salarial. A Folha relata que a PEC foi aprovada no Senado com 75 votos favoráveis e que apenas Hamilton Mourão votou contra.",
+   "what_changed": "A Folha relata que a carga semanal cai de 44 para 42 horas em um primeiro momento e para 40 horas após 12 meses. A Gazeta do Povo relata que Alcolumbre também promulgou a PEC da aposentadoria diferenciada para agentes comunitários de saúde e de combate às endemias.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "Congresso promulga fim da escala 6x1 em primeira mudança da jornada de trabalho desde 1988",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/16/6x1-promulgacao.ghtml",
+     "published_at": "2026-10-16T12:58:57Z",
+     "summary": "O g1 relata que o Congresso promulga a emenda que acaba com a escala 6x1 e garante dois dias de repouso remunerado por semana, sem redução salarial.",
+     "basis": "manchete e resumo"
+    },
+    {
+     "outlet": "Folha",
+     "title": "Calculadora do fim da escala 6x1 mostra como fica jornada; simule",
+     "url": "https://www1.folha.uol.com.br/mercado/2026/10/calculadora-do-fim-da-escala-6x1-mostra-como-fica-jornada-simule.shtml",
+     "published_at": "2026-10-16T13:13:00Z",
+     "summary": "A Folha relata que a PEC foi aprovada no Senado com 75 votos favoráveis e que apenas Hamilton Mourão votou contra.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Congresso promulga fim da escala 6×1 em ato com Lula",
+     "url": "https://gazetadopovo.com.br/republica/congresso-promulga-fim-escala-6x1-ato-com-lula",
+     "published_at": "2026-10-16T13:12:02Z",
+     "summary": "A Gazeta do Povo relata que Alcolumbre também promulgou a PEC da aposentadoria diferenciada para agentes comunitários de saúde e de combate às endemias.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "title": "Análise: Como o empresariado se prepara para aplicar o fim da escala 6×1",
+     "url": "https://cnnbrasil.com.br/economia/money/macroeconomia/analise-como-o-empresariado-se-prepara-para-aplicar-o-fim-da-escala-6x1",
+     "published_at": "2026-10-16T21:22:00Z",
+     "summary": "A primeira redução de duas horas na carga semanal entra em vigor em 15 de dezembro de 2026 e as outras duas horas um ano depois, em 15 de dezembro de 2027.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Apesar de votos a favor, nenhum senador da oposição comparece à promulgação da PEC que acaba com a escala 6x1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/16/apesar-de-votos-a-favor-apenas-um-senador-da-oposicao-comparece-a-promulgacao-da-pec-que-acaba-com-a-escala-6x1.ghtml",
+     "published_at": "2026-10-16T14:16:09Z",
+     "summary": "A PEC teve 472 votos favoráveis e 22 contrários na Câmara e placar de 75 a 1 no Senado, com Hamilton Mourão como único voto contrário.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:34, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "senado-aprova-projeto-que-amplia-limite-do-mei-e-perdoa-dividas-de-inadimplentes",
+   "headline": "Senado aprova projeto que amplia limite do MEI e perdoa dívidas de inadimplentes",
+   "lead": false,
+   "what_happened": "O Senado aprovou, por 78 votos a favor e nenhum contra, o projeto que amplia o limite do MEI e perdoa dívidas. O limite de faturamento do MEI será de R$ 110 mil em 2027 e R$ 140 mil a partir de 2028.",
+   "what_changed": "O g1 relata que a oposição criticou a votação da medida às vésperas do segundo turno. A fonte oficial relata que o impacto orçamentário da expansão do teto será de R$ 1,57 bilhão em 2027, R$ 3,15 bilhões em 2028 e R$ 3,38 bilhões em 2029.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "Senado aprova projeto que amplia limite do MEI e perdoa dívidas de inadimplentes",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/15/senado-aprova-projeto-que-amplia-limite-do-mei-e-perdoa-dividas-de-inadimplentes.ghtml",
+     "published_at": "2026-10-15T21:51:06Z",
+     "summary": "O Senado aprovou, por 78 votos a favor e nenhum contra, o projeto que amplia o limite do MEI e perdoa dívidas.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "title": "Senado aprova aumento de limite e perdão de dívida para MEIs",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/senado-aprova-aumento-de-limite-e-perdao-de-divida-para-meis",
+     "published_at": "2026-10-15T22:52:00Z",
+     "summary": "A fonte oficial relata que o impacto orçamentário da expansão do teto será de R$ 1,57 bilhão em 2027, R$ 3,15 bilhões em 2028 e R$ 3,38 bilhões em 2029.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Senado aprova com urgência perdão de dívidas do MEI e aumento do teto",
+     "url": "https://gazetadopovo.com.br/economia/senado-aprova-urgencia-perdao-dividas-meis-aumento-teto",
+     "published_at": "2026-10-15T22:14:26Z",
+     "summary": "A Gazeta do Povo relata que o governo afirma que mais de 100 mil MEIs foram desenquadrados entre 2025 e 2026 por ultrapassarem o limite de faturamento.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:34, é isto que as fontes citadas registram. Alegação atribuída não é prova."
+  },
+  {
+   "id": "tse-derruba-espera-de-48-horas-para-reativar-canais-de-whatsapp-como-exercito",
+   "headline": "TSE derruba espera de 48 horas para reativar canais de WhatsApp como 'Exército do Lula'",
+   "lead": false,
+   "what_happened": "A Folha relata que o TSE derrubou a regra de espera de 48 horas para reativar canais de WhatsApp após registro pelas campanhas. O g1 relata que a decisão do TSE foi unânime.",
+   "what_changed": "A Folha relata que o presidente do TSE viu \"traços incontroversos\" de atuação coordenada do Exército do Lula com a campanha de Lula, e que o PT nega vínculo. O TSE aprovou por unanimidade novas regras para definir se um canal de mensagens está vinculado a uma campanha eleitoral. Alegação atribuída (g1), não comprovada: A campanha de Flávio disse que o canal Exército do Lula disseminava desinformação, o que Janones nega.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "TSE derruba espera de 48 horas para reativar canais de WhatsApp como 'Exército do Lula'",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-derruba-regra-que-exigia-espera-de-48-horas-para-reativar-canais-de-whatsapp-como-o-exercito-do-lula.shtml",
+     "published_at": "2026-10-15T15:17:00Z",
+     "summary": "A Folha relata que o TSE derrubou a regra de espera de 48 horas para reativar canais de WhatsApp após registro pelas campanhas.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Por unanimidade, TSE derruba prazo de 48 horas para uso de canais registrados de forma tardia por campanhas",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/15/por-unanimidade-tse-derruba-prazo-de-48-horas-para-uso-de-canais-registrados-de-forma-tardia-por-campanhas.ghtml",
+     "published_at": "2026-10-15T14:12:18Z",
+     "summary": "O g1 relata que a decisão do TSE foi unânime.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "TSE aprova novas regras para vincular canais de WhatsApp a campanhas eleitorais",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/16/tse-nova-regras-para-vincular-canais-de-whatsapp-a-campanhas-eleitorais.ghtml",
+     "published_at": "2026-10-16T17:36:20Z",
+     "summary": "O TSE aprovou por unanimidade novas regras para definir se um canal de mensagens está vinculado a uma campanha eleitoral.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "TSE aprova por unanimidade restrições a canais de WhatsApp das campanhas",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/tse-aprova-unanimidade-restricoes-canais-whatsapp-campanhas",
+     "published_at": "2026-10-16T19:14:46Z",
+     "summary": "O relator, ministro André Mendonça, disse em voto que ficou estabelecido o dever das campanhas de zelar pela licitude dos conteúdos, sob pena de indisponibilização do canal em caso de condutas reiteradas.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:34, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "justica-eleitoral-determina-investigacao-de-ana-elisa-pela-pf-apos-pedido-de",
+   "title": "Justiça Eleitoral determina investigação de Ana Elisa pela PF após pedido de Flávio Bolsonaro",
+   "text": "A 103ª Zona Eleitoral de Divinópolis determinou que a Polícia Federal abra inquérito para investigar a deputada federal eleita Ana Elisa Santos Silva (PT). O MPE se opôs ao pedido de Flávio para proibir Ana Elisa de se manifestar nas redes sobre as eleições presidenciais, por considerá-lo genérico e de limites indeterminados.",
+   "sources": [
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/eleicoes/justica-eleitoral-determina-investigacao-de-ana-elisa-pela-pf-nprp",
+     "published_at": "2026-10-16T01:06:34Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/justica-manda-pf-investigar-ana-elisa-por-fake-news-contra-flavio",
+     "published_at": "2026-10-16T11:16:45Z"
+    }
+   ]
+  },
+  {
+   "id": "vorcaro-editava-textos-do-site-metropoles-antes-de-irem-ao-ar",
+   "title": "Vorcaro editava textos do site Metrópoles antes de irem ao ar",
+   "text": "Mensagens extraídas pela PF do celular de Vorcaro mostram que a direção do Metrópoles submetia reportagens a ele antes da publicação e atendia a pedidos de edição. Pelo menos 14 textos do site foram enviados previamente a Vorcaro e 11 foram alterados após pedidos dele, segundo levantamento do UOL.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/vorcaro-editava-textos-do-site-metropoles-antes-de-irem-ao-ar.shtml",
+     "published_at": "2026-10-15T17:59:00Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/vorcaro-editava-reportagens-derrubava-textos-e-sugeria-pautas-ao-portal-metropoles",
+     "published_at": "2026-10-15T18:07:24Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/economia/dono-do-banco-master-editava-textos-de-videos-de-gabriela-prioli-vendidos-como-opiniao-espontanea",
+     "published_at": "2026-10-16T16:32:29Z"
+    }
+   ]
+  },
+  {
+   "id": "alcolumbre-diz-que-vai-promulgar-fim-da-6x1-e-aposentadoria-especial-para",
+   "title": "Alcolumbre diz que vai promulgar fim da 6x1 e aposentadoria especial para agentes de saúde na sexta",
+   "text": "Alcolumbre afirmou que vai promulgar na sexta-feira (16) a PEC do fim da 6x1 e a PEC da aposentadoria especial para agentes comunitários de saúde. O Senado aprovou a PEC em dois turnos com 75 votos favoráveis e um contrário, de Hamilton Mourão.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/15/alcolumbre-diz-que-vai-promulgar-fim-da-6x1-e-aposentadoria-especial-para-agentes-comunitarios-de-saude.ghtml",
+     "published_at": "2026-10-15T21:29:01Z"
+    }
+   ]
+  },
+  {
+   "id": "tse-atende-a-lula-e-determina-que-meta-nao-interfira-em-distribuicao-de",
+   "title": "TSE atende a Lula e determina que Meta não interfira em distribuição de conteúdo político-eleitoral",
+   "text": "O ministro Marco Aurélio Bellizze determinou que a Meta não interfira na distribuição de conteúdo político-eleitoral de Lula nem de Flávio Bolsonaro, sob multa diária de R$ 500 mil. A Meta argumentou que as instabilidades decorreram de incidentes técnicos globais e pontuais.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/15/tse-determina-que-meta-nao-interfira-em-distribuicao-de-conteudo-politico-eleitoral-sobre-qualquer-candidato.ghtml",
+     "published_at": "2026-10-15T22:18:39Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/tse-atende-campanha-petista-e-impoe-regras-a-meta-para-garantir-isonomia-entre-lula-e-flavio",
+     "published_at": "2026-10-16T00:02:34Z"
+    }
+   ]
+  },
+  {
+   "id": "tse-derruba-decisao-de-mendonca-e-barra-posts-em-que-flavio-associa-lula-a",
+   "title": "TSE derruba decisão de Mendonça e barra posts em que Flávio associa Lula a escândalo do INSS",
+   "text": "O plenário do TSE determinou a remoção de conteúdos de Flávio Bolsonaro sobre fala de Lula sobre garis, nos quais ele associava o presidente ao escândalo do INSS. Segundo a CNN, Mendonça afirmou que propagandas dizendo que Flávio é contra o fim da 6x1 ocorrem em \"grave descontextualização\", pois ele votou a favor da proposta.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/15/horario-eleitoral-14-outubro-presidente.ghtml",
+     "published_at": "2026-10-15T17:30:39Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/tse-derruba-decisao-de-mendonca-e-barra-posts-em-que-flavio-acusa-lula-de-menosprezar-garis.shtml",
+     "published_at": "2026-10-15T17:48:00Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/colunas/painel/2026/10/fim-da-escala-6x1-da-no-tatico-em-flavio-que-aposta-na-seguranca-para-contra-atacar-veja-video.shtml",
+     "published_at": "2026-10-15T18:49:00Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/eleicoes/mendonca-barra-campanhas-de-lula-que-dizem-que-flavio-e-contra-o-fim-da-6x1",
+     "published_at": "2026-10-16T12:39:41Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/lula-critica-setor-produtivo-contra-fim-escala-6x1",
+     "published_at": "2026-10-16T14:23:23Z"
+    }
+   ]
+  },
+  {
+   "id": "tre-rj-decide-pedir-apoio-de-tropas-federais-para-o-segundo-turno",
+   "title": "TRE-RJ decide pedir apoio de tropas federais para o segundo turno",
+   "text": "O TRE-RJ decidiu em sessão plenária pedir auxílio de tropas federais para o segundo turno, em 25 de outubro. O pedido será encaminhado ao TSE, que, se aprovar, fará requisição formal ao Ministério da Defesa.",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tre-rj-decide-pedir-apoio-de-tropas-federais-para-o-segundo-turno",
+     "published_at": "2026-10-15T21:24:00Z"
+    }
+   ]
+  },
+  {
+   "id": "pf-pede-a-mendonca-mais-90-dias-para-inquerito-sobre-dark-horse-e-cita-analise",
+   "title": "PF pede a Mendonça mais 90 dias para inquérito sobre 'Dark Horse' e cita análise de remessas ao exterior",
+   "text": "A Polícia Federal pediu ao STF a prorrogação por 90 dias do inquérito do caso Dark Horse, e afirma precisar de mais tempo para novas diligências e análises. Segundo a PF, estão pendentes a perícia contábil-financeira, a análise de dados telemáticos e o pedido de cooperação jurídica internacional para obter registros financeiros de entidades estrangeiras.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/pf-pede-a-mendonca-mais-90-dias-para-inquerito-sobre-dark-horse-e-cita-analise-de-remessas-ao-exterior.shtml",
+     "published_at": "2026-10-16T22:46:00Z"
+    },
+    {
+     "outlet": "Jovem Pan",
+     "url": "https://jovempan.com.br/politica/pf-pede-mais-90-dias-para-investigar-financiamento-de-dark-horse-por-vorcaro",
+     "published_at": "2026-10-16T22:47:31Z"
+    }
+   ]
+  },
+  {
+   "id": "tse-manda-flavio-apagar-post-que-associa-lula-a-fechamento-de-igrejas",
+   "title": "TSE manda Flávio apagar post que associa Lula a fechamento de igrejas",
+   "text": "A ministra Estela Aranha, do TSE, determinou que Flávio Bolsonaro apague publicação que associa Lula ao fechamento de igrejas. Para a ministra, a publicação apresenta suposta ameaça à liberdade religiosa sem apontar fato que sustente a ideia de que o presidente pretenda fechar igrejas.",
+   "sources": [
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/eleicoes/estela-aranha-manda-flavio-apagar-post-que-sugere-que-lula-fecharia-igrejas",
+     "published_at": "2026-10-16T21:35:29Z"
+    }
+   ]
+  },
+  {
+   "id": "desmatamento-na-amazonia-e-no-cerrado-tem-menor-nivel-na-serie-historica",
+   "title": "Desmatamento na Amazônia e no Cerrado tem menor nível na série histórica",
+   "text": "Segundo o MMA, a Amazônia teve desmatamento de 3.335 km² entre agosto de 2025 e julho de 2026, redução de 41,8%, a menor taxa da série iniciada em 1988. O Cerrado registrou 5.516,69 km² de desmatamento, queda de 23,8% segundo a CNN, menor índice da série iniciada em 2001.",
+   "sources": [
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-sustentavel/desmatamento-cai-na-amazonia-e-no-cerrado-em-2026",
+     "published_at": "2026-10-16T21:23:37Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/nacional/norte/am/desmatamento-na-amazonia-e-no-cerrado-tem-menor-nivel-na-serie-historica",
+     "published_at": "2026-10-16T21:42:47Z"
+    }
+   ]
+  },
+  {
+   "id": "alcolumbre-homenageia-paim-no-fim-da-6x1-entenda-motivo",
+   "title": "Alcolumbre homenageia Paim no fim da 6x1; entenda motivo",
+   "text": "Alcolumbre quebrou o protocolo na promulgação da emenda que acabou com a escala 6x1 ao convidar Paulo Paim para a mesa oficial. Alcolumbre disse que Paim lutou pela conquista nas últimas quatro décadas.",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/alcolumbre-homenageia-paim-no-fim-da-6x1-entenda-motivo",
+     "published_at": "2026-10-16T18:44:00Z"
+    }
+   ]
+  },
+  {
+   "id": "congresso-promulga-emenda-de-aposentadoria-especial-de-agente-de-saude",
+   "title": "Congresso promulga emenda de aposentadoria especial de agente de saúde",
+   "text": "O Congresso promulgou a Emenda Constitucional nº 140 de 2026, que cria regras de aposentadoria diferenciada para agentes comunitários de saúde e de combate às endemias. A emenda fixa idade mínima de 57 anos para mulheres e 60 para homens, com 25 anos de contribuição e de efetivo exercício.",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/congresso-promulga-emenda-de-aposentadoria-especial-de-agente-de-saude",
+     "published_at": "2026-10-16T16:31:00Z"
+    }
+   ]
+  },
+  {
+   "id": "descanso-de-trabalhador-nao-quebra-empresas-diz-lula-apos-fim-da-6x1",
+   "title": "Descanso de trabalhador não quebra empresas, diz Lula após fim da 6x1",
+   "text": "Lula disse na promulgação da Emenda Constitucional 221 que ninguém quer que a empresa quebre, mas também ninguém quer que um trabalhador morra por falta de descanso. Com a promulgação, a jornada máxima semanal cairá de 44 para 40 horas, sem redução de salários.",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/descanso-de-trabalhador-nao-quebra-empresas-diz-lula-apos-fim-da-6x1",
+     "published_at": "2026-10-16T15:59:00Z"
+    }
+   ]
+  },
+  {
+   "id": "congresso-promulga-fim-da-escala-6x1-em-primeira-mudanca-da-jornada-de-trabalho",
+   "title": "Congresso promulga fim da escala 6x1 em primeira mudança da jornada de trabalho desde 1988",
+   "text": "O g1 relata que o Congresso promulga a emenda que acaba com a escala 6x1 e garante dois dias de repouso remunerado por semana, sem redução salarial. A Folha relata que a PEC foi aprovada no Senado com 75 votos favoráveis e que apenas Hamilton Mourão votou contra.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/16/6x1-promulgacao.ghtml",
+     "published_at": "2026-10-16T12:58:57Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/congresso-promulga-fim-escala-6x1-ato-com-lula",
+     "published_at": "2026-10-16T13:12:02Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/mercado/2026/10/calculadora-do-fim-da-escala-6x1-mostra-como-fica-jornada-simule.shtml",
+     "published_at": "2026-10-16T13:13:00Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/16/apesar-de-votos-a-favor-apenas-um-senador-da-oposicao-comparece-a-promulgacao-da-pec-que-acaba-com-a-escala-6x1.ghtml",
+     "published_at": "2026-10-16T14:16:09Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/economia/money/macroeconomia/analise-como-o-empresariado-se-prepara-para-aplicar-o-fim-da-escala-6x1",
+     "published_at": "2026-10-16T21:22:00Z"
+    }
+   ]
+  },
+  {
+   "id": "tse-derruba-espera-de-48-horas-para-reativar-canais-de-whatsapp-como-exercito",
+   "title": "TSE derruba espera de 48 horas para reativar canais de WhatsApp como 'Exército do Lula'",
+   "text": "A Folha relata que o TSE derrubou a regra de espera de 48 horas para reativar canais de WhatsApp após registro pelas campanhas. O g1 relata que a decisão do TSE foi unânime.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/15/por-unanimidade-tse-derruba-prazo-de-48-horas-para-uso-de-canais-registrados-de-forma-tardia-por-campanhas.ghtml",
+     "published_at": "2026-10-15T14:12:18Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-derruba-regra-que-exigia-espera-de-48-horas-para-reativar-canais-de-whatsapp-como-o-exercito-do-lula.shtml",
+     "published_at": "2026-10-15T15:17:00Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/16/tse-nova-regras-para-vincular-canais-de-whatsapp-a-campanhas-eleitorais.ghtml",
+     "published_at": "2026-10-16T17:36:20Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/tse-aprova-unanimidade-restricoes-canais-whatsapp-campanhas",
+     "published_at": "2026-10-16T19:14:46Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "g1",
+   "title": "Congresso promulga fim da escala 6x1 em primeira mudança da jornada de trabalho desde 1988",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/16/6x1-promulgacao.ghtml",
+   "published_at": "2026-10-16T12:58:57Z",
+   "basis": "manchete e resumo"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Calculadora do fim da escala 6x1 mostra como fica jornada; simule",
+   "url": "https://www1.folha.uol.com.br/mercado/2026/10/calculadora-do-fim-da-escala-6x1-mostra-como-fica-jornada-simule.shtml",
+   "published_at": "2026-10-16T13:13:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Congresso promulga fim da escala 6×1 em ato com Lula",
+   "url": "https://gazetadopovo.com.br/republica/congresso-promulga-fim-escala-6x1-ato-com-lula",
+   "published_at": "2026-10-16T13:12:02Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Análise: Como o empresariado se prepara para aplicar o fim da escala 6×1",
+   "url": "https://cnnbrasil.com.br/economia/money/macroeconomia/analise-como-o-empresariado-se-prepara-para-aplicar-o-fim-da-escala-6x1",
+   "published_at": "2026-10-16T21:22:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Apesar de votos a favor, nenhum senador da oposição comparece à promulgação da PEC que acaba com a escala 6x1",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/16/apesar-de-votos-a-favor-apenas-um-senador-da-oposicao-comparece-a-promulgacao-da-pec-que-acaba-com-a-escala-6x1.ghtml",
+   "published_at": "2026-10-16T14:16:09Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Senado aprova projeto que amplia limite do MEI e perdoa dívidas de inadimplentes",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/15/senado-aprova-projeto-que-amplia-limite-do-mei-e-perdoa-dividas-de-inadimplentes.ghtml",
+   "published_at": "2026-10-15T21:51:06Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Senado aprova aumento de limite e perdão de dívida para MEIs",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/senado-aprova-aumento-de-limite-e-perdao-de-divida-para-meis",
+   "published_at": "2026-10-15T22:52:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Senado aprova com urgência perdão de dívidas do MEI e aumento do teto",
+   "url": "https://gazetadopovo.com.br/economia/senado-aprova-urgencia-perdao-dividas-meis-aumento-teto",
+   "published_at": "2026-10-15T22:14:26Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "TSE derruba espera de 48 horas para reativar canais de WhatsApp como 'Exército do Lula'",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-derruba-regra-que-exigia-espera-de-48-horas-para-reativar-canais-de-whatsapp-como-o-exercito-do-lula.shtml",
+   "published_at": "2026-10-15T15:17:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Por unanimidade, TSE derruba prazo de 48 horas para uso de canais registrados de forma tardia por campanhas",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/15/por-unanimidade-tse-derruba-prazo-de-48-horas-para-uso-de-canais-registrados-de-forma-tardia-por-campanhas.ghtml",
+   "published_at": "2026-10-15T14:12:18Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "TSE aprova novas regras para vincular canais de WhatsApp a campanhas eleitorais",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/16/tse-nova-regras-para-vincular-canais-de-whatsapp-a-campanhas-eleitorais.ghtml",
+   "published_at": "2026-10-16T17:36:20Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "TSE aprova por unanimidade restrições a canais de WhatsApp das campanhas",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/tse-aprova-unanimidade-restricoes-canais-whatsapp-campanhas",
+   "published_at": "2026-10-16T19:14:46Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Justiça Eleitoral determina investigação de Ana Elisa pela PF após pedido de Flávio Bolsonaro",
+   "url": "https://estadao.com.br/politica/eleicoes/justica-eleitoral-determina-investigacao-de-ana-elisa-pela-pf-nprp",
+   "published_at": "2026-10-16T01:06:34Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Justiça eleitoral manda PF investigar Ana Elisa por fake news contra Flávio",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/justica-manda-pf-investigar-ana-elisa-por-fake-news-contra-flavio",
+   "published_at": "2026-10-16T11:16:45Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Vorcaro editava textos do site Metrópoles antes de irem ao ar",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/vorcaro-editava-textos-do-site-metropoles-antes-de-irem-ao-ar.shtml",
+   "published_at": "2026-10-15T17:59:00Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Vorcaro editava reportagens, derrubava textos e sugeria pautas ao portal Metrópoles",
+   "url": "https://estadao.com.br/politica/vorcaro-editava-reportagens-derrubava-textos-e-sugeria-pautas-ao-portal-metropoles",
+   "published_at": "2026-10-15T18:07:24Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Dono do Banco Master editava textos de vídeos de Gabriela Prioli vendidos como opinião espontânea",
+   "url": "https://estadao.com.br/economia/dono-do-banco-master-editava-textos-de-videos-de-gabriela-prioli-vendidos-como-opiniao-espontanea",
+   "published_at": "2026-10-16T16:32:29Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Alcolumbre diz que vai promulgar fim da 6x1 e aposentadoria especial para agentes de saúde na sexta",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/15/alcolumbre-diz-que-vai-promulgar-fim-da-6x1-e-aposentadoria-especial-para-agentes-comunitarios-de-saude.ghtml",
+   "published_at": "2026-10-15T21:29:01Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "TSE atende a Lula e determina que Meta não interfira em distribuição de conteúdo político-eleitoral",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/15/tse-determina-que-meta-nao-interfira-em-distribuicao-de-conteudo-politico-eleitoral-sobre-qualquer-candidato.ghtml",
+   "published_at": "2026-10-15T22:18:39Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "TSE atende campanha petista e impõe regras à Meta para garantir isonomia entre Lula e Flávio",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/tse-atende-campanha-petista-e-impoe-regras-a-meta-para-garantir-isonomia-entre-lula-e-flavio",
+   "published_at": "2026-10-16T00:02:34Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "No horário eleitoral, Lula questiona posição de Flávio sobre fim da escala 6x1; candidato do PL aborda Ministério da Prosperidade",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/15/horario-eleitoral-14-outubro-presidente.ghtml",
+   "published_at": "2026-10-15T17:30:39Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "TSE derruba decisão de Mendonça e barra posts em que Flávio associa Lula a escândalo do INSS",
+   "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/tse-derruba-decisao-de-mendonca-e-barra-posts-em-que-flavio-acusa-lula-de-menosprezar-garis.shtml",
+   "published_at": "2026-10-15T17:48:00Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Fim da escala 6x1 dá nó tático em Flávio, que aposta na segurança para contra-atacar; veja vídeo",
+   "url": "https://www1.folha.uol.com.br/colunas/painel/2026/10/fim-da-escala-6x1-da-no-tatico-em-flavio-que-aposta-na-seguranca-para-contra-atacar-veja-video.shtml",
+   "published_at": "2026-10-15T18:49:00Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Mendonça barra campanhas de Lula que dizem que Flávio é contra o fim da 6×1",
+   "url": "https://cnnbrasil.com.br/eleicoes/mendonca-barra-campanhas-de-lula-que-dizem-que-flavio-e-contra-o-fim-da-6x1",
+   "published_at": "2026-10-16T12:39:41Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Lula critica setor produtivo por ser contra fim da escala 6×1",
+   "url": "https://gazetadopovo.com.br/republica/lula-critica-setor-produtivo-contra-fim-escala-6x1",
+   "published_at": "2026-10-16T14:23:23Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "TRE-RJ decide pedir apoio de tropas federais para o segundo turno",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tre-rj-decide-pedir-apoio-de-tropas-federais-para-o-segundo-turno",
+   "published_at": "2026-10-15T21:24:00Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "PF pede a Mendonça mais 90 dias para inquérito sobre 'Dark Horse' e cita análise de remessas ao exterior",
+   "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/pf-pede-a-mendonca-mais-90-dias-para-inquerito-sobre-dark-horse-e-cita-analise-de-remessas-ao-exterior.shtml",
+   "published_at": "2026-10-16T22:46:00Z"
+  },
+  {
+   "outlet": "Jovem Pan",
+   "title": "PF pede mais 90 dias para investigar financiamento de Dark Horse por Vorcaro",
+   "url": "https://jovempan.com.br/politica/pf-pede-mais-90-dias-para-investigar-financiamento-de-dark-horse-por-vorcaro",
+   "published_at": "2026-10-16T22:47:31Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Estela Aranha manda Flávio apagar post que sugere que Lula fecharia igrejas",
+   "url": "https://cnnbrasil.com.br/eleicoes/estela-aranha-manda-flavio-apagar-post-que-sugere-que-lula-fecharia-igrejas",
+   "published_at": "2026-10-16T21:35:29Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Desmatamento cai na Amazônia e no Cerrado em 2026",
+   "url": "https://poder360.com.br/poder-sustentavel/desmatamento-cai-na-amazonia-e-no-cerrado-em-2026",
+   "published_at": "2026-10-16T21:23:37Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Desmatamento na Amazônia e no Cerrado tem menor nível na série histórica",
+   "url": "https://cnnbrasil.com.br/nacional/norte/am/desmatamento-na-amazonia-e-no-cerrado-tem-menor-nivel-na-serie-historica",
+   "published_at": "2026-10-16T21:42:47Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Alcolumbre homenageia Paim no fim da 6x1; entenda motivo",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/alcolumbre-homenageia-paim-no-fim-da-6x1-entenda-motivo",
+   "published_at": "2026-10-16T18:44:00Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Congresso promulga emenda de aposentadoria especial de agente de saúde",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/congresso-promulga-emenda-de-aposentadoria-especial-de-agente-de-saude",
+   "published_at": "2026-10-16T16:31:00Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Descanso de trabalhador não quebra empresas, diz Lula após fim da 6x1",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/descanso-de-trabalhador-nao-quebra-empresas-diz-lula-apos-fim-da-6x1",
+   "published_at": "2026-10-16T15:59:00Z"
+  }
+ ],
+ "note": "Informações válidas até o corte das 20:34. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
