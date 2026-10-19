@@ -1,0 +1,92 @@
+{
+ "schema": "desmentindo.public.recent_videos.v1",
+ "date": "2026-10-18",
+ "published_at": "2026-10-15T21:52:35Z",
+ "title": "Vídeos recentes dos canais",
+ "notice": "Publicado pelos canais acompanhados. Ainda não checado pelo Desmentindo: título e conteúdo são dos autores. Aparecer aqui não é confirmação nem ligação com as notícias do dia.",
+ "window": {
+  "days": 3,
+  "from": "2026-10-16",
+  "to": "2026-10-18"
+ },
+ "items": [
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "9TO50pBXpqk",
+   "title": "Vorcaro e Roberta querem contar tudo - Alexandre Garcia",
+   "published_at": "2026-10-18T23:24:43Z",
+   "url": "https://www.youtube.com/watch?v=9TO50pBXpqk",
+   "thumbnail": "https://i.ytimg.com/vi/9TO50pBXpqk/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-18T23:43:57Z"
+  },
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "aVaQ4pn-RGc",
+   "title": "LIVE 09 - BOLETIM COPPOLLA",
+   "published_at": "2026-10-18T13:35:37Z",
+   "url": "https://www.youtube.com/watch?v=aVaQ4pn-RGc",
+   "thumbnail": "https://i.ytimg.com/vi/aVaQ4pn-RGc/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-18T23:43:57Z"
+  },
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "-qrrUWQaW_Y",
+   "title": "Jair, Flávio e a ‘kirkificação’ da extrema-esquerda",
+   "published_at": "2026-10-18T10:55:37Z",
+   "url": "https://www.youtube.com/watch?v=-qrrUWQaW_Y",
+   "thumbnail": "https://i.ytimg.com/vi/-qrrUWQaW_Y/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-18T23:43:57Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "lHfHST0zuHo",
+   "title": "Herda seu legado e o Congresso é de direita - Alexandre Garcia",
+   "published_at": "2026-10-17T22:24:04Z",
+   "url": "https://www.youtube.com/watch?v=lHfHST0zuHo",
+   "thumbnail": "https://i.ytimg.com/vi/lHfHST0zuHo/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-17T23:30:36Z"
+  },
+  {
+   "channel": "Te Atualizei",
+   "channel_id": "UCXRIQok8uzYtg1TPwSqikVg",
+   "video_id": "cNE1h-x8fso",
+   "title": "NA NOSSA CARA - O surto coletivo que tomou conta dos poderes as vésperas da eleição",
+   "published_at": "2026-10-16T11:32:55Z",
+   "url": "https://www.youtube.com/watch?v=cNE1h-x8fso",
+   "thumbnail": "https://i.ytimg.com/vi/cNE1h-x8fso/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-16T23:58:06Z"
+  },
+  {
+   "channel": "Te Atualizei",
+   "channel_id": "UCXRIQok8uzYtg1TPwSqikVg",
+   "video_id": "hc7f0z6kOXI",
+   "title": "\"MENTIROSO E MAU-CARATÉR\" - Amiga de Lulinha AVISA QUE VAI DELATAR e nao vai POUPAR NINGUÉM",
+   "published_at": "2026-10-18T11:06:21Z",
+   "url": "https://www.youtube.com/watch?v=hc7f0z6kOXI",
+   "thumbnail": null,
+   "highlight": false,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-18T23:43:57Z"
+  }
+ ]
+}
