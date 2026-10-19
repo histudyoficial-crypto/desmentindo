@@ -1,0 +1,221 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-18",
+ "public_title": "FECHAMENTO — 18 de outubro de 2026",
+ "published_at": "2026-10-15T21:52:35Z",
+ "cutoff_at": "2026-10-18T20:06:13-03:00",
+ "context": "Fechamento de 18 de outubro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "TSE libera atos com mote de democracia no Rio, convocado por Caetano, Salvador e Porto Alegre, e rejeita vetar shows",
+    "story": "tse-libera-atos-com-mote-de-democracia-no-rio-convocado-por-caetano-salvador-e"
+   },
+   {
+    "text": "Advogado amigo de Flávio recebeu documentos vazados do STJ e MPF, diz site",
+    "story": "advogado-amigo-de-flavio-recebeu-documentos-vazados-do-stj-e-mpf-diz-site"
+   },
+   {
+    "text": "Richarlison pede que PF investigue Flávio Bolsonaro por posse de imóvel de luxo",
+    "story": "richarlison-pede-que-pf-investigue-flavio-bolsonaro-por-posse-de-imovel-de-luxo"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "tse-libera-atos-com-mote-de-democracia-no-rio-convocado-por-caetano-salvador-e",
+   "headline": "TSE libera atos com mote de democracia no Rio, convocado por Caetano, Salvador e Porto Alegre, e rejeita vetar shows",
+   "lead": true,
+   "what_happened": "O corregedor-geral eleitoral do TSE, Ricardo Villas Bôas Cueva, liberou os atos previstos para domingo (18) com mote de defesa da democracia. Na mesma decisão, o relator negou proibir preventivamente apresentações artísticas ou o uso de trios elétricos em atos organizados por entidades civis e estudantis.",
+   "what_changed": "Segundo o corregedor, não se verifica, neste momento processual, demonstração suficiente de que os eventos sejam comícios ou reuniões eleitorais que justifiquem a suspensão preventiva. O ministro também indeferiu os pedidos de produção antecipada de provas, que incluíam a obrigação de os organizadores apresentarem documentos financeiros e preservarem comunicações. Alegação atribuída (Partido Novo, segundo a Folha), não comprovada: O Partido Novo sustentava que as mobilizações seriam comícios e showmícios disfarçados para promover as candidaturas de Lula e Geraldo Alckmin, com suposto financiamento irregular por pessoas jurídicas.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "TSE libera atos com mote de democracia no Rio, convocado por Caetano, Salvador e Porto Alegre, e rejeita vetar shows",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-libera-atos-com-mote-de-democracia-no-rio-convocado-por-caetano-salvador-e-porto-alegre-e-rejeita-vetar-shows.shtml",
+     "published_at": "2026-10-17T23:53:00Z",
+     "summary": "O corregedor-geral eleitoral do TSE, Ricardo Villas Bôas Cueva, liberou os atos previstos para domingo (18) com mote de defesa da democracia.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Jovem Pan",
+     "title": "TSE nega pedido do Novo e libera atos ‘Brasil nas Ruas’ com artistas pró-Lula",
+     "url": "https://jovempan.com.br/politica/tse-nega-pedido-do-novo-e-libera-atos-brasil-nas-ruas-com-artistas-pro-lula",
+     "published_at": "2026-10-18T10:56:57Z",
+     "summary": "O ministro também indeferiu os pedidos de produção antecipada de provas, que incluíam a obrigação de os organizadores apresentarem documentos financeiros e preservarem comunicações.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:06, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "advogado-amigo-de-flavio-recebeu-documentos-vazados-do-stj-e-mpf-diz-site",
+   "headline": "Advogado amigo de Flávio recebeu documentos vazados do STJ e MPF, diz site",
+   "lead": false,
+   "what_happened": "Willer Tomaz negou categoricamente ter tido acesso irregular ou não autorizado a decisões judiciais ou pareceres do MPF. O STJ abriu investigação e exonerou, na sexta-feira (16), um servidor da área de tecnologia suspeito de vazar minutas de decisões ao advogado Willer Tomaz.",
+   "what_changed": "As trocas de mensagens constam em um relatório da Polícia Federal encaminhado à Procuradoria-Geral da República. O STJ afirmou que as medidas criminais estão em andamento e são sigilosas. Alegação atribuída (UOL, segundo a Folha), não comprovada: Segundo reportagem do UOL, investigação da PF aponta que o advogado Willer Tomaz recebia minutas de decisões do STJ e manifestações do MPF antes da publicação.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "Advogado amigo de Flávio recebeu documentos vazados do STJ e MPF, diz site",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/advogado-amigo-de-flavio-recebeu-documentos-vazados-do-stj-e-mpf-diz-site.shtml",
+     "published_at": "2026-10-17T14:29:00Z",
+     "summary": "Segundo reportagem do UOL, investigação da PF aponta que o advogado Willer Tomaz recebia minutas de decisões do STJ e manifestações do MPF antes da publicação.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "STJ abre investigação e exonera servidor suspeito de vazar minutas de decisões a advogado amigo de Flávio",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/17/stj-abre-investigacao-e-exonera-servidor-suspeito-de-vazar-minutas-a-advogado-amigo-de-flavio.ghtml",
+     "published_at": "2026-10-17T19:02:04Z",
+     "summary": "O STJ abriu investigação e exonerou, na sexta-feira (16), um servidor da área de tecnologia suspeito de vazar minutas de decisões ao advogado Willer Tomaz.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:06, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "richarlison-pede-que-pf-investigue-flavio-bolsonaro-por-posse-de-imovel-de-luxo",
+   "headline": "Richarlison pede que PF investigue Flávio Bolsonaro por posse de imóvel de luxo",
+   "lead": false,
+   "what_happened": "De acordo com a Justiça do Rio de Janeiro, uma sentença extinguiu o processo em outubro de 2025, sem julgamento do mérito, por renúncia de uma das partes. O Ministério da Justiça pediu que a ANPD investigue se a Meta está descumprindo o Marco Civil da Internet.",
+   "what_changed": "A CTRL+Z contabilizou 1.121 relatos entre 25 de setembro e 13 de outubro, envolvendo supressão de alcance e restrições de funcionalidades. Alegação atribuída (Richarlison, segundo a Folha), não comprovada: Richarlison pediu que a PF investigue o envolvimento de Flávio Bolsonaro na disputa pela posse de uma propriedade de luxo em Angra dos Reis, que segundo ele foi tomada \"na mão grande\" por manobras judiciais.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "Richarlison pede que PF investigue Flávio Bolsonaro por posse de imóvel de luxo",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/richarlison-pede-que-pf-investigue-flavio-bolsonaro-por-posse-de-imovel-de-luxo.shtml",
+     "published_at": "2026-10-17T21:46:00Z",
+     "summary": "Richarlison pediu que a PF investigue o envolvimento de Flávio Bolsonaro na disputa pela posse de uma propriedade de luxo em Angra dos Reis, que segundo ele foi tomada \"na mão grande\" por manobras judiciais.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Ministério da Justiça pede que ANPD investigue se Meta descumpriu Marco Civil da Internet",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/17/ministerio-da-justica-pede-que-anpd-investigue-se-meta-descumpriu-marco-civil-da-internet.ghtml",
+     "published_at": "2026-10-17T14:53:20Z",
+     "summary": "O Ministério da Justiça pediu que a ANPD investigue se a Meta está descumprindo o Marco Civil da Internet.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:06, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "flavio-bolsonaro-e-investigado-no-stf-por-suspeita-de-lavagem-com-advogado-do",
+   "title": "Flávio Bolsonaro é investigado no STF por suspeita de lavagem com advogado do caso INSS",
+   "text": "A Polícia Federal enviou ao STF um novo inquérito contra Flávio Bolsonaro para apurar suspeitas de lavagem de dinheiro envolvendo sua relação com o advogado Willer Tomaz. O inquérito chegou ao STF em 8 de outubro e o relator sorteado foi o ministro Alexandre de Moraes.",
+   "sources": [
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/flavio-bolsonaro-e-investigado-em-2-inquerito-no-stf-para-apurar-suspeitas-de-lavagem-com-advogado",
+     "published_at": "2026-10-18T20:27:20Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/moraes-sera-relator-de-novo-inquerito-contra-flavio-bolsonaro-no-stf",
+     "published_at": "2026-10-18T21:22:35Z"
+    }
+   ]
+  },
+  {
+   "id": "ministra-do-tse-determina-que-vice-de-flavio-apague-video-que-associa-lula-ao",
+   "title": "Ministra do TSE determina que vice de Flávio apague vídeo que associa Lula ao crime organizado",
+   "text": "O TSE determinou que o candidato a vice Alfredo Gaspar remova em 24 horas publicações que associavam Lula ao crime organizado e a um homicídio em Pernambuco. A ordem liminar foi proferida pela ministra Estela Aranha em representação ajuizada por Lula e pela Coligação Brasil Pronto Pra Mais.",
+   "sources": [
+    {
+     "outlet": "Veja",
+     "url": "https://veja.abril.com.br/politica/candidato-a-vice-de-flavio-bolsonaro-aciona-justica-contra-manuela-davila",
+     "published_at": "2026-10-18T19:55:03Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/ministra-do-tse-determina-que-vice-de-flavio-apague-video-que-associa-lula-ao-crime-organizado",
+     "published_at": "2026-10-18T20:52:28Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "Folha",
+   "title": "TSE libera atos com mote de democracia no Rio, convocado por Caetano, Salvador e Porto Alegre, e rejeita vetar shows",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-libera-atos-com-mote-de-democracia-no-rio-convocado-por-caetano-salvador-e-porto-alegre-e-rejeita-vetar-shows.shtml",
+   "published_at": "2026-10-17T23:53:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Jovem Pan",
+   "title": "TSE nega pedido do Novo e libera atos ‘Brasil nas Ruas’ com artistas pró-Lula",
+   "url": "https://jovempan.com.br/politica/tse-nega-pedido-do-novo-e-libera-atos-brasil-nas-ruas-com-artistas-pro-lula",
+   "published_at": "2026-10-18T10:56:57Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Advogado amigo de Flávio recebeu documentos vazados do STJ e MPF, diz site",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/advogado-amigo-de-flavio-recebeu-documentos-vazados-do-stj-e-mpf-diz-site.shtml",
+   "published_at": "2026-10-17T14:29:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "STJ abre investigação e exonera servidor suspeito de vazar minutas de decisões a advogado amigo de Flávio",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/17/stj-abre-investigacao-e-exonera-servidor-suspeito-de-vazar-minutas-a-advogado-amigo-de-flavio.ghtml",
+   "published_at": "2026-10-17T19:02:04Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Richarlison pede que PF investigue Flávio Bolsonaro por posse de imóvel de luxo",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/richarlison-pede-que-pf-investigue-flavio-bolsonaro-por-posse-de-imovel-de-luxo.shtml",
+   "published_at": "2026-10-17T21:46:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Ministério da Justiça pede que ANPD investigue se Meta descumpriu Marco Civil da Internet",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/17/ministerio-da-justica-pede-que-anpd-investigue-se-meta-descumpriu-marco-civil-da-internet.ghtml",
+   "published_at": "2026-10-17T14:53:20Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Flávio Bolsonaro é investigado em 2º inquérito no STF para apurar suspeitas de lavagem com advogado",
+   "url": "https://estadao.com.br/politica/flavio-bolsonaro-e-investigado-em-2-inquerito-no-stf-para-apurar-suspeitas-de-lavagem-com-advogado",
+   "published_at": "2026-10-18T20:27:20Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Moraes será relator de novo inquérito contra Flávio Bolsonaro no STF",
+   "url": "https://gazetadopovo.com.br/republica/moraes-sera-relator-de-novo-inquerito-contra-flavio-bolsonaro-no-stf",
+   "published_at": "2026-10-18T21:22:35Z"
+  },
+  {
+   "outlet": "Veja",
+   "title": "Candidato a vice de Flávio Bolsonaro aciona Justiça contra Manuela D’Ávila",
+   "url": "https://veja.abril.com.br/politica/candidato-a-vice-de-flavio-bolsonaro-aciona-justica-contra-manuela-davila",
+   "published_at": "2026-10-18T19:55:03Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Ministra do TSE determina que vice de Flávio apague vídeo que associa Lula ao crime organizado",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/ministra-do-tse-determina-que-vice-de-flavio-apague-video-que-associa-lula-ao-crime-organizado",
+   "published_at": "2026-10-18T20:52:28Z"
+  }
+ ],
+ "note": "Informações válidas até o corte das 20:06. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
