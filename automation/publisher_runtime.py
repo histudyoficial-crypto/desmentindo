@@ -25,6 +25,7 @@ since each branch is fully regenerated from the same candidate content
 every time).
 """
 import base64
+import calendar
 import hashlib
 import json
 import os
@@ -64,6 +65,8 @@ AUTO_UPDATE_ELIGIBLE_CLASSES = {
 }
 
 RUN_STARTED = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+SCHEDULE_CRON = "17 * * * *"          # must match .github/workflows/desmentindo-publisher.yml (tested)
+SCHEDULE_DELAYED_AFTER_MIN = 90       # hourly cron: a gap above this means GitHub skipped/delayed runs
 
 
 def log(msg):
@@ -259,6 +262,20 @@ def pr_files(number):
     return [f.get("path", "") for f in json.loads(r.stdout or "{}").get("files") or []]
 
 
+def schedule_gap(previous_status, now_iso):
+    """Minutes since the previous run (from the last status manifest) and whether that is a delay.
+
+    -> {"previous_run_at", "gap_minutes", "schedule_delayed"}; unknown previous run -> gap None, not delayed."""
+    prev = (previous_status or {}).get("last_run_at")
+    try:
+        t0 = calendar.timegm(time.strptime(prev, "%Y-%m-%dT%H:%M:%SZ"))
+        t1 = calendar.timegm(time.strptime(now_iso, "%Y-%m-%dT%H:%M:%SZ"))
+    except (TypeError, ValueError):
+        return {"previous_run_at": prev, "gap_minutes": None, "schedule_delayed": False}
+    gap = int(round((t1 - t0) / 60))
+    return {"previous_run_at": prev, "gap_minutes": gap, "schedule_delayed": gap > SCHEDULE_DELAYED_AFTER_MIN}
+
+
 # ---------------------------------------------------------------------
 # Serialization by public index (one open PR per index.json)
 #
@@ -450,7 +467,7 @@ def main():
     status = {
         "automation_enabled": True,
         "workflow_path": ".github/workflows/desmentindo-publisher.yml",
-        "schedule_cron": "0 * * * *",
+        "schedule_cron": SCHEDULE_CRON,
         "schedule_timezone_note": "cron is UTC; operational reference tz is America/Sao_Paulo",
         "github_runtime_auth": "GITHUB_TOKEN",
         "persistent_pat_dependency": False,
@@ -483,6 +500,11 @@ def main():
         sys.exit(1)
 
     status["dropbox_runtime_auth"] = "READY"
+
+    status["schedule"] = schedule_gap(dbx_try_download_json(token, STATUS_PATH, None), RUN_STARTED)
+    if status["schedule"]["schedule_delayed"]:
+        log(f"SCHEDULE_DELAYED: {status['schedule']['gap_minutes']} min since previous run "
+            f"({status['schedule']['previous_run_at']})")
 
     ledger = dbx_try_download_json(
         token, LEDGER_PATH,
