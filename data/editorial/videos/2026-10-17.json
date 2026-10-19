@@ -1,0 +1,79 @@
+{
+ "schema": "desmentindo.public.recent_videos.v1",
+ "date": "2026-10-17",
+ "published_at": "2026-10-15T21:52:35Z",
+ "title": "Vídeos recentes dos canais",
+ "notice": "Publicado pelos canais acompanhados. Ainda não checado pelo Desmentindo: título e conteúdo são dos autores. Aparecer aqui não é confirmação nem ligação com as notícias do dia.",
+ "window": {
+  "days": 3,
+  "from": "2026-10-15",
+  "to": "2026-10-17"
+ },
+ "items": [
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "lHfHST0zuHo",
+   "title": "Herda seu legado e o Congresso é de direita - Alexandre Garcia",
+   "published_at": "2026-10-17T22:24:04Z",
+   "url": "https://www.youtube.com/watch?v=lHfHST0zuHo",
+   "thumbnail": "https://i.ytimg.com/vi/lHfHST0zuHo/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-17T23:30:36Z"
+  },
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "ysGKcQhwm8g",
+   "title": "Janones, Lula e a estratégia do ‘lobo em pele de cordeiro’",
+   "published_at": "2026-10-17T09:55:31Z",
+   "url": "https://www.youtube.com/watch?v=ysGKcQhwm8g",
+   "thumbnail": "https://i.ytimg.com/vi/ysGKcQhwm8g/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-17T23:30:36Z"
+  },
+  {
+   "channel": "Te Atualizei",
+   "channel_id": "UCXRIQok8uzYtg1TPwSqikVg",
+   "video_id": "cNE1h-x8fso",
+   "title": "NA NOSSA CARA - O surto coletivo que tomou conta dos poderes as vésperas da eleição",
+   "published_at": "2026-10-16T11:32:55Z",
+   "url": "https://www.youtube.com/watch?v=cNE1h-x8fso",
+   "thumbnail": "https://i.ytimg.com/vi/cNE1h-x8fso/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-16T23:58:06Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "A_43l6-xFXk",
+   "title": "No palanque, o desespero após derrotas no 1° turno - Alexandre Garcia",
+   "published_at": "2026-10-16T23:15:47Z",
+   "url": "https://www.youtube.com/watch?v=A_43l6-xFXk",
+   "thumbnail": "https://i.ytimg.com/vi/A_43l6-xFXk/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-16T23:58:06Z"
+  },
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "0ZjuYFueopc",
+   "title": "2º turno: Como Posicionar seus Investimentos",
+   "published_at": "2026-10-15T22:34:07Z",
+   "url": "https://www.youtube.com/watch?v=0ZjuYFueopc",
+   "thumbnail": "https://i.ytimg.com/vi/0ZjuYFueopc/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-15T23:55:32Z"
+  }
+ ]
+}
