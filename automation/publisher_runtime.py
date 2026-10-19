@@ -252,6 +252,76 @@ def pr_status(number):
     return json.loads(r.stdout)
 
 
+def pr_files(number):
+    r = gh("pr", "view", str(number), "--json", "files", check=False)
+    if r.returncode != 0:
+        return None
+    return [f.get("path", "") for f in json.loads(r.stdout or "{}").get("files") or []]
+
+
+# ---------------------------------------------------------------------
+# Serialization by public index (one open PR per index.json)
+#
+# Every candidate carries the WHOLE index file built on its
+# expected_base_commit. Two open PRs that rewrite the same index always
+# conflict once the first one is merged. So a candidate whose index is
+# already rewritten by an open Publisher PR waits in the outbox (nothing
+# is moved, rejected or rewritten). After the human merge, main moves,
+# the waiting candidate becomes STALE_BASE, the ops outbox_forward
+# REFRESH_BASE rebuilds it on the new main (same content, same
+# approval) and the next run opens its PR. Candidates touching other
+# indexes are never blocked.
+# ---------------------------------------------------------------------
+
+OPEN_PR_STATUSES = ("PR_CREATED", "AWAITING_HUMAN_APPROVAL")
+
+
+def index_paths(paths):
+    return sorted({p for p in paths if p == "index.json" or p.endswith("/index.json")})
+
+
+def index_locks(tracking, files_of=None):
+    """{index_path: {pr_number, idempotency_key, candidate_id}} for the Publisher PRs still open.
+
+    Entries written before serialization have no index_paths: their PR files are read once
+    (files_of) and remembered in the entry. If they cannot be read the PR locks nothing (logged)."""
+    locks = {}
+    for key, entry in tracking.items():
+        if entry.get("status") not in OPEN_PR_STATUSES:
+            continue
+        paths = entry.get("index_paths")
+        if paths is None and files_of and entry.get("pr_number"):
+            files = files_of(entry["pr_number"])
+            if files is None:
+                log(f"serialization: could not read files of PR #{entry['pr_number']} -- it locks no index")
+                continue
+            paths = entry["index_paths"] = index_paths(files)
+        for p in paths or []:
+            locks.setdefault(p, {"pr_number": entry.get("pr_number"), "idempotency_key": key,
+                                 "candidate_id": entry.get("candidate_id")})
+    return locks
+
+
+def decide(candidate, consumed_keys, tracking, locks, main_head):
+    """Pure decision for one outbox candidate -> (action, detail).
+
+    SKIP_CONSUMED | SKIP_PR_OPEN | STALE_BASE | WAIT_SERIALIZED | PROCESS"""
+    idem_key = candidate.get("idempotency_key", "")
+    if idem_key in consumed_keys:
+        return "SKIP_CONSUMED", None
+    existing = tracking.get(idem_key)
+    if existing and existing.get("status") in OPEN_PR_STATUSES:
+        return "SKIP_PR_OPEN", existing.get("pr_number")
+    if candidate.get("expected_base_commit") != main_head:
+        return "STALE_BASE", candidate.get("expected_base_commit")
+    paths = [tf.get("path", "") for tf in candidate.get("target_files") or []]
+    for p in index_paths(paths):
+        holder = locks.get(p)
+        if holder and holder["idempotency_key"] != idem_key:
+            return "WAIT_SERIALIZED", dict(holder, index=p)
+    return "PROCESS", None
+
+
 # ---------------------------------------------------------------------
 # Candidate validation (independent re-validation)
 # ---------------------------------------------------------------------
@@ -511,27 +581,38 @@ def main():
         loaded.append((entry["name"], cand))
     loaded.sort(key=lambda x: (x[1].get("created_at", ""), x[1].get("candidate_id", "")))
 
+    locks = index_locks(ledger["pr_tracking"], files_of=pr_files)
+    status["serialized_waiting"] = []
+
     for fname, candidate in loaded:
         cid = candidate.get("candidate_id", fname)
         idem_key = candidate.get("idempotency_key", "")
         log(f"--- processing {cid} ---")
 
-        if idem_key in consumed_keys:
-            log(f"{cid}: already CONSUMED, skipping")
-            continue
-
-        existing = ledger["pr_tracking"].get(idem_key)
-        if existing and existing.get("status") in (
-                "PR_CREATED", "AWAITING_HUMAN_APPROVAL"):
-            log(f"{cid}: PR already open (#{existing.get('pr_number')}), "
-                f"content unchanged (same idempotency_key) -- skipping")
-            continue
-
         git("checkout", "main", check=False)
         git("reset", "--hard", "origin/main")
         head = current_main_head()
         expected_base = candidate.get("expected_base_commit")
-        if expected_base != head:
+        action, detail = decide(candidate, consumed_keys, ledger["pr_tracking"], locks, head)
+
+        if action == "SKIP_CONSUMED":
+            log(f"{cid}: already CONSUMED, skipping")
+            continue
+
+        if action == "SKIP_PR_OPEN":
+            log(f"{cid}: PR already open (#{detail}), "
+                f"content unchanged (same idempotency_key) -- skipping")
+            continue
+
+        if action == "WAIT_SERIALIZED":
+            log(f"{cid}: WAIT_SERIALIZED ({detail['index']} is rewritten by open PR "
+                f"#{detail['pr_number']} {detail['candidate_id']}) -- left in outbox; "
+                f"resumes after that PR is merged (STALE_BASE -> REFRESH_BASE)")
+            status["serialized_waiting"].append({"candidate_id": cid, "index": detail["index"],
+                                                 "waiting_for_pr": detail["pr_number"]})
+            continue
+
+        if action == "STALE_BASE":
             log(f"{cid}: STALE_BASE (expected {expected_base}, main is {head}) "
                 f"-- left in outbox for reevaluation")
             status["stale_count"] += 1
@@ -618,8 +699,11 @@ def main():
             "status": "AWAITING_HUMAN_APPROVAL",
             "expected_base_commit": expected_base,
             "outbox_filename": fname,
+            "index_paths": index_paths(expected_paths),
             "created_at": RUN_STARTED,
         }
+        for p in index_paths(expected_paths):
+            locks.setdefault(p, {"pr_number": pr_number, "idempotency_key": idem_key, "candidate_id": cid})
         status["awaiting_human_count"] += 1
 
         git("checkout", "main", check=False)
