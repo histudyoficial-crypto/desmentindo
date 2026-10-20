@@ -41,6 +41,20 @@ const cov = [{ o: "B", published_at: "2026-10-03T15:00:00-03:00" }, { o: "X" }, 
 eq("byTime", lib.byTime(cov).map(c => c.o), ["A", "B", "C", "X", "Y"]);
 eq("byTime não muta", cov.map(c => c.o), ["B", "X", "A", "Y", "C"]);
 
+// CORREÇÃO (05/10 principais; 20/10 também em "Outras"): linha datada com fonte https, texto original intacto
+{
+  const fx = new Function(`${fn("e")}\n${fn("fxCorrection")}\nreturn fxCorrection;`)();
+  const c = { date: "2026-10-20", text: "O título é o da reportagem; o texto resumiu a abertura.", source: [{ name: "Agência Brasil", url: "https://agenciabrasil.ebc.com.br/x" }, { name: "X", url: "http://inseguro" }] };
+  const h = fx(c);
+  if (!h.includes("Correção — 20/10/2026:") || !h.includes("https://agenciabrasil.ebc.com.br/x") || h.includes("http://inseguro")) fail.push("fxCorrection: linha/fonte https");
+  eq("fxCorrection sem data válida", fx({ date: "20/10", text: "x" }), "");
+  eq("fxCorrection ausente", fx(undefined), "");
+  const outras = src.slice(src.indexOf("Outras que você precisa saber"), src.indexOf("Acompanhando</h2>"));
+  if (!/fxCorrection\(o\.correction\)/.test(outras)) fail.push("\"Outras\" não exibe a correção aprovada (o.correction)");
+  const principais = src.slice(src.indexOf("function fxCorrection"), src.indexOf("Outras que você precisa saber"));
+  if (!/fxCorrection\(s\.correction\)/.test(principais)) fail.push("principais deixaram de exibir a correção (s.correction)");
+}
+
 // limites da V1 (bloqueados)
 const forbid = [
   [/SHARE_ACTION/, "evento SHARE_ACTION (fora da V1)"],
