@@ -1188,7 +1188,8 @@
       }
       if (F.other_stories && F.other_stories.length) {
         h += '<section class="sec"><h2 class="h2">Outras que você precisa saber</h2><ul class="fx-list">' + F.other_stories.map(function (o) {
-          return '<li id="' + e(o.id) + '"><h3>' + e(o.title) + "</h3><p>" + e(o.text) + "</p>" + srcLinks(o.sources) + fxSaid(o.videos) + "</li>";
+          // correção aprovada em "Outras" (20/10): mesma linha das principais, logo depois do texto original intacto
+          return '<li id="' + e(o.id) + '"><h3>' + e(o.title) + "</h3><p>" + e(o.text) + "</p>" + fxCorrection(o.correction) + srcLinks(o.sources) + fxSaid(o.videos) + "</li>";
         }).join("") + "</ul></section>";
       }
       if (F.following && F.following.length) {
