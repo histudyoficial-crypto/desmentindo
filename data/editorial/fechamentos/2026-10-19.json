@@ -1,0 +1,481 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-19",
+ "public_title": "FECHAMENTO — 19 de outubro de 2026",
+ "published_at": "2026-10-20T11:27:54Z",
+ "cutoff_at": "2026-10-19T20:33:19-03:00",
+ "context": "Fechamento de 19 de outubro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "TSE dá 24 horas para Meta comprovar igualdade na distribuição de conteúdo eleitoral de Lula e Flávio",
+    "story": "tse-da-24-horas-para-meta-comprovar-igualdade-na-distribuicao-de-conteudo"
+   },
+   {
+    "text": "Organizações cobram transparência e equilíbro após denúncias de restrições a conteúdos pró-Lula",
+    "story": "organizacoes-cobram-transparencia-e-equilibro-apos-denuncias-de-restricoes-a"
+   },
+   {
+    "text": "TSE altera local de votação de 402,6 mil eleitores para o 2° turno, e PT pede mais divulgação",
+    "story": "tse-altera-local-de-votacao-de-402-6-mil-eleitores-para-o-2-turno-e-pt-pede"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "tse-da-24-horas-para-meta-comprovar-igualdade-na-distribuicao-de-conteudo",
+   "headline": "TSE dá 24 horas para Meta comprovar igualdade na distribuição de conteúdo eleitoral de Lula e Flávio",
+   "lead": true,
+   "what_happened": "O ministro Marco Aurélio Bellizze, do TSE, deu 24 horas para a Meta comprovar que cumpriu a decisão sobre isonomia na distribuição de conteúdos políticos e anúncios eleitorais no segundo turno. Caso a empresa não comprove o cumprimento integral, a multa diária subirá de R$ 500 mil para R$ 1 milhão.",
+   "what_changed": "Bellizze determinou que os relatórios sejam em português, pois outro relatório da Meta tinha termos em língua estrangeira que, segundo o ministro, não diferenciavam medidas judiciais das de iniciativa própria. O TSE deu 24 horas para a Meta comprovar que tomou medidas para garantir equidade de tratamento entre Lula e Flávio Bolsonaro na campanha. Alegação atribuída (g1), não comprovada: A campanha de Lula acusou a plataforma de restringir seletivamente a distribuição de publicações ligadas ao seu campo político e de descumprir obrigações da legislação eleitoral. Alegação atribuída (Poder360), não comprovada: A campanha de Flávio Bolsonaro afirmou que falhas na Meta prejudicaram sua candidatura mais do que a de Lula.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "TSE dá 24h para Meta comprovar  medidas tomadas para garantir igualdade entre campanhas",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/19/tse-da-24h-para-meta-comprovar-medidas-tomadas-para-garantir-igualdade-entre-campanhas.ghtml",
+     "published_at": "2026-10-19T11:09:05Z",
+     "summary": "O ministro Marco Aurélio Bellizze, do TSE, deu 24 horas para a Meta comprovar que cumpriu a decisão sobre isonomia na distribuição de conteúdos políticos e anúncios eleitorais no segundo turno.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Poder360",
+     "title": "TSE dá 24h para Meta comprovar isonomia entre Lula e Flávio",
+     "url": "https://poder360.com.br/poder-eleicoes-2026/tse-da-24h-para-meta-comprovar-isonomia-entre-lula-e-flavio",
+     "published_at": "2026-10-19T12:34:57Z",
+     "summary": "A campanha de Flávio Bolsonaro afirmou que falhas na Meta prejudicaram sua candidatura mais do que a de Lula.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Veja",
+     "title": "TSE manda a Meta comprovar que dá igualdade de tratamento a Lula e Flávio",
+     "url": "https://veja.abril.com.br/politica/tse-manda-a-meta-comprovar-que-da-igualdade-de-tratamento-a-lula-e-flavio",
+     "published_at": "2026-10-19T10:57:00-03:00",
+     "summary": "O TSE deu 24 horas para a Meta comprovar que tomou medidas para garantir equidade de tratamento entre Lula e Flávio Bolsonaro na campanha.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Folha",
+     "title": "TSE dá 24 horas para Meta comprovar tratamento igualitário a Lula e Flávio Bolsonaro",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-da-24-horas-para-meta-comprovar-tratamento-igualitario-a-lula-e-flavio-bolsonaro.shtml",
+     "published_at": "2026-10-19T14:00:00Z",
+     "summary": "O ministro Marco Aurélio Bellizze, do TSE, deu 24 horas para a Meta comprovar tratamento igualitário às candidaturas de Lula e Flávio Bolsonaro em seus algoritmos ou sistemas de IA.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:33, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "organizacoes-cobram-transparencia-e-equilibro-apos-denuncias-de-restricoes-a",
+   "headline": "Organizações cobram transparência e equilíbro após denúncias de restrições a conteúdos pró-Lula",
+   "lead": false,
+   "what_happened": "Organizações de direitos digitais organizam um ato em frente à sede da Meta em São Paulo, na segunda-feira (19), às 17h. A Meta atribui os episódios a falhas técnicas e nega favorecer qualquer candidatura.",
+   "what_changed": "A CTRL+Z reuniu 1.121 relatos de restrições, remoções, banimentos e quedas de alcance; o levantamento não é auditoria independente nem comprova irregularidades em todos os casos. O corregedor Ricardo Villas Bôas Cueva determinou que Nikolas Ferreira e Pablo Marçal não voltem a publicar conteúdos já removidos por ordem do TSE, com multa de R$ 50 mil por publicação. Alegação atribuída (Campanha do PT), não comprovada: Segundo a campanha do PT, Nikolas e Marçal são os principais difusores da campanha de Flávio Bolsonaro fora dos canais oficiais e disseminam desinformação. Alegação atribuída (campanha de Lula / Sleeping Giants Brasil, segundo a Gazeta do Povo), não comprovada: A campanha petista usou levantamento da Sleeping Giants Brasil que apontou visibilidade maior de Nikolas no Instagram, com visualizações por seguidor cerca de 17,2 vezes maiores que as de outros deputados.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "Organizações cobram transparência e equilíbro após denúncias de restrições a conteúdos pró-Lula",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/organizacoes-cobram-transparencia-e-equilibro-apos-denuncias-de-restricoes-a-conteudos-pro-lula.shtml",
+     "published_at": "2026-10-18T20:32:00Z",
+     "summary": "Organizações de direitos digitais organizam um ato em frente à sede da Meta em São Paulo, na segunda-feira (19), às 17h.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "TSE proíbe Nikolas e Marçal de republicarem conteúdos vetados e suspende impulsionamento pago dos perfis",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/19/tse-proibe-nikolas-ferreira-e-pablo-marcal-de-republicarem-conteudos-proibidos-pela-justica-eleitoral.ghtml",
+     "published_at": "2026-10-19T12:17:10Z",
+     "summary": "O corregedor Ricardo Villas Bôas Cueva determinou que Nikolas Ferreira e Pablo Marçal não voltem a publicar conteúdos já removidos por ordem do TSE, com multa de R$ 50 mil por publicação.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Folha",
+     "title": "TSE proíbe Nikolas e Marçal de republicar conteúdos falsos sobre Lula e restringe impulsionamento",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-proibe-nikolas-e-marcal-de-republicar-conteudos-falsos-sobre-lula-e-restringe-impulsionamento.shtml",
+     "published_at": "2026-10-19T13:26:00-03:00",
+     "summary": "O corregedor-geral eleitoral Ricardo Villas Bôas Cueva proibiu Nikolas Ferreira e Pablo Marçal de republicarem postagens com conteúdo já considerado falso pelo TSE.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Corregedor eleitoral proíbe impulsionamento pago de posts de Nikolas e Marçal",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/corregedor-eleitoral-proibe-impulsionaemnto-pago-de-posts-de-nikolas-e-marcal",
+     "published_at": "2026-10-19T13:32:13Z",
+     "summary": "O corregedor-geral eleitoral, Ricardo Villas Bôas Cueva, atendeu a pedido da campanha de Lula e proibiu Meta e X de permitirem o impulsionamento pago de postagens de Nikolas Ferreira e Pablo Marçal até o fim do segundo turno.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:33, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "tse-altera-local-de-votacao-de-402-6-mil-eleitores-para-o-2-turno-e-pt-pede",
+   "headline": "TSE altera local de votação de 402,6 mil eleitores para o 2° turno, e PT pede mais divulgação",
+   "lead": false,
+   "what_happened": "O TSE alterou o endereço de 1.397 seções eleitorais para o segundo turno, afetando 402.599 eleitores, segundo dados atualizados no domingo (18). A página do TSE contabilizou como mudança casos em que o endereço permanece o mesmo.",
+   "what_changed": "O TRE-PE disse que apenas seis seções eleitorais terão mudança de endereço, embora o TSE informasse mudanças em 24 municípios pernambucanos. A assessoria do TSE informou que vai apurar o que aconteceu e que o sistema está sendo atualizado. Alegação atribuída (Coligação do PT, segundo a Folha), não comprovada: A coligação de Lula afirma que o modelo adotado por muitos tribunais transfere ao cidadão o ônus de descobrir o novo endereço. Alegação atribuída (Bancada do PT na Câmara, segundo o Estadão), não comprovada: A bancada do PT na Câmara pediu à Procuradoria-Geral Eleitoral investigação sobre a forma como a Justiça Eleitoral comunicou mudanças de locais de votação e seus efeitos no comparecimento no primeiro turno.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "TSE altera local de votação de 402,6 mil eleitores para o 2° turno, e PT pede mais divulgação",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-altera-local-de-votacao-de-590-mil-eleitores-para-o-2-turno-e-pt-pede-mais-divulgacao.shtml",
+     "published_at": "2026-10-18T15:27:00Z",
+     "summary": "O TSE alterou o endereço de 1.397 seções eleitorais para o segundo turno, afetando 402.599 eleitores, segundo dados atualizados no domingo (18).",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Sistema do TSE aponta mudanças em locais de votação mesmo quando endereço permanece o mesmo",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/18/sistema-do-tse-aponta-mudancas-em-locais-de-votacao-mesmo-quando-endereco-permanece-o-mesmo.ghtml",
+     "published_at": "2026-10-19T00:19:51Z",
+     "summary": "A página do TSE contabilizou como mudança casos em que o endereço permanece o mesmo.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "PT aciona Procuradoria Eleitoral contra 'orientação genérica' de mudanças nos locais de votação",
+     "url": "https://estadao.com.br/politica/eleicoes/pt-aciona-procuradoria-eleitoral-contra-orientacao-generica-de-mudancas-nos-locais-de-votacao",
+     "published_at": "2026-10-19T12:17:00-03:00",
+     "summary": "A bancada do PT na Câmara pediu à Procuradoria-Geral Eleitoral investigação sobre a forma como a Justiça Eleitoral comunicou mudanças de locais de votação e seus efeitos no comparecimento no primeiro turno.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Folha",
+     "title": "Tribunais chamam mudanças em locais de votação de exceção e negam ingerência de Kassio",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tribunais-chamam-mudancas-em-locais-de-votacao-de-excecao-e-negam-ingerencia-de-kassio.shtml",
+     "published_at": "2026-10-19T21:03:00Z",
+     "summary": "Os presidentes dos TREs assinaram nota conjunta afirmando que as mudanças nos locais de votação para o segundo turno foram excepcionais e em número menor que em 2022.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "MP aciona TSE para que eleitor seja avisado por WhatsApp sobre mudança em locais de votação",
+     "url": "https://estadao.com.br/politica/eleicoes/mp-aciona-tse-para-que-eleitor-seja-avisado-por-whatsapp-sobre-mudanca-em-locais-de-votacao-npr",
+     "published_at": "2026-10-19T20:45:53Z",
+     "summary": "O Ministério Público Eleitoral sugeriu ao TSE notificar eleitores por WhatsApp ou SMS sobre as mudanças nos locais de votação do segundo turno.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:33, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "flavio-bolsonaro-e-investigado-no-stf-por-suspeita-de-lavagem-com-advogado-do",
+   "title": "Flávio Bolsonaro é investigado no STF por suspeita de lavagem com advogado do caso INSS",
+   "text": "A PF enviou ao STF um pedido de inquérito contra Flávio Bolsonaro por suspeita de lavagem de dinheiro envolvendo o advogado Willer Tomaz; Alexandre de Moraes foi sorteado relator. A campanha de Flávio disse que o senador não é investigado no Supremo e que os autos ainda não foram convertidos em inquérito.",
+   "sources": [
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/moraes-sera-relator-de-novo-inquerito-contra-flavio-bolsonaro-no-stf",
+     "published_at": "2026-10-18T21:22:35Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/flavio-bolsonaro-e-investigado-no-stf-por-suspeita-de-lavagem-com-advogado-do-caso-inss.shtml",
+     "published_at": "2026-10-18T21:44:00Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/18/stf-abre-inquerito-para-apurar-suposta-lavagem-de-dinheiro-envolvendo-flavio-bolsonaro-e-o-advogado-willer-tomaz.ghtml",
+     "published_at": "2026-10-18T22:36:36Z"
+    }
+   ]
+  },
+  {
+   "id": "com-acao-vida-alem-do-trabalho-ex-balconista-mobilizou-trabalhadores",
+   "title": "Com ação Vida Além do Trabalho, ex-balconista mobilizou trabalhadores",
+   "text": "A Agência Brasil relata que o Congresso promulgou a Emenda Constitucional 141/2026, que acaba com a escala de trabalho 6x1. Segundo o texto, a partir de dezembro os trabalhadores brasileiros terão direito a dois dias de descanso semanal, em vez de um.",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/ex-balconista-de-farmacia-mobilizou-trabalhadores-para-reduzir-jornada",
+     "published_at": "2026-10-19T11:19:00Z"
+    }
+   ]
+  },
+  {
+   "id": "pf-faz-busca-em-ex-servidor-do-stj-suspeito-de-vazar-decisoes-a-amigo-de-flavio",
+   "title": "PF faz busca em ex-servidor do STJ suspeito de vazar decisões a amigo de Flávio Bolsonaro",
+   "text": "A Polícia Federal cumpriu mandado de busca e apreensão contra um ex-servidor do STJ suspeito de vazar minutas de decisões ao advogado Willer Tomaz, amigo de Flávio Bolsonaro. A operação foi autorizada pelo ministro Alexandre de Moraes, do STF, e Pradera foi exonerado na sexta-feira (16).",
+   "sources": [
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/pf-ex-servidor-stj-suspeito-vazar-dados-advogado-flavio",
+     "published_at": "2026-10-19T12:22:00-03:00"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/pf-faz-busca-em-ex-servidor-do-stj-suspeito-de-vazar-decisoes-a-amigo-de-flavio-bolsonaro.shtml",
+     "published_at": "2026-10-19T12:42:00-03:00"
+    }
+   ]
+  },
+  {
+   "id": "pgr-envia-ao-stf-parecer-contra-pedido-de-moraes-para-investigar-mendonca-por",
+   "title": "PGR envia ao STF parecer contra pedido de Moraes para investigar Mendonça por abuso de autoridade",
+   "text": "A PGR se manifestou contra a abertura de investigação contra André Mendonça pedida por Alexandre de Moraes. Para a PGR, as ações do relator dos casos Master e INSS, ainda que passíveis de críticas, não tipificam abuso de autoridade.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/19/caso-master-pgr-diz-nao-ver-abuso-de-autoridade-de-mendonca-em-relatorio-de-inteligencia.ghtml",
+     "published_at": "2026-10-19T19:41:06Z"
+    },
+    {
+     "outlet": "Jovem Pan",
+     "url": "https://jovempan.com.br/politica/pgr-se-manifesta-contra-pedido-de-moraes-para-investigar-andre-mendonca",
+     "published_at": "2026-10-19T21:39:27Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/pgr-envia-ao-stf-parecer-contra-pedido-de-moraes-para-investigar-mendonca-por-abuso-de-autoridade.shtml",
+     "published_at": "2026-10-19T21:57:00Z"
+    }
+   ]
+  },
+  {
+   "id": "tse-da-24-horas-para-meta-comprovar-igualdade-na-distribuicao-de-conteudo",
+   "title": "TSE dá 24 horas para Meta comprovar igualdade na distribuição de conteúdo eleitoral de Lula e Flávio",
+   "text": "O ministro Marco Aurélio Bellizze, do TSE, deu 24 horas para a Meta comprovar que cumpriu a decisão sobre isonomia na distribuição de conteúdos políticos e anúncios eleitorais no segundo turno. Caso a empresa não comprove o cumprimento integral, a multa diária subirá de R$ 500 mil para R$ 1 milhão.",
+   "sources": [
+    {
+     "outlet": "Veja",
+     "url": "https://veja.abril.com.br/politica/tse-manda-a-meta-comprovar-que-da-igualdade-de-tratamento-a-lula-e-flavio",
+     "published_at": "2026-10-19T10:57:00-03:00"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/19/tse-da-24h-para-meta-comprovar-medidas-tomadas-para-garantir-igualdade-entre-campanhas.ghtml",
+     "published_at": "2026-10-19T11:09:05Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-eleicoes-2026/tse-da-24h-para-meta-comprovar-isonomia-entre-lula-e-flavio",
+     "published_at": "2026-10-19T12:34:57Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-da-24-horas-para-meta-comprovar-tratamento-igualitario-a-lula-e-flavio-bolsonaro.shtml",
+     "published_at": "2026-10-19T14:00:00Z"
+    }
+   ]
+  },
+  {
+   "id": "organizacoes-cobram-transparencia-e-equilibro-apos-denuncias-de-restricoes-a",
+   "title": "Organizações cobram transparência e equilíbro após denúncias de restrições a conteúdos pró-Lula",
+   "text": "Organizações de direitos digitais organizam um ato em frente à sede da Meta em São Paulo, na segunda-feira (19), às 17h. A Meta atribui os episódios a falhas técnicas e nega favorecer qualquer candidatura.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/organizacoes-cobram-transparencia-e-equilibro-apos-denuncias-de-restricoes-a-conteudos-pro-lula.shtml",
+     "published_at": "2026-10-18T20:32:00Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/19/tse-proibe-nikolas-ferreira-e-pablo-marcal-de-republicarem-conteudos-proibidos-pela-justica-eleitoral.ghtml",
+     "published_at": "2026-10-19T12:17:10Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-proibe-nikolas-e-marcal-de-republicar-conteudos-falsos-sobre-lula-e-restringe-impulsionamento.shtml",
+     "published_at": "2026-10-19T13:26:00-03:00"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/corregedor-eleitoral-proibe-impulsionaemnto-pago-de-posts-de-nikolas-e-marcal",
+     "published_at": "2026-10-19T13:32:13Z"
+    }
+   ]
+  },
+  {
+   "id": "tse-altera-local-de-votacao-de-402-6-mil-eleitores-para-o-2-turno-e-pt-pede",
+   "title": "TSE altera local de votação de 402,6 mil eleitores para o 2° turno, e PT pede mais divulgação",
+   "text": "O TSE alterou o endereço de 1.397 seções eleitorais para o segundo turno, afetando 402.599 eleitores, segundo dados atualizados no domingo (18). A página do TSE contabilizou como mudança casos em que o endereço permanece o mesmo.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-altera-local-de-votacao-de-590-mil-eleitores-para-o-2-turno-e-pt-pede-mais-divulgacao.shtml",
+     "published_at": "2026-10-18T15:27:00Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/18/sistema-do-tse-aponta-mudancas-em-locais-de-votacao-mesmo-quando-endereco-permanece-o-mesmo.ghtml",
+     "published_at": "2026-10-19T00:19:51Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/eleicoes/pt-aciona-procuradoria-eleitoral-contra-orientacao-generica-de-mudancas-nos-locais-de-votacao",
+     "published_at": "2026-10-19T12:17:00-03:00"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/eleicoes/mp-aciona-tse-para-que-eleitor-seja-avisado-por-whatsapp-sobre-mudanca-em-locais-de-votacao-npr",
+     "published_at": "2026-10-19T20:45:53Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tribunais-chamam-mudancas-em-locais-de-votacao-de-excecao-e-negam-ingerencia-de-kassio.shtml",
+     "published_at": "2026-10-19T21:03:00Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "g1",
+   "title": "TSE dá 24h para Meta comprovar  medidas tomadas para garantir igualdade entre campanhas",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/19/tse-da-24h-para-meta-comprovar-medidas-tomadas-para-garantir-igualdade-entre-campanhas.ghtml",
+   "published_at": "2026-10-19T11:09:05Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "TSE dá 24h para Meta comprovar isonomia entre Lula e Flávio",
+   "url": "https://poder360.com.br/poder-eleicoes-2026/tse-da-24h-para-meta-comprovar-isonomia-entre-lula-e-flavio",
+   "published_at": "2026-10-19T12:34:57Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Veja",
+   "title": "TSE manda a Meta comprovar que dá igualdade de tratamento a Lula e Flávio",
+   "url": "https://veja.abril.com.br/politica/tse-manda-a-meta-comprovar-que-da-igualdade-de-tratamento-a-lula-e-flavio",
+   "published_at": "2026-10-19T10:57:00-03:00",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "TSE dá 24 horas para Meta comprovar tratamento igualitário a Lula e Flávio Bolsonaro",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-da-24-horas-para-meta-comprovar-tratamento-igualitario-a-lula-e-flavio-bolsonaro.shtml",
+   "published_at": "2026-10-19T14:00:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Organizações cobram transparência e equilíbro após denúncias de restrições a conteúdos pró-Lula",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/organizacoes-cobram-transparencia-e-equilibro-apos-denuncias-de-restricoes-a-conteudos-pro-lula.shtml",
+   "published_at": "2026-10-18T20:32:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "TSE proíbe Nikolas e Marçal de republicarem conteúdos vetados e suspende impulsionamento pago dos perfis",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/19/tse-proibe-nikolas-ferreira-e-pablo-marcal-de-republicarem-conteudos-proibidos-pela-justica-eleitoral.ghtml",
+   "published_at": "2026-10-19T12:17:10Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "TSE proíbe Nikolas e Marçal de republicar conteúdos falsos sobre Lula e restringe impulsionamento",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-proibe-nikolas-e-marcal-de-republicar-conteudos-falsos-sobre-lula-e-restringe-impulsionamento.shtml",
+   "published_at": "2026-10-19T13:26:00-03:00",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Corregedor eleitoral proíbe impulsionamento pago de posts de Nikolas e Marçal",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/corregedor-eleitoral-proibe-impulsionaemnto-pago-de-posts-de-nikolas-e-marcal",
+   "published_at": "2026-10-19T13:32:13Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "TSE altera local de votação de 402,6 mil eleitores para o 2° turno, e PT pede mais divulgação",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-altera-local-de-votacao-de-590-mil-eleitores-para-o-2-turno-e-pt-pede-mais-divulgacao.shtml",
+   "published_at": "2026-10-18T15:27:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Sistema do TSE aponta mudanças em locais de votação mesmo quando endereço permanece o mesmo",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/18/sistema-do-tse-aponta-mudancas-em-locais-de-votacao-mesmo-quando-endereco-permanece-o-mesmo.ghtml",
+   "published_at": "2026-10-19T00:19:51Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "PT aciona Procuradoria Eleitoral contra 'orientação genérica' de mudanças nos locais de votação",
+   "url": "https://estadao.com.br/politica/eleicoes/pt-aciona-procuradoria-eleitoral-contra-orientacao-generica-de-mudancas-nos-locais-de-votacao",
+   "published_at": "2026-10-19T12:17:00-03:00",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Tribunais chamam mudanças em locais de votação de exceção e negam ingerência de Kassio",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/tribunais-chamam-mudancas-em-locais-de-votacao-de-excecao-e-negam-ingerencia-de-kassio.shtml",
+   "published_at": "2026-10-19T21:03:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "MP aciona TSE para que eleitor seja avisado por WhatsApp sobre mudança em locais de votação",
+   "url": "https://estadao.com.br/politica/eleicoes/mp-aciona-tse-para-que-eleitor-seja-avisado-por-whatsapp-sobre-mudanca-em-locais-de-votacao-npr",
+   "published_at": "2026-10-19T20:45:53Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Moraes será relator de novo inquérito contra Flávio Bolsonaro no STF",
+   "url": "https://gazetadopovo.com.br/republica/moraes-sera-relator-de-novo-inquerito-contra-flavio-bolsonaro-no-stf",
+   "published_at": "2026-10-18T21:22:35Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Flávio Bolsonaro é investigado no STF por suspeita de lavagem com advogado do caso INSS",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/flavio-bolsonaro-e-investigado-no-stf-por-suspeita-de-lavagem-com-advogado-do-caso-inss.shtml",
+   "published_at": "2026-10-18T21:44:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "STF abre inquérito para apurar suposta lavagem de dinheiro envolvendo Flávio Bolsonaro e o advogado Willer Tomaz",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/18/stf-abre-inquerito-para-apurar-suposta-lavagem-de-dinheiro-envolvendo-flavio-bolsonaro-e-o-advogado-willer-tomaz.ghtml",
+   "published_at": "2026-10-18T22:36:36Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Com ação Vida Além do Trabalho, ex-balconista mobilizou trabalhadores",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/ex-balconista-de-farmacia-mobilizou-trabalhadores-para-reduzir-jornada",
+   "published_at": "2026-10-19T11:19:00Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "PF mira ex-servidor do STJ suspeito de vazar dados a advogado ligado a Flávio Bolsonaro",
+   "url": "https://gazetadopovo.com.br/republica/pf-ex-servidor-stj-suspeito-vazar-dados-advogado-flavio",
+   "published_at": "2026-10-19T12:22:00-03:00"
+  },
+  {
+   "outlet": "Folha",
+   "title": "PF faz busca em ex-servidor do STJ suspeito de vazar decisões a amigo de Flávio Bolsonaro",
+   "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/pf-faz-busca-em-ex-servidor-do-stj-suspeito-de-vazar-decisoes-a-amigo-de-flavio-bolsonaro.shtml",
+   "published_at": "2026-10-19T12:42:00-03:00"
+  },
+  {
+   "outlet": "g1",
+   "title": "Master: PGR diz não ver abuso de autoridade de Mendonça apontado por Moraes em pedido de investigação",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/19/caso-master-pgr-diz-nao-ver-abuso-de-autoridade-de-mendonca-em-relatorio-de-inteligencia.ghtml",
+   "published_at": "2026-10-19T19:41:06Z"
+  },
+  {
+   "outlet": "Jovem Pan",
+   "title": "PGR se manifesta contra pedido de Moraes para investigar André Mendonça",
+   "url": "https://jovempan.com.br/politica/pgr-se-manifesta-contra-pedido-de-moraes-para-investigar-andre-mendonca",
+   "published_at": "2026-10-19T21:39:27Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "PGR envia ao STF parecer contra pedido de Moraes para investigar Mendonça por abuso de autoridade",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/pgr-envia-ao-stf-parecer-contra-pedido-de-moraes-para-investigar-mendonca-por-abuso-de-autoridade.shtml",
+   "published_at": "2026-10-19T21:57:00Z"
+  }
+ ],
+ "note": "Informações válidas até o corte das 20:33. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
