@@ -6,8 +6,8 @@
     "check": "desktop:home: nenhum download do arquivo completo (data/ag, data/corpus)",
     "ok": true,
     "info": [
-     "/data/editorial/index.json",
-     "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc"
+     "/data/corpus/thumb_review.json",
+     "/data/corpus/thumb_review.json"
     ]
    },
    {
@@ -286,30 +286,27 @@
     "info": []
    },
    {
-    "check": "desktop:home-agora: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "check": "desktop:agora-lista: nenhum download do arquivo completo (data/ag, data/corpus)",
     "ok": true,
-    "info": [
-     "/data/editorial/index.json",
-     "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc"
-    ]
+    "info": []
    },
    {
-    "check": "desktop:home-agora: sem '0 resultados'",
+    "check": "desktop:agora-lista: sem '0 resultados'",
     "ok": true,
     "info": null
    },
    {
-    "check": "desktop:home-agora: sem marcadores internos no texto",
+    "check": "desktop:agora-lista: sem marcadores internos no texto",
     "ok": true,
     "info": null
    },
    {
-    "check": "desktop:home-agora: sem jargão interno no texto",
+    "check": "desktop:agora-lista: sem jargão interno no texto",
     "ok": true,
     "info": null
    },
    {
-    "check": "desktop:home-agora: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "check": "desktop:agora-lista: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
     "ok": true,
     "info": []
    },
@@ -367,8 +364,8 @@
     "check": "mobile:home: nenhum download do arquivo completo (data/ag, data/corpus)",
     "ok": true,
     "info": [
-     "/data/editorial/index.json",
-     "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc"
+     "/data/corpus/thumb_review.json",
+     "/data/corpus/thumb_review.json"
     ]
    },
    {
@@ -647,30 +644,27 @@
     "info": []
    },
    {
-    "check": "mobile:home-agora: nenhum download do arquivo completo (data/ag, data/corpus)",
+    "check": "mobile:agora-lista: nenhum download do arquivo completo (data/ag, data/corpus)",
     "ok": true,
-    "info": [
-     "/data/editorial/index.json",
-     "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc"
-    ]
+    "info": []
    },
    {
-    "check": "mobile:home-agora: sem '0 resultados'",
+    "check": "mobile:agora-lista: sem '0 resultados'",
     "ok": true,
     "info": null
    },
    {
-    "check": "mobile:home-agora: sem marcadores internos no texto",
+    "check": "mobile:agora-lista: sem marcadores internos no texto",
     "ok": true,
     "info": null
    },
    {
-    "check": "mobile:home-agora: sem jargão interno no texto",
+    "check": "mobile:agora-lista: sem jargão interno no texto",
     "ok": true,
     "info": null
    },
    {
-    "check": "mobile:home-agora: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
+    "check": "mobile:agora-lista: INTERNAL_IDENTIFIER_PUBLIC_LEAK (DOM, atributos e texto)",
     "ok": true,
     "info": []
    },
@@ -747,6 +741,20 @@
     "info": 2242
    },
    {
+    "check": "desktop:home: peso total servido pelo site < 1,5 MB (sem hosts externos)",
+    "ok": true,
+    "info": 702773
+   },
+   {
+    "check": "desktop:home: primeira pintura < 2,5 s (servidor local; não substitui medição em rede real)",
+    "ok": true,
+    "info": {
+     "dcl": 101,
+     "load": 102,
+     "fcp": 116
+    }
+   },
+   {
     "check": "desktop:story: todo arquivo de dados < 400 KB",
     "ok": true,
     "info": []
@@ -807,7 +815,7 @@
     "info": []
    },
    {
-    "check": "desktop:home-agora: todo arquivo de dados < 400 KB",
+    "check": "desktop:agora-lista: todo arquivo de dados < 400 KB",
     "ok": true,
     "info": []
    },
@@ -830,6 +838,20 @@
     "check": "mobile:home: dados iniciais < 100 KB",
     "ok": true,
     "info": 2242
+   },
+   {
+    "check": "mobile:home: peso total servido pelo site < 1,5 MB (sem hosts externos)",
+    "ok": true,
+    "info": 702687
+   },
+   {
+    "check": "mobile:home: primeira pintura < 2,5 s (servidor local; não substitui medição em rede real)",
+    "ok": true,
+    "info": {
+     "dcl": 75,
+     "load": 75,
+     "fcp": 84
+    }
    },
    {
     "check": "mobile:story: todo arquivo de dados < 400 KB",
@@ -892,7 +914,7 @@
     "info": []
    },
    {
-    "check": "mobile:home-agora: todo arquivo de dados < 400 KB",
+    "check": "mobile:agora-lista: todo arquivo de dados < 400 KB",
     "ok": true,
     "info": []
    },
@@ -932,34 +954,42 @@
     "info": null
    },
    {
-    "check": "desktop:home: mensagem na primeira dobra",
+    "check": "desktop:home: data do dia no cabeçalho (celular)",
     "ok": true,
-    "info": null
+    "info": "seg · 19 out"
    },
    {
-    "check": "desktop:home: busca na primeira dobra",
+    "check": "desktop:home: FECHAMENTO mais recente abre a página (título na primeira dobra)",
+    "ok": true,
+    "info": "FECHAMENTO — 18 de outubro de 2026"
+   },
+   {
+    "check": "desktop:home: FECHAMENTO da Home = último do índice público",
+    "ok": true,
+    "info": {
+     "home": "FECHAMENTO — 18 de outubro de 2026",
+     "index_latest": "2026-10-18"
+    }
+   },
+   {
+    "check": "desktop:home: busca da memória presente (#q-home)",
     "ok": true,
     "info": null
    },
    {
     "check": "desktop:home: placeholder da busca",
     "ok": true,
-    "info": "Pesquise uma pessoa, assunto ou acontecimento"
+    "info": "Digite uma pessoa, assunto ou acontecimento"
    },
    {
-    "check": "desktop:home: teste dos 5 segundos (marca + explicação + busca + pista de 'o que já foi dito com fonte verificável' na 1ª dobra)",
+    "check": "desktop:home: seção Já falaram sobre isso presente",
     "ok": true,
-    "info": "Veja o que já foi dito sobre uma notícia, com a data, o minuto do vídeo e a fonte original."
+    "info": 3
    },
    {
-    "check": "desktop:home: seção Já falaram sobre isso com Alexandre Garcia, Caio Coppolla e Te Atualizei",
+    "check": "desktop:home: seções na ordem (FECHAMENTO → Investigações → Matérias → Vídeos recentes → Já falaram → Pesquise)",
     "ok": true,
     "info": null
-   },
-   {
-    "check": "desktop:home: Agora enxuto (1 principal + até 3)",
-    "ok": true,
-    "info": 1
    },
    {
     "check": "desktop:arquivos: sem erro de JS",
@@ -992,24 +1022,14 @@
     "info": 0
    },
    {
-    "check": "desktop:home-agora: sem erro de JS",
+    "check": "desktop:agora-lista: sem erro de JS",
     "ok": true,
     "info": []
    },
    {
-    "check": "desktop:home-agora: sem rolagem horizontal",
+    "check": "desktop:agora-lista: sem rolagem horizontal",
     "ok": true,
     "info": 0
-   },
-   {
-    "check": "desktop:home: AGORA enxuto (3 com texto, resto em linhas) e todos os itens com link próprio",
-    "ok": true,
-    "info": null
-   },
-   {
-    "check": "desktop:home: fontes sem tooltip (title) como única informação",
-    "ok": true,
-    "info": null
    },
    {
     "check": "mobile:home: sem erro de JS",
@@ -1027,34 +1047,42 @@
     "info": null
    },
    {
-    "check": "mobile:home: mensagem na primeira dobra",
+    "check": "mobile:home: data do dia no cabeçalho (celular)",
     "ok": true,
-    "info": null
+    "info": "SEG · 19 OUT"
    },
    {
-    "check": "mobile:home: busca na primeira dobra",
+    "check": "mobile:home: FECHAMENTO mais recente abre a página (título na primeira dobra)",
+    "ok": true,
+    "info": "FECHAMENTO — 18 de outubro de 2026"
+   },
+   {
+    "check": "mobile:home: FECHAMENTO da Home = último do índice público",
+    "ok": true,
+    "info": {
+     "home": "FECHAMENTO — 18 de outubro de 2026",
+     "index_latest": "2026-10-18"
+    }
+   },
+   {
+    "check": "mobile:home: busca da memória presente (#q-home)",
     "ok": true,
     "info": null
    },
    {
     "check": "mobile:home: placeholder da busca",
     "ok": true,
-    "info": "Pesquise uma pessoa, assunto ou acontecimento"
+    "info": "Digite uma pessoa, assunto ou acontecimento"
    },
    {
-    "check": "mobile:home: teste dos 5 segundos (marca + explicação + busca + pista de 'o que já foi dito com fonte verificável' na 1ª dobra)",
+    "check": "mobile:home: seção Já falaram sobre isso presente",
     "ok": true,
-    "info": "Veja o que já foi dito sobre uma notícia, com a data, o minuto do vídeo e a fonte original."
+    "info": 3
    },
    {
-    "check": "mobile:home: seção Já falaram sobre isso com Alexandre Garcia, Caio Coppolla e Te Atualizei",
+    "check": "mobile:home: seções na ordem (FECHAMENTO → Investigações → Matérias → Vídeos recentes → Já falaram → Pesquise)",
     "ok": true,
     "info": null
-   },
-   {
-    "check": "mobile:home: Agora enxuto (1 principal + até 3)",
-    "ok": true,
-    "info": 1
    },
    {
     "check": "mobile:arquivos: sem erro de JS",
@@ -1087,24 +1115,14 @@
     "info": 0
    },
    {
-    "check": "mobile:home-agora: sem erro de JS",
+    "check": "mobile:agora-lista: sem erro de JS",
     "ok": true,
     "info": []
    },
    {
-    "check": "mobile:home-agora: sem rolagem horizontal",
+    "check": "mobile:agora-lista: sem rolagem horizontal",
     "ok": true,
     "info": 0
-   },
-   {
-    "check": "mobile:home: AGORA enxuto (3 com texto, resto em linhas) e todos os itens com link próprio",
-    "ok": true,
-    "info": null
-   },
-   {
-    "check": "mobile:home: fontes sem tooltip (title) como única informação",
-    "ok": true,
-    "info": null
    }
   ],
   "V5_STORY_QA": [
@@ -1126,7 +1144,7 @@
    {
     "check": "desktop:story: 'Já falaram' começa até 1,5 tela (1200px)",
     "ok": true,
-    "info": 1147.9375
+    "info": 1151.9375
    },
    {
     "check": "desktop:story: atalho para 'Já falaram' visível na primeira dobra",
@@ -1851,13 +1869,19 @@
     "check": "desktop:agora-item: título de cada fonte visível (não depende de hover)",
     "ok": true,
     "info": [
-     "Após Mendonça mudar voto, TSE decide liberar post de humorista sobre Nossa Senhora Aparecida",
-     "Nossa Senhora: Mendonça mudou de voto após conversas com Nunes Marques e ministros do TSE",
-     "Mendonça cita resolução editada por Moraes em voto sobre Nossa Senhora",
-     "TSE decide derrubar notícias falsas sobre Nossa Senhora e Flávio Bolsonaro",
-     "TSE decide derrubar posts com notícia falsa sobre Flávio e Nossa Senhora",
-     "Entenda o que o TSE decidiu sobre a fake news de Nossa Senhora Aparecida"
+     "TSE libera atos com mote de democracia no Rio, convocado por Caetano, Salvador e Porto Alegre, e rejeita vetar shows",
+     "TSE libera atos com mote de democracia no Rio, convocado por Caetano, Salvador e Porto Alegre, e rejeita vetar shows"
     ]
+   },
+   {
+    "check": "desktop:agora: todos os itens da edição com link próprio",
+    "ok": true,
+    "info": 10
+   },
+   {
+    "check": "desktop:agora: fontes sem tooltip (title) como única informação",
+    "ok": true,
+    "info": null
    },
    {
     "check": "desktop: /desmentindo_local.html aposentado (redireciona para a raiz com a mesma rota; sem o app anterior)",
@@ -1958,13 +1982,19 @@
     "check": "mobile:agora-item: título de cada fonte visível (não depende de hover)",
     "ok": true,
     "info": [
-     "Após Mendonça mudar voto, TSE decide liberar post de humorista sobre Nossa Senhora Aparecida",
-     "Nossa Senhora: Mendonça mudou de voto após conversas com Nunes Marques e ministros do TSE",
-     "Mendonça cita resolução editada por Moraes em voto sobre Nossa Senhora",
-     "TSE decide derrubar notícias falsas sobre Nossa Senhora e Flávio Bolsonaro",
-     "TSE decide derrubar posts com notícia falsa sobre Flávio e Nossa Senhora",
-     "Entenda o que o TSE decidiu sobre a fake news de Nossa Senhora Aparecida"
+     "TSE libera atos com mote de democracia no Rio, convocado por Caetano, Salvador e Porto Alegre, e rejeita vetar shows",
+     "TSE libera atos com mote de democracia no Rio, convocado por Caetano, Salvador e Porto Alegre, e rejeita vetar shows"
     ]
+   },
+   {
+    "check": "mobile:agora: todos os itens da edição com link próprio",
+    "ok": true,
+    "info": 10
+   },
+   {
+    "check": "mobile:agora: fontes sem tooltip (title) como única informação",
+    "ok": true,
+    "info": null
    },
    {
     "check": "mobile: /desmentindo_local.html aposentado (redireciona para a raiz com a mesma rota; sem o app anterior)",
@@ -2061,6 +2091,18 @@
     }
    },
    {
+    "check": "desktop:a11y-fechamento: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+    "ok": true,
+    "info": {
+     "h1": 1,
+     "unlabeled": 0,
+     "emptyLinks": 0,
+     "imgsNoAlt": 0,
+     "skip": true,
+     "lang": "pt-BR"
+    }
+   },
+   {
     "check": "desktop:a11y-story: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
     "ok": true,
     "info": {
@@ -2107,6 +2149,18 @@
    },
    {
     "check": "mobile:a11y-home: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
+    "ok": true,
+    "info": {
+     "h1": 1,
+     "unlabeled": 0,
+     "emptyLinks": 0,
+     "imgsNoAlt": 0,
+     "skip": true,
+     "lang": "pt-BR"
+    }
+   },
+   {
+    "check": "mobile:a11y-fechamento: um h1, campos com rótulo, links com texto, imagens com alt, pular para o conteúdo, lang",
     "ok": true,
     "info": {
      "h1": 1,
@@ -2195,7 +2249,7 @@
     "info": null
    },
    {
-    "check": "desktop: faixa-assinatura escura de largura total, sem rolagem horizontal",
+    "check": "desktop: cabeçalho de largura total com a marca, sem rolagem horizontal",
     "ok": true,
     "info": null
    },
@@ -2230,7 +2284,7 @@
     "info": null
    },
    {
-    "check": "mobile: faixa-assinatura escura de largura total, sem rolagem horizontal",
+    "check": "mobile: cabeçalho de largura total com a marca, sem rolagem horizontal",
     "ok": true,
     "info": null
    },
@@ -2242,24 +2296,28 @@
   ],
   "MOBILE": [
    {
-    "check": "barra inferior: 4 itens com texto e toque ≥ 44px (Checar fora até o envio abrir)",
+    "check": "barra inferior: 4 destinos + Mais, com texto e toque ≥ 44px (Checar fora até o envio abrir)",
     "ok": true,
     "info": [
      [
-      "●Agora",
-      54
+      "Hoje",
+      48
      ],
      [
-      "▶Já falaram",
-      54
+      "Fechamento",
+      48
      ],
      [
-      "⌕Pesquisar",
-      54
+      "Já falaram",
+      48
      ],
      [
-      "≡Mais",
-      54
+      "Pesquisar",
+      48
+     ],
+     [
+      "Mais",
+      48
      ]
     ]
    },
@@ -2302,6 +2360,73 @@
     "check": "375px #/matriz: sem rolagem horizontal",
     "ok": true,
     "info": 0
+   },
+   {
+    "check": "375px #/fechamento/2026-10-18: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "375px #/agora: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "320px #/: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "320px #/historia/dark-horse: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "320px #/busca?q=INSS: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "320px #/arquivo/alexandre-de-moraes: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "320px #/arquivos: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "320px #/profissionais: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "320px #/checar: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "320px #/matriz: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "320px #/fechamento/2026-10-18: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   },
+   {
+    "check": "320px #/agora: sem rolagem horizontal",
+    "ok": true,
+    "info": 0
+   }
+  ],
+  "SHARE": [
+   {
+    "check": "edições do FECHAMENTO com título, descrição, imagem, URL canônica e cartão (14 páginas)",
+    "ok": true,
+    "info": []
    }
   ],
   "BUILD": [
@@ -2313,7 +2438,7 @@
    {
     "check": "node public-ui/build-v5-data.mjs --check",
     "ok": true,
-    "info": "alegações exibidas: 55 (alegação 43 · declaração 9 · atribuído neutro 3)\ndata/editorial: edição 2026-10-01 válida (11 itens)\nv5/data em sincronia (819 arquivos)"
+    "info": "alegações exibidas: 55 (alegação 43 · declaração 9 · atribuído neutro 3)\ndata/editorial: 14 fechamento(s), 2 matéria(s) válidos\ndata/editorial: edição 2026-10-18 válida (5 itens)\nv5/data em sincronia (819 arquivos)"
    }
   ]
  },
@@ -2322,7 +2447,7 @@
    {
     "url": "/v5/",
     "status": 200,
-    "bytes": 2777
+    "bytes": 2998
    },
    {
     "url": "/v5/css/fonts.css",
@@ -2332,12 +2457,12 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 34133
+    "bytes": 97896
    },
    {
     "url": "/v5/js/v5.js",
     "status": 200,
-    "bytes": 65330
+    "bytes": 129371
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
@@ -2345,34 +2470,84 @@
     "bytes": 90104
    },
    {
-    "url": "/v5/",
+    "url": "/v5/data/home.json",
     "status": 200,
-    "bytes": 2777
-   },
-   {
-    "url": "/v5/css/fonts.css",
-    "status": 200,
-    "bytes": 893
-   },
-   {
-    "url": "/v5/css/v5.css",
-    "status": 200,
-    "bytes": 34133
-   },
-   {
-    "url": "/v5/js/v5.js",
-    "status": 200,
-    "bytes": 65330
-   },
-   {
-    "url": "/v5/fonts/archivo-latin.woff2",
-    "status": 200,
-    "bytes": 90104
+    "bytes": null
    },
    {
     "url": "/data/editorial/index.json",
     "status": 200,
-    "bytes": 317
+    "bytes": null
+   },
+   {
+    "url": "/data/editorial/fechamentos/index.json",
+    "status": 200,
+    "bytes": null
+   },
+   {
+    "url": "/data/corpus/thumb_review.json",
+    "status": 200,
+    "bytes": null
+   },
+   {
+    "url": "/data/editorial/materias/index.json",
+    "status": 200,
+    "bytes": null
+   },
+   {
+    "url": "/data/editorial/videos/index.json",
+    "status": 200,
+    "bytes": null
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": null
+   },
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 2998
+   },
+   {
+    "url": "/v5/css/fonts.css",
+    "status": 200,
+    "bytes": 893
+   },
+   {
+    "url": "/v5/css/v5.css",
+    "status": 200,
+    "bytes": 97896
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": 90104
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 129371
+   },
+   {
+    "url": "/data/editorial/index.json",
+    "status": 200,
+    "bytes": 1242
+   },
+   {
+    "url": "/data/corpus/thumb_review.json",
+    "status": 200,
+    "bytes": 1217
+   },
+   {
+    "url": "/data/editorial/fechamentos/index.json",
+    "status": 200,
+    "bytes": 3291
+   },
+   {
+    "url": "/data/editorial/materias/index.json",
+    "status": 200,
+    "bytes": 1377
    },
    {
     "url": "/v5/data/home.json",
@@ -2380,28 +2555,143 @@
     "bytes": 2242
    },
    {
-    "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
+    "url": "/data/editorial/videos/index.json",
     "status": 200,
-    "bytes": 24110
+    "bytes": 823
+   },
+   {
+    "url": "/data/editorial/edicoes/2026-10-18.json?v=0e03b2f93f6d",
+    "status": 200,
+    "bytes": 9750
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/data/editorial/videos/2026-10-18.json?v=900b7d87ca10",
+    "status": 200,
+    "bytes": 3659
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
+   },
+   {
+    "url": "https://i.ytimg.com/vi/9TO50pBXpqk/mqdefault.jpg",
+    "status": 200,
+    "bytes": 43
+   },
+   {
+    "url": "https://i.ytimg.com/vi/aVaQ4pn-RGc/mqdefault.jpg",
+    "status": 200,
+    "bytes": 43
+   },
+   {
+    "url": "https://i.ytimg.com/vi/-qrrUWQaW_Y/mqdefault.jpg",
+    "status": 200,
+    "bytes": 43
+   },
+   {
+    "url": "https://i.ytimg.com/vi/lHfHST0zuHo/mqdefault.jpg",
+    "status": 200,
+    "bytes": 43
+   },
+   {
+    "url": "https://i.ytimg.com/vi/cNE1h-x8fso/mqdefault.jpg",
+    "status": 200,
+    "bytes": 43
+   },
+   {
+    "url": "https://i.ytimg.com/vi/GZ8jWAg9pAA/mqdefault.jpg",
+    "status": 200,
+    "bytes": 43
+   },
+   {
+    "url": "https://i.ytimg.com/vi/WCDptFX5OZg/mqdefault.jpg",
+    "status": 200,
+    "bytes": 43
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro/arte-m.svg",
+    "status": 200,
+    "bytes": 4415
    }
   ],
   "desktop:story": [
    {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
     "url": "/v5/data/historia/dark-horse.json",
     "status": 200,
     "bytes": 13181
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
    }
   ],
   "desktop:search-moraes": [
    {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
     "url": "/v5/data/busca/meta.json",
     "status": 200,
     "bytes": 20376
    },
    {
-    "url": "/v5/data/busca/t/mo.json",
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
     "status": 200,
-    "bytes": 35946
+    "bytes": 11676
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
    },
    {
     "url": "/v5/data/busca/t/al.json",
@@ -2409,19 +2699,14 @@
     "bytes": 34479
    },
    {
+    "url": "/v5/data/busca/t/mo.json",
+    "status": 200,
+    "bytes": 35946
+   },
+   {
     "url": "/v5/data/busca/s/0.json",
     "status": 200,
     "bytes": 68305
-   },
-   {
-    "url": "/v5/data/busca/s/4.json",
-    "status": 200,
-    "bytes": 77446
-   },
-   {
-    "url": "/v5/data/busca/s/48.json",
-    "status": 200,
-    "bytes": 89355
    },
    {
     "url": "/v5/data/busca/s/3.json",
@@ -2429,9 +2714,9 @@
     "bytes": 64291
    },
    {
-    "url": "/v5/data/busca/s/79.json",
+    "url": "/v5/data/busca/s/48.json",
     "status": 200,
-    "bytes": 102030
+    "bytes": 89355
    },
    {
     "url": "/v5/data/busca/s/49.json",
@@ -2439,16 +2724,46 @@
     "bytes": 95794
    },
    {
-    "url": "https://i.ytimg.com/vi/R9odnQZu6b0/hqdefault.jpg",
+    "url": "/v5/data/busca/s/4.json",
     "status": 200,
-    "bytes": 43
+    "bytes": 77446
+   },
+   {
+    "url": "/v5/data/busca/s/79.json",
+    "status": 200,
+    "bytes": 102030
    }
   ],
   "desktop:search-inss": [
    {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
     "url": "/v5/data/busca/t/in.json",
     "status": 200,
-    "bytes": 91773
+    "bytes": 91750
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
    },
    {
     "url": "/v5/data/busca/s/1.json",
@@ -2464,128 +2779,298 @@
     "url": "/v5/data/busca/s/83.json",
     "status": 200,
     "bytes": 92740
-   },
-   {
-    "url": "https://i.ytimg.com/vi/xRlNHcOODaA/hqdefault.jpg",
-    "status": 200,
-    "bytes": 43
    }
   ],
   "desktop:arquivos": [
    {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
     "url": "/v5/data/arquivos.json",
     "status": 200,
     "bytes": 2867
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
    }
   ],
   "desktop:arquivo-pessoa": [
+   {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
    {
     "url": "/v5/data/arquivo/alexandre-de-moraes.json",
     "status": 200,
     "bytes": 124935
    },
    {
-    "url": "https://i.ytimg.com/vi/R9odnQZu6b0/hqdefault.jpg",
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
     "status": 200,
-    "bytes": 43
+    "bytes": 11676
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
    }
   ],
-  "desktop:profissionais": [],
-  "desktop:search-vazio": [],
+  "desktop:profissionais": [
+   {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
+   }
+  ],
+  "desktop:search-vazio": [
+   {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
+   }
+  ],
   "desktop:epist-atibaia": [
+   {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
    {
     "url": "/v5/data/historia/atibaia.json",
     "status": 200,
     "bytes": 30663
    },
    {
-    "url": "https://i.ytimg.com/vi/a4RbhwuWHDQ/hqdefault.jpg",
+    "url": "/favicon.svg",
     "status": 200,
-    "bytes": 43
+    "bytes": 282
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
    }
   ],
   "desktop:checar": [
    {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
     "url": "/v5/data/checar.json",
     "status": 200,
     "bytes": 17
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
    }
   ],
-  "desktop:agora-item": [],
-  "desktop:home-agora": [
+  "desktop:agora-item": [
    {
-    "url": "/v5/",
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
     "status": 200,
-    "bytes": 2777
+    "bytes": 13979
    },
    {
-    "url": "/v5/css/fonts.css",
+    "url": "/favicon.svg",
     "status": 200,
-    "bytes": 893
+    "bytes": 282
    },
    {
-    "url": "/v5/css/v5.css",
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
     "status": 200,
-    "bytes": 34133
+    "bytes": 5995
    },
    {
-    "url": "/v5/fonts/archivo-latin.woff2",
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
     "status": 200,
-    "bytes": 90104
-   },
-   {
-    "url": "/v5/js/v5.js",
-    "status": 200,
-    "bytes": 65330
-   },
-   {
-    "url": "/data/editorial/index.json",
-    "status": 200,
-    "bytes": 317
-   },
-   {
-    "url": "/v5/data/home.json",
-    "status": 200,
-    "bytes": 2242
-   },
-   {
-    "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
-    "status": 200,
-    "bytes": 24110
+    "bytes": 11676
    }
   ],
-  "desktop:legacy-matriz": [],
-  "desktop:legacy-eventos": [],
+  "desktop:agora-lista": [
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
+   }
+  ],
+  "desktop:legacy-matriz": [
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
+   },
+   {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   }
+  ],
+  "desktop:legacy-eventos": [
+   {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
+   }
+  ],
   "mobile:home": [
    {
     "url": "/v5/",
     "status": 200,
-    "bytes": 2777
-   },
-   {
-    "url": "/v5/css/v5.css",
-    "status": 200,
-    "bytes": 34133
-   },
-   {
-    "url": "/v5/css/fonts.css",
-    "status": 200,
-    "bytes": 893
-   },
-   {
-    "url": "/v5/fonts/archivo-latin.woff2",
-    "status": 200,
-    "bytes": 90104
-   },
-   {
-    "url": "/v5/js/v5.js",
-    "status": 200,
-    "bytes": 65330
-   },
-   {
-    "url": "/v5/",
-    "status": 200,
-    "bytes": 2777
+    "bytes": 2998
    },
    {
     "url": "/v5/css/fonts.css",
@@ -2595,22 +3080,82 @@
    {
     "url": "/v5/css/v5.css",
     "status": 200,
-    "bytes": 34133
-   },
-   {
-    "url": "/v5/js/v5.js",
-    "status": 200,
-    "bytes": 65330
+    "bytes": 97896
    },
    {
     "url": "/v5/fonts/archivo-latin.woff2",
     "status": 200,
     "bytes": 90104
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 129371
+   },
+   {
+    "url": "/v5/data/home.json",
+    "status": 200,
+    "bytes": null
    },
    {
     "url": "/data/editorial/index.json",
     "status": 200,
-    "bytes": 317
+    "bytes": null
+   },
+   {
+    "url": "/data/editorial/materias/index.json",
+    "status": 200,
+    "bytes": null
+   },
+   {
+    "url": "/data/editorial/fechamentos/index.json",
+    "status": 200,
+    "bytes": null
+   },
+   {
+    "url": "/data/corpus/thumb_review.json",
+    "status": 200,
+    "bytes": null
+   },
+   {
+    "url": "/data/editorial/videos/index.json",
+    "status": 200,
+    "bytes": null
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": null
+   },
+   {
+    "url": "/v5/",
+    "status": 200,
+    "bytes": 2998
+   },
+   {
+    "url": "/v5/css/fonts.css",
+    "status": 200,
+    "bytes": 893
+   },
+   {
+    "url": "/v5/css/v5.css",
+    "status": 200,
+    "bytes": 97896
+   },
+   {
+    "url": "/v5/fonts/archivo-latin.woff2",
+    "status": 200,
+    "bytes": 90104
+   },
+   {
+    "url": "/v5/js/v5.js",
+    "status": 200,
+    "bytes": 129371
+   },
+   {
+    "url": "/data/editorial/index.json",
+    "status": 200,
+    "bytes": 1242
    },
    {
     "url": "/v5/data/home.json",
@@ -2618,33 +3163,148 @@
     "bytes": 2242
    },
    {
-    "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
+    "url": "/data/editorial/fechamentos/index.json",
     "status": 200,
-    "bytes": 24110
+    "bytes": 3291
+   },
+   {
+    "url": "/data/editorial/videos/index.json",
+    "status": 200,
+    "bytes": 823
+   },
+   {
+    "url": "/data/corpus/thumb_review.json",
+    "status": 200,
+    "bytes": 1217
+   },
+   {
+    "url": "/data/editorial/materias/index.json",
+    "status": 200,
+    "bytes": 1377
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/data/editorial/edicoes/2026-10-18.json?v=0e03b2f93f6d",
+    "status": 200,
+    "bytes": 9750
+   },
+   {
+    "url": "/data/editorial/videos/2026-10-18.json?v=900b7d87ca10",
+    "status": 200,
+    "bytes": 3659
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro/arte-m.svg",
+    "status": 200,
+    "bytes": 4415
+   },
+   {
+    "url": "https://i.ytimg.com/vi/9TO50pBXpqk/mqdefault.jpg",
+    "status": 200,
+    "bytes": 43
+   },
+   {
+    "url": "https://i.ytimg.com/vi/aVaQ4pn-RGc/mqdefault.jpg",
+    "status": 200,
+    "bytes": 43
+   },
+   {
+    "url": "https://i.ytimg.com/vi/-qrrUWQaW_Y/mqdefault.jpg",
+    "status": 200,
+    "bytes": 43
+   },
+   {
+    "url": "https://i.ytimg.com/vi/lHfHST0zuHo/mqdefault.jpg",
+    "status": 200,
+    "bytes": 43
+   },
+   {
+    "url": "https://i.ytimg.com/vi/cNE1h-x8fso/mqdefault.jpg",
+    "status": 200,
+    "bytes": 43
    }
   ],
   "mobile:story": [
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
    {
     "url": "/v5/data/historia/dark-horse.json",
     "status": 200,
     "bytes": 13181
    },
    {
-    "url": "https://i.ytimg.com/vi/GZ8jWAg9pAA/hqdefault.jpg",
+    "url": "/favicon.svg",
     "status": 200,
-    "bytes": 43
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
    }
   ],
   "mobile:search-moraes": [
+   {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
    {
     "url": "/v5/data/busca/meta.json",
     "status": 200,
     "bytes": 20376
    },
    {
-    "url": "/v5/data/busca/t/mo.json",
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
     "status": 200,
-    "bytes": 35946
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
    },
    {
     "url": "/v5/data/busca/t/al.json",
@@ -2652,24 +3312,19 @@
     "bytes": 34479
    },
    {
+    "url": "/v5/data/busca/t/mo.json",
+    "status": 200,
+    "bytes": 35946
+   },
+   {
     "url": "/v5/data/busca/s/3.json",
     "status": 200,
     "bytes": 64291
    },
    {
-    "url": "/v5/data/busca/s/48.json",
-    "status": 200,
-    "bytes": 89355
-   },
-   {
     "url": "/v5/data/busca/s/0.json",
     "status": 200,
     "bytes": 68305
-   },
-   {
-    "url": "/v5/data/busca/s/79.json",
-    "status": 200,
-    "bytes": 102030
    },
    {
     "url": "/v5/data/busca/s/4.json",
@@ -2682,16 +3337,46 @@
     "bytes": 95794
    },
    {
-    "url": "https://i.ytimg.com/vi/R9odnQZu6b0/hqdefault.jpg",
+    "url": "/v5/data/busca/s/79.json",
     "status": 200,
-    "bytes": 43
+    "bytes": 102030
+   },
+   {
+    "url": "/v5/data/busca/s/48.json",
+    "status": 200,
+    "bytes": 89355
    }
   ],
   "mobile:search-inss": [
    {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
     "url": "/v5/data/busca/t/in.json",
     "status": 200,
-    "bytes": 91773
+    "bytes": 91750
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
    },
    {
     "url": "/v5/data/busca/s/1.json",
@@ -2699,101 +3384,314 @@
     "bytes": 81013
    },
    {
-    "url": "/v5/data/busca/s/80.json",
-    "status": 200,
-    "bytes": 83805
-   },
-   {
     "url": "/v5/data/busca/s/83.json",
     "status": 200,
     "bytes": 92740
    },
    {
-    "url": "https://i.ytimg.com/vi/xRlNHcOODaA/hqdefault.jpg",
+    "url": "/v5/data/busca/s/80.json",
     "status": 200,
-    "bytes": 43
+    "bytes": 83805
    }
   ],
   "mobile:arquivos": [
    {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
     "url": "/v5/data/arquivos.json",
     "status": 200,
     "bytes": 2867
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
    }
   ],
   "mobile:arquivo-pessoa": [
    {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
     "url": "/v5/data/arquivo/alexandre-de-moraes.json",
     "status": 200,
     "bytes": 124935
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
    }
   ],
-  "mobile:profissionais": [],
-  "mobile:search-vazio": [],
+  "mobile:profissionais": [
+   {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
+   }
+  ],
+  "mobile:search-vazio": [
+   {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
+   }
+  ],
   "mobile:epist-atibaia": [
+   {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
    {
     "url": "/v5/data/historia/atibaia.json",
     "status": 200,
     "bytes": 30663
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
    }
   ],
   "mobile:checar": [
    {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
     "url": "/v5/data/checar.json",
     "status": 200,
     "bytes": 17
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
    }
   ],
-  "mobile:agora-item": [],
-  "mobile:home-agora": [
+  "mobile:agora-item": [
    {
-    "url": "/v5/",
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
     "status": 200,
-    "bytes": 2777
+    "bytes": 13979
    },
    {
-    "url": "/v5/css/fonts.css",
+    "url": "/favicon.svg",
     "status": 200,
-    "bytes": 893
+    "bytes": 282
    },
    {
-    "url": "/v5/css/v5.css",
+    "url": "/favicon.svg",
     "status": 200,
-    "bytes": 34133
+    "bytes": 282
    },
    {
-    "url": "/v5/fonts/archivo-latin.woff2",
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
     "status": 200,
-    "bytes": 90104
+    "bytes": 5995
    },
    {
-    "url": "/v5/js/v5.js",
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
     "status": 200,
-    "bytes": 65330
-   },
-   {
-    "url": "/data/editorial/index.json",
-    "status": 200,
-    "bytes": 317
-   },
-   {
-    "url": "/v5/data/home.json",
-    "status": 200,
-    "bytes": 2242
-   },
-   {
-    "url": "/data/editorial/edicoes/2026-10-01.json?v=969d9f1ef8fc",
-    "status": 200,
-    "bytes": 24110
+    "bytes": 11676
    }
   ],
-  "mobile:legacy-matriz": [],
-  "mobile:legacy-eventos": []
+  "mobile:agora-lista": [
+   {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
+   }
+  ],
+  "mobile:legacy-matriz": [
+   {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
+   }
+  ],
+  "mobile:legacy-eventos": [
+   {
+    "url": "/data/editorial/fechamentos/2026-10-18.json?v=ad489cf9e3cd",
+    "status": 200,
+    "bytes": 13979
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/favicon.svg",
+    "status": 200,
+    "bytes": 282
+   },
+   {
+    "url": "/data/editorial/materias/presidente-do-tse-suspende-decisao-e-mantem-deltan-como-deferido-com-recurso.json?v=2b7ed500efec",
+    "status": 200,
+    "bytes": 5995
+   },
+   {
+    "url": "/data/editorial/materias/fachin-chama-a-pf-para-tratar-das-mencoes-a-ministros-no-celular-de-vorcaro.json?v=68cfafbba947",
+    "status": 200,
+    "bytes": 11676
+   }
+  ]
  },
  "evidence": {
+  "external_hosts_blocked": [],
   "desktop:home_data_bytes": 2242,
+  "desktop:home_perf": {
+   "dcl": 101,
+   "load": 102,
+   "fcp": 116,
+   "total_bytes": 702773,
+   "requests": 37
+  },
   "desktop:story_data_bytes": 13181,
-  "desktop:story_ja_falaram_top_px": 1147.9375,
+  "desktop:story_ja_falaram_top_px": 1151.9375,
   "desktop:story_sections": [
    "O que sabemos",
    "Já falaram sobre isso",
@@ -2810,7 +3708,7 @@
    "agora": "AGORA\n10 histórias\nCompliance Zero / Master\n27 registros mencionam\n27 set 2026\nDark Horse\n3 registros mencionam\n13 set 2026\nSem Desconto / INSS\n2 registros mencionam\n21 set 2026\nVer mais 7 histórias\n\n"
   },
   "search_moraes_recount_from_archive": 371,
-  "desktop:search_inss_data_bytes": 349331,
+  "desktop:search_inss_data_bytes": 349308,
   "desktop:search_inss": {
    "groups": [
     "Agora",
@@ -2823,6 +3721,13 @@
   "search_inss_recount_from_archive": 170,
   "allegations_checked": 55,
   "mobile:home_data_bytes": 2242,
+  "mobile:home_perf": {
+   "dcl": 75,
+   "load": 75,
+   "fcp": 84,
+   "total_bytes": 702687,
+   "requests": 35
+  },
   "mobile:story_data_bytes": 13181,
   "mobile:story_ja_falaram_top_px": 1241.84375,
   "mobile:story_sections": [
@@ -2856,7 +3761,7 @@
    "ag_count": 371,
    "agora": "AGORA\n10 histórias\nCompliance Zero / Master\n27 registros mencionam\n27 set 2026\nDark Horse\n3 registros mencionam\n13 set 2026\nSem Desconto / INSS\n2 registros mencionam\n21 set 2026\nVer mais 7 histórias\n\n"
   },
-  "mobile:search_inss_data_bytes": 349331,
+  "mobile:search_inss_data_bytes": 349308,
   "mobile:search_inss": {
    "groups": [
     "Agora",
@@ -2866,9 +3771,10 @@
    "ag_count": 170,
    "agora": "AGORA\n3 histórias\nSem Desconto / INSS\n15 registros mencionam\n21 set 2026\nCPMI do INSS\n8 registros mencionam\n28 mar 2026\nDeath Care / cemitérios\n1 registro menciona\n17 set 2026\n\nO que já foi dito sobre"
   },
+  "share_pages": 14,
   "v5_data": {
    "files": 819,
-   "total_bytes": 13180077,
+   "total_bytes": 13179953,
    "home_json_bytes": 2242,
    "largest": {
     "file": "v5/data/busca/s/14.json",
