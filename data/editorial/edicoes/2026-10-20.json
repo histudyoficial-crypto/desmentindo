@@ -1,0 +1,205 @@
+{
+ "schema": "desmentindo.public.editorial_edition.v1",
+ "edition": "2026-10-20",
+ "label": "AGORA",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova; fonte primária indicada quando obtida.",
+ "items": [
+  {
+   "id": "2026-10-20-mudanca-em-secoes-afetou-mais-de-1-9-mi-de-eleitores-no-1-turno-tse",
+   "date": "2026-10-20",
+   "label": "AGORA",
+   "title": "Mudança em seções afetou mais de 1,9 mi de eleitores no 1º turno; TSE atualiza locais para 2ª etapa",
+   "text": "Os presidentes dos TREs assinaram nota conjunta afirmando que as mudanças nos locais de votação para o segundo turno foram excepcionais e em número menor que em 2022. A nota nega interferência do presidente do TSE, Kassio Nunes Marques, nas mudanças. O Ministério Público Eleitoral sugeriu ao TSE que notifique eleitores por WhatsApp ou SMS sobre as mudanças nos locais de votação. Segundo a Folha, o TSE atualizou na noite de segunda o número para 438 seções com endereços diferentes, afetando 126.032 eleitores. O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "Folha",
+     "title": "Mudança em seções afetou mais de 1,9 mi de eleitores no 1º turno; TSE atualiza locais para 2ª etapa",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tribunais-chamam-mudancas-em-locais-de-votacao-de-excecao-e-negam-ingerencia-de-kassio.shtml"
+    },
+    {
+     "name": "Estadão",
+     "title": "Mudança em seções afetou mais de 1,9 mi de eleitores no 1º turno; TSE atualiza locais para 2ª etapa",
+     "url": "https://estadao.com.br/politica/eleicoes/mp-aciona-tse-para-que-eleitor-seja-avisado-por-whatsapp-sobre-mudanca-em-locais-de-votacao-npr"
+    },
+    {
+     "name": "g1",
+     "title": "Mudança em seções afetou mais de 1,9 mi de eleitores no 1º turno; TSE atualiza locais para 2ª etapa",
+     "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/10/19/justica-eleitoral-altera-dois-locais-de-votacao-em-sao-paulo-no-2o-turno-veja-enderecos.ghtml"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-20-pgr-envia-ao-stf-parecer-contra-pedido-de-moraes-para-investigar",
+   "date": "2026-10-20",
+   "label": "AGORA",
+   "title": "PGR envia ao STF parecer contra pedido de Moraes para investigar Mendonça por abuso de autoridade",
+   "text": "A PGR se manifestou contra a abertura de investigação contra André Mendonça pedida por Alexandre de Moraes, mas apontou vieses e desvios de neutralidade. A PGR afirma que a representação não parece demonstrar conduta enquadrável na Lei de Abuso de Autoridade. O parecer foi enviado ao presidente do STF, Edson Fachin, e está sob sigilo. Segundo a Gazeta do Povo, os relatórios da PF trazem o carimbo de documentos sem valor probatório. Alegação atribuída (Alexandre de Moraes, segundo g1), não comprovada: Moraes mencionou fortes indícios de abuso de autoridade e possível crime de responsabilidade de Mendonça. O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "Folha",
+     "title": "PGR envia ao STF parecer contra pedido de Moraes para investigar Mendonça por abuso de autoridade",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/pgr-envia-ao-stf-parecer-contra-pedido-de-moraes-para-investigar-mendonca-por-abuso-de-autoridade.shtml"
+    },
+    {
+     "name": "g1",
+     "title": "PGR envia ao STF parecer contra pedido de Moraes para investigar Mendonça por abuso de autoridade",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/19/caso-master-pgr-diz-nao-ver-abuso-de-autoridade-de-mendonca-em-relatorio-de-inteligencia.ghtml"
+    },
+    {
+     "name": "Gazeta do Povo",
+     "title": "PGR envia ao STF parecer contra pedido de Moraes para investigar Mendonça por abuso de autoridade",
+     "url": "https://gazetadopovo.com.br/republica/pgr-e-contra-pedido-de-moraes-para-investigar-mendonca"
+    },
+    {
+     "name": "Jovem Pan",
+     "title": "PGR envia ao STF parecer contra pedido de Moraes para investigar Mendonça por abuso de autoridade",
+     "url": "https://jovempan.com.br/politica/pgr-se-manifesta-contra-pedido-de-moraes-para-investigar-andre-mendonca"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-20-pf-faz-busca-contra-ex-servidor-do-stj-suspeito-de-vazar-decisoes-a",
+   "date": "2026-10-20",
+   "label": "AGORA",
+   "title": "PF faz busca contra ex-servidor do STJ suspeito de vazar decisões a amigo de Flávio Bolsonaro",
+   "text": "A PF cumpriu busca e apreensão contra ex-servidor do STJ suspeito de vazar minutas de decisões ao advogado Willer Tomaz. Willer Tomaz nega categoricamente acesso irregular a decisões judiciais ou pareceres do MPF. Segundo a CNN, inquérito da PF aponta indício de movimentação de R$ 130 milhões em três meses em conta de Willer Tomaz. O STJ diz que o servidor foi exonerado e que as medidas criminais são sigilosas. Alegação atribuída (CNN), não comprovada: A apuração aponta que Flávio teria dividido uma conta bancária com Willer; a assessoria de Flávio negou. O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "Folha",
+     "title": "PF faz busca contra ex-servidor do STJ suspeito de vazar decisões a amigo de Flávio Bolsonaro",
+     "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/pf-faz-busca-em-ex-servidor-do-stj-suspeito-de-vazar-decisoes-a-amigo-de-flavio-bolsonaro.shtml"
+    },
+    {
+     "name": "CNN Brasil",
+     "title": "PF faz busca contra ex-servidor do STJ suspeito de vazar decisões a amigo de Flávio Bolsonaro",
+     "url": "https://cnnbrasil.com.br/politica/advogado-amigo-de-flavio-movimentou-r-130-milhoes-em-tres-meses-diz-pf"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-20-tse-proibe-nikolas-e-marcal-de-republicar-conteudos-falsos-sobre-lula",
+   "date": "2026-10-20",
+   "label": "AGORA",
+   "title": "TSE proíbe Nikolas e Marçal de republicar conteúdos falsos sobre Lula e restringe impulsionamento",
+   "text": "O corregedor-geral eleitoral do TSE proibiu Nikolas Ferreira e Pablo Marçal de republicarem postagens com conteúdo já considerado falso pela corte. A decisão determinou a Meta e X que impeçam o impulsionamento pago nas contas dos dois até o fim do segundo turno. As big techs estão sujeitas a multa de R$ 500 mil por dia em caso de descumprimento. Segundo Cueva, a capacidade de difusão das contas levanta questionamentos, mas não comprova por si só favorecimento algorítmico. Alegação atribuída (campanha do PT, segundo a Folha), não comprovada: A campanha do PT diz que Nikolas e Marçal são os principais difusores da campanha de Flávio fora dos canais oficiais e disseminam desinformação. O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "Folha",
+     "title": "TSE proíbe Nikolas e Marçal de republicar conteúdos falsos sobre Lula e restringe impulsionamento",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-proibe-nikolas-e-marcal-de-republicar-conteudos-falsos-sobre-lula-e-restringe-impulsionamento.shtml"
+    },
+    {
+     "name": "Gazeta do Povo",
+     "title": "TSE proíbe Nikolas e Marçal de republicar conteúdos falsos sobre Lula e restringe impulsionamento",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/corregedor-eleitoral-proibe-impulsionaemnto-pago-de-posts-de-nikolas-e-marcal"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-20-pgr-defende-manter-prisao-cautelar-de-parentes-de-daniel-vorcaro-e",
+   "date": "2026-10-20",
+   "label": "AGORA",
+   "title": "PGR defende manter prisão cautelar de parentes de Daniel Vorcaro e outros envolvidos no caso Master",
+   "text": "A PGR se manifestou pela manutenção da prisão cautelar de Henrique Vorcaro e Felipe Vorcaro, além de Fabiano Zettel e Daniel Lopes Monteiro, em parecer enviado ao presidente do STF, Edson Fachin. A PGR defendeu que não houve abuso de autoridade por parte de André Mendonça na condução da investigação. A PGR concordou com o pedido da OAB sobre o sigilo das comunicações entre advogados e clientes. Segundo a PGR, os elementos que justificaram as prisões estão mantidos, não havendo por que alterar a posição neste momento. O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "Estadão",
+     "title": "PGR defende manter prisão cautelar de parentes de Daniel Vorcaro e outros envolvidos no caso Master",
+     "url": "https://estadao.com.br/politica/pgr-defende-manter-prisao-cautelar-de-parentes-de-daniel-vorcaro-e-outros-envolvidos-no-caso-master-nprp"
+    },
+    {
+     "name": "g1",
+     "title": "PGR defende manter prisão cautelar de parentes de Daniel Vorcaro e outros envolvidos no caso Master",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/19/caso-master-pgr-defende-manutencao-da-prisao-de-familiares-e-assessores-de-vorcaro.ghtml"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-20-anpd-da-cinco-dias-para-meta-explicar-suspensao-de-contas-e-remocao",
+   "date": "2026-10-20",
+   "label": "AGORA",
+   "title": "ANPD dá cinco dias para Meta explicar suspensão de contas e remoção de posts",
+   "text": "A ANPD deu cinco dias úteis para a Meta esclarecer denúncias de possíveis violações aos direitos dos usuários na suspensão de contas, remoção de publicações e restrição de alcance. Os ofícios foram enviados à Meta na segunda-feira (19), após a abertura de procedimento administrativo na sexta-feira (16). O procedimento da PFDC partiu de representação conjunta de Artigo 19, Conectas Direitos Humanos, Sleeping Giants Brasil e CTRL+Z, com mais de mil relatos de bloqueios, remoções e suspensões. A ANPD encaminhou ao TSE relatos com potencial repercussão na legislação eleitoral. O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "g1",
+     "title": "ANPD dá cinco dias para Meta explicar suspensão de contas e remoção de posts",
+     "url": "https://g1.globo.com/tecnologia/noticia/2026/10/19/anpd-da-cinco-dias-para-meta-explicar-suspensao-de-contas-e-remocao-de-posts.ghtml"
+    },
+    {
+     "name": "Gazeta do Povo",
+     "title": "ANPD dá cinco dias para Meta explicar suspensão de contas e remoção de posts",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/anpd-cobra-meta-por-bloqueios-e-remocao-de-conteudos"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  },
+  {
+   "id": "2026-10-20-meta-nega-favorecer-candidatos-e-diz-ao-tse-ter-cumprido-determinacoes",
+   "date": "2026-10-20",
+   "label": "AGORA",
+   "title": "Meta nega favorecer candidatos e diz ao TSE ter cumprido determinações",
+   "text": "A Meta negou ao TSE que esteja descumprindo ordens da Corte ou favorecendo candidaturas. A Meta afirma que, se o sistema automatizado bloquear conta de anúncios de candidatos do segundo turno, uma equipe humana revisa a decisão em até duas horas. Segundo a Meta, foram analisadas 1.204 publicações, das quais 720 foram suspensas por não informarem uso de inteligência artificial. A Meta diz que declaração técnica atesta que os conteúdos das duas candidaturas são tratados de forma igual e não discriminatória. O Desmentindo ainda não vinculou documento oficial a esta história.",
+   "sources": [
+    {
+     "name": "CNN Brasil",
+     "title": "Meta nega favorecer candidatos e diz ao TSE ter cumprido determinações",
+     "url": "https://cnnbrasil.com.br/eleicoes/meta-nega-favorecer-candidatos-e-diz-ao-tse-ter-cumprido-determinacoes"
+    },
+    {
+     "name": "g1",
+     "title": "Meta nega favorecer candidatos e diz ao TSE ter cumprido determinações",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/20/meta-responde-ao-tse-e-diz-que-nao-houve-desobediencia-ou-demora-no-cumprimento-de-decisao.ghtml"
+    }
+   ],
+   "evidence": {
+    "primary_source_status": "NOT_AVAILABLE",
+    "primary_source_obtained": false,
+    "claims_with_primary_source": 0,
+    "claims_total": 1,
+    "basis": "conteúdo público das matérias citadas"
+   }
+  }
+ ]
+}
