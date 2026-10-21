@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Eleições 2026 · snapshots da apuração oficial (Presidente · Brasil · 1º turno).
+"""Eleições 2026 · snapshots da apuração oficial (Presidente · Brasil · 1º e 2º turno).
 
 Lê o arquivo de totalização do TSE e registra, de forma idempotente, a evolução da apuração:
 FIRST_RESULT (primeiro dado oficial publicado) → HOURLY (no máximo um por hora cheia BRT) → FINAL (só quando o
@@ -9,7 +9,13 @@ Um snapshot registra o que o TSE mostrava naquele momento. Não é projeção, t
 Desconhecido fica null (nunca 0). Só biblioteca padrão.
 
     python3 public-ui/eleicoes_snapshot.py --out dados/presidente-br.json [--input arquivo.json] [--now ISO]
+    python3 public-ui/eleicoes_snapshot.py --eleicao 6258 --out dados/presidente-br-2t.json   # 2º turno (25/10)
+
+Cada snapshot guarda o SHA-256 dos bytes exatamente como vieram do TSE e os cabeçalhos HTTP de data/versão
+(Date, Last-Modified, ETag), para qualquer pessoa conferir depois que o registro corresponde ao arquivo oficial.
+Falha de rede/servidor não grava nada: o arquivo continua com o último estado conhecido (a página mostra a hora dele).
 """
+import hashlib
 import argparse
 import datetime as dt
 import json
@@ -19,13 +25,30 @@ import urllib.error
 import urllib.request
 
 BASE = "https://resultados.tse.jus.br/oficial/ele2026"
-ELE = "6257"            # Eleição Ordinária Federal 2026 · 1º turno (config oficial ele-c.json, pleito 3220)
+# Códigos conferidos no config oficial (resultados.tse.jus.br/oficial/comum/config/ele-c.json, gerado em 18/10/2026 12:38:11):
+# pleito 3220 (04/10) → eleição 6257 · 1º turno; pleito 3221 (25/10) → eleição 6258 "Eleição Ordinária Federal - 2026 2º Turno".
+# STOP_AFTER: depois disso o coletor não roda (cada execução é só da sua eleição).
+BRT = dt.timezone(dt.timedelta(hours=-3))
+TURNOS = {"6257": {"round": 1, "pleito": "3220", "stop": dt.datetime(2026, 10, 7, tzinfo=BRT)},
+          "6258": {"round": 2, "pleito": "3221", "stop": dt.datetime(2026, 10, 28, tzinfo=BRT)}}
+ELE = "6257"            # padrão = 1º turno (comportamento original); --eleicao 6258 = 2º turno
 CARGO = "0001"          # Presidente
 # Contrato real (verificado 04/10/2026 17:15 BRT): totalização em dados/<uf>/<uf>-c<cargo>-e<ele>-u.json (estrutura aninhada).
 # "dados-simplificados/*-r.json" não existe mais no TSE desde 2024.
-SOURCE = f"{BASE}/{ELE}/dados/br/br-c{CARGO}-e{int(ELE):06d}-u.json"
-BRT = dt.timezone(dt.timedelta(hours=-3))
-STOP_AFTER = dt.datetime(2026, 10, 7, tzinfo=BRT)   # o cron é só desta eleição
+def source_for(ele):
+    return f"{BASE}/{ele}/dados/br/br-c{CARGO}-e{int(ele):06d}-u.json"
+
+
+SOURCE = source_for(ELE)
+STOP_AFTER = TURNOS[ELE]["stop"]
+
+
+def use(ele):
+    """Seleciona a eleição (só códigos conferidos no config oficial; qualquer outro é erro, nunca adivinhado)."""
+    global ELE, SOURCE, STOP_AFTER
+    if ele not in TURNOS:
+        raise SystemExit(f"eleição {ele!r} não conferida no config oficial")
+    ELE, SOURCE, STOP_AFTER = ele, source_for(ele), TURNOS[ele]["stop"]
 
 
 def num(v):
@@ -93,7 +116,7 @@ def parse(raw, captured_at):
         "captured_at": captured_at,
         "tse_updated_at": tse_coherent(raw),
         "tse_generated_at": tse_time(raw.get("dg"), raw.get("hg")),
-        "scope": "BR", "office": "Presidente", "round": 1, "election_code": ELE, "source_url": SOURCE,
+        "scope": "BR", "office": "Presidente", "round": TURNOS[ELE]["round"], "election_code": ELE, "source_url": SOURCE,
         "percent_totalized": pct(raw.get("pst")),
         "sections_totalized": num(raw.get("st")), "sections_total": num(raw.get("s")),
         "status": "FINAL" if final else "PARTIAL", "tse_final_flag": raw.get("tf"),
@@ -106,7 +129,8 @@ def parse(raw, captured_at):
 
 
 def empty_store():
-    return {"schema": "desmentindo.eleicoes2026.snapshots.v1", "scope": "BR", "office": "Presidente", "round": 1,
+    return {"schema": "desmentindo.eleicoes2026.snapshots.v1", "scope": "BR", "office": "Presidente", "round": TURNOS[ELE]["round"],
+            "election_code": ELE, "pleito": TURNOS[ELE]["pleito"],
             "source": "TSE · " + SOURCE,
             "rule": "Cada snapshot é o que o TSE mostrava naquele momento. Não é projeção, tendência nem vencedor. "
                     "Desconhecido = null.",
@@ -152,12 +176,21 @@ def apply(store, action, window, rec):
     return store
 
 
+def fingerprint(body, headers=None):
+    """Prova de origem do registro: SHA-256 dos bytes recebidos + cabeçalhos de data/versão do servidor (ausente = null)."""
+    h = headers or {}
+    return {"sha256": hashlib.sha256(body).hexdigest(), "bytes": len(body),
+            "http_date": h.get("Date"), "last_modified": h.get("Last-Modified"), "etag": h.get("ETag")}
+
+
 def fetch():
+    """→ (json, bytes, cabeçalhos) | None se ainda não publicado (403/404). Outro erro sobe: nada é gravado."""
     req = urllib.request.Request(SOURCE, headers={"User-Agent": "desmentindo-eleicoes-2026-snapshot (+https://desmentindo.com.br)",
-                                                  "Accept": "application/json"})
+                                                  "Accept": "application/json", "Cache-Control": "no-cache"})
     try:
         with urllib.request.urlopen(req, timeout=30) as r:
-            return json.loads(r.read().decode("utf-8"))
+            body = r.read()
+            return json.loads(body.decode("utf-8")), body, dict(r.headers.items())
     except urllib.error.HTTPError as e:
         if e.code in (403, 404):
             return None   # ainda não publicado
@@ -169,17 +202,28 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--input", help="arquivo do TSE já baixado (teste)")
     ap.add_argument("--now", help="ISO (teste)")
+    ap.add_argument("--eleicao", default="6257", help="6257 = 1º turno (padrão) · 6258 = 2º turno")
     a = ap.parse_args()
+    use(a.eleicao)
     now = dt.datetime.fromisoformat(a.now) if a.now else dt.datetime.now(dt.timezone.utc)
     if now > STOP_AFTER:
         print("SNAPSHOT=SKIP (fora da janela desta eleição)")
         return 0
-    raw = json.load(open(a.input, encoding="utf-8")) if a.input else fetch()
-    raw = flatten(raw) if raw is not None else None
+    if a.input:
+        body = open(a.input, "rb").read()
+        got = (json.loads(body.decode("utf-8")), body, {})
+    else:
+        try:
+            got = fetch()
+        except (urllib.error.URLError, OSError, ValueError) as e:
+            print(f"SNAPSHOT=FETCH_FAILED ({type(e).__name__}); nada gravado, vale o último estado conhecido")
+            return 0
+    raw = flatten(got[0]) if got is not None else None
     if raw is None or not raw.get("cand"):
         print("SNAPSHOT=NOT_AVAILABLE (TSE ainda não publicou totalização)")
         return 0
     rec = parse(raw, now.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
+    rec["source_fingerprint"] = fingerprint(got[1], got[2])
     store = json.load(open(a.out, encoding="utf-8")) if os.path.exists(a.out) else empty_store()
     action, why = decide(store, rec, now)
     if action == "SKIP":
@@ -190,7 +234,7 @@ def main():
     with open(a.out, "w", encoding="utf-8") as fh:
         json.dump(store, fh, ensure_ascii=False, indent=1)
         fh.write("\n")
-    print(f"SNAPSHOT={action} pst={rec['percent_totalized']} tse={rec['tse_updated_at']}")
+    print(f"SNAPSHOT={action} ele={ELE} pst={rec['percent_totalized']} tse={rec['tse_updated_at']} sha256={rec['source_fingerprint']['sha256'][:12]}")
     return 0
 
 

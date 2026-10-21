@@ -60,4 +60,14 @@ t("linha do tempo: lacuna > limite, nenhuma interpolação", () => {
   const h = 3600e3, p = [{ t: 0 }, { t: 0.5 * h }, { t: 2.4 * h }, { t: 3 * h }];
   assert.deepEqual(C.lacunas(p, 1.1 * h), [{ de: 0.5 * h, ate: 2.4 * h, ms: 1.9 * h }]);
 });
+// 2º turno: diferença de UM registro; dado ausente nunca vira zero
+t("diferença: votos e p.p. do mesmo registro, ordem pelos votos", () => {
+  const d = C.diferenca([{ candidate_id: "b", candidate_name: "B", votes: 900, percentage: 47.37 }, { candidate_id: "a", candidate_name: "A", votes: 1000, percentage: 52.63 }]);
+  assert.equal(d.a.candidate_id, "a"); assert.equal(d.votes, 100); assert.equal(d.pp, 5.26); assert.equal(d.tie, false);
+});
+t("diferença: número ausente → null (não zero)", () => {
+  assert.equal(C.diferenca([{ votes: 10, percentage: 50 }, { votes: null, percentage: 50 }]), null);
+  assert.equal(C.diferenca([{ votes: 10, percentage: 100 }]), null); assert.equal(C.diferenca(null), null);
+});
+t("diferença: empate explícito", () => assert.equal(C.diferenca([{ votes: 5, percentage: 50 }, { votes: 5, percentage: 50 }]).tie, true));
 console.log(`ELEICOES_CORE_TESTS ${n}/${n} OK`);

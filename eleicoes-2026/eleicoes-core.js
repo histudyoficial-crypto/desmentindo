@@ -133,9 +133,18 @@
     return out;
   }
   // atraso entre o que o TSE mostrava e a hora da leitura (métrica calculada, não dado do TSE)
+  // Diferença entre os dois mais votados de UM registro oficial (votos e pontos percentuais dos válidos). Qualquer número
+  // ausente → null (nunca zero); menos de dois candidatos → null. Não compara registros entre si nem projeta nada.
+  function diferenca(cands) {
+    var c = (cands || []).filter(function (x) { return x && x.votes != null && x.percentage != null; });
+    if (c.length < 2 || c.length !== (cands || []).length) return null;
+    c = c.slice().sort(function (x, y) { return y.votes - x.votes; });
+    var votes = c[0].votes - c[1].votes, pp = Math.round((c[0].percentage - c[1].percentage) * 100) / 100;
+    return { a: c[0], b: c[1], votes: votes, pp: pp, tie: votes === 0 };
+  }
   function defasagem(capturadoMs, tseMs) { return capturadoMs != null && tseMs != null ? capturadoMs - tseMs : null; }
 
   var api = { ESTADOS: ESTADOS, principalDe: principalDe, estadoCadastro: estadoCadastro, secaoEstado: secaoEstado,
-              decodeBU: decodeBU, lacunas: lacunas, defasagem: defasagem };
+              decodeBU: decodeBU, lacunas: lacunas, defasagem: defasagem, diferenca: diferenca };
   if (typeof module !== "undefined" && module.exports) module.exports = api; else root.EleicoesCore = api;
 })(typeof window !== "undefined" ? window : this);

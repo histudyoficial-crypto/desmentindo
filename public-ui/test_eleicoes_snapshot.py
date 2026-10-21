@@ -132,5 +132,49 @@ class HoraTSE(unittest.TestCase):
         self.assertEqual(S.tse_coherent(r), "2026-10-04T17:22:57-03:00")
 
 
+class SegundoTurno(unittest.TestCase):
+    """2º turno (eleição 6258, pleito 3221): mesmo coletor, outra fonte e outra janela; nada adivinhado."""
+    SCRIPT = os.path.join(os.path.dirname(__file__), "eleicoes_snapshot.py")
+
+    def run_cli(self, d, now, *extra, raw_obj=None):
+        inp, out = os.path.join(d, "u.json"), os.path.join(d, "o.json")
+        json.dump(raw_obj or u("10", "10,00", ("100", "80"), "17:07:12"), open(inp, "w"))
+        r = subprocess.run([sys.executable, self.SCRIPT, "--out", out, "--input", inp, "--now", now, *extra], capture_output=True, text=True)
+        return r, out, inp
+
+    def test_fonte_e_turno(self):
+        self.assertEqual(S.source_for("6258"), "https://resultados.tse.jus.br/oficial/ele2026/6258/dados/br/br-c0001-e006258-u.json")
+        with self.assertRaises(SystemExit):
+            S.use("6259")
+
+    def test_cli_2t_grava_round_2_com_hash(self):
+        import hashlib
+        with tempfile.TemporaryDirectory() as d:
+            r, out, inp = self.run_cli(d, "2026-10-25T17:20:00-03:00", "--eleicao", "6258")
+            self.assertIn("SNAPSHOT=FIRST_RESULT ele=6258", r.stdout)
+            st = json.load(open(out))
+            s0 = st["snapshots"][0]
+            self.assertEqual((st["round"], st["election_code"], st["pleito"]), (2, "6258", "3221"))
+            self.assertEqual((s0["round"], s0["election_code"]), (2, "6258"))
+            self.assertTrue(s0["source_url"].endswith("/6258/dados/br/br-c0001-e006258-u.json"))
+            self.assertEqual(s0["source_fingerprint"]["sha256"], hashlib.sha256(open(inp, "rb").read()).hexdigest())
+            self.assertIsNone(s0["source_fingerprint"]["etag"])   # sem cabeçalho → null, não inventado
+
+    def test_cli_2t_idempotente(self):
+        with tempfile.TemporaryDirectory() as d:
+            self.run_cli(d, "2026-10-25T17:20:00-03:00", "--eleicao", "6258")
+            r, out, _ = self.run_cli(d, "2026-10-25T17:25:00-03:00", "--eleicao", "6258")
+            self.assertIn("SKIP", r.stdout)
+            self.assertEqual(len(json.load(open(out))["snapshots"]), 1)
+
+    def test_janelas_separadas(self):
+        with tempfile.TemporaryDirectory() as d:
+            r, out, _ = self.run_cli(d, "2026-10-29T10:00:00-03:00", "--eleicao", "6258")
+            self.assertIn("fora da janela", r.stdout)
+            self.assertFalse(os.path.exists(out))
+            r, out, _ = self.run_cli(d, "2026-10-25T17:20:00-03:00")   # padrão continua sendo o 1º turno, já encerrado
+            self.assertIn("fora da janela", r.stdout)
+
+
 if __name__ == "__main__":
     unittest.main()
