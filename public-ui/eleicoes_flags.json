@@ -1,5 +1,6 @@
 {
  "calculado": false,
  "locais": false,
- "_leia": "calculado: métricas derivadas (ordem de chegada, conferência municipal) só com decisão editorial (Human Gate). locais: arquivo oficial Eleitorado por local de votação, por município, em eleicoes-2026/locais/<uf>/<mun>.json."
+ "pesquisas_2t": false,
+ "_leia": "calculado: métricas derivadas (ordem de chegada, conferência municipal) só com decisão editorial (Human Gate). locais: arquivo oficial Eleitorado por local de votação, por município, em eleicoes-2026/locais/<uf>/<mun>.json. pesquisas_2t: seção Institutos de pesquisa do 2º turno (public-ui/eleicoes_pesquisas_2t.json) só com decisão editorial (Human Gate)."
 }

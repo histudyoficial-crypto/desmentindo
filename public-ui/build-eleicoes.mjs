@@ -12,6 +12,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
 import { pages as qPages, cards as qCards } from "./eleicoes-questionamentos.mjs";
+import { validate as pesqValidate, section as pesqSection } from "./eleicoes-pesquisas.mjs";
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const SITE = "https://desmentindo.com.br";
 const UFS = [["ac","Acre"],["al","Alagoas"],["ap","Amapá"],["am","Amazonas"],["ba","Bahia"],["ce","Ceará"],["df","Distrito Federal"],
@@ -25,6 +26,10 @@ const T1 = { n: 1, root: "/eleicoes-2026/", rotulo: "1º turno", dia: "4 out" };
 const T2 = { n: 2, root: "/eleicoes-2026/2-turno/", rotulo: "2º turno", dia: "25 out", ele: "6258", pleito: "3221",
   release: "2026-10-25T20:00:00Z", snap: SNAP_BASE + "presidente-br-2t.json" };
 const HIST = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "eleicoes_historico.json"), "utf8"));
+// Pesquisas do 2º turno: só com Human Gate; erro de contrato derruba o build (nada sai pela metade).
+const PESQ = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "eleicoes_pesquisas_2t.json"), "utf8"));
+const PESQ_ERR = pesqValidate(PESQ);
+if (PESQ_ERR.length) { console.error("PESQUISAS_2T_INVALIDAS:\n" + PESQ_ERR.join("\n")); process.exit(1); }
 const A = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "analytics.json"), "utf8"));
 // Dados opcionais. calculado = métricas derivadas (ordem de chegada, conferência municipal): exige Human Gate.
 // locais = arquivo oficial "Eleitorado por local de votação" por município. Desligados: a interface esconde as partes.
@@ -42,7 +47,7 @@ const STATUS0 = card0("Situação", "—", "Aguardando o TSE", "parcial", OFICIA
 // explorador → metodologia. A linha dos líderes é desenhada pelo eleicoes.js a partir do mesmo arquivo do placar (nada fixo).
 const LIDERES0 = '<p class="ld-k">Resultado oficial · TSE</p><p class="ld-v">Aguardando a leitura do TSE.</p>';
 const pnav = (cur, T = T1) => `<nav class="pnav" aria-label="Eleições 2026"><div class="wrap"><a class="pn-home" href="${T.root}">Eleições 2026${T.n === 2 ? " · 2º turno" : ""}</a>` +
-  [["res", T.root + "#resultado", "Resultados"], ["exp", T.root + "#onde", "Explorar"], ["q", "/eleicoes-2026/questionamentos/", "Questionamentos"], ["ver", T.root + "#verificacao", "Verificação"]]
+  [["res", T.root + "#resultado", "Resultados"], ["exp", T.root + "#onde", "Explorar"], ...(T.n === 2 ? [["pesq", T.root + "#pesquisas", "Pesquisas"]] : []), ["q", "/eleicoes-2026/questionamentos/", "Questionamentos"], ["ver", T.root + "#verificacao", "Verificação"]]
     .map(([k, h, t]) => `<a href="${h}"${k === cur ? ' aria-current="page"' : ""}>${t}</a>`).join("") + `</div></nav>`;
 const QDATA = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "eleicoes_questionamentos.json"), "utf8"));
 const QHOME = ["Q1", "Q2", "Q3", "Q6", "Q7"].map(id => QDATA.questionamentos.find(q => q.id === id));
@@ -136,14 +141,14 @@ ${br ? `<div class="maphead"><label for="layers">Mostrar no mapa</label><select 
 ${br ? `<h2 class="h2s" id="t-ext">Exterior</h2><div id="exterior"><p class="empty">Disponível depois das 17h.</p></div>` : ""}
 </aside>
 </div>
-${br && t2 ? HIST_2T() + "\n" : ""}<section class="area-aud" aria-labelledby="t-aud" id="verificacao"><h2 id="t-aud">${br ? "Metodologia e verificação" : "Verificação"}</h2>
+${br && t2 ? HIST_2T() + "\n" + pesqSection(PESQ, FLAGS.pesquisas_2t === true) + "\n" : ""}<section class="area-aud" aria-labelledby="t-aud" id="verificacao"><h2 id="t-aud">${br ? "Metodologia e verificação" : "Verificação"}</h2>
 <p class="sub">O que cada número é, de onde vem e o que ainda falta. Use o modo Verificação (no topo) para ver os detalhes técnicos abertos. <a href="/eleicoes-2026/questionamentos/">Questionamentos sobre a eleição →</a></p>
 <div class="audgrid"><div><h3>Origem dos números</h3><ul class="rules"><li><span class="prov of">Dado oficial (TSE)</span> número publicado pela Justiça Eleitoral, lido direto dos arquivos públicos do TSE.</li>
 <li><span class="prov calc">Métrica calculada pelo Eleições 2026</span> conta feita por esta página a partir de arquivos oficiais (ex.: % de uma seção a partir do boletim). Não é número do TSE.</li></ul></div>
 <div><h3>Estado de cada seção</h3><dl class="estados">${ESTADOS_HTML}</dl></div></div>
 <div id="calcbox" class="calcbox"></div></section>
 <section aria-labelledby="t-regras"><h2 id="t-regras">Como ler esta página</h2><ul class="rules">
-<li>Resultado oficial é o que o TSE publica. Pesquisa eleitoral é outra coisa e não aparece aqui.</li>
+<li>Resultado oficial é o que o TSE publica. Pesquisa eleitoral é outra coisa${t2 && br ? ": aparece só em “Institutos de pesquisa”, separada, com registro e fonte." : " e não aparece aqui."}</li>
 <li>Até a totalização final, todo número é parcial e vem com o % de seções totalizadas.</li>
 <li>Dado que o TSE não informou aparece como “—”, nunca como zero. Entre dois registros da linha do tempo não desenhamos nada.</li>
 <li>Arquivo que ainda não está disponível não é indício de problema na votação, e não inferimos o motivo.</li>

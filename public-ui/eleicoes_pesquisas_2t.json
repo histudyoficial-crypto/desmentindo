@@ -1,0 +1,23 @@
+{
+  "schema": "desmentindo.eleicoes2026.pesquisas_2t.v1",
+  "regra": "Só entra pesquisa conferida por pessoa (Human Gate): registro no PesqEle + publicação original. Pesquisa não é resultado. Sem confirmação = 'Sem nova pesquisa confirmada nesta semana'. Erro das pesquisas só depois da totalização final do TSE (tf = s) e com revisão humana.",
+  "semana": { "de": "2026-10-19", "ate": "2026-10-24" },
+  "institutos": [
+    { "instituto": "Veritá", "modalidade": null },
+    { "instituto": "Gerp", "modalidade": null },
+    { "instituto": "Futura", "modalidade": null },
+    { "instituto": "Vox Brasil", "modalidade": null },
+    { "instituto": "Paraná Pesquisas", "modalidade": null },
+    { "instituto": "Quaest", "modalidade": "eleitor provável" },
+    { "instituto": "Meio/Ideia", "modalidade": null },
+    { "instituto": "PoderData", "modalidade": null },
+    { "instituto": "Quaest", "modalidade": null },
+    { "instituto": "AtlasIntel", "modalidade": null },
+    { "instituto": "Datafolha", "modalidade": null },
+    { "instituto": "Nexus", "modalidade": null },
+    { "instituto": "Real Time Big Data", "modalidade": null },
+    { "instituto": "CNT/MDA", "modalidade": null },
+    { "instituto": "Indexa", "modalidade": null }
+  ],
+  "pesquisas": []
+}
