@@ -22,8 +22,8 @@ const UFS = [["ac","Acre"],["al","Alagoas"],["ap","Amapá"],["am","Amazonas"],["
 // Turnos (códigos conferidos no config oficial ele-c.json do TSE, gerado em 18/10/2026 12:38:11). O 1º turno sai exatamente
 // como antes (sem atributos novos no <body>); o 2º turno usa o mesmo HTML/JS com outra eleição, pleito, horário e raiz.
 const SNAP_BASE = "https://raw.githubusercontent.com/histudyoficial-crypto/desmentindo/eleicoes-2026-dados/";
-const T1 = { n: 1, root: "/eleicoes-2026/", rotulo: "1º turno", dia: "4 out" };
-const T2 = { n: 2, root: "/eleicoes-2026/2-turno/", rotulo: "2º turno", dia: "25 out", ele: "6258", pleito: "3221",
+const T1 = { n: 1, root: "/eleicoes-2026/", rotulo: "1º turno", dia: "4 out", og: "eleicoes-2026.png" };
+const T2 = { n: 2, root: "/eleicoes-2026/2-turno/", rotulo: "2º turno", dia: "25 out", og: "eleicoes-2026-2t.png", ele: "6258", pleito: "3221",
   release: "2026-10-25T20:00:00Z", snap: SNAP_BASE + "presidente-br-2t.json" };
 const HIST = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "eleicoes_historico.json"), "utf8"));
 // Pesquisas do 2º turno: só com Human Gate; erro de contrato derruba o build (nada sai pela metade).
@@ -98,10 +98,10 @@ function page(uf, name, T = T1) {
 <link rel="canonical" href="${url}">
 <meta property="og:site_name" content="Desmentindo"><meta property="og:locale" content="pt_BR"><meta property="og:type" content="website">
 <meta property="og:title" content="${attr(title)}"><meta property="og:description" content="${attr(desc)}"><meta property="og:url" content="${url}">
-<meta property="og:image" content="${SITE}/img/og/eleicoes-2026.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image" content="${SITE}/img/og/${T.og}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Eleições 2026${t2 ? " · 2º turno" : ""} · resultado oficial do TSE · Desmentindo">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${attr(title)}"><meta name="twitter:description" content="${attr(desc)}">
-<meta name="twitter:image" content="${SITE}/img/og/eleicoes-2026.png">
+<meta name="twitter:image" content="${SITE}/img/og/${T.og}">
 <meta name="theme-color" content="#1D1B1A">
 <link rel="icon" href="${asset("favicon.ico")}" sizes="32x32">
 <link rel="icon" href="${asset("favicon.svg")}" type="image/svg+xml">
