@@ -1,0 +1,22 @@
+{
+  "schema": "desmentindo.eleicoes2026.historico.v1",
+  "regra": "Só números oficiais finais, com a fonte do TSE. Nada estimado. Turnos e eleições diferentes não mostram transferência de votos.",
+  "eleicoes": [
+    {
+      "id": "2022-2t",
+      "rotulo": "2º turno de 2022",
+      "data": "2022-10-30",
+      "situacao": "Final (100% das seções totalizadas)",
+      "base": "votos válidos",
+      "candidatos": [
+        { "nome": "Lula", "votos": 60345999, "pct_validos": 50.90 },
+        { "nome": "Jair Bolsonaro", "votos": 58206354, "pct_validos": 49.10 }
+      ],
+      "fonte": "Tribunal Superior Eleitoral · 100% das seções totalizadas (30/10/2022) e proclamação dos eleitos (12/2022)",
+      "fonte_url": "https://www.tse.jus.br/comunicacao/noticias/2022/Outubro/100-das-secoes-totalizadas-confira-como-ficou-o-quadro-eleitoral-apos-o-2o-turno",
+      "fonte_url_2": "https://www.tse.jus.br/comunicacao/noticias/2022/Dezembro/tse-proclama-eleitos-presidente-e-vice-presidente-da-republica-luiz-inacio-lula-da-silva-e-geraldo-alckmin",
+      "conferido_em": "2026-10-21",
+      "conferencia": "Números iguais nas duas publicações do TSE e na nota editorial de 21/10 (Monday 13234004925)."
+    }
+  ]
+}

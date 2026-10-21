@@ -18,6 +18,13 @@ const UFS = [["ac","Acre"],["al","Alagoas"],["ap","Amapá"],["am","Amazonas"],["
   ["es","Espírito Santo"],["go","Goiás"],["ma","Maranhão"],["mt","Mato Grosso"],["ms","Mato Grosso do Sul"],["mg","Minas Gerais"],
   ["pa","Pará"],["pb","Paraíba"],["pr","Paraná"],["pe","Pernambuco"],["pi","Piauí"],["rj","Rio de Janeiro"],["rn","Rio Grande do Norte"],
   ["rs","Rio Grande do Sul"],["ro","Rondônia"],["rr","Roraima"],["sc","Santa Catarina"],["sp","São Paulo"],["se","Sergipe"],["to","Tocantins"]];
+// Turnos (códigos conferidos no config oficial ele-c.json do TSE, gerado em 18/10/2026 12:38:11). O 1º turno sai exatamente
+// como antes (sem atributos novos no <body>); o 2º turno usa o mesmo HTML/JS com outra eleição, pleito, horário e raiz.
+const SNAP_BASE = "https://raw.githubusercontent.com/histudyoficial-crypto/desmentindo/eleicoes-2026-dados/";
+const T1 = { n: 1, root: "/eleicoes-2026/", rotulo: "1º turno", dia: "4 out" };
+const T2 = { n: 2, root: "/eleicoes-2026/2-turno/", rotulo: "2º turno", dia: "25 out", ele: "6258", pleito: "3221",
+  release: "2026-10-25T20:00:00Z", snap: SNAP_BASE + "presidente-br-2t.json" };
+const HIST = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "eleicoes_historico.json"), "utf8"));
 const A = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "analytics.json"), "utf8"));
 // Dados opcionais. calculado = métricas derivadas (ordem de chegada, conferência municipal): exige Human Gate.
 // locais = arquivo oficial "Eleitorado por local de votação" por município. Desligados: a interface esconde as partes.
@@ -34,13 +41,25 @@ const STATUS0 = card0("Situação", "—", "Aguardando o TSE", "parcial", OFICIA
 // Brasil, na ordem do Human Gate (06/10): estado da eleição → questionamentos → a noite de 4/10 → resultado oficial →
 // explorador → metodologia. A linha dos líderes é desenhada pelo eleicoes.js a partir do mesmo arquivo do placar (nada fixo).
 const LIDERES0 = '<p class="ld-k">Resultado oficial · TSE</p><p class="ld-v">Aguardando a leitura do TSE.</p>';
-const pnav = cur => `<nav class="pnav" aria-label="Eleições 2026"><div class="wrap"><a class="pn-home" href="/eleicoes-2026/">Eleições 2026</a>` +
-  [["res", "/eleicoes-2026/#resultado", "Resultados"], ["exp", "/eleicoes-2026/#onde", "Explorar"], ["q", "/eleicoes-2026/questionamentos/", "Questionamentos"], ["ver", "/eleicoes-2026/#verificacao", "Verificação"]]
+const pnav = (cur, T = T1) => `<nav class="pnav" aria-label="Eleições 2026"><div class="wrap"><a class="pn-home" href="${T.root}">Eleições 2026${T.n === 2 ? " · 2º turno" : ""}</a>` +
+  [["res", T.root + "#resultado", "Resultados"], ["exp", T.root + "#onde", "Explorar"], ["q", "/eleicoes-2026/questionamentos/", "Questionamentos"], ["ver", T.root + "#verificacao", "Verificação"]]
     .map(([k, h, t]) => `<a href="${h}"${k === cur ? ' aria-current="page"' : ""}>${t}</a>`).join("") + `</div></nav>`;
 const QDATA = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "eleicoes_questionamentos.json"), "utf8"));
 const QHOME = ["Q1", "Q2", "Q3", "Q6", "Q7"].map(id => QDATA.questionamentos.find(q => q.id === id));
 const Q_BR = `<section class="area-q" aria-labelledby="t-q"><h2 id="t-q">Questionamentos sobre a eleição</h2><p class="sub">Você viu isso circulando? Fomos aos dados para descobrir o que realmente aconteceu.</p>${qCards(QHOME)}<p class="more"><a href="/eleicoes-2026/questionamentos/">Ver todos os questionamentos →</a></p></section>`;
 const NOITE_BR = `<section class="area-time" aria-labelledby="t-evo"><h2 id="t-evo">A noite de 4 de outubro</h2><p class="sub">Do início da apuração (17h) ao final: o que o TSE mostrava em cada registro. Escolha um instante para ver o resultado daquela hora. <a href="/eleicoes-2026/questionamentos/04-de-outubro/">A noite, passo a passo →</a></p><div id="evolucao"><p class="empty">Disponível depois das 17h.</p></div></section>`;
+const NOITE_2T = `<section class="area-time" aria-labelledby="t-evo"><h2 id="t-evo">A noite de 25 de outubro</h2><p class="sub">Do início da apuração (17h) ao final: o que o TSE mostrava em cada registro. Escolha um instante para ver o resultado daquela hora.</p><div id="evolucao"><p class="empty">Disponível depois das 17h de 25/10.</p></div></section>`;
+const DIF_2T = `<section class="area-dif" aria-labelledby="t-dif"><h2 id="t-dif">Evolução da diferença</h2><p class="sub">Quantos votos separavam os dois candidatos em cada registro oficial da apuração. Diferença parcial não é resultado e não prevê a final.</p><div id="diferenca"><p class="empty">Disponível depois das 17h de 25/10.</p></div></section>`;
+const fI = n => n.toLocaleString("pt-BR"), fP = n => n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + "%";
+// Comparação histórica: 2022 vem do arquivo conferido (public-ui/eleicoes_historico.json); 1º turno de 2026 e este turno são
+// preenchidos no navegador a partir dos registros oficiais (FINAL do 1º turno; leitura atual do 2º). Nada fixo de 2026 aqui.
+const HIST_2T = () => `<section class="area-hist" aria-labelledby="t-hist" id="historico"><h2 id="t-hist">Comparação histórica</h2><p class="sub">Números oficiais lado a lado. Turnos diferentes têm bases diferentes: no 1º turno os votos válidos se dividem entre todos os candidatos; no 2º, entre dois.</p>
+<div class="qtable htab" tabindex="0" role="region" aria-label="Comparação histórica (role para os lados)"><table><thead><tr><th scope="col">Eleição</th><th scope="col">Candidato</th><th scope="col">Votos</th><th scope="col">% dos válidos</th></tr></thead>
+<tbody id="histAgora"><tr><th scope="row">2º turno de 2026</th><td colspan="3">Aguardando apuração</td></tr></tbody>
+<tbody id="hist1t"><tr><th scope="row">1º turno de 2026</th><td colspan="3">Aguardando a leitura do arquivo final do TSE</td></tr></tbody>
+${HIST.eleicoes.map(e => `<tbody>${e.candidatos.map((c, i) => `<tr>${i ? "" : `<th scope="row" rowspan="${e.candidatos.length}">${attr(e.rotulo)}<small>${attr(e.situacao)}</small></th>`}<td>${attr(c.nome)}</td><td>${fI(c.votos)}</td><td>${fP(c.pct_validos)}</td></tr>`).join("")}</tbody>`).join("")}
+</table></div>
+<p class="note">${OFICIAL_TAG} ${HIST.eleicoes.map(e => `${attr(e.rotulo)}: <a href="${attr(e.fonte_url)}" rel="noopener">${attr(e.fonte)}</a>.`).join(" ")} 1º turno de 2026: arquivo oficial de totalização do TSE (eleição 6257), mostrado só com a totalização final marcada pelo próprio TSE. A comparação não mostra transferência de votos nem quem votou em quem.</p></section>`;
 const ESTADOS_HTML = Object.values(CORE.ESTADOS).map(e => `<div class="e-${e.classe}"><dt>${e.nome}</dt><dd>${e.texto}</dd></div>`).join("");
 // CSS/JS locais com ?v=<sha256 do arquivo, 12 hex> — a mesma convenção ?v= da raiz (build-root.mjs). Aqui a versão vem do
 // conteúdo, não do commit, porque estas páginas são versionadas no repositório: o HTML só aponta para o asset com que foi
@@ -52,15 +71,18 @@ const attr = s => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").repla
 const umami = A.provider === "umami" && /^[0-9a-f-]{36}$/.test(A.website_id || "")
   ? `<script defer src="${A.script_src}" data-website-id="${A.website_id}"${A.respect_do_not_track ? ' data-do-not-track="true"' : ""}></script>` : "";
 
-function page(uf, name) {
-  const br = !uf, zz = uf === "zz", where = br ? "Brasil" : name;
-  const url = `${SITE}/eleicoes-2026/${br ? "" : uf + "/"}`;
-  const title = `Eleições 2026 · Presidente · 1º turno — ${where} | Desmentindo`;
-  const desc = br
+function page(uf, name, T = T1) {
+  const br = !uf, zz = uf === "zz", where = br ? "Brasil" : name, t2 = T.n === 2;
+  const url = `${SITE}${T.root}${br ? "" : uf + "/"}`;
+  const title = `Eleições 2026 · Presidente · ${T.rotulo} — ${where} | Desmentindo`;
+  const desc = t2 ? (br
+    ? "Apuração oficial do TSE do 2º turno para presidente (25/10) no Brasil, direto da fonte: resultado, evolução da diferença registro a registro, comparação histórica e o caminho até cada seção e boletim de urna."
+    : `Apuração oficial do TSE do 2º turno para presidente (25/10) ${zz ? "no exterior" : "em " + name}, direto da fonte, com ${zz ? "cidade" : "município"}, zona, seção e boletim de urna.`)
+    : br
     ? "Resultado oficial do TSE para presidente no Brasil, atualizado direto da fonte, com a evolução da apuração hora a hora e o caminho até cada seção e boletim de urna."
     : zz ? "Resultado oficial do TSE para presidente no exterior, atualizado direto da fonte, com cidade, zona, seção e boletim de urna."
     : `Resultado oficial do TSE para presidente em ${name}, atualizado direto da fonte, com município, zona, seção e boletim de urna.`;
-  const nav = UFS.concat([["zz", "Exterior"]]).map(([c, n]) => `<li><a href="/eleicoes-2026/${c}/" title="${attr(n)}"${c === uf ? ' aria-current="page"' : ""}>${c === "zz" ? "Exterior" : c.toUpperCase()}</a></li>`).join("");
+  const nav = UFS.concat([["zz", "Exterior"]]).map(([c, n]) => `<li><a href="${T.root}${c}/" title="${attr(n)}"${c === uf ? ' aria-current="page"' : ""}>${c === "zz" ? "Exterior" : c.toUpperCase()}</a></li>`).join("");
   return `<!doctype html>
 <html lang="pt-BR">
 <head>
@@ -72,7 +94,7 @@ function page(uf, name) {
 <meta property="og:site_name" content="Desmentindo"><meta property="og:locale" content="pt_BR"><meta property="og:type" content="website">
 <meta property="og:title" content="${attr(title)}"><meta property="og:description" content="${attr(desc)}"><meta property="og:url" content="${url}">
 <meta property="og:image" content="${SITE}/img/og/eleicoes-2026.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Eleições 2026 · resultado oficial do TSE · Desmentindo">
+<meta property="og:image:alt" content="Eleições 2026${t2 ? " · 2º turno" : ""} · resultado oficial do TSE · Desmentindo">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${attr(title)}"><meta name="twitter:description" content="${attr(desc)}">
 <meta name="twitter:image" content="${SITE}/img/og/eleicoes-2026.png">
 <meta name="theme-color" content="#1D1B1A">
@@ -85,26 +107,27 @@ function page(uf, name) {
 <script>/* reserva espaço do recorte aberto por link antes do 1º desenho (menos deslocamento de layout) */(function(h,d){d.className+=/(^|[#&])s=/.test(h)?" deep-s":/(^|[#&])z=/.test(h)?" deep-z":/(^|[#&])m=/.test(h)?" deep-m":""})(location.hash,document.documentElement)</script>
 ${umami}
 </head>
-<body data-scope="${br ? "br" : uf}" data-mode="resultados" data-calc="${FLAGS.calculado ? "on" : "off"}" data-locais="${FLAGS.locais ? "on" : "off"}">
+<body data-scope="${br ? "br" : uf}" data-mode="resultados" data-calc="${FLAGS.calculado && !t2 ? "on" : "off"}" data-locais="${FLAGS.locais ? "on" : "off"}"${t2 ? ` data-turno="2" data-ele="${T.ele}" data-pleito="${T.pleito}" data-release="${T.release}" data-snap="${T.snap}" data-root="${T.root}"` : ""}>
 <a class="skip" href="#conteudo">Ir para o conteúdo</a>
 <header class="top"><div class="wrap topbar"><a class="brand" href="/" aria-label="Desmentindo — início"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span><b>DESMENTINDO</b></a>
-<nav class="crumbs" id="crumbs" aria-label="Você está em"><a href="/eleicoes-2026/">Brasil</a>${br ? "" : `<span aria-hidden="true">›</span><b>${attr(where)}</b>`}</nav>
+<nav class="crumbs" id="crumbs" aria-label="Você está em"><a href="${T.root}">Brasil</a>${br ? "" : `<span aria-hidden="true">›</span><b>${attr(where)}</b>`}</nav>
 <div class="modes" role="group" aria-label="Modo de leitura"><button type="button" id="mRes" aria-pressed="true">Resultados</button><button type="button" id="mAud" aria-pressed="false">Verificação</button></div></div></header>
-${pnav(br ? "res" : "exp")}
+${pnav(br ? "res" : "exp", T)}
 <main class="wrap" id="conteudo">
 <div class="head">
-<p class="kick"><span class="tag res">Dado oficial · TSE</span>Eleições 2026 · Presidente · 1º turno · 4 out</p>
+<p class="kick"><span class="tag res">Dado oficial · TSE</span>Eleições 2026 · Presidente · ${T.rotulo} · ${T.dia}</p>
 <h1>${attr(where)}</h1>
-${br ? `<nav class="paths" aria-label="O que dá para fazer aqui"><a href="#resultado"><b>Explore os resultados</b><span>Placar oficial do TSE e o caminho até cada seção</span></a><a href="/eleicoes-2026/questionamentos/"><b>Investigue os questionamentos</b><span>${QDATA.questionamentos.length} dúvidas que circularam, testadas nos dados oficiais</span></a><a href="#verificacao"><b>Verificação</b><span>De onde vem cada número</span></a></nav>` : ""}
+${br && t2 ? `<nav class="paths t2" aria-label="O que dá para fazer aqui"><a href="#resultado"><b>Explore os resultados</b><span>Apuração oficial do TSE e o caminho até cada seção</span></a><a href="#historico"><b>Compare com outros turnos</b><span>1º turno de 2026 e 2º turno de 2022, com a fonte</span></a><a href="/eleicoes-2026/"><b>1º turno (4 out)</b><span>Resultado final, a noite da apuração e os questionamentos</span></a></nav>` :
+br ? `<p class="turno2"><a href="/eleicoes-2026/2-turno/"><b>2º turno · 25 de outubro</b><span>Acompanhe a apuração oficial do TSE a partir das 17h</span></a></p><nav class="paths" aria-label="O que dá para fazer aqui"><a href="#resultado"><b>Explore os resultados</b><span>Placar oficial do TSE e o caminho até cada seção</span></a><a href="/eleicoes-2026/questionamentos/"><b>Investigue os questionamentos</b><span>${QDATA.questionamentos.length} dúvidas que circularam, testadas nos dados oficiais</span></a><a href="#verificacao"><b>Verificação</b><span>De onde vem cada número</span></a></nav>` : ""}
 </div>
-${br ? `<section class="estado-el" id="estado" aria-labelledby="t-estado"><h2 id="t-estado">Estado da eleição</h2><div id="lideres" class="lideres" aria-live="polite">${LIDERES0}</div>` : ""}<section id="status" class="cards" aria-label="Situação da apuração">${STATUS0}</section>${br ? "</section>\n" + Q_BR + "\n" + NOITE_BR : ""}
+${br ? `<section class="estado-el" id="estado" aria-labelledby="t-estado"><h2 id="t-estado">Estado da eleição</h2><div id="lideres" class="lideres" aria-live="polite">${LIDERES0}</div>` : ""}<section id="status" class="cards" aria-label="Situação da apuração">${STATUS0}</section>${br ? "</section>\n" + (t2 ? NOITE_2T + "\n" + DIF_2T : Q_BR + "\n" + NOITE_BR) : ""}
 <div class="layout">
 <section class="area-res" aria-labelledby="t-agora" id="resultado"><h2 id="t-agora">${br ? "Resultado oficial" : "Resultado"}</h2><p class="stale" id="stale" hidden></p><p class="snapnote" id="snapnote" hidden></p><div id="placar"><p class="empty">Carregando…</p></div></section>
 <section class="area-terr" aria-labelledby="t-terr" id="onde"><h2 id="t-terr">Explorar o território</h2>
 <div class="busca"><label for="busca">Buscar município</label><input id="busca" type="search" autocomplete="off" placeholder="${br ? "ex.: Campinas" : "nome do município"}" aria-describedby="buscaDica"><p id="buscaDica" class="sub">Depois: zona, local de votação e seção.</p><ul id="buscaRes" class="buscares" aria-live="polite"></ul></div>
 ${br ? `<div class="maphead"><label for="layers">Mostrar no mapa</label><select id="layers"><option value="lider">Quem está à frente</option><option value="tot">Quanto falta totalizar</option><option value="late">Ordem de chegada das seções</option></select></div>
 <div id="mapa" class="mapa"><p class="empty">Disponível depois das 17h.</p></div><div id="mapaLista"></div>
-<ul class="ufs">${UFS.concat([["zz", "Exterior"]]).map(([c, n]) => `<li><a href="/eleicoes-2026/${c}/" title="${attr(n)}">${c === "zz" ? "Exterior" : c.toUpperCase()}</a></li>`).join("")}</ul>` :
+<ul class="ufs">${UFS.concat([["zz", "Exterior"]]).map(([c, n]) => `<li><a href="${T.root}${c}/" title="${attr(n)}">${c === "zz" ? "Exterior" : c.toUpperCase()}</a></li>`).join("")}</ul>` :
 `<div id="explorar"><p class="empty">Disponível depois das 17h.</p></div>
 <details class="outros"><summary>${zz ? "Estados" : "Outros estados e exterior"}</summary><ul class="ufs">${nav}</ul></details>`}
 </section>
@@ -113,7 +136,7 @@ ${br ? `<div class="maphead"><label for="layers">Mostrar no mapa</label><select 
 ${br ? `<h2 class="h2s" id="t-ext">Exterior</h2><div id="exterior"><p class="empty">Disponível depois das 17h.</p></div>` : ""}
 </aside>
 </div>
-<section class="area-aud" aria-labelledby="t-aud" id="verificacao"><h2 id="t-aud">${br ? "Metodologia e verificação" : "Verificação"}</h2>
+${br && t2 ? HIST_2T() + "\n" : ""}<section class="area-aud" aria-labelledby="t-aud" id="verificacao"><h2 id="t-aud">${br ? "Metodologia e verificação" : "Verificação"}</h2>
 <p class="sub">O que cada número é, de onde vem e o que ainda falta. Use o modo Verificação (no topo) para ver os detalhes técnicos abertos. <a href="/eleicoes-2026/questionamentos/">Questionamentos sobre a eleição →</a></p>
 <div class="audgrid"><div><h3>Origem dos números</h3><ul class="rules"><li><span class="prov of">Dado oficial (TSE)</span> número publicado pela Justiça Eleitoral, lido direto dos arquivos públicos do TSE.</li>
 <li><span class="prov calc">Métrica calculada pelo Eleições 2026</span> conta feita por esta página a partir de arquivos oficiais (ex.: % de uma seção a partir do boletim). Não é número do TSE.</li></ul></div>
@@ -124,7 +147,7 @@ ${br ? `<h2 class="h2s" id="t-ext">Exterior</h2><div id="exterior"><p class="emp
 <li>Até a totalização final, todo número é parcial e vem com o % de seções totalizadas.</li>
 <li>Dado que o TSE não informou aparece como “—”, nunca como zero. Entre dois registros da linha do tempo não desenhamos nada.</li>
 <li>Arquivo que ainda não está disponível não é indício de problema na votação, e não inferimos o motivo.</li>
-<li>Não fazemos previsão de vencedor nem projeção.</li></ul></section>
+<li>Não fazemos previsão de vencedor nem projeção.</li>${t2 ? "\n<li>O % de seções totalizadas mostra o andamento da contagem. Não é chance de vitória, e a diferença parcial não prevê a final.</li>" : ""}</ul></section>
 </main>
 <footer><div class="wrap">Fonte: Tribunal Superior Eleitoral (resultados.tse.jus.br). <a href="/#/privacidade">Privacidade</a> · <a href="/">Desmentindo</a></div></footer>
 <script src="${asset("eleicoes-2026/eleicoes-core.js")}" defer></script>
@@ -176,6 +199,9 @@ const files = { "eleicoes-2026/index.html": page(null, null) };
 Object.assign(files, qPages(QDATA, qShell));
 for (const [c, n] of UFS) files[`eleicoes-2026/${c}/index.html`] = page(c, n);
 files["eleicoes-2026/zz/index.html"] = page("zz", "Exterior");
+files["eleicoes-2026/2-turno/index.html"] = page(null, null, T2);
+for (const [c, n] of UFS) files[`eleicoes-2026/2-turno/${c}/index.html`] = page(c, n, T2);
+files["eleicoes-2026/2-turno/zz/index.html"] = page("zz", "Exterior", T2);
 const check = process.argv.includes("--check");
 let bad = 0;
 for (const [rel, html] of Object.entries(files)) {
