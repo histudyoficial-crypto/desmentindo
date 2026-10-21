@@ -397,3 +397,11 @@ footer{border-top:3px solid var(--ink);margin-top:28px;padding:14px 0 40px;font-
 .qresumo{margin:18px 0 6px;padding:12px 0 0;border-top:3px solid var(--ink)}.qresumo h2{margin:0 0 10px;font-size:20px}
 .qresumo ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 22px}.qresumo li{display:flex;align-items:center;gap:8px}
 .qresumo b{font-size:28px;font-stretch:80%;font-weight:900;font-variant-numeric:tabular-nums;line-height:1}
+/* 2º turno (25/10): entrada a partir do 1º turno, diferença por registro e comparação histórica — mesmos tokens do v3 */
+.turno2{margin:12px 0 0}.turno2 a{display:block;max-width:980px;background:var(--yellow-pale);border:1px solid var(--rule);border-left:4px solid var(--ink);padding:8px 12px;color:var(--ink);text-decoration:none}
+.turno2 a:hover{border-color:var(--ink)}.turno2 b{display:block;font-size:15px;line-height:1.2}.turno2 span{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
+.area-dif .qtable,.area-hist .qtable{margin-top:12px;background:var(--white);border:1px solid var(--rule)}
+.area-dif caption{text-align:left;font-weight:700;padding:8px 8px 4px}.chartwrap .zero{stroke:var(--ink-2)}
+.area-hist tbody+tbody{border-top:2px solid var(--rule)}.area-hist th[scope=row] small{display:block;font-weight:400;font-size:12.5px;color:var(--ink-2);margin-top:2px}
+.area-hist table{min-width:0}.dif-k{font-size:13.5px;color:var(--ink-2);margin:8px 0 6px}.area-hist td[colspan]{color:var(--ink-2)}
+@media(max-width:599px){.paths.t2 a:last-child{display:block}}

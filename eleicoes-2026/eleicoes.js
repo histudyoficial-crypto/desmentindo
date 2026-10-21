@@ -27,6 +27,8 @@
   // Raiz das páginas deste turno (links para UF, município e Brasil). Só os dois valores conhecidos; qualquer outro → 1º turno.
   var ROOT = /^\/eleicoes-2026\/(2-turno\/)?$/.test(DB.getAttribute("data-root") || "") ? DB.getAttribute("data-root") : "/eleicoes-2026/";
   var TURNO2 = ELE === "6258";
+  // 1º turno na comparação da página do 2º turno: o arquivo oficial do TSE, só quando o próprio TSE marca final (tf = "s").
+  var URL_1T = BASE + "/6257/dados/br/br-c0001-e006257-u.json";
   var POLL_MS = 90000, MAP_MS = 180000;
   var B = document.body;
   var SCOPE = B.getAttribute("data-scope") || "br";
@@ -119,7 +121,28 @@
       card("Última atualização do TSE", R && R.when ? hhmm(R.when.ms) : "—", R && R.when ? R.when.txt : "Horário não informado", "", OFICIAL) +
       card(fresh ? "Leitura ao vivo" : "Leitura desta página", live.at ? hhmmss(live.at) : "—",
         live.at ? (fresh ? "Lida do TSE agora; nova leitura a cada 90 s" : "Dados locais atualizados até " + hhmmss(live.at)) : "Ainda sem leitura", fresh ? "vivo" : "", "");
-    leaders();
+    leaders(); renderHist();
+  }
+  // ---------------------------------------------------------------- comparação histórica (2º turno, Brasil)
+  function histRows(label, sit, cands) {
+    return cands.map(function (c, i) { return "<tr>" + (i ? "" : '<th scope="row" rowspan="' + cands.length + '">' + label + "<small>" + sit + "</small></th>") +
+      "<td>" + esc(c.name) + "</td><td>" + fInt(c.votes) + "</td><td>" + fPct(c.pct) + "</td></tr>"; }).join("");
+  }
+  function renderHist() {
+    var el = $("histAgora"); if (!el || SCOPE !== "br") return;
+    var R = live.R;
+    el.innerHTML = R && R.cands.length ? histRows("2º turno de 2026", R.final ? "Final (TSE)" : "Parcial · " + fPct(R.pst) + " das seções totalizadas", R.cands.slice(0, 2))
+      : '<tr><th scope="row">2º turno de 2026</th><td colspan="3">' + (NOW() < RELEASE ? "Aguardando apuração" : "O TSE ainda não publicou totalização") + "</td></tr>";
+  }
+  function loadHist1() {
+    var el = $("hist1t"); if (!el || !TURNO2) return;
+    var none = function (t) { el.innerHTML = '<tr><th scope="row">1º turno de 2026</th><td colspan="3">' + t + "</td></tr>"; };
+    getResult(URL_1T).then(function (d) {
+      if (d.notYet || d.refused || !(d.cand && d.cand.length)) return none("Não foi possível ler o arquivo oficial agora; nada é mostrado no lugar.");
+      var R = parseResult(d);
+      if (!R.final) return none("O TSE ainda não marca este resultado como final; nada é mostrado no lugar.");
+      el.innerHTML = histRows("1º turno de 2026", "Final (TSE) · os 2 mais votados", R.cands.slice(0, 2));
+    }).catch(function () { none("Não foi possível ler o arquivo oficial agora; nada é mostrado no lugar."); });
   }
   // Estado da eleição (Brasil): os dois primeiros do mesmo arquivo do placar, com a situação que o TSE informa. Sem número fixo.
   function leaders() {
@@ -325,9 +348,11 @@
       g += '<circle cx="' + xs(r.s.t) + '" cy="' + ys(v) + '" r="4" fill="var(--ink)"><title>' + hhmm(r.s.t) + ": " + esc(r.d.a.candidate_name) + " à frente por " + fInt(r.d.votes) + " votos (" + fPct(r.d.pp) + " p.p.) com " + fPct(r.s.percent_totalized) + " totalizado</title></circle>";
       g += '<text x="' + xs(r.s.t) + '" y="' + (H - 6) + '" class="ax tot" text-anchor="middle">' + fPct(r.s.percent_totalized, 0) + "</text>";
     });
-    box.innerHTML = '<div class="chartwrap" tabindex="0" role="region" aria-label="Gráfico da diferença (role para os lados)"><svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="Diferença em pontos percentuais entre os dois candidatos em cada registro da apuração">' + g + "</svg></div>" +
-      '<table class="dtab"><caption>Diferença em cada registro</caption><thead><tr><th scope="col">Registro</th><th scope="col">Totalizado</th><th scope="col">À frente</th><th scope="col">Votos de diferença</th><th scope="col">Pontos percentuais</th></tr></thead><tbody>' +
-      rows.map(function (r) { return "<tr><td>" + (r.s.kind === "FINAL" ? "Final" : hhmm(r.s.t)) + "</td><td>" + fPct(r.s.percent_totalized) + "</td><td>" + (r.d.tie ? "empate" : esc(r.d.a.candidate_name)) + "</td><td>" + fInt(r.d.votes) + "</td><td>" + fPct(r.d.pp) + "</td></tr>"; }).join("") + "</tbody></table>" +
+    var b = rows[rows.length - 1].d.b;
+    box.innerHTML = '<p class="dif-k">Acima da linha: <b>' + esc(a.a.candidate_name) + "</b> à frente · abaixo: <b>" + esc(b.candidate_name) + "</b> à frente</p>" +
+      '<div class="chartwrap" tabindex="0" role="region" aria-label="Gráfico da diferença (role para os lados)"><svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="Diferença em pontos percentuais entre os dois candidatos em cada registro da apuração; acima da linha, ' + esc(a.a.candidate_name) + ' à frente">' + g + "</svg></div>" +
+      '<div class="qtable" tabindex="0" role="region" aria-label="Diferença em cada registro (role para os lados)"><table><caption>Diferença em cada registro</caption><thead><tr><th scope="col">Registro</th><th scope="col">Totalizado</th><th scope="col">À frente</th><th scope="col">Votos de diferença</th><th scope="col">Pontos percentuais</th></tr></thead><tbody>' +
+      rows.map(function (r) { return "<tr><td>" + (r.s.kind === "FINAL" ? "Final" : hhmm(r.s.t)) + "</td><td>" + fPct(r.s.percent_totalized) + "</td><td>" + (r.d.tie ? "empate" : esc(r.d.a.candidate_name)) + "</td><td>" + fInt(r.d.votes) + "</td><td>" + fPct(r.d.pp) + "</td></tr>"; }).join("") + "</tbody></table></div>" +
       '<p class="note">' + CALCULADO + " Diferença = votos do primeiro menos votos do segundo no mesmo registro oficial do TSE; em pontos percentuais, sobre os votos válidos daquele registro. Só os instantes registrados aparecem; não ligamos os pontos. " +
       "O % totalizado é quanto da contagem já foi feito, não é chance de vitória, e a diferença parcial não prevê a final.</p>";
   }
@@ -591,7 +616,7 @@
     setMode(saved === "auditoria" ? "auditoria" : "resultados", false);
     ["mRes", "mAud"].forEach(function (id) { var b = $(id); if (b) b.addEventListener("click", function () { setMode(id === "mAud" ? "auditoria" : "resultados", true); }); });
     var lay = $("layers"); if (lay) { if (!CALC) { var o = lay.querySelector('option[value="late"]'); if (o) o.remove(); } lay.addEventListener("change", function () { map.layer = lay.value; if (lay.value === "late") loadCalc(); renderMap(); track("ELEICOES_CAMADA", { camada: lay.value }); }); }
-    searchBox(); crumbs(); cards();
+    searchBox(); crumbs(); cards(); loadHist1();
     if (NOW() < RELEASE) {
       B.classList.add("before");
       $("placar").innerHTML = TURNO2
