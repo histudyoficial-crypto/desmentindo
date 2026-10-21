@@ -17,9 +17,16 @@
   "use strict";
   var C = window.EleicoesCore;
   var BASE = window.__ELEICOES_BASE || "https://resultados.tse.jus.br/oficial/ele2026";
-  var ELE = "6257", ELE6 = "006257", PLEITO = "3220", PLE6 = "003220", CARGO = "0001", ELE_NUM = 6257;
-  var RELEASE = Date.parse("2026-10-04T20:00:00Z"); // 17:00 BRT
-  var SNAP_URL = window.__ELEICOES_SNAP || "https://raw.githubusercontent.com/histudyoficial-crypto/desmentindo/eleicoes-2026-dados/presidente-br.json";
+  // Turno vem do <body> gerado no build (data-ele / data-pleito / data-release / data-snap, conferidos no ele-c.json oficial).
+  // Ausente ou malformado → 1º turno (6257/3220), como sempre foi. Nunca adivinha um código.
+  var DB = document.body, dig = function (k, d) { var v = DB.getAttribute(k); return /^\d{3,5}$/.test(v || "") ? v : d; };
+  var ELE = dig("data-ele", "6257"), PLEITO = dig("data-pleito", "3220"), CARGO = "0001", ELE_NUM = +ELE;
+  var ELE6 = ("000000" + ELE).slice(-6), PLE6 = ("000000" + PLEITO).slice(-6);
+  var RELEASE = Date.parse(DB.getAttribute("data-release") || "2026-10-04T20:00:00Z") || Date.parse("2026-10-04T20:00:00Z"); // 17:00 BRT
+  var SNAP_URL = window.__ELEICOES_SNAP || DB.getAttribute("data-snap") || "https://raw.githubusercontent.com/histudyoficial-crypto/desmentindo/eleicoes-2026-dados/presidente-br.json";
+  // Raiz das páginas deste turno (links para UF, município e Brasil). Só os dois valores conhecidos; qualquer outro → 1º turno.
+  var ROOT = /^\/eleicoes-2026\/(2-turno\/)?$/.test(DB.getAttribute("data-root") || "") ? DB.getAttribute("data-root") : "/eleicoes-2026/";
+  var TURNO2 = ELE === "6258";
   var POLL_MS = 90000, MAP_MS = 180000;
   var B = document.body;
   var SCOPE = B.getAttribute("data-scope") || "br";
@@ -192,7 +199,7 @@
         if (u && u.late15_pct != null) { bg = seq(u.late15_pct, 0, 45); txt = fPct(u.late15_pct, 1); label += fPct(u.late15_pct, 1) + " das seções entre as 15% que chegaram por último"; cls = " seqc"; }
         else { cls = " nodata"; label += "sem métrica calculada"; }
       }
-      return '<a class="tile' + cls + '" href="/eleicoes-2026/' + uf + '/" style="grid-row:' + (g[1] + 1) + ";grid-column:" + (g[2] + 1) + (bg ? ";background:" + bg : "") + '" title="' + esc(label) + '"><b>' + uf.toUpperCase() + "</b><span>" + esc(txt) + '</span><span class="vh"> — ' + esc(label) + "</span></a>";
+      return '<a class="tile' + cls + '" href="' + ROOT + uf + '/" style="grid-row:' + (g[1] + 1) + ";grid-column:" + (g[2] + 1) + (bg ? ";background:" + bg : "") + '" title="' + esc(label) + '"><b>' + uf.toUpperCase() + "</b><span>" + esc(txt) + '</span><span class="vh"> — ' + esc(label) + "</span></a>";
     }).join("");
     var leg = "";
     if (past) leg = '<p class="note">Você está vendo um registro passado da linha do tempo. Só existe registro do Brasil; por estado não há registro deste instante, então o mapa não inventa cor. <button type="button" class="linkbtn" data-live>Voltar ao agora</button></p>';
@@ -209,7 +216,7 @@
     var list = $("mapaLista"); if (!list) return;
     var rows = Object.keys(UFN).filter(function (u) { return u !== "zz"; }).sort(function (a, b) { return UFN[a].localeCompare(UFN[b], "pt-BR"); }).map(function (uf) {
       var R = map.data[uf], Ld = R && lead(R);
-      return '<tr><th scope="row"><a href="/eleicoes-2026/' + uf + '/">' + esc(UFN[uf]) + "</a></th><td>" + (Ld ? (Ld.tie ? "empate" : esc(Ld.c.name)) : "—") + "</td><td>" + (Ld && !Ld.tie ? fPct(Ld.c.pct) : "—") + "</td><td>" + (R ? (R.final ? "final" : fPct(R.pst)) : "—") + "</td></tr>";
+      return '<tr><th scope="row"><a href="' + ROOT + uf + '/">' + esc(UFN[uf]) + "</a></th><td>" + (Ld ? (Ld.tie ? "empate" : esc(Ld.c.name)) : "—") + "</td><td>" + (Ld && !Ld.tie ? fPct(Ld.c.pct) : "—") + "</td><td>" + (R ? (R.final ? "final" : fPct(R.pst)) : "—") + "</td></tr>";
     }).join("");
     list.innerHTML = '<details class="tablewrap"><summary>Ver todos os estados em tabela</summary><table class="uftab"><thead><tr><th scope="col">Estado</th><th scope="col">À frente</th><th scope="col">%</th><th scope="col">Totalizado</th></tr></thead><tbody>' + rows + "</tbody></table></details>";
   }
@@ -234,7 +241,7 @@
         .filter(function (x) { return x.f; }).sort(function (a, b) { return b.f - a.f; });
       if (!Object.keys(map.data).length) { el.innerHTML = '<p class="empty">Aguardando a leitura dos estados.</p>'; return; }
       el.innerHTML = rows.length ? '<ol class="falta">' + rows.slice(0, 10).map(function (x) {
-        return '<li><a href="/eleicoes-2026/' + x.uf + '/"><b>' + esc(UFN[x.uf]) + "</b><span>" + fInt(x.f) + " seç" + (x.f === 1 ? "ão" : "ões") + " a totalizar · " + fPct(x.R.pst) + " feito</span></a></li>";
+        return '<li><a href="' + ROOT + x.uf + '/"><b>' + esc(UFN[x.uf]) + "</b><span>" + fInt(x.f) + " seç" + (x.f === 1 ? "ão" : "ões") + " a totalizar · " + fPct(x.R.pst) + " feito</span></a></li>";
       }).join("") + "</ol>" + (rows.length > 10 ? '<p class="note">e mais ' + (rows.length - 10) + " estados.</p>" : "")
         : '<p class="empty">Nenhum estado com seção a totalizar, segundo os arquivos do TSE.</p>';
       el.innerHTML += '<p class="note">' + OFICIAL + " Contagem de seções ainda não totalizadas, como o TSE publica. Não é previsão: não dizemos o que essas seções vão mudar.</p>";
@@ -295,8 +302,32 @@
       }).join("") + "</ol>" +
       '<p class="note">' + OFICIAL + " Cada ponto é o que o TSE mostrava naquele instante; não há linha entre os pontos porque não existe registro entre eles. Faixas cinza = intervalo maior que 70 min sem registro. " +
       CALCULADO + " \"min sem atualização pública\" = hora da nossa leitura menos a hora de atualização informada pelo TSE (hiato observado na atualização pública; não indica causa).</p>";
+    renderDiff();
     $("tlRange").addEventListener("input", function (e) { var v = +e.target.value; selectSnap(v >= snaps.length ? null : v); });
     box.querySelectorAll("button[data-i]").forEach(function (b) { b.addEventListener("click", function () { selectSnap(+b.getAttribute("data-i")); }); });
+  }
+  // Diferença entre os dois candidatos em cada registro (2º turno). Conta sobre os votos oficiais do próprio registro;
+  // sem linha entre registros, sem tendência, sem projeção. % totalizado é andamento da contagem, não chance de vitória.
+  function renderDiff() {
+    var box = $("diferenca"); if (!box) return;
+    var rows = snaps.map(function (s) { return { s: s, d: C.diferenca(s.candidates) }; }).filter(function (r) { return r.d; });
+    if (!rows.length) { box.innerHTML = '<p class="empty">Nenhum registro ainda. A diferença aparece quando houver o primeiro registro oficial da apuração.</p>'; return; }
+    var a = rows[rows.length - 1].d, W = 760, H = 200, Lm = 56, Rm = 16, T = 14, Bm = 40, t0 = RELEASE, t1 = Math.max(rows[rows.length - 1].s.t, t0 + 3600e3);
+    var mx = Math.max.apply(null, rows.map(function (r) { return Math.abs(r.d.pp); }).concat([1])), top = Math.ceil(mx);
+    var xs = function (t) { return Lm + (t - t0) / (t1 - t0) * (W - Lm - Rm); }, ys = function (v) { return T + (H - T - Bm) * (1 - (v + top) / (2 * top)); };
+    var g = '<line class="grid zero" x1="' + Lm + '" x2="' + (W - Rm) + '" y1="' + ys(0) + '" y2="' + ys(0) + '"/>';
+    [-top, 0, top].forEach(function (v) { g += '<text x="' + (Lm - 6) + '" y="' + (ys(v) + 4) + '" class="ax" text-anchor="end">' + (v > 0 ? "+" : "") + v.toLocaleString("pt-BR") + " p.p.</text>"; });
+    for (var h = t0; h <= t1; h += 3600e3) g += '<text x="' + xs(h) + '" y="' + (H - 22) + '" class="ax" text-anchor="middle">' + hhmm(h) + "</text>";
+    rows.forEach(function (r) {
+      var v = r.d.a.candidate_id === a.a.candidate_id ? r.d.pp : -r.d.pp;   // sinal sempre do ponto de vista de quem está à frente no último registro
+      g += '<circle cx="' + xs(r.s.t) + '" cy="' + ys(v) + '" r="4" fill="var(--ink)"><title>' + hhmm(r.s.t) + ": " + esc(r.d.a.candidate_name) + " à frente por " + fInt(r.d.votes) + " votos (" + fPct(r.d.pp) + " p.p.) com " + fPct(r.s.percent_totalized) + " totalizado</title></circle>";
+      g += '<text x="' + xs(r.s.t) + '" y="' + (H - 6) + '" class="ax tot" text-anchor="middle">' + fPct(r.s.percent_totalized, 0) + "</text>";
+    });
+    box.innerHTML = '<div class="chartwrap" tabindex="0" role="region" aria-label="Gráfico da diferença (role para os lados)"><svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="Diferença em pontos percentuais entre os dois candidatos em cada registro da apuração">' + g + "</svg></div>" +
+      '<table class="dtab"><caption>Diferença em cada registro</caption><thead><tr><th scope="col">Registro</th><th scope="col">Totalizado</th><th scope="col">À frente</th><th scope="col">Votos de diferença</th><th scope="col">Pontos percentuais</th></tr></thead><tbody>' +
+      rows.map(function (r) { return "<tr><td>" + (r.s.kind === "FINAL" ? "Final" : hhmm(r.s.t)) + "</td><td>" + fPct(r.s.percent_totalized) + "</td><td>" + (r.d.tie ? "empate" : esc(r.d.a.candidate_name)) + "</td><td>" + fInt(r.d.votes) + "</td><td>" + fPct(r.d.pp) + "</td></tr>"; }).join("") + "</tbody></table>" +
+      '<p class="note">' + CALCULADO + " Diferença = votos do primeiro menos votos do segundo no mesmo registro oficial do TSE; em pontos percentuais, sobre os votos válidos daquele registro. Só os instantes registrados aparecem; não ligamos os pontos. " +
+      "O % totalizado é quanto da contagem já foi feito, não é chance de vitória, e a diferença parcial não prevê a final.</p>";
   }
   function selectSnap(i) {
     current.snapSel = i;
@@ -351,7 +382,7 @@
         var hits = l.filter(function (m) { return m.k.indexOf(q) >= 0 && (SCOPE === "br" || m.uf === SCOPE); })
           .sort(function (a, b) { return (a.k.indexOf(q) === 0 ? 0 : 1) - (b.k.indexOf(q) === 0 ? 0 : 1) || a.k.length - b.k.length; }).slice(0, 8);
         out.innerHTML = hits.length ? hits.map(function (m) {
-          return '<li><a href="/eleicoes-2026/' + m.uf + "/#m=" + esc(m.cd) + '">' + esc(m.nm) + " <small>" + esc(m.uf.toUpperCase()) + "</small></a></li>"; }).join("")
+          return '<li><a href="' + ROOT + m.uf + "/#m=" + esc(m.cd) + '">' + esc(m.nm) + " <small>" + esc(m.uf.toUpperCase()) + "</small></a></li>"; }).join("")
           : '<li class="none">Nenhum município com esse nome.</li>';
       }).catch(function () { out.innerHTML = '<li class="none">Não foi possível ler a lista do TSE agora.</li>'; });
     };
@@ -371,7 +402,7 @@
   function writeHash(o) { var s = ["m", "z", "s"].filter(function (k) { return o[k]; }).map(function (k) { return k + "=" + o[k]; }).join("&"); if (("#" + s) !== location.hash) history.pushState(null, "", location.pathname + (s ? "#" + s : "")); }
   function crumbs() {
     var el = $("crumbs"); if (!el) return;
-    var parts = ['<a href="/eleicoes-2026/">Brasil</a>'];
+    var parts = ['<a href="' + ROOT + '">Brasil</a>'];
     if (SCOPE !== "br") parts.push(st.m ? '<a href="#">' + esc(UFN[SCOPE]) + "</a>" : "<b>" + esc(UFN[SCOPE]) + "</b>");
     if (st.m) parts.push(st.z ? '<a href="#m=' + esc(st.m) + '">' + esc(munName(st.m)) + "</a>" : "<b>" + esc(munName(st.m)) + "</b>");
     if (st.z) parts.push(st.s ? '<a href="#m=' + esc(st.m) + "&z=" + esc(st.z) + '">Zona ' + esc(st.z) + "</a>" : "<b>Zona " + esc(st.z) + "</b>");
@@ -548,7 +579,7 @@
     getResult(resultUrl("zz")).then(function (d) {
       if (d.notYet || d.refused || !(d.cand && d.cand.length)) { el.innerHTML = '<p class="empty">O TSE ainda não publicou totalização do exterior.</p>'; return; }
       var R = parseResult(d);
-      el.innerHTML = '<ol class="mini">' + R.cands.slice(0, 3).map(function (c) { return "<li><span>" + esc(c.name) + "</span><b>" + fPct(c.pct) + "</b></li>"; }).join("") + '</ol><p class="note">' + OFICIAL + " " + (R.final ? "final" : fPct(R.pst) + " totalizado") + '. <a href="/eleicoes-2026/zz/">Exterior por cidade →</a></p>';
+      el.innerHTML = '<ol class="mini">' + R.cands.slice(0, 3).map(function (c) { return "<li><span>" + esc(c.name) + "</span><b>" + fPct(c.pct) + "</b></li>"; }).join("") + '</ol><p class="note">' + OFICIAL + " " + (R.final ? "final" : fPct(R.pst) + " totalizado") + '. <a href="' + ROOT + 'zz/">Exterior por cidade →</a></p>';
     }).catch(function () { el.innerHTML = '<p class="empty">Não foi possível ler o TSE agora.</p>'; });
   }
 
@@ -561,7 +592,9 @@
     searchBox(); crumbs(); cards();
     if (NOW() < RELEASE) {
       B.classList.add("before");
-      $("placar").innerHTML = '<p class="wait"><b>A apuração oficial começa às 17h (horário de Brasília).</b> Antes disso, esta página não mostra nenhum número de 2026.</p>';
+      $("placar").innerHTML = TURNO2
+        ? '<p class="wait"><b>Aguardando apuração.</b> A apuração oficial do 2º turno começa às 17h de 25 de outubro (horário de Brasília). Antes disso, esta página não mostra nenhum número deste turno.</p>'
+        : '<p class="wait"><b>A apuração oficial começa às 17h (horário de Brasília).</b> Antes disso, esta página não mostra nenhum número deste turno.</p>';
       var left = RELEASE - NOW(); if (left < 6 * 3600e3) setTimeout(function () { B.classList.remove("before"); start(); }, left + 2000);
       return;
     }
