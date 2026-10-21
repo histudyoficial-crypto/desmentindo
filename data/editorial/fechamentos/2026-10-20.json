@@ -1,0 +1,324 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-20",
+ "public_title": "FECHAMENTO — 20 de outubro de 2026",
+ "published_at": "2026-10-21T15:26:57Z",
+ "cutoff_at": "2026-10-20T20:31:50-03:00",
+ "context": "Fechamento de 20 de outubro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "Mudança em seções afetou mais de 1,9 mi de eleitores no 1º turno; TSE atualiza locais para 2ª etapa",
+    "story": "mudanca-em-secoes-afetou-mais-de-1-9-mi-de-eleitores-no-1-turno-tse-atualiza"
+   },
+   {
+    "text": "PGR envia ao STF parecer contra pedido de Moraes para investigar Mendonça por abuso de autoridade",
+    "story": "pgr-envia-ao-stf-parecer-contra-pedido-de-moraes-para-investigar-mendonca-por"
+   },
+   {
+    "text": "PF faz busca contra ex-servidor do STJ suspeito de vazar decisões a amigo de Flávio Bolsonaro",
+    "story": "pf-faz-busca-contra-ex-servidor-do-stj-suspeito-de-vazar-decisoes-a-amigo-de"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "mudanca-em-secoes-afetou-mais-de-1-9-mi-de-eleitores-no-1-turno-tse-atualiza",
+   "headline": "Mudança em seções afetou mais de 1,9 mi de eleitores no 1º turno; TSE atualiza locais para 2ª etapa",
+   "lead": true,
+   "what_happened": "Os presidentes dos TREs assinaram nota conjunta afirmando que as mudanças nos locais de votação para o segundo turno foram excepcionais e em número menor que em 2022. A nota nega interferência do presidente do TSE, Kassio Nunes Marques, nas mudanças.",
+   "what_changed": "O Ministério Público Eleitoral sugeriu ao TSE que notifique eleitores por WhatsApp ou SMS sobre as mudanças nos locais de votação. Segundo a Folha, o TSE atualizou na noite de segunda o número para 438 seções com endereços diferentes, afetando 126.032 eleitores.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "Tribunais chamam mudanças em locais de votação de exceção e negam ingerência de Kassio",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tribunais-chamam-mudancas-em-locais-de-votacao-de-excecao-e-negam-ingerencia-de-kassio.shtml",
+     "published_at": "2026-10-19T21:03:00Z",
+     "summary": "Os presidentes dos TREs assinaram nota conjunta afirmando que as mudanças nos locais de votação para o segundo turno foram excepcionais e em número menor que em 2022.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "MP aciona TSE para que eleitor seja avisado por WhatsApp sobre mudança em locais de votação",
+     "url": "https://estadao.com.br/politica/eleicoes/mp-aciona-tse-para-que-eleitor-seja-avisado-por-whatsapp-sobre-mudanca-em-locais-de-votacao-npr",
+     "published_at": "2026-10-19T20:45:53Z",
+     "summary": "O Ministério Público Eleitoral sugeriu ao TSE que notifique eleitores por WhatsApp ou SMS sobre as mudanças nos locais de votação.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Justiça Eleitoral altera dois locais de votação em São Paulo no 2º turno; veja endereços",
+     "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/10/19/justica-eleitoral-altera-dois-locais-de-votacao-em-sao-paulo-no-2o-turno-veja-enderecos.ghtml",
+     "published_at": "2026-10-19T19:59:42Z",
+     "summary": "Segundo o TRE-SP, apenas dois locais de votação foram alterados em São Paulo, afetando 7.916 eleitores em 24 seções, por danos de chuvas e ventos no primeiro turno.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:31, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "pgr-envia-ao-stf-parecer-contra-pedido-de-moraes-para-investigar-mendonca-por",
+   "headline": "PGR envia ao STF parecer contra pedido de Moraes para investigar Mendonça por abuso de autoridade",
+   "lead": false,
+   "what_happened": "A PGR se manifestou contra a abertura de investigação contra André Mendonça pedida por Alexandre de Moraes, mas apontou vieses e desvios de neutralidade. A PGR afirma que a representação não parece demonstrar conduta enquadrável na Lei de Abuso de Autoridade.",
+   "what_changed": "O parecer foi enviado ao presidente do STF, Edson Fachin, e está sob sigilo. Segundo a Gazeta do Povo, os relatórios da PF trazem o carimbo de documentos sem valor probatório. Alegação atribuída (Alexandre de Moraes, segundo g1), não comprovada: Moraes mencionou fortes indícios de abuso de autoridade e possível crime de responsabilidade de Mendonça.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "PGR envia ao STF parecer contra pedido de Moraes para investigar Mendonça por abuso de autoridade",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/pgr-envia-ao-stf-parecer-contra-pedido-de-moraes-para-investigar-mendonca-por-abuso-de-autoridade.shtml",
+     "published_at": "2026-10-19T21:57:00Z",
+     "summary": "A PGR se manifestou contra a abertura de investigação contra André Mendonça pedida por Alexandre de Moraes, mas apontou vieses e desvios de neutralidade.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Master: PGR diz não ver abuso de autoridade de Mendonça apontado por Moraes em pedido de investigação",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/19/caso-master-pgr-diz-nao-ver-abuso-de-autoridade-de-mendonca-em-relatorio-de-inteligencia.ghtml",
+     "published_at": "2026-10-19T19:41:06Z",
+     "summary": "O parecer foi enviado ao presidente do STF, Edson Fachin, e está sob sigilo.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "PGR é contra pedido de Moraes para investigar Mendonça",
+     "url": "https://gazetadopovo.com.br/republica/pgr-e-contra-pedido-de-moraes-para-investigar-mendonca",
+     "published_at": "2026-10-19T20:43:50Z",
+     "summary": "Segundo a Gazeta do Povo, os relatórios da PF trazem o carimbo de documentos sem valor probatório.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Jovem Pan",
+     "title": "PGR se manifesta contra pedido de Moraes para investigar André Mendonça",
+     "url": "https://jovempan.com.br/politica/pgr-se-manifesta-contra-pedido-de-moraes-para-investigar-andre-mendonca",
+     "published_at": "2026-10-19T18:39:27-03:00",
+     "summary": "A PGR se manifestou contra o pedido de Moraes para investigar André Mendonça; Gonet afirmou em parecer que não há elementos suficientes para investigação por abuso de autoridade.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:31, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "pf-faz-busca-contra-ex-servidor-do-stj-suspeito-de-vazar-decisoes-a-amigo-de",
+   "headline": "PF faz busca contra ex-servidor do STJ suspeito de vazar decisões a amigo de Flávio Bolsonaro",
+   "lead": false,
+   "what_happened": "A PF cumpriu busca e apreensão contra ex-servidor do STJ suspeito de vazar minutas de decisões ao advogado Willer Tomaz. Willer Tomaz nega categoricamente acesso irregular a decisões judiciais ou pareceres do MPF.",
+   "what_changed": "Segundo a CNN, inquérito da PF aponta indício de movimentação de R$ 130 milhões em três meses em conta de Willer Tomaz. O STJ diz que o servidor foi exonerado e que as medidas criminais são sigilosas. Alegação atribuída (CNN), não comprovada: A apuração aponta que Flávio teria dividido uma conta bancária com Willer; a assessoria de Flávio negou.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "PF faz busca contra ex-servidor do STJ suspeito de vazar decisões a amigo de Flávio Bolsonaro",
+     "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/pf-faz-busca-em-ex-servidor-do-stj-suspeito-de-vazar-decisoes-a-amigo-de-flavio-bolsonaro.shtml",
+     "published_at": "2026-10-19T15:42:00Z",
+     "summary": "A PF cumpriu busca e apreensão contra ex-servidor do STJ suspeito de vazar minutas de decisões ao advogado Willer Tomaz.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "title": "Advogado amigo de Flávio movimentou R$ 130 milhões em três meses, diz PF",
+     "url": "https://cnnbrasil.com.br/politica/advogado-amigo-de-flavio-movimentou-r-130-milhoes-em-tres-meses-diz-pf",
+     "published_at": "2026-10-20T12:27:58Z",
+     "summary": "Segundo a CNN, inquérito da PF aponta indício de movimentação de R$ 130 milhões em três meses em conta de Willer Tomaz.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:31, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "tse-proibe-nikolas-e-marcal-de-republicar-conteudos-falsos-sobre-lula-e",
+   "title": "TSE proíbe Nikolas e Marçal de republicar conteúdos falsos sobre Lula e restringe impulsionamento",
+   "text": "O corregedor-geral eleitoral do TSE proibiu Nikolas Ferreira e Pablo Marçal de republicarem postagens com conteúdo já considerado falso pela corte. A decisão determinou a Meta e X que impeçam o impulsionamento pago nas contas dos dois até o fim do segundo turno.",
+   "sources": [
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/corregedor-eleitoral-proibe-impulsionaemnto-pago-de-posts-de-nikolas-e-marcal",
+     "published_at": "2026-10-19T13:32:13Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-proibe-nikolas-e-marcal-de-republicar-conteudos-falsos-sobre-lula-e-restringe-impulsionamento.shtml",
+     "published_at": "2026-10-19T16:26:00Z"
+    }
+   ]
+  },
+  {
+   "id": "pgr-defende-manter-prisao-cautelar-de-parentes-de-daniel-vorcaro-e-outros",
+   "title": "PGR defende manter prisão cautelar de parentes de Daniel Vorcaro e outros envolvidos no caso Master",
+   "text": "A PGR se manifestou pela manutenção da prisão cautelar de Henrique Vorcaro e Felipe Vorcaro, além de Fabiano Zettel e Daniel Lopes Monteiro, em parecer enviado ao presidente do STF, Edson Fachin. A PGR defendeu que não houve abuso de autoridade por parte de André Mendonça na condução da investigação.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/19/caso-master-pgr-defende-manutencao-da-prisao-de-familiares-e-assessores-de-vorcaro.ghtml",
+     "published_at": "2026-10-19T19:53:41Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/pgr-defende-manter-prisao-cautelar-de-parentes-de-daniel-vorcaro-e-outros-envolvidos-no-caso-master-nprp",
+     "published_at": "2026-10-20T01:10:56Z"
+    }
+   ]
+  },
+  {
+   "id": "anpd-da-cinco-dias-para-meta-explicar-suspensao-de-contas-e-remocao-de-posts",
+   "title": "ANPD dá cinco dias para Meta explicar suspensão de contas e remoção de posts",
+   "text": "A ANPD deu cinco dias úteis para a Meta esclarecer denúncias de possíveis violações aos direitos dos usuários na suspensão de contas, remoção de publicações e restrição de alcance. Os ofícios foram enviados à Meta na segunda-feira (19), após a abertura de procedimento administrativo na sexta-feira (16).",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/tecnologia/noticia/2026/10/19/anpd-da-cinco-dias-para-meta-explicar-suspensao-de-contas-e-remocao-de-posts.ghtml",
+     "published_at": "2026-10-19T15:14:46Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/anpd-cobra-meta-por-bloqueios-e-remocao-de-conteudos",
+     "published_at": "2026-10-19T16:47:08Z"
+    }
+   ]
+  },
+  {
+   "id": "meta-nega-favorecer-candidatos-e-diz-ao-tse-ter-cumprido-determinacoes",
+   "title": "Meta nega favorecer candidatos e diz ao TSE ter cumprido determinações",
+   "text": "A Meta negou ao TSE que esteja descumprindo ordens da Corte ou favorecendo candidaturas. A Meta afirma que, se o sistema automatizado bloquear conta de anúncios de candidatos do segundo turno, uma equipe humana revisa a decisão em até duas horas.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/20/meta-responde-ao-tse-e-diz-que-nao-houve-desobediencia-ou-demora-no-cumprimento-de-decisao.ghtml",
+     "published_at": "2026-10-20T12:22:57Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/eleicoes/meta-nega-favorecer-candidatos-e-diz-ao-tse-ter-cumprido-determinacoes",
+     "published_at": "2026-10-20T13:07:06Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "Folha",
+   "title": "Tribunais chamam mudanças em locais de votação de exceção e negam ingerência de Kassio",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/tribunais-chamam-mudancas-em-locais-de-votacao-de-excecao-e-negam-ingerencia-de-kassio.shtml",
+   "published_at": "2026-10-19T21:03:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "MP aciona TSE para que eleitor seja avisado por WhatsApp sobre mudança em locais de votação",
+   "url": "https://estadao.com.br/politica/eleicoes/mp-aciona-tse-para-que-eleitor-seja-avisado-por-whatsapp-sobre-mudanca-em-locais-de-votacao-npr",
+   "published_at": "2026-10-19T20:45:53Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Justiça Eleitoral altera dois locais de votação em São Paulo no 2º turno; veja endereços",
+   "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/10/19/justica-eleitoral-altera-dois-locais-de-votacao-em-sao-paulo-no-2o-turno-veja-enderecos.ghtml",
+   "published_at": "2026-10-19T19:59:42Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "PGR envia ao STF parecer contra pedido de Moraes para investigar Mendonça por abuso de autoridade",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/pgr-envia-ao-stf-parecer-contra-pedido-de-moraes-para-investigar-mendonca-por-abuso-de-autoridade.shtml",
+   "published_at": "2026-10-19T21:57:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Master: PGR diz não ver abuso de autoridade de Mendonça apontado por Moraes em pedido de investigação",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/19/caso-master-pgr-diz-nao-ver-abuso-de-autoridade-de-mendonca-em-relatorio-de-inteligencia.ghtml",
+   "published_at": "2026-10-19T19:41:06Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "PGR é contra pedido de Moraes para investigar Mendonça",
+   "url": "https://gazetadopovo.com.br/republica/pgr-e-contra-pedido-de-moraes-para-investigar-mendonca",
+   "published_at": "2026-10-19T20:43:50Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Jovem Pan",
+   "title": "PGR se manifesta contra pedido de Moraes para investigar André Mendonça",
+   "url": "https://jovempan.com.br/politica/pgr-se-manifesta-contra-pedido-de-moraes-para-investigar-andre-mendonca",
+   "published_at": "2026-10-19T18:39:27-03:00",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "PF faz busca contra ex-servidor do STJ suspeito de vazar decisões a amigo de Flávio Bolsonaro",
+   "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/pf-faz-busca-em-ex-servidor-do-stj-suspeito-de-vazar-decisoes-a-amigo-de-flavio-bolsonaro.shtml",
+   "published_at": "2026-10-19T15:42:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Advogado amigo de Flávio movimentou R$ 130 milhões em três meses, diz PF",
+   "url": "https://cnnbrasil.com.br/politica/advogado-amigo-de-flavio-movimentou-r-130-milhoes-em-tres-meses-diz-pf",
+   "published_at": "2026-10-20T12:27:58Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Corregedor eleitoral proíbe impulsionamento pago de posts de Nikolas e Marçal",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/corregedor-eleitoral-proibe-impulsionaemnto-pago-de-posts-de-nikolas-e-marcal",
+   "published_at": "2026-10-19T13:32:13Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "TSE proíbe Nikolas e Marçal de republicar conteúdos falsos sobre Lula e restringe impulsionamento",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-proibe-nikolas-e-marcal-de-republicar-conteudos-falsos-sobre-lula-e-restringe-impulsionamento.shtml",
+   "published_at": "2026-10-19T16:26:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Caso Master: PGR defende manutenção da prisão de familiares e assessores de Vorcaro",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/19/caso-master-pgr-defende-manutencao-da-prisao-de-familiares-e-assessores-de-vorcaro.ghtml",
+   "published_at": "2026-10-19T19:53:41Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "PGR defende manter prisão cautelar de parentes de Daniel Vorcaro e outros envolvidos no caso Master",
+   "url": "https://estadao.com.br/politica/pgr-defende-manter-prisao-cautelar-de-parentes-de-daniel-vorcaro-e-outros-envolvidos-no-caso-master-nprp",
+   "published_at": "2026-10-20T01:10:56Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "ANPD dá cinco dias para Meta explicar suspensão de contas e remoção de posts",
+   "url": "https://g1.globo.com/tecnologia/noticia/2026/10/19/anpd-da-cinco-dias-para-meta-explicar-suspensao-de-contas-e-remocao-de-posts.ghtml",
+   "published_at": "2026-10-19T15:14:46Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "ANPD cobra Meta por bloqueios e remoção de conteúdos",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/anpd-cobra-meta-por-bloqueios-e-remocao-de-conteudos",
+   "published_at": "2026-10-19T16:47:08Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Meta diz ao TSE que tomou medidas para candidaturas serem tratadas de forma igual",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/20/meta-responde-ao-tse-e-diz-que-nao-houve-desobediencia-ou-demora-no-cumprimento-de-decisao.ghtml",
+   "published_at": "2026-10-20T12:22:57Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Meta nega favorecer candidatos e diz ao TSE ter cumprido determinações",
+   "url": "https://cnnbrasil.com.br/eleicoes/meta-nega-favorecer-candidatos-e-diz-ao-tse-ter-cumprido-determinacoes",
+   "published_at": "2026-10-20T13:07:06Z"
+  }
+ ],
+ "note": "Informações válidas até o corte das 20:31. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
