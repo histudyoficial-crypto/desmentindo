@@ -45,6 +45,8 @@
   var hhmm = function (ms) { return new Date(ms - 3 * 3600e3).toISOString().slice(11, 16); };
   var hhmmss = function (ms) { return new Date(ms - 3 * 3600e3).toISOString().slice(11, 19); };
   var norm = function (s) { return String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase(); };
+  // Saída de emergência: se esta página não consegue ler o TSE, o leitor segue na fonte (nunca um número nosso no lugar).
+  var PORTAL = '<a class="portal" href="https://resultados.tse.jus.br/oficial/app/index.html" rel="noopener">Acompanhe no portal oficial do TSE →</a>';
   var OFICIAL = '<span class="prov of" title="Número publicado pela Justiça Eleitoral">Dado oficial (TSE)</span>';
   var CALCULADO = '<span class="prov calc" title="Conta feita por esta página a partir de arquivos oficiais; não é número publicado pelo TSE">Métrica calculada pelo Eleições 2026</span>';
   function track(name, data) { try { if (window.umami && window.umami.track) window.umami.track(name, data); } catch (e) { /* nunca quebra */ } }
@@ -168,8 +170,8 @@
       $("stale").hidden = true; cards(); renderFalta();
     }).catch(function () {
       live.ok = false; cards();
-      if (live.R) { $("stale").hidden = false; $("stale").textContent = "Sem leitura nova desde " + hhmmss(live.at) + ": não foi possível ler o TSE agora. Os números são dessa hora."; }
-      else el.innerHTML = '<p class="empty">Não foi possível ler o TSE agora. Nova tentativa em 90 segundos.</p>';
+      if (live.R) { $("stale").hidden = false; $("stale").innerHTML = esc("Sem leitura nova desde " + hhmmss(live.at) + ": não foi possível ler o TSE agora. Os números são dessa hora.") + " " + PORTAL; }
+      else el.innerHTML = '<p class="empty">Não foi possível ler o TSE agora. Nova tentativa em 90 segundos. ' + PORTAL + "</p>";
     });
   }
 
