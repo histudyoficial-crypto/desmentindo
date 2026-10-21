@@ -1,0 +1,92 @@
+{
+ "schema": "desmentindo.public.recent_videos.v1",
+ "date": "2026-10-20",
+ "published_at": "2026-10-21T15:26:57Z",
+ "title": "Vídeos recentes dos canais",
+ "notice": "Publicado pelos canais acompanhados. Ainda não checado pelo Desmentindo: título e conteúdo são dos autores. Aparecer aqui não é confirmação nem ligação com as notícias do dia.",
+ "window": {
+  "days": 3,
+  "from": "2026-10-18",
+  "to": "2026-10-20"
+ },
+ "items": [
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "isjHW6L-D-k",
+   "title": "Biden da Silva: o declínio de Lula exposto no debate – por Caio Coppolla",
+   "published_at": "2026-10-20T22:18:43Z",
+   "url": "https://www.youtube.com/watch?v=isjHW6L-D-k",
+   "thumbnail": "https://i.ytimg.com/vi/isjHW6L-D-k/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-21T00:10:59Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "j1kzKJx9gCs",
+   "title": "Presidente da OAB e secretário de FHC contestam convenciones de Lula - Alexandre Garcia",
+   "published_at": "2026-10-20T22:07:48Z",
+   "url": "https://www.youtube.com/watch?v=j1kzKJx9gCs",
+   "thumbnail": "https://i.ytimg.com/vi/j1kzKJx9gCs/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-21T00:10:59Z"
+  },
+  {
+   "channel": "Te Atualizei",
+   "channel_id": "UCXRIQok8uzYtg1TPwSqikVg",
+   "video_id": "tAXJjS3d598",
+   "title": "PERDEU MANÉ, NAO AMOLA - Flávio vence primeiro debate",
+   "published_at": "2026-10-19T11:03:05Z",
+   "url": "https://www.youtube.com/watch?v=tAXJjS3d598",
+   "thumbnail": "https://i.ytimg.com/vi/tAXJjS3d598/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-20T00:44:00Z"
+  },
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "aVaQ4pn-RGc",
+   "title": "LIVE 09 - BOLETIM COPPOLLA",
+   "published_at": "2026-10-18T13:35:37Z",
+   "url": "https://www.youtube.com/watch?v=aVaQ4pn-RGc",
+   "thumbnail": "https://i.ytimg.com/vi/aVaQ4pn-RGc/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-18T23:43:57Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "8gqCVqv4Z0s",
+   "title": "Montanha de benesses por votos é crime eleitoral - Alexandre Garcia",
+   "published_at": "2026-10-20T17:28:13Z",
+   "url": "https://www.youtube.com/watch?v=8gqCVqv4Z0s",
+   "thumbnail": null,
+   "highlight": false,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-21T00:10:59Z"
+  },
+  {
+   "channel": "Te Atualizei",
+   "channel_id": "UCXRIQok8uzYtg1TPwSqikVg",
+   "video_id": "hc7f0z6kOXI",
+   "title": "\"MENTIROSO E MAU-CARATÉR\" - Amiga de Lulinha AVISA QUE VAI DELATAR e nao vai POUPAR NINGUÉM",
+   "published_at": "2026-10-18T11:06:21Z",
+   "url": "https://www.youtube.com/watch?v=hc7f0z6kOXI",
+   "thumbnail": null,
+   "highlight": false,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-18T23:43:57Z"
+  }
+ ]
+}
