@@ -167,6 +167,7 @@ function page(uf, name, T = T1) {
 ${umami}
 </head>
 <body data-scope="${br ? "br" : uf}" data-mode="resultados" data-calc="${FLAGS.calculado && !t2 ? "on" : "off"}" data-locais="${FLAGS.locais ? "on" : "off"}"${t2 ? ` data-turno="2" data-ele="${T.ele}" data-pleito="${T.pleito}" data-release="${T.release}" data-snap="${T.snap}" data-root="${T.root}"` : ""}>
+<script>/* modo de leitura salvo aplicado antes do 1º desenho: a altura dos cartões não muda depois (CLS) */try{if(localStorage.getItem("eleicoes-modo")==="auditoria")document.body.setAttribute("data-mode","auditoria")}catch(e){}</script>
 <a class="skip" href="#conteudo">Ir para o conteúdo</a>
 <header class="top"><div class="wrap topbar"><a class="brand" href="/" aria-label="Desmentindo — início"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span><b>DESMENTINDO</b></a>
 <nav class="crumbs" id="crumbs" aria-label="Você está em"><a href="${T.root}">Brasil</a>${br ? "" : `<span aria-hidden="true">›</span><b>${attr(where)}</b>`}</nav>
