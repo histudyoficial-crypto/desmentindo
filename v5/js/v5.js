@@ -332,15 +332,28 @@
   // ---------------------------------------------------------------- HOME
   // Edição editorial aprovada: JSON próprio publicado em /data/editorial/ (versionado pelo carimbo de build e
   // pelo sha256 do índice). Sem edição ou falha de leitura → null (nunca inventa conteúdo).
-  var edPromise = null;
+  var edPromise = null, edIdx = null, edByDate = {};
+  function loadEdIndex() {
+    if (!edIdx) edIdx = fetch("/data/editorial/index.json" + (DV ? "?v=" + DV : "")).then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; });
+    return edIdx;
+  }
+  // Uma edição publicada pela entrada do índice (arquivo validado; versão pelo sha256). Falha → null.
+  function loadEdFile(x) {
+    if (!x || !/^data\/editorial\/edicoes\/\d{4}-\d{2}-\d{2}\.json$/.test(x.file || "")) return Promise.resolve(null);
+    if (!edByDate[x.file]) edByDate[x.file] = fetch("/" + x.file + "?v=" + String(x.sha256 || "").slice(0, 12)).then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; });
+    return edByDate[x.file];
+  }
   function loadEdition() {
-    if (!edPromise) edPromise = fetch("/data/editorial/index.json" + (DV ? "?v=" + DV : "")).then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (idx) {
-        var x = idx && idx.editions && idx.editions[0];
-        if (!x || !/^data\/editorial\/edicoes\/\d{4}-\d{2}-\d{2}\.json$/.test(x.file)) return null;
-        return fetch("/" + x.file + "?v=" + String(x.sha256 || "").slice(0, 12)).then(function (r) { return r.ok ? r.json() : null; });
-      }).catch(function () { return null; });
+    if (!edPromise) edPromise = loadEdIndex().then(function (idx) { return loadEdFile(idx && idx.editions && idx.editions[0]); });
     return edPromise;
+  }
+  // Edição publicada de uma data (para #/agora/<id> de edições anteriores e as Últimas atualizações).
+  function loadEditionOf(d) {
+    return loadEdIndex().then(function (idx) {
+      return loadEdFile(((idx && idx.editions) || []).filter(function (x) { return x.edition === d; })[0]);
+    });
   }
   function edItems(EDN) {
     return EDN && EDN.items && EDN.items.length ? EDN.items.map(function (it) {
@@ -429,6 +442,51 @@
     return '<section class="ah ah-idle" aria-label="Agora, hoje"><div class="ah-in">' +
       '<p class="ah-k"><span class="ah-kk"><i class="ah-dot" aria-hidden="true"></i>Hoje · <time datetime="' + e(od) + '">' + e(dDay(od)) + "</time></span></p>" +
       '<p class="ah-t">Acompanhamento do dia em andamento. O fechamento de hoje sai à noite.</p></div></section>';
+  }
+  // ÚLTIMAS ATUALIZAÇÕES DO AGORA (22/10, regra revisada por Johnny): só no estado C (nada de hoje publicado), abaixo do
+  // FECHAMENTO, que segue como capa. Fonte: só edições PUBLICADAS (data/editorial/edicoes) dos últimos AG_WINDOW dias civis
+  // (BRT), antes de hoje; no máximo AG_MAX notícias; só a data da edição (a edição pública não tem horário por item, nada é
+  // inventado). Deduplicação completa: o que já está no FECHAMENTO exibido não se repete; edição toda coberta vira uma linha
+  // com links para o FECHAMENTO e para o histórico do Agora daquele dia. Sem edição na janela, a seção não aparece.
+  var AG_WINDOW = 3, AG_MAX = 5;
+  function normT(t) { return String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim(); }
+  function fxTitles(LF) {
+    var set = {};
+    (LF ? (LF.main_stories || []).concat(LF.other_stories || []) : []).forEach(function (st) {
+      [st.headline, st.title].forEach(function (t) { if (t) set[normT(t)] = 1; });
+    });
+    return set;
+  }
+  function agoraRecentGroups(EDS, LF, od) {
+    var seen = fxTitles(LF), left = AG_MAX, out = [];
+    (EDS || []).filter(function (x) { var n = x && isDay(x.edition) ? civilDays(x.edition, od) : NaN; return n >= 1 && n <= AG_WINDOW; })
+      .sort(function (a, b) { return a.edition < b.edition ? 1 : -1; })
+      .forEach(function (x) {
+        var all = edItems(x).filter(function (it) { return it.id && it.title && isDay(it.date); });
+        if (!all.length) return;
+        var fresh = all.filter(function (it) { return !seen[normT(it.title)]; });
+        fresh.forEach(function (it) { seen[normT(it.title)] = 1; });
+        var show = fresh.slice(0, Math.max(left, 0)), fx = !!(LF && LF.edition_date === x.edition && all.length > fresh.length);
+        left -= show.length;
+        if (!show.length && !fx) return;   // nada novo a mostrar e nada coberto pelo FECHAMENTO exibido: o dia não entra
+        out.push({ edition: x.edition, n: all.length, items: show, covered: all.length - fresh.length,
+                   fx: fx, first: all[0].id });
+      });
+    return out;
+  }
+  function agoraRecent(EDS, LF, od) {
+    var G = agoraRecentGroups(EDS, LF, od);
+    if (!G.length) return "";
+    return '<section class="hm-ag" aria-labelledby="hm-ag-h"><h2 class="hm-h" id="hm-ag-h">Últimas atualizações do Agora</h2>' +
+      '<p class="hm-ag-sub">Publicadas nos últimos dias. As de hoje aparecem aqui quando saírem.</p>' + G.map(function (g) {
+        var dl = WD3[dParts(g.edition).wd].toUpperCase() + " " + tcDate(g.edition);
+        var cov = g.fx ? '<p class="hm-ag-cov">' + (g.items.length ? "Mais " + plural(g.covered, "notícia", "notícias") + " deste dia no " : (g.covered === g.n ? "Tudo deste dia está no " : "")) +
+          '<a href="#/fechamento/' + e(g.edition) + '">Fechamento de ' + e(dDay(g.edition)) + '</a> · <a href="#/agora/' + e(g.first) + '">ver as ' + nf(g.n) + " do Agora</a></p>" : "";
+        return '<div class="hm-ag-g"><p class="hm-ag-d">' + tc("date", dl, g.edition) + tc("ago", agoLabel(g.edition, od)) + "</p>" +
+          (g.items.length ? '<ul class="ed-rows">' + g.items.map(function (it) {
+            return '<li><a href="#/agora/' + e(it.id) + '"><span class="rt">' + e(it.title) + "</span></a></li>";   // a data é a do cabeçalho do dia
+          }).join("") + "</ul>" : "") + cov + "</div>";
+      }).join("") + '<p class="hm-ag-all"><a href="#/agora">Ver o Agora <span aria-hidden="true">→</span></a></p></section>';
   }
   // NEWS DO DIA: radar/pulso das notícias aprovadas do dia, na ordem editorial; faixa amarela, compacta, sem animação.
   // Deduplicação visual (sem mudar conteúdo): fica de fora o que já está no AGORA e no destaque do Morning; se nada sobrar,
@@ -669,7 +727,7 @@
   // Topo da Home nos três estados reais: A = edição de hoje aprovada, FECHAMENTO de hoje ainda não · B = edição e
   // FECHAMENTO de hoje · C = nenhuma edição de hoje aprovada (virada do dia até a 1ª publicação). Só o C muda (06/10):
   // AGORA neutro (data + frase fixa, nada da edição em revisão) e o FECHAMENTO anterior com a distância temporal (§32.4).
-  function homeTop(A, LF, od) {
+  function homeTop(A, LF, od, EDS) {
     var fxToday = !!(LF && LF.edition_date === od);
     var h = '<div class="hm-sig" role="note"><span>Notícias passam. O que foi dito fica.</span><time datetime="' + od + '">' + e(dLong(od)) + "</time></div>";
     var M = A ? morningItems(A.items) : [], last = A ? latestItem(A.items) : null;
@@ -683,6 +741,7 @@
     // Mais antigo que ontem (16/10): continua no topo, rotulado "Último fechamento" com a distância, mas em escala de
     // contexto, para não parecer o acontecimento do dia. Ontem e hoje não mudam.
     if (LF && LF.edition_date) h += fxHome(LF, fxToday ? "" : od, (A && !fxToday) || (!A && civilDays(LF.edition_date, od) > 1));
+    if (!A) h += agoraRecent(EDS, LF, od);   // estado C: o que o Agora publicou nos últimos dias, datado, nunca como hoje
     return h;
   }
   P.home = function () {
@@ -692,8 +751,13 @@
       var A = agoraIsCurrent(EDN) && edItems(EDN).length ? { edition: EDN.edition, items: edItems(EDN) } : null;
       var od = opDay();
       var mats = (MI && MI.items || []).slice(0, 3);
-      return Promise.all(mats.map(function (x) { return loadTyped("materias", x.slug); })).then(function (MD) {
-        var h = '<h1 class="sr">Desmentindo: notícias passam, o que foi dito fica</h1>' + homeTop(A, LF, od) + invBlock();
+      var recent = A ? Promise.resolve([]) : loadEdIndex().then(function (idx) {
+        return Promise.all(((idx && idx.editions) || []).filter(function (x) { var n = isDay(x.edition) ? civilDays(x.edition, od) : NaN; return n >= 1 && n <= AG_WINDOW; })
+          .map(loadEdFile));
+      }).catch(function () { return []; });
+      return Promise.all([Promise.all(mats.map(function (x) { return loadTyped("materias", x.slug); })), recent]).then(function (R2) {
+        var MD = R2[0], EDS = R2[1].filter(Boolean);
+        var h = '<h1 class="sr">Desmentindo: notícias passam, o que foi dito fica</h1>' + homeTop(A, LF, od, EDS) + invBlock();
         // referência temporal da memória: edição corrente quando houver; senão o último FECHAMENTO
         // (16/10) sem edição de hoje, sem "N dias antes": a distância contra um FECHAMENTO antigo não diz nada ao leitor
         var ref = A ? A.edition : "";
@@ -1021,7 +1085,12 @@
       }).join("") + "</ul></section>";
   }
   P.agora = function (id) {
-    return loadEdition().then(function (EDN) {
+    return loadEdition().then(function (LAST) {
+      // item de edição anterior (22/10): o id começa pela data da edição publicada; procura nela, nunca fora do índice
+      var d = /^(\d{4}-\d{2}-\d{2})-/.exec(id || "");
+      var inLast = edItems(LAST).some(function (x) { return x.id === id; });
+      return (!id || inLast || !d) ? LAST : loadEditionOf(d[1]);
+    }).then(function (EDN) {
       var items = edItems(EDN);
       if (!id) return agoraList(EDN, items);
       var it = items.filter(function (x) { return x.id === id; })[0];

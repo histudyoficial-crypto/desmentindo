@@ -1232,3 +1232,18 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
   .vr.vr-img { display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 12px; align-items: start; }
   .vr-t { font-size: 15px; }
 }
+
+/* Últimas atualizações do Agora (22/10): estado C, abaixo do FECHAMENTO; contexto, não capa */
+.hm-ag { margin: 22px 0 0; padding: 14px 16px 6px; border-top: 4px solid var(--ink); }
+.hm-ag-sub { margin: 4px 0 0; font-size: 13.5px; line-height: 1.4; color: var(--ink-2); }
+.hm-ag-g { margin-top: 12px; }
+.hm-ag-d { margin: 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.hm-ag .ed-rows a { min-height: 44px; align-items: center; }
+.hm-ag .ed-rows .rt { font-weight: 700; }
+.hm-ag-cov { margin: 8px 0 0; font-size: 14px; line-height: 1.5; }
+.hm-ag-cov a, .hm-ag-all a { color: var(--link); text-underline-offset: 3px; font-weight: 700; }
+.hm-ag-cov a { display: inline-block; padding: 10px 0; }
+.hm-ag-all { margin: 10px 0 8px; font-size: 14px; font-weight: 800; }
+.hm-ag-all a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
+.hm-ag a:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+@media (min-width: 1061px) { .is-home .hm-ag { grid-column: 1 / span 8; padding: 14px 0 6px; } }
