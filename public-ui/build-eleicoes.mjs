@@ -12,6 +12,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
 import { pages as qPages, cards as qCards } from "./eleicoes-questionamentos.mjs";
+import { aplicarEstudos } from "./eleicoes-estudos.mjs";
 import { validate as pesqValidate, section as pesqSection } from "./eleicoes-pesquisas.mjs";
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const SITE = "https://desmentindo.com.br";
@@ -70,6 +71,50 @@ ${HIST.eleicoes.map(e => `<tbody>${e.candidatos.map((c, i) => `<tr>${i ? "" : `<
 const PART0 = `<section class="area-part" aria-labelledby="t-part"><h3 id="t-part" class="h3s">Participação e votos</h3><div id="participacao" aria-live="polite"><dl class="inds">${
   [["Eleitores aptos", ""], ["Comparecimento", "do eleitorado apurado"], ["Abstenção", "do eleitorado apurado"], ["Votos válidos", "do comparecimento"], ["Brancos", "do comparecimento"], ["Nulos", "do comparecimento"]]
     .map(([k, d]) => `<div class="ind"><dt>${k}</dt><dd><b>—</b>${d ? `<small>— ${d}</small>` : ""}</dd></div>`).join("")}</dl></div></section>`;
+// Mapa por município (malha IBGE 2025 + arquivos municipais oficiais do TSE reunidos por build-eleicoes-mun.mjs). Um só
+// componente (eleicoes-mun.js) para os dois turnos e para a comparação; aqui só os parâmetros mudam. Sem arquivo de dados
+// do turno → a seção explica por quê e não desenha nada.
+const MAPA_DIR = path.join(ROOT, "eleicoes-2026", "mapa");
+const munDados = ele => fs.existsSync(path.join(MAPA_DIR, `presidente-${ele}.json`)) ? `eleicoes-2026/mapa/presidente-${ele}.json` : null;
+function munAttrs(ele, raiz, extra = "") {
+  const d = munDados(ele);
+  return `data-geo="${asset("eleicoes-2026/mapa/municipios-2025.svg")}" data-raiz="${raiz}"` +
+    (d ? ` data-dados="${asset(d)}" data-uf-tpl="/eleicoes-2026/mapa/presidente-${ele}-{uf}.json?${asset(d).split("?")[1]}"` :
+      ` data-sem-dados="${ele === "6258" ? "O mapa por município do 2º turno aparece quando os arquivos municipais oficiais do TSE forem reunidos, depois da totalização. Até lá, use o mapa de estados acima." : "Arquivos municipais do TSE ainda não reunidos."}"`) + extra;
+}
+function munSection(ele, raiz, rotulo) {
+  const id = "mm" + ele;
+  return `<section class="area-mun mm" id="municipios" aria-labelledby="t-${id}" data-auto="on" data-hash="on" ${munAttrs(ele, raiz)}>
+<h2 id="t-${id}">Resultados por município</h2>
+<p class="sub">${rotulo}: os ${(5571).toLocaleString("pt-BR")} municípios no mapa oficial do IBGE. Escolha o que mostrar, filtre por estado ou busque pelo nome; toque num município para ver os números do TSE e seguir até zonas e seções.</p>
+<div class="mm-ctrl"><div class="mm-camadas" role="group" aria-label="Mostrar no mapa"></div>
+<div class="mm-f"><label class="mm-ufl">Estado <select class="mm-uf"></select></label><div class="mm-busca"><label for="${id}-busca">Buscar município</label><input id="${id}-busca" type="search" autocomplete="off" placeholder="ex.: Fernando de Noronha"><ul aria-live="polite"></ul></div></div></div>
+<div class="mm-grid"><div class="mm-mapwrap"><div class="mm-mapa"><p class="empty">Carregando o mapa…</p></div><div class="mm-tip" hidden></div></div>
+<div class="mm-side"><div class="mm-det" aria-live="polite"><p class="sub">Escolha um município no mapa, na busca ou na tabela.</p></div></div></div>
+<div class="mm-leg"></div>
+<details class="mm-tab"><summary>Ver os municípios de um estado em tabela</summary><div class="mm-tab-body"><p class="sub">Escolha um estado acima para ver os municípios dele em tabela.</p></div></details>
+<noscript><p class="empty">O mapa por município precisa de JavaScript. Os resultados por estado e município continuam nas páginas de cada estado.</p></noscript>
+</section>`;
+}
+// Navegação da página Brasil (E26-04): turno, "Nesta página", comparação lado a lado e os dois índices (apuração e
+// conferências). Só links e componentes existentes; nenhum número novo de estudo aparece aqui sem gate.
+const TURNOS = t2 => `<nav class="turnos" aria-label="Turno"><a href="/eleicoes-2026/"${t2 ? "" : ' aria-current="page"'}><b>1º turno</b> · 4 out</a><a href="/eleicoes-2026/2-turno/"${t2 ? ' aria-current="page"' : ""}><b>2º turno</b> · 25 out</a></nav>`;
+const SECNAV = `<nav class="secnav" aria-label="Nesta página"><a href="#resultado">Resultado oficial</a><a href="#municipios">Por município</a><a href="#comparar">Compare os turnos</a><a href="#apuracao">Entenda a apuração</a><a href="#conferencias">Conferências</a><a href="#onde">Buscar UF, município, zona ou seção</a></nav>`;
+const qLink = (id, extra) => { const q = QDATA.questionamentos.find(x => x.id === id); return q ? `<li><a href="/eleicoes-2026/questionamentos/${q.slug}/"><b>${attr(q.card)}</b><span>${attr(extra || "")}${extra ? " · " : ""}${attr(q.classificacao.toLowerCase())}</span></a></li>` : ""; };
+const HUBS = () => `<div class="hubs"><section class="hub" id="apuracao" aria-labelledby="t-apur"><h2 id="t-apur">Entenda a apuração</h2><p class="sub">Como os números chegam ao longo da noite e por que a curva tem a forma que tem.</p><ul class="hublist">
+<li><a href="/eleicoes-2026/questionamentos/04-de-outubro/"><b>A noite de 4 de outubro, passo a passo</b><span>registros oficiais do TSE, das 17h ao final</span></a></li>${qLink("Q4", "ordem de chegada das seções")}${qLink("Q3", "regularidade da curva")}${qLink("Q1", "a parada de uma hora")}</ul></section>
+<section class="hub" id="conferencias" aria-labelledby="t-conf"><h2 id="t-conf">Conferências do Desmentindo</h2><p class="sub">O que conferimos nos arquivos oficiais, com método e limites escritos.</p><ul class="hublist">
+${qLink("Q6", "boletins de urna × resultado oficial")}${qLink("Q8", "seções agregadas")}${qLink("Q7", "arquivos ainda não publicados")}<li><a href="/eleicoes-2026/questionamentos/"><b>Todos os questionamentos</b><span>${QDATA.questionamentos.length} dúvidas testadas nos dados oficiais</span></a></li></ul></section></div>`;
+function cmpSection(raiz) {
+  const one = (ele, cls, tit) => `<div class="mm ${cls}" data-auto="off" data-hash="off" ${munAttrs(ele, raiz)}><h3 class="cmp-h">${tit}</h3><div class="mm-mapwrap"><div class="mm-mapa"><p class="empty">Carregando…</p></div><div class="mm-tip" hidden></div></div><div class="mm-leg"></div></div>`;
+  return `<section class="area-cmp" id="comparar" aria-labelledby="t-cmp"><h2 id="t-cmp">Compare os turnos</h2>
+<p class="sub">Os mesmos municípios no 1º e no 2º turno, lado a lado. Escolher um município num mapa (ou na busca) seleciona o mesmo no outro e abre a comparação com os números de cada turno.</p>
+<div class="mm-ctrl"><div class="mm-camadas cmp-camadas" role="group" aria-label="Mostrar nos dois mapas"></div>
+<div class="mm-f"><label class="mm-ufl">Estado <select class="mm-uf cmp-uf"></select></label><div class="mm-busca cmp-busca"><label for="cmp-busca">Buscar município</label><input id="cmp-busca" type="search" autocomplete="off" placeholder="ex.: Campinas"><ul aria-live="polite"></ul></div></div></div>
+<div class="cmp-maps">${one("6257", "cmp-a", "1º turno · 4 out")}${one("6258", "cmp-b", "2º turno · 25 out")}</div>
+<div class="cmp-painel" aria-live="polite"><p class="sub">Escolha um município para comparar os dois turnos.</p></div>
+<noscript><p class="empty">A comparação precisa de JavaScript.</p></noscript></section>`;
+}
 const ESTADOS_HTML = Object.values(CORE.ESTADOS).map(e => `<div class="e-${e.classe}"><dt>${e.nome}</dt><dd>${e.texto}</dd></div>`).join("");
 // CSS/JS locais com ?v=<sha256 do arquivo, 12 hex> — a mesma convenção ?v= da raiz (build-root.mjs). Aqui a versão vem do
 // conteúdo, não do commit, porque estas páginas são versionadas no repositório: o HTML só aponta para o asset com que foi
@@ -113,7 +158,7 @@ function page(uf, name, T = T1) {
 <link rel="apple-touch-icon" href="${asset("apple-touch-icon.png")}">
 <link rel="preload" href="/v5/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${asset("v5/css/fonts.css")}">
-<link rel="stylesheet" href="${asset("eleicoes-2026/eleicoes.css")}">
+<link rel="stylesheet" href="${asset("eleicoes-2026/eleicoes.css")}">${br ? `\n<link rel="stylesheet" href="${asset("eleicoes-2026/eleicoes-mun.css")}">` : ""}
 <script>/* reserva espaço do recorte aberto por link antes do 1º desenho (menos deslocamento de layout) */(function(h,d){d.className+=/(^|[#&])s=/.test(h)?" deep-s":/(^|[#&])z=/.test(h)?" deep-z":/(^|[#&])m=/.test(h)?" deep-m":""})(location.hash,document.documentElement)</script>
 ${umami}
 </head>
@@ -125,12 +170,12 @@ ${umami}
 ${pnav(br ? "res" : "exp", T)}
 <main class="wrap" id="conteudo">
 <div class="head">
-<p class="kick"><span class="tag res">Dado oficial · TSE</span>Eleições 2026 · Presidente · ${T.rotulo} · ${T.dia}</p>
+${br ? TURNOS(t2) : ""}<p class="kick"><span class="tag res">Dado oficial · TSE</span>Eleições 2026 · Presidente · ${T.rotulo} · ${T.dia}</p>
 <h1>${attr(where)}</h1>
 ${br && t2 ? `<nav class="paths t2" aria-label="O que dá para fazer aqui"><a href="#resultado"><b>Explore os resultados</b><span>Apuração oficial do TSE e o caminho até cada seção</span></a><a href="#historico"><b>Compare com outros turnos</b><span>1º turno de 2026 e 2º turno de 2022, com a fonte</span></a><a href="/eleicoes-2026/"><b>1º turno (4 out)</b><span>Resultado final, a noite da apuração e os questionamentos</span></a></nav>` :
 br ? `<p class="turno2"><a href="/eleicoes-2026/2-turno/"><b>2º turno · 25 de outubro</b><span>Acompanhe a apuração oficial do TSE a partir das 17h</span></a></p><nav class="paths" aria-label="O que dá para fazer aqui"><a href="#resultado"><b>Explore os resultados</b><span>Placar oficial do TSE e o caminho até cada seção</span></a><a href="/eleicoes-2026/questionamentos/"><b>Investigue os questionamentos</b><span>${QDATA.questionamentos.length} dúvidas que circularam, testadas nos dados oficiais</span></a><a href="#verificacao"><b>Verificação</b><span>De onde vem cada número</span></a></nav>` : ""}
 </div>
-${br ? `<section class="estado-el" id="estado" aria-labelledby="t-estado"><h2 id="t-estado">Estado da eleição</h2><div id="lideres" class="lideres" aria-live="polite">${LIDERES0}</div>` : ""}<section id="status" class="cards" aria-label="Situação da apuração">${STATUS0}</section>${PART0}${br ? "</section>\n" + (t2 ? NOITE_2T + "\n" + DIF_2T : Q_BR + "\n" + NOITE_BR) : ""}
+${br ? SECNAV + "\n" : ""}${br ? `<section class="estado-el" id="estado" aria-labelledby="t-estado"><h2 id="t-estado">Estado da eleição</h2><div id="lideres" class="lideres" aria-live="polite">${LIDERES0}</div>` : ""}<section id="status" class="cards" aria-label="Situação da apuração">${STATUS0}</section>${PART0}${br ? "</section>\n" + (t2 ? NOITE_2T + "\n" + DIF_2T : Q_BR + "\n" + NOITE_BR) : ""}
 <div class="layout">
 <section class="area-res" aria-labelledby="t-agora" id="resultado"><h2 id="t-agora">${br ? "Resultado oficial" : "Resultado"}</h2><p class="stale" id="stale" hidden></p><p class="snapnote" id="snapnote" hidden></p><div id="placar"><p class="empty">Carregando…</p></div></section>
 <section class="area-terr" aria-labelledby="t-terr" id="onde"><h2 id="t-terr">Explorar o território</h2>
@@ -146,7 +191,7 @@ ${br ? `<div class="maphead"><label for="layers">Mostrar no mapa</label><select 
 ${br ? `<h2 class="h2s" id="t-ext">Exterior</h2><div id="exterior"><p class="empty">Disponível depois das 17h.</p></div>` : ""}
 </aside>
 </div>
-${br && t2 ? HIST_2T() + "\n" + pesqSection(PESQ, FLAGS.pesquisas_2t === true) + "\n" : ""}<section class="area-aud" aria-labelledby="t-aud" id="verificacao"><h2 id="t-aud">${br ? "Metodologia e verificação" : "Verificação"}</h2>
+${br ? munSection(t2 ? "6258" : "6257", T.root, t2 ? "2º turno" : "1º turno") + "\n" : ""}${br ? cmpSection(T.root) + "\n" + HUBS() + "\n" : ""}${br && t2 ? HIST_2T() + "\n" + pesqSection(PESQ, FLAGS.pesquisas_2t === true) + "\n" : ""}<section class="area-aud" aria-labelledby="t-aud" id="verificacao"><h2 id="t-aud">${br ? "Metodologia e verificação" : "Verificação"}</h2>
 <p class="sub">O que cada número é, de onde vem e o que ainda falta. Use o modo Verificação (no topo) para ver os detalhes técnicos abertos. <a href="/eleicoes-2026/questionamentos/">Questionamentos sobre a eleição →</a></p>
 <div class="audgrid"><div><h3>Origem dos números</h3><ul class="rules"><li><span class="prov of">Dado oficial (TSE)</span> número publicado pela Justiça Eleitoral, lido direto dos arquivos públicos do TSE.</li>
 <li><span class="prov calc">Métrica calculada pelo Eleições 2026</span> conta feita por esta página a partir de arquivos oficiais (ex.: % de uma seção a partir do boletim). Não é número do TSE.</li></ul></div>
@@ -162,7 +207,7 @@ ${br && t2 ? HIST_2T() + "\n" + pesqSection(PESQ, FLAGS.pesquisas_2t === true) +
 <footer><div class="wrap">Fonte: Tribunal Superior Eleitoral (resultados.tse.jus.br). <a href="/#/privacidade">Privacidade</a> · <a href="/">Desmentindo</a></div></footer>
 <script src="${asset("eleicoes-2026/eleicoes-core.js")}" defer></script>
 <script src="${asset("eleicoes-2026/eleicoes.js")}" defer></script>
-</body>
+${br ? `<script src="${asset("eleicoes-2026/eleicoes-mun.js")}" defer></script>\n<script src="${asset("eleicoes-2026/eleicoes-cmp.js")}" defer></script>\n` : ""}</body>
 </html>
 `;
 }
@@ -207,6 +252,10 @@ ${o.q && o.q.contador ? '<script src="' + asset("eleicoes-2026/questionamentos.j
 
 const files = { "eleicoes-2026/index.html": page(null, null) };
 Object.assign(files, qPages(QDATA, qShell));
+// Estudos (LATE15 · H23 · boletins): só com gate aprovado + arquivo de dados; sem isso as páginas saem idênticas.
+{ const dados = Object.fromEntries(["late15", "h23", "bu"].map(id => { const p = path.join(ROOT, "public-ui", "eleicoes_estudos", id + ".json"); return [id, fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, "utf8")) : null]; }));
+  const ins = aplicarEstudos(files, FLAGS.estudos, dados, Object.values(dados).some(Boolean) ? asset("eleicoes-2026/eleicoes-estudos.css") : null);
+  if (ins.length) console.log("ESTUDOS_INSERIDOS " + ins.join(",")); }
 for (const [c, n] of UFS) files[`eleicoes-2026/${c}/index.html`] = page(c, n);
 files["eleicoes-2026/zz/index.html"] = page("zz", "Exterior");
 files["eleicoes-2026/2-turno/index.html"] = page(null, null, T2);

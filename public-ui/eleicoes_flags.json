@@ -2,5 +2,22 @@
  "calculado": false,
  "locais": false,
  "pesquisas_2t": false,
- "_leia": "calculado: métricas derivadas (ordem de chegada, conferência municipal) só com decisão editorial (Human Gate). locais: arquivo oficial Eleitorado por local de votação, por município, em eleicoes-2026/locais/<uf>/<mun>.json. pesquisas_2t: seção Institutos de pesquisa do 2º turno (public-ui/eleicoes_pesquisas_2t.json) só com decisão editorial (Human Gate)."
+ "_leia": "calculado: métricas derivadas (ordem de chegada, conferência municipal) só com decisão editorial (Human Gate). locais: arquivo oficial Eleitorado por local de votação, por município, em eleicoes-2026/locais/<uf>/<mun>.json. pesquisas_2t: seção Institutos de pesquisa do 2º turno (public-ui/eleicoes_pesquisas_2t.json) só com decisão editorial (Human Gate). estudos: módulos LATE15 / H23 / reconciliação dos boletins nas páginas dos questionamentos — cada um só entra com ativo=true, estado=APPROVED, decision_ref e o arquivo de dados em public-ui/eleicoes_estudos/<id>.json (Human Gate individual).",
+ "estudos": {
+  "late15": {
+   "ativo": false,
+   "estado": "INATIVO",
+   "decision_ref": null
+  },
+  "h23": {
+   "ativo": false,
+   "estado": "INATIVO",
+   "decision_ref": null
+  },
+  "bu": {
+   "ativo": false,
+   "estado": "INATIVO",
+   "decision_ref": null
+  }
+ }
 }
