@@ -79,7 +79,7 @@
       cand.push({ sqcand: c.sqcand, n: c.n, nm: c.nmu || c.nm, cc: p.sg, vap: c.vap, pvap: c.pvap, seq: c.seq, st: c.st });
     }); }); });
     return { cand: cand, tf: d.tf, pst: S.pst, st: S.st, s: S.ts, dt: d.dt, ht: d.ht, dg: d.dg, hg: d.hg, c: E.c, pc: E.pc, vb: V.vb, pvb: V.pvb, tvn: V.tvn, ptvn: V.ptvn, vv: V.vv,
-      te: E.te, a: E.a, pa: E.pa, esni: E.esni, pvvc: V.pvvc };
+      part: C.participacao(E, V) };
   }
   function getResult(url) { return getJSON(url).then(flat); }
   function brtMs(dd, hh) { var m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(dd || ""), t = /^(\d{2}):(\d{2}):(\d{2})$/.exec(hh || "");
@@ -97,7 +97,7 @@
     }).sort(function (a, b) { return (b.votes || 0) - (a.votes || 0) || (a.order || 99) - (b.order || 99); });
     return { final: String(d.tf || "").toLowerCase() === "s", pst: pct(d.pst), st: int(d.st), s: int(d.s), when: tseWhen(d),
       turnout: { v: int(d.c), p: pct(d.pc) }, blank: { v: int(d.vb), p: pct(d.pvb) }, nul: { v: int(d.tvn), p: pct(d.ptvn) }, valid: int(d.vv), cands: cands,
-      aptos: int(d.te), abst: { v: int(d.a), p: pct(d.pa) }, naoInst: int(d.esni), validP: pct(d.pvvc) };
+      part: d.part || C.participacao(null, null), abst: (d.part || C.participacao(null, null)).abstencao };
   }
 
   // ---------------------------------------------------------------- modo Resultados | Auditoria
@@ -126,19 +126,23 @@
     leaders(); renderHist(); renderPart();
   }
   // ---------------------------------------------------------------- participação (indicadores com denominador)
-  // Valores e percentuais exatamente como o TSE publica no arquivo do recorte. Aptos = comparecimento + abstenção + eleitores
-  // de seções não instaladas (campo esni). Ausente → "—", nunca zero.
+  // Só campos oficiais do arquivo do TSE (C.participacao). Base de comparecimento/abstenção = "eleitorado apurado" (campo esi:
+  // eleitores das seções já totalizadas e instaladas), mostrada na tela. Ausente → "—", nunca zero.
   function renderPart() {
     var el = $("participacao"); if (!el) return;
-    var R = live.R, t = function (k, v, p, den, cls) { return '<div class="ind' + (cls ? " " + cls : "") + '"><dt>' + k + "</dt><dd><b>" + fInt(v) + "</b>" + (den ? "<small>" + (p == null ? "—" : fPct(p)) + " " + den + "</small>" : "") + "</dd></div>"; };
-    if (!R) { el.innerHTML = '<p class="empty">' + (NOW() < RELEASE ? "Disponível depois das 17h." : "Aguardando a leitura do TSE.") + "</p>"; return; }
-    el.innerHTML = '<dl class="inds">' + t("Eleitores aptos", R.aptos, null, "") + t("Comparecimento", R.turnout.v, R.turnout.p, "dos aptos") + t("Abstenção", R.abst.v, R.abst.p, "dos aptos") +
-      t("Votos válidos", R.valid, R.validP, "do comparecimento") + t("Brancos", R.blank.v, R.blank.p, "do comparecimento") + t("Nulos", R.nul.v, R.nul.p, "do comparecimento") + "</dl>" +
-      '<p class="note">' + OFICIAL + " " + (R.final ? "Totalização final." : "Parcial: " + fPct(R.pst) + " das seções totalizadas; comparecimento e abstenção mudam até o fim.") +
-      " Os percentuais são os publicados pelo TSE: comparecimento e abstenção sobre os eleitores aptos; válidos, brancos e nulos sobre quem compareceu. " +
-      (R.naoInst ? "Os aptos incluem " + fInt(R.naoInst) + " eleitores de seções não instaladas, que não entram nem no comparecimento nem na abstenção. " : "") +
-      "Pesquisa eleitoral não entra aqui.</p>";
+    var R = live.R, P = R && R.part, t = function (k, v, p, den) { return '<div class="ind"><dt>' + k + "</dt><dd><b>" + fInt(v) + "</b>" + (den ? "<small>" + (p == null ? "—" : fPct(p)) + " " + den + "</small>" : "") + "</dd></div>"; };
+    if (!P) { el.innerHTML = '<p class="empty">' + (NOW() < RELEASE ? "Disponível depois das 17h." : "Aguardando a leitura do TSE.") + "</p>"; return; }
+    el.innerHTML = '<dl class="inds">' + t("Eleitores aptos", P.aptos, null, "") + t("Comparecimento", P.comparecimento.v, P.comparecimento.p, "do eleitorado apurado") +
+      t("Abstenção", P.abstencao.v, P.abstencao.p, "do eleitorado apurado") + t("Votos válidos", P.validos.v, P.validos.p, "do comparecimento") +
+      t("Brancos", P.brancos.v, P.brancos.p, "do comparecimento") + t("Nulos", P.nulos.v, P.nulos.p, "do comparecimento") + "</dl>" +
+      '<p class="note">' + OFICIAL + " " + (R.final ? "Totalização final." : "Parcial: " + fPct(R.pst) + " das seções totalizadas.") +
+      " <b>Eleitorado apurado: " + fInt(P.apurado) + "</b> — eleitores das seções já totalizadas e instaladas; é sobre ele que o TSE calcula comparecimento e abstenção. " +
+      "Válidos, brancos e nulos são sobre quem compareceu." +
+      (P.naoTotalizado ? " Ainda não totalizado: " + fInt(P.naoTotalizado) + " eleitores." : "") +
+      (P.naoInstalado ? " Em seções não instaladas: " + fInt(P.naoInstalado) + " eleitores (fora do comparecimento e da abstenção)." : "") +
+      " Todos os números são campos do arquivo oficial, sem conta nossa. Pesquisa eleitoral não entra aqui.</p>";
   }
+
   // ---------------------------------------------------------------- comparação histórica (2º turno, Brasil)
   function histRows(label, sit, cands) {
     return cands.map(function (c, i) { return "<tr>" + (i ? "" : '<th scope="row" rowspan="' + cands.length + '">' + label + "<small>" + sit + "</small></th>") +
@@ -242,7 +246,7 @@
       } else if (lay === "comp" || lay === "abst" || lay === "margem") {
         var v = mval(R, lay);
         if (v != null) { bg = seq(v, map.lo, map.hi + 1e-9); txt = lay === "margem" ? fPct(v, 1).replace("%", " p.p.") : fPct(v, 1); cls = " seqc";
-          label += lay === "margem" ? (Ld && !Ld.tie ? Ld.c.name + " à frente por " : "diferença de ") + fPct(v).replace("%", " pontos percentuais") + " dos votos válidos" : fPct(v) + (lay === "comp" ? " de comparecimento" : " de abstenção") + " (sobre os eleitores aptos)"; }
+          label += lay === "margem" ? (Ld && !Ld.tie ? Ld.c.name + " à frente por " : "diferença de ") + fPct(v).replace("%", " pontos percentuais") + " dos votos válidos" : fPct(v) + (lay === "comp" ? " de comparecimento" : " de abstenção") + " (sobre o eleitorado apurado)"; }
         else { cls = " nodata"; label += "sem dado do TSE ainda"; }
       } else if (lay === "late") {
         var u = calc && calc[uf];
@@ -259,7 +263,7 @@
         '<p class="note">' + OFICIAL + " Cores pela ordem do TSE na cédula, sem relação com partido ou lado. Quadrados do mesmo tamanho: mostra quem está à frente em cada estado, não quantos votos cada estado tem. Leitura às " + (map.at ? hhmm(map.at) : "—") + ".</p>";
     } else if (lay === "tot") leg = scaleLegend("menos falta", "mais falta") + '<p class="note">' + OFICIAL + " Escala neutra pelo que falta totalizar em cada estado.</p>";
     else if (lay === "comp" || lay === "abst") leg = scaleLegend(fPct(map.lo, 1), fPct(map.hi, 1)) + '<p class="note">' + OFICIAL + " " + (lay === "comp" ? "Comparecimento" : "Abstenção") +
-      " de cada estado, em % dos eleitores aptos do estado, como o TSE publica. Escala neutra entre o menor e o maior valor entre os estados. Quadrados do mesmo tamanho: não representa quantos eleitores cada estado tem." +
+      " de cada estado, em % do eleitorado apurado do estado (eleitores das seções já totalizadas e instaladas), como o TSE publica. Escala neutra entre o menor e o maior valor entre os estados. Quadrados do mesmo tamanho: não representa quantos eleitores cada estado tem." +
       (map.at ? " Leitura às " + hhmm(map.at) + "." : "") + "</p>";
     else if (lay === "margem") leg = scaleLegend(fPct(map.lo, 1).replace("%", " p.p."), fPct(map.hi, 1).replace("%", " p.p.")) + '<p class="note">' + CALCULADO +
       " Diferença, em pontos percentuais dos votos válidos, entre o primeiro e o segundo colocados em cada estado (percentuais oficiais do TSE). A cor mostra só o tamanho da diferença, não quem está à frente — veja no quadrado ou na tabela. Parcial não prevê o final.</p>";
@@ -268,7 +272,7 @@
   }
   function mval(R, lay) {
     if (!R) return null;
-    if (lay === "comp") return R.turnout.p;
+    if (lay === "comp") return R.part.comparecimento.p;
     if (lay === "abst") return R.abst.p;
     var c = R.cands.filter(function (x) { return x.pct != null; });
     return c.length > 1 ? Math.round((c[0].pct - c[1].pct) * 100) / 100 : null;

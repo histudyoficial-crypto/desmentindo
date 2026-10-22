@@ -65,10 +65,10 @@ const HIST_2T = () => `<section class="area-hist" aria-labelledby="t-hist" id="h
 ${HIST.eleicoes.map(e => `<tbody>${e.candidatos.map((c, i) => `<tr>${i ? "" : `<th scope="row" rowspan="${e.candidatos.length}">${attr(e.rotulo)}<small>${attr(e.situacao)}</small></th>`}<td>${attr(c.nome)}</td><td>${fI(c.votos)}</td><td>${fP(c.pct_validos)}</td></tr>`).join("")}</tbody>`).join("")}
 </table></div>
 <p class="note">${OFICIAL_TAG} ${HIST.eleicoes.map(e => `${attr(e.rotulo)}: <a href="${attr(e.fonte_url)}" rel="noopener">${attr(e.fonte)}</a>.`).join(" ")} 1º turno de 2026: arquivo oficial de totalização do TSE (eleição 6257), mostrado só com a totalização final marcada pelo próprio TSE. A comparação não mostra transferência de votos nem quem votou em quem.</p></section>`;
-// Participação: 6 indicadores com o denominador escrito (eleitores aptos / comparecimento), preenchidos pelo eleicoes.js com os
+// Participação: 6 indicadores com o denominador escrito (eleitorado apurado / comparecimento — campos esi, c, pc do TSE), preenchidos pelo eleicoes.js com os
 // números do TSE. Estado inicial com a altura final (sem deslocar a página quando o dado chega).
 const PART0 = `<section class="area-part" aria-labelledby="t-part"><h3 id="t-part" class="h3s">Participação e votos</h3><div id="participacao" aria-live="polite"><dl class="inds">${
-  [["Eleitores aptos", ""], ["Comparecimento", "dos aptos"], ["Abstenção", "dos aptos"], ["Votos válidos", "do comparecimento"], ["Brancos", "do comparecimento"], ["Nulos", "do comparecimento"]]
+  [["Eleitores aptos", ""], ["Comparecimento", "do eleitorado apurado"], ["Abstenção", "do eleitorado apurado"], ["Votos válidos", "do comparecimento"], ["Brancos", "do comparecimento"], ["Nulos", "do comparecimento"]]
     .map(([k, d]) => `<div class="ind"><dt>${k}</dt><dd><b>—</b>${d ? `<small>— ${d}</small>` : ""}</dd></div>`).join("")}</dl></div></section>`;
 const ESTADOS_HTML = Object.values(CORE.ESTADOS).map(e => `<div class="e-${e.classe}"><dt>${e.nome}</dt><dd>${e.texto}</dd></div>`).join("");
 // CSS/JS locais com ?v=<sha256 do arquivo, 12 hex> — a mesma convenção ?v= da raiz (build-root.mjs). Aqui a versão vem do
