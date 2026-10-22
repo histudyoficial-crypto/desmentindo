@@ -475,3 +475,6 @@ footer{border-top-width:6px}
 @media(max-width:599px){#status.cards{background:transparent;border:0;border-top:1px solid var(--rule);padding:0;margin-top:14px}
  #status .card,#status .card:nth-child(n){border-left:0;border-top:1px solid var(--rule);padding:8px 0;min-height:72px}#status .card:first-child{border-top:0}
  #status .card .v{font-size:24px}}
+/* reserva (CLS) dos cartões de situação, medida com o dado do TSE preenchido em cada largura (o texto do recorte de UF é o mais longo) */
+@media(min-width:760px){#status .card{min-height:152px}}@media(min-width:1024px){#status .card{min-height:120px}}@media(min-width:1100px){#status .card{min-height:100px}}
+@media(max-width:599px){.lideres{min-height:206px}}
