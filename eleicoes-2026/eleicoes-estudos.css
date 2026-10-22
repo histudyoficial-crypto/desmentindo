@@ -10,3 +10,17 @@
 @media(min-width:760px){.mod-sep{grid-template-columns:1fr 1fr}}
 .mod-lim{border-left:4px solid var(--ink-3);background:var(--white);padding:6px 12px;margin:12px 0}.mod-lim h4{margin:4px 0;font-size:14px}.mod-lim ul{margin:4px 0;padding-left:18px}
 .mod-conta{font-variant-numeric:tabular-nums}.mod-fontes{margin:10px 0}.mod-story{font-size:14px}
+/* direção de arte 22/10/2026: régua grossa, título condensado, ficha de leitura numerada (mesma ordem nos três estudos) */
+.mod-e26{border-top:6px solid var(--ink);padding-top:14px;margin-top:28px}.mod-e26>h2{font-stretch:66%;font-weight:900;font-size:clamp(26px,3.4vw,36px);line-height:1}
+.mod-e26 h3{font-size:17px;margin:22px 0 6px}
+.mod-tag{border-width:2px}.mod-tag.ok{background:var(--ink);color:var(--yellow)}
+.mod-ficha{margin:8px 0 18px;display:grid;gap:0;border-top:2px solid var(--ink)}
+.mod-ficha>div{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;padding:10px 0;border-bottom:1px solid var(--rule)}
+.mod-ficha dt{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);display:flex;align-items:center;gap:8px}
+.mod-ficha dt span{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:var(--ink);color:var(--yellow);font-size:12px;letter-spacing:0}
+.mod-ficha dd{margin:0;font-size:16px;line-height:1.45;max-width:72ch}.mod-ficha dd a{font-weight:700}
+@media(min-width:760px){.mod-ficha>div{grid-template-columns:15em minmax(0,1fr);gap:16px;align-items:baseline}}
+.mod-uni,.mod-sep>div{border:0;border-top:1px solid var(--rule);background:transparent;padding:8px 0}
+.mod-svg{border:0;background:var(--white)}
+.mod-lim{border-left-width:6px;background:transparent}
+.mod-tw{background:transparent;border:0;overflow-x:auto}.mod-tw table{width:100%;border-collapse:collapse;font-size:14px}.mod-tw th,.mod-tw td{text-align:left;padding:6px 10px 6px 0;border-top:1px solid var(--rule);vertical-align:top}.mod-tw thead th{font-size:12px;color:var(--ink-2);border-top:2px solid var(--ink)}.mod-tw caption{font-weight:800;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase}

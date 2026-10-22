@@ -18,8 +18,8 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=5cf08e44a0d7">
 <link rel="preload" href="/v5/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/v5/css/fonts.css?v=41f5d2f10fa3">
-<link rel="stylesheet" href="/eleicoes-2026/eleicoes.css?v=b0911fe4aabf">
-<link rel="stylesheet" href="/eleicoes-2026/eleicoes-mun.css?v=fe70a3f29fed">
+<link rel="stylesheet" href="/eleicoes-2026/eleicoes.css?v=f2c2f8fb6005">
+<link rel="stylesheet" href="/eleicoes-2026/eleicoes-mun.css?v=71c6403b75d3">
 <script>/* reserva espaço do recorte aberto por link antes do 1º desenho (menos deslocamento de layout) */(function(h,d){d.className+=/(^|[#&])s=/.test(h)?" deep-s":/(^|[#&])z=/.test(h)?" deep-z":/(^|[#&])m=/.test(h)?" deep-m":""})(location.hash,document.documentElement)</script>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="0dee5fb0-ace1-44cb-beba-d6b8733092c2" data-do-not-track="true"></script>
 </head>
@@ -53,21 +53,23 @@
 </aside>
 </div>
 <section class="area-mun mm" id="municipios" aria-labelledby="t-mm6258" data-auto="on" data-hash="on" data-geo="/eleicoes-2026/mapa/municipios-2025.svg?v=c739df2b0b50" data-raiz="/eleicoes-2026/2-turno/" data-sem-dados="O mapa por município do 2º turno aparece quando os arquivos municipais oficiais do TSE forem reunidos, depois da totalização. Até lá, use o mapa de estados acima.">
-<h2 id="t-mm6258">Resultados por município</h2>
-<p class="sub">2º turno: os 5.571 municípios no mapa oficial do IBGE. Escolha o que mostrar, filtre por estado ou busque pelo nome; toque num município para ver os números do TSE e seguir até zonas e seções.</p>
+<div class="mm-head"><p class="kick">Mapa · 2º turno · Presidente</p><h2 id="t-mm6258">Resultados por município</h2>
+<p class="sub">Os 5.571 municípios na malha oficial do IBGE, com o resultado do arquivo municipal do TSE. Passe o mouse ou toque num município para ver os números e seguir até zonas e seções.</p></div>
 <div class="mm-ctrl"><div class="mm-camadas" role="group" aria-label="Mostrar no mapa"></div>
-<div class="mm-f"><label class="mm-ufl">Estado <select class="mm-uf"></select></label><div class="mm-busca"><label for="mm6258-busca">Buscar município</label><input id="mm6258-busca" type="search" autocomplete="off" placeholder="ex.: Fernando de Noronha"><ul aria-live="polite"></ul></div></div></div>
-<div class="mm-grid"><div class="mm-mapwrap"><div class="mm-mapa"><p class="empty">Carregando o mapa…</p></div><div class="mm-tip" hidden></div></div>
-<div class="mm-side"><div class="mm-det" aria-live="polite"><p class="sub">Escolha um município no mapa, na busca ou na tabela.</p></div></div></div>
-<div class="mm-leg"></div>
+<div class="mm-f"><label class="mm-ufl"><span>Estado</span><select class="mm-uf"></select></label><div class="mm-busca"><label for="mm6258-busca">Buscar município</label><input id="mm6258-busca" type="search" autocomplete="off" placeholder="ex.: Fernando de Noronha"><ul aria-live="polite"></ul></div></div></div>
+<div class="mm-grid"><div class="mm-stage"><div class="mm-mapwrap"><div class="mm-mapa"><p class="empty">Carregando o mapa…</p></div><div class="mm-zoom" role="group" aria-label="Zoom do mapa"><button type="button" data-z="+"><span aria-hidden="true">+</span><span class="vh">Aproximar</span></button><button type="button" data-z="-"><span aria-hidden="true">−</span><span class="vh">Afastar</span></button><button type="button" data-z="0"><span aria-hidden="true">BR</span><span class="vh">Ver o Brasil inteiro</span></button></div><div class="mm-tip" hidden></div></div>
+<div class="mm-leg"></div></div>
+<div class="mm-side" role="region" aria-label="Município escolhido"><button type="button" class="mm-fechar" aria-label="Fechar o painel do município"><span aria-hidden="true">×</span></button><div class="mm-det" aria-live="polite"><p class="sub mm-vazio-t">Escolha um município no mapa, na busca ou na tabela.</p></div></div></div>
+<div class="mm-fundo" hidden></div>
 <details class="mm-tab"><summary>Ver os municípios de um estado em tabela</summary><div class="mm-tab-body"><p class="sub">Escolha um estado acima para ver os municípios dele em tabela.</p></div></details>
 <noscript><p class="empty">O mapa por município precisa de JavaScript. Os resultados por estado e município continuam nas páginas de cada estado.</p></noscript>
 </section>
-<section class="area-cmp" id="comparar" aria-labelledby="t-cmp"><h2 id="t-cmp">Compare os turnos</h2>
-<p class="sub">Os mesmos municípios no 1º e no 2º turno, lado a lado. Escolher um município num mapa (ou na busca) seleciona o mesmo no outro e abre a comparação com os números de cada turno.</p>
+<section class="area-cmp" id="comparar" aria-labelledby="t-cmp" data-ver="a"><div class="mm-head"><p class="kick">Mapa · 1º e 2º turno · Presidente</p><h2 id="t-cmp">Compare os turnos</h2>
+<p class="sub">Os mesmos municípios nos dois turnos, lado a lado. Escolher um município num mapa (ou na busca) seleciona o mesmo no outro; zoom e destaque andam juntos.</p></div>
 <div class="mm-ctrl"><div class="mm-camadas cmp-camadas" role="group" aria-label="Mostrar nos dois mapas"></div>
-<div class="mm-f"><label class="mm-ufl">Estado <select class="mm-uf cmp-uf"></select></label><div class="mm-busca cmp-busca"><label for="cmp-busca">Buscar município</label><input id="cmp-busca" type="search" autocomplete="off" placeholder="ex.: Campinas"><ul aria-live="polite"></ul></div></div></div>
-<div class="cmp-maps"><div class="mm cmp-a" data-auto="off" data-hash="off" data-geo="/eleicoes-2026/mapa/municipios-2025.svg?v=c739df2b0b50" data-raiz="/eleicoes-2026/2-turno/" data-dados="/eleicoes-2026/mapa/presidente-6257.json?v=42b04818e66a" data-uf-tpl="/eleicoes-2026/mapa/presidente-6257-{uf}.json?v=42b04818e66a"><h3 class="cmp-h">1º turno · 4 out</h3><div class="mm-mapwrap"><div class="mm-mapa"><p class="empty">Carregando…</p></div><div class="mm-tip" hidden></div></div><div class="mm-leg"></div></div><div class="mm cmp-b" data-auto="off" data-hash="off" data-geo="/eleicoes-2026/mapa/municipios-2025.svg?v=c739df2b0b50" data-raiz="/eleicoes-2026/2-turno/" data-sem-dados="O mapa por município do 2º turno aparece quando os arquivos municipais oficiais do TSE forem reunidos, depois da totalização. Até lá, use o mapa de estados acima."><h3 class="cmp-h">2º turno · 25 out</h3><div class="mm-mapwrap"><div class="mm-mapa"><p class="empty">Carregando…</p></div><div class="mm-tip" hidden></div></div><div class="mm-leg"></div></div></div>
+<div class="mm-f"><label class="mm-ufl"><span>Estado</span><select class="mm-uf cmp-uf"></select></label><div class="mm-busca cmp-busca"><label for="cmp-busca">Buscar município</label><input id="cmp-busca" type="search" autocomplete="off" placeholder="ex.: Campinas"><ul aria-live="polite"></ul></div></div></div>
+<div class="cmp-alterna" role="group" aria-label="Turno no mapa"><button type="button" data-ver="a" aria-pressed="true">1º turno · 4 out</button><button type="button" data-ver="b" aria-pressed="false">2º turno · 25 out</button></div>
+<div class="cmp-maps"><div class="mm cmp-a" data-auto="off" data-hash="off" data-geo="/eleicoes-2026/mapa/municipios-2025.svg?v=c739df2b0b50" data-raiz="/eleicoes-2026/2-turno/" data-dados="/eleicoes-2026/mapa/presidente-6257.json?v=42b04818e66a" data-uf-tpl="/eleicoes-2026/mapa/presidente-6257-{uf}.json?v=42b04818e66a"><h3 class="cmp-h">1º turno · 4 out</h3><div class="mm-mapwrap"><div class="mm-mapa"><p class="empty">Carregando…</p></div><div class="mm-zoom" role="group" aria-label="Zoom do mapa"><button type="button" data-z="+"><span aria-hidden="true">+</span><span class="vh">Aproximar</span></button><button type="button" data-z="-"><span aria-hidden="true">−</span><span class="vh">Afastar</span></button><button type="button" data-z="0"><span aria-hidden="true">BR</span><span class="vh">Ver o Brasil inteiro</span></button></div><div class="mm-tip" hidden></div></div><div class="mm-leg"></div></div><div class="mm cmp-b" data-auto="off" data-hash="off" data-geo="/eleicoes-2026/mapa/municipios-2025.svg?v=c739df2b0b50" data-raiz="/eleicoes-2026/2-turno/" data-sem-dados="O mapa por município do 2º turno aparece quando os arquivos municipais oficiais do TSE forem reunidos, depois da totalização. Até lá, use o mapa de estados acima." data-espera="geo"><h3 class="cmp-h">2º turno · 25 out</h3><div class="mm-mapwrap"><div class="mm-mapa"><p class="empty">Carregando…</p></div><div class="mm-zoom" role="group" aria-label="Zoom do mapa"><button type="button" data-z="+"><span aria-hidden="true">+</span><span class="vh">Aproximar</span></button><button type="button" data-z="-"><span aria-hidden="true">−</span><span class="vh">Afastar</span></button><button type="button" data-z="0"><span aria-hidden="true">BR</span><span class="vh">Ver o Brasil inteiro</span></button></div><div class="mm-tip" hidden></div></div><div class="mm-leg"></div></div></div>
 <div class="cmp-painel" aria-live="polite"><p class="sub">Escolha um município para comparar os dois turnos.</p></div>
 <noscript><p class="empty">A comparação precisa de JavaScript.</p></noscript></section>
 <div class="hubs"><section class="hub" id="apuracao" aria-labelledby="t-apur"><h2 id="t-apur">Entenda a apuração</h2><p class="sub">Como os números chegam ao longo da noite e por que a curva tem a forma que tem.</p><ul class="hublist">
@@ -99,8 +101,9 @@
 </main>
 <footer><div class="wrap">Fonte: Tribunal Superior Eleitoral (resultados.tse.jus.br). <a href="/#/privacidade">Privacidade</a> · <a href="/">Desmentindo</a></div></footer>
 <script src="/eleicoes-2026/eleicoes-core.js?v=877d25e4981f" defer></script>
-<script src="/eleicoes-2026/eleicoes.js?v=006b6dd890a6" defer></script>
-<script src="/eleicoes-2026/eleicoes-mun.js?v=5a3da353c2ab" defer></script>
-<script src="/eleicoes-2026/eleicoes-cmp.js?v=2e3084082a4c" defer></script>
+<script src="/eleicoes-2026/eleicoes-cores.js?v=54fccbed51b2" defer></script>
+<script src="/eleicoes-2026/eleicoes.js?v=66337a1ea9cb" defer></script>
+<script src="/eleicoes-2026/eleicoes-mun.js?v=a83993ffcc2c" defer></script>
+<script src="/eleicoes-2026/eleicoes-cmp.js?v=7614da4558de" defer></script>
 </body>
 </html>
