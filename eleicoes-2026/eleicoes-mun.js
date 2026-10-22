@@ -140,7 +140,7 @@
       h = '<div class="scale" aria-hidden="true"><span>' + fmt(lo) + "</span>" + SEQ.slice(1).map(function (s) { return '<i style="background:' + s + '"></i>'; }).join("") + "<span>" + fmt(hi) + "</span></div>" +
         '<p class="note">' + (lay === "margem" ? CALCULADO + " Diferença, em pontos percentuais dos votos válidos, entre o 1º e o 2º colocados em cada município (percentuais oficiais do TSE). A cor mostra só o tamanho da diferença, não quem está à frente."
           : OFICIAL + " " + c.nome + " em % " + c.den + ", campo do arquivo municipal do TSE.") +
-        " Cinco faixas com o mesmo número de municípios; limites: " + this.q.map(fmt).join(" · ") + ".";
+        " Cinco faixas com o mesmo número de municípios; limites: " + this.q.map(function (v) { return fmt(v); }).join(" · ") + ".";
     }
     h += " " + (parc ? parc + " município(s) com arquivo parcial no TSE. " : "") + (semArq ? semArq + " sem arquivo (hachura). " : "") + "Arquivos municipais do TSE reunidos em " + esc(dataBR(D.fonte.coletado_em)) + ". Malha: IBGE, Malha Municipal Digital 2025 (CC BY 4.0), simplificada.</p>";
     this.root.querySelector(".mm-leg").innerHTML = h;
