@@ -85,17 +85,20 @@ function munAttrs(ele, raiz, extra = "") {
 function munSection(ele, raiz, rotulo) {
   const id = "mm" + ele;
   return `<section class="area-mun mm" id="municipios" aria-labelledby="t-${id}" data-auto="on" data-hash="on" ${munAttrs(ele, raiz)}>
-<h2 id="t-${id}">Resultados por município</h2>
-<p class="sub">${rotulo}: os ${(5571).toLocaleString("pt-BR")} municípios no mapa oficial do IBGE. Escolha o que mostrar, filtre por estado ou busque pelo nome; toque num município para ver os números do TSE e seguir até zonas e seções.</p>
+<div class="mm-head"><p class="kick">Mapa · ${rotulo} · Presidente</p><h2 id="t-${id}">Resultados por município</h2>
+<p class="sub">Os ${(5571).toLocaleString("pt-BR")} municípios na malha oficial do IBGE, com o resultado do arquivo municipal do TSE. Passe o mouse ou toque num município para ver os números e seguir até zonas e seções.</p></div>
 <div class="mm-ctrl"><div class="mm-camadas" role="group" aria-label="Mostrar no mapa"></div>
-<div class="mm-f"><label class="mm-ufl">Estado <select class="mm-uf"></select></label><div class="mm-busca"><label for="${id}-busca">Buscar município</label><input id="${id}-busca" type="search" autocomplete="off" placeholder="ex.: Fernando de Noronha"><ul aria-live="polite"></ul></div></div></div>
-<div class="mm-grid"><div class="mm-mapwrap"><div class="mm-mapa"><p class="empty">Carregando o mapa…</p></div><div class="mm-tip" hidden></div></div>
-<div class="mm-side"><div class="mm-det" aria-live="polite"><p class="sub">Escolha um município no mapa, na busca ou na tabela.</p></div></div></div>
-<div class="mm-leg"></div>
+<div class="mm-f"><label class="mm-ufl"><span>Estado</span><select class="mm-uf"></select></label><div class="mm-busca"><label for="${id}-busca">Buscar município</label><input id="${id}-busca" type="search" autocomplete="off" placeholder="ex.: Fernando de Noronha"><ul aria-live="polite"></ul></div></div></div>
+<div class="mm-grid"><div class="mm-stage"><div class="mm-mapwrap"><div class="mm-mapa"><p class="empty">Carregando o mapa…</p></div>${ZOOM}<div class="mm-tip" hidden></div></div>
+<div class="mm-leg"></div></div>
+<div class="mm-side" role="region" aria-label="Município escolhido"><button type="button" class="mm-fechar" aria-label="Fechar o painel do município"><span aria-hidden="true">×</span></button><div class="mm-det" aria-live="polite"><p class="sub mm-vazio-t">Escolha um município no mapa, na busca ou na tabela.</p></div></div></div>
+<div class="mm-fundo" hidden></div>
 <details class="mm-tab"><summary>Ver os municípios de um estado em tabela</summary><div class="mm-tab-body"><p class="sub">Escolha um estado acima para ver os municípios dele em tabela.</p></div></details>
 <noscript><p class="empty">O mapa por município precisa de JavaScript. Os resultados por estado e município continuam nas páginas de cada estado.</p></noscript>
 </section>`;
 }
+// zoom do mapa: aproximar, afastar, Brasil inteiro (o arrasto com o mapa ampliado é só complemento)
+const ZOOM = `<div class="mm-zoom" role="group" aria-label="Zoom do mapa"><button type="button" data-z="+"><span aria-hidden="true">+</span><span class="vh">Aproximar</span></button><button type="button" data-z="-"><span aria-hidden="true">−</span><span class="vh">Afastar</span></button><button type="button" data-z="0"><span aria-hidden="true">BR</span><span class="vh">Ver o Brasil inteiro</span></button></div>`;
 // Navegação da página Brasil (E26-04): turno, "Nesta página", comparação lado a lado e os dois índices (apuração e
 // conferências). Só links e componentes existentes; nenhum número novo de estudo aparece aqui sem gate.
 const TURNOS = t2 => `<nav class="turnos" aria-label="Turno"><a href="/eleicoes-2026/"${t2 ? "" : ' aria-current="page"'}><b>1º turno</b> · 4 out</a><a href="/eleicoes-2026/2-turno/"${t2 ? ' aria-current="page"' : ""}><b>2º turno</b> · 25 out</a></nav>`;
@@ -106,11 +109,12 @@ const HUBS = () => `<div class="hubs"><section class="hub" id="apuracao" aria-la
 <section class="hub" id="conferencias" aria-labelledby="t-conf"><h2 id="t-conf">Conferências do Desmentindo</h2><p class="sub">O que conferimos nos arquivos oficiais, com método e limites escritos.</p><ul class="hublist">
 ${qLink("Q6", "boletins de urna × resultado oficial")}${qLink("Q8", "seções agregadas")}${qLink("Q7", "arquivos ainda não publicados")}<li><a href="/eleicoes-2026/questionamentos/"><b>Todos os questionamentos</b><span>${QDATA.questionamentos.length} dúvidas testadas nos dados oficiais</span></a></li></ul></section></div>`;
 function cmpSection(raiz) {
-  const one = (ele, cls, tit) => `<div class="mm ${cls}" data-auto="off" data-hash="off" ${munAttrs(ele, raiz)}><h3 class="cmp-h">${tit}</h3><div class="mm-mapwrap"><div class="mm-mapa"><p class="empty">Carregando…</p></div><div class="mm-tip" hidden></div></div><div class="mm-leg"></div></div>`;
-  return `<section class="area-cmp" id="comparar" aria-labelledby="t-cmp"><h2 id="t-cmp">Compare os turnos</h2>
-<p class="sub">Os mesmos municípios no 1º e no 2º turno, lado a lado. Escolher um município num mapa (ou na busca) seleciona o mesmo no outro e abre a comparação com os números de cada turno.</p>
+  const one = (ele, cls, tit) => `<div class="mm ${cls}" data-auto="off" data-hash="off" ${munAttrs(ele, raiz, munDados(ele) ? "" : ' data-espera="geo"')}><h3 class="cmp-h">${tit}</h3><div class="mm-mapwrap"><div class="mm-mapa"><p class="empty">Carregando…</p></div>${ZOOM}<div class="mm-tip" hidden></div></div><div class="mm-leg"></div></div>`;
+  return `<section class="area-cmp" id="comparar" aria-labelledby="t-cmp" data-ver="a"><div class="mm-head"><p class="kick">Mapa · 1º e 2º turno · Presidente</p><h2 id="t-cmp">Compare os turnos</h2>
+<p class="sub">Os mesmos municípios nos dois turnos, lado a lado. Escolher um município num mapa (ou na busca) seleciona o mesmo no outro; zoom e destaque andam juntos.</p></div>
 <div class="mm-ctrl"><div class="mm-camadas cmp-camadas" role="group" aria-label="Mostrar nos dois mapas"></div>
-<div class="mm-f"><label class="mm-ufl">Estado <select class="mm-uf cmp-uf"></select></label><div class="mm-busca cmp-busca"><label for="cmp-busca">Buscar município</label><input id="cmp-busca" type="search" autocomplete="off" placeholder="ex.: Campinas"><ul aria-live="polite"></ul></div></div></div>
+<div class="mm-f"><label class="mm-ufl"><span>Estado</span><select class="mm-uf cmp-uf"></select></label><div class="mm-busca cmp-busca"><label for="cmp-busca">Buscar município</label><input id="cmp-busca" type="search" autocomplete="off" placeholder="ex.: Campinas"><ul aria-live="polite"></ul></div></div></div>
+<div class="cmp-alterna" role="group" aria-label="Turno no mapa"><button type="button" data-ver="a" aria-pressed="true">1º turno · 4 out</button><button type="button" data-ver="b" aria-pressed="false">2º turno · 25 out</button></div>
 <div class="cmp-maps">${one("6257", "cmp-a", "1º turno · 4 out")}${one("6258", "cmp-b", "2º turno · 25 out")}</div>
 <div class="cmp-painel" aria-live="polite"><p class="sub">Escolha um município para comparar os dois turnos.</p></div>
 <noscript><p class="empty">A comparação precisa de JavaScript.</p></noscript></section>`;
@@ -206,6 +210,7 @@ ${br ? munSection(t2 ? "6258" : "6257", T.root, t2 ? "2º turno" : "1º turno") 
 </main>
 <footer><div class="wrap">Fonte: Tribunal Superior Eleitoral (resultados.tse.jus.br). <a href="/#/privacidade">Privacidade</a> · <a href="/">Desmentindo</a></div></footer>
 <script src="${asset("eleicoes-2026/eleicoes-core.js")}" defer></script>
+<script src="${asset("eleicoes-2026/eleicoes-cores.js")}" defer></script>
 <script src="${asset("eleicoes-2026/eleicoes.js")}" defer></script>
 ${br ? `<script src="${asset("eleicoes-2026/eleicoes-mun.js")}" defer></script>\n<script src="${asset("eleicoes-2026/eleicoes-cmp.js")}" defer></script>\n` : ""}</body>
 </html>

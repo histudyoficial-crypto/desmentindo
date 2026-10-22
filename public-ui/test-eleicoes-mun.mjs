@@ -67,4 +67,20 @@ t("página: os dois turnos usam o MESMO componente (sem cópia), com o arquivo d
   }
   const uf = fs.readFileSync(path.join(ROOT, "eleicoes-2026/sp/index.html"), "utf8"); assert.doesNotMatch(uf, /eleicoes-mun/);
 });
+// cores por candidato (decisão do proprietário, 22/10/2026): a cor segue o NÚMERO do candidato, nunca a posição
+const CORES = (await import("../eleicoes-2026/eleicoes-cores.js")).default;
+t("cores: Lula (13) #D62839 e Flávio Bolsonaro (22) #2458D3; siglas = arquivo oficial do TSE", () => {
+  assert.equal(CORES.de(13).cor, "#D62839"); assert.equal(CORES.de(22).cor, "#2458D3"); assert.equal(CORES.sigla(13), "PT"); assert.equal(CORES.sigla(22), "PL");
+  assert.equal(CORES.de(70).neutro, true, "sem cor verificada → neutro");
+});
+t("cores: o mais votado de cada município é pintado com a cor do SEU número (não da posição na cédula)", () => {
+  const D = J("presidente-6257.json"), c2 = { window: { EleicoesCores: CORES }, document: { querySelectorAll: () => [] } }; vm.runInNewContext(fs.readFileSync(path.join(ROOT, "eleicoes-2026", "eleicoes-mun.js"), "utf8"), c2);
+  const E = c2.window.EleicoesMun; let n13 = 0, n22 = 0;
+  for (const r of Object.values(D.m)) { const f = E.corLider(r, D);
+    if (r[3] == null || r[9] == null) assert.equal(f, "url(#mmp-sd)"); else if (r[9] === -1) assert.equal(f, "url(#mmp-emp)");
+    else { const num = D.cands[r[9]].n; assert.equal(f, CORES.de(num).neutro ? "url(#mmp-neu)" : CORES.de(num).cor); if (num === "13") n13++; if (num === "22") n22++; } }
+  // a ordem trocada na cédula não pode trocar a cor
+  const Dx = { ...D, cands: [...D.cands].reverse() }, rx = ["sp", "1", "X", 100, 80, 20, 95, 2, 3, Dx.cands.findIndex(c => c.n === "13"), 50, 0, 40];
+  assert.equal(E.corLider(rx, Dx), "#D62839"); console.log(`   (13 → ${n13} municípios · 22 → ${n22} municípios)`);
+});
 console.log(`ELEICOES_MUN_TESTS ${n}/${n} OK`);

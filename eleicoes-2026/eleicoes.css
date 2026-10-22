@@ -2,7 +2,7 @@
 :root{--ink:#201E1D;--ink-2:#444141;--muted:#5C5958;--rule:#D6D3D2;--paper:#F3F2F2;--white:#FFF;--yellow:#FFDF00;--yellow-pale:#FFF3B0;
 --gold-ink:#8A6700;--green:#009C3B;--green-ink:#007A2E;--green-pale:#DDF0E3;--blue:#002776;--blue-mid:#4A6FB5;--blue-pale:#E3E9F5;--red-ink:#9B2C2C;--red-pale:#F8E1DE;
 --font:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
---ink-3:#6B6766;--surface:#FFF;--rule-strong:#201E1D;--link:#002776;--s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px}
+--ink-3:#6B6766;--gray-400:#A7A3A2;--gray-200:#E4E2E1;--gray-100:#EEECEB;--surface:#FFF;--rule-strong:#201E1D;--link:#002776;--s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px}
 *{box-sizing:border-box}html,body{margin:0}
 body{background:var(--paper);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;overflow-x:hidden;-webkit-text-size-adjust:100%}
 a{color:var(--link);text-underline-offset:2px}:focus-visible{outline:3px solid var(--link);outline-offset:2px}
@@ -416,3 +416,65 @@ footer{border-top:3px solid var(--ink);margin-top:28px;padding:14px 0 40px;font-
 @media(min-width:760px){.inds{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(min-width:1100px){.inds{grid-template-columns:repeat(6,minmax(0,1fr))}}
 .tile.neutro{background:#E4E0DD;color:var(--ink)}.tile.neutro span:first-of-type{font-size:10px;font-weight:700;letter-spacing:-.01em;max-width:100%;overflow:hidden;text-overflow:clip;white-space:nowrap}
+/* ---------- Direção de arte (22/10/2026): a mesma família da Home v5 — tipografia condensada de manchete, régua preta
+   grossa abrindo seção, amarelo só para ação/realce, menos caixa e mais hierarquia. Só apresentação; nenhum dado muda. */
+.pnav{background:var(--paper)}
+.pnav a{font-size:14.5px;border-bottom-width:4px}.pnav a:hover{text-decoration:none;border-bottom-color:var(--rule)}.pnav a[aria-current="page"]{border-bottom-color:var(--yellow)}
+.head{padding:22px 0 4px}
+.head h1{font-stretch:62%;font-weight:900;font-size:clamp(48px,9vw,96px);line-height:.86;letter-spacing:-.01em;margin:10px 0 8px}
+.tag{background:var(--ink);color:var(--yellow)}
+.turno2 a{background:var(--ink);color:#fff;border:0;border-left:6px solid var(--yellow);padding:12px 16px}.turno2 a:hover{background:#000}
+.turno2 b{font-stretch:80%;font-weight:900;font-size:19px}.turno2 span{color:#D6D3D2}
+.paths a{background:transparent;border:0;border-top:3px solid var(--ink);padding:8px 0 4px}.paths a:hover b{text-decoration:underline;text-decoration-thickness:2px}
+@media(min-width:760px){.paths{gap:8px 24px}.paths a:last-child{border-top-width:3px;padding:8px 0 4px}}
+/* estado da eleição: manchete dos números (os dois primeiros), depois a situação, depois a participação */
+.estado-el{margin:22px 0 0;border:0;border-top:6px solid var(--ink);background:transparent;padding:12px 0 0}
+.estado-el>h2{color:var(--ink-2)}
+.ld-k{font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);margin-bottom:10px}
+.ld-list{gap:0 28px}
+.ld-list li{border-top:0;border-left:8px solid var(--c,var(--ink));padding:2px 0 4px 14px;grid-template-columns:minmax(0,1fr);row-gap:0}
+.ld-n{font-size:15px;font-weight:900;text-transform:uppercase;letter-spacing:.03em}.ld-n small{font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--ink-2);text-transform:none}
+.ld-p{font-size:clamp(46px,6.4vw,76px);font-stretch:62%;line-height:.9;color:var(--ink);margin-top:2px}
+.ld-vt{font-size:13.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.ld-s{color:var(--ink-2)}.ld-go{margin:10px 0 2px}
+.lideres{min-height:178px}
+@media(max-width:599px){.ld-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 12px}.ld-list li{padding-left:10px;border-left-width:6px}.ld-p{font-size:44px}.ld-n{font-size:13px}.lideres{min-height:196px}}
+/* situação: uma faixa com réguas, sem caixas; a origem (TSE) aparece no modo Verificação */
+#status.cards{gap:0;padding:14px 0 0;border-top:1px solid var(--rule);margin-top:14px}
+#status .card{background:transparent;border:0;border-left:1px solid var(--rule);padding:4px 14px 6px;min-height:0}
+#status .card .k{font-size:11px;letter-spacing:.08em}#status .card .v{font-size:28px;font-stretch:72%}
+#status .card.vivo{border-style:solid}
+body[data-mode="resultados"] #status .card .p{display:none}
+@media(min-width:760px){#status .card:first-child{border-left:0;padding-left:0}}
+@media(max-width:759px){#status .card:nth-child(odd){border-left:0;padding-left:0}#status .card{border-top:1px solid var(--rule);padding-top:8px}#status .card:nth-child(-n+2){border-top:0;padding-top:4px}}
+#status .card{min-height:96px}@media(max-width:759px){#status .card,#status .card:nth-child(3),#status .card:nth-child(4){min-height:104px}#status .card:last-child{min-height:84px}}
+body[data-mode="auditoria"] #status .card{min-height:128px}
+.area-part{margin-top:16px;padding-top:10px;border-top:1px solid var(--rule)}.area-part .h3s{font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.inds{gap:0}.inds .ind{background:transparent;border:0;border-left:1px solid var(--rule);padding:4px 12px 6px}
+.inds dd b{font-size:22px;font-stretch:80%;font-weight:900}
+@media(min-width:1100px){.inds .ind:first-child{border-left:0;padding-left:0}}
+@media(min-width:760px) and (max-width:1099px){.inds .ind:nth-child(3n+1){border-left:0;padding-left:0}}
+@media(max-width:759px){.inds .ind:nth-child(odd){border-left:0;padding-left:0}.inds .ind{border-top:1px solid var(--rule)}}
+.mm-inds .ind,.mm-inds .ind:nth-child(odd){border-left:0;padding-left:0}
+/* seções do miolo: régua grossa e título condensado, como na Home */
+.layout>section,.layout>aside,.area-time,.area-aud,main>section{border-top:6px solid var(--ink);padding-top:14px;margin-top:32px}
+.layout>section h2,.layout>aside>h2,.area-time>h2,.area-q>h2,.area-aud>h2,.area-dif>h2,.area-hist>h2{font-stretch:66%;font-size:clamp(28px,3.6vw,38px);line-height:.98;margin-bottom:8px}
+.area-q{border-top:6px solid var(--ink);padding-top:14px;margin-top:32px}
+.layout>section,.layout>aside{margin-top:32px}
+/* placar: lista com réguas, barra na cor do candidato */
+.cands{gap:0}.cands li{background:transparent;border:0;border-top:1px solid var(--rule);padding:10px 0}
+.cands li:first-child{border-top:2px solid var(--ink)}.nm{font-size:16px}.cv b{font-size:24px;font-stretch:80%;font-weight:900}
+.bar{height:8px;background:var(--gray-100)}.bar i{background:var(--ink)}
+.aux div{background:transparent;border:0;border-top:1px solid var(--rule);padding:6px 0}
+/* mapa por estado: quadrado na cor do candidato com nome escrito */
+.tile.cand{color:#fff}.tile.cand span{font-weight:700}.tile.cand-neutro{background-image:repeating-linear-gradient(-45deg,transparent 0 4px,rgba(255,255,255,.35) 4px 6px)}
+.mlegend li{display:flex;align-items:center;gap:4px}.mlegend i{margin-right:4px}
+.maphead select{border-width:2px}
+footer{border-top-width:6px}
+/* celular: a situação continua lista compacta (uma linha por item), agora sem caixa — régua entre itens */
+@media(max-width:599px){#status.cards{background:transparent;border:0;border-top:1px solid var(--rule);padding:0;margin-top:14px}
+ #status .card,#status .card:nth-child(n){border-left:0;border-top:1px solid var(--rule);padding:8px 0;min-height:72px}#status .card:first-child{border-top:0}
+ #status .card .v{font-size:24px}}
+/* reserva (CLS) dos cartões de situação, medida com o dado do TSE preenchido em cada largura (o texto do recorte de UF é o mais longo) */
+@media(min-width:760px){#status .card{min-height:152px}}@media(min-width:1024px){#status .card{min-height:120px}}@media(min-width:1100px){#status .card{min-height:100px}}
+@media(max-width:599px){.lideres{min-height:206px}}

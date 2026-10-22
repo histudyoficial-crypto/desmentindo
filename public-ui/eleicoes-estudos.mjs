@@ -55,8 +55,15 @@ function pontos(linhasP, obs, obsIc, W = 720) {   // esperado em cada controle (
     s += `<circle cx="${X(m).toFixed(1)}" cy="${y}" r="6" fill="#fff" stroke="${INK}" stroke-width="2"/><text x="${(X(m) + (m < 39 ? 10 : -10)).toFixed(1)}" y="${y - 9}" font-size="12" text-anchor="${m < 39 ? "start" : "end"}" fill="${INK2}">${fP(m)}</text>`; });
   return s + "</svg>";
 }
-function secao(id, titulo, estadoTag, corpo, story) {
-  const html = `<section class="qsec mod-e26" id="${id}" aria-labelledby="${id}-t"><h2 id="${id}-t">${esc(titulo)}</h2><p class="mod-tags">${estadoTag}</p>${corpo}${story ? `<p class="mod-story">Esta seção detalha os dados de <a href="${esc(story.url)}">${esc(story.titulo)}</a>.</p>` : ""}</section>`;
+// Ficha de leitura (mesma ordem nos três estudos): o que se observou · como testamos · o que dá para concluir · limites ·
+// onde conferir. Opcional no contrato (D.ficha); limites e fontes apontam para os blocos completos do próprio módulo.
+const fichaHtml = (f, id, nLim) => !f ? "" : `<dl class="mod-ficha"><div><dt><span aria-hidden="true">1</span>O que se observou</dt><dd>${esc(f.observado)}</dd></div>` +
+  `<div><dt><span aria-hidden="true">2</span>Como testamos</dt><dd>${esc(f.como)}</dd></div><div><dt><span aria-hidden="true">3</span>O que dá para concluir</dt><dd>${esc(f.conclusao)}</dd></div>` +
+  `<div><dt><span aria-hidden="true">4</span>Limites</dt><dd><a href="#${id}-lim">${nLim} limite${nLim === 1 ? "" : "s"} escrito${nLim === 1 ? "" : "s"} no fim desta seção</a></dd></div>` +
+  `<div><dt><span aria-hidden="true">5</span>Onde conferir</dt><dd><a href="#${id}-fontes">Fontes e arquivos oficiais usados</a></dd></div></dl>`;
+function secao(id, titulo, estadoTag, corpo, story, ficha, nLim) {
+  corpo = corpo.replace('<div class="mod-lim">', `<div class="mod-lim" id="${id}-lim">`).replace('<details class="mod-fontes">', `<details class="mod-fontes" id="${id}-fontes">`);
+  const html = `<section class="qsec mod-e26" id="${id}" aria-labelledby="${id}-t"><h2 id="${id}-t">${esc(titulo)}</h2><p class="mod-tags">${estadoTag}</p>${fichaHtml(ficha, id, nLim)}${corpo}${story ? `<p class="mod-story">Esta seção detalha os dados de <a href="${esc(story.url)}">${esc(story.titulo)}</a>.</p>` : ""}</section>`;
   const txt = html.replace(/<svg[\s\S]*?<\/svg>/g, "").replace(/<[^>]+>/g, " ");
   const m = txt.match(PROIBIDAS); if (m) throw new Error(`PALAVRA_PROIBIDA_NA_TELA: "${m[0]}" em ${id}`);
   if (/\b(NaN|undefined|null)\b/.test(txt)) throw new Error(`VALOR_INVALIDO_NA_TELA em ${id}`);
@@ -79,7 +86,7 @@ export function moduloLate15(D) {
     `<h3>3. Onde está a explicação</h3><p>Do excesso de ${fN(D.excesso_pp, 1)} pontos sobre o sorteio, a parte que se explica em cada nível:</p>` +
     fig(barra(dec), legendaBarra(dec), "Parcela do excesso de recorrência explicada por nível territorial") +
     `<p><b>Leitura.</b> ${esc(D.leitura)}</p>` + limites(D.limites) + fontes(D.fontes);
-  return secao("estudo-chegada", "Os dados: a mesma ordem de chegada, quatro anos depois", tag("DADO OFICIAL (TSE)") + tag("CALCULADO"), corpo, D.story);
+  return secao("estudo-chegada", "Os dados: a mesma ordem de chegada, quatro anos depois", tag("DADO OFICIAL (TSE)") + tag("CALCULADO"), corpo, D.story, D.ficha, (D.limites || []).length);
 }
 
 // ---------------------------------------------------------------- B · H23
@@ -96,7 +103,7 @@ export function moduloH23(D) {
     `<h3>Explicação estatística e territorial</h3><p>${esc(D.explicacao)}</p>` +
     `<h3>Quanto a reconstrução erra</h3><p>${esc(D.erro_texto)}</p>` + (D.erro_tabela ? tabela(D.erro_tabela.cab, D.erro_tabela.linhas, D.erro_tabela.cap) : "") +
     limites(D.limites) + fontes(D.fontes);
-  return secao("estudo-regularidade", "Os dados: regularidade da curva depois da pausa", tag("DADO OFICIAL (TSE)") + tag("CALCULADO"), corpo, D.story);
+  return secao("estudo-regularidade", "Os dados: regularidade da curva depois da pausa", tag("DADO OFICIAL (TSE)") + tag("CALCULADO"), corpo, D.story, D.ficha, (D.limites || []).length);
 }
 
 // ---------------------------------------------------------------- C · Reconciliação BU
@@ -112,7 +119,7 @@ export function moduloBU(D) {
     tabela(["Posição", "Municípios que batem", "Estados que batem", "Diferença sem explicação"], D.posicoes.map(p => [p.rotulo, `${fN(p.mun)} de ${fN(p.mun_total)}`, `${fN(p.uf)} de ${fN(p.uf_total)}`, fN(p.sem_explicacao)]), "Municípios e estados em que a soma dos boletins bate com o resultado oficial") +
     `<h3>Diferenças explicadas</h3>` + tabela(["Motivo", "Municípios", "Seções"], D.diferencas.map(d => [d.motivo, fN(d.municipios), fN(d.secoes)]), "Diferenças com motivo identificado") +
     `<h3>Como foi feito</h3><p>${esc(D.metodologia)}</p>` + limites(D.limites) + fontes(D.fontes);
-  return secao("estudo-boletins", "Os dados: boletins de urna × resultado oficial", tag("DADO OFICIAL (TSE)") + tag("CALCULADO"), corpo, D.story);
+  return secao("estudo-boletins", "Os dados: boletins de urna × resultado oficial", tag("DADO OFICIAL (TSE)") + tag("CALCULADO"), corpo, D.story, D.ficha, (D.limites || []).length);
 }
 
 // ---------------------------------------------------------------- gate
