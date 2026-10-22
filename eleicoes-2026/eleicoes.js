@@ -224,6 +224,10 @@
   var GRID = [["rr",0,1],["ap",0,3],["am",1,1],["pa",1,2],["ma",1,3],["ce",1,4],["rn",1,5],["ac",2,0],["ro",2,1],["to",2,2],
     ["pi",2,3],["pb",2,4],["pe",2,5],["mt",3,1],["go",3,2],["df",3,3],["ba",3,4],["al",3,5],["ms",4,1],["mg",4,2],["es",4,3],
     ["se",4,4],["pr",5,1],["sp",5,2],["rj",5,3],["sc",6,1],["rs",7,1]];
+  // §32.2.4: alternativa neutra da camada "Quem está à frente" — mesma cor para todos, nome escrito no quadrado.
+  // Proposta E26 (decisão D de Johnny); false = comportamento atual em produção (cores pela ordem da cédula).
+  var LIDER_NEUTRO = true;
+  function curto(nm) { var w = String(nm || "").split(/\s+/), x = w.length > 1 ? w[w.length - 1] : w[0]; x = x.charAt(0) + x.slice(1).toLocaleLowerCase("pt-BR"); return x.length > 10 ? x.slice(0, 9) + "." : x; }   // caixa mista: cabe no quadrado de 390 px
   var PALETTE = ["#2A6F77", "#9A5418", "#6B4E9B", "#4F7A28", "#8C3B5E", "#3D5A80", "#7A6A2F", "#A04A3A"];
   var SEQ = ["#F1EFEE", "#D9D4D0", "#B9B1AB", "#958A83", "#6E625C", "#463C38"];   // escala neutra (cedo → tarde / pouco → muito)
   var map = { data: {}, color: {}, at: 0, layer: "lider" };
@@ -238,10 +242,11 @@
       map.lo = vs.length ? Math.min.apply(null, vs) : 0; map.hi = vs.length ? Math.max.apply(null, vs) : 1;
     }
     var cells = GRID.map(function (g) {
-      var uf = g[0], R = map.data[uf], Ld = R && lead(R), bg = "", txt = "—", label = uf.toUpperCase() + " · " + UFN[uf] + ": ", cls = "";
+      var uf = g[0], R = map.data[uf], Ld = R && lead(R), bg = "", txt = "—", txt2 = "", label = uf.toUpperCase() + " · " + UFN[uf] + ": ", cls = "";
       if (past) { cls = " nodata past"; label += "sem registro por estado neste instante"; txt = "s/ reg."; }
       else if (lay === "lider") {
-        if (Ld && !Ld.tie) { bg = colorOf(Ld.c); txt = fPct(Ld.c.pct); label += Ld.c.name + (R.final ? " mais votado" : " à frente na parcial") + " com " + fPct(Ld.c.pct); }
+        if (Ld && !Ld.tie) { label += Ld.c.name + (R.final ? " mais votado" : " à frente na parcial") + " com " + fPct(Ld.c.pct);
+          if (LIDER_NEUTRO) { cls = " seqc neutro"; txt = curto(Ld.c.name); txt2 = fPct(Ld.c.pct, 1); } else { bg = colorOf(Ld.c); txt = fPct(Ld.c.pct); } }
         else if (Ld) { cls = " tie"; txt = "empate"; label += "empate na parcial"; } else { cls = " nodata"; label += "sem dado do TSE ainda"; }
       } else if (lay === "tot") {
         if (R) { bg = seq(100 - (R.pst || 0), 0, 1); txt = R.final ? "final" : fPct(R.pst, 1); label += fPct(R.pst) + " das seções totalizadas"; cls = " seqc"; } else { cls = " nodata"; label += "sem dado do TSE ainda"; }
@@ -255,11 +260,13 @@
         if (u && u.late15_pct != null) { bg = seq(u.late15_pct, 0, 45); txt = fPct(u.late15_pct, 1); label += fPct(u.late15_pct, 1) + " das seções entre as 15% que chegaram por último"; cls = " seqc"; }
         else { cls = " nodata"; label += "sem métrica calculada"; }
       }
-      return '<a class="tile' + cls + '" href="' + ROOT + uf + '/" style="grid-row:' + (g[1] + 1) + ";grid-column:" + (g[2] + 1) + (bg ? ";background:" + bg : "") + '" title="' + esc(label) + '"><b>' + uf.toUpperCase() + "</b><span>" + esc(txt) + '</span><span class="vh"> — ' + esc(label) + "</span></a>";
+      return '<a class="tile' + cls + '" href="' + ROOT + uf + '/" style="grid-row:' + (g[1] + 1) + ";grid-column:" + (g[2] + 1) + (bg ? ";background:" + bg : "") + '" title="' + esc(label) + '"><b>' + uf.toUpperCase() + "</b><span>" + esc(txt) + "</span>" + (txt2 ? "<span>" + esc(txt2) + "</span>" : "") + '<span class="vh"> — ' + esc(label) + "</span></a>";
     }).join("");
     var leg = "";
     if (past) leg = '<p class="note">Você está vendo um registro passado da linha do tempo. Só existe registro do Brasil; por estado não há registro deste instante, então o mapa não inventa cor. <button type="button" class="linkbtn" data-live>Voltar ao agora</button></p>';
-    else if (lay === "lider") {
+    else if (lay === "lider" && LIDER_NEUTRO) {
+      leg = '<p class="note">' + OFICIAL + " O nome escrito em cada quadrado é quem está à frente no estado. Todos os quadrados têm a mesma cor: a cor não indica candidato, partido nem lado. Quadrados do mesmo tamanho: não representa quantos votos cada estado tem. Tabela completa logo abaixo. Leitura às " + (map.at ? hhmm(map.at) : "—") + ".</p>";
+    } else if (lay === "lider") {
       var seen = {}, lg = GRID.map(function (g) { var R = map.data[g[0]], x = R && lead(R); return x && !x.tie ? x.c : null; }).filter(function (c) { if (!c || seen[c.id]) return false; seen[c.id] = 1; return true; });
       leg = '<ul class="mlegend">' + lg.map(function (c) { return '<li><i style="background:' + colorOf(c) + '"></i>' + esc(c.name) + "</li>"; }).join("") + '<li><i class="nodata"></i>Sem dado do TSE</li></ul>' +
         '<p class="note">' + OFICIAL + " Cores pela ordem do TSE na cédula, sem relação com partido ou lado. Quadrados do mesmo tamanho: mostra quem está à frente em cada estado, não quantos votos cada estado tem. Leitura às " + (map.at ? hhmm(map.at) : "—") + ".</p>";
