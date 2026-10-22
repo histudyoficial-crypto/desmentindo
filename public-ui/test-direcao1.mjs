@@ -116,7 +116,7 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
   // (16/10) única outra exceção: vidCard dos Vídeos recentes, cuja miniatura é vista e aprovada por Johnny na prévia do lote
   eq("ytimg só em thumbSrc (e vidCard, lote aprovado)", yt.length === 2 && fn("thumbSrc").includes("i.ytimg.com") && fn("vidCard").includes("i.ytimg.com"), true);
   const yid = (src.match(/var YT_ID = [^;]+;/) || [""])[0];
-  const T = new Function(`${MES}\n${yid}\n${fn("e")}\n${fn("dParts")}\n${fn("fdate")}\n${fn("dDay")}\n${fn("initials")}\n${fn("isDay")}\n${fn("tcDate")}\n${fn("tc")}\n${fn("civilDays")}\n${fn("agoLabel")}\n${fn("thumbSrc")}\n${fn("miniSaid")}\nreturn { thumbSrc, miniSaid, agoLabel, civilDays, tcDate };`)();
+  const T = new Function(`${MES}\n${yid}\n${fn("e")}\n${fn("dParts")}\n${fn("fdate")}\n${fn("dDay")}\n${fn("initials")}\n${fn("isDay")}\n${fn("tcDate")}\n${fn("tc")}\n${fn("civilDays")}\n${fn("agoLabel")}\n${fn("thumbSrc")}\n${fn("nf")}\n${fn("plural")}\n${fn("saidExcerpt")}\n${fn("miniSaid")}\nreturn { thumbSrc, miniSaid, agoLabel, civilDays, tcDate, saidExcerpt };`)();
   const o = (x = {}) => Object.assign({ source_name: "Alexandre Garcia", video_id: "GZ8jWAg9pAA", date: "2026-09-14", excerpt: "Trecho do corpus", t_seconds: 302, t_label: "5:02", deep_link: "https://www.youtube.com/watch?v=GZ8jWAg9pAA&t=302s" }, x);
   const st = { slug: "dark-horse", title: "Dark Horse" };
   const R = { reviews: { "GZ8jWAg9pAA@dark-horse": { verdict: "SAFE" }, "abcdefghijk@dark-horse": { verdict: "SAFE" }, "ABC_def-123@dark-horse": { verdict: "SAFE" }, "a4RbhwuWHDQ@atibaia": { verdict: "UNSAFE" } } };
@@ -135,8 +135,18 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
   eq("id inválido", T.thumbSrc(o({ video_id: "../x" }), "dark-horse", { reviews: { "../x@dark-horse": { verdict: "SAFE" } } }), "");
   const d = T.miniSaid(o(), st, null, "2026-10-05");
   eq("nunca retângulo vazio", /vm-ed/.test(d) && /vm-a1/.test(d) && !/ytimg/.test(d), true);
-  eq("fonte · data · minuto", /vm-src">AG · 14 SET/.test(d) && /▶ 5:02/.test(d) && /said-who">Alexandre Garcia</.test(d), true);
+  eq("fonte · data · minuto", /vm-src">AG · 14 SET/.test(d) && /▶ 5:02/.test(d) && /said-who">Alexandre Garcia <span class="said-d">· <time datetime="2026-09-14">/.test(d), true);
   eq("distância temporal no card", /tc tc-ago">21 DIAS ANTES</.test(d), true);
+  // CORPUS NA HOME (22/10, só interface): nome do caso não repete no trecho; canal + data com ano; acesso à memória do caso
+  eq("trecho sem o nome repetido", T.saidExcerpt("Farra dos Guardanapos: Paris, 2009", { title: "Farra dos Guardanapos" }), "Paris, 2009");
+  eq("trecho sem prefixo fica igual", [T.saidExcerpt("PF investiga", { title: "Atibaia" }), T.saidExcerpt("x", null), T.saidExcerpt(undefined, null)], ["PF investiga", "x", ""]);
+  {
+    const m = T.miniSaid(o({ excerpt: "Atibaia: PF investiga" }), { slug: "atibaia", title: "Atibaia", count: 45 }, R, "2026-10-05");
+    eq("Corpus: data com ano, link da memória do caso e trecho sem repetição",
+      [/<span class="said-d">· <time datetime="[^"]+">[^<]*\d{4}<\/time><\/span>/.test(m), /class="said-more"><a href="#\/historia\/atibaia" aria-label="45 trechos sobre Atibaia na memória"><span>45 trechos na memória<\/span>/.test(m),
+       /Atibaia<\/a>: PF investiga<\/p>/.test(m)], [true, true, true]);
+    eq("Corpus: 1 trecho só → sem link de contagem", /said-more/.test(T.miniSaid(o(), { slug: "x", title: "X", count: 1 }, R, "2026-10-05")), false);
+  }
   eq("sem referência → sem carimbo", /tc-ago/.test(T.miniSaid(o(), st, R, "")), false);
   eq("player inline", /class="vmini[^"]*" data-play/.test(d) && /data-t="302"/.test(d), true);
   eq("trecho do corpus + escape", /Trecho do corpus/.test(d) && /&lt;b&gt;/.test(T.miniSaid(o({ excerpt: "<b>x</b>" }), st, R)), true);
