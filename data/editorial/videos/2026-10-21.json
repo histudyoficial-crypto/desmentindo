@@ -1,0 +1,79 @@
+{
+ "schema": "desmentindo.public.recent_videos.v1",
+ "date": "2026-10-21",
+ "published_at": "2026-10-22T20:41:44Z",
+ "title": "Vídeos recentes dos canais",
+ "notice": "Publicado pelos canais acompanhados. Ainda não checado pelo Desmentindo: título e conteúdo são dos autores. Aparecer aqui não é confirmação nem ligação com as notícias do dia.",
+ "window": {
+  "days": 3,
+  "from": "2026-10-19",
+  "to": "2026-10-21"
+ },
+ "items": [
+  {
+   "channel": "Te Atualizei",
+   "channel_id": "UCXRIQok8uzYtg1TPwSqikVg",
+   "video_id": "J59qz9Fqeiw",
+   "title": "ACORDA, BRASIL! (MUSIC VIDEO)",
+   "published_at": "2026-10-22T00:09:59Z",
+   "url": "https://www.youtube.com/watch?v=J59qz9Fqeiw",
+   "thumbnail": "https://i.ytimg.com/vi/J59qz9Fqeiw/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-22T00:16:31Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "UJbYwJ_61CQ",
+   "title": "Abrir sigilo bancário é factoide de campanha - Alexandre Garcia",
+   "published_at": "2026-10-21T22:31:46Z",
+   "url": "https://www.youtube.com/watch?v=UJbYwJ_61CQ",
+   "thumbnail": "https://i.ytimg.com/vi/UJbYwJ_61CQ/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-22T00:16:31Z"
+  },
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "isjHW6L-D-k",
+   "title": "Biden da Silva: o declínio de Lula exposto no debate – por Caio Coppolla",
+   "published_at": "2026-10-20T22:18:43Z",
+   "url": "https://www.youtube.com/watch?v=isjHW6L-D-k",
+   "thumbnail": "https://i.ytimg.com/vi/isjHW6L-D-k/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-21T00:10:59Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "QHrNIeNQJ-A",
+   "title": "Os adversários de Lula no debate foram Flavio e Lula - Alexandre Garcia",
+   "published_at": "2026-10-21T16:43:09Z",
+   "url": "https://www.youtube.com/watch?v=QHrNIeNQJ-A",
+   "thumbnail": "https://i.ytimg.com/vi/QHrNIeNQJ-A/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-22T00:16:31Z"
+  },
+  {
+   "channel": "Te Atualizei",
+   "channel_id": "UCXRIQok8uzYtg1TPwSqikVg",
+   "video_id": "tAXJjS3d598",
+   "title": "PERDEU MANÉ, NAO AMOLA - Flávio vence primeiro debate",
+   "published_at": "2026-10-19T11:03:05Z",
+   "url": "https://www.youtube.com/watch?v=tAXJjS3d598",
+   "thumbnail": "https://i.ytimg.com/vi/tAXJjS3d598/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-20T00:44:00Z"
+  }
+ ]
+}
