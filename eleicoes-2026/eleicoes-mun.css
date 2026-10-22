@@ -1,0 +1,40 @@
+/* Eleições 2026 · mapa por município (eleicoes-mun.js). Só tokens do eleicoes.css; carregado só nas páginas Brasil. */
+.area-mun{margin-top:28px}.area-mun h2{margin-bottom:4px}
+.mm-ctrl{display:grid;gap:10px;margin:12px 0}
+.mm-camadas{display:flex;flex-wrap:wrap;gap:6px}
+.mm-camadas button{font:inherit;font-size:14px;font-weight:700;min-height:44px;padding:8px 12px;background:var(--white);color:var(--ink);border:1.5px solid var(--rule);cursor:pointer}
+.mm-camadas button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.mm-camadas button:hover{border-color:var(--ink)}
+.mm-f{display:grid;gap:10px}
+.mm-ufl{display:grid;gap:4px;font-weight:700;font-size:14px}.mm-uf{font:inherit;min-height:44px;padding:6px 8px;border:1.5px solid var(--ink);background:var(--white)}
+.mm-busca{position:relative;display:grid;gap:4px}.mm-busca label{font-weight:700;font-size:14px}
+.mm-busca input{font:inherit;min-height:44px;padding:8px 10px;border:1.5px solid var(--ink);width:100%;box-sizing:border-box}
+.mm-busca ul{list-style:none;margin:0;padding:0;background:var(--white);border:1px solid var(--rule);border-top:0}.mm-busca ul:empty{display:none}
+.mm-busca li{border-top:1px solid var(--rule)}.mm-busca li button{font:inherit;width:100%;min-height:44px;text-align:left;background:none;border:0;padding:8px 10px;cursor:pointer}
+.mm-busca li button:hover{background:var(--paper)}
+.mm-grid{display:grid;gap:14px}
+.mm-mapwrap{position:relative;background:var(--white);border:1px solid var(--rule)}
+.mm-mapa{aspect-ratio:1000/904;display:flex;align-items:center;justify-content:center}.mm-mapa>.empty{padding:16px;text-align:center}
+.mm-mapa svg{display:block;width:100%;height:100%}
+.mm-mapa path[data-c]{stroke:#fff;stroke-width:.3;vector-effect:non-scaling-stroke;cursor:pointer}
+.mm-mapa svg.zoom path[data-c]{stroke-width:.6}
+.mm-mapa .agua{fill:#DCE3E8;stroke:none;pointer-events:none}
+.mm-mapa .ufs path{fill:none;stroke:var(--ink);stroke-width:.9;vector-effect:non-scaling-stroke;pointer-events:none}
+.mm-mapa path.sel{stroke:var(--ink);stroke-width:2.6}
+.mm-tip{position:absolute;max-width:220px;background:var(--white);border:1px solid var(--ink);padding:6px 8px;font-size:13px;line-height:1.35;pointer-events:none;z-index:3}
+.mm-det{background:var(--white);border:1px solid var(--rule);border-top:4px solid var(--ink);padding:10px 12px;min-height:7em}
+.mm-det h3{margin:0;font-size:19px}.mm-det h3:focus{outline:none}.mm-det h3:focus-visible{outline:3px solid var(--link)}
+.mm-cod{margin:2px 0 8px;font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.mm-parcial{background:var(--yellow-pale);border:1px solid var(--gold-ink);padding:6px 10px;font-size:13.5px}
+.mm-inds{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.mm-cands{font-variant-numeric:tabular-nums}.mm-cands caption{text-align:left;font-weight:700;padding:8px 10px}.mm-cands small{color:var(--muted)}
+.mm-acoes{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;margin:10px 0 0}.mm-acoes a,.mm-acoes button{min-height:44px;display:inline-flex;align-items:center}
+.mm-leg{margin-top:10px}.mm-leg-l{list-style:none;padding:0;margin:0;display:grid;gap:6px;font-size:14px}.mm-leg-l li{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.mm-leg-l small{color:var(--muted)}
+.mm-t{font-variant-numeric:tabular-nums;font-size:13.5px}.mm-t th button{font:inherit;font-weight:700;background:none;border:0;padding:6px 0;min-height:44px;color:var(--blue);text-decoration:underline;cursor:pointer;text-align:left}
+.mm-tab{margin-top:12px}
+.mm.mm-off .mm-camadas,.mm.mm-off .mm-f,.mm.mm-off .mm-tab,.mm.mm-off .mm-side{display:none}
+@media(min-width:760px){.mm-f{grid-template-columns:minmax(0,14em) minmax(0,1fr)}}
+@media(min-width:1000px){.mm-grid{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr)}.mm-side{position:sticky;top:12px;align-self:start}}
+@media(prefers-reduced-motion:no-preference){.mm-mapa svg{transition:opacity .15s}}
+.mm-mapa .mm-pin{fill:none;stroke:var(--ink);stroke-width:2.5;vector-effect:non-scaling-stroke;pointer-events:none}
+.mm-cands tbody th,.mm-cands thead th:first-child{text-align:left}.mm-cands td,.mm-cands thead th{text-align:right}

@@ -70,6 +70,31 @@ ${HIST.eleicoes.map(e => `<tbody>${e.candidatos.map((c, i) => `<tr>${i ? "" : `<
 const PART0 = `<section class="area-part" aria-labelledby="t-part"><h3 id="t-part" class="h3s">Participação e votos</h3><div id="participacao" aria-live="polite"><dl class="inds">${
   [["Eleitores aptos", ""], ["Comparecimento", "do eleitorado apurado"], ["Abstenção", "do eleitorado apurado"], ["Votos válidos", "do comparecimento"], ["Brancos", "do comparecimento"], ["Nulos", "do comparecimento"]]
     .map(([k, d]) => `<div class="ind"><dt>${k}</dt><dd><b>—</b>${d ? `<small>— ${d}</small>` : ""}</dd></div>`).join("")}</dl></div></section>`;
+// Mapa por município (malha IBGE 2025 + arquivos municipais oficiais do TSE reunidos por build-eleicoes-mun.mjs). Um só
+// componente (eleicoes-mun.js) para os dois turnos e para a comparação; aqui só os parâmetros mudam. Sem arquivo de dados
+// do turno → a seção explica por quê e não desenha nada.
+const MAPA_DIR = path.join(ROOT, "eleicoes-2026", "mapa");
+const munDados = ele => fs.existsSync(path.join(MAPA_DIR, `presidente-${ele}.json`)) ? `eleicoes-2026/mapa/presidente-${ele}.json` : null;
+function munAttrs(ele, raiz, extra = "") {
+  const d = munDados(ele);
+  return `data-geo="${asset("eleicoes-2026/mapa/municipios-2025.svg")}" data-raiz="${raiz}"` +
+    (d ? ` data-dados="${asset(d)}" data-uf-tpl="/eleicoes-2026/mapa/presidente-${ele}-{uf}.json?${asset(d).split("?")[1]}"` :
+      ` data-sem-dados="${ele === "6258" ? "O mapa por município do 2º turno aparece quando os arquivos municipais oficiais do TSE forem reunidos, depois da totalização. Até lá, use o mapa de estados acima." : "Arquivos municipais do TSE ainda não reunidos."}"`) + extra;
+}
+function munSection(ele, raiz, rotulo) {
+  const id = "mm" + ele;
+  return `<section class="area-mun mm" id="municipios" aria-labelledby="t-${id}" data-auto="on" data-hash="on" ${munAttrs(ele, raiz)}>
+<h2 id="t-${id}">Resultados por município</h2>
+<p class="sub">${rotulo}: os ${(5571).toLocaleString("pt-BR")} municípios no mapa oficial do IBGE. Escolha o que mostrar, filtre por estado ou busque pelo nome; toque num município para ver os números do TSE e seguir até zonas e seções.</p>
+<div class="mm-ctrl"><div class="mm-camadas" role="group" aria-label="Mostrar no mapa"></div>
+<div class="mm-f"><label class="mm-ufl">Estado <select class="mm-uf"></select></label><div class="mm-busca"><label for="${id}-busca">Buscar município</label><input id="${id}-busca" type="search" autocomplete="off" placeholder="ex.: Fernando de Noronha"><ul aria-live="polite"></ul></div></div></div>
+<div class="mm-grid"><div class="mm-mapwrap"><div class="mm-mapa"><p class="empty">Carregando o mapa…</p></div><div class="mm-tip" hidden></div></div>
+<div class="mm-side"><div class="mm-det" aria-live="polite"><p class="sub">Escolha um município no mapa, na busca ou na tabela.</p></div></div></div>
+<div class="mm-leg"></div>
+<details class="mm-tab"><summary>Ver os municípios de um estado em tabela</summary><div class="mm-tab-body"><p class="sub">Escolha um estado acima para ver os municípios dele em tabela.</p></div></details>
+<noscript><p class="empty">O mapa por município precisa de JavaScript. Os resultados por estado e município continuam nas páginas de cada estado.</p></noscript>
+</section>`;
+}
 const ESTADOS_HTML = Object.values(CORE.ESTADOS).map(e => `<div class="e-${e.classe}"><dt>${e.nome}</dt><dd>${e.texto}</dd></div>`).join("");
 // CSS/JS locais com ?v=<sha256 do arquivo, 12 hex> — a mesma convenção ?v= da raiz (build-root.mjs). Aqui a versão vem do
 // conteúdo, não do commit, porque estas páginas são versionadas no repositório: o HTML só aponta para o asset com que foi
@@ -113,7 +138,7 @@ function page(uf, name, T = T1) {
 <link rel="apple-touch-icon" href="${asset("apple-touch-icon.png")}">
 <link rel="preload" href="/v5/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${asset("v5/css/fonts.css")}">
-<link rel="stylesheet" href="${asset("eleicoes-2026/eleicoes.css")}">
+<link rel="stylesheet" href="${asset("eleicoes-2026/eleicoes.css")}">${br ? `\n<link rel="stylesheet" href="${asset("eleicoes-2026/eleicoes-mun.css")}">` : ""}
 <script>/* reserva espaço do recorte aberto por link antes do 1º desenho (menos deslocamento de layout) */(function(h,d){d.className+=/(^|[#&])s=/.test(h)?" deep-s":/(^|[#&])z=/.test(h)?" deep-z":/(^|[#&])m=/.test(h)?" deep-m":""})(location.hash,document.documentElement)</script>
 ${umami}
 </head>
@@ -146,7 +171,7 @@ ${br ? `<div class="maphead"><label for="layers">Mostrar no mapa</label><select 
 ${br ? `<h2 class="h2s" id="t-ext">Exterior</h2><div id="exterior"><p class="empty">Disponível depois das 17h.</p></div>` : ""}
 </aside>
 </div>
-${br && t2 ? HIST_2T() + "\n" + pesqSection(PESQ, FLAGS.pesquisas_2t === true) + "\n" : ""}<section class="area-aud" aria-labelledby="t-aud" id="verificacao"><h2 id="t-aud">${br ? "Metodologia e verificação" : "Verificação"}</h2>
+${br ? munSection(t2 ? "6258" : "6257", T.root, t2 ? "2º turno" : "1º turno") + "\n" : ""}${br && t2 ? HIST_2T() + "\n" + pesqSection(PESQ, FLAGS.pesquisas_2t === true) + "\n" : ""}<section class="area-aud" aria-labelledby="t-aud" id="verificacao"><h2 id="t-aud">${br ? "Metodologia e verificação" : "Verificação"}</h2>
 <p class="sub">O que cada número é, de onde vem e o que ainda falta. Use o modo Verificação (no topo) para ver os detalhes técnicos abertos. <a href="/eleicoes-2026/questionamentos/">Questionamentos sobre a eleição →</a></p>
 <div class="audgrid"><div><h3>Origem dos números</h3><ul class="rules"><li><span class="prov of">Dado oficial (TSE)</span> número publicado pela Justiça Eleitoral, lido direto dos arquivos públicos do TSE.</li>
 <li><span class="prov calc">Métrica calculada pelo Eleições 2026</span> conta feita por esta página a partir de arquivos oficiais (ex.: % de uma seção a partir do boletim). Não é número do TSE.</li></ul></div>
@@ -162,7 +187,7 @@ ${br && t2 ? HIST_2T() + "\n" + pesqSection(PESQ, FLAGS.pesquisas_2t === true) +
 <footer><div class="wrap">Fonte: Tribunal Superior Eleitoral (resultados.tse.jus.br). <a href="/#/privacidade">Privacidade</a> · <a href="/">Desmentindo</a></div></footer>
 <script src="${asset("eleicoes-2026/eleicoes-core.js")}" defer></script>
 <script src="${asset("eleicoes-2026/eleicoes.js")}" defer></script>
-</body>
+${br ? `<script src="${asset("eleicoes-2026/eleicoes-mun.js")}" defer></script>\n` : ""}</body>
 </html>
 `;
 }

@@ -1,0 +1,16 @@
+{
+ "malha": "IBGE · Malha Municipal Digital 2025 (divisão vigente em 30/04/2025)",
+ "licenca": "compatível com CC BY 4.0 — crédito: IBGE, Malha Municipal Digital 2025, simplificada",
+ "arquivo": "https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2025/Brasil/BR_Municipios_2025.zip",
+ "last_modified": "Thu, 26 Feb 2026 20:02:48 GMT",
+ "etag": "e21491f-64bbf9ac98a00",
+ "bytes": 237062431,
+ "sha256": "840bbe6f73726ef9d1460ce49fdfe01a278935c41180d3c893e25ca21db083bd",
+ "baixado_em": "2026-10-22T19:14Z",
+ "feicoes": 5573,
+ "municipios": 5571,
+ "areas_sem_voto": { "4300001": "Área Operacional Lagoa Mirim", "4300002": "Área Operacional Lagoa dos Patos" },
+ "simplificacao": "mapshaper 0.6.102 · visvalingam weighted 1.5% keep-shapes · equiretangular cos(-15°) · inteiros em viewBox 1000×904",
+ "gerador": "desmentindo-ops operations/eleicoes/mapa_municipal/build_mapa.mjs (fdfa3476)",
+ "svg_sha256": "c739df2b0b5052b33e15933205a0f02a52a088945c96187a19eb380193aaba92"
+}
