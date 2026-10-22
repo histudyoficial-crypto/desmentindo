@@ -223,10 +223,10 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
   const dec = src.match(/var SLOTS = [^\n]*\n/), mesl = src.match(/var MESL = [^\n]*\n/), wd = src.match(/var WD3 = [^\n]*\n/);
   const names = ["e", "nf", "plural", "dParts", "dLong", "dDay", "isDay", "tcDate", "tc", "civilDays", "agoLabel", "zparts", "pad2", "opDay", "brt", "fhm",
     "em1", "mandar", "ddmm", "mhDate", "mhSources", "imgOk", "morningItems", "mhVisual", "mhCat", "morningBlock", "latestItem", "agoraBar", "agoraIdle",
-    "newsDay", "fts", "fxRetro", "fxCut", "fxCutL", "fxConclusions", "fxHome", "homeTop", "edItems", "agoraUncovered"];
+    "newsDay", "fts", "fxRetro", "fxCut", "fxCutL", "fxConclusions", "fxHome", "homeTop"];
   const gc = src.match(/var GENERIC_CONC = [^\n]*\n/);
   const K = new Function(`${MES}\n${dec ? dec[0] : ""}\n${mesl ? mesl[0] : ""}\n${wd ? wd[0] : ""}\n${gc ? gc[0] : ""}\nvar SLOT_RANK = { MORNING: 1, AFTERNOON: 2, EVENING: 3 };\n` +
-    `var SITE = "https://desmentindo.com.br", TZ = "America/Sao_Paulo", ZF = null;\n${names.map(fn).join("\n")}\nreturn { homeTop, agoraIdle, fxHome, opDay, fxConclusions, agoraUncovered };`)();
+    `var SITE = "https://desmentindo.com.br", TZ = "America/Sao_Paulo", ZF = null;\n${names.map(fn).join("\n")}\nreturn { homeTop, agoraIdle, fxHome, opDay, fxConclusions };`)();
   const ED = JSON.parse(fs.readFileSync(path.join(ROOT, "data/editorial/edicoes/2026-10-05.json"), "utf8"));
   const F5 = JSON.parse(fs.readFileSync(path.join(ROOT, "data/editorial/fechamentos/2026-10-05.json"), "utf8"));
   const A5 = { edition: ED.edition, items: ED.items.map(it => ({ id: it.id, title: it.title, slot: it.slot, category: it.category || "", sources: [], date: it.date })) };
@@ -255,20 +255,6 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
       hrefs.includes("/eleicoes-2026/questionamentos/"), hrefs.includes("/eleicoes-2026/")], [1, true, true, true]);
     eq("página do 2º turno existe no repositório", fs.existsSync(path.join(ROOT, "eleicoes-2026/2-turno/index.html")), true);
   }
-  // ÚLTIMO PUBLICADO (22/10): o AGORA de um dia sem FECHAMENTO aparece só como apontador datado, nunca como "hoje"
-  const E20 = JSON.parse(fs.readFileSync(path.join(ROOT, "data/editorial/edicoes/2026-10-20.json"), "utf8"));
-  const F20 = JSON.parse(fs.readFileSync(path.join(ROOT, "data/editorial/fechamentos/2026-10-20.json"), "utf8"));
-  eq("FECHAMENTO do mesmo dia cobre o AGORA (22/10 real: sem apontador)", K.agoraUncovered(E20, F20, "2026-10-22"), null);
-  eq("dia sem FECHAMENTO: apontador", K.agoraUncovered(E20, F5, "2026-10-22"), { edition: "2026-10-20", n: E20.items.length });
-  eq("AGORA de hoje não é 'último publicado'", K.agoraUncovered(E20, F5, "2026-10-20"), null);
-  eq("sem itens / sem edição", [K.agoraUncovered({ edition: "2026-10-20", items: [] }, F5, "2026-10-22"), K.agoraUncovered(null, F5, "2026-10-22")], [null, null]);
-  const ip = K.agoraIdle("2026-10-22", { edition: "2026-10-20", n: 7 });
-  eq("apontador: link para #/agora, data dele e contagem; frase do dia intacta",
-    [/<a href="#\/agora"><span>Última edição publicada do Agora: <time datetime="2026-10-20">20 out<\/time> · 7 notícias/.test(ip),
-     /Acompanhamento do dia em andamento\. O fechamento de hoje sai à noite\./.test(ip), E20.items.some(it => ip.includes(it.title)), /\d{1,2}:\d{2}/.test(ip), /Agora · hoje/.test(ip)],
-    [true, true, false, false, false]);
-  eq("homeTop repassa o apontador só no estado C", [/Última edição publicada/.test(K.homeTop(null, F5, "2026-10-22", { edition: "2026-10-20", n: 7 })),
-    /Última edição publicada/.test(K.homeTop(null, F5, "2026-10-22"))], [true, false]);
   // mais antigo que ontem: carimbo de distância do §32.4
   const o = K.homeTop(null, F5, "2026-10-08");
   eq("3 dias antes", /<span class="fxh-tag">Último fechamento<\/span><span class="tc tc-ago">3 DIAS ANTES<\/span>/.test(o), true);
