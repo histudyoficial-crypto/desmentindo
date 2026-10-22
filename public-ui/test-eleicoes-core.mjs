@@ -70,4 +70,31 @@ t("diferença: número ausente → null (não zero)", () => {
   assert.equal(C.diferenca([{ votes: 10, percentage: 100 }]), null); assert.equal(C.diferenca(null), null);
 });
 t("diferença: empate explícito", () => assert.equal(C.diferenca([{ votes: 5, percentage: 50 }, { votes: 5, percentage: 50 }]).tie, true));
+
+// Participação: denominadores = campos oficiais do TSE (pc/pa sobre esi, o eleitorado apurado; não sobre te, os aptos).
+const fx = f => JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "fixtures", f), "utf8"));
+t("participação 1T BR final: campos oficiais, 423 em seções não instaladas", () => {
+  const d = fx("tse-1t-br-participacao.json"), P = C.participacao(d.e, d.v);
+  assert.equal(P.aptos, 158745502); assert.equal(P.apurado, 158745079); assert.equal(P.naoInstalado, 423); assert.equal(P.naoTotalizado, 0);
+  assert.deepEqual(P.comparecimento, { v: 125275835, p: 78.92 }); assert.deepEqual(P.abstencao, { v: 33469244, p: 21.08 });
+  assert.deepEqual(P.validos, { v: 119300788, p: 95.23 }); assert.deepEqual(P.brancos, { v: 2300798, p: 1.84 }); assert.deepEqual(P.nulos, { v: 3674249, p: 2.93 });
+  // identidades publicadas pelo próprio TSE (conferência, não substituição): esi = c + a; pcn = c/esi (não c/te)
+  assert.equal(P.comparecimento.v + P.abstencao.v, P.apurado);
+  assert.equal(Math.abs(parseFloat(d.e.pcn.replace(",", ".")) - 100 * P.comparecimento.v / P.apurado) < 1e-6, true);
+  assert.notEqual((100 * P.comparecimento.v / P.aptos).toFixed(9), d.e.pcn.replace(",", "."));
+});
+t("participação parcial (ba33693): eleitorado não totalizado fica fora do denominador", () => {
+  const d = fx("tse-1t-ba33693-parcial-participacao.json"), P = C.participacao(d.e, d.v);
+  assert.equal(P.aptos, 15726); assert.equal(P.apurado, 14496); assert.equal(P.naoTotalizado, 1230); assert.equal(P.naoInstalado, 0);
+  assert.deepEqual(P.comparecimento, { v: 11566, p: 79.79 }); assert.deepEqual(P.abstencao, { v: 2930, p: 20.21 });
+});
+t("participação sem arquivo: tudo desconhecido (null), nunca zero", () => {
+  const P = C.participacao(null, null);
+  assert.equal(P.aptos, null); assert.equal(P.apurado, null); assert.equal(P.naoInstalado, null);
+  assert.deepEqual(P.comparecimento, { v: null, p: null }); assert.deepEqual(P.nulos, { v: null, p: null });
+});
+t("participação: campo ausente continua null (sem conta implícita)", () => {
+  const P = C.participacao({ te: "100", c: "80", a: "20" }, {});
+  assert.equal(P.apurado, null); assert.equal(P.comparecimento.p, null); assert.equal(P.abstencao.p, null);
+});
 console.log(`ELEICOES_CORE_TESTS ${n}/${n} OK`);
