@@ -566,6 +566,12 @@
   }
   // Trecho compacto: imagem real (revisada) ou pôster editorial + FONTE · DATA + ▶ MINUTO; abaixo, fonte e trecho do arquivo.
   // Toque → player oficial no próprio card, no minuto (a imagem nunca é link externo direto).
+  // CORPUS NA HOME (22/10, só interface): o trecho às vezes começa pelo próprio nome do caso ("Farra dos Guardanapos:
+  // Farra dos Guardanapos: …"); aqui só se evita mostrar o nome duas vezes. O texto do trecho no dado não muda.
+  function saidExcerpt(x, story) {
+    var t = String(x || ""), n = story && story.title ? story.title + ":" : "";
+    return n && t.slice(0, n.length).toLowerCase() === n.toLowerCase() ? t.slice(n.length).replace(/^\s+/, "") : t;
+  }
   function miniSaid(o, story, R, ref) {
     var th = thumbSrc(o, story && story.slug, R), ago = ref ? agoLabel(o.date, ref) : "";
     return '<li class="said said-c" data-src="' + e(o.source_name || "") + '" data-video="' + e(o.video_id) + '" data-t="' + o.t_seconds + '" data-date="' + e(o.date) + '">' +
@@ -573,8 +579,11 @@
       (th ? '<img class="vm-img" src="' + e(th) + '" alt="Miniatura do vídeo de ' + e(o.source_name) + ", " + e(fdate(o.date)) + '" width="320" height="180" loading="lazy" decoding="async">'
           : '<i class="vm-a1" aria-hidden="true"></i><i class="vm-a2" aria-hidden="true"></i>') +
       '<span class="vm-src">' + e(initials(o.source_name)) + " · " + e(tcDate(o.date)) + '</span><b class="vm-min">▶ ' + e(o.t_label) + "</b></a>" +
-      '<div class="said-ct">' + (ago ? tc("ago", ago) : "") + '<p class="said-who">' + e(o.source_name) + '</p><p class="said-x">' +
-      (story ? '<a href="#/historia/' + e(story.slug) + '">' + e(story.title) + "</a>: " : "") + e(o.excerpt) + "</p></div>" +
+      '<div class="said-ct">' + (ago ? tc("ago", ago) : "") + '<p class="said-who">' + e(o.source_name) +
+      (o.date ? ' <span class="said-d">· <time datetime="' + e(o.date) + '">' + e(fdate(o.date)) + "</time></span>" : "") + '</p><p class="said-x">' +
+      (story ? '<a href="#/historia/' + e(story.slug) + '">' + e(story.title) + "</a>: " : "") + e(saidExcerpt(o.excerpt, story)) + "</p>" +
+      (story && story.count > 1 ? '<p class="said-more"><a href="#/historia/' + e(story.slug) + '" aria-label="' + e(plural(story.count, "trecho", "trechos")) +
+        " sobre " + e(story.title) + ' na memória"><span>' + plural(story.count, "trecho", "trechos") + ' na memória</span> <span aria-hidden="true">→</span></a></p>' : "") + "</div>" +
       '<span class="said-when" hidden>' + e(fdate(o.date)) + " · " + e(o.t_label) + '</span><a class="said-yt" hidden href="' + e(o.deep_link) + '" target="_blank" rel="noopener">Assistir no YouTube</a>' +
       '<div class="said-foot"></div></li>';
   }
@@ -593,7 +602,8 @@
     return '<section class="hm-said" aria-labelledby="hm-said-h"><h2 class="hm-h" id="hm-said-h">Já falaram sobre isso</h2>' +
       '<p class="hm-sub">Memória em vídeo dos casos do arquivo: o que já foi dito, com data e minuto.</p>' +
       (items.length ? '<ul class="said-mini" id="ja-falaram">' + items.map(function (s) { return miniSaid(s.item, s, R, ref); }).join("") + "</ul>"
-                    : '<p class="hm-none">Ainda não há trechos ligados aos casos de hoje. A memória continua disponível na busca.</p>') + "</section>";
+                    : '<p class="hm-none">Ainda não há trechos ligados aos casos de hoje. A memória continua disponível na busca.</p>') +
+      '<p class="said-all"><a href="#/arquivos"><span>Ver toda a memória: casos e canais</span> <span aria-hidden="true">→</span></a></p></section>';
   }
   // VÍDEOS RECENTES DOS CANAIS (Johnny 16/10): vídeos recém-publicados pelos canais acompanhados, como publicação original
   // dos autores. Lote aprovado no Human Gate e publicado pelo Publisher (data/editorial/videos). Nunca é checagem: sem
