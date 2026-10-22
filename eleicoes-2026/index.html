@@ -19,6 +19,7 @@
 <link rel="preload" href="/v5/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/v5/css/fonts.css?v=41f5d2f10fa3">
 <link rel="stylesheet" href="/eleicoes-2026/eleicoes.css?v=b1a4c13ebc15">
+<link rel="stylesheet" href="/eleicoes-2026/eleicoes-mun.css?v=32608825e4de">
 <script>/* reserva espaço do recorte aberto por link antes do 1º desenho (menos deslocamento de layout) */(function(h,d){d.className+=/(^|[#&])s=/.test(h)?" deep-s":/(^|[#&])z=/.test(h)?" deep-z":/(^|[#&])m=/.test(h)?" deep-m":""})(location.hash,document.documentElement)</script>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="0dee5fb0-ace1-44cb-beba-d6b8733092c2" data-do-not-track="true"></script>
 </head>
@@ -50,6 +51,17 @@
 <h2 class="h2s" id="t-ext">Exterior</h2><div id="exterior"><p class="empty">Disponível depois das 17h.</p></div>
 </aside>
 </div>
+<section class="area-mun mm" id="municipios" aria-labelledby="t-mm6257" data-auto="on" data-hash="on" data-geo="/eleicoes-2026/mapa/municipios-2025.svg?v=c739df2b0b50" data-raiz="/eleicoes-2026/" data-dados="/eleicoes-2026/mapa/presidente-6257.json?v=42b04818e66a" data-uf-tpl="/eleicoes-2026/mapa/presidente-6257-{uf}.json?v=42b04818e66a">
+<h2 id="t-mm6257">Resultados por município</h2>
+<p class="sub">1º turno: os 5.571 municípios no mapa oficial do IBGE. Escolha o que mostrar, filtre por estado ou busque pelo nome; toque num município para ver os números do TSE e seguir até zonas e seções.</p>
+<div class="mm-ctrl"><div class="mm-camadas" role="group" aria-label="Mostrar no mapa"></div>
+<div class="mm-f"><label class="mm-ufl">Estado <select class="mm-uf"></select></label><div class="mm-busca"><label for="mm6257-busca">Buscar município</label><input id="mm6257-busca" type="search" autocomplete="off" placeholder="ex.: Fernando de Noronha"><ul aria-live="polite"></ul></div></div></div>
+<div class="mm-grid"><div class="mm-mapwrap"><div class="mm-mapa"><p class="empty">Carregando o mapa…</p></div><div class="mm-tip" hidden></div></div>
+<div class="mm-side"><div class="mm-det" aria-live="polite"><p class="sub">Escolha um município no mapa, na busca ou na tabela.</p></div></div></div>
+<div class="mm-leg"></div>
+<details class="mm-tab"><summary>Ver os municípios de um estado em tabela</summary><div class="mm-tab-body"><p class="sub">Escolha um estado acima para ver os municípios dele em tabela.</p></div></details>
+<noscript><p class="empty">O mapa por município precisa de JavaScript. Os resultados por estado e município continuam nas páginas de cada estado.</p></noscript>
+</section>
 <section class="area-aud" aria-labelledby="t-aud" id="verificacao"><h2 id="t-aud">Metodologia e verificação</h2>
 <p class="sub">O que cada número é, de onde vem e o que ainda falta. Use o modo Verificação (no topo) para ver os detalhes técnicos abertos. <a href="/eleicoes-2026/questionamentos/">Questionamentos sobre a eleição →</a></p>
 <div class="audgrid"><div><h3>Origem dos números</h3><ul class="rules"><li><span class="prov of">Dado oficial (TSE)</span> número publicado pela Justiça Eleitoral, lido direto dos arquivos públicos do TSE.</li>
@@ -66,5 +78,6 @@
 <footer><div class="wrap">Fonte: Tribunal Superior Eleitoral (resultados.tse.jus.br). <a href="/#/privacidade">Privacidade</a> · <a href="/">Desmentindo</a></div></footer>
 <script src="/eleicoes-2026/eleicoes-core.js?v=877d25e4981f" defer></script>
 <script src="/eleicoes-2026/eleicoes.js?v=1b8ae0094424" defer></script>
+<script src="/eleicoes-2026/eleicoes-mun.js?v=f2fc73900585" defer></script>
 </body>
 </html>
