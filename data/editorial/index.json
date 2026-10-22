@@ -1,7 +1,13 @@
 {
  "schema": "desmentindo.public.editorial_index.v1",
- "latest": "2026-10-18",
+ "latest": "2026-10-20",
  "editions": [
+  {
+   "edition": "2026-10-20",
+   "file": "data/editorial/edicoes/2026-10-20.json",
+   "items": 7,
+   "sha256": "9cb2ba144c23377a3033aafc6cf188046f5f720dd08642ae114aa3657b701fe2"
+  },
   {
    "edition": "2026-10-18",
    "file": "data/editorial/edicoes/2026-10-18.json",
@@ -39,5 +45,5 @@
    "sha256": "969d9f1ef8fc450cbae997a484744d50d406b07c7cf7308abaa2abd157b3977a"
   }
  ],
- "data_version": "e0b5d8b66503"
+ "data_version": "9834059c25c0"
 }
