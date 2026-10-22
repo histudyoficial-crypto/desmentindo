@@ -247,6 +247,14 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
   const ia = K.agoraIdle("2026-10-06");
   eq("AGORA neutro sem conteúdo editorial", [/<a\b/.test(ia), /\d+ notícia/.test(ia), /\d{1,2}:\d{2}/.test(ia), ED.items.some(it => ia.includes(it.title))], [false, false, false, false]);
   for (const t of ["aguardando", "aprovação", "revisão", "fila", "Human Gate", "pipeline", "processamento", "MORNING"]) eq("tom público: sem '" + t + "'", ia.toLowerCase().includes(t.toLowerCase()), false);
+  // 2º turno (22/10): o bloco de Eleições da Home leva à página do 2º turno, primeiro link, com os outros dois mantidos
+  {
+    const IB = new Function(`${fn("invBlock")}\nreturn invBlock;`)()();
+    const hrefs = [...IB.matchAll(/href="([^"]+)"/g)].map(m => m[1]);
+    eq("Eleições: 2º turno em destaque", [hrefs.filter(h => h === "/eleicoes-2026/2-turno/").length, IB.indexOf('/eleicoes-2026/2-turno/') < IB.indexOf('Ver as investigações'),
+      hrefs.includes("/eleicoes-2026/questionamentos/"), hrefs.includes("/eleicoes-2026/")], [1, true, true, true]);
+    eq("página do 2º turno existe no repositório", fs.existsSync(path.join(ROOT, "eleicoes-2026/2-turno/index.html")), true);
+  }
   // ÚLTIMO PUBLICADO (22/10): o AGORA de um dia sem FECHAMENTO aparece só como apontador datado, nunca como "hoje"
   const E20 = JSON.parse(fs.readFileSync(path.join(ROOT, "data/editorial/edicoes/2026-10-20.json"), "utf8"));
   const F20 = JSON.parse(fs.readFileSync(path.join(ROOT, "data/editorial/fechamentos/2026-10-20.json"), "utf8"));
