@@ -415,3 +415,4 @@ footer{border-top:3px solid var(--ink);margin-top:28px;padding:14px 0 40px;font-
 .inds dd small{display:block;font-size:12.5px;color:var(--ink-2)}
 @media(min-width:760px){.inds{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(min-width:1100px){.inds{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.tile.neutro{background:#E4E0DD;color:var(--ink)}.tile.neutro span:first-of-type{font-size:10px;font-weight:700;letter-spacing:-.01em;max-width:100%;overflow:hidden;text-overflow:clip;white-space:nowrap}
