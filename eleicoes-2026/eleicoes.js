@@ -131,10 +131,12 @@
   function renderPart() {
     var el = $("participacao"); if (!el) return;
     var R = live.R, P = R && R.part, t = function (k, v, p, den) { return '<div class="ind"><dt>' + k + "</dt><dd><b>" + fInt(v) + "</b>" + (den ? "<small>" + (p == null ? "—" : fPct(p)) + " " + den + "</small>" : "") + "</dd></div>"; };
-    if (!P) { el.innerHTML = '<p class="empty">' + (NOW() < RELEASE ? "Disponível depois das 17h." : "Aguardando a leitura do TSE.") + "</p>"; return; }
-    el.innerHTML = '<dl class="inds">' + t("Eleitores aptos", P.aptos, null, "") + t("Comparecimento", P.comparecimento.v, P.comparecimento.p, "do eleitorado apurado") +
+    var grid = function (P) { return '<dl class="inds">' + t("Eleitores aptos", P.aptos, null, "") + t("Comparecimento", P.comparecimento.v, P.comparecimento.p, "do eleitorado apurado") +
       t("Abstenção", P.abstencao.v, P.abstencao.p, "do eleitorado apurado") + t("Votos válidos", P.validos.v, P.validos.p, "do comparecimento") +
-      t("Brancos", P.brancos.v, P.brancos.p, "do comparecimento") + t("Nulos", P.nulos.v, P.nulos.p, "do comparecimento") + "</dl>" +
+      t("Brancos", P.brancos.v, P.brancos.p, "do comparecimento") + t("Nulos", P.nulos.v, P.nulos.p, "do comparecimento") + "</dl>"; };
+    // sem leitura: mesma grade com "—" (altura estável, sem deslocar a página) e o motivo escrito
+    if (!P) { el.innerHTML = grid(C.participacao(null, null)) + '<p class="note">' + (NOW() < RELEASE ? "Disponível depois das 17h." : "Aguardando a leitura do TSE.") + "</p>"; return; }
+    el.innerHTML = grid(P) +
       '<p class="note">' + OFICIAL + " " + (R.final ? "Totalização final." : "Parcial: " + fPct(R.pst) + " das seções totalizadas.") +
       " <b>Eleitorado apurado: " + fInt(P.apurado) + "</b> — eleitores das seções já totalizadas e instaladas; é sobre ele que o TSE calcula comparecimento e abstenção. " +
       "Válidos, brancos e nulos são sobre quem compareceu." +
