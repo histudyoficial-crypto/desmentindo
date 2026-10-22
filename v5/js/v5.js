@@ -651,7 +651,9 @@
     return '<section class="hm-inv" aria-labelledby="hm-inv-h"><div class="hm-inv-t"><h2 class="hm-h" id="hm-inv-h">Investigações · Eleições 2026</h2>' +
       '<p class="hm-inv-q"><a href="/eleicoes-2026/questionamentos/">Você viu isso circulando? Fomos aos dados.</a></p>' +
       '<p class="hm-inv-s">As dúvidas sobre a apuração, testadas nos dados oficiais do TSE: o que aconteceu, o que testamos e o que ainda não dá para saber.</p></div>' +
-      '<p class="hm-inv-go"><a href="/eleicoes-2026/questionamentos/">Ver as investigações <span aria-hidden="true">→</span></a>' +
+      // 2º turno (22/10): destaque para a página da apuração do 2º turno, que já existe (#87); só um link a mais, mesmo componente
+      '<p class="hm-inv-go"><a href="/eleicoes-2026/2-turno/">2º turno · 25/10: apuração oficial do TSE <span aria-hidden="true">→</span></a>' +
+      '<a href="/eleicoes-2026/questionamentos/">Ver as investigações <span aria-hidden="true">→</span></a>' +
       '<a href="/eleicoes-2026/">Resultado oficial do TSE <span aria-hidden="true">→</span></a></p></section>';
   }
   // Topo da Home nos três estados reais: A = edição de hoje aprovada, FECHAMENTO de hoje ainda não · B = edição e

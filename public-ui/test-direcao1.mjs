@@ -247,6 +247,14 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
   const ia = K.agoraIdle("2026-10-06");
   eq("AGORA neutro sem conteúdo editorial", [/<a\b/.test(ia), /\d+ notícia/.test(ia), /\d{1,2}:\d{2}/.test(ia), ED.items.some(it => ia.includes(it.title))], [false, false, false, false]);
   for (const t of ["aguardando", "aprovação", "revisão", "fila", "Human Gate", "pipeline", "processamento", "MORNING"]) eq("tom público: sem '" + t + "'", ia.toLowerCase().includes(t.toLowerCase()), false);
+  // 2º turno (22/10): o bloco de Eleições da Home leva à página do 2º turno, primeiro link, com os outros dois mantidos
+  {
+    const IB = new Function(`${fn("invBlock")}\nreturn invBlock;`)()();
+    const hrefs = [...IB.matchAll(/href="([^"]+)"/g)].map(m => m[1]);
+    eq("Eleições: 2º turno em destaque", [hrefs.filter(h => h === "/eleicoes-2026/2-turno/").length, IB.indexOf('/eleicoes-2026/2-turno/') < IB.indexOf('Ver as investigações'),
+      hrefs.includes("/eleicoes-2026/questionamentos/"), hrefs.includes("/eleicoes-2026/")], [1, true, true, true]);
+    eq("página do 2º turno existe no repositório", fs.existsSync(path.join(ROOT, "eleicoes-2026/2-turno/index.html")), true);
+  }
   // mais antigo que ontem: carimbo de distância do §32.4
   const o = K.homeTop(null, F5, "2026-10-08");
   eq("3 dias antes", /<span class="fxh-tag">Último fechamento<\/span><span class="tc tc-ago">3 DIAS ANTES<\/span>/.test(o), true);
