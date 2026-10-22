@@ -93,6 +93,8 @@ jobs:
           node public-ui/build-eleicoes.mjs --check
           node public-ui/test-eleicoes-assets.mjs
           node public-ui/test-eleicoes-core.mjs
+          node public-ui/test-eleicoes-mun.mjs
+          node public-ui/test-eleicoes-estudos.mjs
           node public-ui/test-eleicoes-questionamentos.mjs
           node public-ui/test-eleicoes-pesquisas.mjs
           node public-ui/internal-ids.mjs eleicoes-2026

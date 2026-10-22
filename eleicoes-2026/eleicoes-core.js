@@ -142,9 +142,21 @@
     var votes = c[0].votes - c[1].votes, pp = Math.round((c[0].percentage - c[1].percentage) * 100) / 100;
     return { a: c[0], b: c[1], votes: votes, pp: pp, tie: votes === 0 };
   }
+  // Participação de UM arquivo de totalização do TSE (campos "e" e "v"), só com campos oficiais — nenhuma subtração.
+  // Estrutura do próprio arquivo (conferida em 5.784 arquivos do 1º turno): aptos (te) = eleitorado das seções totalizadas
+  // (est) + não totalizadas (esnt); est = seções instaladas (esi) + não instaladas (esni); esi = comparecimento + abstenção.
+  // Comparecimento e abstenção são % de esi ("eleitorado apurado"); brancos, nulos e válidos são % do comparecimento.
+  function participacao(e, v) {
+    e = e || {}; v = v || {};
+    var n = function (x) { if (x == null) return null; var s = String(x).replace(/\D/g, ""); return s ? parseInt(s, 10) : null; };
+    var p = function (x) { if (x == null || String(x).trim() === "") return null; var f = parseFloat(String(x).replace(/\./g, "").replace(",", ".")); return isNaN(f) ? null : f; };
+    return { aptos: n(e.te), naoTotalizado: n(e.esnt), apurado: n(e.esi), naoInstalado: n(e.esni),
+      comparecimento: { v: n(e.c), p: p(e.pc) }, abstencao: { v: n(e.a), p: p(e.pa) },
+      validos: { v: n(v.vv), p: p(v.pvvc) }, brancos: { v: n(v.vb), p: p(v.pvb) }, nulos: { v: n(v.tvn), p: p(v.ptvn) } };
+  }
   function defasagem(capturadoMs, tseMs) { return capturadoMs != null && tseMs != null ? capturadoMs - tseMs : null; }
 
   var api = { ESTADOS: ESTADOS, principalDe: principalDe, estadoCadastro: estadoCadastro, secaoEstado: secaoEstado,
-              decodeBU: decodeBU, lacunas: lacunas, defasagem: defasagem, diferenca: diferenca };
+              decodeBU: decodeBU, lacunas: lacunas, defasagem: defasagem, diferenca: diferenca, participacao: participacao };
   if (typeof module !== "undefined" && module.exports) module.exports = api; else root.EleicoesCore = api;
 })(typeof window !== "undefined" ? window : this);

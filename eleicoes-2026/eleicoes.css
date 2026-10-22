@@ -79,7 +79,7 @@ section,aside{min-width:0}
 .grid-map{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:1fr;gap:4px;max-width:440px;margin:0 auto}
 .tile{aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;color:#fff;background:#6E6B6A;min-width:0;line-height:1.1}
 .tile b{font-size:14px;font-weight:900;letter-spacing:.02em}.tile span{font-size:10.5px;font-variant-numeric:tabular-nums}
-.tile.seqc{color:var(--ink)}.tile.seqc[style*="#6E625C"],.tile.seqc[style*="#463C38"],.tile.seqc[style*="#958A83"]{color:#fff}
+.tile.seqc{color:var(--ink)}.tile.seqc[style*="#6E625C"],.tile.seqc[style*="#463C38"]{color:#fff}   /* #958A83: texto escuro (≈4,9:1); branco ficava em ≈3,4:1 */
 .tile.nodata{background:var(--white);color:var(--muted);border:1px dashed var(--rule)}
 .tile.past{background:repeating-linear-gradient(45deg,var(--white),var(--white) 5px,#ECEAE9 5px,#ECEAE9 10px)}
 .tile.tie{background:repeating-linear-gradient(45deg,#5A5756,#5A5756 6px,#6E6B6A 6px,#6E6B6A 12px)}
@@ -406,3 +406,13 @@ footer{border-top:3px solid var(--ink);margin-top:28px;padding:14px 0 40px;font-
 .area-hist table{min-width:0}.dif-k{font-size:13.5px;color:var(--ink-2);margin:8px 0 6px}.area-hist td[colspan]{color:var(--ink-2)}
 @media(max-width:599px){.paths.t2 a:last-child{display:block}}
 .area-pesq th[scope=row] small,.area-pesq td small{display:block;font-weight:400;font-size:12px;color:var(--ink-2)}.area-pesq td[colspan]{color:var(--ink-2)}
+/* E26-02 · participação: indicadores com denominador explícito (mesmos tokens; números tabulares) */
+.area-part{margin-top:14px}.area-part .h3s{font-size:15px;margin:0 0 8px;text-transform:none}
+.inds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0}
+.inds .ind{background:var(--white);border:1px solid var(--rule);padding:8px 10px;min-width:0}
+.inds dt{font-size:12px;color:var(--ink-2);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.inds dd{margin:2px 0 0;font-variant-numeric:tabular-nums}.inds dd b{display:block;font-size:20px;line-height:1.2;overflow-wrap:anywhere}
+.inds dd small{display:block;font-size:12.5px;color:var(--ink-2)}
+@media(min-width:760px){.inds{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:1100px){.inds{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.tile.neutro{background:#E4E0DD;color:var(--ink)}.tile.neutro span:first-of-type{font-size:10px;font-weight:700;letter-spacing:-.01em;max-width:100%;overflow:hidden;text-overflow:clip;white-space:nowrap}
