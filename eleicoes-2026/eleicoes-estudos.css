@@ -1,0 +1,12 @@
+/* E26 · módulos dos estudos — só tokens existentes do eleicoes.css; números tabulares; SVG fluido com largura mínima legível */
+.mod-e26 .mod-tags{margin:0 0 8px}.mod-tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.05em;border:1.5px solid var(--ink);padding:1px 6px;margin-right:6px;text-transform:uppercase}
+.mod-tag.ok{background:var(--ink);color:#fff}.mod-tag.nd{background:var(--white);border-style:dashed}
+.mod-uni{background:var(--white);border:1px solid var(--rule);padding:8px 12px;font-size:14px}
+.mod-fig{margin:10px 0 14px}.mod-svg{overflow-x:auto;background:var(--white);border:1px solid var(--rule)}.mod-svg svg{display:block;width:100%;min-width:560px;height:auto}
+.mod-fig figcaption{font-size:13px;color:var(--ink-2);margin-top:4px}
+.mod-leg{display:flex;flex-wrap:wrap;gap:6px 14px;list-style:none;padding:0;margin:4px 0;font-size:13px;color:var(--ink-2)}.mod-leg i{display:inline-block;width:12px;height:12px;margin-right:5px;vertical-align:-1px}
+.mod-tw table{font-variant-numeric:tabular-nums}.mod-tw caption{text-align:left;font-size:13px;color:var(--ink-2);padding:4px 0}
+.mod-sep{display:grid;gap:12px}.mod-sep>div{background:var(--white);border:1px solid var(--rule);padding:8px 12px}
+@media(min-width:760px){.mod-sep{grid-template-columns:1fr 1fr}}
+.mod-lim{border-left:4px solid var(--ink-3);background:var(--white);padding:6px 12px;margin:12px 0}.mod-lim h4{margin:4px 0;font-size:14px}.mod-lim ul{margin:4px 0;padding-left:18px}
+.mod-conta{font-variant-numeric:tabular-nums}.mod-fontes{margin:10px 0}.mod-story{font-size:14px}

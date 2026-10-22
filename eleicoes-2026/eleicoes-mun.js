@@ -55,21 +55,27 @@
     this.ui();
   }
   Mapa.prototype.ui = function () {
-    var self = this, R = this.root, id = R.id || "mm";
-    R.querySelector(".mm-camadas").innerHTML = CAMADAS.map(function (c) { return '<button type="button" data-lay="' + c.id + '" aria-pressed="' + (c.id === self.lay) + '">' + esc(c.nome) + "</button>"; }).join("");
-    R.querySelector(".mm-uf").innerHTML = '<option value="">Brasil inteiro</option>' + Object.keys(UFN).sort(function (a, b) { return UFN[a].localeCompare(UFN[b], "pt-BR"); }).map(function (u) { return '<option value="' + u + '">' + esc(UFN[u]) + "</option>"; }).join("");
-    R.querySelector(".mm-camadas").addEventListener("click", function (e) { var b = e.target.closest("button[data-lay]"); if (b) self.camada(b.getAttribute("data-lay"), true); });
-    R.querySelector(".mm-uf").addEventListener("change", function (e) { self.estado(e.target.value, true); });
-    var inp = R.querySelector(".mm-busca input"), ul = R.querySelector(".mm-busca ul");
+    // controles são opcionais: na comparação lado a lado eles ficam fora dos mapas e acionam os dois (eleicoes-cmp.js)
+    var self = this, R = this.root, q = function (s) { return R.querySelector(s); };
+    if (q(".mm-camadas")) {
+      q(".mm-camadas").innerHTML = CAMADAS.map(function (c) { return '<button type="button" data-lay="' + c.id + '" aria-pressed="' + (c.id === self.lay) + '">' + esc(c.nome) + "</button>"; }).join("");
+      q(".mm-camadas").addEventListener("click", function (e) { var b = e.target.closest("button[data-lay]"); if (b) self.camada(b.getAttribute("data-lay"), true); });
+    }
+    if (q(".mm-uf")) { q(".mm-uf").innerHTML = opcoesUF(); q(".mm-uf").addEventListener("change", function (e) { self.estado(e.target.value, true); }); }
+    if (q(".mm-busca")) busca(q(".mm-busca"), function () { return self.lista; }, function (cdi) { self.selecionar(cdi, { foco: true, hist: true }); });
+    if (q(".mm-tab")) q(".mm-tab").addEventListener("click", function (e) { var b = e.target.closest("button[data-cdi]"); if (b) self.selecionar(b.getAttribute("data-cdi"), { foco: true, hist: true }); });
+  };
+  function opcoesUF() { return '<option value="">Brasil inteiro</option>' + Object.keys(UFN).sort(function (a, b) { return UFN[a].localeCompare(UFN[b], "pt-BR"); }).map(function (u) { return '<option value="' + u + '">' + esc(UFN[u]) + "</option>"; }).join(""); }
+  function busca(box, lista, escolher) {
+    var inp = box.querySelector("input"), ul = box.querySelector("ul");
     inp.addEventListener("input", function () {
-      if (!self.lista) { ul.innerHTML = "<li>Carregando…</li>"; return; }
+      var L = lista(); if (!L) { ul.innerHTML = "<li>Carregando…</li>"; return; }
       var s = fold(inp.value.trim()); if (s.length < 2) { ul.innerHTML = ""; return; }
-      var hits = self.lista.filter(function (x) { return x.f.indexOf(s) >= 0; }).slice(0, 8);
+      var hits = L.filter(function (x) { return x.f.indexOf(s) >= 0; }).slice(0, 8);
       ul.innerHTML = hits.length ? hits.map(function (x) { return '<li><button type="button" data-cdi="' + x.cdi + '">' + esc(titulo(x.nm)) + " · " + x.uf.toUpperCase() + "</button></li>"; }).join("") : "<li>Nenhum município com esse nome.</li>";
     });
-    ul.addEventListener("click", function (e) { var b = e.target.closest("button[data-cdi]"); if (b) { self.selecionar(b.getAttribute("data-cdi"), { foco: true, hist: true }); ul.innerHTML = ""; inp.value = ""; } });
-    R.querySelector(".mm-tab").addEventListener("click", function (e) { var b = e.target.closest("button[data-cdi]"); if (b) self.selecionar(b.getAttribute("data-cdi"), { foco: true, hist: true }); });
-  };
+    ul.addEventListener("click", function (e) { var b = e.target.closest("button[data-cdi]"); if (b) { escolher(b.getAttribute("data-cdi")); ul.innerHTML = ""; inp.value = ""; } });
+  }
   Mapa.prototype.carregar = function () {
     var self = this; if (this.carregando) return this.carregando;
     var host = this.root.querySelector(".mm-mapa");
@@ -122,7 +128,7 @@
       paths[i].setAttribute("fill", f);
     }
     this.legenda(vs); this.tabela();
-    var bt = this.root.querySelectorAll(".mm-camadas button"); for (i = 0; i < bt.length; i++) bt[i].setAttribute("aria-pressed", String(bt[i].getAttribute("data-lay") === lay));
+    var bt = this.root.querySelectorAll(".mm-camadas button[data-lay]"); for (i = 0; i < bt.length; i++) bt[i].setAttribute("aria-pressed", String(bt[i].getAttribute("data-lay") === lay));
     if (this.sel) this.detalhe(this.sel);
   };
   Mapa.prototype.legenda = function (vs) {
@@ -157,7 +163,7 @@
   };
   Mapa.prototype.camada = function (lay, user) { if (!CAMADAS.some(function (c) { return c.id === lay; })) return; this.lay = lay; this.pintar(); if (user) this.hash(); this.emit("camada", lay); };
   Mapa.prototype.estado = function (uf, user) {
-    this.uf = UFN[uf] ? uf : ""; this.root.querySelector(".mm-uf").value = this.uf;
+    this.uf = UFN[uf] ? uf : ""; var su = this.root.querySelector(".mm-uf"); if (su) su.value = this.uf;
     if (this.svg) {
       if (!this.uf) this.svg.setAttribute("viewBox", this.vb0);
       else { var ps = this.svg.querySelectorAll('path[data-uf="' + this.uf + '"]'), x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
@@ -180,6 +186,7 @@
   };
   Mapa.prototype.detalhe = function (cdi, foco) {
     var self = this, D = this.D, r = D.m[cdi], el = this.root.querySelector(".mm-det"), raiz = this.d.raiz || "/eleicoes-2026/";
+    if (!el) return;
     var cab = '<h3 tabindex="-1">' + esc(titulo(r[2])) + " · " + r[0].toUpperCase() + '</h3><p class="mm-cod">Código IBGE ' + cdi + " · código TSE " + esc(r[1]) + "</p>";
     var acoes = '<p class="mm-acoes"><a href="' + raiz + r[0] + "/#m=" + r[1] + '">Zonas e seções deste município →</a> <button type="button" class="linkbtn mm-share">Copiar link</button></p>';
     if (r[3] == null) { el.innerHTML = cab + '<p class="empty">O arquivo deste município não estava disponível no TSE quando os dados foram reunidos. Nenhum número é mostrado no lugar.</p>' + acoes; return this.fimDetalhe(foco); }
@@ -213,7 +220,7 @@
     if (o.camada && o.camada !== this.lay) this.camada(o.camada, false);
     if ((o.uf || "") !== this.uf) this.estado(o.uf || "", false);
     if (o.mun && o.mun !== this.sel) this.selecionar(o.mun, { zoom: false });
-    else if (!o.mun && this.sel) { this.sel = null; var s = this.svg && this.svg.querySelector(".sel"); if (s) s.classList.remove("sel"); this.root.querySelector(".mm-det").innerHTML = '<p class="sub">Escolha um município no mapa, na busca ou na tabela.</p>'; }
+    else if (!o.mun && this.sel) { this.sel = null; var s = this.svg && this.svg.querySelector(".sel"); if (s) s.classList.remove("sel"); var pn = this.svg && this.svg.querySelector(".mm-pin"); if (pn) pn.remove(); var dt = this.root.querySelector(".mm-det"); if (dt) dt.innerHTML = '<p class="sub">Escolha um município no mapa, na busca ou na tabela.</p>'; }
     return !!(o.mun || o.camada || o.uf);
   };
   Mapa.prototype.on = function (fn) { (this.ls = this.ls || []).push(fn); };
@@ -229,6 +236,7 @@
     if (root.dataset.hash === "on") window.addEventListener("hashchange", function () { if (m.D) m.lerHash(); });
     return m;
   }
-  window.EleicoesMun = { iniciar: iniciar, Mapa: Mapa, valor: valor, quintis: quintis, classe: classe, CAMADAS: CAMADAS };
+  window.EleicoesMun = { iniciar: iniciar, Mapa: Mapa, valor: valor, quintis: quintis, classe: classe, CAMADAS: CAMADAS, UFN: UFN,
+    getJson: getJson, titulo: titulo, fold: fold, opcoesUF: opcoesUF, busca: busca, fmt: { pct: fPct, pp: fPP, int: fInt, esc: esc } };
   var els = document.querySelectorAll(".mm[data-auto='on']"); for (var i = 0; i < els.length; i++) iniciar(els[i]);
 })();
