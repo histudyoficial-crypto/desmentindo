@@ -425,10 +425,23 @@
   }
   // AGORA neutro (estado C): a mesma barra, só com a data do dia operacional e uma frase fixa. Sem título, contagem,
   // tema ou horário: nada do que ainda não foi aprovado pode aparecer, nem de forma indireta.
-  function agoraIdle(od) {
+  // ÚLTIMO PUBLICADO (22/10): se o último AGORA publicado é de um dia anterior e mais novo que o último FECHAMENTO (o dia
+  // ficou sem fechamento), a barra aponta para ele com a data dele — nunca como "hoje", sem título nem horário. Com
+  // FECHAMENTO do mesmo dia (ou mais novo) nada muda: o FECHAMENTO já é a capa e cobre aquele AGORA.
+  function agoraIdle(od, LA) {
+    var go = LA && isDay(LA.edition) && LA.edition < od && LA.n > 0
+      ? '<p class="ah-go"><a href="#/agora"><span>Última edição publicada do Agora: <time datetime="' + e(LA.edition) + '">' + e(dDay(LA.edition)) + "</time> · " +
+        plural(LA.n, "notícia", "notícias") + '</span> <span aria-hidden="true">→</span></a></p>' : "";
     return '<section class="ah ah-idle" aria-label="Agora, hoje"><div class="ah-in">' +
       '<p class="ah-k"><span class="ah-kk"><i class="ah-dot" aria-hidden="true"></i>Hoje · <time datetime="' + e(od) + '">' + e(dDay(od)) + "</time></span></p>" +
-      '<p class="ah-t">Acompanhamento do dia em andamento. O fechamento de hoje sai à noite.</p></div></section>';
+      '<p class="ah-t">Acompanhamento do dia em andamento. O fechamento de hoje sai à noite.</p>' + go + "</div></section>";
+  }
+  // Último AGORA publicado que o FECHAMENTO não cobre: edição anterior a hoje e mais nova que o último FECHAMENTO.
+  function agoraUncovered(EDN, LF, od) {
+    var ed = EDN && EDN.edition, n = edItems(EDN).length;
+    if (!isDay(ed) || ed >= od || !n) return null;
+    if (LF && isDay(LF.edition_date) && LF.edition_date >= ed) return null;
+    return { edition: ed, n: n };
   }
   // NEWS DO DIA: radar/pulso das notícias aprovadas do dia, na ordem editorial; faixa amarela, compacta, sem animação.
   // Deduplicação visual (sem mudar conteúdo): fica de fora o que já está no AGORA e no destaque do Morning; se nada sobrar,
@@ -659,12 +672,12 @@
   // Topo da Home nos três estados reais: A = edição de hoje aprovada, FECHAMENTO de hoje ainda não · B = edição e
   // FECHAMENTO de hoje · C = nenhuma edição de hoje aprovada (virada do dia até a 1ª publicação). Só o C muda (06/10):
   // AGORA neutro (data + frase fixa, nada da edição em revisão) e o FECHAMENTO anterior com a distância temporal (§32.4).
-  function homeTop(A, LF, od) {
+  function homeTop(A, LF, od, LA) {
     var fxToday = !!(LF && LF.edition_date === od);
     var h = '<div class="hm-sig" role="note"><span>Notícias passam. O que foi dito fica.</span><time datetime="' + od + '">' + e(dLong(od)) + "</time></div>";
     var M = A ? morningItems(A.items) : [], last = A ? latestItem(A.items) : null;
     if (A && !fxToday) h += agoraBar(A);   // estado A: AGORA editorial (no B, com o FECHAMENTO do dia publicado, o AGORA sai; o radar do dia fica)
-    if (!A) h += agoraIdle(od);
+    if (!A) h += agoraIdle(od, LA);
     if (A) h += newsDay(A, !fxToday && last ? last.id : "", M.length ? M[0].id : "");
     // Hierarquia temporal (Human Gate 06/10): no A o Morning aprovado de hoje é a capa do dia e o FECHAMENTO anterior vem
     // depois, rotulado pela distância ("Fechamento de ontem") e em escala de contexto; no B o FECHAMENTO de hoje é a capa e o
@@ -683,7 +696,7 @@
       var od = opDay();
       var mats = (MI && MI.items || []).slice(0, 3);
       return Promise.all(mats.map(function (x) { return loadTyped("materias", x.slug); })).then(function (MD) {
-        var h = '<h1 class="sr">Desmentindo: notícias passam, o que foi dito fica</h1>' + homeTop(A, LF, od) + invBlock();
+        var h = '<h1 class="sr">Desmentindo: notícias passam, o que foi dito fica</h1>' + homeTop(A, LF, od, A ? null : agoraUncovered(EDN, LF, od)) + invBlock();
         // referência temporal da memória: edição corrente quando houver; senão o último FECHAMENTO
         // (16/10) sem edição de hoje, sem "N dias antes": a distância contra um FECHAMENTO antigo não diz nada ao leitor
         var ref = A ? A.edition : "";
