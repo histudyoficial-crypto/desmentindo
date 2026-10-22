@@ -233,10 +233,10 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
   const dec = src.match(/var SLOTS = [^\n]*\n/), mesl = src.match(/var MESL = [^\n]*\n/), wd = src.match(/var WD3 = [^\n]*\n/);
   const names = ["e", "nf", "plural", "dParts", "dLong", "dDay", "isDay", "tcDate", "tc", "civilDays", "agoLabel", "zparts", "pad2", "opDay", "brt", "fhm",
     "em1", "mandar", "ddmm", "mhDate", "mhSources", "imgOk", "morningItems", "mhVisual", "mhCat", "morningBlock", "latestItem", "agoraBar", "agoraIdle",
-    "newsDay", "fts", "fxRetro", "fxCut", "fxCutL", "fxConclusions", "fxHome", "homeTop"];
+    "newsDay", "fts", "fxRetro", "fxCut", "fxCutL", "fxConclusions", "fxHome", "edItems", "normT", "fxTitles", "agoraRecentGroups", "agoraRecent", "tdate", "fdate", "homeTop"];
   const gc = src.match(/var GENERIC_CONC = [^\n]*\n/);
   const K = new Function(`${MES}\n${dec ? dec[0] : ""}\n${mesl ? mesl[0] : ""}\n${wd ? wd[0] : ""}\n${gc ? gc[0] : ""}\nvar SLOT_RANK = { MORNING: 1, AFTERNOON: 2, EVENING: 3 };\n` +
-    `var SITE = "https://desmentindo.com.br", TZ = "America/Sao_Paulo", ZF = null;\n${names.map(fn).join("\n")}\nreturn { homeTop, agoraIdle, fxHome, opDay, fxConclusions };`)();
+    `var SITE = "https://desmentindo.com.br", TZ = "America/Sao_Paulo", ZF = null, AG_WINDOW = 3, AG_MAX = 5;\n${names.map(fn).join("\n")}\nreturn { homeTop, agoraIdle, fxHome, opDay, fxConclusions, agoraRecent, agoraRecentGroups };`)();
   const ED = JSON.parse(fs.readFileSync(path.join(ROOT, "data/editorial/edicoes/2026-10-05.json"), "utf8"));
   const F5 = JSON.parse(fs.readFileSync(path.join(ROOT, "data/editorial/fechamentos/2026-10-05.json"), "utf8"));
   const A5 = { edition: ED.edition, items: ED.items.map(it => ({ id: it.id, title: it.title, slot: it.slot, category: it.category || "", sources: [], date: it.date })) };
@@ -264,6 +264,37 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
     eq("Eleições: 2º turno em destaque", [hrefs.filter(h => h === "/eleicoes-2026/2-turno/").length, IB.indexOf('/eleicoes-2026/2-turno/') < IB.indexOf('Ver as investigações'),
       hrefs.includes("/eleicoes-2026/questionamentos/"), hrefs.includes("/eleicoes-2026/")], [1, true, true, true]);
     eq("página do 2º turno existe no repositório", fs.existsSync(path.join(ROOT, "eleicoes-2026/2-turno/index.html")), true);
+  }
+  // ÚLTIMAS ATUALIZAÇÕES DO AGORA (22/10): estado C só; publicado; 3 dias; ≤5; só data; dedup contra o FECHAMENTO exibido
+  {
+    const rd = f => JSON.parse(fs.readFileSync(path.join(ROOT, f), "utf8"));
+    const E20 = rd("data/editorial/edicoes/2026-10-20.json"), E18 = rd("data/editorial/edicoes/2026-10-18.json"), E16 = rd("data/editorial/edicoes/2026-10-16.json");
+    const F20 = rd("data/editorial/fechamentos/2026-10-20.json"), F19 = rd("data/editorial/fechamentos/2026-10-19.json");
+    const sec = h => (h.match(/class="hm-ag"/g) || []).length;
+    // 22/10 real (estado C): AGORA 20/10 todo coberto pelo FECHAMENTO 20/10 → uma linha com os dois caminhos
+    const c22 = K.homeTop(null, F20, "2026-10-22", [E20]);
+    eq("C 22/10 real: seção com o dia coberto", [sec(c22), /Tudo deste dia está no <a href="#\/fechamento\/2026-10-20">Fechamento de 20 out<\/a>/.test(c22),
+      new RegExp('href="#/agora/' + E20.items[0].id + '">ver as 7 do Agora').test(c22), /class="ed-rows"/.test(c22.slice(c22.indexOf('class="hm-ag"')))], [1, true, true, false]);
+    eq("C: seção depois do FECHAMENTO (capa)", c22.indexOf('class="fxh') < c22.indexOf('class="hm-ag"'), true);
+    eq("nunca 'hoje' na seção", /hoje · |Agora · hoje|ah-dot/.test(c22.slice(c22.indexOf('class="hm-ag"'))), false);
+    eq("só data, sem horário inventado", /\d{1,2}:\d{2}/.test(K.agoraRecent([E20, E18], F19, "2026-10-21")), false);
+    // FECHAMENTO exibido mais antigo: notícias não cobertas aparecem, no máximo 5, mais recente primeiro
+    const g = K.agoraRecentGroups([E18, E20], F19, "2026-10-21");
+    eq("≤5, ordem, dedup", [g.map(x => x.edition), g.reduce((n, x) => n + x.items.length, 0) <= 5, g[0].items.length], [["2026-10-20", "2026-10-18"].slice(0, g.length), true, Math.min(5, E20.items.length)]);
+    eq("datas/links de edição publicada", g[0].items.every(it => it.id.startsWith("2026-10-20-") && it.date === "2026-10-20"), true);
+    // janela de 3 dias civis: 16/10 fica de fora em 20/10 (4 dias), entra em 19/10 (3 dias); hoje nunca entra
+    eq("janela", [K.agoraRecentGroups([E16], null, "2026-10-20").length, K.agoraRecentGroups([E16], null, "2026-10-19").length, K.agoraRecentGroups([E20], null, "2026-10-20").length], [0, 1, 0]);
+    // dedup entre edições: o mesmo título em dois dias aparece uma vez só
+    const dupE = { edition: "2026-10-19", items: [Object.assign({}, E20.items[0], { id: "2026-10-19-x", date: "2026-10-19" })] };
+    const gd = K.agoraRecentGroups([E20, dupE], null, "2026-10-21");
+    eq("dedup entre edições", gd.flatMap(x => x.items.map(i => i.title)).filter(t => t === E20.items[0].title).length, 1);
+    // estados A e B não mostram a seção; vazio (sem edição na janela) não mostra nada
+    const A6 = { edition: "2026-10-06", items: [{ id: "x", title: "Aprovada", slot: "MORNING", category: "", sources: [], date: "2026-10-06" }] };
+    const F6 = Object.assign({}, F5, { edition_date: "2026-10-06" });
+    eq("A e B sem seção; vazio sem seção", [sec(K.homeTop(A6, F5, "2026-10-06", [E20])), sec(K.homeTop(A6, F6, "2026-10-06", [E20])), K.agoraRecent([], F5, "2026-10-22"), sec(K.homeTop(null, F5, "2026-10-30", [E20]))],
+      [0, 0, "", 0]);
+    // item inválido não entra (fail-closed)
+    eq("item inválido fora", K.agoraRecentGroups([{ edition: "2026-10-20", items: [{ id: "", title: "x", date: "2026-10-20" }, { id: "y", title: "", date: "2026-10-20" }] }], null, "2026-10-21").length, 0);
   }
   // mais antigo que ontem: carimbo de distância do §32.4
   const o = K.homeTop(null, F5, "2026-10-08");
