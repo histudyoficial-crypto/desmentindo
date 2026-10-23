@@ -582,6 +582,7 @@
         return '<li><b aria-hidden="true">' + (i + 1) + '</b><a href="' + e(fu + "#" + p.story) + '">' + e(p.text) + "</a></li>";
       }).join("") + "</ol>" : "") + (cc.note ? '<p class="fxh-note">' + e(cc.note) + "</p>" : "") +
       '<div class="fxh-go"><a class="fxh-read" href="' + e(fu) + '">Ler o fechamento <span aria-hidden="true">→</span></a>' +
+      '<a class="fxh-arch" href="' + e(fu) + '#edicoes">Edições anteriores</a>' +
       mandar(SITE + "/fechamento/" + F.edition_date + "/", F.public_title, "Mandar o fechamento de " + dDay(F.edition_date), "mandar-ink") + "</div></div>";
     var side = cc.items.length ? '<div class="fxh-side"><p class="fxh-sk">O que dá para concluir' + (cut && !fxRetro(F) ? " até " + e(cut) : "") + "</p>" + cc.items.map(function (c, i) {
       return '<div class="fxh-c"><p class="fxh-cn">' + (i + 1) + '</p><p>' + e(c) + "</p></div>";
@@ -1218,8 +1219,40 @@
   function em1(pts) { var n = 0; pts.forEach(function (p) { n += String(p.text || "").length; }); return pts.length >= 1 && pts.length <= 5 && n <= 600; }
   var BASIS_TXT = { "manchete": "só a manchete", "manchete e resumo": "manchete e resumo", "texto da matéria": "texto da matéria" };
 
+  // HISTÓRICO DE EDIÇÕES (22/10, Plano Diretor §35/§31 T1): a página do FECHAMENTO não levava às edições anteriores.
+  // Só o índice público (data/editorial/fechamentos/index.json): edição anterior/seguinte e a lista cronológica de todas as
+  // datas entre a primeira e a última, com os dias SEM edição marcados como tal (nada é inventado nem reconstruído).
+  function fxArchiveDays(items) {
+    var pub = {}, ds = (items || []).map(function (x) { return x && x.date; }).filter(isDay).sort();
+    if (!ds.length) return [];
+    (items || []).forEach(function (x) { if (x && isDay(x.date)) pub[x.date] = x; });
+    var out = [], t = Date.UTC(+ds[0].slice(0, 4), +ds[0].slice(5, 7) - 1, +ds[0].slice(8, 10)), end = ds[ds.length - 1];
+    for (var guard = 0; guard < 400; guard++) {
+      var d = new Date(t).toISOString().slice(0, 10);
+      out.push({ date: d, item: pub[d] || null });
+      if (d === end) break;
+      t += 864e5;
+    }
+    return out.reverse();
+  }
+  function fxArchive(items, cur) {
+    var days = fxArchiveDays(items), pubs = days.filter(function (x) { return x.item; });
+    if (pubs.length < 2) return "";
+    var i = pubs.map(function (x) { return x.date; }).indexOf(cur);
+    var newer = i > 0 ? pubs[i - 1] : null, older = i >= 0 && i < pubs.length - 1 ? pubs[i + 1] : null;
+    var nav = '<nav class="fx-nav" aria-label="Navegar entre edições">' +
+      (older ? '<a class="fx-nav-o" href="#/fechamento/' + e(older.date) + '"><span aria-hidden="true">←</span> Edição anterior · <time datetime="' + e(older.date) + '">' + e(dMid(older.date)) + "</time></a>" : "<span></span>") +
+      (newer ? '<a class="fx-nav-n" href="#/fechamento/' + e(newer.date) + '">Edição seguinte · <time datetime="' + e(newer.date) + '">' + e(dMid(newer.date)) + '</time> <span aria-hidden="true">→</span></a>' : "") + "</nav>";
+    return nav + '<section class="sec fx-arch" id="edicoes" aria-labelledby="fx-arch-h"><h2 class="h2" id="fx-arch-h">Todas as edições do Fechamento</h2>' +
+      '<p class="quiet">' + plural(pubs.length, "edição publicada", "edições publicadas") + ". Dias sem edição aparecem marcados.</p>" +
+      '<ol class="ed-rows fx-arch-l">' + days.map(function (x) {
+        if (!x.item) return '<li class="fx-arch-none"><span class="rt">Sem edição publicada</span><span class="rd">' + tdate(x.date) + "</span></li>";
+        return '<li' + (x.date === cur ? ' aria-current="page"' : "") + '><a href="#/fechamento/' + e(x.date) + '"><span class="rt">' + e(x.item.title || "Fechamento") + '</span><span class="rd">' + tdate(x.date) + "</span></a></li>";
+      }).join("") + "</ol></section>";
+  }
   P.fechamento = function (date) {
-    return loadTyped("fechamentos", date).then(function (F) {
+    return Promise.all([loadTyped("fechamentos", date), loadIdx("fechamentos")]).then(function (R) {
+      var F = R[0], FIDX = R[1];
       if (!F) return notFound();
       document.title = F.public_title + " · Desmentindo";
       setDesc((F.opening && F.opening.points || []).map(function (p) { return p.text; }).join(" "));
@@ -1293,6 +1326,7 @@
               (s.basis ? ' <span class="meta">(' + e(BASIS_TXT[s.basis] || s.basis) + ")</span>" : "") + "</li>";
           }).join("") + "</ul></details>" + (F.note ? '<p class="quiet">' + e(F.note) + "</p>" : "") + SRC_RULE + "</section>";
       }
+      h += fxArchive(FIDX && FIDX.items, F.edition_date);
       return h;
     });
   };

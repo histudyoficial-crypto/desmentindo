@@ -1247,3 +1247,12 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
 .hm-ag-all a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
 .hm-ag a:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
 @media (min-width: 1061px) { .is-home .hm-ag { grid-column: 1 / span 8; padding: 14px 0 6px; } }
+
+/* Histórico de edições do FECHAMENTO (22/10): navegação anterior/seguinte + lista com dias sem edição */
+.fx-nav { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 28px 0 0; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 14px; font-weight: 800; }
+.fx-nav a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--link); text-underline-offset: 3px; }
+.fx-arch .ed-rows li[aria-current="page"] a { font-weight: 800; }
+.fx-arch .ed-rows a { min-height: 44px; align-items: center; }
+.fx-arch-none { display: flex; justify-content: space-between; gap: 14px; padding: 12px 0; color: var(--ink-2); font-style: italic; }
+.fx-arch a:focus-visible, .fx-nav a:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.fxh-arch { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; font-size: 14px; font-weight: 800; color: inherit; text-underline-offset: 3px; text-decoration: underline; }
