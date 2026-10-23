@@ -1,0 +1,79 @@
+{
+ "schema": "desmentindo.public.recent_videos.v1",
+ "date": "2026-10-22",
+ "published_at": "2026-10-23T11:25:50Z",
+ "title": "Vídeos recentes dos canais",
+ "notice": "Publicado pelos canais acompanhados. Ainda não checado pelo Desmentindo: título e conteúdo são dos autores. Aparecer aqui não é confirmação nem ligação com as notícias do dia.",
+ "window": {
+  "days": 3,
+  "from": "2026-10-20",
+  "to": "2026-10-22"
+ },
+ "items": [
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "1bpgT3rvGfM",
+   "title": "Recado URGENTE aos Empreendedores, MEIs e empresários – Coppolla, Walter Maciel e Juliano Custodio",
+   "published_at": "2026-10-22T00:19:10Z",
+   "url": "https://www.youtube.com/watch?v=1bpgT3rvGfM",
+   "thumbnail": "https://i.ytimg.com/vi/1bpgT3rvGfM/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-23T00:13:14Z"
+  },
+  {
+   "channel": "Te Atualizei",
+   "channel_id": "UCXRIQok8uzYtg1TPwSqikVg",
+   "video_id": "J59qz9Fqeiw",
+   "title": "ACORDA, BRASIL! (MUSIC VIDEO)",
+   "published_at": "2026-10-22T00:09:59Z",
+   "url": "https://www.youtube.com/watch?v=J59qz9Fqeiw",
+   "thumbnail": "https://i.ytimg.com/vi/J59qz9Fqeiw/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-22T00:16:31Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "iiVOjCLUmi0",
+   "title": "A hipocrisia de um deputado estadual cantor gospel - Alexandre Garcia",
+   "published_at": "2026-10-22T16:48:01Z",
+   "url": "https://www.youtube.com/watch?v=iiVOjCLUmi0",
+   "thumbnail": "https://i.ytimg.com/vi/iiVOjCLUmi0/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-23T00:13:14Z"
+  },
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "isjHW6L-D-k",
+   "title": "Biden da Silva: o declínio de Lula exposto no debate – por Caio Coppolla",
+   "published_at": "2026-10-20T22:18:43Z",
+   "url": "https://www.youtube.com/watch?v=isjHW6L-D-k",
+   "thumbnail": "https://i.ytimg.com/vi/isjHW6L-D-k/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-21T00:10:59Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "4DJ-jsOUMaA",
+   "title": "A lista da corrupção em governo petista - Alexandre Garcia",
+   "published_at": "2026-10-22T23:14:02Z",
+   "url": "https://www.youtube.com/watch?v=4DJ-jsOUMaA",
+   "thumbnail": null,
+   "highlight": false,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-23T00:13:14Z"
+  }
+ ]
+}
