@@ -1,23 +1,128 @@
 {
-  "schema": "desmentindo.eleicoes2026.pesquisas_2t.v1",
-  "regra": "Só entra pesquisa conferida por pessoa (Human Gate): registro no PesqEle + publicação original. Pesquisa não é resultado. Sem confirmação = 'Sem nova pesquisa confirmada nesta semana'. Erro das pesquisas só depois da totalização final do TSE (tf = s) e com revisão humana.",
-  "semana": { "de": "2026-10-19", "ate": "2026-10-24" },
+  "schema": "desmentindo.eleicoes2026.pesquisas_2t.v2",
+  "regra": "Só entra pesquisa aprovada individualmente no Human Gate (aprovado + decision_ref), com registro no PesqEle e publicação original preservada. Pesquisa não é resultado: é estimativa com margem de erro, feita antes da votação. Data prevista de divulgação nunca é resultado publicado. Erro das pesquisas só depois da totalização final do TSE (tf = s) e com revisão humana.",
+  "janela": {
+    "de": "2026-10-16",
+    "ate": "2026-10-25"
+  },
+  "sincronizado_em": "2026-10-23T02:13:25Z",
+  "atualizado_editorial_em": null,
   "institutos": [
-    { "instituto": "Veritá", "modalidade": null },
-    { "instituto": "Gerp", "modalidade": null },
-    { "instituto": "Futura", "modalidade": null },
-    { "instituto": "Vox Brasil", "modalidade": null },
-    { "instituto": "Paraná Pesquisas", "modalidade": null },
-    { "instituto": "Quaest", "modalidade": "eleitor provável" },
-    { "instituto": "Meio/Ideia", "modalidade": null },
-    { "instituto": "PoderData", "modalidade": null },
-    { "instituto": "Quaest", "modalidade": null },
-    { "instituto": "AtlasIntel", "modalidade": null },
-    { "instituto": "Datafolha", "modalidade": null },
-    { "instituto": "Nexus", "modalidade": null },
-    { "instituto": "Real Time Big Data", "modalidade": null },
-    { "instituto": "CNT/MDA", "modalidade": null },
-    { "instituto": "Indexa", "modalidade": null }
+    {
+      "instituto": "Veritá",
+      "modalidade": null
+    },
+    {
+      "instituto": "Gerp",
+      "modalidade": null
+    },
+    {
+      "instituto": "Futura",
+      "modalidade": null
+    },
+    {
+      "instituto": "Vox Brasil",
+      "modalidade": null
+    },
+    {
+      "instituto": "Paraná Pesquisas",
+      "modalidade": null
+    },
+    {
+      "instituto": "Quaest",
+      "modalidade": "eleitor provável"
+    },
+    {
+      "instituto": "Meio/Ideia",
+      "modalidade": null
+    },
+    {
+      "instituto": "PoderData",
+      "modalidade": null
+    },
+    {
+      "instituto": "Quaest",
+      "modalidade": null
+    },
+    {
+      "instituto": "AtlasIntel",
+      "modalidade": null
+    },
+    {
+      "instituto": "Datafolha",
+      "modalidade": null
+    },
+    {
+      "instituto": "Nexus",
+      "modalidade": null
+    },
+    {
+      "instituto": "Real Time Big Data",
+      "modalidade": null
+    },
+    {
+      "instituto": "CNT/MDA",
+      "modalidade": null
+    },
+    {
+      "instituto": "Indexa",
+      "modalidade": null
+    }
   ],
-  "pesquisas": []
+  "pesquisas": [],
+  "referencia_2022": {
+    "resultados_oficiais": [
+      {
+        "rotulo": "1º turno de 2022",
+        "data": "2022-10-02",
+        "candidatos": [
+          {
+            "nome": "Lula",
+            "votos": 57259504,
+            "pct_validos": 48.43
+          },
+          {
+            "nome": "Jair Bolsonaro",
+            "votos": 51072345,
+            "pct_validos": 43.2
+          }
+        ],
+        "validos": 118229719,
+        "comparecimento": 123682372,
+        "outros_pct_validos": 8.37,
+        "fonte": "TSE · Portal de Dados Abertos, votação por município e zona (2022)",
+        "fonte_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2022.zip",
+        "sha256": "791f8409dfd8422e8e0f76e99f676d26fbf6d2ba070453e7f8bbdee235bc944b"
+      },
+      {
+        "rotulo": "2º turno de 2022",
+        "data": "2022-10-30",
+        "candidatos": [
+          {
+            "nome": "Lula",
+            "votos": 60345999,
+            "pct_validos": 50.9
+          },
+          {
+            "nome": "Jair Bolsonaro",
+            "votos": 58206354,
+            "pct_validos": 49.1
+          }
+        ],
+        "validos": 118552353,
+        "comparecimento": 124252796,
+        "outros_pct_validos": null,
+        "fonte": "TSE · Portal de Dados Abertos, votação por município e zona (2022)",
+        "fonte_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2022.zip",
+        "sha256": "791f8409dfd8422e8e0f76e99f676d26fbf6d2ba070453e7f8bbdee235bc944b"
+      }
+    ],
+    "pesquisas": [],
+    "notas": [
+      "2022 e 2026 são eleições diferentes: outros candidatos, outra campanha e outro calendário. A referência não prevê 2026.",
+      "1º turno de 2022: só os dois candidatos que foram ao 2º turno; os demais somaram 8,37% dos votos válidos.",
+      "Pesquisas de 2022 entram uma a uma, depois de conferidas na publicação original e aprovadas; nenhuma nota a institutos.",
+      "Os métodos mudaram entre 2022 e 2026 (mais coleta por telefone e internet); compare cada pesquisa com a própria metodologia."
+    ]
+  }
 }
