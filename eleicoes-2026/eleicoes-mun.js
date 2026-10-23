@@ -77,7 +77,7 @@
     if (q(".mm-busca")) busca(q(".mm-busca"), function () { return self.lista; }, function (cdi) { self.selecionar(cdi, { foco: true, hist: true }); });
     if (q(".mm-tab")) q(".mm-tab").addEventListener("click", function (e) { var b = e.target.closest("button[data-cdi]"); if (b) self.selecionar(b.getAttribute("data-cdi"), { foco: true, hist: true }); });
     if (q(".mm-zoom")) q(".mm-zoom").addEventListener("click", function (e) { var b = e.target.closest("button[data-z]"); if (!b || !self.svg) return; var z = b.getAttribute("data-z");
-      if (z === "0") self.estado("", true); else self.zoom(z === "+" ? 2 : 0.5); });
+      if (z === "x") { self.fechar(false); self.limpar(); self.hash(); self.emit("limpar"); } else if (z === "0") self.estado("", true); else self.zoom(z === "+" ? 2 : 0.5); });
     if (q(".mm-fechar")) q(".mm-fechar").addEventListener("click", function () { self.fechar(true); });
     if (q(".mm-fundo")) q(".mm-fundo").addEventListener("click", function () { self.fechar(true); });
     R.addEventListener("keydown", function (e) { if (e.key === "Escape" && R.classList.contains("mm-aberto")) { e.preventDefault(); self.fechar(true); } });
@@ -205,6 +205,7 @@
       if (lay === "lider") f = corLider(r, D);
       else { var c = classe(valor(r, lay), this.q); f = c < 0 || !r || r[9] == null ? "url(#mmp-sd)" : SEQ[c + 1]; }
       paths[i].setAttribute("fill", f);
+      if (r && r[3] != null && r[3] < 100) paths[i].classList.add("parc");   // arquivo parcial no TSE: contorno tracejado (todas as camadas)
     }
     // troca de camada: a nova pintura entra com um fade curto (opacity; nada com movimento reduzido)
     if (!semMov() && this.pintado) { var sv = this.svg; sv.classList.add("mm-entra"); requestAnimationFrame(function () { requestAnimationFrame(function () { sv.classList.remove("mm-entra"); }); }); }
@@ -223,7 +224,8 @@
       h = '<ul class="mm-leg-l mm-leg-c">' + this.ordLider.map(function (ci) { var c = D.cands[ci], k = CORES.de(c.n);
         return "<li>" + amostra(corCand(c)) + '<span class="mm-leg-n"><b>' + esc(titulo(c.nm)) + '</b> <span class="mm-pt">' + esc(partido(c)) + '</span></span><span class="mm-leg-q">mais votado em <b>' + fInt(self.contLider[ci]) + "</b> municípios" + (k.neutro ? " · sem cor de partido verificada (hachura)" : "") + "</span></li>"; }).join("") +
         (emp ? "<li>" + amostra("url(#mmp-emp)") + '<span class="mm-leg-n">Empate entre os dois primeiros</span><span class="mm-leg-q"><b>' + fInt(emp) + "</b> municípios</span></li>" : "") +
-        (semArq ? "<li>" + amostra("url(#mmp-sd)", "mm-sw-b") + '<span class="mm-leg-n">Sem arquivo do TSE</span><span class="mm-leg-q"><b>' + fInt(semArq) + "</b> municípios</span></li>" : "") + "</ul>";
+        (semArq ? "<li>" + amostra("url(#mmp-sd)", "mm-sw-b") + '<span class="mm-leg-n">Sem arquivo do TSE</span><span class="mm-leg-q"><b>' + fInt(semArq) + "</b> municípios</span></li>" : "") +
+        (parc ? '<li><svg class="mm-sw" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x="1" y="1" width="12" height="12" fill="none" stroke="#201E1D" stroke-width="1.5" stroke-dasharray="2 2"/></svg><span class="mm-leg-n">Arquivo parcial no TSE (contorno tracejado)</span><span class="mm-leg-q"><b>' + fInt(parc) + "</b> municípios</span></li>" : "") + "</ul>";
       h += '<p class="note">' + OFICIAL + " Cor = candidato com mais votos válidos no município, na cor do candidato. A cor só diz quem foi o mais votado: não mostra tamanho da vitória nem percentual (para isso, “Diferença 1º–2º”). Área do município não representa número de eleitores." + fonte + "</p>";
     } else {
       var c = CAMADAS.filter(function (x) { return x.id === lay; })[0], lo = vs.length ? Math.min.apply(null, vs) : null, hi = vs.length ? Math.max.apply(null, vs) : null, fmt = lay === "margem" ? fPP : fPct;

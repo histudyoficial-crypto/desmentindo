@@ -174,3 +174,6 @@
 @media(min-width:900px){.hubs{grid-template-columns:1fr 1fr}}
 @media(forced-colors:active){.mm-camadas button[aria-pressed="true"],.cmp-alterna button[aria-pressed="true"]{outline:3px solid Highlight}.mm-selo{stroke:Highlight}}
 .mm-ctrl>*,.mm-grid>*,.cmp-maps>*{min-width:0}
+/* v2: arquivo parcial (contorno tracejado, todas as camadas) e limpar a seleção (só quando há município escolhido) */
+.mm-mapa path.parc{stroke:var(--ink);stroke-width:1;stroke-dasharray:2 2}
+.mm-zoom .mm-limpa{display:none;font-size:22px}.mm-tem-sel .mm-zoom .mm-limpa{display:flex}

@@ -40,13 +40,14 @@ for (const q of D.questionamentos) {
 }
 const home = fs.readFileSync(path.join(ROOT, "eleicoes-2026", "index.html"), "utf8");
 if (!home.includes("Questionamentos sobre a eleição") || !home.includes("Ver todos os questionamentos")) bad("home sem seção de questionamentos");
-// LAYOUT (Human Gate 06/10): Brasil na ordem estado → questionamentos → noite de 4/10 → resultado oficial → explorador →
-// metodologia; linha dos líderes vazia no HTML (o número vem do TSE, nunca fixo).
+// LAYOUT (diretriz do proprietário 22/10/2026, narrativa progressiva; substitui a ordem de 06/10): situação oficial →
+// placar → quem votou → mapa por município → comparação → noite de 4/10 → questionamentos → explorador → metodologia;
+// nenhum percentual fixo no HTML (o número vem do TSE).
 {
-  const ord = ['id="estado"', 'id="t-q"', 'id="t-evo"', 'id="resultado"', 'id="onde"', 'id="verificacao"'].map(x => home.indexOf(x));
+  const ord = ['id="estado"', 'id="resultado"', 'id="votou"', 'id="municipios"', 'id="comparar"', 'id="t-evo"', 'id="t-q"', 'id="onde"', 'id="verificacao"'].map(x => home.indexOf(x));
   if (ord.some(i => i < 0) || ord.some((v, i) => i && v < ord[i - 1])) bad("Brasil fora da ordem do layout aprovado: " + ord.join(","));
-  const ld = (home.match(/<div id="lideres"[^>]*>([\s\S]*?)<\/div>/) || [])[1] || "";
-  if (/\d+,\d+%/.test(ld)) bad("linha dos líderes com percentual fixo no HTML");
+  const topo = home.slice(home.indexOf('id="estado"'), home.indexOf('id="t-evo"'));
+  if (/\d+,\d+%/.test(topo.replace(/<script[\s\S]*?<\/script>/g, ""))) bad("percentual fixo no HTML antes da noite da apuração");
   const uf = fs.readFileSync(path.join(ROOT, "eleicoes-2026", "sp", "index.html"), "utf8");
   if (uf.includes('id="estado"') || uf.includes('id="t-q"')) bad("UF ganhou blocos exclusivos do Brasil");
   // central: resumo contado do dado; Q pages: resposta antes da prova, atalhos para evidência/limites/fontes
