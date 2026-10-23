@@ -51,6 +51,7 @@
   var PORTAL = '<a class="portal" href="https://resultados.tse.jus.br/oficial/app/index.html" rel="noopener">Acompanhe no portal oficial do TSE →</a>';
   var OFICIAL = '<span class="prov of" title="Número publicado pela Justiça Eleitoral">Dado oficial (TSE)</span>';
   var CALCULADO = '<span class="prov calc" title="Conta feita por esta página a partir de arquivos oficiais; não é número publicado pelo TSE">Métrica calculada pelo Eleições 2026</span>';
+  var REDUZ = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);   // sem animação de entrada
   function track(name, data) { try { if (window.umami && window.umami.track) window.umami.track(name, data); } catch (e) { /* nunca quebra */ } }
 
   var UFN = { ac: "Acre", al: "Alagoas", ap: "Amapá", am: "Amazonas", ba: "Bahia", ce: "Ceará", df: "Distrito Federal", es: "Espírito Santo",
@@ -123,7 +124,7 @@
       card("Última atualização do TSE", R && R.when ? hhmm(R.when.ms) : "—", R && R.when ? R.when.txt : "Horário não informado", "", OFICIAL) +
       card(fresh ? "Leitura ao vivo" : "Leitura desta página", live.at ? hhmmss(live.at) : "—",
         live.at ? (fresh ? "Lida do TSE agora; nova leitura a cada 90 s" : "Dados locais atualizados até " + hhmmss(live.at)) : "Ainda sem leitura", fresh ? "vivo" : "", "");
-    leaders(); renderHist(); renderPart();
+    leaders(); renderHist(); renderPart(); pvDica();
   }
   // ---------------------------------------------------------------- participação (indicadores com denominador)
   // Só campos oficiais do arquivo do TSE (C.participacao). Base de comparecimento/abstenção = "eleitorado apurado" (campo esi:
@@ -135,14 +136,46 @@
       t("Abstenção", P.abstencao.v, P.abstencao.p, "do eleitorado apurado") + t("Votos válidos", P.validos.v, P.validos.p, "do comparecimento") +
       t("Brancos", P.brancos.v, P.brancos.p, "do comparecimento") + t("Nulos", P.nulos.v, P.nulos.p, "do comparecimento") + "</dl>"; };
     // sem leitura: mesma grade com "—" (altura estável, sem deslocar a página) e o motivo escrito
-    if (!P) { el.innerHTML = grid(C.participacao(null, null)) + '<p class="note">' + (NOW() < RELEASE ? "Disponível depois das 17h." : "Aguardando a leitura do TSE.") + "</p>"; return; }
-    el.innerHTML = grid(P) +
+    if (!P) { el.innerHTML = pvBar(null) + grid(C.participacao(null, null)) + '<p class="note">' + (NOW() < RELEASE ? "Disponível depois das 17h." : "Aguardando a leitura do TSE.") + "</p>"; return; }
+    el.innerHTML = pvBar(P) + grid(P) +
       '<p class="note">' + OFICIAL + " " + (R.final ? "Totalização final." : "Parcial: " + fPct(R.pst) + " das seções totalizadas.") +
       " <b>Eleitorado apurado: " + fInt(P.apurado) + "</b> — eleitores das seções já totalizadas e instaladas; é sobre ele que o TSE calcula comparecimento e abstenção. " +
       "Válidos, brancos e nulos são sobre quem compareceu." +
       (P.naoTotalizado ? " Ainda não totalizado: " + fInt(P.naoTotalizado) + " eleitores." : "") +
       (P.naoInstalado ? " Em seções não instaladas: " + fInt(P.naoInstalado) + " eleitores (fora do comparecimento e da abstenção)." : "") +
       " Todos os números são campos do arquivo oficial, sem conta nossa. Pesquisa eleitoral não entra aqui.</p>";
+  }
+
+  // Composição do eleitorado apurado (esi) numa barra só: cada parte é calculada SOBRE A MESMA BASE (esi), a partir dos
+  // números absolutos do TSE — válidos + brancos + nulos = comparecimento; comparecimento + abstenção = esi. Se o arquivo
+  // não fechar essas identidades, a barra não é desenhada (nada aproximado). Os % oficiais do TSE (com o denominador de cada
+  // um) continuam na grade logo abaixo. Eleitores de seções não instaladas ficam fora da barra, com a nota.
+  var pvAnimou = false;
+  function pvBar(P) {
+    var segs = [["v", "Votos válidos", "validos", "do comparecimento"], ["b", "Brancos", "brancos", "do comparecimento"], ["n", "Nulos", "nulos", "do comparecimento"], ["a", "Abstenção", "abstencao", "do eleitorado apurado"]];
+    var b = P && P.apurado, ok = P && b && ["comparecimento", "abstencao", "validos", "brancos", "nulos"].every(function (k) { return P[k].v != null; }) &&
+      P.validos.v + P.brancos.v + P.nulos.v === P.comparecimento.v && P.comparecimento.v + P.abstencao.v === b;
+    var sh = function (v) { return ok ? v / b * 100 : null; }, anima = ok && !pvAnimou && !REDUZ; if (ok) pvAnimou = true;
+    // mesma estrutura com e sem dado (altura estável): sem dado, "—" e barra vazia
+    return '<div class="pv' + (anima ? " entra" : "") + '"><div class="pv-top"><p class="pv-k"><span>Compareceram</span><b>' + (ok ? fPct(P.comparecimento.p) : "—") + "</b><small>" + (ok ? fInt(P.comparecimento.v) + " eleitores" : "&nbsp;") + "</small></p>" +
+      '<p class="pv-k pv-ka"><span>Abstenção</span><b>' + (ok ? fPct(P.abstencao.p) : "—") + "</b><small>" + (ok ? fInt(P.abstencao.v) + " eleitores" : "&nbsp;") + "</small></p></div>" +
+      '<div class="pv-bar"' + (ok ? ' role="group" aria-label="Composição do eleitorado apurado (' + fInt(b) + ' eleitores)"' : ' aria-hidden="true"') + ">" + (ok ? segs.map(function (g, i) {
+        var x = P[g[2]], tip = g[1] + ": " + fInt(x.v) + " · " + fPct(sh(x.v)) + " do eleitorado apurado (conta desta página) · o TSE publica " + fPct(x.p) + " " + g[3] + " · fonte: arquivo oficial do TSE";
+        return '<span class="pv-s pv-' + g[0] + '" style="width:' + sh(x.v).toFixed(3) + "%;--i:" + i + '" tabindex="0" role="img" aria-label="' + esc(tip) + '" data-tip="' + esc(tip) + '"></span>'; }).join("") : '<i class="pv-vazio"></i>') + "</div>" +
+      '<div class="pv-tip" hidden></div><ul class="pv-leg">' + segs.map(function (g) { return '<li><i class="pv-' + g[0] + '"></i><b>' + g[1] + "</b> " + (ok ? fPct(sh(P[g[2]].v), 1) : "—") + "</li>"; }).join("") + "</ul>" +
+      '<p class="pv-nota">' + CALCULADO + " " + (ok ? "Barra: cada parte sobre o mesmo total, o eleitorado apurado (" + fInt(b) + " eleitores das seções totalizadas e instaladas), calculada com os números absolutos do TSE." +
+        (P.naoInstalado ? " Fora da barra: " + fInt(P.naoInstalado) + " eleitores de seções não instaladas, que não entram no comparecimento nem na abstenção." : "")
+        : P ? "Os campos do arquivo não fecham a conta (válidos + brancos + nulos = comparecimento; comparecimento + abstenção = eleitorado apurado); a barra não é desenhada. Os números oficiais estão abaixo."
+        : "A barra mostra válidos, brancos, nulos e abstenção sobre o mesmo total, o eleitorado apurado, assim que o TSE publicar.") + "</p></div>";
+  }
+  function pvDica() {
+    var box = $("participacao"); if (!box || box.__pv) return; box.__pv = 1;
+    var mostra = function (s) { var tip = box.querySelector(".pv-tip"), pv = box.querySelector(".pv"); if (!tip || !pv) return;
+      if (!s) { tip.hidden = true; return; } tip.textContent = s.getAttribute("data-tip"); tip.hidden = false;
+      var r = s.getBoundingClientRect(), q = pv.getBoundingClientRect(), w = tip.offsetWidth, x = r.left - q.left + r.width / 2 - w / 2;
+      tip.style.transform = "translate3d(" + Math.round(Math.max(0, Math.min(x, q.width - w))) + "px," + Math.round(r.bottom - q.top + 8) + "px,0)"; };
+    ["mouseover", "focusin"].forEach(function (t) { box.addEventListener(t, function (e) { var s = e.target.closest && e.target.closest(".pv-s"); mostra(s); }); });
+    ["mouseleave", "focusout"].forEach(function (t) { box.addEventListener(t, function () { mostra(null); }); });
   }
 
   // ---------------------------------------------------------------- comparação histórica (2º turno, Brasil)
@@ -182,6 +215,7 @@
     opts = opts || {};
     var max = Math.max.apply(null, R.cands.map(function (c) { return c.pct || 0; }).concat([1]));
     var status = R.final ? '<span class="st st-final">Totalização final · TSE</span>' : '<span class="st st-partial">Parcial · ' + fPct(R.pst) + " das seções</span>";
+    if (!el.__entrou && !REDUZ && !opts.compact) { el.__entrou = 1; el.classList.add("entra"); }   // entrada só no 1º desenho; leituras seguintes não animam
     el.innerHTML = (opts.title ? '<h3 class="btitle">' + esc(opts.title) + "</h3>" : "") +
       '<div class="board-head">' + status + '<p class="when">' + (R.when ? esc(R.when.txt) : "Horário do TSE não informado") + "</p></div>" +
       '<ol class="cands">' + R.cands.map(function (c, i) {
@@ -194,8 +228,9 @@
       '<p class="src">' + OFICIAL + ' <a href="' + esc(opts.url) + '" target="_blank" rel="noopener">arquivo oficial</a>. Percentuais sobre votos válidos, como o TSE publica.</p>';
   }
   function candLi(c, max, R) {
-    var w = c.pct == null ? 0 : Math.max(0.5, c.pct / max * 100);
-    return '<li><div class="cn"><span class="nm">' + esc(c.name) + '</span><span class="pt">' + esc(c.party || "") + " · " + esc(c.n || "") + "</span></div>" +
+    var w = c.pct == null ? 0 : Math.max(0.5, c.pct);   // barra = % dos votos válidos (escala 0–100%, igual para todos)
+    var k = CORES.de(c.n);
+    return '<li style="--c:' + k.cor + ";--t:" + k.tinta + '"><div class="cn"><span class="nm">' + esc(c.name) + '</span><span class="pt">' + esc(c.party || "") + " · " + esc(c.n || "") + "</span></div>" +
       '<div class="cv"><b>' + fPct(c.pct) + "</b><span>" + fInt(c.votes) + " votos</span></div>" +
       '<div class="bar" aria-hidden="true"><i style="width:' + w.toFixed(2) + "%;background:" + colorOf(c) + '"></i></div>' +
       (R.final && c.st ? '<p class="cst">Situação informada pelo TSE: ' + esc(c.st) + "</p>" : "") + "</li>";
@@ -352,7 +387,7 @@
     var xs = function (t) { return Lm + (t - t0) / (t1 - t0) * (W - Lm - Rm); };
     var last = snaps[snaps.length - 1].candidates.slice().sort(function (a, b) { return (b.percentage || 0) - (a.percentage || 0); }).slice(0, 3);
     var top = 60, ys = function (p) { return T + (H - T - Bm) * (1 - Math.min(p, top) / top); };
-    var cols = ["var(--ink)", "var(--blue-mid)", "var(--green-ink)"];
+    var cols = last.map(function (c, k) { var x = CORES.de(c.number); return x.neutro ? ["var(--ink)", "var(--blue-mid)", "var(--green-ink)"][k] : x.cor; });   // cor do candidato (pelo número), nunca pela posição
     var g = "", gaps = C.lacunas(snaps, 70 * 60e3);
     gaps.forEach(function (q) { g += '<rect class="gap" x="' + xs(q.de) + '" y="' + T + '" width="' + Math.max(1, xs(q.ate) - xs(q.de)) + '" height="' + (H - T - Bm) + '"><title>Sem registro entre ' + hhmm(q.de) + " e " + hhmm(q.ate) + "</title></rect>"; });
     for (var v = 0; v <= top; v += 20) g += '<line x1="' + Lm + '" x2="' + (W - Rm) + '" y1="' + ys(v) + '" y2="' + ys(v) + '" class="grid"/><text x="' + (Lm - 6) + '" y="' + (ys(v) + 4) + '" class="ax" text-anchor="end">' + v + "%</text>";
@@ -365,9 +400,14 @@
       });
       g += '<text x="' + xs(s.t) + '" y="' + (H - 6) + '" class="ax tot" text-anchor="middle">' + fPct(s.percent_totalized, 0) + "</text>";
     });
+    // alvo de hover/foco por registro (faixa invisível em volta de cada instante; nada é desenhado entre registros)
+    snaps.forEach(function (s, i) { var x = xs(s.t), a = i ? (xs(snaps[i - 1].t) + x) / 2 : Lm, z = i < snaps.length - 1 ? (x + xs(snaps[i + 1].t)) / 2 : W - Rm;
+      g += '<rect class="hit" data-i="' + i + '" x="' + a.toFixed(1) + '" y="' + T + '" width="' + Math.max(4, z - a).toFixed(1) + '" height="' + (H - T - Bm) + '"/>'; });
+    g += '<line class="hov" x1="0" x2="0" y1="' + T + '" y2="' + (H - Bm) + '"/>';
     var sel = current.snapSel;
     if (sel != null) g += '<line class="cursor" x1="' + xs(snaps[sel].t) + '" x2="' + xs(snaps[sel].t) + '" y1="' + (T - 6) + '" y2="' + (H - Bm) + '"/>';
     box.innerHTML = '<div class="chartwrap" tabindex="0" role="region" aria-label="Gráfico da linha do tempo (role para os lados)"><svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="Percentual dos três mais votados em cada registro da apuração, só nos instantes registrados">' + g + "</svg></div>" +
+      '<div class="tl-info" aria-live="polite">' + tlInfo(sel == null ? snaps.length - 1 : sel, last) + "</div>" +
       '<ul class="legend">' + last.map(function (c, k) { return '<li><i style="background:' + cols[k] + '"></i>' + esc(c.candidate_name) + "</li>"; }).join("") + '<li><i class="gapi"></i>Sem registro</li></ul>' +
       '<div class="tl-controls"><label for="tlRange">Instante</label><input id="tlRange" type="range" min="0" max="' + snaps.length + '" step="1" value="' + (sel == null ? snaps.length : sel) + '" aria-valuetext="' + esc(sel == null ? "agora" : hhmm(snaps[sel].t)) + '">' +
       '<output id="tlOut">' + (sel == null ? "Agora" : hhmm(snaps[sel].t) + " · " + fPct(snaps[sel].percent_totalized) + " totalizado") + "</output></div>" +
@@ -380,7 +420,27 @@
       CALCULADO + " \"min sem atualização pública\" = hora da nossa leitura menos a hora de atualização informada pelo TSE (hiato observado na atualização pública; não indica causa).</p>";
     renderDiff();
     $("tlRange").addEventListener("input", function (e) { var v = +e.target.value; selectSnap(v >= snaps.length ? null : v); });
-    box.querySelectorAll("button[data-i]").forEach(function (b) { b.addEventListener("click", function () { selectSnap(+b.getAttribute("data-i")); }); });
+    box.querySelectorAll("button[data-i]").forEach(function (b) { b.addEventListener("click", function () { selectSnap(+b.getAttribute("data-i")); });
+      ["mouseenter", "focus"].forEach(function (t) { b.addEventListener(t, function () { tlHover(+b.getAttribute("data-i"), last, xs); }); }); });
+    var svg = box.querySelector("svg");
+    svg.addEventListener("pointermove", function (e) { var r = e.target.closest && e.target.closest("rect.hit"); if (r) tlHover(+r.getAttribute("data-i"), last, xs); });
+    svg.addEventListener("click", function (e) { var r = e.target.closest && e.target.closest("rect.hit"); if (r) selectSnap(+r.getAttribute("data-i")); });
+    box.querySelector(".chartwrap").addEventListener("pointerleave", function () { tlHover(null, last, xs); });
+  }
+  // registro em foco: valores daquele instante e a mudança desde o registro anterior (só entre registros que existem)
+  function tlInfo(i, last) {
+    var s = snaps[i]; if (!s) return "";
+    var p = i ? snaps[i - 1] : null, pc = function (q, id) { var m = q && q.candidates.filter(function (x) { return x.candidate_id === id; })[0]; return m ? m.percentage : null; };
+    return '<p class="tl-k">' + (s.kind === "FINAL" ? "Registro final" : s.kind === "FIRST_RESULT" ? "Primeiro resultado" : "Registro") + " · " + hhmm(s.t) + " · " + fPct(s.percent_totalized) + " das seções totalizadas</p><ul class=\"tl-v\">" +
+      last.map(function (c) { var v = pc(s, c.candidate_id), a = pc(p, c.candidate_id), d = v != null && a != null ? Math.round((v - a) * 100) / 100 : null, k = CORES.de(c.number);
+        return '<li style="--c:' + (k.neutro ? "var(--ink)" : k.cor) + '"><b>' + esc(c.candidate_name) + "</b> " + fPct(v) + (d == null ? "" : ' <small>' + (d > 0 ? "+" : d < 0 ? "−" : "±") + String(Math.abs(d).toFixed(2)).replace(".", ",") + " p.p. desde " + hhmm(p.t) + "</small>") + "</li>"; }).join("") +
+      "</ul>" + (p && s.t - p.t > 70 * 60e3 ? '<p class="tl-gap">Entre ' + hhmm(p.t) + " e " + hhmm(s.t) + " não há registro oficial gravado. O intervalo não indica a causa.</p>" : "");
+  }
+  function tlHover(i, last, xs) {
+    var box = $("evolucao"); if (!box) return; var ln = box.querySelector("line.hov"), inf = box.querySelector(".tl-info");
+    if (i == null) { if (ln) ln.classList.remove("on"); if (inf) inf.innerHTML = tlInfo(current.snapSel == null ? snaps.length - 1 : current.snapSel, last); return; }
+    if (ln) { var x = xs(snaps[i].t); ln.setAttribute("x1", x); ln.setAttribute("x2", x); ln.classList.add("on"); }
+    if (inf && inf.__i !== i) { inf.__i = i; inf.innerHTML = tlInfo(i, last); if (!REDUZ) { inf.classList.remove("mm-in"); void inf.offsetWidth; inf.classList.add("mm-in"); } }
   }
   // Diferença entre os dois candidatos em cada registro (2º turno). Conta sobre os votos oficiais do próprio registro;
   // sem linha entre registros, sem tendência, sem projeção. % totalizado é andamento da contagem, não chance de vitória.

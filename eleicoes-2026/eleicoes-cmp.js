@@ -22,6 +22,7 @@
   // seleção, enquadramento (zoom/arrasto) e destaque num mapa → o outro acompanha (sem laço de eventos)
   [[A, B], [B, A]].forEach(function (p) { p[0].on(function (t, v) { if (sync) return;
     if (t === "municipio") escolher(v, false);
+    else if (t === "limpar") { sync = true; p[1].limpar(); sync = false; sel = null; painel.innerHTML = '<p class="sub">Escolha um município para comparar os dois turnos.</p>'; }
     else if (t === "vista" && p[1].svg && p[0].host.getBoundingClientRect().width > 0) { sync = true; p[1].ir(v.slice(), false); sync = false; }
     else if (t === "hover") p[1].realce(v); }); });
   // celular: um mapa por vez, com alternância 1º/2º turno (a seleção e a camada continuam valendo para os dois)

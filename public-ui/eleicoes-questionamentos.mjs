@@ -249,9 +249,18 @@ export function cards(qs, n, hl, nota) {
   return `<ul class="qcards">${qs.slice(0, n || qs.length).map(q => `<li class="qcard"><p class="qk">${esc(q.tema)}</p><${h} class="q"><a href="${BASE}${q.slug}/">${esc(q.card || q.pergunta)}</a></${h}>${badge(q.classificacao)}${nota && q.classificacao_nota ? `<p class="qn">${esc(q.classificacao_nota)}</p>` : ""}</li>`).join("")}</ul>`;
 }
 // Central de questionamentos: grupos por assunto (só navegação; a classificação de cada pergunta não muda).
-const GRUPOS = [["A noite de 4 de outubro", "Parada, pausas e a curva da apuração.", ["Q1", "Q2", "Q3", "Q4", "Q9"]],
+export const GRUPOS = [["A noite de 4 de outubro", "A parada, as pausas e a forma da curva da apuração.", ["Q1", "Q3", "Q9"]],
+  ["Ordem de chegada e o Nordeste", "Quem chegou quando, e o que isso mudou (ou não) no resultado parcial.", ["Q2", "Q4"]],
   ["Boletins de urna e arquivos", "O que os arquivos oficiais permitem conferir.", ["Q6", "Q7", "Q8"]],
   ["Contexto e comparação", "Outros cargos, outras eleições.", ["Q5", "Q10", "Q11"]]];
+// Página Brasil (direção de arte 22/10/2026): os mesmos quatro grupos, abríveis; cada pergunta com selo (palavra + forma),
+// a nota da classificação (observação e causa separadas quando são perguntas diferentes) e o caminho para a história.
+// Só apresentação: nenhuma classificação muda aqui.
+export function grupos(qs) {
+  return `<div class="qgrupos">${GRUPOS.map(([t, d, ids], i) => { const g = ids.map(id => qs.find(q => q.id === id)).filter(Boolean);
+    return `<details class="qg"${i === 0 ? " open" : ""}><summary><span class="qg-t">${esc(t)}</span><span class="qg-n">${g.length} pergunta${g.length === 1 ? "" : "s"}</span><span class="qg-s">${g.map(q => badge(q.classificacao)).join("")}</span></summary>` +
+      `<p class="sub">${esc(d)}</p><ul class="qg-l">${g.map(q => `<li><a href="${BASE}${q.slug}/"><span class="qg-q">${esc(q.card || q.pergunta)}</span>${badge(q.classificacao)}${q.classificacao_nota ? `<span class="qg-e">${esc(q.classificacao_nota)}</span>` : ""}<span class="qg-go">Ver a história e os dados →</span></a></li>`).join("")}</ul></details>`; }).join("")}</div>`;
+}
 
 // Resumo da central: quantas dúvidas foram testadas e quantas caíram em cada classificação — contado do dado, na ordem da
 // legenda; classificação sem nenhuma pergunta não aparece. Selo = palavra + glifo + forma (nunca só cor).
