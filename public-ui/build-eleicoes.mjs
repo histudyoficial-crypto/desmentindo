@@ -217,7 +217,7 @@ ${br ? HUBS() + "\n" : ""}${br && t2 ? HIST_2T() + "\n" + pesqSection(PESQ, FLAG
 <script src="${asset("eleicoes-2026/eleicoes-core.js")}" defer></script>
 <script src="${asset("eleicoes-2026/eleicoes-cores.js")}" defer></script>
 <script src="${asset("eleicoes-2026/eleicoes.js")}" defer></script>
-${br ? `<script src="${asset("eleicoes-2026/eleicoes-mun.js")}" defer></script>\n<script src="${asset("eleicoes-2026/eleicoes-cmp.js")}" defer></script>\n` : ""}</body>
+${br ? `<script src="${asset("eleicoes-2026/eleicoes-mun.js")}" defer></script>\n<script src="${asset("eleicoes-2026/eleicoes-cmp.js")}" defer></script>\n` : ""}${br && t2 && FLAGS.pesquisas_2t === true ? `<script src="${asset("eleicoes-2026/eleicoes-pesquisas.js")}" defer></script>\n` : ""}</body>
 </html>
 `;
 }
