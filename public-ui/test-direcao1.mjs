@@ -296,6 +296,22 @@ if (/(connect\.facebook|platform\.twitter|api\.whatsapp|wa\.me)/.test(src)) fail
     // item inválido não entra (fail-closed)
     eq("item inválido fora", K.agoraRecentGroups([{ edition: "2026-10-20", items: [{ id: "", title: "x", date: "2026-10-20" }, { id: "y", title: "", date: "2026-10-20" }] }], null, "2026-10-21").length, 0);
   }
+  // HISTÓRICO DO FECHAMENTO (22/10): anterior/seguinte, lista cronológica com dias sem edição, a partir do índice real
+  {
+    const IX = JSON.parse(fs.readFileSync(path.join(ROOT, "data/editorial/fechamentos/index.json"), "utf8"));
+    const H = new Function(`${MES}\nvar WD3 = ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"];\n${["e", "nf", "plural", "isDay", "dParts", "dMid", "fdate", "tdate", "fxArchiveDays", "fxArchive"].map(fn).join("\n")}\nreturn { fxArchiveDays, fxArchive };`)();
+    const days = H.fxArchiveDays(IX.items), pubs = days.filter(d => d.item).map(d => d.date), none = days.filter(d => !d.item).map(d => d.date);
+    eq("histórico: todas as publicadas, mais recente primeiro", [pubs.length, pubs[0], pubs[pubs.length - 1]], [IX.items.length, IX.items.map(x => x.date).sort().pop(), IX.items.map(x => x.date).sort()[0]]);
+    eq("histórico: dias sem edição só entre a 1ª e a última, nunca inventados", none.every(d => !IX.items.some(x => x.date === d)) && days.length === pubs.length + none.length, true);
+    const mid = pubs[Math.floor(pubs.length / 2)], hm = H.fxArchive(IX.items, mid);
+    const i = pubs.indexOf(mid);
+    eq("navegação anterior/seguinte", [hm.includes('href="#/fechamento/' + pubs[i + 1] + '"'), hm.includes('href="#/fechamento/' + pubs[i - 1] + '"'), /aria-current="page"/.test(hm), /id="edicoes"/.test(hm)], [true, true, true, true]);
+    const newest = H.fxArchive(IX.items, pubs[0]);
+    eq("edição mais recente: sem 'seguinte'", [/fx-nav-n/.test(newest), /fx-nav-o/.test(newest)], [false, true]);
+    eq("sem edição: marcada, sem link", none.length ? new RegExp('<li class="fx-arch-none"><span class="rt">Sem edição publicada</span><span class="rd"><time datetime="' + none[0] + '"').test(newest) : true, true);
+    eq("menos de 2 edições: nada", H.fxArchive([IX.items[0]], IX.items[0].date), "");
+    eq("Home leva ao histórico", /class="fxh-arch" href="#\/fechamento\/[0-9-]+#edicoes">Edições anteriores/.test(K.fxHome(F5, "")), true);
+  }
   // mais antigo que ontem: carimbo de distância do §32.4
   const o = K.homeTop(null, F5, "2026-10-08");
   eq("3 dias antes", /<span class="fxh-tag">Último fechamento<\/span><span class="tc tc-ago">3 DIAS ANTES<\/span>/.test(o), true);
