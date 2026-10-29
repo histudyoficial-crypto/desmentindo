@@ -109,7 +109,21 @@
    "conclusion": "Até 20:06, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
    "open_questions": [
     "O Desmentindo ainda não vinculou documento oficial a esta história."
-   ]
+   ],
+   "correction": {
+    "date": "2026-10-20",
+    "text": "Esta história juntou dois acontecimentos diferentes. O assunto do título é o pedido de Richarlison à PF sobre o imóvel em Angra dos Reis, noticiado pela Folha em 17/10. As frases sobre o pedido do Ministério da Justiça à ANPD a respeito da Meta e sobre os 1.121 relatos reunidos pela CTRL+Z vêm de outra reportagem, do g1, e não têm relação com o pedido de Richarlison.",
+    "source": [
+     {
+      "name": "Folha",
+      "url": "https://www1.folha.uol.com.br/poder/2026/10/richarlison-pede-que-pf-investigue-flavio-bolsonaro-por-posse-de-imovel-de-luxo.shtml"
+     },
+     {
+      "name": "g1",
+      "url": "https://g1.globo.com/politica/noticia/2026/10/17/ministerio-da-justica-pede-que-anpd-investigue-se-meta-descumpriu-marco-civil-da-internet.ghtml"
+     }
+    ]
+   }
   }
  ],
  "other_stories": [
