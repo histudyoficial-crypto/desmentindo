@@ -112,21 +112,7 @@
    "conclusion": "Até 20:33, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
    "open_questions": [
     "O Desmentindo ainda não vinculou documento oficial a esta história."
-   ],
-   "correction": {
-    "date": "2026-10-20",
-    "text": "Esta história juntou dois acontecimentos diferentes. Um é o ato de organizações de direitos digitais em frente à sede da Meta, em São Paulo, noticiado pela Folha em 18/10. O outro é a decisão do corregedor-geral eleitoral, Ricardo Villas Bôas Cueva, que proibiu Nikolas Ferreira e Pablo Marçal de republicar conteúdos já removidos pelo TSE e suspendeu o impulsionamento pago dos perfis, noticiada em 19/10. As frases seguem as fontes citadas; o erro foi apresentá-las como uma só história.",
-    "source": [
-     {
-      "name": "Folha",
-      "url": "https://www1.folha.uol.com.br/poder/2026/10/organizacoes-cobram-transparencia-e-equilibro-apos-denuncias-de-restricoes-a-conteudos-pro-lula.shtml"
-     },
-     {
-      "name": "g1",
-      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/19/tse-proibe-nikolas-ferreira-e-pablo-marcal-de-republicarem-conteudos-proibidos-pela-justica-eleitoral.ghtml"
-     }
-    ]
-   }
+   ]
   },
   {
    "id": "tse-altera-local-de-votacao-de-402-6-mil-eleitores-para-o-2-turno-e-pt-pede",
