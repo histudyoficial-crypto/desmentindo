@@ -412,10 +412,13 @@
       '<div class="tl-controls"><label for="tlRange">Instante</label><input id="tlRange" type="range" min="0" max="' + snaps.length + '" step="1" value="' + (sel == null ? snaps.length : sel) + '" aria-valuetext="' + esc(sel == null ? "agora" : hhmm(snaps[sel].t)) + '">' +
       '<output id="tlOut">' + (sel == null ? "Agora" : hhmm(snaps[sel].t) + " · " + fPct(snaps[sel].percent_totalized) + " totalizado") + "</output></div>" +
       '<ol class="timeline">' + snaps.map(function (s, i) {
-        var lag = C.defasagem(s.cap, s.t);
+        var lag = s.capture_mode === "EX_POST" ? null : C.defasagem(s.cap, s.t);   // leitura depois da apuração não é hiato do TSE
         return '<li><button type="button" data-i="' + i + '" aria-pressed="' + (sel === i) + '"><b>' + (s.kind === "FINAL" ? "Final" : hhmm(s.t)) + "</b> " + (s.kind === "FIRST_RESULT" ? "Primeiro resultado " : "") +
           "<span>" + fPct(s.percent_totalized) + "</span>" + (lag != null && lag > 30 * 60e3 ? '<em class="lag">lido às ' + hhmm(s.cap) + ": " + Math.round(lag / 60e3) + " min sem atualização pública</em>" : "") + "</button></li>";
       }).join("") + "</ol>" +
+      (snaps.some(function (s) { return s.capture_mode === "EX_POST"; }) ? '<p class="note tl-gap">A evolução da apuração não foi registrada aqui. O único registro é o resultado final, lido no site do TSE em ' +
+        esc(new Date(snaps.filter(function (s) { return s.capture_mode === "EX_POST"; })[0].cap).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" })) +
+        " (horário de Brasília), depois do fim da contagem. Nenhum registro intermediário foi reconstruído.</p>" : "") +
       '<p class="note">' + OFICIAL + " Cada ponto é o que o TSE mostrava naquele instante; não há linha entre os pontos porque não existe registro entre eles. Faixas cinza = intervalo maior que 70 min sem registro. " +
       CALCULADO + " \"min sem atualização pública\" = hora da nossa leitura menos a hora de atualização informada pelo TSE (hiato observado na atualização pública; não indica causa).</p>";
     renderDiff();
