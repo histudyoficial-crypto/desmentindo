@@ -1,0 +1,79 @@
+{
+ "schema": "desmentindo.public.recent_videos.v1",
+ "date": "2026-10-23",
+ "published_at": "2026-10-29T17:28:37Z",
+ "title": "Vídeos recentes dos canais",
+ "notice": "Publicado pelos canais acompanhados. Ainda não checado pelo Desmentindo: título e conteúdo são dos autores. Aparecer aqui não é confirmação nem ligação com as notícias do dia.",
+ "window": {
+  "days": 3,
+  "from": "2026-10-21",
+  "to": "2026-10-23"
+ },
+ "items": [
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "Bk80B7Mjw0E",
+   "title": "Lulinha, quem? E “o Brasil acabou” - Alexandre Garcia",
+   "published_at": "2026-10-23T22:03:32Z",
+   "url": "https://www.youtube.com/watch?v=Bk80B7Mjw0E",
+   "thumbnail": "https://i.ytimg.com/vi/Bk80B7Mjw0E/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-24T00:05:15Z"
+  },
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "NhbC098zx4I",
+   "title": "13 ou 22: é tudo igual? Coppolla compara",
+   "published_at": "2026-10-23T09:55:16Z",
+   "url": "https://www.youtube.com/watch?v=NhbC098zx4I",
+   "thumbnail": "https://i.ytimg.com/vi/NhbC098zx4I/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-24T00:05:15Z"
+  },
+  {
+   "channel": "Te Atualizei",
+   "channel_id": "UCXRIQok8uzYtg1TPwSqikVg",
+   "video_id": "J59qz9Fqeiw",
+   "title": "ACORDA, BRASIL! (MUSIC VIDEO)",
+   "published_at": "2026-10-22T00:09:59Z",
+   "url": "https://www.youtube.com/watch?v=J59qz9Fqeiw",
+   "thumbnail": "https://i.ytimg.com/vi/J59qz9Fqeiw/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-22T00:16:31Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "wCo25HTNhjE",
+   "title": "Natal, Fortaleza e São Luís com surpreendentes multidões - Alexandre Garcia",
+   "published_at": "2026-10-23T16:45:17Z",
+   "url": "https://www.youtube.com/watch?v=wCo25HTNhjE",
+   "thumbnail": "https://i.ytimg.com/vi/wCo25HTNhjE/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-24T00:05:15Z"
+  },
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "1bpgT3rvGfM",
+   "title": "Recado URGENTE aos Empreendedores, MEIs e empresários – Coppolla, Walter Maciel e Juliano Custodio",
+   "published_at": "2026-10-22T00:19:10Z",
+   "url": "https://www.youtube.com/watch?v=1bpgT3rvGfM",
+   "thumbnail": "https://i.ytimg.com/vi/1bpgT3rvGfM/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-23T00:13:14Z"
+  }
+ ]
+}
