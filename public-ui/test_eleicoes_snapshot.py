@@ -176,5 +176,68 @@ class SegundoTurno(unittest.TestCase):
             self.assertIn("fora da janela", r.stdout)
 
 
+class ExPost(unittest.TestCase):
+    """Captura única do FINAL depois da janela (2º turno sem registros no dia): só tf = s, hora real, lacuna escrita."""
+    SCRIPT = SegundoTurno.SCRIPT
+    FINAL = u("100", "100,00", ("100", "80"), "21:40:05", tf="s")
+
+    def run_cli(self, d, now, raw_obj, *extra):
+        inp, out = os.path.join(d, "u.json"), os.path.join(d, "o.json")
+        json.dump(raw_obj, open(inp, "w"))
+        r = subprocess.run([sys.executable, self.SCRIPT, "--out", out, "--input", inp, "--now", now, "--eleicao", "6258", *extra],
+                           capture_output=True, text=True)
+        return r, out, inp
+
+    def test_grava_final_com_hora_real_e_lacuna(self):
+        import hashlib
+        with tempfile.TemporaryDirectory() as d:
+            r, out, inp = self.run_cli(d, "2026-10-29T12:30:00-03:00", self.FINAL, "--ex-post")
+            self.assertIn("SNAPSHOT=FINAL ele=6258", r.stdout)
+            st = json.load(open(out))
+            self.assertEqual([s["kind"] for s in st["snapshots"]], ["FINAL"])          # nada de FIRST_RESULT/HOURLY
+            s0 = st["snapshots"][0]
+            self.assertEqual(s0["capture_mode"], "EX_POST")
+            self.assertEqual(s0["captured_at"], "2026-10-29T15:30:00Z")                 # hora real da leitura
+            self.assertEqual(s0["tse_final_flag"], "s")
+            self.assertEqual(s0["source_fingerprint"]["sha256"], hashlib.sha256(open(inp, "rb").read()).hexdigest())
+            self.assertEqual(st["gaps"][0]["state"], "NOT_RECORDED")
+            self.assertIsNone(st["summary"]["first_result_at"])                         # FINAL ex post não é "primeiro resultado"
+            self.assertTrue(st["summary"]["final_captured"])
+
+    def test_sem_tf_s_nao_grava(self):
+        with tempfile.TemporaryDirectory() as d:
+            r, out, _ = self.run_cli(d, "2026-10-29T12:30:00-03:00", u("100", "100,00", ("100", "80"), "21:40:05"), "--ex-post")
+            self.assertIn("NOT_FINAL", r.stdout)
+            self.assertFalse(os.path.exists(out))
+
+    def test_idempotente(self):
+        with tempfile.TemporaryDirectory() as d:
+            self.run_cli(d, "2026-10-29T12:30:00-03:00", self.FINAL, "--ex-post")
+            before = open(os.path.join(d, "o.json"), "rb").read()
+            r, out, _ = self.run_cli(d, "2026-10-29T13:30:00-03:00", self.FINAL, "--ex-post")
+            self.assertIn("SKIP (FINAL já registrado)", r.stdout)
+            self.assertEqual(open(out, "rb").read(), before)
+
+    def test_sem_flag_continua_fora_da_janela(self):
+        with tempfile.TemporaryDirectory() as d:
+            r, out, _ = self.run_cli(d, "2026-10-29T12:30:00-03:00", self.FINAL)
+            self.assertIn("fora da janela", r.stdout)
+            self.assertFalse(os.path.exists(out))
+
+    def test_fonte_indisponivel_nao_grava(self):
+        with tempfile.TemporaryDirectory() as d:
+            r, out, _ = self.run_cli(d, "2026-10-29T12:30:00-03:00", {"cand": []}, "--ex-post")
+            self.assertIn("NOT_AVAILABLE", r.stdout)
+            self.assertFalse(os.path.exists(out))
+
+    def test_primeiro_turno_intocado(self):
+        st = S.empty_store()
+        rec = S.parse(raw("1,20", "17:07:10"), "2026-10-04T20:08:00Z")
+        S.apply(st, *S.decide(st, rec, at(17, 8)), rec)
+        self.assertEqual(st["summary"]["first_result_at"], "2026-10-04T17:07:10-03:00")
+        self.assertNotIn("gaps", st)
+        self.assertNotIn("capture_mode", st["snapshots"][0])
+
+
 if __name__ == "__main__":
     unittest.main()
