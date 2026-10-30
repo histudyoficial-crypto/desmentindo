@@ -20,6 +20,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Correção publicada não some (toda nota `correction` da base continua idêntica; caso #111)
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          if [ -z "$BASE" ] || [ "$BASE" = "0000000000000000000000000000000000000000" ]; then echo "sem base: nada a comparar"; exit 0; fi
+          git fetch --no-tags --depth=1 origin "$BASE"
+          python3 public-ui/check_corrections_preserved.py "$BASE"
       - name: Caminhos privados não podem existir aqui
         run: |
           bad=0
