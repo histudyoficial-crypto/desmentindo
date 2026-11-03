@@ -62,6 +62,15 @@ if (!home.includes("Questionamentos sobre a eleição") || !home.includes("Ver t
     if (!/class="qjump"[\s\S]*href="#dados"[\s\S]*href="#limites"[\s\S]*href="#fontes"/.test(h)) bad(`${q.id} sem atalhos evidência/limites/fontes`);
     for (const a of ['id="dados"', 'id="limites"', 'id="fontes"']) if (!h.includes(a)) bad(`${q.id} sem âncora ${a}`);
   }
+  // linguagem pública no HTML GERADO (texto visível + aria-label/title/alt): o builder também escreve texto fixo
+  const pub = [["central", central], ["04-de-outubro", fs.readFileSync(path.join(ROOT, "eleicoes-2026", "questionamentos", "04-de-outubro", "index.html"), "utf8")],
+    ...D.questionamentos.map((q) => [q.id, fs.readFileSync(path.join(ROOT, "eleicoes-2026", "questionamentos", q.slug, "index.html"), "utf8")])];
+  for (const [id, h] of pub) {
+    const vis = h.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, " ").replace(/<[^>]+>/g, " ");
+    const attrs = [...h.matchAll(/\b(?:aria-label|title|alt)="([^"]*)"/g)].map((m) => m[1]).join(" ");
+    const hit = (vis + " " + attrs).match(BANNED);
+    if (hit) bad(`${id} termo proibido no HTML público: "${hit[0]}"`);
+  }
   // Q7: contrato dinâmico completo depois do layout (o JS troca os valores; nada disso pode sumir)
   const q7c = fs.readFileSync(path.join(ROOT, "eleicoes-2026", "questionamentos", "arquivos-ainda-nao-disponiveis", "index.html"), "utf8");
   for (const [re, n] of [[/class="qcount"/, ".qcount"], [/ data-src="/, "data-src"], [/ data-live="/, "data-live"], [/ data-at="/, "data-at"], [/id="qcPend"/, "#qcPend"],
