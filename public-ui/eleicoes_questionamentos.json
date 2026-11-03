@@ -116,7 +116,7 @@
     ],
     "alegacao": [
      {
-      "nome": "Publicações no X sobre a apuração (04 e 05/10/2026)",
+      "nome": "Publicações no X sobre a apuração (04 e 05/10/2026) — não preservadas pelo Eleições 2026; sem link verificável",
       "url": null
      },
      {
@@ -149,8 +149,17 @@
    "pergunta": "O sistema parou quando começaram a entrar os votos do Nordeste?",
    "card": "O apagão aconteceu quando chegaram votos do Nordeste?",
    "classificacao": "NÃO SUSTENTADO PELOS DADOS",
-   "classificacao_nota": "Antes de cada parada chegavam proporcionalmente menos seções do Nordeste; comparando momentos com o mesmo movimento de chegada, mais Nordeste não aumenta a chance de pausa.",
-   "resposta": "Não é o que os dados mostram. Nos minutos antes de cada parada da noite, chegavam proporcionalmente MENOS seções do Nordeste do que na maior parte da noite. E, comparando momentos com o mesmo movimento de chegada, mais Nordeste não aumenta a chance de pausa.",
+   "classificacao_nota": "Antes de cada parada chegavam proporcionalmente menos seções do Nordeste. Comparando momentos com o mesmo movimento de chegada, não foi identificada associação estatisticamente significativa entre a participação do Nordeste e as pausas — o que não demonstra ausência de qualquer relação.",
+   "resposta": "Não é o que os dados mostram. Nos minutos antes de cada parada da noite, chegavam proporcionalmente MENOS seções do Nordeste do que na maior parte da noite. E, comparando momentos com o mesmo movimento de chegada, não foi identificada associação estatisticamente significativa entre a participação de seções do Nordeste e as pausas. Isso não demonstra ausência de qualquer relação.",
+   "observacao": {
+    "obs_rotulo": "O que aconteceu",
+    "obs": "Na noite de 04/10 houve várias pausas curtas na recepção de seções e a parada da divulgação do resultado nacional (19:06:33 → ~20:08).",
+    "obs_status": "CONFIRMADO",
+    "exp_rotulo": "A explicação sugerida",
+    "exp": "As pausas acontecem quando os votos do Nordeste são computados.",
+    "exp_status": "NÃO SUSTENTADO PELOS DADOS",
+    "exp_nota": "Antes das pausas chegavam proporcionalmente menos seções do Nordeste, e não foi identificada associação estatisticamente significativa (p = 0,23) — o que não demonstra ausência de qualquer relação. A causa das pausas não é documentada."
+   },
    "chamou_atencao": "Publicações no X e um blog afirmaram que “há apagão sempre que os votos do Nordeste são computados”.",
    "hipotese": "Se a afirmação estivesse certa, as seções do Nordeste deveriam aparecer acima do normal logo antes de cada parada — e as paradas deveriam ser mais frequentes quando muitas seções do Nordeste chegam.",
    "aconteceu": [
@@ -167,8 +176,8 @@
    "encontramos": [
     "Nos 5 minutos antes de cada evento citado, o Nordeste era 23%, 25%, 26%, 39% das seções recebidas — abaixo do que acontece na maior parte da noite (entre o 18º e o 36º percentil de todas as janelas).",
     "As pausas se concentram nos minutos de pouco movimento: 17% dos minutos de fluxo baixo têm pausa, contra 2% nos de fluxo alto.",
-    "Comparando minutos com o mesmo volume, a presença maior do Nordeste não aumenta a chance de pausa de forma que se distinga do acaso (p = 0,23).",
-    "Durante a parada da divulgação (19:06–20:08), o Nordeste foi 34% das seções que chegaram — um pouco acima, porque é a fase em que o Nordeste naturalmente pesa mais. Isso é efeito da fase da noite, não gatilho da parada."
+    "Comparando minutos com o mesmo volume, não foi identificada associação estatisticamente significativa entre a presença maior do Nordeste e a chance de pausa (p = 0,23). Isso não demonstra ausência de qualquer relação: o teste não distinguiu um efeito do acaso.",
+    "Durante a parada da divulgação (19:06–20:08), o Nordeste foi 34% das seções que chegaram — um pouco acima, na fase da noite em que o Nordeste pesa mais entre as seções que ainda chegam. Isso é compatível com a fase da noite; não mostra que a chegada do Nordeste provocou a parada."
    ],
    "grafico": {
     "tipo": "barras_referencia",
@@ -223,7 +232,7 @@
       "url": "https://ogritocensurado.wordpress.com/2026/10/05/historia-recorrente-2/"
      },
      {
-      "nome": "Publicações no X sobre a apuração (04 e 05/10/2026)",
+      "nome": "Publicações no X sobre a apuração (04 e 05/10/2026) — não preservadas pelo Eleições 2026; sem link verificável",
       "url": null
      }
     ],
@@ -261,7 +270,7 @@
     "nao_prova": "O que não explica",
     "hipotese": "A hipótese"
    },
-   "chamou_atencao": "Publicações no X e um blog afirmaram que, depois das paradas, Flávio descia exatamente 0,1% e Lula subia exatamente 0,1% — e, de forma mais geral, que a troca de posições foi suave e regular demais para ser natural. Uma imagem que circulou comparou com gráficos dos EUA.",
+   "chamou_atencao": "Publicações no X e um blog afirmaram que, depois das paradas, Flávio descia exatamente 0,1% e Lula subia exatamente 0,1% — e, de forma mais geral, que a troca de posições foi suave e regular demais para ser natural. Uma imagem que circulou (não preservada pelo Eleições 2026) comparou com gráficos dos EUA.",
    "aconteceu": [
     "A diferença entre Flávio e Lula caiu sem parar depois da retomada: era 7,16 pontos às 19:06, 4,27 às 20:08, 2,52 às 21:00 e terminou em 1,88.",
     "Reconstruindo a curva pelos boletins de urna, em intervalos de 5 minutos depois das 19:59 Lula reduziu a diferença em 100% dos intervalos — 54 seguidos, sem nenhuma inversão.",
@@ -545,7 +554,7 @@
     "l1": 45.1534
    },
    "explica": "Explica a regularidade: a curva é uma média acumulada de centenas de milhares de seções que chegam em ordem geográfica. Quando as últimas a chegar votam mais em um candidato, a diferença diminui um pouco a cada minuto, sempre na mesma direção. Explica também a troca “um cai, o outro sobe”: os dois somam quase todos os votos válidos.",
-   "nao_prova": "Não explica por que cada região chega na hora em que chega (isso depende de horário de encerramento, transmissão e logística, ver a pergunta sobre o Nordeste). E não substitui a conferência voto a voto: quem garante que os votos somados são os das urnas é a soma dos boletins (veja a pergunta sobre os boletins de urna).",
+   "nao_prova": "Não explica por que cada região chega na hora em que chega (os dados públicos não mostram a causa; ver a pergunta sobre o Nordeste). E não substitui a conferência voto a voto: o que confere a totalização é a soma dos boletins (veja a pergunta sobre os boletins de urna) — ela confere o resultado publicado, não o comportamento de cada eleitor.",
    "nao_sabemos": [
     "A ordem exata entre seções recebidas no mesmo segundo: o horário de recepção tem precisão de segundo e muitas seções chegam juntas. Por isso, as medidas seção a seção não foram usadas na conclusão.",
     "Não há registro oficial das atualizações a cada poucos segundos entre 20:08 e 21:01."
@@ -581,7 +590,7 @@
       "url": "https://ogritocensurado.wordpress.com/2026/10/05/historia-recorrente-2/"
      },
      {
-      "nome": "Publicações no X sobre a apuração (04 e 05/10/2026)",
+      "nome": "Publicações no X sobre a apuração (04 e 05/10/2026) — não preservadas pelo Eleições 2026; sem link verificável",
       "url": null
      }
     ],
@@ -766,7 +775,7 @@
     ]
    },
    "explica": "Explica por que o fim da apuração tem mais votos do Nordeste: na média, as seções da região entram mais tarde — e isso também desloca os percentuais no fim da noite.",
-   "nao_prova": "Não mostra causa política nem diz nada sobre os votos dessas seções. Ordem de chegada é logística.",
+   "nao_prova": "Não mostra causa política nem diz nada sobre os votos dessas seções. A ordem de chegada é compatível com fatores logísticos, mas os dados públicos não mostram a causa.",
    "nao_sabemos": [
     "Por que alguns estados (do Nordeste ou não) chegam mais tarde — os dados públicos não trazem a estrutura de transmissão de cada estado."
    ],
@@ -808,9 +817,9 @@
    "pergunta": "Se o Congresso ficou mais conservador, como o resultado presidencial pode ser diferente?",
    "card": "Congresso conservador e presidente diferente: faz sentido?",
    "classificacao": "EXPLICADO PELOS DADOS",
-   "classificacao_nota": "O eleitor vota de formas diferentes em cargos diferentes, e isso aparece seção por seção; “Congresso conservador” soma vários partidos.",
-   "resposta": "Porque o eleitor vota em cargos diferentes de formas diferentes, e isso aparece seção por seção. Flávio teve 47,0% dos votos válidos para Presidente; o PL, partido dele, teve 22,7% na Câmara e 28,0% no Senado. “Congresso conservador” soma vários partidos.",
-   "chamou_atencao": "O argumento de que seria “incoerente” eleger um Congresso conservador e não o Presidente circulou como indício de problema.",
+   "classificacao_nota": "Os votos se distribuem de forma diferente entre os cargos, e isso aparece nos totais de cada seção; “Congresso conservador” soma vários partidos.",
+   "resposta": "Porque os votos se distribuem de forma diferente entre os cargos, e isso aparece nos totais de cada seção. Flávio teve 47,0% dos votos válidos para Presidente; o PL, partido dele, teve 22,7% na Câmara e 28,0% no Senado. “Congresso conservador” soma vários partidos.",
+   "chamou_atencao": "O argumento de que seria “incoerente” eleger um “Congresso conservador” e não o Presidente circulou como indício de problema.",
    "aconteceu": [
     "Cada boletim de urna traz, na mesma seção, os votos para Presidente, Governador, Senado, Câmara e Assembleia. Isso permite comparar os cargos no mesmo lugar, com os mesmos eleitores."
    ],
@@ -822,13 +831,14 @@
    ],
    "encontramos": [
     "Onde o PL vai bem nos outros cargos, Flávio também vai: a associação dentro do mesmo local de votação é forte com o Senado (0,78) e o Governador (0,71), e moderada com a Câmara (0,53) e a Assembleia (0,49).",
-    "Votar em um partido para o Congresso e em outro nome para Presidente é comum e mensurável.",
-    "Encontramos um padrão pequeno: nas seções em que a votação terminou mais tarde, o voto presidencial em Lula fica levemente acima do que o voto nos outros cargos indicaria. O padrão está ligado ao horário de encerramento da votação, e não ao tempo de transmissão — é sobre quem votou por último na seção, não sobre o envio dos dados."
+    "A diferença entre o voto no PL para o Congresso e o voto em Flávio para Presidente aparece nos totais de cada seção. Esses totais não mostram como cada eleitor combinou seus votos.",
+    "Encontramos um padrão pequeno: nas seções que encerraram mais tarde, o voto presidencial em Lula fica levemente acima do que o voto nos outros cargos indicaria. O horário registrado é o de encerramento da seção. O Boletim de Urna não informa o horário de cada voto. Portanto, não sabemos se o padrão está relacionado aos últimos eleitores nem se pode ser explicado pelo tempo de transmissão."
    ],
-   "explica": "Explica como um Congresso com maioria de partidos de direita convive com uma disputa presidencial apertada: o voto se divide entre cargos.",
+   "explica": "Explica como a composição eleita para o Congresso convive com uma disputa presidencial apertada: os votos se distribuem de forma diferente entre os cargos.",
    "nao_prova": "Não diz como cada pessoa votou (os dados são por seção, não por eleitor). Não diz se o voto dividido é “coerente” — isso é uma avaliação política, não um fato testável.",
    "nao_sabemos": [
-    "Quem são os eleitores que votam no fim do horário em cada seção — o boletim não traz esse dado."
+    "Quem são os eleitores que votam no fim do horário em cada seção — o boletim não traz esse dado.",
+    "Por que o padrão aparece nas seções que encerraram mais tarde: o boletim registra o horário de encerramento da seção, não o de cada voto, e o tempo de transmissão não foi testado aqui."
    ],
    "confira": [
     {
@@ -864,8 +874,8 @@
    "pergunta": "Somando os Boletins de Urna, o resultado divulgado pelo TSE bate?",
    "card": "Os boletins de urna batem com o resultado final?",
    "classificacao": "CONFIRMADO",
-   "classificacao_nota": "Onde todos os boletins estão disponíveis, a soma bate voto a voto.",
-   "resposta": "Sim, onde todos os boletins estão disponíveis. Somamos 498.873 boletins de urna, um por um, e comparamos com o resultado oficial de cada município: em 5.698 dos 5.757 municípios e cidades do exterior, a soma é idêntica em todos os números. Os 59 restantes têm explicação documentada, e nenhuma diferença ficou sem explicação.",
+   "classificacao_nota": "Onde todos os boletins estão disponíveis, a soma bate voto a voto. Na versão de 05/10, 11:38, 8 municípios e cidades do exterior ainda não podiam ser conferidos.",
+   "resposta": "Sim, onde todos os boletins estão disponíveis. Somamos 498.873 boletins de urna, um por um, e comparamos com o resultado oficial de cada município (versão de 05/10, 11:38): em 5.698 dos 5.757 municípios e cidades do exterior, a soma é idêntica em todos os números. Em 40 cidades do exterior não houve votação (seção não instalada). Em 11 municípios a diferença foi reconciliada: o arquivo municipal do TSE estava desatualizado e os votos são os mesmos. Os 8 restantes ainda não podiam ser conferidos, porque têm seções sem boletim disponível — isso não é diferença explicada.",
    "chamou_atencao": "Publicações afirmaram que o sistema “faz ajustes” durante a apuração. Se isso acontecesse na totalização, a soma dos boletins de cada seção não bateria com o resultado publicado.",
    "aconteceu": [
     "Cada urna imprime e grava um boletim (BU) com os votos da seção. O TSE publica esse arquivo, assinado, na internet.",
@@ -881,7 +891,7 @@
     "5.698 municípios e cidades do exterior: soma idêntica ao resultado oficial em todos os campos.",
     "40 cidades do exterior: a seção não foi instalada — não houve votação, não há boletim, e o resultado oficial é zero.",
     "11 municípios (BA e MG): o arquivo municipal do TSE ficou desatualizado — veja o destaque abaixo.",
-    "8 municípios e cidades do exterior: têm seções sem boletim disponível — 7 em SP e MG, cujo arquivo o TSE ainda não disponibilizou, e 1 cidade do exterior com seção publicada sem boletim (veja a pergunta sobre arquivos ausentes). Sem o boletim, essas seções não podem ser conferidas voto a voto.",
+    "8 municípios e cidades do exterior ainda não conferíveis (situação de 05/10, 11:38): têm seções sem boletim disponível — 7 em SP e MG, cujo arquivo o TSE ainda não tinha disponibilizado, e 1 cidade do exterior com seção publicada sem boletim. Sem o boletim, essas seções não podem ser conferidas voto a voto, e por isso não contam como diferença explicada. O acompanhamento posterior desses arquivos está na pergunta sobre arquivos ausentes.",
     "Por estado: 25 das 27 unidades da federação fecham exatamente. Bahia e Rio Grande do Sul passaram a fechar em 05/10, quando 4 boletins que faltavam foram publicados — a diferença era exatamente a soma deles. Minas Gerais e São Paulo só fecharão quando as seções que faltam forem publicadas."
    ],
    "destaque": {
@@ -895,8 +905,8 @@
      "Somamos por município, estado e país e comparamos campo a campo.",
      "Cada boletim que aparece depois é lido e somado de novo."
     ],
-    "cobertura": "498.873 boletins lidos · 5.698 de 5.757 municípios e cidades do exterior idênticos · 25 de 27 estados fechando exatamente · 0 diferença sem explicação.",
-    "limites": "Ainda faltam os boletins das seções cujo arquivo o TSE não disponibilizou (SP e MG). Conferimos os boletins digitais publicados — não os impressos nas seções nem o QR code."
+    "cobertura": "498.873 boletins lidos · 5.698 de 5.757 municípios e cidades do exterior idênticos · 40 sem votação (seção não instalada) · 11 com diferença reconciliada · 8 ainda não conferíveis (seções sem boletim) · 25 de 27 estados fechando exatamente · versão de 05/10, 11:38.",
+    "limites": "Na versão de 05/10, 11:38, faltavam os boletins das seções cujo arquivo o TSE ainda não tinha disponibilizado (SP e MG). Conferimos os boletins digitais publicados — não os impressos nas seções nem o QR code."
    },
    "achado": {
     "rotulo": "INCONSISTÊNCIA ENTRE PUBLICAÇÕES OFICIAIS · SEM DIVERGÊNCIA DE VOTOS IDENTIFICADA",
@@ -925,19 +935,20 @@
      "municípios com soma idêntica"
     ],
     [
-     "0",
-     "diferenças sem explicação"
+     "8",
+     "ainda não conferíveis (sem boletim)"
     ],
     [
      "25 de 27",
      "estados fechando exatamente"
     ]
    ],
-   "explica": "A totalização não alterou os votos dos boletins: o resultado publicado é a soma deles.",
+   "explica": "Onde os boletins estão disponíveis, a totalização não alterou os votos: o resultado publicado é a soma deles. Nas seções sem boletim disponível, isso ainda não pôde ser conferido.",
    "nao_prova": "Não confere o boletim impresso na seção (papel/QR code) com o arquivo digital — esta checagem usou os boletins digitais publicados. Também não diz nada sobre o funcionamento interno da urna.",
    "nao_sabemos": [
     "O conteúdo das seções cujo arquivo ainda não foi publicado.",
-    "Se os boletins impressos coincidem com os digitais (ainda não conferimos boletins físicos ou QR codes)."
+    "Se os boletins impressos coincidem com os digitais (ainda não conferimos boletins físicos ou QR codes).",
+    "Se a soma fecha nos 8 municípios e cidades do exterior que, em 05/10, 11:38, tinham seções sem boletim: esta conferência não foi refeita aqui com os arquivos publicados depois."
    ],
    "confira": [
     {
@@ -962,7 +973,7 @@
     ],
     "alegacao": [
      {
-      "nome": "Publicações no X sobre a apuração (04 e 05/10/2026)",
+      "nome": "Publicações no X sobre a apuração (04 e 05/10/2026) — não preservadas pelo Eleições 2026; sem link verificável",
       "url": null
      },
      {
@@ -986,7 +997,7 @@
    "pergunta": "Existem seções cujos arquivos o TSE ainda não disponibilizou?",
    "card": "Ainda existem arquivos não publicados?",
    "classificacao": "CONFIRMADO",
-   "classificacao_nota": "Estamos acompanhando.",
+   "classificacao_nota": "Acompanhamento de hora em hora; a data e a hora da última verificação aparecem no contador abaixo. Os números escritos nesta página são da verificação de 05/10, 21:11.",
    "resposta": "Sim. Algumas seções continuam sem arquivo publicado, embora o cadastro oficial indique que os arquivos foram gerados. O número atual e a hora da última verificação estão no contador abaixo — ele vem do nosso acompanhamento de hora em hora, não é tempo real. Desde a madrugada de 05/10, quando eram 5.254, a grande maioria apareceu depois: arquivo ausente não quer dizer arquivo que nunca vai existir.",
    "contador": {
     "arquivo": "/eleicoes-2026/dados/arquivos-ausentes.json",
@@ -1031,7 +1042,7 @@
     "Das 5.254 seções sem arquivo na madrugada de 05/10, 5.239 já apareceram: 4.921 na manhã de 05/10 e 318 depois, nas verificações seguintes.",
     "Em todos os 319 boletins de urna obtidos desde então (um deles de uma seção que já tinha outros arquivos publicados, mas ainda não o boletim), a seção do arquivo é a esperada e a soma dos votos é igual ao comparecimento.",
     "Nos 8 municípios em que todas as seções já apareceram, a soma dos boletins é igual, número a número, ao resultado oficial do município — inclusive na cidade de São Paulo, agora com os boletins de todas as 26.683 seções.",
-    "Onde ainda faltam seções (Betim), nenhum número dos boletins passa do resultado oficial.",
+    "Na verificação de 05/10, 21:11: em Betim, onde ainda faltavam seções, nenhum número dos boletins passava do resultado oficial.",
     "Na verificação de 05/10, 21:11 (Brasília), restavam 15 seções sem arquivo: 12 em Carapicuíba (SP) e 3 em Betim (MG). Ficam em 2 zonas eleitorais.",
     "Os dados não mostram por que esses arquivos não foram publicados."
    ],
@@ -1191,7 +1202,7 @@
       "url": "https://ogritocensurado.wordpress.com/2026/10/05/historia-recorrente-2/"
      },
      {
-      "nome": "Publicações no X sobre a apuração (04 e 05/10/2026)",
+      "nome": "Publicações no X sobre a apuração (04 e 05/10/2026) — não preservadas pelo Eleições 2026; sem link verificável",
       "url": null
      }
     ],
@@ -1264,7 +1275,7 @@
      "0"
     ]
    ],
-   "explica": "Explica que pausas na recepção são parte do funcionamento normal (acontecem em ciclos) — e que a de 2026 foi excepcionalmente longa.",
+   "explica": "Mostra que também houve pausas na recepção em 2022 e que a maior de 2026 (27 minutos) foi bem mais longa que a maior de 2022 (7 minutos). Dois anos comparáveis não bastam para dizer o que é funcionamento normal, e a causa das pausas não é documentada.",
    "nao_prova": "Não prova que não houve episódios parecidos em 2014 e 2018; só que os dados públicos desses anos não permitem verificar.",
    "nao_sabemos": [
     "O que aconteceu na divulgação em 2014, 2018 e 2022 — não há registros públicos guardados das atualizações daquelas noites."
@@ -1353,7 +1364,7 @@
     ],
     "nota": "Percentual dos votos válidos de cada cargo. Arquivos oficiais do TSE do município de São Paulo."
    },
-   "chamou_atencao": "Uma publicação no X comparou os dois resultados da capital e afirmou que eles seriam incompatíveis, porque “ninguém que vota no PL vota no PT”.",
+   "chamou_atencao": "Uma publicação no X (não preservada pelo Eleições 2026; sem link verificável) comparou os dois resultados da capital e afirmou que eles seriam incompatíveis, porque “ninguém que vota no PL vota no PT”.",
    "hipotese": "Separamos duas afirmações. A — “ninguém que vota no PL vota no PT” — fala do comportamento de cada pessoa, e os totais não conseguem mostrar isso. B — “os resultados de Presidente e Governador são incompatíveis” — pode ser testada nos dados: se fosse verdade, os números não conseguiriam conviver, ou a diferença apareceria só em alguns lugares, sem explicação nos votos.",
    "aconteceu": [
     "Presidente, capital: Lula 3.052.349 votos (46,58%), Flávio 2.760.747 (42,13%).",
@@ -1632,7 +1643,7 @@
     ],
     "alegacao": [
      {
-      "nome": "Publicações no X sobre a apuração (04 e 05/10/2026)",
+      "nome": "Publicações no X sobre a apuração (04 e 05/10/2026) — não preservadas pelo Eleições 2026; sem link verificável",
       "url": null
      }
     ],
@@ -11892,7 +11903,7 @@
    {
     "h": "17:00",
     "t": "Começa a apuração",
-    "obs": "Fim da votação no país. Primeiro resultado publicado às 17:24.",
+    "obs": "Horário oficial de encerramento da votação no país (seções com eleitores na fila podem encerrar depois). Primeiro resultado publicado às 17:24.",
     "sig": "—",
     "nao": "—"
    },
@@ -11900,14 +11911,14 @@
     "h": "18:00:59",
     "t": "Pausa de 8 minutos na recepção",
     "obs": "Nenhuma seção registra recepção em todo o país por 468 segundos.",
-    "sig": "Pausas assim acontecem em ciclos ao longo da noite.",
+    "sig": "Outras pausas de recepção aconteceram ao longo da noite (26 de pelo menos 1 minuto); se seguem um ciclo regular não foi analisado.",
     "nao": "A causa não é documentada."
    },
    {
     "h": "18:49:47",
     "t": "Pausa de 4 minutos na recepção",
     "obs": "253 segundos sem nenhuma seção recebida.",
-    "sig": "Mesmo padrão de ciclo.",
+    "sig": "Mais uma das pausas de recepção da noite (sem análise de ciclo).",
     "nao": "A causa não é documentada."
    },
    {

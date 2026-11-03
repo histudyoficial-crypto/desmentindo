@@ -71,6 +71,38 @@ if (!home.includes("Questionamentos sobre a eleição") || !home.includes("Ver t
     const hit = (vis + " " + attrs).match(BANNED);
     if (hit) bad(`${id} termo proibido no HTML público: "${hit[0]}"`);
   }
+  // Regressões editoriais (revisão de 03/11/2026), conferidas no HTML gerado:
+  const pg = (slug) => fs.readFileSync(path.join(ROOT, "eleicoes-2026", "questionamentos", slug, "index.html"), "utf8")
+    .replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const bySlug = Object.fromEntries(D.questionamentos.map((q) => [q.id, q.slug]));
+  const must = (id, txt, re, msg) => { if (!re.test(txt)) bad(`${id} ${msg}`); };
+  const never = (id, txt, re, msg) => { if (re.test(txt)) bad(`${id} ${msg}`); };
+  // Q2: teste não significativo não vira "não há efeito"; observação separada da explicação
+  const q2 = pg(bySlug.Q2);
+  never("Q2", q2, /não aumenta a chance de pausa|não gatilho da parada|efeito da fase da noite/i, "afirma ausência de efeito a partir de teste não significativo");
+  must("Q2", q2, /não demonstra ausência de qualquer relação/i, "sem a ressalva de que p = 0,23 não demonstra ausência de relação");
+  if (!D.questionamentos.find((q) => q.id === "Q2").observacao) bad("Q2 sem observação × explicação separadas");
+  // Q5: encerramento da seção ≠ horário de cada voto; totais por seção ≠ escolha individual
+  const q5 = pg(bySlug.Q5);
+  never("Q5", q5, /quem votou por último|é sobre quem votou|e não ao tempo de transmissão/i, "lê o encerramento da seção como horário do voto");
+  must("Q5", q5, /não informa o horário de cada voto/i, "sem dizer que o boletim não traz o horário de cada voto");
+  never("Q5", q5, /é comum e mensurável|o eleitor vota de formas diferentes/i, "infere comportamento individual dos totais por seção");
+  never("Q5", q5, /maioria de partidos de direita/i, "rótulo ideológico sem definição nem fonte");
+  // Q6: ausência de boletim ≠ diferença explicada
+  const q6 = pg(bySlug.Q6);
+  never("Q6", q6, /nenhuma diferença ficou sem explicação|\b0\s+diferenças? sem explicação|diferenças sem explicação/i, "trata dado indisponível como diferença explicada");
+  must("Q6", q6, /ainda não conferíveis/i, "sem a categoria de municípios ainda não conferíveis");
+  must("Q6", q6, /reconciliada/i, "sem a categoria de diferenças reconciliadas");
+  // Q3, Q4, Q10, Q7
+  never("Q3", pg(bySlug.Q3), /quem garante que os votos/i, "soma dos boletins apresentada como garantia dos votos");
+  never("Q4", pg(bySlug.Q4), /Ordem de chegada é logística\./, "logística afirmada como causa");
+  never("Q10", pg(bySlug.Q10), /funcionamento normal \(acontecem em ciclos\)|são parte do funcionamento normal/i, "normalidade afirmada sem base");
+  never("Q7", pg(bySlug.Q7), /Estamos acompanhando\./, "sem indicar quando foi a última verificação");
+  // 04/10: horário oficial ≠ fim efetivo; ciclos não analisados não aparecem como fato
+  const d4 = pg("04-de-outubro");
+  never("04/10", d4, /Fim da votação no país\.|Pausas assim acontecem em ciclos|Mesmo padrão de ciclo/i, "linha do tempo afirma fim efetivo da votação ou ciclo não analisado");
+  // alegação sem link: sempre dita como não preservada
+  for (const q of D.questionamentos) for (const s of (q.fontes && q.fontes.alegacao) || []) if (!s.url && !/não preservad/i.test(s.nome)) bad(`${q.id} alegação sem link e sem aviso de não preservada: ${s.nome}`);
   // Q7: contrato dinâmico completo depois do layout (o JS troca os valores; nada disso pode sumir)
   const q7c = fs.readFileSync(path.join(ROOT, "eleicoes-2026", "questionamentos", "arquivos-ainda-nao-disponiveis", "index.html"), "utf8");
   for (const [re, n] of [[/class="qcount"/, ".qcount"], [/ data-src="/, "data-src"], [/ data-live="/, "data-live"], [/ data-at="/, "data-at"], [/id="qcPend"/, "#qcPend"],
