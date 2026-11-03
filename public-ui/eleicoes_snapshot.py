@@ -10,6 +10,11 @@ Desconhecido fica null (nunca 0). Só biblioteca padrão.
 
     python3 public-ui/eleicoes_snapshot.py --out dados/presidente-br.json [--input arquivo.json] [--now ISO]
     python3 public-ui/eleicoes_snapshot.py --eleicao 6258 --out dados/presidente-br-2t.json   # 2º turno (25/10)
+    python3 public-ui/eleicoes_snapshot.py --eleicao 6258 --out dados/presidente-br-2t.json --ex-post   # FINAL lido depois
+
+--ex-post: captura única do resultado final DEPOIS da apuração, para quando a evolução não foi registrada no dia. Só grava
+com tf = "s"; o registro é FINAL com capture_mode EX_POST e captured_at = hora real da leitura (nunca a do dia da eleição);
+não cria FIRST_RESULT/HOURLY e deixa a lacuna escrita no arquivo. Não reconstrói nada do que não foi registrado.
 
 Cada snapshot guarda o SHA-256 dos bytes exatamente como vieram do TSE e os cabeçalhos HTTP de data/versão
 (Date, Last-Modified, ETag), para qualquer pessoa conferir depois que o registro corresponde ao arquivo oficial.
@@ -137,6 +142,19 @@ def empty_store():
             "snapshots": [], "no_change": []}
 
 
+EX_POST_GAP = ("A evolução da apuração não foi registrada neste arquivo. O único registro é o resultado final, lido do TSE "
+               "depois do fim da contagem (hora da leitura em captured_at). Nenhum registro intermediário foi reconstruído.")
+
+
+def decide_ex_post(store, rec):
+    """Captura única ex post → (ação, motivo). FINAL só com tf = "s" do próprio TSE; nunca FIRST_RESULT/HOURLY."""
+    if any(s["kind"] == "FINAL" for s in store["snapshots"]):
+        return "SKIP", "FINAL já registrado"
+    if rec["status"] != "FINAL":
+        return "NOT_FINAL", "TSE sem totalização final (tf != s): nada gravado"
+    return "FINAL", "EX_POST"
+
+
 def decide(store, rec, now):
     """Devolve (ação, motivo). Ações: FIRST_RESULT | HOURLY | FINAL | NO_CHANGE | SKIP."""
     snaps = store["snapshots"]
@@ -162,13 +180,17 @@ def decide(store, rec, now):
 
 def apply(store, action, window, rec):
     if action in ("FIRST_RESULT", "HOURLY", "FINAL"):
-        store["snapshots"].append(dict(rec, kind=action, window=window, seq=len(store["snapshots"]) + 1))
+        extra = {"capture_mode": "EX_POST", "note": EX_POST_GAP} if window == "EX_POST" else {}
+        store["snapshots"].append(dict(rec, kind=action, window=window, seq=len(store["snapshots"]) + 1, **extra))
+        if extra and not any(s["kind"] != "FINAL" for s in store["snapshots"]):
+            store["gaps"] = [{"what": "EVOLUCAO_DA_APURACAO", "state": "NOT_RECORDED", "note": EX_POST_GAP}]
     elif action == "NO_CHANGE":
         store.setdefault("no_change", []).append({"window": window, "checked_at": rec["captured_at"],
                                                   "tse_updated_at": rec["tse_updated_at"],
                                                   "note": "TSE sem dado novo nesta hora; nenhum snapshot duplicado"})
     s = store["snapshots"]
-    store["summary"] = {"snapshot_count": len(s), "first_result_at": s[0]["tse_updated_at"] if s else None,
+    first = next((x for x in s if x["kind"] == "FIRST_RESULT"), None)   # FINAL ex post não é "primeiro resultado"
+    store["summary"] = {"snapshot_count": len(s), "first_result_at": first["tse_updated_at"] if first else None,
                         "last_snapshot_at": s[-1]["captured_at"] if s else None,
                         "last_tse_update": s[-1]["tse_updated_at"] if s else None,
                         "current_totalized": s[-1]["percent_totalized"] if s else None,
@@ -203,10 +225,11 @@ def main():
     ap.add_argument("--input", help="arquivo do TSE já baixado (teste)")
     ap.add_argument("--now", help="ISO (teste)")
     ap.add_argument("--eleicao", default="6257", help="6257 = 1º turno (padrão) · 6258 = 2º turno")
+    ap.add_argument("--ex-post", action="store_true", help="captura única do FINAL depois da janela (só com tf = s)")
     a = ap.parse_args()
     use(a.eleicao)
     now = dt.datetime.fromisoformat(a.now) if a.now else dt.datetime.now(dt.timezone.utc)
-    if now > STOP_AFTER:
+    if now > STOP_AFTER and not a.ex_post:
         print("SNAPSHOT=SKIP (fora da janela desta eleição)")
         return 0
     if a.input:
@@ -225,7 +248,10 @@ def main():
     rec = parse(raw, now.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
     rec["source_fingerprint"] = fingerprint(got[1], got[2])
     store = json.load(open(a.out, encoding="utf-8")) if os.path.exists(a.out) else empty_store()
-    action, why = decide(store, rec, now)
+    action, why = decide_ex_post(store, rec) if a.ex_post else decide(store, rec, now)
+    if action == "NOT_FINAL":
+        print(f"SNAPSHOT=NOT_FINAL ({why})")
+        return 0
     if action == "SKIP":
         print(f"SNAPSHOT=SKIP ({why})")
         return 0

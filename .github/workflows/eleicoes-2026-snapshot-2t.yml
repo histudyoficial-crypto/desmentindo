@@ -4,6 +4,8 @@ name: Eleições 2026 — snapshots da apuração oficial (TSE) · 2º turno
 # SEM CRON: só roda por disparo manual (workflow_dispatch). Agendar exige autorização de Johnny (CLAUDE.md); o laço de
 # 66 passadas × 5 min cobre 17h–22h30 de 25/10 a partir de um disparo às ~16h40. Grava presidente-br-2t.json;
 # o arquivo do 1º turno (presidente-br.json) nunca é tocado por este workflow.
+# ex_post=true: uma única leitura depois da apuração (--ex-post): grava FINAL só com tf = s, com a hora real da leitura e a
+# lacuna da evolução escrita no arquivo; não cria FIRST_RESULT/HOURLY nem simula o horário de 25/10.
 # Lê só o arquivo público de totalização do TSE e grava um JSON pequeno no branch de dados
 # `eleicoes-2026-dados` (não é main: não dispara deploy nem toca o site). A página lê esse arquivo.
 # Sem segredo além do GITHUB_TOKEN do próprio repo. Não publica conteúdo editorial.
@@ -14,6 +16,10 @@ on:
         description: "Passadas de 5 min (66 ≈ 5h30; 1 = teste único)"
         default: "66"
         required: true
+      ex_post:
+        description: "Captura única do FINAL depois da apuração (só com tf = s; ignora passadas; hora real da leitura)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -46,11 +52,13 @@ jobs:
       - name: Snapshot e gravação (só se mudou)
         env:
           LOOP: ${{ inputs.passadas }}
+          EX_POST: ${{ inputs.ex_post }}
         run: |
           case "$LOOP" in ''|*[!0-9]*) echo "passadas inválido"; exit 1;; esac
           [ "$LOOP" -le 80 ] || { echo "passadas acima do limite (80)"; exit 1; }
+          FLAG=""; if [ "$EX_POST" = "true" ]; then LOOP=1; FLAG="--ex-post"; fi   # ex post = uma leitura só, nunca o laço
           for n in $(seq 1 "$LOOP"); do
-            python3 public-ui/eleicoes_snapshot.py --eleicao 6258 --out dados/presidente-br-2t.json || echo "snapshot falhou nesta passada"
+            python3 public-ui/eleicoes_snapshot.py --eleicao 6258 --out dados/presidente-br-2t.json $FLAG || echo "snapshot falhou nesta passada"
             ( cd dados
               git add -A
               if git diff --cached --quiet; then echo "nada novo"; exit 0; fi
