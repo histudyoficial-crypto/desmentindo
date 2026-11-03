@@ -7,7 +7,8 @@
 // Cor: rampa neutra única; nenhuma cor de candidato, partido ou lado (§32.2.4). Valor ausente → "—", nunca 0.
 const SEQ = ["#EFEBE8", "#D6CFCA", "#B8AEA8", "#968B84", "#6E625C", "#463C38"];
 const INK = "#201E1D", INK2 = "#444141", MUTED = "#5C5958", RULE = "#D6D3D2";
-const PROIBIDAS = /\b(auditoria|dossi[eê]|corpus|evid[eê]ncia|ocorr[eê]ncia|matriz|entidade|proveni[eê]ncia|claim|pipeline|score)\b/i;
+// limites por letra Unicode: com \\b sem a flag u, "dossiê" (termina em letra acentuada) nunca casava
+const PROIBIDAS = /(?<![\p{L}\p{N}])(auditoria|dossi[eê]|corpus|evid[eê]ncia|ocorr[eê]ncia|matriz|entidade|proveni[eê]ncia|claim|pipeline|score)(?![\p{L}\p{N}])/iu;
 
 export const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 export const fN = (v, d = 0) => (v == null || !isFinite(v) ? "—" : Number(v).toLocaleString("pt-BR", { minimumFractionDigits: d, maximumFractionDigits: d }));
@@ -64,7 +65,8 @@ const fichaHtml = (f, id, nLim) => !f ? "" : `<dl class="mod-ficha"><div><dt><sp
 function secao(id, titulo, estadoTag, corpo, story, ficha, nLim) {
   corpo = corpo.replace('<div class="mod-lim">', `<div class="mod-lim" id="${id}-lim">`).replace('<details class="mod-fontes">', `<details class="mod-fontes" id="${id}-fontes">`);
   const html = `<section class="qsec mod-e26" id="${id}" aria-labelledby="${id}-t"><h2 id="${id}-t">${esc(titulo)}</h2><p class="mod-tags">${estadoTag}</p>${fichaHtml(ficha, id, nLim)}${corpo}${story ? `<p class="mod-story">Esta seção detalha os dados de <a href="${esc(story.url)}">${esc(story.titulo)}</a>.</p>` : ""}</section>`;
-  const txt = html.replace(/<svg[\s\S]*?<\/svg>/g, "").replace(/<[^>]+>/g, " ");
+  // texto visível INCLUSIVE dentro do SVG (<text>, <title>) + atributos lidos por leitor de tela / dica
+  const txt = html.replace(/<[^>]+>/g, " ") + " " + [...html.matchAll(/\b(?:aria-label|alt|title)="([^"]*)"/g)].map(a => a[1]).join(" ");
   const m = txt.match(PROIBIDAS); if (m) throw new Error(`PALAVRA_PROIBIDA_NA_TELA: "${m[0]}" em ${id}`);
   if (/\b(NaN|undefined|null)\b/.test(txt)) throw new Error(`VALOR_INVALIDO_NA_TELA em ${id}`);
   return html;
@@ -122,9 +124,53 @@ export function moduloBU(D) {
   return secao("estudo-boletins", "Os dados: boletins de urna × resultado oficial", tag("DADO OFICIAL (TSE)") + tag("CALCULADO"), corpo, D.story, D.ficha, (D.limites || []).length);
 }
 
+// ---------------------------------------------------------------- guardas editoriais (só valem quando um gate abre)
+// Não decidem o que é verdade: apontam o que exige revisão humana antes de ir para a tela e travam a ativação até haver
+// decisão específica (gate.revisao_editorial = { decision_ref, itens: [regra ou termo liberado] }). Negação ("não prova")
+// e citação entre aspas “…” não travam: são o uso metodológico legítimo.
+export const DECISION_REF = /^(?:github:(?:[\w.-]+\/[\w.-]+)?#\d+|control\/DECISIONS\.md#[\w:.\-]+|https:\/\/github\.com\/histudyoficial-crypto\/desmentindo(?:-ops)?\/(?:issues|pull)\/\d+)$/;
+export const gateAberto = g => !!g && g.ativo === true && g.estado === "APPROVED" && typeof g.decision_ref === "string" && DECISION_REF.test(g.decision_ref);
+const REVISAR = [
+  ["PROVA_OU_FRAUDE", /\b(fraud\w*|manipula(?:ç|c)\w*|manipulad\w*|prova(?:m|r|ria|do|da|s)?|comprova\w*|irregularidade(?:s)? (?:comprovad|confirmad)\w*)\b/giu],
+  ["HORARIO_DO_VOTO", /(hor[aá]rio|hora) (?:de|do|em que) (?:cada )?(?:voto|eleitor votou|o eleitor votou)|quem votou (?:por [uú]ltimo|primeiro|mais tarde)|votaram (?:por [uú]ltimo|mais tarde|depois das)|[uú]ltimos eleitores/giu],
+  ["INFERENCIA_INDIVIDUAL", /\b(?:o eleitor|os eleitores|cada eleitor|cada pessoa|o mesmo eleitor) (?:vot\w*|escolh\w*|prefer\w*|mud\w*|troc\w*|combin\w*|divid\w*)/giu]];
+const NEG = /\b(n[aã]o|nem|sem|nunca|jamais)\b[^.;:]{0,40}$/iu;
+function strings(o, out = [], k = "") {
+  if (typeof o === "string") { if (!/(^|\.)url$/.test(k)) out.push([k, o]); }
+  else if (Array.isArray(o)) o.forEach((v, i) => strings(v, out, `${k}[${i}]`));
+  else if (o && typeof o === "object") for (const [kk, v] of Object.entries(o)) strings(v, out, k ? `${k}.${kk}` : kk);
+  return out;
+}
+const HIP_NAO_CONCLUSIVO = ["NÃO DEMONSTRADA", "NÃO SUSTENTADA", "INCONCLUSIVO", "AINDA NÃO TESTÁVEL", "EM CHECAGEM", "NÃO SUSTENTADO PELOS DADOS"];
+export function validarEstudo(id, D, gate) {
+  const erros = [], liberado = new Set(((gate && gate.revisao_editorial && DECISION_REF.test(gate.revisao_editorial.decision_ref || "")) ? gate.revisao_editorial.itens : []) || []);
+  if (!Array.isArray(D.fontes) || !D.fontes.length) erros.push("FONTES_VAZIAS");
+  else for (const f of D.fontes) if (!f || !String(f.nome || "").trim() || !(/^https:\/\//.test(f.url || "") || (f.url == null && /n[aã]o preservad/i.test(f.nota || ""))))
+    erros.push(`FONTE_INVALIDA: ${f && f.nome}`);
+  if (!Array.isArray(D.limites) || !D.limites.length || D.limites.some(l => String(l || "").trim().length < 15)) erros.push("LIMITES_AUSENTES");
+  if (D.hipotese) {
+    if (!HIP_NAO_CONCLUSIVO.includes(D.hipotese.estado) && !liberado.has("HIPOTESE_CONCLUSIVA")) erros.push(`HIPOTESE_CONCLUSIVA_SEM_REVISAO: ${D.hipotese.estado}`);
+    if (HIP_NAO_CONCLUSIVO.includes(D.hipotese.estado)) {
+      const concl = [D.ficha && D.ficha.conclusao, D.explicacao, D.leitura, D.testes_texto].filter(Boolean).join(" ");
+      if (/\b(confirma(?:m|ndo)? a (?:hip[oó]tese|explica[cç][aã]o)|a hip[oó]tese (?:se )?confirm\w*|(?:fica|est[aá]) (?:demonstrad|comprovad)\w*)/iu.test(concl)) erros.push("CONCLUSAO_INCOMPATIVEL_COM_A_HIPOTESE");
+    }
+  }
+  for (const [campo, txt] of strings(D)) {
+    for (const [regra, re] of REVISAR) {
+      for (const m of txt.matchAll(re)) {
+        const antes = txt.slice(0, m.index), citacao = (antes.match(/“/g) || []).length > (antes.match(/”/g) || []).length;
+        if (NEG.test(antes) || citacao || liberado.has(regra) || liberado.has(m[0].toLowerCase())) continue;
+        erros.push(`REQUER_REVISAO_EDITORIAL ${regra}: "${m[0]}" em ${campo}`);
+      }
+    }
+  }
+  if (erros.length) throw new Error(`ESTUDO_${id.toUpperCase()}_BLOQUEADO: ` + erros.join(" | "));
+  return true;
+}
+
 // ---------------------------------------------------------------- gate
 export function inserir(pagina, modHtml, gate) {
-  if (!gate || gate.ativo !== true || gate.estado !== "APPROVED" || !gate.decision_ref) return pagina;   // falha fechado
+  if (!gateAberto(gate)) return pagina;   // falha fechado
   const i = pagina.indexOf('<section class="qsec " id="explica">');
   if (i < 0) throw new Error("ANCORA_EXPLICA_AUSENTE");
   return pagina.slice(0, i) + modHtml + pagina.slice(i);
@@ -141,7 +187,8 @@ export function aplicarEstudos(files, gates, dados, cssHref) {
   const feito = [];
   for (const e of ESTUDOS) {
     const g = (gates || {})[e.id], d = (dados || {})[e.id], k = `eleicoes-2026/questionamentos/${e.slug}/index.html`;
-    if (!g || g.ativo !== true || g.estado !== "APPROVED" || !g.decision_ref || !d || !files[k]) continue;
+    if (!gateAberto(g) || !d || !files[k]) continue;
+    validarEstudo(e.id, d, g);   // gate aberto: guardas editoriais antes de renderizar (lança e derruba o build)
     let h = inserir(files[k], e.render(d), g);
     if (cssHref && !h.includes(cssHref)) h = h.replace("</head>", `<link rel="stylesheet" href="${cssHref}">\n</head>`);
     files[k] = h; feito.push(e.id);

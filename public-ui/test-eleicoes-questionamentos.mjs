@@ -7,7 +7,7 @@ const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..")
 const D = JSON.parse(fs.readFileSync(path.join(ROOT, "public-ui", "eleicoes_questionamentos.json"), "utf8"));
 const TAX = ["CONFIRMADO", "PARCIALMENTE CONFIRMADO", "EXPLICADO PELOS DADOS", "NÃO SUSTENTADO PELOS DADOS", "INCONCLUSIVO", "AINDA NÃO TESTÁVEL"];
 // linguagem pública proibida (CLAUDE.md) + deboche/rótulo da dúvida + conclusão por autoridade
-const BANNED = /\b(auditoria|dossi[eê]|corpus|evid[eê]ncia|ocorr[eê]ncia|matriz|entidade|proveni[eê]ncia|claim|pipeline|score)\b/i;
+const BANNED = /(?<![\p{L}\p{N}])(auditoria|dossi[eê]|corpus|evid[eê]ncia|ocorr[eê]ncia|matriz|entidade|proveni[eê]ncia|claim|pipeline|score)(?![\p{L}\p{N}])/iu;   // limites Unicode (dossiê)
 const MOCK = /(fake news|desinformad|teoria da conspira|terraplan|mentiros|absurd|ridícul|ignorant|lunátic|\bgado\b|petralha|bolsominion)/i;
 const AUTH = /(segundo o TSE,? portanto|como o TSE (j[aá] )?(provou|comprovou)|o TSE garante|confirmado pelo TSE)/i;
 const ASSERT_STOP = /\bsistema parou\b/i;   // permitido só na pergunta (é a dúvida que circulou)
