@@ -1,0 +1,90 @@
+{
+ "schema": "desmentindo.eleicoes2026.snapshots.v1",
+ "scope": "BR",
+ "office": "Presidente",
+ "round": 2,
+ "election_code": "6258",
+ "pleito": "3221",
+ "source": "TSE · https://resultados.tse.jus.br/oficial/ele2026/6258/dados/br/br-c0001-e006258-u.json",
+ "rule": "Cada snapshot é o que o TSE mostrava naquele momento. Não é projeção, tendência nem vencedor. Desconhecido = null.",
+ "snapshots": [
+  {
+   "captured_at": "2026-11-03T19:24:41Z",
+   "tse_updated_at": "2026-10-25T23:26:38-03:00",
+   "tse_generated_at": "2026-10-25T23:27:02-03:00",
+   "scope": "BR",
+   "office": "Presidente",
+   "round": 2,
+   "election_code": "6258",
+   "source_url": "https://resultados.tse.jus.br/oficial/ele2026/6258/dados/br/br-c0001-e006258-u.json",
+   "percent_totalized": 100.0,
+   "sections_totalized": 499248,
+   "sections_total": 499248,
+   "status": "FINAL",
+   "tse_final_flag": "s",
+   "turnout": {
+    "votes": 128236074,
+    "percentage": 80.78
+   },
+   "blank_votes": {
+    "votes": 1430496,
+    "percentage": 1.12
+   },
+   "null_votes": {
+    "votes": 2723305,
+    "percentage": 2.12
+   },
+   "valid_votes": 124082273,
+   "candidates": [
+    {
+     "candidate_id": "280002551544",
+     "number": "22",
+     "candidate_name": "FLAVIO BOLSONARO",
+     "party": "PL",
+     "votes": 59826041,
+     "percentage": 48.21,
+     "tse_order": 2,
+     "tse_status": "Não eleito"
+    },
+    {
+     "candidate_id": "280002542548",
+     "number": "13",
+     "candidate_name": "LULA",
+     "party": "PT",
+     "votes": 64256232,
+     "percentage": 51.79,
+     "tse_order": 1,
+     "tse_status": "Eleito"
+    }
+   ],
+   "source_fingerprint": {
+    "sha256": "67fae708b0c7977fc9847d36100c63313621bff971178c48f2da99969707c263",
+    "bytes": 3233,
+    "http_date": "Tue, 03 Nov 2026 19:24:41 GMT",
+    "last_modified": "Mon, 26 Oct 2026 02:27:45 GMT",
+    "etag": "\"815654d1ff9c95fa3af56f4bf4af7124\""
+   },
+   "kind": "FINAL",
+   "window": "EX_POST",
+   "seq": 1,
+   "capture_mode": "EX_POST",
+   "note": "A evolução da apuração não foi registrada neste arquivo. O único registro é o resultado final, lido do TSE depois do fim da contagem (hora da leitura em captured_at). Nenhum registro intermediário foi reconstruído."
+  }
+ ],
+ "no_change": [],
+ "gaps": [
+  {
+   "what": "EVOLUCAO_DA_APURACAO",
+   "state": "NOT_RECORDED",
+   "note": "A evolução da apuração não foi registrada neste arquivo. O único registro é o resultado final, lido do TSE depois do fim da contagem (hora da leitura em captured_at). Nenhum registro intermediário foi reconstruído."
+  }
+ ],
+ "summary": {
+  "snapshot_count": 1,
+  "first_result_at": null,
+  "last_snapshot_at": "2026-11-03T19:24:41Z",
+  "last_tse_update": "2026-10-25T23:26:38-03:00",
+  "current_totalized": 100.0,
+  "final_captured": true
+ }
+}
