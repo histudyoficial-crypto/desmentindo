@@ -215,7 +215,7 @@ function body(q, all) {
 <section class="qsum" aria-label="Resposta curta">
 <div class="qverdict">${badge(q.classificacao)}${q.classificacao_nota ? `<p>${esc(q.classificacao_nota)}</p>` : ""}</div>
 <p class="qlead">${esc(q.resposta)}</p>
-<nav class="qjump" aria-label="Ir para"><a href="#dados">A evidência</a><a href="#limites">Os limites</a><a href="#fontes">As fontes</a></nav>
+<nav class="qjump" aria-label="Ir para"><a href="#dados">Os dados</a><a href="#limites">Os limites</a><a href="#fontes">As fontes</a></nav>
 </section>
 ${q.painel_cargos ? painel(q.painel_cargos) : ""}
 ${q.observacao ? observacao(q.observacao) : ""}
