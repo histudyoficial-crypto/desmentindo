@@ -215,7 +215,21 @@
      "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/ex-balconista-de-farmacia-mobilizou-trabalhadores-para-reduzir-jornada",
      "published_at": "2026-10-19T11:19:00Z"
     }
-   ]
+   ],
+   "correction": {
+    "date": "2026-10-20",
+    "text": "O título é o da reportagem da Agência Brasil, um perfil de Rick Azevedo, criador do movimento Vida Além do Trabalho e deputado federal eleito. O texto resumiu o parágrafo de abertura da reportagem, sobre a Emenda Constitucional 141/2026, promulgada pelo Congresso em 16/10, e não o assunto do título.",
+    "source": [
+     {
+      "name": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/ex-balconista-de-farmacia-mobilizou-trabalhadores-para-reduzir-jornada"
+     },
+     {
+      "name": "Planalto (EC 141/2026)",
+      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc141.htm"
+     }
+    ]
+   }
   },
   {
    "id": "pf-faz-busca-em-ex-servidor-do-stj-suspeito-de-vazar-decisoes-a-amigo-de-flavio",
