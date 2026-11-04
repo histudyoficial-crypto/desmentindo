@@ -7,8 +7,11 @@ Discovers Publication Candidates in the Dropbox Vault production outbox,
 independently re-validates every one (never trusts upstream flags), and
 for each valid candidate opens or updates a Pull Request against `main`
 in this same checkout, using the ephemeral GITHUB_TOKEN / `gh` CLI that
-GitHub Actions already provisions (no external PAT is used or required
-here, so there is no persistent-PAT dependency).
+GitHub Actions already provisions, or -- when the repository variable
+PUBLISHER_APP_ID is set -- the short-lived installation token of the
+dedicated Publisher GitHub App (Contents + Pull requests only). No
+external PAT is used or required here, so there is no persistent-PAT
+dependency.
 
 THIS SCRIPT NEVER MERGES A PULL REQUEST AND NEVER PUSHES DIRECTLY TO
 `main`. Publication to production only happens when a human merges the
@@ -49,6 +52,10 @@ REJECTED = f"{VAULT_ROOT}/rejected"
 MANIFESTS = f"{VAULT_ROOT}/manifests"
 LEDGER_PATH = f"{MANIFESTS}/PRODUCTION_IDEMPOTENCY_LEDGER.json"
 STATUS_PATH = f"{MANIFESTS}/PUBLISHER_STATUS_LIVE.json"
+
+# Identidade usada pelo workflow: GITHUB_TOKEN (padrão) ou o token efêmero do GitHub App dedicado (1 h,
+# só Contents + Pull requests). Nenhum dos dois é PAT persistente.
+PUBLISHER_AUTH = os.environ.get("PUBLISHER_AUTH") or "GITHUB_TOKEN"
 
 ALLOWLIST_PREFIXES = ["data/", "img/", "js/"]
 ALLOWLIST_EXACT = ["index.html", "desmentindo_local.html"]
@@ -469,7 +476,7 @@ def main():
         "workflow_path": ".github/workflows/desmentindo-publisher.yml",
         "schedule_cron": SCHEDULE_CRON,
         "schedule_timezone_note": "cron is UTC; operational reference tz is America/Sao_Paulo",
-        "github_runtime_auth": "GITHUB_TOKEN",
+        "github_runtime_auth": PUBLISHER_AUTH,
         "persistent_pat_dependency": False,
         "auto_merge": "FORBIDDEN_BY_DESIGN",
         "last_run_at": RUN_STARTED,
