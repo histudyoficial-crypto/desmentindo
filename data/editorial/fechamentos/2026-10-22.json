@@ -1,0 +1,99 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-22",
+ "public_title": "FECHAMENTO — 22 de outubro de 2026",
+ "published_at": "2026-10-23T11:25:50Z",
+ "cutoff_at": "2026-10-22T20:36:54-03:00",
+ "context": "Fechamento de 22 de outubro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "Corregedor do TSE nega pedido de Flávio Bolsonaro para suspensão de canais do governo Lula",
+    "story": "corregedor-do-tse-nega-pedido-de-flavio-bolsonaro-para-suspensao-de-canais-do"
+   },
+   {
+    "text": "PGR defende que STF rejeite pedido de acesso a dados de visitas de esposa de Moraes e Vorcaro ao Senado",
+    "story": "pgr-defende-que-stf-rejeite-pedido-de-acesso-a-dados-de-visitas-de-esposa-de"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "corregedor-do-tse-nega-pedido-de-flavio-bolsonaro-para-suspensao-de-canais-do",
+   "headline": "Corregedor do TSE nega pedido de Flávio Bolsonaro para suspensão de canais do governo Lula",
+   "lead": true,
+   "what_happened": "O corregedor-geral eleitoral, Ricardo Villas Bôas Cueva, negou pedido de Flávio Bolsonaro para suspender o envio de mensagens por canais oficiais do governo federal. Segundo o ministro, a suspensão generalizada interromperia comunicações de utilidade pública.",
+   "what_changed": "Cueva deu andamento à Aije e notificou os investigados para apresentarem defesa no prazo de cinco dias. O corregedor negou a retirada do slogan governamental das contas oficiais e deu 48 horas para a campanha de Flávio especificar o pedido de preservação de dados. Alegação atribuída (Estadão (defesa de Flávio Bolsonaro)), não comprovada: A defesa de Flávio alega que o governo teria utilizado informações do Gov.br, INSS e Receita Federal para direcionar mensagens personalizadas sobre programas sociais.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "Corregedor do TSE nega pedido de Flávio Bolsonaro para suspender mensagens do governo",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/22/corregedor-do-tse-nega-pedido-de-flavio-bolsonaro-para-suspender-mensagens-do-governo.ghtml",
+     "published_at": "2026-10-22T18:07:49Z",
+     "summary": "O corregedor-geral eleitoral, Ricardo Villas Bôas Cueva, negou pedido de Flávio Bolsonaro para suspender o envio de mensagens por canais oficiais do governo federal.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "Corregedor do TSE nega pedido de Flávio Bolsonar para suspensão de canais do governo Lula",
+     "url": "https://estadao.com.br/politica/eleicoes/corregedor-do-tse-nega-pedido-de-flavio-bolsonar-para-suspensao-de-canais-do-governo-lula",
+     "published_at": "2026-10-22T18:29:57Z",
+     "summary": "A defesa de Flávio alega que o governo teria utilizado informações do Gov.br, INSS e Receita Federal para direcionar mensagens personalizadas sobre programas sociais.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:36, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "pgr-defende-que-stf-rejeite-pedido-de-acesso-a-dados-de-visitas-de-esposa-de",
+   "headline": "PGR defende que STF rejeite pedido de acesso a dados de visitas de esposa de Moraes e Vorcaro ao Senado",
+   "lead": false,
+   "what_happened": "A PGR defendeu que o STF rejeite o pedido de um vereador de Curitiba para ter acesso a registros de entrada e saída no Senado de uma lista de pessoas que inclui Daniel Vorcaro e Viviane Barci de Moraes. A PGR apontou questões processuais, como o fato de o veto aos dados ter sido determinado pelo Serviço de Informação ao Cidadão do Senado e não por pessoa com foro no STF.",
+   "what_changed": "A PGR afirmou que o político não comprovou que teve um direito individual violado. O Senado também defendeu o veto aos registros, comparando com o sigilo da fonte jornalística.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "PGR defende que STF rejeite pedido de acesso a dados de visitas de esposa de Moraes e Vorcaro ao Senado",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/22/pgr-defende-que-stf-rejeite-pedido-de-acesso-a-dados-de-visitas-de-esposa-de-moraes-e-vorcaro-ao-senado.ghtml",
+     "published_at": "2026-10-22T22:58:49Z",
+     "summary": "A PGR defendeu que o STF rejeite o pedido de um vereador de Curitiba para ter acesso a registros de entrada e saída no Senado de uma lista de pessoas que inclui Daniel Vorcaro e Viviane Barci de Moraes.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:36, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "g1",
+   "title": "Corregedor do TSE nega pedido de Flávio Bolsonaro para suspender mensagens do governo",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/22/corregedor-do-tse-nega-pedido-de-flavio-bolsonaro-para-suspender-mensagens-do-governo.ghtml",
+   "published_at": "2026-10-22T18:07:49Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Corregedor do TSE nega pedido de Flávio Bolsonar para suspensão de canais do governo Lula",
+   "url": "https://estadao.com.br/politica/eleicoes/corregedor-do-tse-nega-pedido-de-flavio-bolsonar-para-suspensao-de-canais-do-governo-lula",
+   "published_at": "2026-10-22T18:29:57Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "PGR defende que STF rejeite pedido de acesso a dados de visitas de esposa de Moraes e Vorcaro ao Senado",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/22/pgr-defende-que-stf-rejeite-pedido-de-acesso-a-dados-de-visitas-de-esposa-de-moraes-e-vorcaro-ao-senado.ghtml",
+   "published_at": "2026-10-22T22:58:49Z",
+   "basis": "texto da matéria"
+  }
+ ],
+ "note": "Informações válidas até o corte das 20:36. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
