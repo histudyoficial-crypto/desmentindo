@@ -49,7 +49,10 @@ t("guarda 3: decision_ref vazio ou fora do formato não abre o gate", () => {
 t("guarda 4: conclusão incompatível com o estado da hipótese trava", () => {
   assert.ok(validarEstudo("h23", H23, ok));
   assert.throws(() => validarEstudo("h23", { ...H23, explicacao: "Os testes confirmam a hipótese." }, ok), /CONCLUSAO_INCOMPATIVEL/);
-  assert.throws(() => validarEstudo("h23", { ...H23, hipotese: { ...H23.hipotese, estado: "CONFIRMADA" } }, ok), /HIPOTESE_CONCLUSIVA_SEM_REVISAO/); });
+  assert.throws(() => validarEstudo("h23", { ...H23, hipotese: { ...H23.hipotese, estado: "CONFIRMADA" } }, ok), /HIPOTESE_CONCLUSIVA_SEM_REVISAO/);
+  // a alegação examinada ("indica manipulação", NÃO DEMONSTRADA) é citação; a mesma frase fora da hipótese trava
+  assert.ok(validarEstudo("h23", H23, ok));
+  assert.throws(() => validarEstudo("h23", { ...H23, explicacao: "A regularidade indica manipulação." }, ok), /PROVA_OU_FRAUDE/); });
 t("guarda 5: fraude/prova sem revisão editorial trava; negação e citação não travam", () => {
   barra({ metodologia: "A soma prova que não houve problema." }, /PROVA_OU_FRAUDE/);
   barra({ conferencia_texto: "Há indícios de fraude nesses municípios." }, /PROVA_OU_FRAUDE/);
@@ -57,6 +60,10 @@ t("guarda 5: fraude/prova sem revisão editorial trava; negação e citação n�
   assert.ok(validarEstudo("bu", B({ conferencia_texto: "A publicação dizia “houve fraude” sem mostrar dados." }), ok));
   assert.ok(validarEstudo("bu", B({ metodologia: "A soma prova a coerência." }), { ...ok, revisao_editorial: { decision_ref: "github:#200", itens: ["PROVA_OU_FRAUDE"] } }));
   barra({ metodologia: "A soma prova a coerência." }, /PROVA_OU_FRAUDE/);   // sem revisão específica, continua travado
+});
+t("guarda 5 (Unicode): palavras com ç/ã travam; vizinhas inocentes não", () => {
+  for (const x of ["Houve manipulação.", "manipulações em série", "A comprovação veio depois.", "fraudulência"]) barra({ metodologia: x }, /PROVA_OU_FRAUDE/);
+  for (const x of ["A aprovação do plano.", "É improvável.", "Foi reprovado.", "Não houve manipulação.", "A publicação falava em “manipulação”."]) assert.ok(validarEstudo("bu", B({ metodologia: x }), ok), x);
 });
 t("guarda 6: linguagem proibida em SVG, aria-label, alt e title derruba o build", () => {
   assert.throws(() => moduloH23({ ...H23, curva: { ...H23.curva, publicada: [[50, 3, "ponto da auditoria"]] } }), /PALAVRA_PROIBIDA/);   // <title> dentro do SVG

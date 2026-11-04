@@ -130,11 +130,14 @@ export function moduloBU(D) {
 // e citação entre aspas “…” não travam: são o uso metodológico legítimo.
 export const DECISION_REF = /^(?:github:(?:[\w.-]+\/[\w.-]+)?#\d+|control\/DECISIONS\.md#[\w:.\-]+|https:\/\/github\.com\/histudyoficial-crypto\/desmentindo(?:-ops)?\/(?:issues|pull)\/\d+)$/;
 export const gateAberto = g => !!g && g.ativo === true && g.estado === "APPROVED" && typeof g.decision_ref === "string" && DECISION_REF.test(g.decision_ref);
+// Classes Unicode (\p{L}), não \w/\b: com \w, "manipulação" nunca casava ("ç"/"ã" não contam como letra).
+const L_ = "[\\p{L}\\p{N}]", ANTES = `(?<!${L_})`, DEPOIS = `(?!${L_})`;
+const R = src => new RegExp(ANTES + "(?:" + src + ")" + DEPOIS, "giu");
 const REVISAR = [
-  ["PROVA_OU_FRAUDE", /\b(fraud\w*|manipula(?:ç|c)\w*|manipulad\w*|prova(?:m|r|ria|do|da|s)?|comprova\w*|irregularidade(?:s)? (?:comprovad|confirmad)\w*)\b/giu],
-  ["HORARIO_DO_VOTO", /(hor[aá]rio|hora) (?:de|do|em que) (?:cada )?(?:voto|eleitor votou|o eleitor votou)|quem votou (?:por [uú]ltimo|primeiro|mais tarde)|votaram (?:por [uú]ltimo|mais tarde|depois das)|[uú]ltimos eleitores/giu],
-  ["INFERENCIA_INDIVIDUAL", /\b(?:o eleitor|os eleitores|cada eleitor|cada pessoa|o mesmo eleitor) (?:vot\w*|escolh\w*|prefer\w*|mud\w*|troc\w*|combin\w*|divid\w*)/giu]];
-const NEG = /\b(n[aã]o|nem|sem|nunca|jamais)\b[^.;:]{0,40}$/iu;
+  ["PROVA_OU_FRAUDE", R("fraud\\p{L}*|manipul\\p{L}*|prova(?:m|r|ria|do|da|s)?|comprov\\p{L}*|irregularidades? (?:comprovad|confirmad)\\p{L}*")],
+  ["HORARIO_DO_VOTO", R("(?:hor[aá]rio|hora) (?:de|do|em que) (?:cada )?(?:voto|eleitor votou|o eleitor votou)|quem votou (?:por [uú]ltimo|primeiro|mais tarde)|votaram (?:por [uú]ltimo|mais tarde|depois das)|[uú]ltimos eleitores")],
+  ["INFERENCIA_INDIVIDUAL", R("(?:o eleitor|os eleitores|cada eleitor|cada pessoa|o mesmo eleitor) (?:vot|escolh|prefer|mud|troc|combin|divid)\\p{L}*")]];
+const NEG = /(?<![\p{L}\p{N}])(n[aã]o|nem|sem|nunca|jamais)(?![\p{L}\p{N}])[^.;:]{0,40}$/iu;
 function strings(o, out = [], k = "") {
   if (typeof o === "string") { if (!/(^|\.)url$/.test(k)) out.push([k, o]); }
   else if (Array.isArray(o)) o.forEach((v, i) => strings(v, out, `${k}[${i}]`));
@@ -155,8 +158,11 @@ export function validarEstudo(id, D, gate) {
       if (/\b(confirma(?:m|ndo)? a (?:hip[oó]tese|explica[cç][aã]o)|a hip[oó]tese (?:se )?confirm\w*|(?:fica|est[aá]) (?:demonstrad|comprovad)\w*)/iu.test(concl)) erros.push("CONCLUSAO_INCOMPATIVEL_COM_A_HIPOTESE");
     }
   }
+  // a hipótese que circulou, rotulada como NÃO conclusiva, é a alegação sendo examinada (citação), não afirmação do estudo
+  const hipCitada = D.hipotese && HIP_NAO_CONCLUSIVO.includes(D.hipotese.estado);
   for (const [campo, txt] of strings(D)) {
     for (const [regra, re] of REVISAR) {
+      if (hipCitada && campo === "hipotese.texto" && regra === "PROVA_OU_FRAUDE") continue;
       for (const m of txt.matchAll(re)) {
         const antes = txt.slice(0, m.index), citacao = (antes.match(/“/g) || []).length > (antes.match(/”/g) || []).length;
         if (NEG.test(antes) || citacao || liberado.has(regra) || liberado.has(m[0].toLowerCase())) continue;
