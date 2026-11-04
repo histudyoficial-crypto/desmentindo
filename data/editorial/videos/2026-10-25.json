@@ -1,0 +1,79 @@
+{
+ "schema": "desmentindo.public.recent_videos.v1",
+ "date": "2026-10-25",
+ "published_at": "2026-10-29T17:28:37Z",
+ "title": "Vídeos recentes dos canais",
+ "notice": "Publicado pelos canais acompanhados. Ainda não checado pelo Desmentindo: título e conteúdo são dos autores. Aparecer aqui não é confirmação nem ligação com as notícias do dia.",
+ "window": {
+  "days": 3,
+  "from": "2026-10-23",
+  "to": "2026-10-25"
+ },
+ "items": [
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "l5_XPbBYlPY",
+   "title": "A minha análise do último debate - Alexandre Garcia",
+   "published_at": "2026-10-24T17:06:38Z",
+   "url": "https://www.youtube.com/watch?v=l5_XPbBYlPY",
+   "thumbnail": "https://i.ytimg.com/vi/l5_XPbBYlPY/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-24T23:48:38Z"
+  },
+  {
+   "channel": "Te Atualizei",
+   "channel_id": "UCXRIQok8uzYtg1TPwSqikVg",
+   "video_id": "Rzh1j_ZFprw",
+   "title": "ACABOU, NÉ? A consequência PÓS DEBATE.",
+   "published_at": "2026-10-24T10:57:11Z",
+   "url": "https://www.youtube.com/watch?v=Rzh1j_ZFprw",
+   "thumbnail": "https://i.ytimg.com/vi/Rzh1j_ZFprw/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-24T23:48:38Z"
+  },
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "hkB5pkHz8Oo",
+   "title": "Lula ou Flávio: em quem os ‘homens nojentos’ vão votar?",
+   "published_at": "2026-10-24T09:55:10Z",
+   "url": "https://www.youtube.com/watch?v=hkB5pkHz8Oo",
+   "thumbnail": "https://i.ytimg.com/vi/hkB5pkHz8Oo/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-24T23:48:38Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "Bk80B7Mjw0E",
+   "title": "Lulinha, quem? E “o Brasil acabou” - Alexandre Garcia",
+   "published_at": "2026-10-23T22:03:32Z",
+   "url": "https://www.youtube.com/watch?v=Bk80B7Mjw0E",
+   "thumbnail": "https://i.ytimg.com/vi/Bk80B7Mjw0E/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-24T00:05:15Z"
+  },
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "NhbC098zx4I",
+   "title": "13 ou 22: é tudo igual? Coppolla compara",
+   "published_at": "2026-10-23T09:55:16Z",
+   "url": "https://www.youtube.com/watch?v=NhbC098zx4I",
+   "thumbnail": "https://i.ytimg.com/vi/NhbC098zx4I/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-24T00:05:15Z"
+  }
+ ]
+}
