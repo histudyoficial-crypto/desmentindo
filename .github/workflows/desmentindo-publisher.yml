@@ -32,10 +32,25 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
+      # Identidade dos PRs (04/11/2026). PR aberto com o GITHUB_TOKEN sai como github-actions[bot], e o GitHub
+      # segura a CI desse PR em `action_required` até alguém aprovar o run (todos os PRs do Publisher desde
+      # 21/10 esperaram de 20 h a 6 dias). Com um GitHub App dedicado, o PR sai com a identidade do App e a CI
+      # "Fronteira pública — validar" roda sozinha. O App só tem Contents e Pull requests (sem Actions, sem
+      # Workflows: não dispara workflow nem altera .github/). Sem a variável PUBLISHER_APP_ID nada muda:
+      # o passo é pulado e segue o GITHUB_TOKEN. Merge continua humano.
+      - name: Token do Publisher (GitHub App dedicado, se configurado)
+        id: app
+        if: ${{ vars.PUBLISHER_APP_ID != '' }}
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.PUBLISHER_APP_ID }}
+          private-key: ${{ secrets.PUBLISHER_APP_PRIVATE_KEY }}
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ steps.app.outputs.token || secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -44,7 +59,8 @@ jobs:
 
       - name: Run Desmentindo Publisher (discover, validate, open/update PRs)
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.app.outputs.token || secrets.GITHUB_TOKEN }}
+          PUBLISHER_AUTH: ${{ steps.app.outputs.token && 'GITHUB_APP' || 'GITHUB_TOKEN' }}
           DROPBOX_APP_KEY: ${{ secrets.DROPBOX_APP_KEY }}
           DROPBOX_APP_SECRET: ${{ secrets.DROPBOX_APP_SECRET }}
           DROPBOX_REFRESH_TOKEN: ${{ secrets.DROPBOX_REFRESH_TOKEN }}

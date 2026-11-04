@@ -20,6 +20,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # Primeiro passo, antes de qualquer script do PR rodar. Espelha a allowlist do Publisher
+      # (automation/publisher_runtime.py: ALLOWLIST_PREFIXES/ALLOWLIST_EXACT/FORBIDDEN_SUBSTRINGS). Fica neste YAML de
+      # propósito: nem o GITHUB_TOKEN nem o App do Publisher podem alterar .github/workflows/.
+      - name: PR do Publisher só altera caminhos publicáveis (fail closed)
+        if: github.event_name == 'pull_request' && startsWith(github.head_ref, 'publisher/')
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          git fetch --no-tags --depth=50 origin "$BASE" "$HEAD"
+          mb="$(git merge-base "$BASE" "$HEAD" || true)"
+          if [ -z "$mb" ]; then echo 'PUBLISHER_PR_SCOPE: base comum não encontrada; falha fechada.'; exit 1; fi
+          changed="$(git diff --name-only "$mb" "$HEAD")"
+          if [ -z "$changed" ]; then echo 'PUBLISHER_PR_SCOPE: PR sem arquivos; falha fechada.'; exit 1; fi
+          bad=0
+          while IFS= read -r f; do
+            case "$f" in
+              data/*|img/*|js/*|index.html|desmentindo_local.html) ok=1 ;;
+              *) ok=0 ;;
+            esac
+            case "$f" in
+              *.github/*|*workflow*|*secret*|*credential*|*publisher_runtime.py*|*deploy-locaweb*) ok=0 ;;
+            esac
+            if [ "$ok" = 1 ]; then echo "ok    $f"; else echo "FORA  $f"; bad=1; fi
+          done <<< "$changed"
+          if [ "$bad" = 1 ]; then echo 'PUBLISHER_PR_SCOPE: PR do Publisher fora da allowlist.'; exit 1; fi
       - name: Correção publicada não some (toda nota `correction` da base continua idêntica; caso #111)
         env:
           BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
