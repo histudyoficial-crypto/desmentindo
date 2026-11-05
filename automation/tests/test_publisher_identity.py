@@ -57,22 +57,30 @@ class PublisherWorkflow(unittest.TestCase):
 class BoundaryScopeGuard(unittest.TestCase):
     def setUp(self):
         self.s = read("public-boundary.yml")
-        i = self.s.index("- name: PR do Publisher só altera caminhos publicáveis")
+        i = self.s.index("- name: PR do Publisher só altera JSON editorial")
         self.step = self.s[i:self.s.index("- name:", i + 10)]
 
     def test_guard_runs_first_and_only_for_publisher_prs(self):
         steps = re.findall(r"^      - (?:name: (.+)|uses: (.+))$", self.s, re.M)
         self.assertEqual(steps[0][1], "actions/checkout@v4")
-        self.assertTrue(steps[1][0].startswith("PR do Publisher só altera caminhos publicáveis"))
+        self.assertTrue(steps[1][0].startswith("PR do Publisher só altera JSON editorial"))
         self.assertIn("startsWith(github.head_ref, 'publisher/')", self.step)
         self.assertIn("exit 1", self.step)
 
-    def test_guard_mirrors_runtime_allowlist(self):
-        allowed = re.search(r"\n\s+(data/\*.*?)\) ok=1 ;;", self.step).group(1).split("|")
-        self.assertEqual(sorted(allowed), sorted([p + "*" for p in P.ALLOWLIST_PREFIXES] + P.ALLOWLIST_EXACT))
-        forbidden = re.search(r"\n\s+(\*\.github/\*.*?)\) ok=0 ;;", self.step).group(1).split("|")
-        self.assertEqual(sorted(forbidden), sorted(f"*{x}*" for x in P.FORBIDDEN_SUBSTRINGS))
+    def test_guard_is_strict_subset_of_runtime_allowlist(self):
+        rx = re.search(r"grep -Eq '(\^data/editorial/.+?)'", self.step).group(1)
+        self.assertTrue(rx.startswith("^data/editorial/") and rx.endswith("\\.json$"))
+        self.assertIn("data/", P.ALLOWLIST_PREFIXES)                       # data/editorial/ ⊂ allowlist do runtime
+        cases = {"data/editorial/fechamentos/2026-10-22.json": True, "data/editorial/videos/index.json": True,
+                 "data/editorial/index.json": True, "js/app.js": False, "index.html": False, "img/x.png": False,
+                 "data/editorial/x.js": False, "data/other/x.json": False, "data/editorial/../../.github/w.json": False,
+                 ".github/workflows/x.yml": False, "data/editorial/Fechamentos/X.json": False}
+        for path, ok in cases.items():
+            self.assertEqual(bool(re.fullmatch(rx.strip("^$"), path)), ok, path)
 
+    def test_guard_requires_valid_json_without_running_pr_code(self):
+        self.assertIn("python3 -I -c 'import json,sys; json.load(sys.stdin)'", self.step)
+        self.assertIn('git show "$HEAD:$f"', self.step)
 
 if __name__ == "__main__":
     unittest.main()
