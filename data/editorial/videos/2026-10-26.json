@@ -1,0 +1,79 @@
+{
+ "schema": "desmentindo.public.recent_videos.v1",
+ "date": "2026-10-26",
+ "published_at": "2026-10-29T17:28:37Z",
+ "title": "Vídeos recentes dos canais",
+ "notice": "Publicado pelos canais acompanhados. Ainda não checado pelo Desmentindo: título e conteúdo são dos autores. Aparecer aqui não é confirmação nem ligação com as notícias do dia.",
+ "window": {
+  "days": 3,
+  "from": "2026-10-24",
+  "to": "2026-10-26"
+ },
+ "items": [
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "_P1Z21FXTaI",
+   "title": "Moraes tira passaporte de Flávio - Alexandre Garcia",
+   "published_at": "2026-10-26T22:46:24Z",
+   "url": "https://www.youtube.com/watch?v=_P1Z21FXTaI",
+   "thumbnail": "https://i.ytimg.com/vi/_P1Z21FXTaI/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-27T00:54:00Z"
+  },
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "W33K46b8-ak",
+   "title": "Lula (re)eleito: o que vai acontecer com o Brasil nos próximos meses? - por Coppolla",
+   "published_at": "2026-10-26T21:18:55Z",
+   "url": "https://www.youtube.com/watch?v=W33K46b8-ak",
+   "thumbnail": "https://i.ytimg.com/vi/W33K46b8-ak/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-27T00:54:00Z"
+  },
+  {
+   "channel": "Te Atualizei",
+   "channel_id": "UCXRIQok8uzYtg1TPwSqikVg",
+   "video_id": "Rzh1j_ZFprw",
+   "title": "ACABOU, NÉ? A consequência PÓS DEBATE.",
+   "published_at": "2026-10-24T10:57:11Z",
+   "url": "https://www.youtube.com/watch?v=Rzh1j_ZFprw",
+   "thumbnail": "https://i.ytimg.com/vi/Rzh1j_ZFprw/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-24T23:48:38Z"
+  },
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "hkB5pkHz8Oo",
+   "title": "Lula ou Flávio: em quem os ‘homens nojentos’ vão votar?",
+   "published_at": "2026-10-24T09:55:10Z",
+   "url": "https://www.youtube.com/watch?v=hkB5pkHz8Oo",
+   "thumbnail": "https://i.ytimg.com/vi/hkB5pkHz8Oo/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-24T23:48:38Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "iD6G3Dd7mIw",
+   "title": "Crimes eleitorais passaram impunes - Alexandre Garcia",
+   "published_at": "2026-10-26T16:45:00Z",
+   "url": "https://www.youtube.com/watch?v=iD6G3Dd7mIw",
+   "thumbnail": null,
+   "highlight": false,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-27T00:54:00Z"
+  }
+ ]
+}
