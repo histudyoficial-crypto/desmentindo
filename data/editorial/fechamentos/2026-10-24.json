@@ -1,0 +1,410 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-24",
+ "public_title": "FECHAMENTO — 24 de outubro de 2026",
+ "published_at": "2026-10-29T17:28:37Z",
+ "cutoff_at": "2026-10-24T20:12:45-03:00",
+ "context": "Fechamento de 24 de outubro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "Ministro do TSE atende a campanha do PT e impede suspensão de canal 'Exército do Lula' às vésperas da eleição",
+    "story": "ministro-do-tse-atende-a-campanha-do-pt-e-impede-suspensao-de-canal-exercito-do"
+   },
+   {
+    "text": "Gilmar cita imunidade e rejeita queixa de vice de Flávio contra parlamentares que mencionaram acusação de estupro",
+    "story": "gilmar-cita-imunidade-e-rejeita-queixa-de-vice-de-flavio-contra-parlamentares"
+   },
+   {
+    "text": "TSE determina retirada de áudio de Gayer sobre mesários do canal de WhatsApp Tropa do Flávio",
+    "story": "tse-determina-retirada-de-audio-de-gayer-sobre-mesarios-do-canal-de-whatsapp"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "ministro-do-tse-atende-a-campanha-do-pt-e-impede-suspensao-de-canal-exercito-do",
+   "headline": "Ministro do TSE atende a campanha do PT e impede suspensão de canal 'Exército do Lula' às vésperas da eleição",
+   "lead": true,
+   "what_happened": "O ministro Floriano de Azevedo Marques decidiu que o canal de WhatsApp \"Exército do Lula\" não poderá voltar a ser suspenso por decisão administrativa da Presidência do TSE. Uma eventual nova restrição ao canal ainda poderá ser determinada em processo judicial.",
+   "what_changed": "Na decisão, o ministro afirmou considerar concreto o risco de uma nova suspensão do canal antes do segundo turno. O TSE afirmou em nota que não determinou a retirada de nenhum canal de WhatsApp do ar. Alegação atribuída (campanha de Flávio Bolsonaro, segundo o g1), não comprovada: A campanha de Flávio Bolsonaro (PL) acusa o grupo de promover ações coordenadas nas redes sociais.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "Ministro do TSE impede Nunes Marques de suspender canal 'Exército do Lula' sem aval do plenário",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/23/ministro-do-tse-barra-nova-suspensao-do-canal-exercito-do-lula.ghtml",
+     "published_at": "2026-10-23T17:57:53Z",
+     "summary": "O ministro Floriano de Azevedo Marques decidiu que o canal de WhatsApp \"Exército do Lula\" não poderá voltar a ser suspenso por decisão administrativa da Presidência do TSE.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Campanha de Lula se mobiliza contra possível retirada do canal Exército do Lula do ar; TSE nega ter determinado suspensão",
+     "url": "https://g1.globo.com/politica/blog/natuza-nery/post/2026/10/23/campanha-lula-retirada-canal-exercito-do-lula.ghtml",
+     "published_at": "2026-10-23T15:13:44Z",
+     "summary": "O TSE afirmou em nota que não determinou a retirada de nenhum canal de WhatsApp do ar.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Folha",
+     "title": "Procuradoria defende manutenção de 'Exército do Lula' após TSE barrar suspensão do canal",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/procuradoria-defende-manutencao-de-exercito-do-lula-apos-tse-barrar-suspensao-do-canal.shtml",
+     "published_at": "2026-10-24T20:29:00Z",
+     "summary": "A Procuradoria-Geral Eleitoral se manifestou no sábado (24) pela manutenção do canal \"Exército do Lula\" no WhatsApp após o ministro do TSE Floriano de Azevedo Marques barrar a suspensão do grupo.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Ministério Público Eleitoral se manifesta contra suspensão do 'Exército do Lula'",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/24/ministerio-publico-eleitoral-se-manifesta-contra-suspensao-do-exercito-do-lula.ghtml",
+     "published_at": "2026-10-24T19:53:22Z",
+     "summary": "Segundo o g1, a Procuradoria afirmou que as plataformas não apontaram indícios de contas falsas, robôs, automação ou compra irregular de engajamento.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:12, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "gilmar-cita-imunidade-e-rejeita-queixa-de-vice-de-flavio-contra-parlamentares",
+   "headline": "Gilmar cita imunidade e rejeita queixa de vice de Flávio contra parlamentares que mencionaram acusação de estupro",
+   "lead": false,
+   "what_happened": "Gilmar Mendes rejeitou queixa-crime de Alfredo Gaspar contra Lindbergh Farias e Soraya Thronicke, citando a imunidade parlamentar. O ministro concluiu que o STF não deve ser 'instância ordinária de disciplina do debate político'.",
+   "what_changed": "A apuração preliminar de suposto estupro de vulnerável atribuído a Gaspar já foi arquivada, e o próprio Gilmar determinou o arquivamento por falta de indícios. Alfredo Gaspar chega à votação com participação discreta na propaganda eleitoral, mas com agenda intensa de atos de campanha no Nordeste. Alegação atribuída (g1), não comprovada: Lindbergh acusou Gaspar de estupro durante reunião da CPMI.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "Gilmar cita imunidade e rejeita queixa de vice de Flávio contra parlamentares que mencionaram acusação de estupro",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/23/gilmar-cita-imunidade-parlamentar-e-rejeita-queixa-de-vice-de-flavio-contra-congressistas-que-mencionaram-acusacao-de-estupro.ghtml",
+     "published_at": "2026-10-23T16:57:57Z",
+     "summary": "Gilmar Mendes rejeitou queixa-crime de Alfredo Gaspar contra Lindbergh Farias e Soraya Thronicke, citando a imunidade parlamentar.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Folha",
+     "title": "Alfredo Gaspar, vice de Flávio Bolsonaro, liderou atos no Nordeste e teve presença discreta nas redes",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/alfredo-gaspar-vice-de-flavio-bolsonaro-liderou-atos-no-nordeste-e-teve-presenca-discreta-nas-redes.shtml",
+     "published_at": "2026-10-24T16:10:00Z",
+     "summary": "Alfredo Gaspar chega à votação com participação discreta na propaganda eleitoral, mas com agenda intensa de atos de campanha no Nordeste.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:12, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "tse-determina-retirada-de-audio-de-gayer-sobre-mesarios-do-canal-de-whatsapp",
+   "headline": "TSE determina retirada de áudio de Gayer sobre mesários do canal de WhatsApp Tropa do Flávio",
+   "lead": false,
+   "what_happened": "O corregedor-geral do TSE determinou a retirada de conteúdo falso do canal Tropa do Flávio, mas negou o pedido de suspensão do canal. O corregedor fixou prazo de duas horas para a Meta retirar o conteúdo, sob multa de R$ 100 mil por hora de descumprimento.",
+   "what_changed": "Segundo o ministro, a publicação reproduz narrativa já desmentida pela Justiça Eleitoral. Alegação atribuída (Estadão), não comprovada: O áudio, atribuído a Gustavo Gayer, afirma que mesários estariam votando no lugar de eleitores ausentes.",
+   "coverage": [
+    {
+     "outlet": "Estadão",
+     "title": "TSE determina retirada de áudio de Gayer sobre mesários do canal de WhatsApp Tropa do Flávio",
+     "url": "https://estadao.com.br/politica/eleicoes/tse-determina-retirada-de-audio-de-gayer-sobre-mesarios-do-canal-de-whatsapp-tropa-do-flavio-nprp",
+     "published_at": "2026-10-24T11:05:15Z",
+     "summary": "O corregedor-geral do TSE determinou a retirada de conteúdo falso do canal Tropa do Flávio, mas negou o pedido de suspensão do canal.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:12, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "tse-derruba-das-redes-sociais-video-que-mostra-jovens-presos-com-camiseta-do-pt",
+   "title": "TSE derruba das redes sociais vídeo que mostra jovens presos com camiseta do PT",
+   "text": "O TSE determinou a remoção do vídeo de suspeitos de tráfico com camisetas alusivas à campanha de Lula em Piracicaba. Derrite afirmou em nota que o objetivo da publicação era chamar atenção para o aliciamento de jovens pelo tráfico e que não mencionou as camisetas.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/sp/piracicaba-regiao/eleicoes/2026/noticia/2026/10/23/tse-derruba-das-redes-sociais-video-que-mostra-suspeitos-presos-com-camiseta-do-pt.ghtml",
+     "published_at": "2026-10-23T22:08:27Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/cotidiano/2026/10/batalhao-da-pm-que-deteve-jovens-com-camisetas-de-lula-atua-sem-cameras-corporais.shtml",
+     "published_at": "2026-10-24T12:53:00Z"
+    }
+   ]
+  },
+  {
+   "id": "carmen-lucia-nega-pedido-da-campanha-de-lula-para-garantir-transporte",
+   "title": "Cármen Lúcia nega pedido da campanha de Lula para garantir transporte interestadual gratuito no 2º turno",
+   "text": "A ministra Cármen Lúcia, do STF, negou o pedido da campanha de Lula para estender a gratuidade do transporte público ao sistema interestadual no 2º turno. Cármen Lúcia, relatora do pedido, apontou a inviabilidade do pedido feito a poucos dias do segundo turno.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/23/carmen-lucia-nega-pedido-da-campanha-de-lula-para-garantir-transporte-interestadual-gratuito-no-2o-turno.ghtml",
+     "published_at": "2026-10-23T21:11:58Z"
+    }
+   ]
+  },
+  {
+   "id": "moraes-bloqueia-r-6-bilhoes-e-cancela-passaportes-de-advogado-investigado-com",
+   "title": "Moraes bloqueia R$ 6 bilhões e cancela passaportes de advogado investigado com Flávio Bolsonaro",
+   "text": "Moraes determinou o bloqueio de até R$ 6 bilhões do advogado Willer Tomaz e uma ampla análise sobre a rede de correntistas da Alcazar Holdings. A PF encontrou, a partir dos dados da nuvem de Willer, um email que mostra Flávio cadastrado como \"usuário master\" de uma conta bancária conjunta com Tomaz.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/23/moraes-manda-bloquear-r-6-bi-de-willer-tomaz-e-determina-que-bancos-informem-dados-da-empresa-alcazar.ghtml",
+     "published_at": "2026-10-24T00:09:11Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/eleicoes/tse-mantem-no-ar-site-pro-flavio-e-manda-investigar-financiamento",
+     "published_at": "2026-10-24T12:49:19Z"
+    }
+   ]
+  },
+  {
+   "id": "barra-do-corda-afasta-secretario-por-ameaca-a-eleitores-do-pt",
+   "title": "Barra do Corda afasta secretário por ameaça a eleitores do PT",
+   "text": "O prefeito de Barra do Corda determinou o afastamento do secretário de Segurança Pública, Antonio James Mota da Silva, até o fim das eleições. Em portaria, o prefeito afirma que a decisão foi motivada por declarações que sugerem prisão e perseguição de eleitores e apoiadores do PT.",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/barra-do-corda-afasta-secretario-por-ameaca-eleitores-do-pt",
+     "published_at": "2026-10-23T17:24:00Z"
+    }
+   ]
+  },
+  {
+   "id": "a-resposta-do-google-e-da-meta-a-nunes-marques-sobre-o-exercito-do-lula",
+   "title": "A resposta do Google e da Meta a Nunes Marques sobre o ‘Exército do Lula’",
+   "text": "Meta, Google e X disseram ao presidente do TSE não ter encontrado indícios de irregularidades ou violação de regras nas ações do canal \"Exército do Lula\". A Meta afirmou que o canal do WhatsApp \"Exército do Lula\" não viola as políticas da empresa.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/23/meta-diz-que-canal-exercito-do-lula-nao-viola-politicas-da-empresa.ghtml",
+     "published_at": "2026-10-23T22:48:07Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/meta-diz-a-kassio-nao-ter-encontrado-indicio-de-atuacao-irregular-de-canal-exercito-do-lula.shtml",
+     "published_at": "2026-10-23T23:15:00Z"
+    }
+   ]
+  },
+  {
+   "id": "pgr-pede-que-stf-suspenda-restricoes-do-tse-ao-transporte-de-indigenas-para",
+   "title": "PGR pede que STF suspenda restrições do TSE ao transporte de indígenas para votação",
+   "text": "O procurador-geral da República, Paulo Gonet, pediu ao STF que suspenda parte da decisão do presidente do TSE que restringiu o transporte de eleitores indígenas no segundo turno. Segundo a PGR, no primeiro turno a Justiça Eleitoral registrou abstenção de 26% entre eleitores indígenas, contra média nacional de 20%.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/24/pgr-pede-ao-stf-para-derrubar-exigencia-de-autorizacao-previa-para-transporte-de-indigenas-no-2o-turno.ghtml",
+     "published_at": "2026-10-24T16:47:06Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/eleicoes/pgr-pede-que-stf-suspenda-restricoes-do-tse-ao-transporte-de-indigenas-para-votacao",
+     "published_at": "2026-10-24T18:50:50Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/eleicoes/fachin-manda-tse-explicar-decisao-sobre-transporte-de-indigenas-no-2o-turno",
+     "published_at": "2026-10-24T22:02:27Z"
+    }
+   ]
+  },
+  {
+   "id": "stf-poe-oswaldo-eustaquio-no-banco-dos-reus-por-associacao-criminosa-no-8-de",
+   "title": "STF põe Oswaldo Eustáquio no banco dos réus por associação criminosa no 8 de Janeiro",
+   "text": "A Primeira Turma do STF, por unanimidade, tornou réu o blogueiro Oswaldo Eustáquio por associação criminosa. Moraes ressaltou que o recebimento da denúncia não representa conclusão definitiva sobre a responsabilidade criminal de Eustáquio.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/24/primeira-turma-do-stf-torna-oswaldo-eustaquio-reu-por-associacao-criminosa.ghtml",
+     "published_at": "2026-10-24T19:03:53Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/stf-poe-oswaldo-eustaquio-no-banco-dos-reus-por-associacao-criminosa-no-8-de-janeiro",
+     "published_at": "2026-10-24T21:03:11Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/politica/stf-torna-oswaldo-eustaquio-reu-por-associacao-criminosa-no-8-de-janeiro",
+     "published_at": "2026-10-24T21:39:52Z"
+    }
+   ]
+  },
+  {
+   "id": "procuradoria-pede-que-justica-barre-eleicao-de-canella-no-rio-por-relacao-com",
+   "title": "Procuradoria pede que Justiça barre eleição de Canella no Rio por relação com milícias e o CV",
+   "text": "Canella foi preso em julho com um fuzil de uso restrito e mais de R$ 919 mil em dinheiro vivo. Canella não se manifestou sobre o parecer do MPE até a publicação.",
+   "sources": [
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/pge-quer-cassar-candidatura-de-deputado-mais-votado-do-rj-por-elo-com-milicias",
+     "published_at": "2026-10-24T14:31:49Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/mp-pede-que-justica-barre-eleicao-de-canella-no-rio-por-relacao-com-milicias-e-o-cv.shtml",
+     "published_at": "2026-10-24T16:15:00Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "g1",
+   "title": "Ministro do TSE impede Nunes Marques de suspender canal 'Exército do Lula' sem aval do plenário",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/23/ministro-do-tse-barra-nova-suspensao-do-canal-exercito-do-lula.ghtml",
+   "published_at": "2026-10-23T17:57:53Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Campanha de Lula se mobiliza contra possível retirada do canal Exército do Lula do ar; TSE nega ter determinado suspensão",
+   "url": "https://g1.globo.com/politica/blog/natuza-nery/post/2026/10/23/campanha-lula-retirada-canal-exercito-do-lula.ghtml",
+   "published_at": "2026-10-23T15:13:44Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Procuradoria defende manutenção de 'Exército do Lula' após TSE barrar suspensão do canal",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/procuradoria-defende-manutencao-de-exercito-do-lula-apos-tse-barrar-suspensao-do-canal.shtml",
+   "published_at": "2026-10-24T20:29:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Ministério Público Eleitoral se manifesta contra suspensão do 'Exército do Lula'",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/24/ministerio-publico-eleitoral-se-manifesta-contra-suspensao-do-exercito-do-lula.ghtml",
+   "published_at": "2026-10-24T19:53:22Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Gilmar cita imunidade e rejeita queixa de vice de Flávio contra parlamentares que mencionaram acusação de estupro",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/23/gilmar-cita-imunidade-parlamentar-e-rejeita-queixa-de-vice-de-flavio-contra-congressistas-que-mencionaram-acusacao-de-estupro.ghtml",
+   "published_at": "2026-10-23T16:57:57Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Alfredo Gaspar, vice de Flávio Bolsonaro, liderou atos no Nordeste e teve presença discreta nas redes",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/alfredo-gaspar-vice-de-flavio-bolsonaro-liderou-atos-no-nordeste-e-teve-presenca-discreta-nas-redes.shtml",
+   "published_at": "2026-10-24T16:10:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "TSE determina retirada de áudio de Gayer sobre mesários do canal de WhatsApp Tropa do Flávio",
+   "url": "https://estadao.com.br/politica/eleicoes/tse-determina-retirada-de-audio-de-gayer-sobre-mesarios-do-canal-de-whatsapp-tropa-do-flavio-nprp",
+   "published_at": "2026-10-24T11:05:15Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "TSE derruba das redes sociais vídeo que mostra jovens presos com camiseta do PT",
+   "url": "https://g1.globo.com/sp/piracicaba-regiao/eleicoes/2026/noticia/2026/10/23/tse-derruba-das-redes-sociais-video-que-mostra-suspeitos-presos-com-camiseta-do-pt.ghtml",
+   "published_at": "2026-10-23T22:08:27Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Batalhão da PM que deteve jovens com camisetas de Lula atua sem câmeras corporais",
+   "url": "https://www1.folha.uol.com.br/cotidiano/2026/10/batalhao-da-pm-que-deteve-jovens-com-camisetas-de-lula-atua-sem-cameras-corporais.shtml",
+   "published_at": "2026-10-24T12:53:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Cármen Lúcia nega pedido da campanha de Lula para garantir transporte interestadual gratuito no 2º turno",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/23/carmen-lucia-nega-pedido-da-campanha-de-lula-para-garantir-transporte-interestadual-gratuito-no-2o-turno.ghtml",
+   "published_at": "2026-10-23T21:11:58Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Moraes manda bloquear R$ 6 bi de Willer Tomaz e determina que bancos informem dados da empresa Alcazar",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/23/moraes-manda-bloquear-r-6-bi-de-willer-tomaz-e-determina-que-bancos-informem-dados-da-empresa-alcazar.ghtml",
+   "published_at": "2026-10-24T00:09:11Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "TSE mantém no ar site pró-Flávio e manda investigar financiamento",
+   "url": "https://cnnbrasil.com.br/eleicoes/tse-mantem-no-ar-site-pro-flavio-e-manda-investigar-financiamento",
+   "published_at": "2026-10-24T12:49:19Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Barra do Corda afasta secretário por ameaça a eleitores do PT",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/barra-do-corda-afasta-secretario-por-ameaca-eleitores-do-pt",
+   "published_at": "2026-10-23T17:24:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Meta diz que canal 'Exército do Lula' não viola políticas da empresa",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/23/meta-diz-que-canal-exercito-do-lula-nao-viola-politicas-da-empresa.ghtml",
+   "published_at": "2026-10-23T22:48:07Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Meta diz a Kassio não ter encontrado indício de atuação irregular de canal 'Exército do Lula'",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/meta-diz-a-kassio-nao-ter-encontrado-indicio-de-atuacao-irregular-de-canal-exercito-do-lula.shtml",
+   "published_at": "2026-10-23T23:15:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "PGR pede ao STF para derrubar exigência de autorização prévia para transporte de indígenas no 2º turno",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/24/pgr-pede-ao-stf-para-derrubar-exigencia-de-autorizacao-previa-para-transporte-de-indigenas-no-2o-turno.ghtml",
+   "published_at": "2026-10-24T16:47:06Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "PGR pede que STF suspenda restrições do TSE ao transporte de indígenas para votação",
+   "url": "https://estadao.com.br/politica/eleicoes/pgr-pede-que-stf-suspenda-restricoes-do-tse-ao-transporte-de-indigenas-para-votacao",
+   "published_at": "2026-10-24T18:50:50Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Fachin manda TSE explicar decisão sobre transporte de indígenas no 2º turno",
+   "url": "https://cnnbrasil.com.br/eleicoes/fachin-manda-tse-explicar-decisao-sobre-transporte-de-indigenas-no-2o-turno",
+   "published_at": "2026-10-24T22:02:27Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Primeira Turma do STF torna Oswaldo Eustáquio réu por associação criminosa",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/24/primeira-turma-do-stf-torna-oswaldo-eustaquio-reu-por-associacao-criminosa.ghtml",
+   "published_at": "2026-10-24T19:03:53Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "STF põe Oswaldo Eustáquio no banco dos réus por associação criminosa no 8 de Janeiro",
+   "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/stf-poe-oswaldo-eustaquio-no-banco-dos-reus-por-associacao-criminosa-no-8-de-janeiro",
+   "published_at": "2026-10-24T21:03:11Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "STF torna Oswaldo Eustáquio réu por associação criminosa no 8 de janeiro",
+   "url": "https://cnnbrasil.com.br/politica/stf-torna-oswaldo-eustaquio-reu-por-associacao-criminosa-no-8-de-janeiro",
+   "published_at": "2026-10-24T21:39:52Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "PGE quer cassar candidatura de deputado mais votado do RJ por elo com milícias",
+   "url": "https://gazetadopovo.com.br/republica/pge-quer-cassar-candidatura-de-deputado-mais-votado-do-rj-por-elo-com-milicias",
+   "published_at": "2026-10-24T14:31:49Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Procuradoria pede que Justiça barre eleição de Canella no Rio por relação com milícias e o CV",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/mp-pede-que-justica-barre-eleicao-de-canella-no-rio-por-relacao-com-milicias-e-o-cv.shtml",
+   "published_at": "2026-10-24T16:15:00Z"
+  }
+ ],
+ "note": "Informações válidas até o corte das 20:12. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
