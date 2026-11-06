@@ -1,0 +1,558 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-23",
+ "public_title": "FECHAMENTO — 23 de outubro de 2026",
+ "published_at": "2026-10-29T17:28:37Z",
+ "cutoff_at": "2026-10-23T20:58:53-03:00",
+ "context": "Fechamento de 23 de outubro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "Flávio Bolsonaro aceita quebra de sigilo proposta por Lula, e candidatos assinam acordo no TSE",
+    "story": "flavio-bolsonaro-aceita-quebra-de-sigilo-proposta-por-lula-e-candidatos-assinam"
+   },
+   {
+    "text": "TSE dá 24 horas para Meta e X explicarem tratamento das candidaturas de Flávio e Lula nas redes",
+    "story": "tse-da-24-horas-para-meta-e-x-explicarem-tratamento-das-candidaturas-de-flavio"
+   },
+   {
+    "text": "PGR se manifesta contra divulgação de visitas de Vorcaro e mulher de Moraes ao Senado",
+    "story": "pgr-se-manifesta-contra-divulgacao-de-visitas-de-vorcaro-e-mulher-de-moraes-ao"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "flavio-bolsonaro-aceita-quebra-de-sigilo-proposta-por-lula-e-candidatos-assinam",
+   "headline": "Flávio Bolsonaro aceita quebra de sigilo proposta por Lula, e candidatos assinam acordo no TSE",
+   "lead": true,
+   "what_happened": "Lula e Flávio Bolsonaro assinaram um acordo pela quebra mútua dos sigilos bancário, fiscal e telefônico, que também envolve parentes de ambos. Mendonça afirmou que não cabe à corte determinar eventuais quebras de sigilo e que as campanhas podem divulgar os dados que quiserem.",
+   "what_changed": "Alckmin afirmou que Flávio impôs exigências porque \"não quer abrir sigilo nenhum\". O termo apresentado por Camilo Santana autoriza a abertura dos sigilos de Lula e Flávio até as 23h59 de quinta, incluindo familiares e pessoas jurídicas ligadas a eles. Alegação atribuída (Camilo Santana (PT-CE), via Gazeta do Povo), não comprovada: Camilo Santana acusou Flávio Bolsonaro de descumprir o acordo para a abertura voluntária de sigilos bancários, fiscais e telefônicos ao TSE. Alegação atribuída (Camilo Santana), não comprovada: Camilo Santana afirmou que a equipe de Flávio só protocolou procurações que condicionam a autorização a uma decisão judicial do TSE.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "Flávio Bolsonaro aceita quebra de sigilo proposta por Lula, e candidatos assinam acordo no TSE",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/flavio-bolsonaro-aceita-quebra-de-sigilo-proposta-por-lula-e-candidatos-assinam-acordo-no-tse.shtml",
+     "published_at": "2026-10-22T16:32:00Z",
+     "summary": "Lula e Flávio Bolsonaro assinaram um acordo pela quebra mútua dos sigilos bancário, fiscal e telefônico, que também envolve parentes de ambos.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Em São Carlos, Alckmin diz que Flávio Bolsonaro apresentou exigências porque 'não quer abrir sigilo nenhum'",
+     "url": "https://g1.globo.com/sp/sao-carlos-regiao/eleicoes/2026/noticia/2026/10/22/em-sao-carlos-alckmin-diz-que-flavio-bolsonaro-apresentou-exigencias-porque-nao-quer-abrir-sigilo-nenhum.ghtml",
+     "published_at": "2026-10-22T15:38:44Z",
+     "summary": "Alckmin afirmou que Flávio impôs exigências porque \"não quer abrir sigilo nenhum\".",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "title": "Campanha de Lula apresenta acordo com Flávio para abrir sigilos",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/campanha-de-lula-apresenta-acordo-com-flavio-para-abrir-sigilos",
+     "published_at": "2026-10-22T18:33:00Z",
+     "summary": "O termo apresentado por Camilo Santana autoriza a abertura dos sigilos de Lula e Flávio até as 23h59 de quinta, incluindo familiares e pessoas jurídicas ligadas a eles.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Campanha de Lula acusa Flávio Bolsonaro de não abrir sigilos após acordo no TSE",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/campanha-lula-acusa-flavio-bolsonaro-nao-abrir-sigilos-acordo-tse",
+     "published_at": "2026-10-23T17:53:37Z",
+     "summary": "Camilo Santana acusou Flávio Bolsonaro de descumprir o acordo para a abertura voluntária de sigilos bancários, fiscais e telefônicos ao TSE.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:58, é isto que as fontes citadas registram. Alegação atribuída não é prova."
+  },
+  {
+   "id": "tse-da-24-horas-para-meta-e-x-explicarem-tratamento-das-candidaturas-de-flavio",
+   "headline": "TSE dá 24 horas para Meta e X explicarem tratamento das candidaturas de Flávio e Lula nas redes",
+   "lead": false,
+   "what_happened": "O corregedor Ricardo Villas Bôas Cueva deu 24h para Meta e X apresentarem esclarecimentos técnicos sobre sua atuação nas eleições, a pedido da coligação de Lula. Cueva ressaltou que a abertura da apuração não significa reconhecimento da veracidade das alegações.",
+   "what_changed": "O ministro fixou multa diária de R$ 500 mil para cada empresa em caso de descumprimento. Ao X, o ministro exige relatório sobre critérios e filtros da IA Grok em solicitações sobre os candidatos. Alegação atribuída (Coligação de Lula, segundo o Estadão), não comprovada: A coligação de Lula alega abuso de poder econômico e uso indevido dos meios de comunicação social, com suposto favorecimento à chapa de Flávio.",
+   "coverage": [
+    {
+     "outlet": "Estadão",
+     "title": "TSE dá 24 horas para Meta e X explicarem tratamento das candidaturas de Flávio e Lula nas redes",
+     "url": "https://estadao.com.br/politica/eleicoes/tse-da-24-horas-para-meta-e-x-explicarem-tratamento-das-candidaturas-de-flavio-e-lula-nas-redes",
+     "published_at": "2026-10-23T12:11:20Z",
+     "summary": "O corregedor Ricardo Villas Bôas Cueva deu 24h para Meta e X apresentarem esclarecimentos técnicos sobre sua atuação nas eleições, a pedido da coligação de Lula.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Corregedor do TSE manda Meta e X explicarem em 24h suposto favorecimento a Flávio",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/corregedor-do-tse-manda-meta-e-x-explicarem-em-24h-suposto-favorecimento-a-flavio",
+     "published_at": "2026-10-23T02:46:13Z",
+     "summary": "O ministro fixou multa diária de R$ 500 mil para cada empresa em caso de descumprimento.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "title": "TSE dá 24 horas para Meta e X explicarem tratamento dado às campanhas",
+     "url": "https://cnnbrasil.com.br/eleicoes/tse-da-24-horas-para-meta-e-x-explicarem-tratamento-dado-as-campanhas",
+     "published_at": "2026-10-23T11:15:32Z",
+     "summary": "Ao X, o ministro exige relatório sobre critérios e filtros da IA Grok em solicitações sobre os candidatos.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:58, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "pgr-se-manifesta-contra-divulgacao-de-visitas-de-vorcaro-e-mulher-de-moraes-ao",
+   "headline": "PGR se manifesta contra divulgação de visitas de Vorcaro e mulher de Moraes ao Senado",
+   "lead": false,
+   "what_happened": "A PGR se manifestou contra o fornecimento de dados de visitas de Vorcaro e Viviane Barci de Moraes ao Senado. A PGR sustenta que o mandado de segurança não é adequado ao caso.",
+   "what_changed": "A PGR apontou que a negativa partiu do Serviço de Informação ao Cidadão do Senado e não de pessoa com foro no STF, e que o político não comprovou violação de direito individual. O Senado defendeu o veto aos registros comparando-o ao sigilo da fonte jornalística.",
+   "coverage": [
+    {
+     "outlet": "Estadão",
+     "title": "PGR se manifesta contra divulgação de visitas de Vorcaro e mulher de Moraes ao Senado",
+     "url": "https://estadao.com.br/politica/pgr-se-manifesta-contra-divulgacao-de-visitas-de-vorcaro-e-mulher-de-moraes-ao-senado",
+     "published_at": "2026-10-23T00:47:56Z",
+     "summary": "A PGR se manifestou contra o fornecimento de dados de visitas de Vorcaro e Viviane Barci de Moraes ao Senado.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "PGR defende que STF rejeite pedido de acesso a dados de visitas de esposa de Moraes e Vorcaro ao Senado",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/22/pgr-defende-que-stf-rejeite-pedido-de-acesso-a-dados-de-visitas-de-esposa-de-moraes-e-vorcaro-ao-senado.ghtml",
+     "published_at": "2026-10-22T22:58:49Z",
+     "summary": "A PGR apontou que a negativa partiu do Serviço de Informação ao Cidadão do Senado e não de pessoa com foro no STF, e que o político não comprovou violação de direito individual.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "PGR é contra pedido para revelar visitas de Vorcaro, mulher de Moraes e Lulinha ao Senado",
+     "url": "https://gazetadopovo.com.br/republica/pgr-e-contra-pedido-para-revelar-visitas-de-vorcaro-mulher-de-moraes-e-lulinha-ao-senado",
+     "published_at": "2026-10-23T00:06:12Z",
+     "summary": "A solicitação foi indeferida sob a justificativa de que os dados têm caráter pessoal e restrito, com base no Decreto nº 7.724/2012 e na LGPD.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:58, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "campanha-de-lula-recorre-a-mendonca-por-mediacao-do-tse-nas-quebras-de-sigilo",
+   "title": "Campanha de Lula recorre a Mendonça por mediação do TSE nas quebras de sigilo; Flávio entrega autorizações",
+   "text": "A campanha de Lula recorreu a Mendonça para que o TSE faça a mediação da divulgação dos sigilos de Lula e Flávio. Edinho Silva disse que a campanha recorre para que Mendonça cumpra o papel de árbitro e valide as informações.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/22/campanha-de-lula-pede-que-tse-execute-acordo-de-quebra-de-sigilo-com-flavio-bolsonaro-como-um-intermediador.ghtml",
+     "published_at": "2026-10-23T00:21:28Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/campanha-de-lula-recorre-a-mendonca-por-mediacao-do-tse-e-pressiona-flavio-por-quebras-de-sigilo.shtml",
+     "published_at": "2026-10-23T00:50:00Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/lula-pede-a-mendonca-que-faca-mediacao-de-quebras-de-sigilo-dele-e-de-flavio",
+     "published_at": "2026-10-23T01:35:36Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/eleicoes/campanha-de-lula-pede-cassacao-da-candidatura-de-flavio-por-suspeitas-no-caso-dark-horse",
+     "published_at": "2026-10-23T20:30:16Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-eleicoes-2026/flavio-pede-cassacao-de-lula-ao-tse-por-uso-eleitoral-da-radio-nacional",
+     "published_at": "2026-10-23T21:45:13Z"
+    }
+   ]
+  },
+  {
+   "id": "kassio-manda-meta-apresentar-em-24-horas-relatorio-detalhado-sobre-acoes-do",
+   "title": "Kassio manda Meta apresentar em 24 horas relatório detalhado sobre ações do 'Exército do Lula'",
+   "text": "Kassio Nunes Marques determinou que a Meta apresente em até 24 horas um relatório sobre o canal \"Exército do Lula\", administrado por André Janones. Segundo a Folha, o grupo tinha cerca de 8,3 milhões de integrantes.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/kassio-manda-meta-apresentar-em-24-horas-relatorio-detalhado-sobre-acoes-do-exercito-de-lula.shtml",
+     "published_at": "2026-10-22T20:18:00Z"
+    },
+    {
+     "outlet": "Veja",
+     "url": "https://veja.abril.com.br/politica/a-3-dias-da-eleicao-nunes-marques-manda-meta-enviar-dados-sobre-o-canal-exercito-do-lula",
+     "published_at": "2026-10-22T21:00:36Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/juiz-manda-x-remover-postagem-de-erika-hilton-contra-vice-de-flavio",
+     "published_at": "2026-10-23T18:02:49Z"
+    }
+   ]
+  },
+  {
+   "id": "defesa-pede-ao-tse-desvinculacao-do-canal-exercito-do-lula-da-campanha-de-lula",
+   "title": "Defesa pede ao TSE desvinculação do canal 'Exército do Lula' da campanha de Lula",
+   "text": "A defesa de Lula apresentou petição ao TSE pedindo o cancelamento da anotação do canal de WhatsApp \"Exército do Lula\" no registro da candidatura. O canal é coordenado pelo deputado André Janones e tem mais de 8,3 milhões de inscritos.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/22/defesa-pede-ao-tse-desvinculacao-do-canal-exercito-do-lula-da-campanha-de-lula.ghtml",
+     "published_at": "2026-10-22T20:14:01Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/campanha-pede-que-tse-retire-exercito-do-lula-do-registro-de-candidatura-apos-entrada-do-petista",
+     "published_at": "2026-10-23T10:26:00Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-eleicoes-2026/lula-pede-cassacao-do-registro-da-chapa-de-flavio-bolsonaro",
+     "published_at": "2026-10-23T21:20:17Z"
+    }
+   ]
+  },
+  {
+   "id": "tse-da-prazo-de-12-horas-para-meta-explicar-alcance-do-perfil-de-nikolas-no",
+   "title": "TSE dá prazo de 12 horas para Meta explicar alcance do perfil de Nikolas no Instagram",
+   "text": "O TSE deu à Meta prazo de 12 horas para informar sobre a amplificação algorítmica do perfil de Nikolas Ferreira no Instagram, sob multa de R$ 100 mil por hora de atraso. A Meta afirmou que a obtenção dos dados demanda procedimentos de extração e validação técnica, sem indicar prazo certo.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-da-prazo-de-12-horas-para-meta-explicar-alcance-do-perfil-de-nikolas-no-instagram.shtml",
+     "published_at": "2026-10-22T21:49:00Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/tse-da-12h-para-meta-explicar-alcance-de-nikolas-sob-risco-de-multa-de-r-100-mil-por-hora",
+     "published_at": "2026-10-23T03:27:10Z"
+    }
+   ]
+  },
+  {
+   "id": "corregedor-do-tse-nega-pedido-de-flavio-bolsonaro-para-suspender-mensagens-do",
+   "title": "Corregedor do TSE nega pedido de Flávio Bolsonaro para suspender mensagens do governo",
+   "text": "O corregedor Ricardo Villas Bôas Cueva negou o pedido de Flávio Bolsonaro para suspender mensagens em canais oficiais do governo federal. Segundo o ministro, as publicações analisadas não trazem referências a candidaturas ou pedidos de voto.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/22/corregedor-do-tse-nega-pedido-de-flavio-bolsonaro-para-suspender-mensagens-do-governo.ghtml",
+     "published_at": "2026-10-22T18:07:49Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/eleicoes/2026/corregedor-do-tse-nega-pedido-de-flavio-para-suspender-mensagens-do-governo-lula",
+     "published_at": "2026-10-22T21:41:15Z"
+    }
+   ]
+  },
+  {
+   "id": "gilmar-mendes-rejeita-queixa-de-vice-de-flavio-contra-adversarios-que-o",
+   "title": "Gilmar Mendes rejeita queixa de vice de Flávio contra adversários que o acusaram de estupro",
+   "text": "O Estadão relata que Gilmar Mendes rejeitou queixa de calúnia de Alfredo Gaspar contra adversários que o acusaram de estupro. Segundo o Estadão, Mendes escreveu que não compete à Corte atuar como instância ordinária de disciplina do debate político.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/23/gilmar-cita-imunidade-parlamentar-e-rejeita-queixa-de-vice-de-flavio-contra-congressistas-que-mencionaram-acusacao-de-estupro.ghtml",
+     "published_at": "2026-10-23T16:57:57Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/gilmar-reconhece-imunidade-parlamentar-e-rejeita-acao-de-lindbergh-contra-vice-de-flavio",
+     "published_at": "2026-10-23T16:58:12Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/gilmar-mendes-rejeita-queixa-de-vice-de-flavio-contra-adversarios-que-o-acusaram-de-estupro",
+     "published_at": "2026-10-23T19:45:04Z"
+    }
+   ]
+  },
+  {
+   "id": "ministro-do-tse-atende-a-campanha-do-pt-e-impede-suspensao-de-canal-exercito-do",
+   "title": "Ministro do TSE atende a campanha do PT e impede suspensão de canal 'Exército do Lula' às vésperas da eleição",
+   "text": "O g1 relata que Floriano de Azevedo Marques decidiu que o canal Exército do Lula não poderá voltar a ser suspenso por decisão administrativa da Presidência do TSE. O Estadão relata que a decisão estabelece multa diária de R$ 50 mil à Meta em caso de descumprimento.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/blog/natuza-nery/post/2026/10/23/campanha-lula-retirada-canal-exercito-do-lula.ghtml",
+     "published_at": "2026-10-23T15:13:44Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/23/ministro-do-tse-barra-nova-suspensao-do-canal-exercito-do-lula.ghtml",
+     "published_at": "2026-10-23T17:57:53Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/eleicoes/ministro-do-tse-proibe-derrubada-de-exercito-do-lula-por-presidente-do-tribunal",
+     "published_at": "2026-10-23T18:35:02Z"
+    }
+   ]
+  },
+  {
+   "id": "meta-diz-a-kassio-nao-ter-encontrado-indicio-de-atuacao-irregular-de-canal",
+   "title": "Meta diz a Kassio não ter encontrado indício de atuação irregular de canal 'Exército do Lula'",
+   "text": "A Folha relata que a Meta disse a Kassio Nunes Marques não ter encontrado indícios de comportamento inautêntico coordenado ou violação de regras por parte do canal. Segundo a Folha, a Meta pediu mais cinco dias para apresentar resposta complementar, pois há publicações pendentes de verificação.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/23/meta-diz-que-canal-exercito-do-lula-nao-viola-politicas-da-empresa.ghtml",
+     "published_at": "2026-10-23T22:48:07Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/meta-diz-a-kassio-nao-ter-encontrado-indicio-de-atuacao-irregular-de-canal-exercito-do-lula.shtml",
+     "published_at": "2026-10-23T23:15:00Z"
+    }
+   ]
+  },
+  {
+   "id": "secretario-no-maranhao-e-afastado-apos-pedir-prisao-de-petistas-em-audios",
+   "title": "Secretário no Maranhão é afastado após pedir prisão de petistas em áudios",
+   "text": "A CNN relata que o secretário de Segurança de Barra do Corda (MA), James Mota da Silva, foi afastado após virem à tona áudios em que pede a prisão de eleitores e militantes do PT. O prefeito determinou o afastamento até o fim das eleições, por meio de portaria, segundo a matéria.",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/barra-do-corda-afasta-secretario-por-ameaca-eleitores-do-pt",
+     "published_at": "2026-10-23T17:24:00Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/eleicoes/secretario-no-maranhao-e-afastado-apos-pedir-prisao-de-petistas-em-audios",
+     "published_at": "2026-10-23T22:57:26Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "Folha",
+   "title": "Flávio Bolsonaro aceita quebra de sigilo proposta por Lula, e candidatos assinam acordo no TSE",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/flavio-bolsonaro-aceita-quebra-de-sigilo-proposta-por-lula-e-candidatos-assinam-acordo-no-tse.shtml",
+   "published_at": "2026-10-22T16:32:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Em São Carlos, Alckmin diz que Flávio Bolsonaro apresentou exigências porque 'não quer abrir sigilo nenhum'",
+   "url": "https://g1.globo.com/sp/sao-carlos-regiao/eleicoes/2026/noticia/2026/10/22/em-sao-carlos-alckmin-diz-que-flavio-bolsonaro-apresentou-exigencias-porque-nao-quer-abrir-sigilo-nenhum.ghtml",
+   "published_at": "2026-10-22T15:38:44Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Campanha de Lula apresenta acordo com Flávio para abrir sigilos",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/campanha-de-lula-apresenta-acordo-com-flavio-para-abrir-sigilos",
+   "published_at": "2026-10-22T18:33:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Campanha de Lula acusa Flávio Bolsonaro de não abrir sigilos após acordo no TSE",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/campanha-lula-acusa-flavio-bolsonaro-nao-abrir-sigilos-acordo-tse",
+   "published_at": "2026-10-23T17:53:37Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "TSE dá 24 horas para Meta e X explicarem tratamento das candidaturas de Flávio e Lula nas redes",
+   "url": "https://estadao.com.br/politica/eleicoes/tse-da-24-horas-para-meta-e-x-explicarem-tratamento-das-candidaturas-de-flavio-e-lula-nas-redes",
+   "published_at": "2026-10-23T12:11:20Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Corregedor do TSE manda Meta e X explicarem em 24h suposto favorecimento a Flávio",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/corregedor-do-tse-manda-meta-e-x-explicarem-em-24h-suposto-favorecimento-a-flavio",
+   "published_at": "2026-10-23T02:46:13Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "TSE dá 24 horas para Meta e X explicarem tratamento dado às campanhas",
+   "url": "https://cnnbrasil.com.br/eleicoes/tse-da-24-horas-para-meta-e-x-explicarem-tratamento-dado-as-campanhas",
+   "published_at": "2026-10-23T11:15:32Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "PGR se manifesta contra divulgação de visitas de Vorcaro e mulher de Moraes ao Senado",
+   "url": "https://estadao.com.br/politica/pgr-se-manifesta-contra-divulgacao-de-visitas-de-vorcaro-e-mulher-de-moraes-ao-senado",
+   "published_at": "2026-10-23T00:47:56Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "PGR defende que STF rejeite pedido de acesso a dados de visitas de esposa de Moraes e Vorcaro ao Senado",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/22/pgr-defende-que-stf-rejeite-pedido-de-acesso-a-dados-de-visitas-de-esposa-de-moraes-e-vorcaro-ao-senado.ghtml",
+   "published_at": "2026-10-22T22:58:49Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "PGR é contra pedido para revelar visitas de Vorcaro, mulher de Moraes e Lulinha ao Senado",
+   "url": "https://gazetadopovo.com.br/republica/pgr-e-contra-pedido-para-revelar-visitas-de-vorcaro-mulher-de-moraes-e-lulinha-ao-senado",
+   "published_at": "2026-10-23T00:06:12Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Campanha de Lula pede que TSE execute acordo de quebra de sigilo com Flávio Bolsonaro como um intermediador imparcial",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/22/campanha-de-lula-pede-que-tse-execute-acordo-de-quebra-de-sigilo-com-flavio-bolsonaro-como-um-intermediador.ghtml",
+   "published_at": "2026-10-23T00:21:28Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Campanha de Lula recorre a Mendonça por mediação do TSE nas quebras de sigilo; Flávio entrega autorizações",
+   "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/10/campanha-de-lula-recorre-a-mendonca-por-mediacao-do-tse-e-pressiona-flavio-por-quebras-de-sigilo.shtml",
+   "published_at": "2026-10-23T00:50:00Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Lula pede a Mendonça que faça mediação de quebras de sigilo dele e de Flávio",
+   "url": "https://estadao.com.br/politica/lula-pede-a-mendonca-que-faca-mediacao-de-quebras-de-sigilo-dele-e-de-flavio",
+   "published_at": "2026-10-23T01:35:36Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Campanha de Lula pede cassação da candidatura de Flávio por suspeitas no caso ‘Dark Horse’",
+   "url": "https://estadao.com.br/politica/eleicoes/campanha-de-lula-pede-cassacao-da-candidatura-de-flavio-por-suspeitas-no-caso-dark-horse",
+   "published_at": "2026-10-23T20:30:16Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Flávio pede cassação de Lula ao TSE por uso eleitoral da Rádio Nacional",
+   "url": "https://poder360.com.br/poder-eleicoes-2026/flavio-pede-cassacao-de-lula-ao-tse-por-uso-eleitoral-da-radio-nacional",
+   "published_at": "2026-10-23T21:45:13Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Kassio manda Meta apresentar em 24 horas relatório detalhado sobre ações do 'Exército do Lula'",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/kassio-manda-meta-apresentar-em-24-horas-relatorio-detalhado-sobre-acoes-do-exercito-de-lula.shtml",
+   "published_at": "2026-10-22T20:18:00Z"
+  },
+  {
+   "outlet": "Veja",
+   "title": "A 3 dias da eleição, Nunes Marques manda Meta enviar dados sobre o canal ‘Exército do Lula’",
+   "url": "https://veja.abril.com.br/politica/a-3-dias-da-eleicao-nunes-marques-manda-meta-enviar-dados-sobre-o-canal-exercito-do-lula",
+   "published_at": "2026-10-22T21:00:36Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Juiz manda X remover post de Erika sobre acusação contra vice de Flávio",
+   "url": "https://gazetadopovo.com.br/republica/juiz-manda-x-remover-postagem-de-erika-hilton-contra-vice-de-flavio",
+   "published_at": "2026-10-23T18:02:49Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Defesa pede ao TSE desvinculação do canal 'Exército do Lula' da campanha de Lula",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/22/defesa-pede-ao-tse-desvinculacao-do-canal-exercito-do-lula-da-campanha-de-lula.ghtml",
+   "published_at": "2026-10-22T20:14:01Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Campanha pede que TSE retire “Exército do Lula” do registro de candidatura após entrada do petista",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/campanha-pede-que-tse-retire-exercito-do-lula-do-registro-de-candidatura-apos-entrada-do-petista",
+   "published_at": "2026-10-23T10:26:00Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Lula pede cassação da chapa de Flávio por financiamento de “Dark Horse”",
+   "url": "https://poder360.com.br/poder-eleicoes-2026/lula-pede-cassacao-do-registro-da-chapa-de-flavio-bolsonaro",
+   "published_at": "2026-10-23T21:20:17Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "TSE dá prazo de 12 horas para Meta explicar alcance do perfil de Nikolas no Instagram",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-da-prazo-de-12-horas-para-meta-explicar-alcance-do-perfil-de-nikolas-no-instagram.shtml",
+   "published_at": "2026-10-22T21:49:00Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "TSE dá 12h para Meta explicar alcance de Nikolas sob risco de multa de R$ 100 mil por hora",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/tse-da-12h-para-meta-explicar-alcance-de-nikolas-sob-risco-de-multa-de-r-100-mil-por-hora",
+   "published_at": "2026-10-23T03:27:10Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Corregedor do TSE nega pedido de Flávio Bolsonaro para suspender mensagens do governo",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/22/corregedor-do-tse-nega-pedido-de-flavio-bolsonaro-para-suspender-mensagens-do-governo.ghtml",
+   "published_at": "2026-10-22T18:07:49Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Corregedor do TSE nega pedido de Flávio para suspender mensagens do governo Lula",
+   "url": "https://gazetadopovo.com.br/eleicoes/2026/corregedor-do-tse-nega-pedido-de-flavio-para-suspender-mensagens-do-governo-lula",
+   "published_at": "2026-10-22T21:41:15Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Gilmar cita imunidade e rejeita queixa de vice de Flávio contra parlamentares que mencionaram acusação de estupro",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/23/gilmar-cita-imunidade-parlamentar-e-rejeita-queixa-de-vice-de-flavio-contra-congressistas-que-mencionaram-acusacao-de-estupro.ghtml",
+   "published_at": "2026-10-23T16:57:57Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Gilmar reconhece imunidade parlamentar e rejeita ação de Lindbergh contra vice de Flávio",
+   "url": "https://gazetadopovo.com.br/republica/gilmar-reconhece-imunidade-parlamentar-e-rejeita-acao-de-lindbergh-contra-vice-de-flavio",
+   "published_at": "2026-10-23T16:58:12Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Gilmar Mendes rejeita queixa de vice de Flávio contra adversários que o acusaram de estupro",
+   "url": "https://estadao.com.br/politica/gilmar-mendes-rejeita-queixa-de-vice-de-flavio-contra-adversarios-que-o-acusaram-de-estupro",
+   "published_at": "2026-10-23T19:45:04Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Campanha de Lula se mobiliza contra possível retirada do canal Exército do Lula do ar; TSE nega ter determinado suspensão",
+   "url": "https://g1.globo.com/politica/blog/natuza-nery/post/2026/10/23/campanha-lula-retirada-canal-exercito-do-lula.ghtml",
+   "published_at": "2026-10-23T15:13:44Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Ministro do TSE impede Nunes Marques de suspender canal 'Exército do Lula' sem aval do plenário",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/23/ministro-do-tse-barra-nova-suspensao-do-canal-exercito-do-lula.ghtml",
+   "published_at": "2026-10-23T17:57:53Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Ministro do TSE proíbe derrubada de ‘Exército do Lula’ por presidente do tribunal",
+   "url": "https://estadao.com.br/politica/eleicoes/ministro-do-tse-proibe-derrubada-de-exercito-do-lula-por-presidente-do-tribunal",
+   "published_at": "2026-10-23T18:35:02Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Meta diz que canal 'Exército do Lula' não viola políticas da empresa",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/23/meta-diz-que-canal-exercito-do-lula-nao-viola-politicas-da-empresa.ghtml",
+   "published_at": "2026-10-23T22:48:07Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Meta diz a Kassio não ter encontrado indício de atuação irregular de canal 'Exército do Lula'",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/meta-diz-a-kassio-nao-ter-encontrado-indicio-de-atuacao-irregular-de-canal-exercito-do-lula.shtml",
+   "published_at": "2026-10-23T23:15:00Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Barra do Corda afasta secretário por ameaça a eleitores do PT",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/barra-do-corda-afasta-secretario-por-ameaca-eleitores-do-pt",
+   "published_at": "2026-10-23T17:24:00Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Secretário no Maranhão é afastado após pedir prisão de petistas em áudios",
+   "url": "https://cnnbrasil.com.br/eleicoes/secretario-no-maranhao-e-afastado-apos-pedir-prisao-de-petistas-em-audios",
+   "published_at": "2026-10-23T22:57:26Z"
+  }
+ ],
+ "note": "Informações válidas até o corte das 20:58. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
