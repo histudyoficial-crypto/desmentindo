@@ -1,0 +1,66 @@
+{
+ "schema": "desmentindo.public.recent_videos.v1",
+ "date": "2026-10-27",
+ "published_at": "2026-10-29T17:28:37Z",
+ "title": "Vídeos recentes dos canais",
+ "notice": "Publicado pelos canais acompanhados. Ainda não checado pelo Desmentindo: título e conteúdo são dos autores. Aparecer aqui não é confirmação nem ligação com as notícias do dia.",
+ "window": {
+  "days": 3,
+  "from": "2026-10-25",
+  "to": "2026-10-27"
+ },
+ "items": [
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "eJ7IixKkRzM",
+   "title": "Lula quer reeleição de Alcolumbre para blindar Moraes - Alexandre Garcia",
+   "published_at": "2026-10-27T22:34:22Z",
+   "url": "https://www.youtube.com/watch?v=eJ7IixKkRzM",
+   "thumbnail": "https://i.ytimg.com/vi/eJ7IixKkRzM/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-28T00:46:36Z"
+  },
+  {
+   "channel": "Te Atualizei",
+   "channel_id": "UCXRIQok8uzYtg1TPwSqikVg",
+   "video_id": "JYMnoEnGQmE",
+   "title": "O DIA DA CONSEQUÊNCIA E O QUE FAREMOS A PARTIR DE AGORA",
+   "published_at": "2026-10-27T11:10:31Z",
+   "url": "https://www.youtube.com/watch?v=JYMnoEnGQmE",
+   "thumbnail": "https://i.ytimg.com/vi/JYMnoEnGQmE/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-28T00:46:36Z"
+  },
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "W33K46b8-ak",
+   "title": "Lula (re)eleito: o que vai acontecer com o Brasil nos próximos meses? - por Coppolla",
+   "published_at": "2026-10-26T21:18:55Z",
+   "url": "https://www.youtube.com/watch?v=W33K46b8-ak",
+   "thumbnail": "https://i.ytimg.com/vi/W33K46b8-ak/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-27T00:54:00Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "xONbyae0nD0",
+   "title": "Medo de insegurança política, tributária, jurídica - Alexandre Garcia",
+   "published_at": "2026-10-27T17:02:07Z",
+   "url": "https://www.youtube.com/watch?v=xONbyae0nD0",
+   "thumbnail": "https://i.ytimg.com/vi/xONbyae0nD0/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-28T00:46:36Z"
+  }
+ ]
+}
