@@ -1256,3 +1256,29 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
 .fx-arch-none { display: flex; justify-content: space-between; gap: 14px; padding: 12px 0; color: var(--ink-2); font-style: italic; }
 .fx-arch a:focus-visible, .fx-nav a:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
 .fxh-arch { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; font-size: 14px; font-weight: 800; color: inherit; text-underline-offset: 3px; text-decoration: underline; }
+
+/* DES-FIN-03 — Manchetes do fechamento (coluna principal) */
+.fxh-hl { margin-top: 28px; padding-top: 16px; border-top: 2px solid var(--ink); }
+.fxh-hl-k { font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 10px; }
+.fxh-hl-l { list-style: none; margin: 0; padding: 0; }
+.fxh-hl-l li { display: flex; gap: 10px; align-items: baseline; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,.14); }
+.fxh-hl-l a { color: var(--ink); font-weight: 700; font-size: 16px; line-height: 1.3; text-decoration: none; }
+.fxh-hl-l a:hover, .fxh-hl-l a:focus-visible { text-decoration: underline; }
+.fxh-hl-s { flex: none; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; opacity: .7; }
+/* DES-FIN-05 — Âncoras e programas */
+.hm-anc { margin: 32px 0 36px; padding: 24px 32px 28px; background: var(--white); box-shadow: 0 0 0 2px var(--ink); }
+.hm-anc-s { margin: 6px 0 18px; font-size: 14px; max-width: 70ch; }
+.anc-l { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.anc { display: flex; gap: 14px; align-items: flex-start; padding-top: 14px; border-top: 4px solid var(--ink); }
+.anc-tag { flex: none; width: 52px; height: 52px; margin: 0; display: grid; place-items: center; background: var(--ink); color: var(--yellow); font-weight: 900; font-size: 18px; letter-spacing: .04em; }
+.anc-b p { margin: 0 0 6px; }
+.anc-n { font-weight: 900; font-size: 19px; line-height: 1.15; }
+.anc-c, .anc-d { font-size: 13px; opacity: .85; }
+.anc-x a { color: var(--ink); font-size: 14px; font-weight: 700; }
+.anc-go a { color: var(--ink); font-size: 13px; font-weight: 800; }
+@media (max-width: 760px) {
+  .fxh-hl { margin: 22px 0 0; }
+  .fxh-hl-l li:nth-child(n+5) { display: none; }
+  .hm-anc { margin: 20px 16px; padding: 18px 16px; }
+  .anc-l { grid-template-columns: 1fr; gap: 14px; }
+}

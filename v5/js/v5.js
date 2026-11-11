@@ -570,6 +570,16 @@
     return { items: items, note: note };
   }
   function fxHome(F, ref, prev) {
+    // MANCHETES (DES-FIN-03/04): as outras histórias do mesmo FECHAMENTO aprovado, só título e veículo, cada uma levando
+    // ao trecho da edição. Nada novo é escrito; sem "other_stories" no dado, o bloco não aparece.
+    function fxHeadlines(F, fu) {
+      var os = (F.other_stories || []).filter(function (o) { return o && o.id && o.title; }).slice(0, 6);
+      if (!os.length) return "";
+      return '<div class="fxh-hl"><p class="fxh-hl-k">Outras manchetes do fechamento</p><ul class="fxh-hl-l">' + os.map(function (o) {
+        var src = (o.sources || [])[0];
+        return '<li><a href="' + e(fu + "#" + o.id) + '">' + e(o.title) + "</a>" + (src && src.outlet ? '<span class="fxh-hl-s">' + e(src.outlet) + "</span>" : "") + "</li>";
+      }).join("") + "</ul></div>";
+    }
     var fu = "#/fechamento/" + F.edition_date, pts = (F.opening && F.opening.points) || [], cut = fxCut(F);
     var ago = ref ? civilDays(F.edition_date, ref) : 0;
     var cc = fxConclusions(F);
@@ -583,7 +593,8 @@
       }).join("") + "</ol>" : "") + (cc.note ? '<p class="fxh-note">' + e(cc.note) + "</p>" : "") +
       '<div class="fxh-go"><a class="fxh-read" href="' + e(fu) + '">Ler o fechamento <span aria-hidden="true">→</span></a>' +
       '<a class="fxh-arch" href="' + e(fu) + '#edicoes">Edições anteriores</a>' +
-      mandar(SITE + "/fechamento/" + F.edition_date + "/", F.public_title, "Mandar o fechamento de " + dDay(F.edition_date), "mandar-ink") + "</div></div>";
+      mandar(SITE + "/fechamento/" + F.edition_date + "/", F.public_title, "Mandar o fechamento de " + dDay(F.edition_date), "mandar-ink") + "</div>" +
+      fxHeadlines(F, fu) + "</div>";
     var side = cc.items.length ? '<div class="fxh-side"><p class="fxh-sk">O que dá para concluir' + (cut && !fxRetro(F) ? " até " + e(cut) : "") + "</p>" + cc.items.map(function (c, i) {
       return '<div class="fxh-c"><p class="fxh-cn">' + (i + 1) + '</p><p>' + e(c) + "</p></div>";
     }).join("") + "</div>" : "";
@@ -707,6 +718,26 @@
     else txt = "cobertura desconhecida";
     return '<li><b>' + e(a.name) + "</b><span>" + txt + "</span></li>";
   }
+  // ÂNCORAS E PROGRAMAS (DES-FIN-05): os canais do corpus multi-âncora (AG, TA, CC), lidos do dado (archives).
+  // Regra (operations.json editorial_model.anchors_rule): âncora ausente nunca é preenchida; sem placar, ordem do dado,
+  // contagens só de navegação. O trecho mostrado é o mais recente daquele canal entre os já publicados em "Já falaram".
+  var ANCHOR_TAG = { "youtube:alexandre_garcia": "AG", "youtube:te_atualizei": "TA", "youtube:caio_coppolla": "CC" };
+  function anchorsBlock(H) {
+    var arch = ((H && H.archives) || []).filter(function (a) { return a && a.name && ANCHOR_TAG[a.key]; });
+    if (!arch.length) return "";
+    var said = (H && H.said) || [];
+    return '<section class="hm-anc" id="ancoras" aria-labelledby="hm-anc-h"><h2 class="hm-h" id="hm-anc-h">Âncoras e programas</h2>' +
+      '<p class="hm-anc-s">Os canais que o Desmentindo acompanha e guarda na memória. O que eles disseram aparece com data e minuto; não é checagem nem opinião do Desmentindo.</p>' +
+      '<ul class="anc-l">' + arch.map(function (a) {
+        var tag = ANCHOR_TAG[a.key], last = null;
+        said.forEach(function (x) { var it = x && x.item; if (it && it.source_name === a.name && it.date && (!last || last.item.date < it.date)) last = { x: x, item: it }; });
+        var cov = covLine(a).replace(/^<li>|<\/li>$/g, "");
+        return '<li class="anc"><p class="anc-tag" aria-hidden="true">' + tag + '</p><div class="anc-b"><p class="anc-n">' + e(a.name) + '</p><p class="anc-c">' + cov.replace(/^<b>[^<]*<\/b>/, "") + "</p>" +
+          (a.latest && isDay(a.latest) ? '<p class="anc-d">Vídeo mais recente na memória: <time datetime="' + e(a.latest) + '">' + e(dDay(a.latest)) + "</time></p>" : "") +
+          (last ? '<p class="anc-x"><a href="' + e(last.item.deep_link) + '" target="_blank" rel="noopener">' + e(last.x.title) + " · " + e(last.item.t_label || "") + "</a></p>" : "") +
+          '<p class="anc-go"><a href="#/arquivos">Ver na memória <span aria-hidden="true">→</span></a></p></div></li>';
+      }).join("") + "</ul></section>";
+  }
   function memorySearch(H) {
     var arch = (H && H.archives) || [];
     return '<section class="mem" id="pesquise" aria-labelledby="mem-h"><h2 class="mem-h" id="mem-h">Pesquise a memória</h2>' +
@@ -762,7 +793,7 @@
         // referência temporal da memória: edição corrente quando houver; senão o último FECHAMENTO
         // (16/10) sem edição de hoje, sem "N dias antes": a distância contra um FECHAMENTO antigo não diz nada ao leitor
         var ref = A ? A.edition : "";
-        h += '<div class="hm-grid">' + matBlock(mats, MD) + videosBlock(VR, od) + saidBlock(H, TR, ref) + "</div>" + memorySearch(H);
+        h += '<div class="hm-grid">' + matBlock(mats, MD) + videosBlock(VR, od) + saidBlock(H, TR, ref) + "</div>" + anchorsBlock(H) + memorySearch(H);
         return h + '<p class="hm-motto">Notícias passam. O que foi dito fica.</p>';
       });
     });
