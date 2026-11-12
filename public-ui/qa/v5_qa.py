@@ -184,10 +184,12 @@ with sync_playwright() as pw:
         check("V5_HOME_QA", f"{vp_name}:home: placeholder da busca", bool(ph), ph)
         check("V5_HOME_QA", f"{vp_name}:home: seção Já falaram sobre isso presente",
               page.locator("#ja-falaram").count() == 1 and page.locator("#ja-falaram li").count() >= 1, page.locator("#ja-falaram li").count())
-        check("V5_HOME_QA", f"{vp_name}:home: seções na ordem (FECHAMENTO → Investigações → Matérias → Vídeos recentes → Já falaram → Pesquise)",
-              page.evaluate("""() => { const ids = ['#fechamento', '.hm-inv', '#materias', '#videos-recentes', '.hm-said', '#pesquise'];
+        # "Vídeos recentes" só existe dentro da janela de recência (vidItems/VID_MAX_AGE): ausente = fora da janela, não falha.
+        check("V5_HOME_QA", f"{vp_name}:home: seções na ordem (FECHAMENTO → Investigações → Matérias → [Vídeos recentes] → Já falaram → Canais acompanhados → Pesquise)",
+              page.evaluate("""() => { const ids = ['#fechamento', '.hm-inv', '#materias', '#videos-recentes', '.hm-said', '#canais', '#pesquise'], opt = ['#videos-recentes'];
                   const ys = ids.map(s => { const e = document.querySelector(s); return e ? e.getBoundingClientRect().top + scrollY : null; });
-                  return ys.every(y => y !== null) && ys.every((y, i) => i === 0 || y >= ys[i - 1]); }"""))
+                  if (ids.some((s, i) => ys[i] === null && opt.indexOf(s) < 0)) return false;
+                  const got = ys.filter(y => y !== null); return got.every((y, i) => i === 0 || y >= got[i - 1]); }"""))
         noindex = page.get_attribute('meta[name="robots"]', "content")
         check("BOUNDARY", f"{vp_name}:home: noindex", noindex and "noindex" in noindex and "nofollow" in noindex, noindex)
         page.screenshot(path=os.path.join(args.shots, f"home-{vp_name}.png"))

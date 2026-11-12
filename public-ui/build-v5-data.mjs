@@ -379,7 +379,7 @@ const hero = RANKED[0];
 const saidStories = RANKED.filter(s => s.said.length).sort((a, b) => cmp(b.said[0].date, a.said[0].date)).slice(0, 3);
 // A edição editorial NÃO é copiada para v5/data: a v5 lê data/editorial/ direto (DATA ≠ PRESENTATION), assim o
 // PR do Publisher e o código da interface podem entrar em qualquer ordem. Aqui ela só é validada (falha fechada).
-if (EDITORIAL) console.log(`data/editorial: edição ${EDITORIAL.edition} válida (${EDITORIAL.items.length} itens)`);
+if (EDITORIAL) console.log(`data/editorial: AGORA — última edição publicada ${EDITORIAL.edition}, válida (${EDITORIAL.items.length} itens); o FECHAMENTO e as MATÉRIAS têm índices próprios`);
 // Autoridade das miniaturas: data/corpus/thumb_review.json (video_id@slug → SAFE/UNSAFE), lida direto pela v5.
 // Aqui só é validada (falha fechada se malformada). Miniatura ≠ evidência do trecho.
 const THUMB_REVIEW = fs.existsSync(path.join(ROOT, "data/corpus/thumb_review.json")) ? readJSON("data/corpus/thumb_review.json") : { reviews: {} };
@@ -519,6 +519,24 @@ for (const s of STORIES) if (s.key !== EXCLUDE_CASE) { const { key, ...rest } = 
 for (const p of PERSONS) files["arquivo/" + p.slug + ".json"] = personPage(p);
 for (const [k, v] of Object.entries(SHARDS)) files["busca/t/" + k + ".json"] = v;
 CHUNKS.forEach((c, i) => (files["busca/s/" + i + ".json"] = c));
+
+// CANAIS (página por canal acompanhado: AG, TA, CC). Só o dataset público já validado acima (sha256, RIGHTS):
+// data, título, id e duração de cada vídeo indexado, mais quantos trechos dele estão na memória pública. Vídeo indexado
+// não é trecho publicado; nenhum dos dois é checagem. Sem dataset, o canal não ganha página.
+const CANAL_TAG = { "youtube:alexandre_garcia": "ag", "youtube:te_atualizei": "ta", "youtube:caio_coppolla": "cc" };
+for (const { src, data } of [{ src: AG_SRC, data: AG }, ...OTHER]) {
+  const key = src && src.source_id, tag = key && CANAL_TAG[key], arch = archivesPublic.find(a => a.key === key);
+  if (!tag || !arch || !data || !Array.isArray(data.videos)) continue;
+  const range = SEG_SOURCES.find(r => r.key === key), segN = new Map();
+  if (range) for (let i = range.start; i < range.end; i++) segN.set(SEG[i].v, (segN.get(SEG[i].v) || 0) + 1);
+  const videos = data.videos.filter(v => v && /^[\w-]{11}$/.test(v.id) && validDate((v.u || "").slice(0, 10)) && typeof v.t === "string" && v.t.trim())
+    .sort((a, b) => cmp(b.u, a.u) || (b.seq || 0) - (a.seq || 0))
+    .map(v => [(v.u || "").slice(0, 10), v.t.trim(), v.id, Number.isInteger(v.d) && v.d > 0 ? tLabel(v.d) : null, segN.get(v.id) || 0]);
+  files["canais/" + tag + ".json"] = { schema: "desmentindo.public.canal.v1", tag, key, name: arch.name,
+    handle: (data.meta && data.meta.channel_handle) || null,
+    coverage: { available: arch.available, videos_indexed: arch.videos_indexed, videos_total: arch.videos_total, latest: arch.latest },
+    segments_public: range ? range.end - range.start : 0, videos };
+}
 
 // Fronteira: nada interno sai daqui.
 const FORBID = /AUTONOMOUS_TEST_RUN|RV-2026|DS-20\d\d-|EVC-2026|WAITING_REVIEW|HUMAN_REVIEW_QUEUE|review_reason|decision_ref|desmentindo-ops|MORNING_OPEN|LEGACY_PROJECT_MORNING|ANTHROPIC_API_KEY|sk-ant-/;
