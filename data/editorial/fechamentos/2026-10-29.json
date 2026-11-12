@@ -1,0 +1,656 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-29",
+ "public_title": "FECHAMENTO — 29 de outubro de 2026",
+ "published_at": "2026-11-04T15:29:38Z",
+ "cutoff_at": "2026-10-29T20:32:10-03:00",
+ "context": "Fechamento de 29 de outubro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "Flávio Bolsonaro enfrenta isolamento após carta golpista e operação despiste com fuga para os EUA",
+    "story": "flavio-bolsonaro-enfrenta-isolamento-apos-carta-golpista-e-operacao-despiste"
+   },
+   {
+    "text": "Carta de Flávio Bolsonaro mente sobre 'fraude eleitoral' e distorce fatos; veja",
+    "story": "carta-de-flavio-bolsonaro-mente-sobre-fraude-eleitoral-e-distorce-fatos-veja"
+   },
+   {
+    "text": "Fachin arquiva mais cinco investigações ligadas a inquérito das fake news",
+    "story": "fachin-arquiva-mais-cinco-investigacoes-ligadas-a-inquerito-das-fake-news"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "flavio-bolsonaro-enfrenta-isolamento-apos-carta-golpista-e-operacao-despiste",
+   "headline": "Flávio Bolsonaro enfrenta isolamento após carta golpista e operação despiste com fuga para os EUA",
+   "lead": true,
+   "what_happened": "Segundo a Folha, uma carta atribuída a Flávio Bolsonaro, divulgada por aliados, trazia um brasão com a inscrição \"Estados Unidos do Brazil\", substituído em uma segunda versão do documento. A Folha relata que o texto atribuído a Flávio diz: \"Dirijo-me ao povo brasileiro e à comunidade internacional como o verdadeiro presidente eleito do Brasil\".",
+   "what_changed": "Segundo a Folha, na carta são feitas alegações de fraude na eleição sem apresentação de provas e é anunciada a intenção de liderar a oposição do exterior. A Folha relata que, na versão mais recente publicada por Flávio no X, ele deixou de se apresentar como presidente eleito e passou a usar a expressão \"líder do Brasil\". Alegação atribuída (Paulo Figueiredo), não comprovada: Paulo Figueiredo disse que Eduardo Bolsonaro usou o ChatGPT para inserir o brasão no documento e que a ferramenta escolheu o brasão antigo.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "Carta golpista atribuída a Flávio tinha brasão com 'Estados Unidos do Brazil'",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/carta-golpista-em-que-flavio-se-diz-presidente-eleito-tinha-brasao-com-brazil-escrito-com-z.shtml",
+     "published_at": "2026-10-28T20:20:00Z",
+     "summary": "Segundo a Folha, uma carta atribuída a Flávio Bolsonaro, divulgada por aliados, trazia um brasão com a inscrição \"Estados Unidos do Brazil\", substituído em uma segunda versão do documento.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "Valdemar diz não ter gostado de carta golpista de Flávio Bolsonaro, divulgada na chegada aos EUA",
+     "url": "https://estadao.com.br/politica/eleicoes/valdemar-diz-nao-ter-gostado-de-carta-golpista-de-flavio-bolsonaro-divulgada-na-chegada-aos-eua",
+     "published_at": "2026-10-29T12:34:48Z",
+     "summary": "O Estadão relata que Valdemar diz não ter gostado da carta de Flávio Bolsonaro.",
+     "basis": "manchete"
+    },
+    {
+     "outlet": "Folha",
+     "title": "Veja manifestações de autoridades e partidos políticos após carta golpista de Flávio Bolsonaro",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/veja-manifestacoes-de-autoridades-e-partidos-politicos-apos-carta-golpista-de-flavio-bolsonaro.shtml",
+     "published_at": "2026-10-29T20:19:00Z",
+     "summary": "A Folha relata que, sem provas, Flávio Bolsonaro diz que houve fraude no segundo turno das eleições.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Folha",
+     "title": "Aliados de Flávio Bolsonaro culpam ChatGPT por vaivém em versões da carta golpista",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/aliados-de-flavio-bolsonaro-culpam-chatgpt-por-vaivem-em-versoes-da-carta-golpista.shtml",
+     "published_at": "2026-10-29T17:11:00Z",
+     "summary": "Paulo Figueiredo disse que Eduardo Bolsonaro usou o ChatGPT para inserir o brasão no documento e que a ferramenta escolheu o brasão antigo.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:32, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "carta-de-flavio-bolsonaro-mente-sobre-fraude-eleitoral-e-distorce-fatos-veja",
+   "headline": "Carta de Flávio Bolsonaro mente sobre 'fraude eleitoral' e distorce fatos; veja",
+   "lead": false,
+   "what_happened": "A Folha relata que o resultado foi confirmado pelo TSE e que Lula foi eleito com 51,79% dos votos válidos contra 48,21% de Flávio. Segundo a Folha, não há evidências de fraude nas urnas e a alegação de que \"criminosos roubaram a eleição\" não é sustentada em fatos.",
+   "what_changed": "Rogério Marinho disse que nem o PL nem ele podem afirmar que houve fraude, porque não há provas. Marinho disse que a carta definitiva no Twitter/X coloca Flávio como líder e que deve ter havido algum problema na confecção da carta.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "Carta de Flávio Bolsonaro mente sobre 'fraude eleitoral' e distorce fatos; veja",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/carta-de-flavio-bolsonaro-mente-sobre-fraude-eleitoral-e-distorce-fatos-veja.shtml",
+     "published_at": "2026-10-29T00:16:00Z",
+     "summary": "A Folha relata que o resultado foi confirmado pelo TSE e que Lula foi eleito com 51,79% dos votos válidos contra 48,21% de Flávio.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "title": "Coordenador de campanha do PL admite não ter prova de fraude eleitoral",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/coordenador-de-campanha-do-pl-admite-nao-ter-prova-de-fraude-eleitoral",
+     "published_at": "2026-10-28T23:08:00Z",
+     "summary": "Rogério Marinho disse que nem o PL nem ele podem afirmar que houve fraude, porque não há provas.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:32, é isto que as fontes citadas registram. Alegação atribuída não é prova."
+  },
+  {
+   "id": "fachin-arquiva-mais-cinco-investigacoes-ligadas-a-inquerito-das-fake-news",
+   "headline": "Fachin arquiva mais cinco investigações ligadas a inquérito das fake news",
+   "lead": false,
+   "what_happened": "O g1 relata que Fachin determinou o arquivamento de cinco investigações originadas do inquérito das Fake News. Segundo o g1, as decisões foram assinadas na quarta (28) e divulgadas na quinta (29).",
+   "what_changed": "Segundo o STF, citado pelo g1, a determinação atende a manifestações da PGR, que identificou falta de provas em alguns casos e prescrição em outros. O Poder360 relata que, no caso de Gilson Machado, o arquivamento ocorreu por falta de elementos mínimos que comprovassem autoria e existência do crime.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "Fachin determina arquivamento de cinco investigações ligadas ao inquérito das fake news",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/29/fachin-determina-arquivamento-de-cinco-investigacoes-ligadas-ao-inquerito-das-fake-news.ghtml",
+     "published_at": "2026-10-29T13:30:53Z",
+     "summary": "O g1 relata que Fachin determinou o arquivamento de cinco investigações originadas do inquérito das Fake News.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Poder360",
+     "title": "Fachin arquiva mais 5 apurações do inquérito das fake news",
+     "url": "https://poder360.com.br/poder-justica/fachin-arquiva-mais-5-apuracoes-do-inquerito-das-fake-news",
+     "published_at": "2026-10-29T16:55:24Z",
+     "summary": "O Poder360 relata que, no caso de Gilson Machado, o arquivamento ocorreu por falta de elementos mínimos que comprovassem autoria e existência do crime.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Fachin avança contra inquérito das fake news e encerra mais cinco frentes",
+     "url": "https://gazetadopovo.com.br/republica/fachin-arquiva-mais-cinco-investigacoes-do-inquerito-das-fake-news",
+     "published_at": "2026-10-29T14:43:00Z",
+     "summary": "Segundo a Gazeta do Povo, no caso de Flávia Cordeiro Magalhães, Fachin revogou o mandado de prisão preventiva em aberto e retirou as restrições migratórias.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Fachin arquiva investigações no Supremo e encerra frentes do inquérito das fake news",
+     "url": "https://gazetadopovo.com.br/republica/fachin-arquiva-investigacoes-no-supremo-e-encerra-frentes-do-inquerito-das-fake-news",
+     "published_at": "2026-10-29T18:43:54Z",
+     "summary": "A Gazeta relata que Fachin determinou o arquivamento de cinco investigações ligadas ao inquérito das fake news, atendendo a pedidos da PGR.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:32, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "mpt-recebe-3-396-denuncias-de-assedio-eleitoral-no-trabalho-e-supera-eleicoes",
+   "title": "MPT recebe 3.396 denúncias de assédio eleitoral no trabalho e supera eleições de 2022; veja como denunciar",
+   "text": "O g1 relata que o MPT registrou 3.396 denúncias de assédio eleitoral em 2026 até as 10h de quinta-feira (29), superando o total de 2022. A CNN relata 3.529 denúncias até as 13h de quinta-feira (29), acima das 3.373 contadas em 2022.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/trabalho-e-carreira/noticia/2026/10/29/denuncias-de-assedio-eleitoral-no-trabalho-veja-como-denunciar.ghtml",
+     "published_at": "2026-10-29T12:04:22Z"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/denuncias-de-assedio-eleitoral-no-trabalho-disparam-75-apos-2-turno",
+     "published_at": "2026-10-29T15:24:00Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/eleicoes/denuncias-de-assedio-eleitoral-chegam-a-35-mil-em-2026-e-superam-a-de-2022",
+     "published_at": "2026-10-29T16:38:00Z"
+    }
+   ]
+  },
+  {
+   "id": "restricoes-sobre-passaportes-nao-fazem-de-flavio-bolsonaro-foragido-diz-pf",
+   "title": "Restrições sobre passaportes não fazem de Flávio Bolsonaro foragido, diz PF",
+   "text": "A PF afirmou em nota que o descumprimento da entrega de passaportes não torna Flávio Bolsonaro foragido nem autoriza prisão. A PF afirmou que não há registro oficial de saída do parlamentar pelos postos de controle migratório brasileiros.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/restricoes-sobre-passaportes-nao-fazem-de-flavio-bolsonaro-foragido-diz-pf.shtml",
+     "published_at": "2026-10-28T17:43:00Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/flavio-bolsonaro-viaja-para-os-estados-unidos-apos-restricoes-impostas-pelo-stf",
+     "published_at": "2026-10-28T22:05:21Z"
+    }
+   ]
+  },
+  {
+   "id": "proibicao-de-flavio-bolsonaro-deixar-o-pais-era-medida-logica-apos-cancelamento",
+   "title": "Proibição de Flávio Bolsonaro deixar o país era medida lógica após cancelamento do passaporte, diz Moraes",
+   "text": "Moraes afirmou que a proibição de Flávio Bolsonaro deixar o país era consequência lógica e natural do cancelamento e entrega de passaportes, diante do risco concreto de evasão do território nacional. Segundo o g1, Flávio Bolsonaro usou passaporte diplomático cancelado para entrar nos EUA, conforme consulta ao sistema da CBP.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/mundo/noticia/2026/10/28/flavio-bolsonaro-usou-passaporte-diplomatico-cancelado-para-entrar-nos-eua.ghtml",
+     "published_at": "2026-10-28T18:14:55Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/flavio-bolsonaro-embarca-para-os-estados-unidos-com-passaporte-europeu",
+     "published_at": "2026-10-28T18:35:44Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/28/proibicao-de-flavio-bolsonaro-deixar-o-pais-era-medida-logica-apos-cancelamento-do-passaporte-diz-moraes.ghtml",
+     "published_at": "2026-10-28T19:55:26Z"
+    }
+   ]
+  },
+  {
+   "id": "presidente-do-tse-diz-que-entregou-pleito-com-seguranca-e-que-as-eleicoes",
+   "title": "Presidente do TSE diz que entregou pleito com segurança e que as eleições 'transcorreram dentro da mais absoluta normalidade'",
+   "text": "Nunes Marques, presidente do TSE, afirmou em nota que as eleições transcorreram dentro da mais absoluta normalidade. Nunes Marques disse que todos os questionamentos feitos dentro do devido processo legal serão analisados e respondidos.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/28/presidente-do-tse-diz-que-entregou-pleito-com-seguranca-e-que-as-eleicoes-2026-transcorreram-dentro-da-mais-absoluta-normalidade.ghtml",
+     "published_at": "2026-10-28T22:12:33Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/kassio-volta-a-defender-no-tse-resultado-das-eleicoes-sem-citar-carta-golpista-de-flavio-bolsonaro.shtml",
+     "published_at": "2026-10-28T22:37:00Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/apos-carta-de-flavio-nunes-marques-diz-que-eleicoes-ocorreram-em-absoluta-normalidade",
+     "published_at": "2026-10-28T23:27:11Z"
+    }
+   ]
+  },
+  {
+   "id": "flavio-bolsonaro-recebeu-autorizacao-para-ficar-1-ano-nos-eua",
+   "title": "Flávio Bolsonaro recebeu autorização para ficar 1 ano nos EUA",
+   "text": "Segundo consulta ao sistema da CBP, Flávio Bolsonaro recebeu autorização para permanecer 1 ano nos EUA, até 27 de outubro de 2027. O CBP identifica a categoria \"DT\" como \"autorizado a entrar temporariamente\" (Paroled).",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/mundo/noticia/2026/10/28/flavio-bolsonaro-recebeu-autorizacao-para-ficar-1-ano-nos-eua.ghtml",
+     "published_at": "2026-10-28T22:17:30Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/internacional/flavio-e-familia-receberam-autorizacao-para-permanecer-nos-eua-por-um-ano",
+     "published_at": "2026-10-29T14:14:19Z"
+    }
+   ]
+  },
+  {
+   "id": "governo-diz-acompanhar-45-casos-de-violencia-politica-nas-eleicoes-e-promete",
+   "title": "Governo diz acompanhar 45 casos de violência política nas eleições e promete cobrar punições",
+   "text": "O governo federal informou acompanhar 45 casos de violência política registrados desde sábado (24). Segundo Boulos, os episódios deixaram 10 mortos.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/28/governo-diz-acompanhar-45-casos-de-violencia-politica-nas-eleicoes-e-promete-cobrar-punicoes.ghtml",
+     "published_at": "2026-10-28T18:59:07Z"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/governo-reforcara-investigacoes-de-violencia-politica-no-segundo-turno",
+     "published_at": "2026-10-28T20:34:00Z"
+    }
+   ]
+  },
+  {
+   "id": "caso-master-pf-indicia-vorcaro-ex-presidente-do-brb-e-mais-13-em-inquerito",
+   "title": "Caso Master: PF indicia Vorcaro, ex-presidente do BRB e mais 13 em inquérito principal",
+   "text": "A PF enviou ao STF um relatório parcial do principal inquérito do caso Banco Master/BRB, com mais de 700 páginas, indiciando 15 suspeitos. Os delegados pedem prazo adicional de 60 dias para concluir perícias e apresentar relatório complementar.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/df/distrito-federal/noticia/2026/10/28/pf-indiciamentos-vorcaro-master.ghtml",
+     "published_at": "2026-10-28T19:26:49Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/pf-indicia-vorcaro-ex-presidente-do-brb-e-mais-13-no-caso-master",
+     "published_at": "2026-10-29T00:30:40Z"
+    },
+    {
+     "outlet": "Jovem Pan",
+     "url": "https://jovempan.com.br/politica/ex-presidente-do-brb-diz-que-negocio-com-master-foi-ordenado-por-ibaneis-e-vorcaro",
+     "published_at": "2026-10-29T21:36:23Z"
+    }
+   ]
+  },
+  {
+   "id": "policia-federal-investiga-rede-de-apoio-usada-por-flavio-bolsonaro-para-sair-do",
+   "title": "Polícia Federal investiga rede de apoio usada por Flávio Bolsonaro para sair do país",
+   "text": "A PF informou que investiga as circunstâncias da saída de Flávio Bolsonaro do Brasil, apesar de decisão de Moraes que o proibia de deixar o país. Segundo a PF, o senador cruzou a fronteira com a Argentina na terça-feira (27) e embarcou em avião particular para os EUA com a esposa e as duas filhas.",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/pf-investiga-circunstancias-da-fuga-de-flavio-bolsonaro-do-brasil",
+     "published_at": "2026-10-28T19:01:00Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/policia-federal-investiga-rede-de-apoio-usada-por-flavio-bolsonaro-para-sair-do-pais",
+     "published_at": "2026-10-29T05:10:25Z"
+    }
+   ]
+  },
+  {
+   "id": "relogios-e-carros-veja-apreensoes-em-operacao-contra-presidente-do-tce-mt",
+   "title": "Relógios e carros: veja apreensões em operação contra presidente do TCE-MT",
+   "text": "A PF prendeu o presidente do TCE-MT, Sérgio Ricardo de Almeida, na Operação Tomada de Contas, com seis mandados de prisão preventiva e 26 de busca e apreensão. A PF apreendeu mais de 30 relógios de luxo, dois carros de alto padrão e dinheiro em espécie.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/blog/camila-bomfim/post/2026/10/29/imagens-de-circuito-interno-mostram-saques-suspeitos-dentro-do-tribunal-de-contas-do-mt.ghtml",
+     "published_at": "2026-10-29T13:04:07Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/politica/relogios-e-carros-veja-apreensoes-em-operacao-contra-presidente-do-tce-mt",
+     "published_at": "2026-10-29T14:37:40Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/policia-federal-prende-presidente-do-tce-mt-por-suspeita-de-desvio-milionario",
+     "published_at": "2026-10-29T19:35:13Z"
+    }
+   ]
+  },
+  {
+   "id": "meta-e-alvo-de-acao-de-r-50-milhoes-por-posts-que-pregam-demitir-eleitores",
+   "title": "Meta é alvo de ação de R$ 50 milhões por posts que pregam demitir eleitores",
+   "text": "O MPT ajuizou ação civil pública contra a Meta pedindo remoção em até 24 horas de publicações que incentivem vigilância e demissão de funcionários por posicionamento político. O MPT pede R$ 50 milhões de indenização por danos morais coletivos.",
+   "sources": [
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/eleicoes/mpt-processa-meta-em-r-50-milhoes-por-publicacoes-com-assedio-eleitoral",
+     "published_at": "2026-10-29T15:51:08Z"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/mpt-vai-justica-para-que-meta-apague-postagens-de-assedio-eleitoral",
+     "published_at": "2026-10-29T20:01:00Z"
+    },
+    {
+     "outlet": "Jovem Pan",
+     "url": "https://jovempan.com.br/brasil/mpt-pede-indenizacao-de-r-50-mi-a-meta-e-remocao-de-conteudos-de-assedio-eleitoral",
+     "published_at": "2026-10-29T22:15:58Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-eleicoes-2026/mpt-processa-meta-em-r-50-milhoes-por-posts-de-assedio-eleitoral",
+     "published_at": "2026-10-29T22:40:10Z"
+    }
+   ]
+  },
+  {
+   "id": "carta-de-flavio-bolsonaro-tem-ao-menos-4-versoes-com-troca-de-brasao-e-mudancas",
+   "title": "Carta de Flávio Bolsonaro tem ao menos 4 versões, com troca de brasão e mudanças no texto",
+   "text": "A Folha identificou ao menos quatro versões da carta de Flávio Bolsonaro, com troca de brasão e mudanças na forma como ele se apresenta. Um dos PDFs analisados pela Folha traz um brasão com a inscrição \"Estados Unidos do Brazil\" e registra criação às 16h38.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/10/28/ridiculo-ofensa-olhar-para-frente-a-reacao-apos-flavio-fugir-se-dizer-presidente-eleito-apagar-e-falar-que-e-lider-do-brasil.ghtml",
+     "published_at": "2026-10-28T22:51:25Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/carta-de-flavio-bolsonaro-tem-ao-menos-4-versoes-com-troca-de-brasao-e-mudancas-no-texto.shtml",
+     "published_at": "2026-10-28T23:54:00Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/blog/valdo-cruz/post/2026/10/29/eua-pediram-a-flavio-bolsonaro-que-retirasse-de-carta-trecho-em-que-se-dizia-presidente-eleito.ghtml",
+     "published_at": "2026-10-29T15:27:37Z"
+    }
+   ]
+  },
+  {
+   "id": "camara-municipal-de-sp-discute-impeachment-do-prefeito-ricardo-nunes",
+   "title": "Câmara Municipal de SP discute impeachment do prefeito Ricardo Nunes",
+   "text": "Comissão especial da Câmara Municipal de São Paulo analisa o pedido de impeachment do prefeito Ricardo Nunes. Apenas 60% da frota de ônibus foi mantida durante grande parte do dia, o que causou reclamação de eleitores.",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/camara-municipal-de-sp-discute-impeachment-do-prefeito-ricardo-nunes",
+     "published_at": "2026-10-29T15:21:00Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-justica/camara-de-sp-analisa-pedido-de-impeachment-de-ricardo-nunes",
+     "published_at": "2026-10-29T22:22:07Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "Folha",
+   "title": "Carta golpista atribuída a Flávio tinha brasão com 'Estados Unidos do Brazil'",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/carta-golpista-em-que-flavio-se-diz-presidente-eleito-tinha-brasao-com-brazil-escrito-com-z.shtml",
+   "published_at": "2026-10-28T20:20:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Valdemar diz não ter gostado de carta golpista de Flávio Bolsonaro, divulgada na chegada aos EUA",
+   "url": "https://estadao.com.br/politica/eleicoes/valdemar-diz-nao-ter-gostado-de-carta-golpista-de-flavio-bolsonaro-divulgada-na-chegada-aos-eua",
+   "published_at": "2026-10-29T12:34:48Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Veja manifestações de autoridades e partidos políticos após carta golpista de Flávio Bolsonaro",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/veja-manifestacoes-de-autoridades-e-partidos-politicos-apos-carta-golpista-de-flavio-bolsonaro.shtml",
+   "published_at": "2026-10-29T20:19:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Aliados de Flávio Bolsonaro culpam ChatGPT por vaivém em versões da carta golpista",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/aliados-de-flavio-bolsonaro-culpam-chatgpt-por-vaivem-em-versoes-da-carta-golpista.shtml",
+   "published_at": "2026-10-29T17:11:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Carta de Flávio Bolsonaro mente sobre 'fraude eleitoral' e distorce fatos; veja",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/carta-de-flavio-bolsonaro-mente-sobre-fraude-eleitoral-e-distorce-fatos-veja.shtml",
+   "published_at": "2026-10-29T00:16:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Coordenador de campanha do PL admite não ter prova de fraude eleitoral",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/coordenador-de-campanha-do-pl-admite-nao-ter-prova-de-fraude-eleitoral",
+   "published_at": "2026-10-28T23:08:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Fachin determina arquivamento de cinco investigações ligadas ao inquérito das fake news",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/29/fachin-determina-arquivamento-de-cinco-investigacoes-ligadas-ao-inquerito-das-fake-news.ghtml",
+   "published_at": "2026-10-29T13:30:53Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Fachin arquiva mais 5 apurações do inquérito das fake news",
+   "url": "https://poder360.com.br/poder-justica/fachin-arquiva-mais-5-apuracoes-do-inquerito-das-fake-news",
+   "published_at": "2026-10-29T16:55:24Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Fachin avança contra inquérito das fake news e encerra mais cinco frentes",
+   "url": "https://gazetadopovo.com.br/republica/fachin-arquiva-mais-cinco-investigacoes-do-inquerito-das-fake-news",
+   "published_at": "2026-10-29T14:43:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Fachin arquiva investigações no Supremo e encerra frentes do inquérito das fake news",
+   "url": "https://gazetadopovo.com.br/republica/fachin-arquiva-investigacoes-no-supremo-e-encerra-frentes-do-inquerito-das-fake-news",
+   "published_at": "2026-10-29T18:43:54Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "MPT recebe 3.396 denúncias de assédio eleitoral no trabalho e supera eleições de 2022; veja como denunciar",
+   "url": "https://g1.globo.com/trabalho-e-carreira/noticia/2026/10/29/denuncias-de-assedio-eleitoral-no-trabalho-veja-como-denunciar.ghtml",
+   "published_at": "2026-10-29T12:04:22Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Denúncias de assédio eleitoral no trabalho disparam 75% após 2º turno",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/denuncias-de-assedio-eleitoral-no-trabalho-disparam-75-apos-2-turno",
+   "published_at": "2026-10-29T15:24:00Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Denúncias de assédio eleitoral chegam a 3,5 mil em 2026 e superam a de 2022",
+   "url": "https://cnnbrasil.com.br/eleicoes/denuncias-de-assedio-eleitoral-chegam-a-35-mil-em-2026-e-superam-a-de-2022",
+   "published_at": "2026-10-29T16:38:00Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Restrições sobre passaportes não fazem de Flávio Bolsonaro foragido, diz PF",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/restricoes-sobre-passaportes-nao-fazem-de-flavio-bolsonaro-foragido-diz-pf.shtml",
+   "published_at": "2026-10-28T17:43:00Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Flávio Bolsonaro viaja para os Estados Unidos após restrições impostas pelo STF",
+   "url": "https://gazetadopovo.com.br/republica/flavio-bolsonaro-viaja-para-os-estados-unidos-apos-restricoes-impostas-pelo-stf",
+   "published_at": "2026-10-28T22:05:21Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Flávio Bolsonaro usou passaporte diplomático cancelado para entrar nos EUA",
+   "url": "https://g1.globo.com/mundo/noticia/2026/10/28/flavio-bolsonaro-usou-passaporte-diplomatico-cancelado-para-entrar-nos-eua.ghtml",
+   "published_at": "2026-10-28T18:14:55Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Flávio Bolsonaro embarca para os Estados Unidos com passaporte europeu",
+   "url": "https://gazetadopovo.com.br/republica/flavio-bolsonaro-embarca-para-os-estados-unidos-com-passaporte-europeu",
+   "published_at": "2026-10-28T18:35:44Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Proibição de Flávio Bolsonaro deixar o país era medida lógica após cancelamento do passaporte, diz Moraes",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/28/proibicao-de-flavio-bolsonaro-deixar-o-pais-era-medida-logica-apos-cancelamento-do-passaporte-diz-moraes.ghtml",
+   "published_at": "2026-10-28T19:55:26Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Presidente do TSE diz que entregou pleito com segurança e que as eleições 'transcorreram dentro da mais absoluta normalidade'",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/28/presidente-do-tse-diz-que-entregou-pleito-com-seguranca-e-que-as-eleicoes-2026-transcorreram-dentro-da-mais-absoluta-normalidade.ghtml",
+   "published_at": "2026-10-28T22:12:33Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Kassio volta a defender no TSE resultado das eleições sem citar carta golpista de Flávio Bolsonaro",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/kassio-volta-a-defender-no-tse-resultado-das-eleicoes-sem-citar-carta-golpista-de-flavio-bolsonaro.shtml",
+   "published_at": "2026-10-28T22:37:00Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Após carta de Flávio, Nunes Marques diz que eleições ocorreram em “absoluta normalidade”",
+   "url": "https://gazetadopovo.com.br/republica/apos-carta-de-flavio-nunes-marques-diz-que-eleicoes-ocorreram-em-absoluta-normalidade",
+   "published_at": "2026-10-28T23:27:11Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Flávio Bolsonaro recebeu autorização para ficar 1 ano nos EUA",
+   "url": "https://g1.globo.com/mundo/noticia/2026/10/28/flavio-bolsonaro-recebeu-autorizacao-para-ficar-1-ano-nos-eua.ghtml",
+   "published_at": "2026-10-28T22:17:30Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Flávio e família receberam autorização para permanecer nos EUA por um ano",
+   "url": "https://cnnbrasil.com.br/internacional/flavio-e-familia-receberam-autorizacao-para-permanecer-nos-eua-por-um-ano",
+   "published_at": "2026-10-29T14:14:19Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Governo diz acompanhar 45 casos de violência política nas eleições e promete cobrar punições",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/28/governo-diz-acompanhar-45-casos-de-violencia-politica-nas-eleicoes-e-promete-cobrar-punicoes.ghtml",
+   "published_at": "2026-10-28T18:59:07Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Governo reforçará investigações de violência política no segundo turno",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/governo-reforcara-investigacoes-de-violencia-politica-no-segundo-turno",
+   "published_at": "2026-10-28T20:34:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Caso Master: PF indicia Vorcaro, ex-presidente do BRB e mais 13 em inquérito principal",
+   "url": "https://g1.globo.com/df/distrito-federal/noticia/2026/10/28/pf-indiciamentos-vorcaro-master.ghtml",
+   "published_at": "2026-10-28T19:26:49Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "PF indicia Vorcaro, ex-presidente do BRB e mais 13 no caso Master",
+   "url": "https://gazetadopovo.com.br/republica/pf-indicia-vorcaro-ex-presidente-do-brb-e-mais-13-no-caso-master",
+   "published_at": "2026-10-29T00:30:40Z"
+  },
+  {
+   "outlet": "Jovem Pan",
+   "title": "Ex-presidente do BRB diz que negócio com Master foi ordenado por Ibaneis e Vorcaro",
+   "url": "https://jovempan.com.br/politica/ex-presidente-do-brb-diz-que-negocio-com-master-foi-ordenado-por-ibaneis-e-vorcaro",
+   "published_at": "2026-10-29T21:36:23Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "PF investiga circunstâncias da fuga de Flávio Bolsonaro do Brasil",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/pf-investiga-circunstancias-da-fuga-de-flavio-bolsonaro-do-brasil",
+   "published_at": "2026-10-28T19:01:00Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Polícia Federal investiga rede de apoio usada por Flávio Bolsonaro para sair do país",
+   "url": "https://gazetadopovo.com.br/republica/policia-federal-investiga-rede-de-apoio-usada-por-flavio-bolsonaro-para-sair-do-pais",
+   "published_at": "2026-10-29T05:10:25Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Imagens de circuito interno mostram saques suspeitos dentro do Tribunal de Contas do MT",
+   "url": "https://g1.globo.com/politica/blog/camila-bomfim/post/2026/10/29/imagens-de-circuito-interno-mostram-saques-suspeitos-dentro-do-tribunal-de-contas-do-mt.ghtml",
+   "published_at": "2026-10-29T13:04:07Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Relógios e carros: veja apreensões em operação contra presidente do TCE-MT",
+   "url": "https://cnnbrasil.com.br/politica/relogios-e-carros-veja-apreensoes-em-operacao-contra-presidente-do-tce-mt",
+   "published_at": "2026-10-29T14:37:40Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Polícia Federal prende presidente do TCE-MT por suspeita de desvio milionário",
+   "url": "https://gazetadopovo.com.br/republica/policia-federal-prende-presidente-do-tce-mt-por-suspeita-de-desvio-milionario",
+   "published_at": "2026-10-29T19:35:13Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "MPT processa Meta em R$ 50 milhões por publicações com assédio eleitoral",
+   "url": "https://cnnbrasil.com.br/eleicoes/mpt-processa-meta-em-r-50-milhoes-por-publicacoes-com-assedio-eleitoral",
+   "published_at": "2026-10-29T15:51:08Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "MPT vai à Justiça para que Meta apague postagens de assédio eleitoral",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/mpt-vai-justica-para-que-meta-apague-postagens-de-assedio-eleitoral",
+   "published_at": "2026-10-29T20:01:00Z"
+  },
+  {
+   "outlet": "Jovem Pan",
+   "title": "MPT pede indenização de R$ 50 mi a Meta e remoção de conteúdos de assédio eleitoral",
+   "url": "https://jovempan.com.br/brasil/mpt-pede-indenizacao-de-r-50-mi-a-meta-e-remocao-de-conteudos-de-assedio-eleitoral",
+   "published_at": "2026-10-29T22:15:58Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "MPT processa Meta em R$ 50 milhões por posts de assédio eleitoral",
+   "url": "https://poder360.com.br/poder-eleicoes-2026/mpt-processa-meta-em-r-50-milhoes-por-posts-de-assedio-eleitoral",
+   "published_at": "2026-10-29T22:40:10Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "'Ridículo', 'ofensa', 'olhar para frente': a reação após Flávio fugir, se dizer 'presidente eleito', apagar e falar que é 'líder do Brasil'",
+   "url": "https://g1.globo.com/politica/noticia/2026/10/28/ridiculo-ofensa-olhar-para-frente-a-reacao-apos-flavio-fugir-se-dizer-presidente-eleito-apagar-e-falar-que-e-lider-do-brasil.ghtml",
+   "published_at": "2026-10-28T22:51:25Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Carta de Flávio Bolsonaro tem ao menos 4 versões, com troca de brasão e mudanças no texto",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/carta-de-flavio-bolsonaro-tem-ao-menos-4-versoes-com-troca-de-brasao-e-mudancas-no-texto.shtml",
+   "published_at": "2026-10-28T23:54:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "EUA pediram a Flávio Bolsonaro que retirasse de carta trecho em que se dizia ‘presidente eleito’",
+   "url": "https://g1.globo.com/politica/blog/valdo-cruz/post/2026/10/29/eua-pediram-a-flavio-bolsonaro-que-retirasse-de-carta-trecho-em-que-se-dizia-presidente-eleito.ghtml",
+   "published_at": "2026-10-29T15:27:37Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Câmara Municipal de SP discute impeachment do prefeito Ricardo Nunes",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/camara-municipal-de-sp-discute-impeachment-do-prefeito-ricardo-nunes",
+   "published_at": "2026-10-29T15:21:00Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Câmara de SP analisa pedido de impeachment de Ricardo Nunes",
+   "url": "https://poder360.com.br/poder-justica/camara-de-sp-analisa-pedido-de-impeachment-de-ricardo-nunes",
+   "published_at": "2026-10-29T22:22:07Z"
+  }
+ ],
+ "note": "Informações válidas até o corte das 20:32. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
