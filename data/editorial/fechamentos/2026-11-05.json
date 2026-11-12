@@ -1,0 +1,129 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-11-05",
+ "public_title": "FECHAMENTO — 5 de novembro de 2026",
+ "published_at": "2026-11-06T17:27:09Z",
+ "cutoff_at": "2026-11-05T22:09:39-03:00",
+ "context": "Fechamento de 5 de novembro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "BRB pede indenização de R$ 2,2 bilhões por fraudes do Banco Master",
+    "story": "brb-pede-indenizacao-de-r-2-2-bilhoes-por-fraudes-do-banco-master"
+   },
+   {
+    "text": "TSE admite ação contra chapa Lula-Alckmin para apurar abuso de poder político durante as eleições",
+    "story": "tse-admite-acao-contra-chapa-lula-alckmin-para-apurar-abuso-de-poder-politico"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "brb-pede-indenizacao-de-r-2-2-bilhoes-por-fraudes-do-banco-master",
+   "headline": "BRB pede indenização de R$ 2,2 bilhões por fraudes do Banco Master",
+   "lead": true,
+   "what_happened": "O governo do Distrito Federal recorreu ao STF para tentar recuperar R$ 2,2 bilhões bloqueados nas investigações sobre o Banco Master. O Estadão informa que o BRB pede indenização de R$ 2,2 bilhões por fraudes do Banco Master.",
+   "what_changed": "O governo do Distrito Federal pediu ao STF que R$ 2,2 bilhões bloqueados nas contas de Henrique Vorcaro sejam transferidos imediatamente para o BRB. Henrique Vorcaro é um dos investigados na operação Compliance Zero, teve o valor bloqueado por determinação da Justiça e está preso desde maio de 2026. Alegação atribuída (Procuradoria-Geral do DF), não comprovada: A Procuradoria-Geral do DF pede que a quantia seja transferida imediatamente ao BRB. Alegação atribuída (Procuradoria-Geral do DF), não comprovada: A Procuradoria sustenta que a reparação dos danos deve ter prioridade, sem necessidade de aguardar o encerramento do inquérito.",
+   "coverage": [
+    {
+     "outlet": "Jovem Pan",
+     "title": "Governo do DF pede ao STF R$ 2,2 bilhões bloqueados no caso Master",
+     "url": "https://jovempan.com.br/colunistas/bruno-pinheiro/governo-do-df-pede-ao-stf-r-22-bilhoes-bloqueados-no-caso-master",
+     "published_at": "2026-11-05T18:34:08Z",
+     "summary": "O governo do Distrito Federal recorreu ao STF para tentar recuperar R$ 2,2 bilhões bloqueados nas investigações sobre o Banco Master.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "BRB pede indenização de R$ 2,2 bilhões por fraudes do Banco Master",
+     "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/brb-pede-indenizacao-de-r-22-bilhoes-por-fraudes-do-banco-master",
+     "published_at": "2026-11-05T18:26:09Z",
+     "summary": "O Estadão informa que o BRB pede indenização de R$ 2,2 bilhões por fraudes do Banco Master.",
+     "basis": "manchete"
+    },
+    {
+     "outlet": "Poder360",
+     "title": "Governo do DF pede ao STF repasse de R$ 2,2 bi do pai de Vorcaro ao BRB",
+     "url": "https://poder360.com.br/poder-economia/governo-do-df-pede-ao-stf-repasse-de-r-22-bi-do-pai-de-vorcaro-ao-brb",
+     "published_at": "2026-11-06T01:01:30Z",
+     "summary": "O governo do Distrito Federal pediu ao STF que R$ 2,2 bilhões bloqueados nas contas de Henrique Vorcaro sejam transferidos imediatamente para o BRB.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 22:09, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "tse-admite-acao-contra-chapa-lula-alckmin-para-apurar-abuso-de-poder-politico",
+   "headline": "TSE admite ação contra chapa Lula-Alckmin para apurar abuso de poder político durante as eleições",
+   "lead": false,
+   "what_happened": "O corregedor-geral da Justiça Eleitoral, Ricardo Villas Bôas Cueva, determinou o processamento de ação do Novo contra Lula e Alckmin por abuso de poder político, com prazo de cinco dias para defesa. A CNN relata que as alegações do Novo ainda serão examinadas pela Justiça Eleitoral.",
+   "what_changed": "O presidente nacional do Novo, Eduardo Ribeiro, disse em nota que a lei não permite que um governo gaste R$ 100 bilhões para comprar uma eleição. Alegação atribuída (Novo (segundo a CNN)), não comprovada: O Novo afirma que as 35 medidas adotadas em 2026 equivalem em quantidade à soma das medidas semelhantes dos três anos anteriores: 17 em 2023, quatro em 2024 e 14 em 2025. Alegação atribuída (Novo (segundo a CNN)), não comprovada: Segundo a ação do Novo, foram abertos 13 créditos extraordinários relacionados às medidas em 2026, somando aproximadamente R$ 99,7 bilhões.",
+   "coverage": [
+    {
+     "outlet": "CNN Brasil",
+     "title": "TSE aceita ação do Novo contra Lula e Alckmin por abuso de poder político",
+     "url": "https://cnnbrasil.com.br/politica/tse-aceita-acao-do-novo-contra-lula-e-alckmin-por-abuso-de-poder-politico",
+     "published_at": "2026-11-05T22:29:03Z",
+     "summary": "O corregedor-geral da Justiça Eleitoral, Ricardo Villas Bôas Cueva, determinou o processamento de ação do Novo contra Lula e Alckmin por abuso de poder político, com prazo de cinco dias para defesa.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "TSE aceita ação do Novo que pede cassação de Lula e Alckmin por suposto abuso de poder",
+     "url": "https://gazetadopovo.com.br/republica/tse-aceita-acao-do-novo-que-pede-cassacao-de-lula-e-alckmin-por-suposto-abuso-de-poder",
+     "published_at": "2026-11-05T23:49:31Z",
+     "summary": "O presidente nacional do Novo, Eduardo Ribeiro, disse em nota que a lei não permite que um governo gaste R$ 100 bilhões para comprar uma eleição.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 22:09, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "Jovem Pan",
+   "title": "Governo do DF pede ao STF R$ 2,2 bilhões bloqueados no caso Master",
+   "url": "https://jovempan.com.br/colunistas/bruno-pinheiro/governo-do-df-pede-ao-stf-r-22-bilhoes-bloqueados-no-caso-master",
+   "published_at": "2026-11-05T18:34:08Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "BRB pede indenização de R$ 2,2 bilhões por fraudes do Banco Master",
+   "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/brb-pede-indenizacao-de-r-22-bilhoes-por-fraudes-do-banco-master",
+   "published_at": "2026-11-05T18:26:09Z",
+   "basis": "manchete"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Governo do DF pede ao STF repasse de R$ 2,2 bi do pai de Vorcaro ao BRB",
+   "url": "https://poder360.com.br/poder-economia/governo-do-df-pede-ao-stf-repasse-de-r-22-bi-do-pai-de-vorcaro-ao-brb",
+   "published_at": "2026-11-06T01:01:30Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "TSE aceita ação do Novo contra Lula e Alckmin por abuso de poder político",
+   "url": "https://cnnbrasil.com.br/politica/tse-aceita-acao-do-novo-contra-lula-e-alckmin-por-abuso-de-poder-politico",
+   "published_at": "2026-11-05T22:29:03Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "TSE aceita ação do Novo que pede cassação de Lula e Alckmin por suposto abuso de poder",
+   "url": "https://gazetadopovo.com.br/republica/tse-aceita-acao-do-novo-que-pede-cassacao-de-lula-e-alckmin-por-suposto-abuso-de-poder",
+   "published_at": "2026-11-05T23:49:31Z",
+   "basis": "texto da matéria"
+  }
+ ],
+ "note": "Informações válidas até o corte das 22:09. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
