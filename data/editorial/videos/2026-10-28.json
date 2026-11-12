@@ -1,0 +1,79 @@
+{
+ "schema": "desmentindo.public.recent_videos.v1",
+ "date": "2026-10-28",
+ "published_at": "2026-10-29T17:28:37Z",
+ "title": "Vídeos recentes dos canais",
+ "notice": "Publicado pelos canais acompanhados. Ainda não checado pelo Desmentindo: título e conteúdo são dos autores. Aparecer aqui não é confirmação nem ligação com as notícias do dia.",
+ "window": {
+  "days": 3,
+  "from": "2026-10-26",
+  "to": "2026-10-28"
+ },
+ "items": [
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "jAW9JQjMka4",
+   "title": "A semelhança Brasil e Venezuela: entre Flavio e Edmundo Gonzales - Alexandre Garcia",
+   "published_at": "2026-10-28T23:52:24Z",
+   "url": "https://www.youtube.com/watch?v=jAW9JQjMka4",
+   "thumbnail": "https://i.ytimg.com/vi/jAW9JQjMka4/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-29T01:18:08Z"
+  },
+  {
+   "channel": "Te Atualizei",
+   "channel_id": "UCXRIQok8uzYtg1TPwSqikVg",
+   "video_id": "-w1N4_XUO_U",
+   "title": "VENEZUELOU E O MUNDO ASSISTIU - Regime brasileiro falha em fazer mais um refém político",
+   "published_at": "2026-10-28T11:05:14Z",
+   "url": "https://www.youtube.com/watch?v=-w1N4_XUO_U",
+   "thumbnail": "https://i.ytimg.com/vi/-w1N4_XUO_U/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-29T01:18:08Z"
+  },
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "W33K46b8-ak",
+   "title": "Lula (re)eleito: o que vai acontecer com o Brasil nos próximos meses? - por Coppolla",
+   "published_at": "2026-10-26T21:18:55Z",
+   "url": "https://www.youtube.com/watch?v=W33K46b8-ak",
+   "thumbnail": "https://i.ytimg.com/vi/W33K46b8-ak/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-27T00:54:00Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "QKk0w8yMjqY",
+   "title": "O endividamento do governo incha o juro -Alexandre Garcia",
+   "published_at": "2026-10-28T17:20:03Z",
+   "url": "https://www.youtube.com/watch?v=QKk0w8yMjqY",
+   "thumbnail": "https://i.ytimg.com/vi/QKk0w8yMjqY/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-29T01:18:08Z"
+  },
+  {
+   "channel": "Te Atualizei",
+   "channel_id": "UCXRIQok8uzYtg1TPwSqikVg",
+   "video_id": "JYMnoEnGQmE",
+   "title": "O DIA DA CONSEQUÊNCIA E O QUE FAREMOS A PARTIR DE AGORA",
+   "published_at": "2026-10-27T11:10:31Z",
+   "url": "https://www.youtube.com/watch?v=JYMnoEnGQmE",
+   "thumbnail": "https://i.ytimg.com/vi/JYMnoEnGQmE/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-28T00:46:36Z"
+  }
+ ]
+}
