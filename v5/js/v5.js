@@ -88,7 +88,13 @@
   // Leitura engajada (regra estável, documentada em Privacidade): numa página de FECHAMENTO ou MATÉRIA, pelo menos 60 s
   // com a aba visível E rolagem até a metade da página. Conta uma vez por visita à página.
   var ENG_SECONDS = 60, ENG_DEPTH = 0.5, eng = null;
-  function pageKind() { var m = /^#\/(fechamento|materia)\/([^?#/]+)/.exec(location.hash || ""); return m ? { type: m[1], id: decodeURIComponent(m[2]) } : null; }
+  // A página de notícia (#/noticia/<data>/<id>) é uma história de um FECHAMENTO: conta como Fechamento daquela edição.
+  function pageKind() {
+    var h = location.hash || "", m = /^#\/(fechamento|materia)\/([^?#/]+)/.exec(h);
+    if (m) return { type: m[1], id: decodeURIComponent(m[2]) };
+    m = /^#\/noticia\/(\d{4}-\d{2}-\d{2})\/[a-z0-9-]+/.exec(h);
+    return m ? { type: "fechamento", id: m[1] } : null;
+  }
   function engStart() {
     if (eng && eng.iv) clearInterval(eng.iv);
     eng = null;
