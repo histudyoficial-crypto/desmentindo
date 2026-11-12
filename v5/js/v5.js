@@ -623,7 +623,7 @@
   }
   // Trecho compacto: imagem real (revisada) ou pôster editorial + FONTE · DATA + ▶ MINUTO; abaixo, fonte e trecho do arquivo.
   // Toque → player oficial no próprio card, no minuto (a imagem nunca é link externo direto).
-  // CORPUS NA HOME (22/10, só interface): o trecho às vezes começa pelo próprio nome do caso ("Farra dos Guardanapos:
+  // ACERVO NA HOME (22/10, só interface): o trecho às vezes começa pelo próprio nome do caso ("Farra dos Guardanapos:
   // Farra dos Guardanapos: …"); aqui só se evita mostrar o nome duas vezes. O texto do trecho no dado não muda.
   function saidExcerpt(x, story) {
     var t = String(x || ""), n = story && story.title ? story.title + ":" : "";
@@ -718,7 +718,7 @@
     else txt = "cobertura desconhecida";
     return '<li><b>' + e(a.name) + "</b><span>" + txt + "</span></li>";
   }
-  // CANAIS ACOMPANHADOS (as âncoras do corpus multi-âncora: AG, TA, CC), lidos do dado (archives). São fontes acompanhadas,
+  // CANAIS ACOMPANHADOS (as âncoras do acervo multi-âncora: AG, TA, CC), lidos do dado (archives). São fontes acompanhadas,
   // não apresentadores do Desmentindo; sem vínculo nem endosso.
   // Regra (operations.json editorial_model.anchors_rule): âncora ausente nunca é preenchida; sem placar, ordem do dado,
   // contagens só de navegação. O trecho mostrado é o mais recente daquele canal entre os já publicados em "Já falaram".
