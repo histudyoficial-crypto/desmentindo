@@ -1,0 +1,398 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-10-25",
+ "public_title": "FECHAMENTO — 25 de outubro de 2026",
+ "published_at": "2026-10-29T17:28:37Z",
+ "cutoff_at": "2026-10-25T20:18:09-03:00",
+ "context": "Fechamento de 25 de outubro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "PGR pede que STF derrube exigência de autorização prévia para transporte de indígenas no 2º turno",
+    "story": "pgr-pede-que-stf-derrube-exigencia-de-autorizacao-previa-para-transporte-de"
+   },
+   {
+    "text": "Procuradoria defende manutenção de 'Exército do Lula' após TSE barrar suspensão do canal",
+    "story": "procuradoria-defende-manutencao-de-exercito-do-lula-apos-tse-barrar-suspensao"
+   },
+   {
+    "text": "TSE começa a totalizar votos, mesmo com decisão de Zanin, e depois paralisa",
+    "story": "tse-comeca-a-totalizar-votos-mesmo-com-decisao-de-zanin-e-depois-paralisa"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "pgr-pede-que-stf-derrube-exigencia-de-autorizacao-previa-para-transporte-de",
+   "headline": "PGR pede que STF derrube exigência de autorização prévia para transporte de indígenas no 2º turno",
+   "lead": true,
+   "what_happened": "A PGR pediu ao STF que suspendesse parte de decisão do TSE que exige autorização prévia para cada operação de transporte de eleitores indígenas. Nunes Marques reconsiderou decisão de sexta-feira e permitiu o deslocamento neste domingo sem aprovação individual de cada juiz eleitoral.",
+   "what_changed": "Segundo o Estadão, o novo entendimento do TSE veio após o pedido de Gonet ao STF. A decisão do TSE mantém a exigência de autorização da Justiça Eleitoral, mas permite autorizar conjuntos de deslocamentos de uma só vez. Alegação atribuída (PGR, segundo o g1), não comprovada: Segundo a PGR, no primeiro turno a abstenção entre eleitores indígenas foi de 26%, contra média nacional de 20%.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "PGR pede ao STF para derrubar exigência de autorização prévia para transporte de indígenas no 2º turno",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/24/pgr-pede-ao-stf-para-derrubar-exigencia-de-autorizacao-previa-para-transporte-de-indigenas-no-2o-turno.ghtml",
+     "published_at": "2026-10-24T16:47:06Z",
+     "summary": "A PGR pediu ao STF que suspendesse parte de decisão do TSE que exige autorização prévia para cada operação de transporte de eleitores indígenas.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "TSE reconsidera decisão e retira restrições para transporte de indígenas para votação no 2º turno",
+     "url": "https://estadao.com.br/politica/eleicoes/tse-reconsidera-decisao-e-retira-restricoes-para-transporte-de-indigenas-para-votacao-no-2-turno",
+     "published_at": "2026-10-25T10:26:49Z",
+     "summary": "Nunes Marques reconsiderou decisão de sexta-feira e permitiu o deslocamento neste domingo sem aprovação individual de cada juiz eleitoral.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "title": "TSE agiliza aprovação de transporte para indígenas e quilombolas",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tse-agiliza-aprovacao-de-transporte-para-indigenas-e-quilombolas",
+     "published_at": "2026-10-25T12:27:00Z",
+     "summary": "A decisão do TSE mantém a exigência de autorização da Justiça Eleitoral, mas permite autorizar conjuntos de deslocamentos de uma só vez.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:18, é isto que as fontes citadas registram. Alegação atribuída não é prova."
+  },
+  {
+   "id": "procuradoria-defende-manutencao-de-exercito-do-lula-apos-tse-barrar-suspensao",
+   "headline": "Procuradoria defende manutenção de 'Exército do Lula' após TSE barrar suspensão do canal",
+   "lead": false,
+   "what_happened": "A Procuradoria-Geral Eleitoral se manifestou contra a suspensão do canal \"Exército do Lula\". O ministro Floriano de Azevedo Marques atendeu na sexta-feira pedido da campanha de Lula e barrou eventual suspensão do grupo por via administrativa.",
+   "what_changed": "A PGE destacou ser necessário esclarecer como o anúncio pago direcionado ao canal passou pelos mecanismos de verificação da Meta. Alegação atribuída (Procuradoria-Geral Eleitoral, segundo a Folha), não comprovada: Segundo a PGE, ordens contra o canal não são atos de supervisão, mas medidas invasivas que dependem de decisão judicial. Alegação atribuída (Procuradoria-Geral Eleitoral, segundo a Folha), não comprovada: Segundo a PGE, os compartilhamentos simultâneos e o uso de hashtags são permitidos, desde que não tenham finalidade ilícita.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "Ministério Público Eleitoral se manifesta contra suspensão do 'Exército do Lula'",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/24/ministerio-publico-eleitoral-se-manifesta-contra-suspensao-do-exercito-do-lula.ghtml",
+     "published_at": "2026-10-24T19:53:22Z",
+     "summary": "A Procuradoria-Geral Eleitoral se manifestou contra a suspensão do canal \"Exército do Lula\".",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Folha",
+     "title": "Procuradoria defende manutenção de 'Exército do Lula' após TSE barrar suspensão do canal",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/procuradoria-defende-manutencao-de-exercito-do-lula-apos-tse-barrar-suspensao-do-canal.shtml",
+     "published_at": "2026-10-24T20:29:00Z",
+     "summary": "Segundo a PGE, ordens contra o canal não são atos de supervisão, mas medidas invasivas que dependem de decisão judicial.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:18, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "tse-comeca-a-totalizar-votos-mesmo-com-decisao-de-zanin-e-depois-paralisa",
+   "headline": "TSE começa a totalizar votos, mesmo com decisão de Zanin, e depois paralisa",
+   "lead": false,
+   "what_happened": "O g1 relata que o TSE pausou a apuração após Zanin prorrogar a votação até as 19h; na última atualização, das 17h06, 1225 seções haviam sido apuradas. A Folha relata que 1.225 seções, 0,25% do total, tiveram o resultado totalizado antes de a totalização ser paralisada.",
+   "what_changed": "A Agência oficial relata que o TSE informou que a totalização será retomada às 19h. O g1 relata que a decisão de Zanin valia apenas para as urnas que ainda estavam abertas.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "Eleições 2026: apuração dos votos é pausada após Zanin prorrogar tempo de votação até às 19h",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/25/eleicoes-2026-apuracao-dos-votos-e-pausada-apos-zanin-prorrogar-tempo-de-votacao-ate-as-19h.ghtml",
+     "published_at": "2026-10-25T20:25:43Z",
+     "summary": "O g1 relata que o TSE pausou a apuração após Zanin prorrogar a votação até as 19h; na última atualização, das 17h06, 1225 seções haviam sido apuradas.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Folha",
+     "title": "TSE começa a totalizar votos, mesmo com decisão de Zanin, e depois paralisa",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-comeca-a-totalizar-votos-mesmo-com-decisao-de-zanin-e-depois-paralisa.shtml",
+     "published_at": "2026-10-25T21:19:00Z",
+     "summary": "A Folha relata que 1.225 seções, 0,25% do total, tiveram o resultado totalizado antes de a totalização ser paralisada.",
+     "basis": "manchete e resumo"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "title": "TSE diz que contagem dos votos será retomada às 19h",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tse-diz-que-contagem-dos-votos-sera-retomada-19h",
+     "published_at": "2026-10-25T21:48:00Z",
+     "summary": "A Agência oficial relata que o TSE informou que a totalização será retomada às 19h.",
+     "basis": "manchete e resumo"
+    },
+    {
+     "outlet": "g1",
+     "title": "Veja a evolução dos votos na apuração para presidente no 2º turno",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/25/veja-a-evolucao-dos-votos-na-apuracao-para-presidente-no-2o-turno.ghtml",
+     "published_at": "2026-10-25T22:08:10Z",
+     "summary": "O g1 relata que a decisão de Zanin valia apenas para as urnas que ainda estavam abertas.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:18, é isto que as fontes citadas registram. Alegação atribuída não é prova."
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "sptrans-fala-em-desafios-operacionais-para-cumprir-ordem-de-disponibilizar-100",
+   "title": "SPTrans fala em 'desafios operacionais' para cumprir ordem de disponibilizar 100% da frota de ônibus de SP no dia do segundo turno",
+   "text": "A Folha relata que a SPTrans disse ter agido com \"agilidade e transparência\" para cumprir a ordem de disponibilizar 100% da frota. A SPTrans afirmou que a decisão foi comunicada 12 horas antes e que impõe \"desafios operacionais concretos\".",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/sptrans-fala-em-desafios-operacionais-para-cumprir-ordem-de-disponibilizar-100-da-frota-de-onibus-de-sp-no-dia-do-segundo-turno.shtml",
+     "published_at": "2026-10-25T18:03:00Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/10/25/levantamento-aponta-que-71percent-da-frota-de-onibus-circula-pela-cidade-de-sp-neste-domingo-abaixo-dos-100percent-determinados-pela-justica.ghtml",
+     "published_at": "2026-10-25T18:43:52Z"
+    },
+    {
+     "outlet": "UOL",
+     "url": "https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2026/10/25/prefeitura-determinou-ontem-as-concessionarias-colocar-100-da-frota-nas-ruas-no-2-turno.htm",
+     "published_at": "2026-10-25T22:03:00Z"
+    }
+   ]
+  },
+  {
+   "id": "pf-abre-inquerito-sobre-retencao-de-onibus-em-sergipe-e-apuracoes-preliminares",
+   "title": "PF abre inquérito sobre retenção de ônibus em Sergipe e apurações preliminares em SP, AL, PI e BA",
+   "text": "O g1 relata que a PF abriu um inquérito e quatro procedimentos preliminares para investigar a retenção de ônibus em cidades de cinco estados. O delegado Dennis Cali disse que os crimes apurados são embaraçamento do exercício do voto e ocultação de meios de transporte.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/25/pf-abre-inquerito-sobre-retencao-de-onibus-em-sergipe-e-apuracoes-preliminares-em-sp-al-pi-e-ba.ghtml",
+     "published_at": "2026-10-25T21:33:21Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/pf-decide-abrir-investigacoes-sobre-denuncias-de-restricoes-ao-transporte-nas-eleicoes.shtml",
+     "published_at": "2026-10-25T21:53:00Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-eleicoes-2026/pf-abre-inquerito-para-apurar-falta-de-onibus-nas-eleicoes-em-sergipe",
+     "published_at": "2026-10-25T22:58:09Z"
+    }
+   ]
+  },
+  {
+   "id": "zanin-prorroga-votacao-ate-19-horas-em-todo-o-pais-apos-pedido-de-campanha-de",
+   "title": "Zanin prorroga votação até 19 horas em todo o País após pedido de campanha de Lula",
+   "text": "O Estadão relata que Zanin prorrogou até as 19h a votação em todo o território nacional, acatando pedido da chapa de Lula. O Estadão relata que a decisão foi assinada às 17h01, um minuto após o fim da votação.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/zanin-do-stf-estende-ate-as-19h-horario-de-eleicoes-no-brasil.shtml",
+     "published_at": "2026-10-25T20:04:00Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/25/zanin-prorroga-votacao.ghtml",
+     "published_at": "2026-10-25T20:04:48Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/eleicoes/zanin-determina-prorrogacao-da-votacao-ate-19h-em-todo-o-pais",
+     "published_at": "2026-10-25T20:26:32Z"
+    }
+   ]
+  },
+  {
+   "id": "coligacao-de-lula-pede-ao-tse-e-ao-stf-extensao-do-horario-de-votacao-em",
+   "title": "Coligação de Lula pede ao TSE e ao STF extensão do horário de votação em cidades de pelo menos 9 estados, além da Bahia",
+   "text": "A coligação de Lula pediu ao TSE a prorrogação da votação até as 19h em municípios com problemas de transporte público, em pelo menos nove estados. O pedido é desdobramento de outro feito no início da tarde para Salvador, Feira de Santana e Lauro de Freitas.",
+   "sources": [
+    {
+     "outlet": "Veja",
+     "url": "https://veja.abril.com.br/politica/nunes-marque-extensao-da-votacao-na-bahia-sera-analisada-a-seu-tempo",
+     "published_at": "2026-10-25T18:05:00Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/25/coligacao-de-lula-pede-ao-tse-extensao-do-horario-de-votacao-em-pelo-menos-9-estados.ghtml",
+     "published_at": "2026-10-25T18:53:52Z"
+    }
+   ]
+  },
+  {
+   "id": "prorrogacao-do-horario-de-votacao-em-todo-o-pais-e-decisao-inedita-desde-adocao",
+   "title": "Prorrogação do horário de votação em todo o país é decisão inédita desde adoção da urna eletrônica",
+   "text": "A prorrogação determinada por Zanin é inédita ao menos desde 1994, quando o país passou a usar urna eletrônica. Em 2022, Alexandre de Moraes, então presidente do TSE, negou pedido de prorrogação feito pela campanha do PT.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/10/prorrogacao-do-horario-de-votacao-em-todo-o-pais-e-decisao-inedita-desde-adocao-da-urna-eletronica.shtml",
+     "published_at": "2026-10-25T20:43:00Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/eleicoes/zanin-esclarece-que-prorrogacao-da-votacao-ate-19h-sera-apenas-em-secoes-em-que-urna-nao-foi-fechada",
+     "published_at": "2026-10-25T21:45:19Z"
+    }
+   ]
+  },
+  {
+   "id": "policial-militar-e-preso-acusado-de-venda-de-voto-no-estado-do-rio",
+   "title": "Policial militar é preso acusado de venda de voto no estado do Rio",
+   "text": "Um policial militar foi detido em Três Rios tentando fotografar seu voto na cabine, com R$ 114. Uma fiscal do PL foi presa por boca de urna no Largo do Machado.",
+   "sources": [
+    {
+     "outlet": "Agência Brasil",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/policial-militar-e-preso-acusado-de-venda-de-voto-no-estado-do-rio",
+     "published_at": "2026-10-25T20:28:00Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "g1",
+   "title": "PGR pede ao STF para derrubar exigência de autorização prévia para transporte de indígenas no 2º turno",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/24/pgr-pede-ao-stf-para-derrubar-exigencia-de-autorizacao-previa-para-transporte-de-indigenas-no-2o-turno.ghtml",
+   "published_at": "2026-10-24T16:47:06Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "TSE reconsidera decisão e retira restrições para transporte de indígenas para votação no 2º turno",
+   "url": "https://estadao.com.br/politica/eleicoes/tse-reconsidera-decisao-e-retira-restricoes-para-transporte-de-indigenas-para-votacao-no-2-turno",
+   "published_at": "2026-10-25T10:26:49Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "TSE agiliza aprovação de transporte para indígenas e quilombolas",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tse-agiliza-aprovacao-de-transporte-para-indigenas-e-quilombolas",
+   "published_at": "2026-10-25T12:27:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Ministério Público Eleitoral se manifesta contra suspensão do 'Exército do Lula'",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/24/ministerio-publico-eleitoral-se-manifesta-contra-suspensao-do-exercito-do-lula.ghtml",
+   "published_at": "2026-10-24T19:53:22Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Procuradoria defende manutenção de 'Exército do Lula' após TSE barrar suspensão do canal",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/procuradoria-defende-manutencao-de-exercito-do-lula-apos-tse-barrar-suspensao-do-canal.shtml",
+   "published_at": "2026-10-24T20:29:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Eleições 2026: apuração dos votos é pausada após Zanin prorrogar tempo de votação até às 19h",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/25/eleicoes-2026-apuracao-dos-votos-e-pausada-apos-zanin-prorrogar-tempo-de-votacao-ate-as-19h.ghtml",
+   "published_at": "2026-10-25T20:25:43Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "TSE começa a totalizar votos, mesmo com decisão de Zanin, e depois paralisa",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/tse-comeca-a-totalizar-votos-mesmo-com-decisao-de-zanin-e-depois-paralisa.shtml",
+   "published_at": "2026-10-25T21:19:00Z",
+   "basis": "manchete e resumo"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "TSE diz que contagem dos votos será retomada às 19h",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tse-diz-que-contagem-dos-votos-sera-retomada-19h",
+   "published_at": "2026-10-25T21:48:00Z",
+   "basis": "manchete e resumo"
+  },
+  {
+   "outlet": "g1",
+   "title": "Veja a evolução dos votos na apuração para presidente no 2º turno",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/25/veja-a-evolucao-dos-votos-na-apuracao-para-presidente-no-2o-turno.ghtml",
+   "published_at": "2026-10-25T22:08:10Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "SPTrans fala em 'desafios operacionais' para cumprir ordem de disponibilizar 100% da frota de ônibus de SP no dia do segundo turno",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/sptrans-fala-em-desafios-operacionais-para-cumprir-ordem-de-disponibilizar-100-da-frota-de-onibus-de-sp-no-dia-do-segundo-turno.shtml",
+   "published_at": "2026-10-25T18:03:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Levantamento aponta que 71% da frota de ônibus circula pela cidade de SP neste domingo, abaixo dos 100% determinados pela Justiça",
+   "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/10/25/levantamento-aponta-que-71percent-da-frota-de-onibus-circula-pela-cidade-de-sp-neste-domingo-abaixo-dos-100percent-determinados-pela-justica.ghtml",
+   "published_at": "2026-10-25T18:43:52Z"
+  },
+  {
+   "outlet": "UOL",
+   "title": "Prefeitura determinou ontem às concessionárias colocar 100% da frota nas ruas no 2º turno",
+   "url": "https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2026/10/25/prefeitura-determinou-ontem-as-concessionarias-colocar-100-da-frota-nas-ruas-no-2-turno.htm",
+   "published_at": "2026-10-25T22:03:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "PF abre inquérito sobre retenção de ônibus em Sergipe e apurações preliminares em SP, AL, PI e BA",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/25/pf-abre-inquerito-sobre-retencao-de-onibus-em-sergipe-e-apuracoes-preliminares-em-sp-al-pi-e-ba.ghtml",
+   "published_at": "2026-10-25T21:33:21Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "PF decide abrir investigações sobre denúncias de restrições ao transporte nas eleições",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/pf-decide-abrir-investigacoes-sobre-denuncias-de-restricoes-ao-transporte-nas-eleicoes.shtml",
+   "published_at": "2026-10-25T21:53:00Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "PF abre inquérito para apurar falta de ônibus nas eleições em Sergipe",
+   "url": "https://poder360.com.br/poder-eleicoes-2026/pf-abre-inquerito-para-apurar-falta-de-onibus-nas-eleicoes-em-sergipe",
+   "published_at": "2026-10-25T22:58:09Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Cristiano Zanin, do STF, estende até as 19h horário de eleições no Brasil",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/zanin-do-stf-estende-ate-as-19h-horario-de-eleicoes-no-brasil.shtml",
+   "published_at": "2026-10-25T20:04:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Eleições 2026: Zanin prorroga votação em todo o país até as 19h",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/25/zanin-prorroga-votacao.ghtml",
+   "published_at": "2026-10-25T20:04:48Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Zanin determina prorrogação da votação até 19h em todo o País",
+   "url": "https://estadao.com.br/politica/eleicoes/zanin-determina-prorrogacao-da-votacao-ate-19h-em-todo-o-pais",
+   "published_at": "2026-10-25T20:26:32Z"
+  },
+  {
+   "outlet": "Veja",
+   "title": "O comentário de Nunes Marques sobre pedido de extensão da votação na Bahia",
+   "url": "https://veja.abril.com.br/politica/nunes-marque-extensao-da-votacao-na-bahia-sera-analisada-a-seu-tempo",
+   "published_at": "2026-10-25T18:05:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Coligação de Lula pede ao TSE e ao STF extensão do horário de votação em cidades de pelo menos 9 estados, além da Bahia",
+   "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/25/coligacao-de-lula-pede-ao-tse-extensao-do-horario-de-votacao-em-pelo-menos-9-estados.ghtml",
+   "published_at": "2026-10-25T18:53:52Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Prorrogação do horário de votação em todo o país é decisão inédita desde adoção da urna eletrônica",
+   "url": "https://www1.folha.uol.com.br/poder/2026/10/prorrogacao-do-horario-de-votacao-em-todo-o-pais-e-decisao-inedita-desde-adocao-da-urna-eletronica.shtml",
+   "published_at": "2026-10-25T20:43:00Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Zanin esclarece que prorrogação da votação até 19h será apenas em seções em que urna não foi fechada",
+   "url": "https://estadao.com.br/politica/eleicoes/zanin-esclarece-que-prorrogacao-da-votacao-ate-19h-sera-apenas-em-secoes-em-que-urna-nao-foi-fechada",
+   "published_at": "2026-10-25T21:45:19Z"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Policial militar é preso acusado de venda de voto no estado do Rio",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/policial-militar-e-preso-acusado-de-venda-de-voto-no-estado-do-rio",
+   "published_at": "2026-10-25T20:28:00Z"
+  }
+ ],
+ "note": "Informações válidas até o corte das 20:18. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
