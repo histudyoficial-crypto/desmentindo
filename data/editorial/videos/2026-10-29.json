@@ -1,0 +1,66 @@
+{
+ "schema": "desmentindo.public.recent_videos.v1",
+ "date": "2026-10-29",
+ "published_at": "2026-11-04T15:29:38Z",
+ "title": "Vídeos recentes dos canais",
+ "notice": "Publicado pelos canais acompanhados. Ainda não checado pelo Desmentindo: título e conteúdo são dos autores. Aparecer aqui não é confirmação nem ligação com as notícias do dia.",
+ "window": {
+  "days": 3,
+  "from": "2026-10-27",
+  "to": "2026-10-29"
+ },
+ "items": [
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "_iEW41eFjBk",
+   "title": "Evitar perseguição ou evitar impeachment? - Alexandre Garcia",
+   "published_at": "2026-10-29T23:23:02Z",
+   "url": "https://www.youtube.com/watch?v=_iEW41eFjBk",
+   "thumbnail": "https://i.ytimg.com/vi/_iEW41eFjBk/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-30T01:22:42Z"
+  },
+  {
+   "channel": "Te Atualizei",
+   "channel_id": "UCXRIQok8uzYtg1TPwSqikVg",
+   "video_id": "-w1N4_XUO_U",
+   "title": "VENEZUELOU E O MUNDO ASSISTIU - Regime brasileiro falha em fazer mais um refém político",
+   "published_at": "2026-10-28T11:05:14Z",
+   "url": "https://www.youtube.com/watch?v=-w1N4_XUO_U",
+   "thumbnail": "https://i.ytimg.com/vi/-w1N4_XUO_U/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-29T01:18:08Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "jAW9JQjMka4",
+   "title": "A semelhança Brasil e Venezuela: entre Flavio e Edmundo Gonzales - Alexandre Garcia",
+   "published_at": "2026-10-28T23:52:24Z",
+   "url": "https://www.youtube.com/watch?v=jAW9JQjMka4",
+   "thumbnail": "https://i.ytimg.com/vi/jAW9JQjMka4/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-29T01:18:08Z"
+  },
+  {
+   "channel": "Te Atualizei",
+   "channel_id": "UCXRIQok8uzYtg1TPwSqikVg",
+   "video_id": "JYMnoEnGQmE",
+   "title": "O DIA DA CONSEQUÊNCIA E O QUE FAREMOS A PARTIR DE AGORA",
+   "published_at": "2026-10-27T11:10:31Z",
+   "url": "https://www.youtube.com/watch?v=JYMnoEnGQmE",
+   "thumbnail": "https://i.ytimg.com/vi/JYMnoEnGQmE/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-10-28T00:46:36Z"
+  }
+ ]
+}
