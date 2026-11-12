@@ -1,0 +1,514 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-11-06",
+ "public_title": "FECHAMENTO — 6 de novembro de 2026",
+ "published_at": "2026-11-07T17:26:59Z",
+ "cutoff_at": "2026-11-06T21:58:49-03:00",
+ "context": "Fechamento de 6 de novembro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "TSE admite ação contra chapa Lula-Alckmin para apurar abuso de poder político durante as eleições",
+    "story": "tse-admite-acao-contra-chapa-lula-alckmin-para-apurar-abuso-de-poder-politico"
+   },
+   {
+    "text": "Mendonça extingue ação do TSE que discutia quebras de sigilo de Lula e de Flávio Bolsonaro",
+    "story": "mendonca-extingue-acao-do-tse-que-discutia-quebras-de-sigilo-de-lula-e-de"
+   },
+   {
+    "text": "Lula anuncia que editará MP para criar Ministério da Segurança Pública",
+    "story": "lula-anuncia-que-editara-mp-para-criar-ministerio-da-seguranca-publica"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "tse-admite-acao-contra-chapa-lula-alckmin-para-apurar-abuso-de-poder-politico",
+   "headline": "TSE admite ação contra chapa Lula-Alckmin para apurar abuso de poder político durante as eleições",
+   "lead": true,
+   "what_happened": "O corregedor-geral do TSE, Ricardo Villas Bôas Cueva, aceitou a tramitação da ação do Partido Novo contra a chapa Lula-Alckmin e deu prazo de 5 dias para as defesas se manifestarem. Segundo o despacho citado pelo Estadão, a ação é tempestiva por ter sido ajuizada no curso do processo eleitoral, antes da diplomação.",
+   "what_changed": "Caso a ação seja julgada procedente pela maioria dos ministros do TSE, a chapa é cassada e os dois podem ficar inelegíveis por até 8 anos. O corregedor Ricardo Villas Bôas Cueva considerou que o pedido do Novo atende os requisitos legais e abriu prazo de cinco dias para defesa dos investigados. Alegação atribuída (Partido Novo, segundo a Gazeta do Povo), não comprovada: O Novo afirma que o governo editou 35 atos normativos de concessão de benefícios ou de forte apelo popular entre 1º de janeiro e 16 de outubro de 2026, número que igualaria a soma dos três anos anteriores. Alegação atribuída (Eduardo Ribeiro (Novo), segundo o Estadão), não comprovada: Eduardo Ribeiro, presidente do Novo, disse que a lei não permite que um governo gaste R$ 100 bi para comprar uma eleição.",
+   "coverage": [
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "TSE aceita ação do Novo que pede cassação de Lula e Alckmin por suposto abuso de poder",
+     "url": "https://gazetadopovo.com.br/republica/tse-aceita-acao-do-novo-que-pede-cassacao-de-lula-e-alckmin-por-suposto-abuso-de-poder",
+     "published_at": "2026-11-05T23:49:31Z",
+     "summary": "O corregedor-geral do TSE, Ricardo Villas Bôas Cueva, aceitou a tramitação da ação do Partido Novo contra a chapa Lula-Alckmin e deu prazo de 5 dias para as defesas se manifestarem.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "TSE admite denúncia do Novo e instaura ação contra chapa Lula e Alckmin",
+     "url": "https://estadao.com.br/politica/tse-admite-denuncia-do-novo-e-instauracao-acao-contra-chapa-lula-e-alckmin",
+     "published_at": "2026-11-05T22:48:43Z",
+     "summary": "Eduardo Ribeiro, presidente do Novo, disse que a lei não permite que um governo gaste R$ 100 bi para comprar uma eleição.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Folha",
+     "title": "TSE admite ação contra chapa Lula-Alckmin para apurar abuso de poder político durante as eleições",
+     "url": "https://www1.folha.uol.com.br/colunas/painel/2026/11/tse-admite-acao-contra-chapa-lula-alckmin-para-apurar-abuso-de-poder-politico-durante-as-eleicoes.shtml",
+     "published_at": "2026-11-05T20:08:00Z",
+     "summary": "Caso a ação seja julgada procedente pela maioria dos ministros do TSE, a chapa é cassada e os dois podem ficar inelegíveis por até 8 anos.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "TSE admite ação contra Lula e Alckmin. A pergunta é sobre como o País irá tratar o abuso de poder",
+     "url": "https://estadao.com.br/politica/fernando-schuler/tse-admite-acao-contra-lula-e-alckmin-a-pergunta-e-sobre-como-o-pais-ira-tratar-o-abuso-de-poder",
+     "published_at": "2026-11-06T16:15:55Z",
+     "summary": "O corregedor Ricardo Villas Bôas Cueva considerou que o pedido do Novo atende os requisitos legais e abriu prazo de cinco dias para defesa dos investigados.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Partido Novo questiona ações do governo federal no TSE por abuso de poder",
+     "url": "https://gazetadopovo.com.br/republica/partido-novo-questiona-acoes-do-governo-federal-no-tse-por-abuso-de-poder",
+     "published_at": "2026-11-06T22:01:13Z",
+     "summary": "O partido Novo alega que a edição intensiva de decretos e medidas provisórias configurou abuso de poder político para favorecer a chapa Lula-Alckmin.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 21:58, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "mendonca-extingue-acao-do-tse-que-discutia-quebras-de-sigilo-de-lula-e-de",
+   "headline": "Mendonça extingue ação do TSE que discutia quebras de sigilo de Lula e de Flávio Bolsonaro",
+   "lead": false,
+   "what_happened": "O ministro André Mendonça extinguiu na quarta-feira (4) o processo do acordo entre Lula e Flávio Bolsonaro para abertura de sigilos bancário, fiscal e telefônico. A decisão extinguiu o processo sem resolução de mérito após manifestação do Ministério Público Eleitoral.",
+   "what_changed": "Mendonça disse que para divulgar os dados não é necessária decisão judicial e que avaliar a escolha cabe ao eleitor. Mendonça afirmou que a divulgação voluntária de extratos não substitui as investigações conduzidas pelos órgãos competentes.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "Mendonça extingue ação do TSE que discutia quebras de sigilo de Lula e de Flávio Bolsonaro",
+     "url": "https://www1.folha.uol.com.br/poder/2026/11/mendonca-extingue-acao-do-tse-que-discutia-quebras-de-sigilo-de-lula-e-de-flavio-bolsonaro.shtml",
+     "published_at": "2026-11-05T19:35:00Z",
+     "summary": "O ministro André Mendonça extinguiu na quarta-feira (4) o processo do acordo entre Lula e Flávio Bolsonaro para abertura de sigilos bancário, fiscal e telefônico.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Mendonça arquiva ação sobre “guerra dos sigilos” entre Lula e Flávio Bolsonaro",
+     "url": "https://gazetadopovo.com.br/republica/mendonca-arquiva-acao-sobre-guerra-dos-sigilos-entre-lula-e-flavio-bolsonaro",
+     "published_at": "2026-11-05T22:24:46Z",
+     "summary": "A decisão extinguiu o processo sem resolução de mérito após manifestação do Ministério Público Eleitoral.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 21:58, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "lula-anuncia-que-editara-mp-para-criar-ministerio-da-seguranca-publica",
+   "headline": "Lula anuncia que editará MP para criar Ministério da Segurança Pública",
+   "lead": false,
+   "what_happened": "Lula afirmou que vai criar o Ministério da Segurança Pública por meio de Medida Provisória, em live com o deputado André Janones. Lula disse que a primeira discussão sobre o ministério ocorreria no dia seguinte, com reunião com ministros da Casa Civil, Fazenda e Planejamento.",
+   "what_changed": "A PEC da Segurança Pública foi aprovada pelo Senado na terça-feira (3) e ainda precisa ser promulgada pelo Congresso. A MP tem vigência de 60 dias, prorrogados automaticamente por igual período se a votação no Congresso não tiver sido concluída.",
+   "coverage": [
+    {
+     "outlet": "Agência Brasil",
+     "title": "Lula vai criar Ministério da Segurança Pública com Medida Provisória",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-vai-criar-ministerio-da-seguranca-publica-com-medida-provisoria",
+     "published_at": "2026-11-06T00:15:00Z",
+     "summary": "Lula afirmou que vai criar o Ministério da Segurança Pública por meio de Medida Provisória, em live com o deputado André Janones.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "Lula anuncia que editará MP para criar Ministério da Segurança Pública",
+     "url": "https://estadao.com.br/politica/lula-anuncia-que-editara-mp-para-criar-ministerio-da-seguranca-publica",
+     "published_at": "2026-11-05T23:19:11Z",
+     "summary": "Lula disse que a primeira discussão sobre o ministério ocorreria no dia seguinte, com reunião com ministros da Casa Civil, Fazenda e Planejamento.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 21:58, é isto que as fontes citadas registram. Alegação atribuída não é prova."
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "tse-flexibiliza-regra-para-poupar-eleitas-no-ap-em-chapa-com-fraude-a-cota-de",
+   "title": "TSE flexibiliza regra para poupar eleitas no AP em chapa com fraude à cota de gênero, mas adia análise geral",
+   "text": "O TSE decidiu que mulheres que não participaram de fraude à cota de gênero podem manter seus mandatos. O placar foi 6 a 1, vencida a ministra Estela Aranha.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/11/tse-flexibiliza-regra-para-poupar-eleitas-no-ap-em-chapa-com-fraude-a-cota-de-genero-mas-adia-analise-geral.shtml",
+     "published_at": "2026-11-05T16:40:00Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/tse-muda-entendimento-sobre-fraude-a-cota-de-genero-e-mantem-mandato-de-deputada-sem-envolvimento",
+     "published_at": "2026-11-05T16:58:50Z"
+    }
+   ]
+  },
+  {
+   "id": "justica-federal-extingue-acao-contra-bolsonaro-e-a-ex-funcionaria-wal-do-acai",
+   "title": "Justiça Federal extingue ação contra Bolsonaro e a ex-funcionária Wal do Açaí",
+   "text": "A Justiça Federal de Brasília extinguiu a ação de improbidade contra Jair Bolsonaro e Wal do Açaí. O juiz Rodrigo Godoy Mendes afirmou não haver prova cabal de nomeação fictícia, desvio de função, locupletamento ilícito ou lesão efetiva aos cofres públicos.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/df/distrito-federal/noticia/2026/11/06/justica-do-df-rejeita-acao-contra-bolsonaro-e-wal-do-acai-por-funcionaria-fantasma.ghtml",
+     "published_at": "2026-11-06T10:46:31Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/11/justica-federal-extingue-acao-contra-bolsonaro-e-a-ex-funcionaria-wal-do-acai.shtml",
+     "published_at": "2026-11-06T14:12:00Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/justica-federal-barra-acusacao-de-improbidade-contra-jair-bolsonaro-e-wal-do-acai",
+     "published_at": "2026-11-06T19:53:26Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/juiz-nega-acao-de-improbidade-administrativa-movida-contra-bolsonaro-e-wal-do-acai-nprp",
+     "published_at": "2026-11-06T20:15:59Z"
+    }
+   ]
+  },
+  {
+   "id": "justica-autoriza-retorno-de-tres-bets-apos-proibicao-do-governo-lula",
+   "title": "Justiça autoriza retorno de três bets após proibição do governo Lula",
+   "text": "O TRF-3 autorizou a retomada das operações de três casas de aposta da empresa CDA Gaming. A desembargadora considerou que o cancelamento da autorização sem restituição do valor da outorga ou indenização configura um verdadeiro confisco.",
+   "sources": [
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/politica/justica-autoriza-retorno-de-tres-bets-apos-proibicao-do-governo-lula",
+     "published_at": "2026-11-06T14:10:03Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/politica/agu-vai-recorrer-da-decisao-que-liberou-a-volta-de-tres-casas-de-aposta",
+     "published_at": "2026-11-06T14:17:58Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-governo/governo-recorrera-de-decisao-que-liberou-3-bets-no-brasil",
+     "published_at": "2026-11-06T15:02:04Z"
+    },
+    {
+     "outlet": "Jovem Pan",
+     "url": "https://jovempan.com.br/brasil/presidente-do-trf-3-suspende-liminar-e-volta-a-proibir-bets-liberadas",
+     "published_at": "2026-11-06T23:11:49Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/presidente-do-trf-3-suspende-decisao-de-desembargadora-que-liberava-tres-sites-de-apostas",
+     "published_at": "2026-11-06T23:21:39Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/politica/justica-derruba-decisao-que-autorizava-tres-bets-a-voltar-a-funcionar",
+     "published_at": "2026-11-07T00:17:11Z"
+    }
+   ]
+  },
+  {
+   "id": "fachin-consulta-pgr-sobre-soltura-de-vorcaro",
+   "title": "Fachin consulta PGR sobre soltura de Vorcaro",
+   "text": "Fachin determinou que a PGR se manifeste sobre o pedido de soltura de Daniel Vorcaro. Fachin manteve a prisão de Fabiano Zettel, cunhado de Vorcaro.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/11/05/fachin-mantem-prisao-de-cunhado-de-vorcaro-e-pede-manifestacao-da-pgr-sobre-liberdade-de-ex-banqueiro.ghtml",
+     "published_at": "2026-11-05T22:09:38Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/fachin-consulta-pgr-sobre-soltura-de-vorcaro",
+     "published_at": "2026-11-06T03:20:52Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/economia/money/macroeconomia/brb-pede-indenizacao-de-r-22-bilhoes-por-fraudes-do-banco-master",
+     "published_at": "2026-11-06T14:52:06Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/fachin-nega-pedido-de-revisao-de-prisao-preventiva-de-fabiano-zettel-cunhado-de-vorcaro-nprp",
+     "published_at": "2026-11-06T15:42:43Z"
+    }
+   ]
+  },
+  {
+   "id": "fachin-homologa-delacao-de-fundador-da-reag-envolvido-no-caso-do-banco-master",
+   "title": "Fachin homologa delação de fundador da Reag, envolvido no caso do Banco Master",
+   "text": "O presidente do STF, Edson Fachin, homologou a delação premiada de João Carlos Mansur, fundador da Reag. O acordo de delação foi assinado em setembro com a PGR.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/11/06/fachin-homologa-delacao-de-fundador-da-reag-investigado-no-caso-master.ghtml",
+     "published_at": "2026-11-06T20:08:43Z"
+    },
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/fachin-homologa-delacao-de-fundador-da-reag-envolvido-no-caso-do-banco-master",
+     "published_at": "2026-11-06T21:24:35Z"
+    }
+   ]
+  },
+  {
+   "id": "governo-suspende-registro-de-imoveis-de-willer-tomaz-em-angra-dos-reis",
+   "title": "Governo suspende registro de imóveis de Willer Tomaz em Angra dos Reis, incluindo ilha de Richarlison",
+   "text": "A Secretaria de Patrimônio da União suspendeu os registros de quatro imóveis do advogado Willer Tomaz na Ilha Comprida, em Angra dos Reis. A medida atende a uma representação administrativa da deputada Tábata Amaral.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/11/06/governo-suspende-registro-de-imoveis-de-willer-tomaz-em-angra-incluindo-ilha-de-richarlison.ghtml",
+     "published_at": "2026-11-06T22:01:56Z"
+    }
+   ]
+  },
+  {
+   "id": "eu-e-lula-nao-podemos-falar-com-100-de-certeza-quem-foi-eleito-presidente-diz",
+   "title": "Eu e Lula não podemos falar com 100% de certeza quem foi eleito presidente, diz Flávio",
+   "text": "Flávio Bolsonaro disse que nem ele nem Lula podem afirmar com 100% de certeza quem foi eleito presidente. Flávio admite não ter provas de fraudes nas eleições, mas diz que o assunto é proibido de ser investigado no país.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/11/flavio-admite-nao-ter-prova-de-fraude-critica-volta-de-jair-ao-brasil-e-diz-querer-2030-assim-como-tarcisio.shtml",
+     "published_at": "2026-11-06T21:06:00Z"
+    },
+    {
+     "outlet": "Jovem Pan",
+     "url": "https://jovempan.com.br/politica/eu-e-lula-nao-podemos-falar-com-100-de-certeza-quem-foi-eleito-presidente-diz-flavio",
+     "published_at": "2026-11-06T23:26:47Z"
+    }
+   ]
+  },
+  {
+   "id": "meta-diz-ao-tse-que-nao-houve-vies-na-distribuicao-de-conteudo-na-campanha",
+   "title": "Meta diz ao TSE que não houve viés na distribuição de conteúdo na campanha eleitoral",
+   "text": "A Meta diz ao TSE que não houve viés na distribuição de conteúdo para favorecer a candidatura de Flávio Bolsonaro. A Meta afirmou ao TSE que as contas de Lula alcançaram aproximadamente 1,5 vez mais pessoas que as de Flávio no Instagram durante a campanha.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/colunas/painel/2026/11/meta-diz-ao-tse-que-nao-houve-vies-na-distribuicao-de-conteudo-na-campanha-eleitoral.shtml",
+     "published_at": "2026-11-06T18:59:00Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-justica/meta-diz-ao-tse-que-lula-alcancou-15-vez-mais-pessoas-que-flavio",
+     "published_at": "2026-11-06T23:08:47Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "TSE aceita ação do Novo que pede cassação de Lula e Alckmin por suposto abuso de poder",
+   "url": "https://gazetadopovo.com.br/republica/tse-aceita-acao-do-novo-que-pede-cassacao-de-lula-e-alckmin-por-suposto-abuso-de-poder",
+   "published_at": "2026-11-05T23:49:31Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "TSE admite denúncia do Novo e instaura ação contra chapa Lula e Alckmin",
+   "url": "https://estadao.com.br/politica/tse-admite-denuncia-do-novo-e-instauracao-acao-contra-chapa-lula-e-alckmin",
+   "published_at": "2026-11-05T22:48:43Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "TSE admite ação contra chapa Lula-Alckmin para apurar abuso de poder político durante as eleições",
+   "url": "https://www1.folha.uol.com.br/colunas/painel/2026/11/tse-admite-acao-contra-chapa-lula-alckmin-para-apurar-abuso-de-poder-politico-durante-as-eleicoes.shtml",
+   "published_at": "2026-11-05T20:08:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "TSE admite ação contra Lula e Alckmin. A pergunta é sobre como o País irá tratar o abuso de poder",
+   "url": "https://estadao.com.br/politica/fernando-schuler/tse-admite-acao-contra-lula-e-alckmin-a-pergunta-e-sobre-como-o-pais-ira-tratar-o-abuso-de-poder",
+   "published_at": "2026-11-06T16:15:55Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Partido Novo questiona ações do governo federal no TSE por abuso de poder",
+   "url": "https://gazetadopovo.com.br/republica/partido-novo-questiona-acoes-do-governo-federal-no-tse-por-abuso-de-poder",
+   "published_at": "2026-11-06T22:01:13Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Mendonça extingue ação do TSE que discutia quebras de sigilo de Lula e de Flávio Bolsonaro",
+   "url": "https://www1.folha.uol.com.br/poder/2026/11/mendonca-extingue-acao-do-tse-que-discutia-quebras-de-sigilo-de-lula-e-de-flavio-bolsonaro.shtml",
+   "published_at": "2026-11-05T19:35:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Mendonça arquiva ação sobre “guerra dos sigilos” entre Lula e Flávio Bolsonaro",
+   "url": "https://gazetadopovo.com.br/republica/mendonca-arquiva-acao-sobre-guerra-dos-sigilos-entre-lula-e-flavio-bolsonaro",
+   "published_at": "2026-11-05T22:24:46Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "Lula vai criar Ministério da Segurança Pública com Medida Provisória",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-vai-criar-ministerio-da-seguranca-publica-com-medida-provisoria",
+   "published_at": "2026-11-06T00:15:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Lula anuncia que editará MP para criar Ministério da Segurança Pública",
+   "url": "https://estadao.com.br/politica/lula-anuncia-que-editara-mp-para-criar-ministerio-da-seguranca-publica",
+   "published_at": "2026-11-05T23:19:11Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "TSE flexibiliza regra para poupar eleitas no AP em chapa com fraude à cota de gênero, mas adia análise geral",
+   "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/11/tse-flexibiliza-regra-para-poupar-eleitas-no-ap-em-chapa-com-fraude-a-cota-de-genero-mas-adia-analise-geral.shtml",
+   "published_at": "2026-11-05T16:40:00Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "TSE muda entendimento sobre fraude à cota de gênero e mantém mandato de deputada sem envolvimento",
+   "url": "https://gazetadopovo.com.br/republica/tse-muda-entendimento-sobre-fraude-a-cota-de-genero-e-mantem-mandato-de-deputada-sem-envolvimento",
+   "published_at": "2026-11-05T16:58:50Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Justiça do DF rejeita ação contra Bolsonaro e Wal do Açaí por funcionária fantasma",
+   "url": "https://g1.globo.com/df/distrito-federal/noticia/2026/11/06/justica-do-df-rejeita-acao-contra-bolsonaro-e-wal-do-acai-por-funcionaria-fantasma.ghtml",
+   "published_at": "2026-11-06T10:46:31Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Justiça Federal extingue ação contra Bolsonaro e a ex-funcionária Wal do Açaí",
+   "url": "https://www1.folha.uol.com.br/poder/2026/11/justica-federal-extingue-acao-contra-bolsonaro-e-a-ex-funcionaria-wal-do-acai.shtml",
+   "published_at": "2026-11-06T14:12:00Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Justiça Federal barra acusação de improbidade contra Jair Bolsonaro e Wal do Açaí",
+   "url": "https://gazetadopovo.com.br/republica/justica-federal-barra-acusacao-de-improbidade-contra-jair-bolsonaro-e-wal-do-acai",
+   "published_at": "2026-11-06T19:53:26Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Juiz rejeita ação de improbidade administrativa movida contra Bolsonaro e ‘Wal do Açaí’",
+   "url": "https://estadao.com.br/politica/juiz-nega-acao-de-improbidade-administrativa-movida-contra-bolsonaro-e-wal-do-acai-nprp",
+   "published_at": "2026-11-06T20:15:59Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Justiça autoriza retorno de três bets após proibição do governo Lula",
+   "url": "https://cnnbrasil.com.br/politica/justica-autoriza-retorno-de-tres-bets-apos-proibicao-do-governo-lula",
+   "published_at": "2026-11-06T14:10:03Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "AGU vai recorrer da decisão que liberou a volta de três casas de aposta",
+   "url": "https://cnnbrasil.com.br/politica/agu-vai-recorrer-da-decisao-que-liberou-a-volta-de-tres-casas-de-aposta",
+   "published_at": "2026-11-06T14:17:58Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Governo recorrerá de decisão que liberou 3 bets no Brasil",
+   "url": "https://poder360.com.br/poder-governo/governo-recorrera-de-decisao-que-liberou-3-bets-no-brasil",
+   "published_at": "2026-11-06T15:02:04Z"
+  },
+  {
+   "outlet": "Jovem Pan",
+   "title": "Presidente do TRF-3 suspende liminar e volta a proibir bets liberadas",
+   "url": "https://jovempan.com.br/brasil/presidente-do-trf-3-suspende-liminar-e-volta-a-proibir-bets-liberadas",
+   "published_at": "2026-11-06T23:11:49Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Presidente do TRF-3 suspende decisão de desembargadora que liberava três sites de apostas",
+   "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/presidente-do-trf-3-suspende-decisao-de-desembargadora-que-liberava-tres-sites-de-apostas",
+   "published_at": "2026-11-06T23:21:39Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Justiça derruba decisão que autorizava três bets a voltar a funcionar",
+   "url": "https://cnnbrasil.com.br/politica/justica-derruba-decisao-que-autorizava-tres-bets-a-voltar-a-funcionar",
+   "published_at": "2026-11-07T00:17:11Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Fachin mantém prisão de cunhado de Vorcaro e pede manifestação da PGR sobre liberdade de ex-banqueiro",
+   "url": "https://g1.globo.com/politica/noticia/2026/11/05/fachin-mantem-prisao-de-cunhado-de-vorcaro-e-pede-manifestacao-da-pgr-sobre-liberdade-de-ex-banqueiro.ghtml",
+   "published_at": "2026-11-05T22:09:38Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Fachin consulta PGR sobre soltura de Vorcaro",
+   "url": "https://gazetadopovo.com.br/republica/fachin-consulta-pgr-sobre-soltura-de-vorcaro",
+   "published_at": "2026-11-06T03:20:52Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "BRB pede indenização de R$ 2,2 bilhões por fraudes do Banco Master",
+   "url": "https://cnnbrasil.com.br/economia/money/macroeconomia/brb-pede-indenizacao-de-r-22-bilhoes-por-fraudes-do-banco-master",
+   "published_at": "2026-11-06T14:52:06Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Fachin nega pedido de revisão de prisão preventiva de Fabiano Zettel, cunhado de Vorcaro",
+   "url": "https://estadao.com.br/politica/fachin-nega-pedido-de-revisao-de-prisao-preventiva-de-fabiano-zettel-cunhado-de-vorcaro-nprp",
+   "published_at": "2026-11-06T15:42:43Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Fachin homologa delação de fundador da Reag, investigado no caso Master",
+   "url": "https://g1.globo.com/politica/noticia/2026/11/06/fachin-homologa-delacao-de-fundador-da-reag-investigado-no-caso-master.ghtml",
+   "published_at": "2026-11-06T20:08:43Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Fachin homologa delação de fundador da Reag, envolvido no caso do Banco Master",
+   "url": "https://estadao.com.br/politica/fachin-homologa-delacao-de-fundador-da-reag-envolvido-no-caso-do-banco-master",
+   "published_at": "2026-11-06T21:24:35Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Governo suspende registro de imóveis de Willer Tomaz em Angra dos Reis, incluindo ilha de Richarlison",
+   "url": "https://g1.globo.com/politica/noticia/2026/11/06/governo-suspende-registro-de-imoveis-de-willer-tomaz-em-angra-incluindo-ilha-de-richarlison.ghtml",
+   "published_at": "2026-11-06T22:01:56Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Flávio admite não ter prova de fraude, critica volta de Jair ao Brasil e diz querer 2030 assim como Tarcísio",
+   "url": "https://www1.folha.uol.com.br/poder/2026/11/flavio-admite-nao-ter-prova-de-fraude-critica-volta-de-jair-ao-brasil-e-diz-querer-2030-assim-como-tarcisio.shtml",
+   "published_at": "2026-11-06T21:06:00Z"
+  },
+  {
+   "outlet": "Jovem Pan",
+   "title": "Eu e Lula não podemos falar com 100% de certeza quem foi eleito presidente, diz Flávio",
+   "url": "https://jovempan.com.br/politica/eu-e-lula-nao-podemos-falar-com-100-de-certeza-quem-foi-eleito-presidente-diz-flavio",
+   "published_at": "2026-11-06T23:26:47Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Meta diz ao TSE que não houve viés na distribuição de conteúdo na campanha eleitoral",
+   "url": "https://www1.folha.uol.com.br/colunas/painel/2026/11/meta-diz-ao-tse-que-nao-houve-vies-na-distribuicao-de-conteudo-na-campanha-eleitoral.shtml",
+   "published_at": "2026-11-06T18:59:00Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Meta diz ao TSE que Lula alcançou 1,5 vez mais pessoas que Flávio",
+   "url": "https://poder360.com.br/poder-justica/meta-diz-ao-tse-que-lula-alcancou-15-vez-mais-pessoas-que-flavio",
+   "published_at": "2026-11-06T23:08:47Z"
+  }
+ ],
+ "note": "Informações válidas até o corte das 21:58. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
