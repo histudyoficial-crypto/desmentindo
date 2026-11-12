@@ -1,7 +1,13 @@
 {
  "schema": "desmentindo.public.recent_videos_index.v1",
- "latest": "2026-10-29",
+ "latest": "2026-11-04",
  "items": [
+  {
+   "date": "2026-11-04",
+   "file": "data/editorial/videos/2026-11-04.json",
+   "items": 3,
+   "sha256": "f25c8ab39518c5ff6ee67c699d7c51033a9b966e070078a66e71b6749bf6a045"
+  },
   {
    "date": "2026-10-29",
    "file": "data/editorial/videos/2026-10-29.json",

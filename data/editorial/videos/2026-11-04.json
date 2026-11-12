@@ -1,0 +1,53 @@
+{
+ "schema": "desmentindo.public.recent_videos.v1",
+ "date": "2026-11-04",
+ "published_at": "2026-11-05T22:45:09Z",
+ "title": "Vídeos recentes dos canais",
+ "notice": "Publicado pelos canais acompanhados. Ainda não checado pelo Desmentindo: título e conteúdo são dos autores. Aparecer aqui não é confirmação nem ligação com as notícias do dia.",
+ "window": {
+  "days": 3,
+  "from": "2026-11-02",
+  "to": "2026-11-04"
+ },
+ "items": [
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "4dtkFwevw2A",
+   "title": "Incertezas fazem Banco Central manter a taxa básica de juros - Alexandre Garcia",
+   "published_at": "2026-11-05T01:33:59Z",
+   "url": "https://www.youtube.com/watch?v=4dtkFwevw2A",
+   "thumbnail": "https://i.ytimg.com/vi/4dtkFwevw2A/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-11-05T01:51:28Z"
+  },
+  {
+   "channel": "Caio Coppolla",
+   "channel_id": "UCqkoOgSof-lNcv8OzRPQj6w",
+   "video_id": "QxzRNvKarS4",
+   "title": "Coppolla analisa a ‘semana da ressaca’ após reeleição de Lula",
+   "published_at": "2026-11-03T09:55:32Z",
+   "url": "https://www.youtube.com/watch?v=QxzRNvKarS4",
+   "thumbnail": "https://i.ytimg.com/vi/QxzRNvKarS4/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-11-05T01:51:28Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "tNoWoJNUcaE",
+   "title": "Poderes interdependentes e muito harmônicos - Alexandre o",
+   "published_at": "2026-11-03T22:32:09Z",
+   "url": "https://www.youtube.com/watch?v=tNoWoJNUcaE",
+   "thumbnail": "https://i.ytimg.com/vi/tNoWoJNUcaE/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-11-05T01:51:28Z"
+  }
+ ]
+}
