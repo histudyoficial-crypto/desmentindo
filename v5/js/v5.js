@@ -577,7 +577,7 @@
       if (!os.length) return "";
       return '<div class="fxh-hl"><p class="fxh-hl-k">Outras manchetes do fechamento</p><ul class="fxh-hl-l">' + os.map(function (o) {
         var src = (o.sources || [])[0];
-        return '<li><a href="' + e(fu + "#" + o.id) + '">' + e(o.title) + "</a>" + (src && src.outlet ? '<span class="fxh-hl-s">' + e(src.outlet) + "</span>" : "") + "</li>";
+        return '<li><a href="' + e("#/noticia/" + F.edition_date + "/" + o.id) + '">' + e(o.title) + "</a>" + (src && src.outlet ? '<span class="fxh-hl-s">' + e(src.outlet) + "</span>" : "") + "</li>";
       }).join("") + "</ul></div>";
     }
     var fu = "#/fechamento/" + F.edition_date, pts = (F.opening && F.opening.points) || [], cut = fxCut(F);
@@ -718,16 +718,17 @@
     else txt = "cobertura desconhecida";
     return '<li><b>' + e(a.name) + "</b><span>" + txt + "</span></li>";
   }
-  // ÂNCORAS E PROGRAMAS (DES-FIN-05): os canais do corpus multi-âncora (AG, TA, CC), lidos do dado (archives).
+  // CANAIS ACOMPANHADOS (as âncoras do corpus multi-âncora: AG, TA, CC), lidos do dado (archives). São fontes acompanhadas,
+  // não apresentadores do Desmentindo; sem vínculo nem endosso.
   // Regra (operations.json editorial_model.anchors_rule): âncora ausente nunca é preenchida; sem placar, ordem do dado,
   // contagens só de navegação. O trecho mostrado é o mais recente daquele canal entre os já publicados em "Já falaram".
   var ANCHOR_TAG = { "youtube:alexandre_garcia": "AG", "youtube:te_atualizei": "TA", "youtube:caio_coppolla": "CC" };
-  function anchorsBlock(H) {
+  function anchorsBlock(H, page) {
     var arch = ((H && H.archives) || []).filter(function (a) { return a && a.name && ANCHOR_TAG[a.key]; });
     if (!arch.length) return "";
     var said = (H && H.said) || [];
-    return '<section class="hm-anc" id="ancoras" aria-labelledby="hm-anc-h"><h2 class="hm-h" id="hm-anc-h">Âncoras e programas</h2>' +
-      '<p class="hm-anc-s">Os canais que o Desmentindo acompanha e guarda na memória. O que eles disseram aparece com data e minuto; não é checagem nem opinião do Desmentindo.</p>' +
+    return '<section class="hm-anc" id="canais"' + (page ? ' aria-label="Canais acompanhados"' : ' aria-labelledby="hm-anc-h"') + '>' + (page ? "" : '<h2 class="hm-h" id="hm-anc-h">Canais acompanhados</h2>' +
+      '<p class="hm-anc-s">Canais de vídeo que o Desmentindo acompanha como fonte e guarda na memória, com data e minuto. Acompanhar não é endossar: não há vínculo com os canais, e o que eles dizem não é checagem nem opinião do Desmentindo.</p>') +
       '<ul class="anc-l">' + arch.map(function (a) {
         var tag = ANCHOR_TAG[a.key], last = null;
         said.forEach(function (x) { var it = x && x.item; if (it && it.source_name === a.name && it.date && (!last || last.item.date < it.date)) last = { x: x, item: it }; });
@@ -735,7 +736,7 @@
         return '<li class="anc"><p class="anc-tag" aria-hidden="true">' + tag + '</p><div class="anc-b"><p class="anc-n">' + e(a.name) + '</p><p class="anc-c">' + cov.replace(/^<b>[^<]*<\/b>/, "") + "</p>" +
           (a.latest && isDay(a.latest) ? '<p class="anc-d">Vídeo mais recente na memória: <time datetime="' + e(a.latest) + '">' + e(dDay(a.latest)) + "</time></p>" : "") +
           (last ? '<p class="anc-x"><a href="' + e(last.item.deep_link) + '" target="_blank" rel="noopener">' + e(last.x.title) + " · " + e(last.item.t_label || "") + "</a></p>" : "") +
-          '<p class="anc-go"><a href="#/arquivos">Ver na memória <span aria-hidden="true">→</span></a></p></div></li>';
+          '<p class="anc-go"><a href="#/canal/' + tag.toLowerCase() + '">Ver o acervo do canal <span aria-hidden="true">→</span></a></p></div></li>';
       }).join("") + "</ul></section>";
   }
   function memorySearch(H) {
@@ -1639,6 +1640,162 @@
     return '<section class="page-head"><h1 class="h1">Página não encontrada</h1><p class="lead">Ela não existe ou mudou de endereço.</p>' + searchForm("", "q-nf") + "</section>";
   }
 
+  // ---------------------------------------------------------------- CANAIS ACOMPANHADOS (AG, TA, CC)
+  // Fonte acompanhada, não apresentador do Desmentindo: sem vínculo nem endosso. Vídeo indexado ≠ trecho na memória ≠
+  // trecho destacado em "Já falaram"; nenhum é checagem. Volume não é qualidade nem posição: a ordem dos canais é a do dado.
+  function nwCut(t, n) { t = String(t || "").replace(/\s+/g, " ").trim(); if (t.length <= n) return t; var c = t.slice(0, n); var i = c.lastIndexOf(" "); return (i > n * 0.6 ? c.slice(0, i) : c) + "…"; }
+  function nwHost(u) { try { return new URL(u).hostname.replace(/^www\d?\./, ""); } catch (x) { return ""; } }
+  function cmp(a, b) { return String(a || "").localeCompare(String(b || "")); }
+  var CANAIS = [["ag", "Alexandre Garcia"], ["ta", "Te Atualizei"], ["cc", "Caio Coppolla"]];
+  var CN = { data: null, year: "", q: "", show: 40 };
+  function normQ(t) { return String(t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase(); }
+  function cnRows() {
+    var D = CN.data; if (!D) return "";
+    var q = normQ(CN.q).trim();
+    var rows = D.videos.filter(function (v) { return (!CN.year || v[0].slice(0, 4) === CN.year) && (!q || normQ(v[1]).indexOf(q) >= 0); });
+    var shown = rows.slice(0, CN.show);
+    return '<p class="cn-count" role="status">' + (rows.length ? plural(rows.length, "vídeo", "vídeos") + (rows.length > shown.length ? " · mostrando " + nf(shown.length) : "") : "Nenhum vídeo com esse filtro.") + "</p>" +
+      '<ol class="cn-list">' + shown.map(function (v) {
+        return '<li><time datetime="' + e(v[0]) + '">' + e(fdate(v[0])) + '</time><a href="https://www.youtube.com/watch?v=' + e(v[2]) + '" target="_blank" rel="noopener">' + e(v[1]) + "</a>" +
+          '<span class="cn-meta">' + (v[3] ? e(v[3]) : "") + (v[4] ? (v[3] ? " · " : "") + plural(v[4], "trecho na memória", "trechos na memória") : (v[3] ? " · " : "") + "sem trecho na memória") + "</span></li>";
+      }).join("") + "</ol>" + (rows.length > shown.length ? '<p class="cn-more-w"><button type="button" class="cn-more" data-cn-more>Mostrar mais 40</button></p>' : "");
+  }
+  function cnRefresh() { var box = document.getElementById("cn-rows"); if (box) box.innerHTML = cnRows(); }
+  document.addEventListener("input", function (ev) {
+    var t = ev.target;
+    if (t && t.matches && t.matches("[data-cn-q]")) { CN.q = t.value; CN.show = 40; cnRefresh(); }
+  });
+  document.addEventListener("change", function (ev) {
+    var t = ev.target;
+    if (t && t.matches && t.matches("[data-cn-year]")) { CN.year = t.value; CN.show = 40; cnRefresh(); }
+  });
+  document.addEventListener("click", function (ev) {
+    var b = ev.target.closest && ev.target.closest("[data-cn-more]");
+    if (b) { CN.show += 40; cnRefresh(); }
+  });
+  function canalTabs(tag) {
+    return '<nav class="cn-tabs" aria-label="Canais acompanhados">' + CANAIS.map(function (c) {
+      return '<a href="#/canal/' + c[0] + '"' + (c[0] === tag ? ' aria-current="page"' : "") + "><b>" + c[0].toUpperCase() + "</b> " + e(c[1]) + "</a>";
+    }).join("") + "</nav>";
+  }
+  var CANAL_NOTE = "Canal acompanhado pelo Desmentindo como fonte. Não há vínculo, parceria nem endosso. Vídeos e trechos são registro do que o canal publicou, com data e minuto; não são checagem nem opinião do Desmentindo.";
+  P.canal = function (arg) {
+    var tag = /^(ag|ta|cc)$/.test(arg || "") ? arg : null;
+    if (!tag) {
+      document.title = "Canais acompanhados · Desmentindo";
+      return load("home.json").then(function (H) {
+        return '<section class="page-head"><p class="kicker">Canais acompanhados</p><h1 class="h1">Os canais que o Desmentindo guarda na memória</h1><p class="cn-note">' + e(CANAL_NOTE) + "</p></section>" + anchorsBlock(H, true);
+      });
+    }
+    return Promise.all([load("canais/" + tag + ".json"), load("home.json")]).then(function (R) {
+      var D = R[0], H = R[1];
+      if (!D || D.schema !== "desmentindo.public.canal.v1") throw new Error("canal");
+      CN.data = D; CN.year = ""; CN.q = ""; CN.show = 40;
+      document.title = D.name + " · Canais acompanhados · Desmentindo";
+      var said = ((H && H.said) || []).filter(function (x) { return x && x.item && x.item.source_name === D.name; });
+      var years = []; D.videos.forEach(function (v) { var y = v[0].slice(0, 4); if (years.indexOf(y) < 0) years.push(y); });
+      var c = D.coverage || {};
+      var idx = typeof c.videos_indexed === "number" ? nf(c.videos_indexed) + (typeof c.videos_total === "number" && c.videos_total !== c.videos_indexed ? " de " + nf(c.videos_total) : "") : "—";
+      return '<section class="page-head"><p class="kicker">Canal acompanhado</p><h1 class="h1">' + e(D.name) + "</h1>" +
+        (D.handle ? '<p class="cn-handle">' + e(D.handle) + " · YouTube</p>" : "") + '<p class="cn-note">' + e(CANAL_NOTE) + "</p></section>" + canalTabs(tag) +
+        '<dl class="cn-stats"><div><dt>Vídeos indexados</dt><dd>' + idx + "</dd></div><div><dt>Trechos na memória (pesquisáveis)</dt><dd>" + nf(D.segments_public || 0) + "</dd></div>" +
+        "<div><dt>Trechos destacados em “Já falaram”</dt><dd>" + nf(said.length) + "</dd></div>" +
+        (c.latest && isDay(c.latest) ? "<div><dt>Vídeo mais recente na memória</dt><dd>" + e(fdate(c.latest)) + "</dd></div>" : "") + "</dl>" +
+        (said.length ? '<section class="cn-sec"><h2 class="h2">Destacado em “Já falaram”</h2><ul class="cn-said">' + said.map(function (x) {
+          return '<li><time datetime="' + e(x.item.date) + '">' + e(fdate(x.item.date)) + '</time><a href="' + e(x.item.deep_link) + '" target="_blank" rel="noopener">' + e(x.title) + " · minuto " + e(x.item.t_label || "") + "</a><span>" + e(x.item.excerpt || "") + "</span></li>";
+        }).join("") + "</ul></section>" : "") +
+        '<section class="cn-sec"><h2 class="h2">Vídeos indexados</h2><form class="cn-f" role="search" onsubmit="return false"><label>Ano <select data-cn-year><option value="">Todos</option>' +
+        years.map(function (y) { return '<option value="' + e(y) + '">' + e(y) + "</option>"; }).join("") + '</select></label><label>Título <input type="search" data-cn-q placeholder="Filtrar pelo título"></label></form>' +
+        '<div id="cn-rows">' + cnRows() + "</div></section>";
+    });
+  };
+
+  // ---------------------------------------------------------------- NOTÍCIAS (feed cronológico do que já foi publicado)
+  // Lê só o que passou pelo Human Gate e chegou pelo Publisher: FECHAMENTOs, MATÉRIAs e edições do AGORA. Nada é
+  // reescrito; o tipo de produto é a única classificação (o Plano Diretor não define editorias). Sem dado, estado vazio.
+  var NW_TYPES = [["", "Tudo"], ["fechamento", "Fechamento"], ["materia", "Matérias"], ["agora", "Agora"]];
+  function hashQ(name) { var m = new RegExp("[?&]" + name + "=([^&#]*)").exec(location.hash); return m ? decodeURIComponent(m[1]) : ""; }
+  function srcOutlets(list) {
+    var seen = [], out = [];
+    (list || []).forEach(function (s) { if (s && s.outlet && seen.indexOf(s.outlet) < 0) { seen.push(s.outlet); out.push(s.outlet); } });
+    return out;
+  }
+  function nwItem(x) {
+    return '<li class="nw-i"><p class="nw-k"><span class="nw-t nw-t-' + e(x.type) + '">' + e(x.label) + "</span>" + (x.kicker ? '<span class="nw-kick">' + e(x.kicker) + "</span>" : "") + "</p>" +
+      '<h3 class="nw-h"><a href="' + e(x.href) + '">' + e(x.title) + "</a></h3>" + (x.sum ? '<p class="nw-s">' + e(nwCut(x.sum, 220)) + "</p>" : "") +
+      (x.src && x.src.length ? '<p class="nw-src">Fontes: ' + x.src.slice(0, 4).map(e).join(" · ") + "</p>" : "") + "</li>";
+  }
+  P.noticias = function () {
+    document.title = "Notícias · Desmentindo";
+    var tipo = hashQ("tipo"), n = Math.max(6, Math.min(60, parseInt(hashQ("n"), 10) || 6));
+    if (!NW_TYPES.some(function (t) { return t[0] === tipo; })) tipo = "";
+    return Promise.all([loadIdx("fechamentos"), loadIdx("materias"), loadEdIndex()]).then(function (R) {
+      var FI = (R[0] && R[0].items) || [], MI = (R[1] && R[1].items) || [], EI = (R[2] && R[2].editions) || [];
+      var fx = FI.slice().sort(function (a, b) { return cmp(b.date, a.date); }).slice(0, n);
+      var ag = EI.slice().sort(function (a, b) { return cmp(b.edition, a.edition); }).slice(0, n);
+      return Promise.all([Promise.all(fx.map(function (x) { return loadTyped("fechamentos", x.date); })), Promise.all(ag.map(loadEdFile))]).then(function (R2) {
+        var items = [];
+        R2[0].forEach(function (F) {
+          if (!F || !isDay(F.edition_date)) return;
+          var base = "#/noticia/" + F.edition_date + "/";
+          (F.main_stories || []).forEach(function (s) { if (s && s.id && s.headline) items.push({ type: "fechamento", label: "Fechamento · principal", d: F.edition_date, title: s.headline, sum: s.what_happened, src: srcOutlets(s.coverage), href: base + s.id, o: 0 }); });
+          (F.other_stories || []).forEach(function (s) { if (s && s.id && s.title) items.push({ type: "fechamento", label: "Fechamento", d: F.edition_date, title: s.title, sum: s.text, src: srcOutlets(s.sources), href: base + s.id, o: 1 }); });
+        });
+        MI.forEach(function (m) { if (m && m.slug && m.title && isDay(m.date)) items.push({ type: "materia", label: "Matéria", d: m.date, title: m.title, kicker: m.kicker || m.label || "", href: "#/materia/" + m.slug, o: 2 }); });
+        R2[1].forEach(function (E) {
+          edItems(E).forEach(function (it) { if (it.id && it.title) items.push({ type: "agora", label: "Agora", d: (E && E.edition) || it.date, title: it.title, sum: it.text, src: srcOutlets(it.sources), href: "#/agora/" + it.id, o: 3 }); });
+        });
+        var shown = items.filter(function (x) { return !tipo || x.type === tipo; }).sort(function (a, b) { return cmp(b.d, a.d) || a.o - b.o; });
+        var days = []; shown.forEach(function (x) { if (days.indexOf(x.d) < 0) days.push(x.d); });
+        var chips = '<nav class="chips" aria-label="Tipo de publicação">' + NW_TYPES.map(function (t) {
+          return '<a href="#/noticias' + (t[0] ? "?tipo=" + t[0] : "") + '"' + (t[0] === tipo ? ' aria-current="page"' : "") + ">" + e(t[1]) + "</a>";
+        }).join("") + "</nav>";
+        var more = FI.length > n || EI.length > n;
+        return '<section class="page-head"><p class="kicker">Notícias</p><h1 class="h1">O que o Desmentindo publicou, dia a dia</h1>' +
+          '<p class="nw-sub">Só o que passou pela revisão humana: fechamentos, matérias e o Agora, com data e fontes.</p></section>' + chips +
+          (days.length ? days.map(function (d) {
+            return '<section class="nw-day" aria-labelledby="nw-' + e(d) + '"><h2 class="nw-dh" id="nw-' + e(d) + '"><time datetime="' + e(d) + '">' + e(fwd(d)) + "</time></h2><ul class=\"nw-l\">" +
+              shown.filter(function (x) { return x.d === d; }).map(nwItem).join("") + "</ul></section>";
+          }).join("") : '<p class="nw-empty">Nada publicado neste filtro.</p>') +
+          (more ? '<p class="nw-more"><a href="#/noticias?' + (tipo ? "tipo=" + e(tipo) + "&" : "") + "n=" + (n + 6) + '">Ver edições anteriores</a></p>' : "");
+      });
+    });
+  };
+  P.noticia = function (date) {
+    var id = (location.hash.split("?")[0].split("/")[3] || "").split("#")[0];
+    if (!isDay(date) || !/^[a-z0-9-]{1,120}$/.test(id)) return Promise.resolve('<section class="page-head"><p class="kicker">Notícias</p><h1 class="h1">Notícia não encontrada</h1><p><a href="#/noticias">Ver todas as notícias</a></p></section>');
+    return Promise.all([loadTyped("fechamentos", date), loadIdx("materias")]).then(function (R) {
+      var F = R[0], MI = (R[1] && R[1].items) || [];
+      var main = F && (F.main_stories || []).filter(function (s) { return s.id === id; })[0];
+      var oth = F && !main && (F.other_stories || []).filter(function (s) { return s.id === id; })[0];
+      if (!F || (!main && !oth)) return '<section class="page-head"><p class="kicker">Notícias</p><h1 class="h1">Notícia não encontrada</h1><p><a href="#/noticias">Ver todas as notícias</a></p></section>';
+      var S = main || oth, title = main ? S.headline : S.title, fu = "#/fechamento/" + F.edition_date;
+      document.title = title + " · Desmentindo";
+      var srcs = main ? (S.coverage || []) : (S.sources || []);
+      var corr = fxCorrection(S.correction), cutT = fxCut(F);
+      var oq = Array.isArray(S.open_questions) ? S.open_questions.filter(Boolean).join(" ") : (S.open_questions || "");
+      var related = (F.main_stories || []).map(function (s) { return [s.id, s.headline]; }).concat((F.other_stories || []).map(function (s) { return [s.id, s.title]; }))
+        .filter(function (r) { return r[0] && r[0] !== id && r[1]; }).slice(0, 6);
+      var mats = MI.filter(function (m) { return m && m.slug && m.title; }).slice(0, 3);
+      return '<article class="nw-art"><header class="page-head"><p class="kicker"><a href="#/noticias">Notícias</a> · <a href="' + e(fu) + '">' + e(F.public_title) + "</a></p>" +
+        '<h1 class="h1">' + e(title) + "</h1>" +
+        '<p class="nw-dates">' + (F.published_at ? "Publicado em " + tc("date", tcDate(F.edition_date), F.edition_date) : "") + (F.cutoff_at ? " " + tc("cut", "Verificado até " + fxCut(F), F.cutoff_at) : "") + "</p></header>" +
+        (main ? (S.conclusion ? '<div class="nw-conc"><p class="nw-ck">O que dá para concluir' + (cutT && !fxRetro(F) ? " até " + e(cutT) : "") + "</p><p>" + e(S.conclusion) + "</p>" +
+            (oq ? '<p class="fx-open-q"><b>Em aberto:</b> ' + e(oq) + "</p>" : "") + "</div>" : "") + corr +
+          (S.what_happened ? '<h2 class="h2">O que aconteceu</h2><p class="nw-lead">' + e(S.what_happened) + "</p>" : "") +
+          (S.what_changed ? '<h2 class="h2">O que há de novo</h2><p class="fx-new">' + e(S.what_changed) + "</p>" : "")
+        : (S.text ? '<p class="nw-lead">' + e(S.text) + "</p>" : "") + corr) +
+        (srcs.length ? '<section class="nw-srcs"><h2 class="h2">' + (main ? "Coberturas encontradas até o corte" : "Fontes") + '</h2><ul>' + (main ? byTime(srcs) : srcs).map(function (c) {
+          return '<li><b>' + e(c.outlet || "") + "</b> " + (c.url ? '<a href="' + e(c.url) + '" target="_blank" rel="noopener">' + e(c.title || nwHost(c.url) || c.url) + "</a>" : "") + (isDay((c.published_at || "").slice(0, 10)) ? " · " + e(fdate(c.published_at.slice(0, 10))) : "") + "</li>";
+        }).join("") + "</ul></section>" : "") +
+        '<aside class="nw-rel" aria-label="Relacionadas"><h2 class="h2">Na mesma edição</h2><ul>' + related.map(function (r) { return '<li><a href="#/noticia/' + e(F.edition_date) + "/" + e(r[0]) + '">' + e(r[1]) + "</a></li>"; }).join("") + "</ul>" +
+        '<p class="nw-go"><a href="' + e(fu + "#" + id) + '">Ver no fechamento completo <span aria-hidden="true">→</span></a></p>' +
+        (mats.length ? '<h2 class="h2">Matérias</h2><ul>' + mats.map(function (m) { return '<li><a href="#/materia/' + e(m.slug) + '">' + e(m.title) + "</a></li>"; }).join("") + "</ul>" : "") +
+        '<p class="nw-go"><a href="/eleicoes-2026/questionamentos/">Investigações · Eleições 2026 <span aria-hidden="true">→</span></a></p>' +
+        '<p class="nw-go"><a href="#/canal">O que os canais acompanhados disseram <span aria-hidden="true">→</span></a></p></aside></article>';
+    });
+  };
+
   // ---------------------------------------------------------------- roteador
   var routeSeq = 0;
   function setDoor(door) {
@@ -1666,7 +1823,7 @@
     var fn = P[name] || P.home;
     document.body.classList.toggle("is-home", fn === P.home);
     document.title = "Desmentindo";
-    setDoor(fn === P.busca ? "busca" : (fn === P.arquivos || fn === P.arquivo) ? "arquivos" : fn === P.fechamento ? "fechamento" : (fn === P.home || fn === P.historia || fn === P.agora || fn === P.materia) ? "agora" : "");
+    setDoor(fn === P.busca ? "busca" : (fn === P.noticias || fn === P.noticia) ? "noticias" : (fn === P.arquivos || fn === P.arquivo || fn === P.canal) ? "arquivos" : fn === P.fechamento ? "fechamento" : (fn === P.home || fn === P.historia || fn === P.agora || fn === P.materia) ? "agora" : "");
     pending = {};
     var my = ++routeSeq; // só a navegação mais recente pode pintar a página (resposta atrasada de outra rota é descartada)
     fn(arg).then(function (h) {
