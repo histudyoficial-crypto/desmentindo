@@ -1,0 +1,82 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-11-08",
+ "public_title": "FECHAMENTO — 8 de novembro de 2026",
+ "published_at": "2026-11-09T19:27:32Z",
+ "cutoff_at": "2026-11-08T20:31:00-03:00",
+ "context": "Fechamento de 8 de novembro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "Ministro do STJ decreta prisão de desembargadora condenada após Procuradoria relatar saída do país",
+    "story": "ministro-do-stj-decreta-prisao-de-desembargadora-condenada-apos-procuradoria"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "ministro-do-stj-decreta-prisao-de-desembargadora-condenada-apos-procuradoria",
+   "headline": "Ministro do STJ decreta prisão de desembargadora condenada após Procuradoria relatar saída do país",
+   "lead": true,
+   "what_happened": "O ministro Og Fernandes determinou a prisão da desembargadora Sandra Inês Rusciolelli, condenada a 14 anos e 20 dias por corrupção passiva e lavagem de dinheiro. O STJ determinou a inclusão de Sandra Inês e do filho Vasco na Difusão Vermelha da Interpol, e autorizou providências para eventual pedido de extradição a Portugal.",
+   "what_changed": "A Corte Especial do STJ condenou a desembargadora a 14 anos de prisão na quarta-feira, 4. Alegação atribuída (MPF, segundo a Folha), não comprovada: O MPF informou que a magistrada deixou o Brasil em 21 de setembro com destino a Lisboa. Alegação atribuída (PGR, segundo a Folha), não comprovada: A PGR afirmou que a saída do país foi precedida da indicação de endereço inverídico à Justiça.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "Ministro do STJ decreta prisão de desembargadora condenada após Procuradoria relatar saída do país",
+     "url": "https://www1.folha.uol.com.br/poder/2026/11/ministro-do-stj-decreta-prisao-de-desembargadora-condenada-apos-procuradoria-relatar-saida-do-pais.shtml",
+     "published_at": "2026-11-07T21:26:00Z",
+     "summary": "O ministro Og Fernandes determinou a prisão da desembargadora Sandra Inês Rusciolelli, condenada a 14 anos e 20 dias por corrupção passiva e lavagem de dinheiro.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Operação Faroeste: STJ determina inclusão de desembargadora condenada na lista de procurados internacionais",
+     "url": "https://g1.globo.com/ba/bahia/noticia/2026/11/07/operacao-faroeste-stj-determina-inclusao-de-desembargadora-condenada-na-lista-de-procurados-internacionais.ghtml",
+     "published_at": "2026-11-07T21:46:44Z",
+     "summary": "O STJ determinou a inclusão de Sandra Inês e do filho Vasco na Difusão Vermelha da Interpol, e autorizou providências para eventual pedido de extradição a Portugal.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "Ministro manda prender desembargadora condenada por corrupção que fugiu do País antes de julgamento",
+     "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/ministro-manda-prender-desembargadora-condenada-por-corrupcao-que-fugiu-do-pais-antes-de-julgamento",
+     "published_at": "2026-11-07T18:47:11Z",
+     "summary": "A Corte Especial do STJ condenou a desembargadora a 14 anos de prisão na quarta-feira, 4.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:31, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "Folha",
+   "title": "Ministro do STJ decreta prisão de desembargadora condenada após Procuradoria relatar saída do país",
+   "url": "https://www1.folha.uol.com.br/poder/2026/11/ministro-do-stj-decreta-prisao-de-desembargadora-condenada-apos-procuradoria-relatar-saida-do-pais.shtml",
+   "published_at": "2026-11-07T21:26:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Operação Faroeste: STJ determina inclusão de desembargadora condenada na lista de procurados internacionais",
+   "url": "https://g1.globo.com/ba/bahia/noticia/2026/11/07/operacao-faroeste-stj-determina-inclusao-de-desembargadora-condenada-na-lista-de-procurados-internacionais.ghtml",
+   "published_at": "2026-11-07T21:46:44Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Ministro manda prender desembargadora condenada por corrupção que fugiu do País antes de julgamento",
+   "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/ministro-manda-prender-desembargadora-condenada-por-corrupcao-que-fugiu-do-pais-antes-de-julgamento",
+   "published_at": "2026-11-07T18:47:11Z",
+   "basis": "texto da matéria"
+  }
+ ],
+ "note": "Informações válidas até o corte das 20:31. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
