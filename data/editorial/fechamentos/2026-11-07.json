@@ -1,0 +1,292 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-11-07",
+ "public_title": "FECHAMENTO — 7 de novembro de 2026",
+ "published_at": "2026-11-09T19:27:32Z",
+ "cutoff_at": "2026-11-07T20:31:19-03:00",
+ "context": "Fechamento de 7 de novembro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "Gonet pede ao STF suspensão de ações contra MP do fim das bets até Corte decidir sobre proibição",
+    "story": "gonet-pede-ao-stf-suspensao-de-acoes-contra-mp-do-fim-das-bets-ate-corte"
+   },
+   {
+    "text": "Fachin homologa delação de fundador da Reag, envolvido no caso do Banco Master",
+    "story": "fachin-homologa-delacao-de-fundador-da-reag-envolvido-no-caso-do-banco-master"
+   },
+   {
+    "text": "Juiz rejeita ação de improbidade administrativa movida contra Bolsonaro e ‘Wal do Açaí’",
+    "story": "juiz-rejeita-acao-de-improbidade-administrativa-movida-contra-bolsonaro-e-wal"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "gonet-pede-ao-stf-suspensao-de-acoes-contra-mp-do-fim-das-bets-ate-corte",
+   "headline": "Gonet pede ao STF suspensão de ações contra MP do fim das bets até Corte decidir sobre proibição",
+   "lead": true,
+   "what_happened": "O procurador-geral da República, Paulo Gonet, pediu ao STF a suspensão, em todo o país, de processos judiciais que discutem a constitucionalidade da MP que proibiu as bets. O presidente do TRF-3, Johonsom Di Salvo, suspendeu na sexta-feira (6) a liminar que havia permitido a três sites de apostas da CDA Gaming voltar a operar.",
+   "what_changed": "Segundo a Folha, a MP irá caducar em 4 de março, e deputados já apresentaram cem emendas. O pedido da PGR foi feito nas ações de inconstitucionalidade propostas por entidades do setor, e a liminar de Adriana Pileggi foi suspensa no dia seguinte pelo presidente do tribunal. Alegação atribuída (Paulo Gonet (via g1)), não comprovada: Gonet afirmou que a proliferação de processos judiciais sobre a MP 1.394/2026 ocasiona quadro de insegurança jurídica e aplicação assimétrica da norma. Alegação atribuída (Paulo Gonet, segundo a Gazeta do Povo), não comprovada: Gonet argumenta que os processos causam um quadro de insegurança jurídica e aplicação assimétrica da norma, e cita 14 processos como exemplo.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "Gonet pede ao STF suspensão de ações contra MP do fim das bets até Corte decidir sobre proibição",
+     "url": "https://g1.globo.com/politica/noticia/2026/11/07/gonet-pede-ao-stf-suspensao-de-acoes-contra-mp-do-fim-das-bets-ate-corte-decidir-sobre-proibicao.ghtml",
+     "published_at": "2026-11-07T12:20:24Z",
+     "summary": "O procurador-geral da República, Paulo Gonet, pediu ao STF a suspensão, em todo o país, de processos judiciais que discutem a constitucionalidade da MP que proibiu as bets.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Folha",
+     "title": "Gonet pede ao STF que suspenda todas as ações sobre bets no Brasil",
+     "url": "https://c-level.folha.uol.com.br/negocios/2026/11/gonet-pede-ao-stf-que-suspenda-todas-as-acoes-sobre-bets-no-brasil.shtml",
+     "published_at": "2026-11-07T11:46:00Z",
+     "summary": "O presidente do TRF-3, Johonsom Di Salvo, suspendeu na sexta-feira (6) a liminar que havia permitido a três sites de apostas da CDA Gaming voltar a operar.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Poder360",
+     "title": "Gonet pede ao STF suspensão de ações sobre bets em outras instâncias",
+     "url": "https://poder360.com.br/poder-justica/gonet-pede-ao-stf-suspensao-de-acoes-sobre-bets-em-outras-instancias",
+     "published_at": "2026-11-07T13:13:38Z",
+     "summary": "O pedido da PGR foi feito nas ações de inconstitucionalidade propostas por entidades do setor, e a liminar de Adriana Pileggi foi suspensa no dia seguinte pelo presidente do tribunal.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Gonet pede que STF suspenda ações sobre bets em todo o país",
+     "url": "https://gazetadopovo.com.br/republica/gonet-pede-que-stf-suspensa-acoes-sobre-bets-em-todo-o-pais",
+     "published_at": "2026-11-07T13:37:16Z",
+     "summary": "A Gazeta do Povo relata que o procurador-geral da República, Paulo Gonet, pediu ao STF que suspenda todos os processos contra a medida provisória que proibiu as bets, até a decisão final da Corte.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Paulo Gonet solicita ao STF suspensão nacional de processos contra proibição das bets",
+     "url": "https://gazetadopovo.com.br/republica/paulo-gonet-solicita-ao-stf-suspensao-nacional-de-processos-contra-proibicao-das-bets",
+     "published_at": "2026-11-07T17:38:20Z",
+     "summary": "A Gazeta do Povo relata que o caso no STF está sob a relatoria do ministro Luiz Fux, que já indicou ser favorável à extinção das casas de apostas.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:31, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "fachin-homologa-delacao-de-fundador-da-reag-envolvido-no-caso-do-banco-master",
+   "headline": "Fachin homologa delação de fundador da Reag, envolvido no caso do Banco Master",
+   "lead": false,
+   "what_happened": "O presidente do STF, Edson Fachin, homologou a proposta de delação premiada do fundador da Reag, João Carlos Mansur. Mansur foi indiciado em setembro por gestão fraudulenta de instituição financeira, lavagem de dinheiro e organização criminosa.",
+   "what_changed": "Mansur se comprometeu a apontar o caminho para localizar cerca de R$ 20 bilhões de Daniel Vorcaro. As investigações do Master passaram em setembro do relator André Mendonça para Fachin.",
+   "coverage": [
+    {
+     "outlet": "Estadão",
+     "title": "Fachin homologa delação de fundador da Reag, envolvido no caso do Banco Master",
+     "url": "https://estadao.com.br/politica/fachin-homologa-delacao-de-fundador-da-reag-envolvido-no-caso-do-banco-master",
+     "published_at": "2026-11-06T21:24:35Z",
+     "summary": "O presidente do STF, Edson Fachin, homologou a proposta de delação premiada do fundador da Reag, João Carlos Mansur.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "Fachin homologa delação de fundador da Reag, investigado no caso Master",
+     "url": "https://g1.globo.com/politica/noticia/2026/11/06/fachin-homologa-delacao-de-fundador-da-reag-investigado-no-caso-master.ghtml",
+     "published_at": "2026-11-06T20:08:43Z",
+     "summary": "Mansur se comprometeu a apontar o caminho para localizar cerca de R$ 20 bilhões de Daniel Vorcaro.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:31, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "juiz-rejeita-acao-de-improbidade-administrativa-movida-contra-bolsonaro-e-wal",
+   "headline": "Juiz rejeita ação de improbidade administrativa movida contra Bolsonaro e ‘Wal do Açaí’",
+   "lead": false,
+   "what_happened": "O juiz Rodrigo de Godoy Mendes rejeitou a ação de improbidade do MPF contra Bolsonaro e Walderice Santos da Conceição, e o MPF ainda pode recorrer. O juiz afirmou não haver \"prova cabal de nomeação fictícia, de desvio de função para afazeres domésticos, de locupletamento ilícito e de lesão efetiva aos cofres públicos\".",
+   "what_changed": "O MPF pedia ressarcimento de R$ 280.273,44. Alegação atribuída (MPF (via Estadão)), não comprovada: O MPF alega que Walderice foi nomeada secretária parlamentar de Bolsonaro mas nunca exerceu a função e residia em outro estado. Alegação atribuída (MPF (via Gazeta do Povo)), não comprovada: Segundo o MPF, 83,77% dos salários recebidos no período foram sacados em dinheiro.",
+   "coverage": [
+    {
+     "outlet": "Estadão",
+     "title": "Juiz rejeita ação de improbidade administrativa movida contra Bolsonaro e ‘Wal do Açaí’",
+     "url": "https://estadao.com.br/politica/juiz-nega-acao-de-improbidade-administrativa-movida-contra-bolsonaro-e-wal-do-acai-nprp",
+     "published_at": "2026-11-06T20:15:59Z",
+     "summary": "O juiz Rodrigo de Godoy Mendes rejeitou a ação de improbidade do MPF contra Bolsonaro e Walderice Santos da Conceição, e o MPF ainda pode recorrer.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Folha",
+     "title": "Justiça Federal extingue ação contra Bolsonaro e a ex-funcionária Wal do Açaí",
+     "url": "https://www1.folha.uol.com.br/poder/2026/11/justica-federal-extingue-acao-contra-bolsonaro-e-a-ex-funcionaria-wal-do-acai.shtml",
+     "published_at": "2026-11-06T14:12:00Z",
+     "summary": "O juiz afirmou não haver \"prova cabal de nomeação fictícia, de desvio de função para afazeres domésticos, de locupletamento ilícito e de lesão efetiva aos cofres públicos\".",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "Justiça rejeita ação contra Bolsonaro e Wal do Açaí por falta de provas",
+     "url": "https://gazetadopovo.com.br/republica/justica-rejeita-acao-contra-bolsonaro-e-wal-do-acai-por-falta-de-provas",
+     "published_at": "2026-11-06T15:52:32Z",
+     "summary": "Segundo o MPF, 83,77% dos salários recebidos no período foram sacados em dinheiro.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:31, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "presidente-do-trf-3-suspende-decisao-de-desembargadora-que-liberava-tres-sites",
+   "title": "Presidente do TRF-3 suspende decisão de desembargadora que liberava três sites de apostas",
+   "text": "O presidente do TRF-3 suspendeu a decisão da desembargadora Adriana Pileggi que liberava três bets da CDA Gaming, atendendo a pedido da União. Di Salvo escreveu que é inconveniente para a ordem pública que instâncias inferiores antecipem entendimentos, pois a questão está sub judice no STF.",
+   "sources": [
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/presidente-do-trf-3-suspende-decisao-de-desembargadora-que-liberava-tres-sites-de-apostas",
+     "published_at": "2026-11-06T23:21:39Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-justica/justica-suspende-decisao-que-liberava-3-bets-no-brasil",
+     "published_at": "2026-11-07T12:11:49Z"
+    }
+   ]
+  },
+  {
+   "id": "ministro-do-stj-decreta-prisao-de-desembargadora-condenada-apos-procuradoria",
+   "title": "Ministro do STJ decreta prisão de desembargadora condenada após Procuradoria relatar saída do país",
+   "text": "A Folha relata que o ministro Og Fernandes, do STJ, determinou a prisão da desembargadora Sandra Inês Rusciolelli, condenada a 14 anos e 20 dias de prisão por corrupção passiva e lavagem de dinheiro. O Estadão relata que a Corte Especial do STJ condenou a desembargadora a 14 anos de prisão e decretou a cassação da aposentadoria dela.",
+   "sources": [
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/ministro-manda-prender-desembargadora-condenada-por-corrupcao-que-fugiu-do-pais-antes-de-julgamento",
+     "published_at": "2026-11-07T18:47:11Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/11/ministro-do-stj-decreta-prisao-de-desembargadora-condenada-apos-procuradoria-relatar-saida-do-pais.shtml",
+     "published_at": "2026-11-07T21:26:00Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/ba/bahia/noticia/2026/11/07/operacao-faroeste-stj-determina-inclusao-de-desembargadora-condenada-na-lista-de-procurados-internacionais.ghtml",
+     "published_at": "2026-11-07T21:46:44Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "g1",
+   "title": "Gonet pede ao STF suspensão de ações contra MP do fim das bets até Corte decidir sobre proibição",
+   "url": "https://g1.globo.com/politica/noticia/2026/11/07/gonet-pede-ao-stf-suspensao-de-acoes-contra-mp-do-fim-das-bets-ate-corte-decidir-sobre-proibicao.ghtml",
+   "published_at": "2026-11-07T12:20:24Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Gonet pede ao STF que suspenda todas as ações sobre bets no Brasil",
+   "url": "https://c-level.folha.uol.com.br/negocios/2026/11/gonet-pede-ao-stf-que-suspenda-todas-as-acoes-sobre-bets-no-brasil.shtml",
+   "published_at": "2026-11-07T11:46:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Gonet pede ao STF suspensão de ações sobre bets em outras instâncias",
+   "url": "https://poder360.com.br/poder-justica/gonet-pede-ao-stf-suspensao-de-acoes-sobre-bets-em-outras-instancias",
+   "published_at": "2026-11-07T13:13:38Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Gonet pede que STF suspenda ações sobre bets em todo o país",
+   "url": "https://gazetadopovo.com.br/republica/gonet-pede-que-stf-suspensa-acoes-sobre-bets-em-todo-o-pais",
+   "published_at": "2026-11-07T13:37:16Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Paulo Gonet solicita ao STF suspensão nacional de processos contra proibição das bets",
+   "url": "https://gazetadopovo.com.br/republica/paulo-gonet-solicita-ao-stf-suspensao-nacional-de-processos-contra-proibicao-das-bets",
+   "published_at": "2026-11-07T17:38:20Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Fachin homologa delação de fundador da Reag, envolvido no caso do Banco Master",
+   "url": "https://estadao.com.br/politica/fachin-homologa-delacao-de-fundador-da-reag-envolvido-no-caso-do-banco-master",
+   "published_at": "2026-11-06T21:24:35Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Fachin homologa delação de fundador da Reag, investigado no caso Master",
+   "url": "https://g1.globo.com/politica/noticia/2026/11/06/fachin-homologa-delacao-de-fundador-da-reag-investigado-no-caso-master.ghtml",
+   "published_at": "2026-11-06T20:08:43Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Juiz rejeita ação de improbidade administrativa movida contra Bolsonaro e ‘Wal do Açaí’",
+   "url": "https://estadao.com.br/politica/juiz-nega-acao-de-improbidade-administrativa-movida-contra-bolsonaro-e-wal-do-acai-nprp",
+   "published_at": "2026-11-06T20:15:59Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Justiça Federal extingue ação contra Bolsonaro e a ex-funcionária Wal do Açaí",
+   "url": "https://www1.folha.uol.com.br/poder/2026/11/justica-federal-extingue-acao-contra-bolsonaro-e-a-ex-funcionaria-wal-do-acai.shtml",
+   "published_at": "2026-11-06T14:12:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Justiça rejeita ação contra Bolsonaro e Wal do Açaí por falta de provas",
+   "url": "https://gazetadopovo.com.br/republica/justica-rejeita-acao-contra-bolsonaro-e-wal-do-acai-por-falta-de-provas",
+   "published_at": "2026-11-06T15:52:32Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Presidente do TRF-3 suspende decisão de desembargadora que liberava três sites de apostas",
+   "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/presidente-do-trf-3-suspende-decisao-de-desembargadora-que-liberava-tres-sites-de-apostas",
+   "published_at": "2026-11-06T23:21:39Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Justiça suspende decisão que liberava 3 bets no Brasil",
+   "url": "https://poder360.com.br/poder-justica/justica-suspende-decisao-que-liberava-3-bets-no-brasil",
+   "published_at": "2026-11-07T12:11:49Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Ministro manda prender desembargadora condenada por corrupção que fugiu do País antes de julgamento",
+   "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/ministro-manda-prender-desembargadora-condenada-por-corrupcao-que-fugiu-do-pais-antes-de-julgamento",
+   "published_at": "2026-11-07T18:47:11Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Ministro do STJ decreta prisão de desembargadora condenada após Procuradoria relatar saída do país",
+   "url": "https://www1.folha.uol.com.br/poder/2026/11/ministro-do-stj-decreta-prisao-de-desembargadora-condenada-apos-procuradoria-relatar-saida-do-pais.shtml",
+   "published_at": "2026-11-07T21:26:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Operação Faroeste: STJ determina inclusão de desembargadora condenada na lista de procurados internacionais",
+   "url": "https://g1.globo.com/ba/bahia/noticia/2026/11/07/operacao-faroeste-stj-determina-inclusao-de-desembargadora-condenada-na-lista-de-procurados-internacionais.ghtml",
+   "published_at": "2026-11-07T21:46:44Z"
+  }
+ ],
+ "note": "Informações válidas até o corte das 20:31. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
