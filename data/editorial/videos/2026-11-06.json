@@ -1,0 +1,40 @@
+{
+ "schema": "desmentindo.public.recent_videos.v1",
+ "date": "2026-11-06",
+ "published_at": "2026-11-06T17:27:09Z",
+ "title": "Vídeos recentes dos canais",
+ "notice": "Publicado pelos canais acompanhados. Ainda não checado pelo Desmentindo: título e conteúdo são dos autores. Aparecer aqui não é confirmação nem ligação com as notícias do dia.",
+ "window": {
+  "days": 3,
+  "from": "2026-11-04",
+  "to": "2026-11-06"
+ },
+ "items": [
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "Izz91VZM3eY",
+   "title": "No país Macunaíma, mais tributo e menos trabalho - Alexandre Garcia",
+   "published_at": "2026-11-05T22:02:15Z",
+   "url": "https://www.youtube.com/watch?v=Izz91VZM3eY",
+   "thumbnail": "https://i.ytimg.com/vi/Izz91VZM3eY/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-11-06T01:50:30Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "Uw4defUuxjA",
+   "title": "Politica externa, Magnitsky, ações militares, nada disso é alterado pela eleição americana",
+   "published_at": "2026-11-05T18:22:48Z",
+   "url": "https://www.youtube.com/watch?v=Uw4defUuxjA",
+   "thumbnail": "https://i.ytimg.com/vi/Uw4defUuxjA/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-11-06T01:50:30Z"
+  }
+ ]
+}
