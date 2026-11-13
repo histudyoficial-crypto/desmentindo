@@ -213,7 +213,7 @@ ${br ? HUBS() + "\n" : ""}${br && t2 ? HIST_2T() + "\n" + pesqSection(PESQ, FLAG
 <li>Arquivo que ainda não está disponível não é indício de problema na votação, e não inferimos o motivo.</li>
 <li>Não fazemos previsão de vencedor nem projeção.</li>${t2 ? "\n<li>O % de seções totalizadas mostra o andamento da contagem. Não é chance de vitória, e a diferença parcial não prevê a final.</li>" : ""}</ul></section>
 </main>
-<footer><div class="wrap">Fonte: Tribunal Superior Eleitoral (resultados.tse.jus.br). <a href="/#/privacidade">Privacidade</a> · <a href="/">Desmentindo</a></div></footer>
+<footer><div class="wrap">Fonte: Tribunal Superior Eleitoral (resultados.tse.jus.br). ${!t2 && (br || uf === "sp") ? '<nav aria-label="Links institucionais do Desmentindo"><a href="/#/privacidade">Privacidade</a> · <a href="/">Desmentindo</a></nav>' : '<a href="/#/privacidade">Privacidade</a> · <a href="/">Desmentindo</a>'}</div></footer>
 <script src="${asset("eleicoes-2026/eleicoes-core.js")}" defer></script>
 <script src="${asset("eleicoes-2026/eleicoes-cores.js")}" defer></script>
 <script src="${asset("eleicoes-2026/eleicoes.js")}" defer></script>
