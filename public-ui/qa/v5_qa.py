@@ -477,6 +477,10 @@ with sync_playwright() as pw:
             page.goto(BASE + "#/__blank"); page.goto(BASE + h_); page.wait_for_selector("main h1, h1", timeout=15000); settle()
             ow = page.evaluate("document.documentElement.scrollWidth - window.innerWidth")
             check("MOBILE", f"{W}px {h_ or '#/'}: sem rolagem horizontal", ow <= 0, ow)
+            if not h_ and page.locator(".ah-idle .ah-t").count():
+                # o aviso "Hoje" sem acompanhamento é uma frase fixa: inteira, sem corte por line-clamp nem texto vazando
+                ah = page.evaluate("(() => { const t = document.querySelector('.ah-idle .ah-t'); return {sh: t.scrollHeight, ch: t.clientHeight, clamp: getComputedStyle(t).webkitLineClamp}; })()")
+                check("MOBILE", f"{W}px #/: aviso Hoje inteiro (sem line-clamp)", ah["sh"] <= ah["ch"] + 1 and ah["clamp"] in ("none", ""), ah)
         ctx.close()
     browser.close()
 
