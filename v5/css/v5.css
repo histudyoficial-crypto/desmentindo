@@ -661,6 +661,7 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
 .fxh-pts a { text-decoration: none; color: inherit; }
 .fxh-pts a:hover { text-decoration: underline; }
 .fxh-go { display: flex; gap: 10px; margin-top: 22px; }
+@media (max-width: 359px) { .fxh-go { flex-wrap: wrap; } }
 .fxh-read { display: inline-flex; align-items: center; min-height: 48px; padding: 13px 18px; background: var(--yellow); color: var(--ink); font-size: 15px; font-weight: 800; text-decoration: none; }
 .fxh-read:hover { background: #F2D400; }
 .mandar { font: inherit; display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 10px 16px; border: 0; cursor: pointer; font-weight: 800; font-size: 15px;
