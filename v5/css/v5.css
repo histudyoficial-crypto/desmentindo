@@ -661,6 +661,7 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
 .fxh-pts a { text-decoration: none; color: inherit; }
 .fxh-pts a:hover { text-decoration: underline; }
 .fxh-go { display: flex; gap: 10px; margin-top: 22px; }
+@media (max-width: 359px) { .fxh-go { flex-wrap: wrap; } }
 .fxh-read { display: inline-flex; align-items: center; min-height: 48px; padding: 13px 18px; background: var(--yellow); color: var(--ink); font-size: 15px; font-weight: 800; text-decoration: none; }
 .fxh-read:hover { background: #F2D400; }
 .mandar { font: inherit; display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 10px 16px; border: 0; cursor: pointer; font-weight: 800; font-size: 15px;
@@ -1135,7 +1136,7 @@ details summary { cursor: pointer; color: var(--link); font-weight: 700; padding
 /* Morning (estado A/B): mesma gramática da capa — régua e papel, sem caixa branca solta */
 .is-home .mh { margin: 30px 0 0; padding: 18px 0 30px; background: transparent; box-shadow: none; border-top: 8px solid var(--ink); border-bottom: 1px solid var(--ink); }
 /* AGORA neutro: a frase não corta em telas médias */
-.ah-idle .ah-t { white-space: normal; overflow: visible; text-overflow: clip; }
+.ah-idle .ah-t { white-space: normal; overflow: visible; text-overflow: clip; display: block; -webkit-line-clamp: none; }
 /* Hierarquia temporal (06/10): estado A — o Morning aprovado de hoje é a capa do dia; o FECHAMENTO anterior vem depois,
    rotulado "Fechamento de ontem", em escala de contexto. Estado B — o FECHAMENTO de hoje é a capa; o Morning fica compacto. */
 .is-home .mh-lead .mh-k { font-size: 12.5px; }
