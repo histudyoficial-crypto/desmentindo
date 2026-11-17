@@ -1,7 +1,13 @@
 {
  "schema": "desmentindo.public.fechamento_index.v1",
- "latest": "2026-11-08",
+ "latest": "2026-11-09",
  "items": [
+  {
+   "date": "2026-11-09",
+   "title": "FECHAMENTO — 9 de novembro de 2026",
+   "file": "data/editorial/fechamentos/2026-11-09.json",
+   "sha256": "dfae345d235e92a15203a6484a491072b24bec959be7e11559a841de9ad8852a"
+  },
   {
    "date": "2026-11-08",
    "title": "FECHAMENTO — 8 de novembro de 2026",

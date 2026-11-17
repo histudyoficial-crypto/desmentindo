@@ -1,0 +1,449 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-11-09",
+ "public_title": "FECHAMENTO — 9 de novembro de 2026",
+ "published_at": "2026-11-16T21:30:27Z",
+ "cutoff_at": "2026-11-09T20:33:33-03:00",
+ "context": "Fechamento de 9 de novembro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "Fux suspende afastamento da juíza Gabriela Hardt, punida pelo CNJ por atos na Lava Jato",
+    "story": "fux-suspende-afastamento-da-juiza-gabriela-hardt-punida-pelo-cnj-por-atos-na"
+   },
+   {
+    "text": "Fux diz que bets são ‘reconhecidamente danosas’ e suspende ações sobre proibição de apostas",
+    "story": "fux-diz-que-bets-sao-reconhecidamente-danosas-e-suspende-acoes-sobre-proibicao"
+   },
+   {
+    "text": "PF investiga ameaças contra deputada federal eleita pelo PT em Minas Gerais",
+    "story": "pf-investiga-ameacas-contra-deputada-federal-eleita-pelo-pt-em-minas-gerais"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "fux-suspende-afastamento-da-juiza-gabriela-hardt-punida-pelo-cnj-por-atos-na",
+   "headline": "Fux suspende afastamento da juíza Gabriela Hardt, punida pelo CNJ por atos na Lava Jato",
+   "lead": true,
+   "what_happened": "Fux suspendeu o afastamento da juíza Gabriela Hardt determinado pelo CNJ, por entender que houve prescrição da punição. Segundo Fux, o CNJ tinha conhecimento dos fatos em março de 2019, mas o processo disciplinar só foi instaurado em junho de 2024, após o prazo de cinco anos.",
+   "what_changed": "A decisão de Fux é liminar e não anula de forma definitiva a condenação do CNJ. O CNJ concluiu em agosto de 2026 que Hardt cometeu infração funcional ao homologar o acordo em prazo excessivamente curto, sem consultar previamente órgãos públicos.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "Fux suspende afastamento da juíza Gabriela Hardt, punida pelo CNJ por atos na Lava Jato",
+     "url": "https://g1.globo.com/politica/noticia/2026/11/09/fux-suspende-afastamento-da-juiza-gabriela-hardt-punida-pelo-cnj-por-atos-na-lava-jato.ghtml",
+     "published_at": "2026-11-09T12:14:06Z",
+     "summary": "Fux suspendeu o afastamento da juíza Gabriela Hardt determinado pelo CNJ, por entender que houve prescrição da punição.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Poder360",
+     "title": "Fux suspende punição do CNJ a Gabriela Hardt, que atuou na Lava Jato",
+     "url": "https://poder360.com.br/poder-justica/fux-suspende-punicao-do-cnj-a-gabriel-hardt-que-atuou-na-lava-jato",
+     "published_at": "2026-11-09T13:12:34Z",
+     "summary": "A decisão de Fux é liminar e não anula de forma definitiva a condenação do CNJ.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Jovem Pan",
+     "title": "Fux suspende punição do CNJ que afastou Gabriela Hardt por dois anos",
+     "url": "https://jovempan.com.br/politica/fux-suspende-punicao-do-cnj-que-afastou-gabriela-hardt-por-dois-anos",
+     "published_at": "2026-11-09T13:32:03Z",
+     "summary": "O CNJ concluiu em agosto de 2026 que Hardt cometeu infração funcional ao homologar o acordo em prazo excessivamente curto, sem consultar previamente órgãos públicos.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Folha",
+     "title": "Fux suspende afastamento de Gabriela Hardt, ex-juíza da Lava Jato, aplicado pelo CNJ",
+     "url": "https://www1.folha.uol.com.br/poder/2026/11/fux-suspende-afastamento-de-gabriela-hardt-ex-juiza-da-lava-jato-aplicado-pelo-cnj.shtml",
+     "published_at": "2026-11-09T13:40:00Z",
+     "summary": "Fux suspendeu o afastamento da juíza Gabriela Hardt, aplicado pelo CNJ com validade de dois anos.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "Fux manda reintegrar juíza Gabriela Hardt que condenou Lula a 12 anos de prisão na Lava Jato",
+     "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/fux-suspende-decisao-do-cnj-e-manda-reintegrar-juiza-da-lava-jato-gabriela-hardt",
+     "published_at": "2026-11-09T13:06:41Z",
+     "summary": "O afastamento pelo CNJ ocorreu em agosto, por suspeita de redirecionamento de R$ 2,5 bilhões para criação de uma fundação privada ligada a procuradores da Lava Jato.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:33, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "fux-diz-que-bets-sao-reconhecidamente-danosas-e-suspende-acoes-sobre-proibicao",
+   "headline": "Fux diz que bets são ‘reconhecidamente danosas’ e suspende ações sobre proibição de apostas",
+   "lead": false,
+   "what_happened": "Fux suspendeu em todo o país os processos que discutem a constitucionalidade da MP que proibiu as bets, a pedido do procurador-geral Paulo Gonet. Fux afirmou haver risco de insegurança jurídica por múltiplas decisões divergentes, tratando-se de atividade reconhecidamente danosa e de elevado risco social.",
+   "what_changed": "Por ser liminar, a decisão ainda deve passar por referendo do plenário do STF. A proibição de apostas de quota fixa começou em 25 de setembro.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "Fux suspende processos sobre proibição das bets até STF decidir sobre validade da medida",
+     "url": "https://g1.globo.com/politica/noticia/2026/11/09/fux-suspende-processos-sobre-proibicao-das-bets-ate-stf-decidir-sobre-validade-da-medida.ghtml",
+     "published_at": "2026-11-09T10:49:18Z",
+     "summary": "Fux suspendeu em todo o país os processos que discutem a constitucionalidade da MP que proibiu as bets, a pedido do procurador-geral Paulo Gonet.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "title": "STF suspende ações judiciais sobre proibição das bets em todo o país",
+     "url": "https://cnnbrasil.com.br/politica/stf-suspende-acoes-judiciais-sobre-proibicao-das-bets-em-todo-o-pais",
+     "published_at": "2026-11-09T10:38:26Z",
+     "summary": "Fux afirmou haver risco de insegurança jurídica por múltiplas decisões divergentes, tratando-se de atividade reconhecidamente danosa e de elevado risco social.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "Fux diz que bets são ‘reconhecidamente danosas’ e suspende ações sobre proibição de apostas",
+     "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/fux-diz-que-bets-sao-reconhecidamente-danosas-e-suspende-acoes-sobre-proibicao-de-apostas",
+     "published_at": "2026-11-09T11:48:15Z",
+     "summary": "Fux disse ter se convencido de que a ludopatia é problema de saúde pública e econômico e deveria ser banida do cenário dos esportes.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:33, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "pf-investiga-ameacas-contra-deputada-federal-eleita-pelo-pt-em-minas-gerais",
+   "headline": "PF investiga ameaças contra deputada federal eleita pelo PT em Minas Gerais",
+   "lead": false,
+   "what_happened": "A Polícia Federal informou investigar as ameaças divulgadas pela deputada federal eleita Ana Elisa, com pedidos de cooperação policial internacional. O Ministério dos Direitos Humanos informou que a deputada é atendida pelo PPDDH desde 9 de outubro.",
+   "what_changed": "O caso é apurado pela Delegacia de Polícia Federal em Divinópolis, com apoio da DCIBER/PF. A PF diz que não divulgará detalhes das diligências em andamento em razão do sigilo. Alegação atribuída (Ana Elisa, conforme Folha), não comprovada: Ana Elisa mostrou em vídeo um email com ameaças de morte e estupro, além de ataques racistas e misóginos.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "PF investiga ameaças contra deputada federal eleita pelo PT em Minas Gerais",
+     "url": "https://www1.folha.uol.com.br/poder/2026/11/pf-investiga-ameacas-contra-deputada-federal-eleita-pelo-pt-em-minas-gerais.shtml",
+     "published_at": "2026-11-08T22:14:00Z",
+     "summary": "A Polícia Federal informou investigar as ameaças divulgadas pela deputada federal eleita Ana Elisa, com pedidos de cooperação policial internacional.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Veja",
+     "title": "Ministério dos Direitos Humanos cobra investigação de ameaças contra Ana Elisa",
+     "url": "https://veja.abril.com.br/politica/ministerio-dos-direitos-humanos-cobra-investigacao-de-ameacas-contra-ana-elisa",
+     "published_at": "2026-11-08T20:15:25Z",
+     "summary": "O Ministério dos Direitos Humanos informou que a deputada é atendida pelo PPDDH desde 9 de outubro.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Agência Brasil",
+     "title": "PF investiga ameaças recebidas pela deputada eleita Ana Elisa",
+     "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/pf-investiga-ameacas-recebidas-pela-deputada-eleita-ana-elisa",
+     "published_at": "2026-11-08T22:21:00Z",
+     "summary": "O caso é apurado pela Delegacia de Polícia Federal em Divinópolis, com apoio da DCIBER/PF.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 20:33, é isto que as fontes citadas registram. Alegação atribuída não é prova."
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "gas-do-povo-governo-prorroga-ate-2031-programa-que-preve-recargas-gratis-para",
+   "title": "Gás do Povo: governo prorroga até 2031 programa que prevê recargas grátis para famílias de baixa renda",
+   "text": "O governo Lula publicou medida provisória que prorroga até novembro de 2031 o programa Gás do Povo, com recarga gratuita de botijão de 13 kg para mais de 15 milhões de famílias. O governo reservou R$ 7,63 bilhões no PLOA 2027 para o programa, que ainda precisa ser avaliado pelo Legislativo.",
+   "sources": [
+    {
+     "outlet": "Jovem Pan",
+     "url": "https://jovempan.com.br/economia/lula-prorroga-auxilio-gas-do-povo-ate-novembro-de-2031",
+     "published_at": "2026-11-09T11:51:00Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/economia/noticia/2026/11/09/governo-federal-prorroga-ate-2031-programa-gas-do-povo.ghtml",
+     "published_at": "2026-11-09T12:35:09Z"
+    }
+   ]
+  },
+  {
+   "id": "tre-mg-suspende-investigacao-da-pf-contra-deputada-eleita-apos-denuncia-de",
+   "title": "TRE-MG suspende investigação da PF contra deputada eleita após denúncia de Flávio Bolsonaro",
+   "text": "O TRE-MG determinou a suspensão de uma investigação da Polícia Federal contra a deputada federal eleita Ana Elisa Santos Silva (PT-MG), após notícia-crime apresentada por Flávio Bolsonaro (PL). Na decisão, o desembargador federal Lincoln Rodrigues de Faria afirmou que não há elementos suficientes para demonstrar que a parlamentar sabia que a informação divulgada era falsa.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/11/tre-mg-suspende-investigacao-da-pf-contra-deputada-eleita-apos-denuncia-de-flavio-bolsonaro.shtml",
+     "published_at": "2026-11-08T19:01:00Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/eleicoes/tre-mg-suspende-investigacao-contra-ana-elisa-apos-denuncia-de-flavio",
+     "published_at": "2026-11-09T11:11:34Z"
+    }
+   ]
+  },
+  {
+   "id": "gestao-nunes-rescinde-contrato-milionario-com-ong-de-produtora-de-dark-horse",
+   "title": "Gestão Nunes rescinde contrato milionário com ONG de produtora de 'Dark Horse'",
+   "text": "A Prefeitura de São Paulo rescindiu o contrato que mantinha desde junho de 2024 com o ICB, após decisão do STF que paralisou os repasses à entidade. Karina enviou ao prefeito Ricardo Nunes uma carta com ataques ao ministro Flávio Dino, relator do caso.",
+   "sources": [
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/11/gestao-nunes-rescinde-contrato-milionario-com-ong-de-produtora-de-dark-horse.shtml",
+     "published_at": "2026-11-09T20:54:00Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-brasil/prefeitura-de-sp-rompe-contrato-com-ong-ligada-a-dark-horse",
+     "published_at": "2026-11-09T22:04:32Z"
+    }
+   ]
+  },
+  {
+   "id": "pgr-e-judiciario-pedem-credito-extraordinario-de-r-533-milhoes-para-pagar",
+   "title": "PGR e Judiciário pedem crédito extraordinário de R$ 533 milhões para pagar penduricalhos",
+   "text": "PGR e CJF pediram ao governo a abertura de crédito extraordinário de R$ 533 milhões para custear verbas indenizatórias, os penduricalhos. A AGU enviou petição aos ministros do STF Zanin, Dino e Moraes, relatores de ações sobre a legalidade desses benefícios.",
+   "sources": [
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/pgr-e-judiciario-pedem-credito-extraordinario-de-r-533-milhoes-para-pagar-penduricalhos",
+     "published_at": "2026-11-09T19:58:08Z"
+    },
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/11/09/pgr-e-judiciario-querem-r-533-milhoes-extras-para-pagar-penduricalhos-agu-pediu-analise-stf.ghtml",
+     "published_at": "2026-11-09T22:19:52Z"
+    }
+   ]
+  },
+  {
+   "id": "justica-suspende-regras-do-governo-lula-sobre-vales-refeicao-e-alimentacao",
+   "title": "Justiça suspende regras do governo Lula sobre vales refeição e alimentação",
+   "text": "A Justiça Federal no DF suspendeu, em caráter liminar, parte das regras do governo Lula para VA e VR, atendendo pedido da ABBT. A decisão beneficia apenas as empresas associadas à ABBT e não suspende toda a regulamentação do PAT.",
+   "sources": [
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/juiz-suspende-decreto-de-lula-que-regula-vale-refeicao-e-alimentacao",
+     "published_at": "2026-11-09T22:28:36Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/politica/justica-suspende-regras-do-governo-lula-sobre-vales-refeicao-e-alimentacao",
+     "published_at": "2026-11-09T22:53:31Z"
+    },
+    {
+     "outlet": "Jovem Pan",
+     "url": "https://jovempan.com.br/economia/justica-federal-suspende-novas-regras-que-ampliou-aceitacao-de-vr-e-va-em-maquininhas",
+     "published_at": "2026-11-09T23:01:37Z"
+    }
+   ]
+  },
+  {
+   "id": "pf-afasta-dois-delegados-de-cargos-de-chefia-em-area-responsavel-por",
+   "title": "PF afasta dois delegados de cargos de chefia em área responsável por investigações do Master",
+   "text": "A PF decidiu afastar de funções de chefia os delegados Daniel Mostardeiro Cola e Wedson Cajé Lopes, que atuavam na coordenação de investigações do Banco Master. Em nota, a PF afirmou que as alterações em cargos de chefia não afetam as investigações em andamento.",
+   "sources": [
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/pf-deve-afastar-delegados-do-caso-master-que-coordenavam-relatorios-sobre-ministros-do-stf",
+     "published_at": "2026-11-09T15:08:03Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/11/pf-afasta-dois-delegados-de-cargos-de-chefia-em-area-responsavel-por-investigacoes-do-master.shtml",
+     "published_at": "2026-11-09T19:31:00Z"
+    }
+   ]
+  },
+  {
+   "id": "lula-ignora-nome-apoiado-por-kassio-e-indica-juiz-de-goias-ao-trf-1",
+   "title": "Lula ignora nome apoiado por Kassio e indica juiz de Goiás ao TRF-1",
+   "text": "Lula indicou o juiz federal Fausto Mendanha Gonzaga para uma vaga no TRF-1, com posse na terça (10). Gonzaga foi escolhido a partir de lista tríplice que incluía Itagiba Catta Preta Neto e Henrique Gouveia da Cunha, juiz auxiliar no gabinete de Kassio Nunes Marques.",
+   "sources": [
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/lula-escolhe-fausto-mendanha-gonzaga-para-o-trf-1-nprp",
+     "published_at": "2026-11-09T18:37:00Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/11/lula-ignora-nome-apoiado-por-kassio-e-indica-juiz-de-goias-ao-trf-1.shtml",
+     "published_at": "2026-11-09T21:54:00Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "g1",
+   "title": "Fux suspende afastamento da juíza Gabriela Hardt, punida pelo CNJ por atos na Lava Jato",
+   "url": "https://g1.globo.com/politica/noticia/2026/11/09/fux-suspende-afastamento-da-juiza-gabriela-hardt-punida-pelo-cnj-por-atos-na-lava-jato.ghtml",
+   "published_at": "2026-11-09T12:14:06Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Fux suspende punição do CNJ a Gabriela Hardt, que atuou na Lava Jato",
+   "url": "https://poder360.com.br/poder-justica/fux-suspende-punicao-do-cnj-a-gabriel-hardt-que-atuou-na-lava-jato",
+   "published_at": "2026-11-09T13:12:34Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Jovem Pan",
+   "title": "Fux suspende punição do CNJ que afastou Gabriela Hardt por dois anos",
+   "url": "https://jovempan.com.br/politica/fux-suspende-punicao-do-cnj-que-afastou-gabriela-hardt-por-dois-anos",
+   "published_at": "2026-11-09T13:32:03Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Fux suspende afastamento de Gabriela Hardt, ex-juíza da Lava Jato, aplicado pelo CNJ",
+   "url": "https://www1.folha.uol.com.br/poder/2026/11/fux-suspende-afastamento-de-gabriela-hardt-ex-juiza-da-lava-jato-aplicado-pelo-cnj.shtml",
+   "published_at": "2026-11-09T13:40:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Fux manda reintegrar juíza Gabriela Hardt que condenou Lula a 12 anos de prisão na Lava Jato",
+   "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/fux-suspende-decisao-do-cnj-e-manda-reintegrar-juiza-da-lava-jato-gabriela-hardt",
+   "published_at": "2026-11-09T13:06:41Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "Fux suspende processos sobre proibição das bets até STF decidir sobre validade da medida",
+   "url": "https://g1.globo.com/politica/noticia/2026/11/09/fux-suspende-processos-sobre-proibicao-das-bets-ate-stf-decidir-sobre-validade-da-medida.ghtml",
+   "published_at": "2026-11-09T10:49:18Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "STF suspende ações judiciais sobre proibição das bets em todo o país",
+   "url": "https://cnnbrasil.com.br/politica/stf-suspende-acoes-judiciais-sobre-proibicao-das-bets-em-todo-o-pais",
+   "published_at": "2026-11-09T10:38:26Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Fux diz que bets são ‘reconhecidamente danosas’ e suspende ações sobre proibição de apostas",
+   "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/fux-diz-que-bets-sao-reconhecidamente-danosas-e-suspende-acoes-sobre-proibicao-de-apostas",
+   "published_at": "2026-11-09T11:48:15Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "PF investiga ameaças contra deputada federal eleita pelo PT em Minas Gerais",
+   "url": "https://www1.folha.uol.com.br/poder/2026/11/pf-investiga-ameacas-contra-deputada-federal-eleita-pelo-pt-em-minas-gerais.shtml",
+   "published_at": "2026-11-08T22:14:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Veja",
+   "title": "Ministério dos Direitos Humanos cobra investigação de ameaças contra Ana Elisa",
+   "url": "https://veja.abril.com.br/politica/ministerio-dos-direitos-humanos-cobra-investigacao-de-ameacas-contra-ana-elisa",
+   "published_at": "2026-11-08T20:15:25Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Agência Brasil",
+   "title": "PF investiga ameaças recebidas pela deputada eleita Ana Elisa",
+   "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/pf-investiga-ameacas-recebidas-pela-deputada-eleita-ana-elisa",
+   "published_at": "2026-11-08T22:21:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Jovem Pan",
+   "title": "Lula prorroga Auxílio Gás do Povo até novembro de 2031",
+   "url": "https://jovempan.com.br/economia/lula-prorroga-auxilio-gas-do-povo-ate-novembro-de-2031",
+   "published_at": "2026-11-09T11:51:00Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Gás do Povo: governo prorroga até 2031 programa que prevê recargas grátis para famílias de baixa renda",
+   "url": "https://g1.globo.com/economia/noticia/2026/11/09/governo-federal-prorroga-ate-2031-programa-gas-do-povo.ghtml",
+   "published_at": "2026-11-09T12:35:09Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "TRE-MG suspende investigação da PF contra deputada eleita após denúncia de Flávio Bolsonaro",
+   "url": "https://www1.folha.uol.com.br/blogs/brasilia-hoje/2026/11/tre-mg-suspende-investigacao-da-pf-contra-deputada-eleita-apos-denuncia-de-flavio-bolsonaro.shtml",
+   "published_at": "2026-11-08T19:01:00Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "TRE-MG suspende investigação contra Ana Elisa após denúncia de Flávio",
+   "url": "https://cnnbrasil.com.br/eleicoes/tre-mg-suspende-investigacao-contra-ana-elisa-apos-denuncia-de-flavio",
+   "published_at": "2026-11-09T11:11:34Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Gestão Nunes rescinde contrato milionário com ONG de produtora de 'Dark Horse'",
+   "url": "https://www1.folha.uol.com.br/poder/2026/11/gestao-nunes-rescinde-contrato-milionario-com-ong-de-produtora-de-dark-horse.shtml",
+   "published_at": "2026-11-09T20:54:00Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Prefeitura de SP rompe contrato com ONG ligada a “Dark Horse”",
+   "url": "https://poder360.com.br/poder-brasil/prefeitura-de-sp-rompe-contrato-com-ong-ligada-a-dark-horse",
+   "published_at": "2026-11-09T22:04:32Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "PGR e Judiciário pedem crédito extraordinário de R$ 533 milhões para pagar penduricalhos",
+   "url": "https://estadao.com.br/politica/pgr-e-judiciario-pedem-credito-extraordinario-de-r-533-milhoes-para-pagar-penduricalhos",
+   "published_at": "2026-11-09T19:58:08Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "PGR e Judiciário querem R$ 533 milhões extras para pagar penduricalhos; AGU pediu análise ao STF",
+   "url": "https://g1.globo.com/politica/noticia/2026/11/09/pgr-e-judiciario-querem-r-533-milhoes-extras-para-pagar-penduricalhos-agu-pediu-analise-stf.ghtml",
+   "published_at": "2026-11-09T22:19:52Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Juiz suspende decreto de Lula que regula vale-refeição e alimentação",
+   "url": "https://gazetadopovo.com.br/republica/juiz-suspende-decreto-de-lula-que-regula-vale-refeicao-e-alimentacao",
+   "published_at": "2026-11-09T22:28:36Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Justiça suspende regras do governo Lula sobre vales refeição e alimentação",
+   "url": "https://cnnbrasil.com.br/politica/justica-suspende-regras-do-governo-lula-sobre-vales-refeicao-e-alimentacao",
+   "published_at": "2026-11-09T22:53:31Z"
+  },
+  {
+   "outlet": "Jovem Pan",
+   "title": "Justiça Federal suspende novas regras que ampliaram a aceitação de VR e VA em maquininhas",
+   "url": "https://jovempan.com.br/economia/justica-federal-suspende-novas-regras-que-ampliou-aceitacao-de-vr-e-va-em-maquininhas",
+   "published_at": "2026-11-09T23:01:37Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "PF deve afastar delegados do caso Master que coordenavam relatórios sobre ministros do STF",
+   "url": "https://gazetadopovo.com.br/republica/pf-deve-afastar-delegados-do-caso-master-que-coordenavam-relatorios-sobre-ministros-do-stf",
+   "published_at": "2026-11-09T15:08:03Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "PF afasta dois delegados de cargos de chefia em área responsável por investigações do Master",
+   "url": "https://www1.folha.uol.com.br/poder/2026/11/pf-afasta-dois-delegados-de-cargos-de-chefia-em-area-responsavel-por-investigacoes-do-master.shtml",
+   "published_at": "2026-11-09T19:31:00Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Lula escolhe Fausto Mendanha Gonzaga para o TRF-1",
+   "url": "https://estadao.com.br/politica/lula-escolhe-fausto-mendanha-gonzaga-para-o-trf-1-nprp",
+   "published_at": "2026-11-09T18:37:00Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Lula ignora nome apoiado por Kassio e indica juiz de Goiás ao TRF-1",
+   "url": "https://www1.folha.uol.com.br/poder/2026/11/lula-ignora-nome-apoiado-por-kassio-e-indica-juiz-de-goias-ao-trf-1.shtml",
+   "published_at": "2026-11-09T21:54:00Z"
+  }
+ ],
+ "note": "Informações válidas até o corte das 20:33. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
