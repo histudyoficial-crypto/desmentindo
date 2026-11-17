@@ -1,0 +1,40 @@
+{
+ "schema": "desmentindo.public.recent_videos.v1",
+ "date": "2026-11-10",
+ "published_at": "2026-11-16T21:30:27Z",
+ "title": "Vídeos recentes dos canais",
+ "notice": "Publicado pelos canais acompanhados. Ainda não checado pelo Desmentindo: título e conteúdo são dos autores. Aparecer aqui não é confirmação nem ligação com as notícias do dia.",
+ "window": {
+  "days": 3,
+  "from": "2026-11-08",
+  "to": "2026-11-10"
+ },
+ "items": [
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "5DSfcCXy7gE",
+   "title": "Fux anula afastamento da juíza que substituiu Moro - Alexandre Garcia",
+   "published_at": "2026-11-09T22:27:06Z",
+   "url": "https://www.youtube.com/watch?v=5DSfcCXy7gE",
+   "thumbnail": "https://i.ytimg.com/vi/5DSfcCXy7gE/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-11-10T03:51:39Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "HzzqgSw-3YU",
+   "title": "Lula agora impede idade penal aos 16- Alexandre Garcia",
+   "published_at": "2026-11-09T17:36:58Z",
+   "url": "https://www.youtube.com/watch?v=HzzqgSw-3YU",
+   "thumbnail": "https://i.ytimg.com/vi/HzzqgSw-3YU/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-11-10T03:51:39Z"
+  }
+ ]
+}
