@@ -1,0 +1,433 @@
+{
+ "schema": "desmentindo.public.fechamento.v1",
+ "type": "FECHAMENTO",
+ "edition_date": "2026-11-10",
+ "public_title": "FECHAMENTO — 10 de novembro de 2026",
+ "published_at": "2026-11-16T21:30:27Z",
+ "cutoff_at": "2026-11-10T22:20:27-03:00",
+ "context": "Fechamento de 10 de novembro",
+ "opening": {
+  "title": "O que importou hoje",
+  "points": [
+   {
+    "text": "PF prende ex-servidor do STJ suspeito de vazar informações para Willer Tomaz, amigo de Flávio Bolsonaro",
+    "story": "pf-prende-ex-servidor-do-stj-suspeito-de-vazar-informacoes-para-willer-tomaz"
+   },
+   {
+    "text": "PGR e Judiciário querem R$ 533 milhões extras para pagar penduricalhos; AGU pediu análise ao STF",
+    "story": "pgr-e-judiciario-querem-r-533-milhoes-extras-para-pagar-penduricalhos-agu-pediu"
+   },
+   {
+    "text": "Cúpula da PF determina que relatórios sobre relação de ministros do STF com Vorcaro sejam refeitos",
+    "story": "cupula-da-pf-determina-que-relatorios-sobre-relacao-de-ministros-do-stf-com"
+   }
+  ]
+ },
+ "main_stories": [
+  {
+   "id": "pf-prende-ex-servidor-do-stj-suspeito-de-vazar-informacoes-para-willer-tomaz",
+   "headline": "PF prende ex-servidor do STJ suspeito de vazar informações para Willer Tomaz, amigo de Flávio Bolsonaro",
+   "lead": true,
+   "what_happened": "O g1 relata que a PF prendeu em Brasília o ex-servidor do STJ Humberto Fontoura Pradera, suspeito de vazar informações sigilosas ao advogado Willer Tomaz. O g1 relata que a investigação achou no celular de Willer Tomaz a foto de um documento ainda em produção no STJ, enviada por Pradera.",
+   "what_changed": "O Estadão relata que a operação foi autorizada pelo ministro Alexandre de Moraes e não inclui mandados contra Flávio Bolsonaro ou Willer Tomaz. A Gazeta do Povo relata que Flávio e Willer negam ter negócios em sociedade, e que a existência de cotas na mesma aeronave, por si só, não demonstra relação financeira entre Flávio e Vorcaro. Alegação atribuída (Willer Tomaz, segundo o Estadão), não comprovada: Willer Tomaz nega ter tido acesso irregular a decisões judiciais ou ter interferido nesses documentos, dizendo que as insinuações são falsas. Alegação atribuída (estadao), não comprovada: Segundo o Estadão, Pradera teria facilitado o acesso indevido do advogado Willer Tomaz a processos do STJ.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "PF prende ex-servidor do STJ suspeito de vazar informações sigilosas a Willer Tomaz",
+     "url": "https://g1.globo.com/politica/noticia/2026/11/10/pf-segunda-fase-operacao-linceu.ghtml",
+     "published_at": "2026-11-10T10:13:35Z",
+     "summary": "O g1 relata que a PF prendeu em Brasília o ex-servidor do STJ Humberto Fontoura Pradera, suspeito de vazar informações sigilosas ao advogado Willer Tomaz.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "Moraes manda prender suspeito de vazar dados sigilosos do STJ a Willer Tomaz, amigo de Flávio",
+     "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/moraes-manda-prender-suspeito-de-vazar-dados-sigilosos-do-stj-a-willer-tomaz-amigo-de-flavio",
+     "published_at": "2026-11-10T10:22:52Z",
+     "summary": "O Estadão relata que a operação foi autorizada pelo ministro Alexandre de Moraes e não inclui mandados contra Flávio Bolsonaro ou Willer Tomaz.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "title": "PF prende ex-servidor do STJ suspeito de vazamentos a Willer Tomaz",
+     "url": "https://gazetadopovo.com.br/republica/pf-prende-ex-servidor-do-stj-acusado-de-vazamentos-a-advogado-ligado-a-flavio",
+     "published_at": "2026-11-10T11:27:54Z",
+     "summary": "A Gazeta do Povo relata que Flávio e Willer negam ter negócios em sociedade, e que a existência de cotas na mesma aeronave, por si só, não demonstra relação financeira entre Flávio e Vorcaro.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Estadão",
+     "title": "Quem é o servidor do STJ preso por suspeita de vazar dados para Willer Tomaz; veja",
+     "url": "https://estadao.com.br/politica/quem-e-o-servidor-do-stj-suspeito-de-vazar-dados-para-advogado-willer-tomaz-veja-nprp",
+     "published_at": "2026-11-10T21:34:04Z",
+     "summary": "O Estadão relata que o ex-servidor do STJ Humberto Fontoura Pradera foi preso em operação da PF autorizada por Alexandre de Moraes.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 22:20, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "pgr-e-judiciario-querem-r-533-milhoes-extras-para-pagar-penduricalhos-agu-pediu",
+   "headline": "PGR e Judiciário querem R$ 533 milhões extras para pagar penduricalhos; AGU pediu análise ao STF",
+   "lead": false,
+   "what_happened": "O g1 relata que PGR e CJF informaram ao governo precisar de cerca de R$ 533 milhões adicionais em 2026 para pagar benefícios decorrentes de decisões do STF. O g1 relata que a AGU levou a questão ao STF e pediu que esclareça como cumprir as decisões, sem pedir diretamente a liberação dos R$ 533 milhões.",
+   "what_changed": "A Veja relata que a Justiça precisa de R$ 208,9 milhões e o MP tem despesa calculada de R$ 324 milhões. A Veja relata que em 25 de março o STF decidiu por unanimidade limitar as indenizações adicionais, gratificações e auxílios a 35% do valor do salário. Alegação atribuída (AGU, segundo a Veja), não comprovada: A AGU afirma que Judiciário e MPU comunicaram insuficiência de dotação orçamentária para as despesas.",
+   "coverage": [
+    {
+     "outlet": "g1",
+     "title": "PGR e Judiciário querem R$ 533 milhões extras para pagar penduricalhos; AGU pediu análise ao STF",
+     "url": "https://g1.globo.com/politica/noticia/2026/11/09/pgr-e-judiciario-querem-r-533-milhoes-extras-para-pagar-penduricalhos-agu-pediu-analise-stf.ghtml",
+     "published_at": "2026-11-09T22:19:52Z",
+     "summary": "O g1 relata que PGR e CJF informaram ao governo precisar de cerca de R$ 533 milhões adicionais em 2026 para pagar benefícios decorrentes de decisões do STF.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "Veja",
+     "title": "Impasse de meio bilhão: STF recebe questionamento sobre penduricalhos",
+     "url": "https://veja.abril.com.br/politica/impasse-de-meio-bilhao-stf-recebe-questionamento-sobre-penduricalhos",
+     "published_at": "2026-11-10T01:48:38Z",
+     "summary": "A Veja relata que a Justiça precisa de R$ 208,9 milhões e o MP tem despesa calculada de R$ 324 milhões.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 22:20, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  },
+  {
+   "id": "cupula-da-pf-determina-que-relatorios-sobre-relacao-de-ministros-do-stf-com",
+   "headline": "Cúpula da PF determina que relatórios sobre relação de ministros do STF com Vorcaro sejam refeitos",
+   "lead": false,
+   "what_happened": "A Folha relata que a PF vai refazer os relatórios sobre relações de ministros do STF com Daniel Vorcaro, com previsão de envio à corte até o fim do mês. O g1 relata que investigadores da PF concluíram em 3 de novembro três relatórios com citações aos ministros Toffoli, Moraes e Nunes Marques, informação publicada inicialmente por Malu Gaspar, de O Globo.",
+   "what_changed": "A PF negou ao g1 que os relatórios estejam prontos e afirmou que serão entregues ao STF até o fim do mês. O g1 relata que os documentos reúnem fatos com indícios de crime, mas não atribuem responsabilidade a ninguém. Alegação atribuída (Folha, citando integrantes da cúpula da PF), não comprovada: Segundo informações levantadas pela Folha, integrantes da cúpula da PF pediram a reformulação por avaliarem que os relatórios continham análises que poderiam ser vistas pelo Supremo como atos de investigação contra magistrados sem autorização judicial. Alegação atribuída (interlocutores da PF, segundo o g1), não comprovada: Segundo essas fontes, os relatórios anteriores, de dois delegados afastados, não seguiram os critérios determinados por Edson Fachin.",
+   "coverage": [
+    {
+     "outlet": "Folha",
+     "title": "Cúpula da PF determina que relatórios sobre relação de ministros do STF com Vorcaro sejam refeitos",
+     "url": "https://www1.folha.uol.com.br/poder/2026/11/cupula-da-pf-determina-que-relatorios-sobre-relacao-de-ministros-do-stf-com-vorcaro-sejam-refeitos.shtml",
+     "published_at": "2026-11-10T02:04:00Z",
+     "summary": "A Folha relata que a PF vai refazer os relatórios sobre relações de ministros do STF com Daniel Vorcaro, com previsão de envio à corte até o fim do mês.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "PF detalha, em relatórios, relação de Toffoli, Moraes e Nunes Marques com Vorcaro",
+     "url": "https://g1.globo.com/politica/noticia/2026/11/09/pf-detalha-em-relatorios-relacao-de-toffoli-moraes-e-nunes-marques-com-vorcaro.ghtml",
+     "published_at": "2026-11-09T22:02:44Z",
+     "summary": "O g1 relata que investigadores da PF concluíram em 3 de novembro três relatórios com citações aos ministros Toffoli, Moraes e Nunes Marques, informação publicada inicialmente por Malu Gaspar, de O Globo.",
+     "basis": "texto da matéria"
+    },
+    {
+     "outlet": "g1",
+     "title": "PF vai refazer relatórios sobre ministros do STF citados no caso Master",
+     "url": "https://g1.globo.com/politica/noticia/2026/11/10/pf-vai-refazer-relatorios-sobre-ministros-do-stf-citados-no-caso-master.ghtml",
+     "published_at": "2026-11-10T15:38:17Z",
+     "summary": "O g1 relata, com base em interlocutores da corporação, que a PF vai refazer os relatórios sobre menções a ministros do STF no caso Master.",
+     "basis": "texto da matéria"
+    }
+   ],
+   "conclusion": "Até 22:20, é isto que as fontes citadas registram. Alegação atribuída não é prova.",
+   "open_questions": [
+    "O Desmentindo ainda não vinculou documento oficial a esta história."
+   ]
+  }
+ ],
+ "other_stories": [
+  {
+   "id": "pf-afasta-dois-delegados-de-cargos-de-chefia-em-area-responsavel-por",
+   "title": "PF afasta dois delegados de cargos de chefia em área responsável por investigações do Master",
+   "text": "A Folha relata que a PF decidiu afastar de funções de chefia os delegados Daniel Mostardeiro Cola e Wedson Cajé Lopes. Segundo a nota da PF, as alterações em cargos de chefia e coordenação não afetam as investigações em andamento, incluindo as operações Compliance Zero e Sem Desconto.",
+   "sources": [
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/pf-deve-afastar-delegados-do-caso-master-que-coordenavam-relatorios-sobre-ministros-do-stf",
+     "published_at": "2026-11-09T15:08:03Z"
+    },
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/policia-federal-troca-delegados-que-investigam-ligacoes-entre-vorcaro-e-o-stf",
+     "published_at": "2026-11-09T19:09:16Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/11/pf-afasta-dois-delegados-de-cargos-de-chefia-em-area-responsavel-por-investigacoes-do-master.shtml",
+     "published_at": "2026-11-09T19:31:00Z"
+    }
+   ]
+  },
+  {
+   "id": "na-ata-do-copom-bc-diz-que-cenario-exige-selic-alta-por-mais-tempo",
+   "title": "Na ata do Copom, BC diz que cenário exige Selic alta por mais tempo",
+   "text": "Segundo a CNN, o BC afirmou que o cenário inflacionário desancorado exige manter a Selic em patamar restritivo por mais tempo, conforme a ata do Copom divulgada na terça-feira (10). A ata do Copom diz que, em ambiente de expectativas desancoradas, exige-se restrição monetária maior e por mais tempo do que outrora seria apropriado.",
+   "sources": [
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/economia/money/macroeconomia/na-ata-do-copom-bc-diz-que-cenario-exige-selic-alta-por-mais-tempo",
+     "published_at": "2026-11-10T11:09:07Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-economia/indisciplina-fiscal-exige-juros-maiores-diz-ata-do-copom",
+     "published_at": "2026-11-10T11:44:49Z"
+    }
+   ]
+  },
+  {
+   "id": "lula-escolhe-indicado-por-dino-e-pretere-apadrinhado-de-kassio-para-o-trf-1",
+   "title": "Lula escolhe indicado por Dino e pretere apadrinhado de Kassio para o TRF-1",
+   "text": "Lula indicou o juiz federal Fausto Mendanha Gonzaga para vaga no TRF-1. A lista tríplice incluía Itagiba Catta Preta Neto e Henrique Gouveia da Cunha, juiz auxiliar no gabinete do ministro Kassio Nunes Marques no STF.",
+   "sources": [
+    {
+     "outlet": "Gazeta do Povo",
+     "url": "https://gazetadopovo.com.br/republica/lula-nomeia-aliado-de-dino-para-o-trf-1-e-contraria-articulacao-de-nunes-marques",
+     "published_at": "2026-11-09T18:07:48Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/11/lula-ignora-nome-apoiado-por-kassio-e-indica-juiz-de-goias-ao-trf-1.shtml",
+     "published_at": "2026-11-09T21:54:00Z"
+    }
+   ]
+  },
+  {
+   "id": "fluxo-paralelo-pf-faz-cinco-buscas-na-bahia-para-frear-desvios-milionarios-com",
+   "title": "Fluxo Paralelo: PF faz cinco buscas na Bahia para frear desvios milionários com emendas Pix",
+   "text": "A Polícia Federal cumpriu cinco mandados de busca e apreensão em Porto Seguro, Eunápolis e Itamaraju, na Bahia, expedidos pelo ministro Flávio Dino do STF, na Operação Fluxo Paralelo. A operação investiga suspeitas de desvio de emendas destinadas pelo deputado federal reeleito Neto Carletto (Avante-BA).",
+   "sources": [
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/fluxo-paralelo-pf-faz-cinco-buscas-na-bahia-para-frear-desvios-milionarios-com-emendas-pix",
+     "published_at": "2026-11-10T11:45:10Z"
+    },
+    {
+     "outlet": "Folha",
+     "url": "https://www1.folha.uol.com.br/poder/2026/11/pf-deflagra-operacao-na-bahia-por-suspeita-de-desvio-de-recursos-de-emendas-pix.shtml",
+     "published_at": "2026-11-10T12:20:00Z"
+    },
+    {
+     "outlet": "Veja",
+     "url": "https://veja.abril.com.br/politica/por-que-as-suspeitas-sobre-emendas-pix-podem-pressionar-o-quarto-mandato-de-lula",
+     "published_at": "2026-11-10T14:57:34Z"
+    }
+   ]
+  },
+  {
+   "id": "deputado-eleito-do-pl-vai-cumprir-medidas-cautelares-por-violencia-politica-de",
+   "title": "Deputado eleito do PL vai cumprir medidas cautelares por violência política de gênero",
+   "text": "A Justiça Eleitoral do Ceará aplicou medidas cautelares contra o deputado eleito Abreu Júnior (PL-CE) por violência política de gênero contra a deputada estadual Larissa Gaspar (PT-CE). O promotor Igor Pinheiro disse que essa é a primeira decisão no Ceará após o entendimento do STF sobre a aplicação da Lei Maria da Penha no âmbito eleitoral.",
+   "sources": [
+    {
+     "outlet": "Estadão",
+     "url": "https://estadao.com.br/politica/deputado-eleito-do-pl-vai-cumprir-medidas-cautelares-por-violencia-politica-de-genero-nprp",
+     "published_at": "2026-11-10T19:12:20Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/politica/justica-eleitoral-do-ce-impoe-medidas-protetivas-contra-deputado-do-pl",
+     "published_at": "2026-11-10T22:08:05Z"
+    }
+   ]
+  },
+  {
+   "id": "associacao-critica-afastamento-de-delegados-que-elaboraram-relatorios-sobre",
+   "title": "Associação critica afastamento de delegados que elaboraram relatórios sobre ministros do STF e cobra autonomia da PF",
+   "text": "A ADPF criticou o afastamento de dois delegados de funções de chefia na área de combate à corrupção da PF e afirmou que o episódio pode ameaçar a autonomia dos responsáveis pelas investigações. Segundo interlocutores da corporação, a PF vai refazer os relatórios, individualizados para todos os ministros do STF citados.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/11/10/associacao-critica-afastamento-de-delegados-que-elaboraram-relatorios-sobre-ministros-do-stf-e-cobra-autonomia-da-pf.ghtml",
+     "published_at": "2026-11-10T23:02:15Z"
+    },
+    {
+     "outlet": "Poder360",
+     "url": "https://poder360.com.br/poder-justica/nao-cabe-a-andrei-reformular-relatorios-diz-associacao-de-delegados",
+     "published_at": "2026-11-11T00:34:13Z"
+    }
+   ]
+  },
+  {
+   "id": "tse-forma-maioria-para-multar-meta-em-r-7-5-milhoes-por-descumprir-decisao-nas",
+   "title": "TSE forma maioria para multar Meta em R$ 7,5 milhões por descumprir decisão nas eleições",
+   "text": "O TSE decidiu por unanimidade multar a Meta em R$ 7,5 milhões por descumprimento de decisões da Corte durante as eleições. Segundo o relator Marco Aurélio Bellizze, a Meta apresentou informações de forma fracionada ao tribunal, em linguagem estrangeira e técnica.",
+   "sources": [
+    {
+     "outlet": "g1",
+     "url": "https://g1.globo.com/politica/noticia/2026/11/10/tse-meta-descumprir-decisao-sobre-eleicoes.ghtml",
+     "published_at": "2026-11-11T00:01:13Z"
+    },
+    {
+     "outlet": "CNN Brasil",
+     "url": "https://cnnbrasil.com.br/politica/tse-meta-julgamento-eleicoes",
+     "published_at": "2026-11-11T00:13:06Z"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "outlet": "g1",
+   "title": "PF prende ex-servidor do STJ suspeito de vazar informações sigilosas a Willer Tomaz",
+   "url": "https://g1.globo.com/politica/noticia/2026/11/10/pf-segunda-fase-operacao-linceu.ghtml",
+   "published_at": "2026-11-10T10:13:35Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Moraes manda prender suspeito de vazar dados sigilosos do STJ a Willer Tomaz, amigo de Flávio",
+   "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/moraes-manda-prender-suspeito-de-vazar-dados-sigilosos-do-stj-a-willer-tomaz-amigo-de-flavio",
+   "published_at": "2026-11-10T10:22:52Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "PF prende ex-servidor do STJ suspeito de vazamentos a Willer Tomaz",
+   "url": "https://gazetadopovo.com.br/republica/pf-prende-ex-servidor-do-stj-acusado-de-vazamentos-a-advogado-ligado-a-flavio",
+   "published_at": "2026-11-10T11:27:54Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Quem é o servidor do STJ preso por suspeita de vazar dados para Willer Tomaz; veja",
+   "url": "https://estadao.com.br/politica/quem-e-o-servidor-do-stj-suspeito-de-vazar-dados-para-advogado-willer-tomaz-veja-nprp",
+   "published_at": "2026-11-10T21:34:04Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "PGR e Judiciário querem R$ 533 milhões extras para pagar penduricalhos; AGU pediu análise ao STF",
+   "url": "https://g1.globo.com/politica/noticia/2026/11/09/pgr-e-judiciario-querem-r-533-milhoes-extras-para-pagar-penduricalhos-agu-pediu-analise-stf.ghtml",
+   "published_at": "2026-11-09T22:19:52Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Veja",
+   "title": "Impasse de meio bilhão: STF recebe questionamento sobre penduricalhos",
+   "url": "https://veja.abril.com.br/politica/impasse-de-meio-bilhao-stf-recebe-questionamento-sobre-penduricalhos",
+   "published_at": "2026-11-10T01:48:38Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Cúpula da PF determina que relatórios sobre relação de ministros do STF com Vorcaro sejam refeitos",
+   "url": "https://www1.folha.uol.com.br/poder/2026/11/cupula-da-pf-determina-que-relatorios-sobre-relacao-de-ministros-do-stf-com-vorcaro-sejam-refeitos.shtml",
+   "published_at": "2026-11-10T02:04:00Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "PF detalha, em relatórios, relação de Toffoli, Moraes e Nunes Marques com Vorcaro",
+   "url": "https://g1.globo.com/politica/noticia/2026/11/09/pf-detalha-em-relatorios-relacao-de-toffoli-moraes-e-nunes-marques-com-vorcaro.ghtml",
+   "published_at": "2026-11-09T22:02:44Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "g1",
+   "title": "PF vai refazer relatórios sobre ministros do STF citados no caso Master",
+   "url": "https://g1.globo.com/politica/noticia/2026/11/10/pf-vai-refazer-relatorios-sobre-ministros-do-stf-citados-no-caso-master.ghtml",
+   "published_at": "2026-11-10T15:38:17Z",
+   "basis": "texto da matéria"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "PF deve afastar delegados do caso Master que coordenavam relatórios sobre ministros do STF",
+   "url": "https://gazetadopovo.com.br/republica/pf-deve-afastar-delegados-do-caso-master-que-coordenavam-relatorios-sobre-ministros-do-stf",
+   "published_at": "2026-11-09T15:08:03Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Polícia Federal troca delegados que investigam ligações entre Vorcaro e o STF",
+   "url": "https://gazetadopovo.com.br/republica/policia-federal-troca-delegados-que-investigam-ligacoes-entre-vorcaro-e-o-stf",
+   "published_at": "2026-11-09T19:09:16Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "PF afasta dois delegados de cargos de chefia em área responsável por investigações do Master",
+   "url": "https://www1.folha.uol.com.br/poder/2026/11/pf-afasta-dois-delegados-de-cargos-de-chefia-em-area-responsavel-por-investigacoes-do-master.shtml",
+   "published_at": "2026-11-09T19:31:00Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Na ata do Copom, BC diz que cenário exige Selic alta por mais tempo",
+   "url": "https://cnnbrasil.com.br/economia/money/macroeconomia/na-ata-do-copom-bc-diz-que-cenario-exige-selic-alta-por-mais-tempo",
+   "published_at": "2026-11-10T11:09:07Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Indisciplina fiscal exige juros maiores, afirma ata do Copom",
+   "url": "https://poder360.com.br/poder-economia/indisciplina-fiscal-exige-juros-maiores-diz-ata-do-copom",
+   "published_at": "2026-11-10T11:44:49Z"
+  },
+  {
+   "outlet": "Gazeta do Povo",
+   "title": "Lula nomeia aliado de Dino para o TRF-1 e contraria articulação de Nunes Marques",
+   "url": "https://gazetadopovo.com.br/republica/lula-nomeia-aliado-de-dino-para-o-trf-1-e-contraria-articulacao-de-nunes-marques",
+   "published_at": "2026-11-09T18:07:48Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "Lula ignora nome apoiado por Kassio e indica juiz de Goiás ao TRF-1",
+   "url": "https://www1.folha.uol.com.br/poder/2026/11/lula-ignora-nome-apoiado-por-kassio-e-indica-juiz-de-goias-ao-trf-1.shtml",
+   "published_at": "2026-11-09T21:54:00Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Fluxo Paralelo: PF faz cinco buscas na Bahia para frear desvios milionários com emendas Pix",
+   "url": "https://estadao.com.br/politica/blog-do-fausto-macedo/fluxo-paralelo-pf-faz-cinco-buscas-na-bahia-para-frear-desvios-milionarios-com-emendas-pix",
+   "published_at": "2026-11-10T11:45:10Z"
+  },
+  {
+   "outlet": "Folha",
+   "title": "PF deflagra operação na Bahia por suspeita de desvio de recursos de emendas Pix",
+   "url": "https://www1.folha.uol.com.br/poder/2026/11/pf-deflagra-operacao-na-bahia-por-suspeita-de-desvio-de-recursos-de-emendas-pix.shtml",
+   "published_at": "2026-11-10T12:20:00Z"
+  },
+  {
+   "outlet": "Veja",
+   "title": "Por que as suspeitas sobre emendas Pix podem pressionar o quarto mandato de Lula",
+   "url": "https://veja.abril.com.br/politica/por-que-as-suspeitas-sobre-emendas-pix-podem-pressionar-o-quarto-mandato-de-lula",
+   "published_at": "2026-11-10T14:57:34Z"
+  },
+  {
+   "outlet": "Estadão",
+   "title": "Deputado eleito do PL vai cumprir medidas cautelares por violência política de gênero",
+   "url": "https://estadao.com.br/politica/deputado-eleito-do-pl-vai-cumprir-medidas-cautelares-por-violencia-politica-de-genero-nprp",
+   "published_at": "2026-11-10T19:12:20Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Justiça Eleitoral do CE impõe medidas protetivas contra deputado do PL",
+   "url": "https://cnnbrasil.com.br/politica/justica-eleitoral-do-ce-impoe-medidas-protetivas-contra-deputado-do-pl",
+   "published_at": "2026-11-10T22:08:05Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "Associação critica afastamento de delegados que elaboraram relatórios sobre ministros do STF e cobra autonomia da PF",
+   "url": "https://g1.globo.com/politica/noticia/2026/11/10/associacao-critica-afastamento-de-delegados-que-elaboraram-relatorios-sobre-ministros-do-stf-e-cobra-autonomia-da-pf.ghtml",
+   "published_at": "2026-11-10T23:02:15Z"
+  },
+  {
+   "outlet": "Poder360",
+   "title": "Não cabe a Andrei reformular relatórios, diz associação de delegados",
+   "url": "https://poder360.com.br/poder-justica/nao-cabe-a-andrei-reformular-relatorios-diz-associacao-de-delegados",
+   "published_at": "2026-11-11T00:34:13Z"
+  },
+  {
+   "outlet": "g1",
+   "title": "TSE forma maioria para multar Meta em R$ 7,5 milhões por descumprir decisão nas eleições",
+   "url": "https://g1.globo.com/politica/noticia/2026/11/10/tse-meta-descumprir-decisao-sobre-eleicoes.ghtml",
+   "published_at": "2026-11-11T00:01:13Z"
+  },
+  {
+   "outlet": "CNN Brasil",
+   "title": "Relator vota para multar Meta em R$ 7,5 milhões por descumprir ordem do TSE",
+   "url": "https://cnnbrasil.com.br/politica/tse-meta-julgamento-eleicoes",
+   "published_at": "2026-11-11T00:13:06Z"
+  }
+ ],
+ "note": "Informações válidas até o corte das 22:20. Alegação não é prova. O que mudar depois entra como atualização, não como correção.",
+ "rule": "Só texto aprovado no Human Gate. Alegação não é prova. Pedido não é decisão. Avaliado não é selecionado."
+}
