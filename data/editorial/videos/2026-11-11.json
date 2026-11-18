@@ -1,0 +1,53 @@
+{
+ "schema": "desmentindo.public.recent_videos.v1",
+ "date": "2026-11-11",
+ "published_at": "2026-11-16T21:30:27Z",
+ "title": "Vídeos recentes dos canais",
+ "notice": "Publicado pelos canais acompanhados. Ainda não checado pelo Desmentindo: título e conteúdo são dos autores. Aparecer aqui não é confirmação nem ligação com as notícias do dia.",
+ "window": {
+  "days": 3,
+  "from": "2026-11-09",
+  "to": "2026-11-11"
+ },
+ "items": [
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "5XHmwbdj2RI",
+   "title": "Outra lição do Paraguai: já regularizados 93% dos correntistas - Alexandre Garcia",
+   "published_at": "2026-11-11T22:49:21Z",
+   "url": "https://www.youtube.com/watch?v=5XHmwbdj2RI",
+   "thumbnail": "https://i.ytimg.com/vi/5XHmwbdj2RI/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-11-12T02:33:35Z"
+  },
+  {
+   "channel": "Te Atualizei",
+   "channel_id": "UCXRIQok8uzYtg1TPwSqikVg",
+   "video_id": "4y6nhtd322E",
+   "title": "GABINETE PARALELO - UOL EXPÕE ALEXANDRE DE MORAES. Falta mais o que?",
+   "published_at": "2026-11-10T22:21:09Z",
+   "url": "https://www.youtube.com/watch?v=4y6nhtd322E",
+   "thumbnail": "https://i.ytimg.com/vi/4y6nhtd322E/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-11-11T01:29:55Z"
+  },
+  {
+   "channel": "Alexandre Garcia",
+   "channel_id": "UCitie-To0pWGe5Qyk9SjWRA",
+   "video_id": "UMbfXhATdYE",
+   "title": "Tiram da Amazônia os produtores, não estrangeiros e facções - Alexandre Garcia",
+   "published_at": "2026-11-11T17:53:56Z",
+   "url": "https://www.youtube.com/watch?v=UMbfXhATdYE",
+   "thumbnail": "https://i.ytimg.com/vi/UMbfXhATdYE/mqdefault.jpg",
+   "highlight": true,
+   "status": "NAO_VERIFICADO",
+   "origin": "Lista pública de envios do canal no YouTube (YouTube Data API v3)",
+   "discovered_at": "2026-11-12T02:33:35Z"
+  }
+ ]
+}
